@@ -6440,6 +6440,8 @@ body {
   width: 20px;
   min-height: 20px;
   height: 20px;
+  border-radius: var(--border-radius-xs);
+  transition: 300ms all ease-in-out;
 }
 .upf-checkbox--has-label {
   width: 100%;
@@ -6460,19 +6462,21 @@ body {
   border-color: var(--color-gray-200);
   cursor: not-allowed;
 }
+.upf-checkbox--error .upf-checkbox__fake-checkbox {
+  border-color: var(--color-error-500);
+}
+.upf-checkbox--warning .upf-checkbox__fake-checkbox {
+  border-color: var(--color-warning-500);
+}
+.upf-checkbox--success .upf-checkbox__fake-checkbox {
+  border-color: var(--color-success-500);
+}
+.upf-checkbox:not(.upf-checkbox--disabled):hover,
+.upf-checkbox:not(.upf-checkbox--disabled):active {
+  box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+}
 .upf-checkbox__input {
   display: none;
-}
-.upf-checkbox__fake-checkbox {
-  position: relative;
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--border-radius-xs);
-  cursor: pointer;
-  background-color: var(--color-white);
-  margin-bottom: 0;
-  height: 100%;
-  width: 100%;
-  user-select: none;
 }
 .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox {
   border-color: var(--color-primary-500);
@@ -6496,14 +6500,21 @@ body {
   content: '\f068';
   color: var(--color-primary-500);
 }
-.upf-checkbox--error .upf-checkbox__fake-checkbox {
-  border-color: var(--color-error-500);
+.upf-checkbox__fake-checkbox {
+  position: relative;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-xs);
+  cursor: pointer;
+  background-color: var(--color-white);
+  margin-bottom: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+  transition: 300ms all ease-in-out;
 }
-.upf-checkbox--warning .upf-checkbox__fake-checkbox {
-  border-color: var(--color-warning-500);
-}
-.upf-checkbox--success .upf-checkbox__fake-checkbox {
-  border-color: var(--color-success-500);
+.upf-checkbox__fake-checkbox:hover,
+.upf-checkbox__fake-checkbox:active {
+  border-color: var(--color-primary-500);
 }
 .upf-checkbox__label {
   position: absolute;
@@ -14387,6 +14398,69 @@ a.upf-btn--sm {
   .oss-onboarding-state__actions {
     flex-direction: column;
   }
+}
+.oss-infinite-select-option {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-px-6);
+  padding: var(--spacing-px-3) var(--spacing-px-12);
+  border-radius: var(--border-radius-sm);
+  min-height: 36px;
+  transition: 300ms all ease-in-out;
+  cursor: pointer;
+  min-width: 0;
+}
+.oss-infinite-select-option__container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-6);
+  flex: 1;
+  min-width: 0;
+}
+.oss-infinite-select-option__container:last-child {
+  flex: 0 1 auto;
+}
+.oss-infinite-select-option__title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+}
+.oss-infinite-select-option__subtitle,
+.oss-infinite-select-option__icon {
+  color: var(--color-gray-400);
+}
+.oss-infinite-select-option__suffix-hint {
+  color: var(--color-gray-400);
+}
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):hover,
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):active {
+  background-color: var(--color-primary-50);
+}
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):hover .upf-checkbox,
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):active .upf-checkbox {
+  box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+}
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):hover .upf-checkbox__fake-checkbox,
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):active .upf-checkbox__fake-checkbox {
+  border-color: var(--color-primary-500);
+}
+.oss-infinite-select-option:not(.oss-infinite-select-option--disabled):active {
+  background-color: var(--color-primary-100);
+}
+.oss-infinite-select-option--selected {
+  background-color: var(--color-primary-50);
+}
+.oss-infinite-select-option--selected .oss-infinite-select-option__title {
+  color: var(--color-primary-500);
+}
+.oss-infinite-select-option--disabled {
+  cursor: not-allowed;
+}
+.oss-infinite-select-option--disabled .oss-infinite-select-option__title {
+  color: var(--color-gray-400);
 }
 .upf-table-v2 {
   border: 1px solid var(--color-border-default);

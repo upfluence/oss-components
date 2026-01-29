@@ -89992,6 +89992,627 @@ interface OSSCodeBlockArgs {
     }
   };
 });
+;define("@upfluence/oss-components/components/o-s-s/infinite-select/option", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _utils, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/object",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClasses}} {{on "click" (fn this.onSelect (not this.selected))}} ...attributes>
+    <div class="oss-infinite-select-option__container">
+      {{#if this.isSelectionMultiple}}
+        <OSS::Checkbox @checked={{this.selected}} @disabled={{@disabled}} @onChange={{this.onSelect}} />
+      {{/if}}
+      {{#if @prefixAvatar}}
+        <OSS::Avatar
+          class="oss-infinite-select-option__prefix-avatar"
+          @image={{@prefixAvatar.image}}
+          @initials={{@prefixAvatar.initials}}
+          @size={{@prefixAvatar.size}}
+          @loading={{@prefixAvatar.loading}}
+        />
+      {{/if}}
+      {{#if @prefixBadge}}
+        <OSS::Badge
+          class="oss-infinite-select-option__prefix-badge"
+          @icon={{@prefixBadge.icon}}
+          @image={{@prefixBadge.image}}
+          @text={{@prefixBadge.text}}
+          @skin={{@prefixBadge.skin}}
+          @plain={{@prefixBadge.plain}}
+          @size={{@prefixBadge.size}}
+        />
+      {{/if}}
+      {{#if @prefixIcon}}
+        <OSS::Icon
+          class="oss-infinite-select-option__prefix-icon"
+          @icon={{@prefixIcon.icon}}
+          @style={{@prefixIcon.style}}
+          {{enable-tooltip title=@prefixIcon.tooltip.title placement=@prefixIcon.tooltip.placement}}
+        />
+      {{/if}}
+      {{#if @prefixCountry}}
+        <div class="oss-infinite-select-option__prefix-country fflag fflag-{{@prefixCountry}} ff-sm ff-round" />
+      {{/if}}
+      {{#if (has-block "prefix")}}
+        {{yield to="prefix"}}
+      {{/if}}
+      <span class="oss-infinite-select-option__title">{{@title}}</span>
+      {{#if @subtitle}}
+        <span class="oss-infinite-select-option__subtitle">{{@subtitle}}</span>
+      {{/if}}
+      {{#if @icon}}
+        <OSS::Icon
+          class="oss-infinite-select-option__icon"
+          @icon={{@icon.icon}}
+          @style={{@icon.style}}
+          {{enable-tooltip title=@icon.tooltip.title placement=@icon.tooltip.placement}}
+        />
+      {{/if}}
+    </div>
+  
+    <div class="oss-infinite-select-option__container">
+      {{#if @suffixHint}}
+        <span class="oss-infinite-select-option__suffix-hint">{{@suffixHint}}</span>
+      {{/if}}
+      {{#if @suffixTag}}
+        <OSS::Tag
+          class="oss-infinite-select-option__suffix-tag"
+          @label={{@suffixTag.label}}
+          @skin={{@suffixTag.skin}}
+          @icon={{@suffixTag.icon}}
+          @suffixIcon={{@suffixTag.suffixIcon}}
+          @hasEllipsis={{@suffixTag.hasEllipsis}}
+          @plain={{@suffixTag.plain}}
+          @htmlSafe={{@suffixTag.htmlSafe}}
+          @size={{@suffixTag.size}}
+        />
+      {{/if}}
+      {{#if @suffixIcon}}
+        <OSS::Icon
+          class="oss-infinite-select-option__suffix-icon"
+          @icon={{@suffixIcon.icon}}
+          @style={{@suffixIcon.style}}
+          {{enable-tooltip title=@suffixIcon.tooltip.title placement=@suffixIcon.tooltip.placement}}
+        />
+      {{/if}}
+      {{#if (has-block "suffix")}}
+        {{yield to="suffix"}}
+      {{/if}}
+      {{#if (and this.selected this.isSelectionSingle)}}
+        <OSS::Icon class="font-color-primary-500" @icon="fa-check" />
+      {{/if}}
+    </div>
+  </div>
+  */
+  {
+    "id": "e1n13aH0",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[\"click\",[28,[37,1],[[30,0,[\"onSelect\"]],[28,[37,2],[[30,0,[\"selected\"]]],null]],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-infinite-select-option__container\"],[12],[1,\"\\n\"],[41,[30,0,[\"isSelectionMultiple\"]],[[[1,\"      \"],[8,[39,4],null,[[\"@checked\",\"@disabled\",\"@onChange\"],[[30,0,[\"selected\"]],[30,2],[30,0,[\"onSelect\"]]]],null],[1,\"\\n\"]],[]],null],[41,[30,3],[[[1,\"      \"],[8,[39,5],[[24,0,\"oss-infinite-select-option__prefix-avatar\"]],[[\"@image\",\"@initials\",\"@size\",\"@loading\"],[[30,3,[\"image\"]],[30,3,[\"initials\"]],[30,3,[\"size\"]],[30,3,[\"loading\"]]]],null],[1,\"\\n\"]],[]],null],[41,[30,4],[[[1,\"      \"],[8,[39,6],[[24,0,\"oss-infinite-select-option__prefix-badge\"]],[[\"@icon\",\"@image\",\"@text\",\"@skin\",\"@plain\",\"@size\"],[[30,4,[\"icon\"]],[30,4,[\"image\"]],[30,4,[\"text\"]],[30,4,[\"skin\"]],[30,4,[\"plain\"]],[30,4,[\"size\"]]]],null],[1,\"\\n\"]],[]],null],[41,[30,5],[[[1,\"      \"],[8,[39,7],[[24,0,\"oss-infinite-select-option__prefix-icon\"],[4,[38,8],null,[[\"title\",\"placement\"],[[30,5,[\"tooltip\",\"title\"]],[30,5,[\"tooltip\",\"placement\"]]]]]],[[\"@icon\",\"@style\"],[[30,5,[\"icon\"]],[30,5,[\"style\"]]]],null],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[10,0],[15,0,[29,[\"oss-infinite-select-option__prefix-country fflag fflag-\",[30,6],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,13]],[[[1,\"      \"],[18,13,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,1],[14,0,\"oss-infinite-select-option__title\"],[12],[1,[30,7]],[13],[1,\"\\n\"],[41,[30,8],[[[1,\"      \"],[10,1],[14,0,\"oss-infinite-select-option__subtitle\"],[12],[1,[30,8]],[13],[1,\"\\n\"]],[]],null],[41,[30,9],[[[1,\"      \"],[8,[39,7],[[24,0,\"oss-infinite-select-option__icon\"],[4,[38,8],null,[[\"title\",\"placement\"],[[30,9,[\"tooltip\",\"title\"]],[30,9,[\"tooltip\",\"placement\"]]]]]],[[\"@icon\",\"@style\"],[[30,9,[\"icon\"]],[30,9,[\"style\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"oss-infinite-select-option__container\"],[12],[1,\"\\n\"],[41,[30,10],[[[1,\"      \"],[10,1],[14,0,\"oss-infinite-select-option__suffix-hint\"],[12],[1,[30,10]],[13],[1,\"\\n\"]],[]],null],[41,[30,11],[[[1,\"      \"],[8,[39,11],[[24,0,\"oss-infinite-select-option__suffix-tag\"]],[[\"@label\",\"@skin\",\"@icon\",\"@suffixIcon\",\"@hasEllipsis\",\"@plain\",\"@htmlSafe\",\"@size\"],[[30,11,[\"label\"]],[30,11,[\"skin\"]],[30,11,[\"icon\"]],[30,11,[\"suffixIcon\"]],[30,11,[\"hasEllipsis\"]],[30,11,[\"plain\"]],[30,11,[\"htmlSafe\"]],[30,11,[\"size\"]]]],null],[1,\"\\n\"]],[]],null],[41,[30,12],[[[1,\"      \"],[8,[39,7],[[24,0,\"oss-infinite-select-option__suffix-icon\"],[4,[38,8],null,[[\"title\",\"placement\"],[[30,12,[\"tooltip\",\"title\"]],[30,12,[\"tooltip\",\"placement\"]]]]]],[[\"@icon\",\"@style\"],[[30,12,[\"icon\"]],[30,12,[\"style\"]]]],null],[1,\"\\n\"]],[]],null],[41,[48,[30,14]],[[[1,\"      \"],[18,14,null],[1,\"\\n\"]],[]],null],[41,[28,[37,12],[[30,0,[\"selected\"]],[30,0,[\"isSelectionSingle\"]]],null],[[[1,\"      \"],[8,[39,7],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@disabled\",\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"&prefix\",\"&suffix\"],false,[\"on\",\"fn\",\"not\",\"if\",\"o-s-s/checkbox\",\"o-s-s/avatar\",\"o-s-s/badge\",\"o-s-s/icon\",\"enable-tooltip\",\"has-block\",\"yield\",\"o-s-s/tag\",\"and\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select/option.hbs",
+    "isStrictMode": false
+  });
+  let OSSInfiniteSelectOptionComponent = _exports.default = (_class = class OSSInfiniteSelectOptionComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[component][OSS::InfiniteSelect::Option] @title is required', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
+      (true && !(typeof this.args.onSelect === 'function') && (0, _debug.assert)('[component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory', typeof this.args.onSelect === 'function'));
+    }
+    get computedClasses() {
+      const classes = ['oss-infinite-select-option'];
+      if (this.isSelectionMultiple) {
+        classes.push('oss-infinite-select-option--multiple');
+      }
+      if (this.isSelectionSingle) {
+        classes.push('oss-infinite-select-option--single');
+      }
+      if (this.args.selected) {
+        classes.push('oss-infinite-select-option--selected');
+      }
+      if (this.args.disabled) {
+        classes.push('oss-infinite-select-option--disabled');
+      }
+      return classes.join(' ');
+    }
+    get selectionType() {
+      return this.args.selectionType ?? 'single';
+    }
+    get isSelectionMultiple() {
+      return this.selectionType === 'multiple';
+    }
+    get isSelectionSingle() {
+      return this.selectionType === 'single';
+    }
+    get selected() {
+      return this.args.selected ?? false;
+    }
+    onSelect(value) {
+      if (this.args.disabled) return;
+      this.args.onSelect(value);
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInfiniteSelectOptionComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/infinite-select/option.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithSuffixTag = _exports.WithSuffixIcon = _exports.WithSuffixHint = _exports.WithSubtitle = _exports.WithPrefixIcon = _exports.WithPrefixCountry = _exports.WithPrefixBadge = _exports.WithPrefixAvatar = _exports.WithNamedBlocks = _exports.WithIcon = _exports.SingleSelectionSelected = _exports.MultipleSelectionSelected = _exports.MultipleSelection = _exports.MultipleOptions = _exports.Disabled = _exports.ComplexExample = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  const SelectionTypes = ['single', 'multiple'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::InfiniteSelect::Option',
+    component: 'infinite-select/option',
+    argTypes: {
+      title: {
+        type: {
+          required: true
+        },
+        description: 'The main title text of the option',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      subtitle: {
+        description: 'Optional subtitle text displayed below the title',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      selectionType: {
+        description: 'The selection type - single selection with radio behavior or multiple selection with checkboxes',
+        table: {
+          type: {
+            summary: SelectionTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'single'
+          }
+        },
+        options: SelectionTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      selected: {
+        description: 'Whether the option is currently selected',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      disabled: {
+        description: 'Whether the option is disabled and cannot be selected',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      prefixAvatar: {
+        description: 'Optional avatar displayed before the title. Object with properties: image, initials, size, loading',
+        table: {
+          type: {
+            summary: 'OSSAvatarArgs'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      prefixBadge: {
+        description: 'Optional badge displayed before the title. Object with properties: icon, image, text, skin, plain, size',
+        table: {
+          type: {
+            summary: 'OSSBadgeArgs'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      prefixIcon: {
+        description: 'Optional icon displayed before the title. Object with properties: icon, style, tooltip',
+        table: {
+          type: {
+            summary: 'IconSpec'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      prefixCountry: {
+        description: 'Optional country flag displayed before the title. Use alpha2 country code (e.g., "US", "FR")',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      icon: {
+        description: 'Optional icon displayed after the title. Object with properties: icon, style, tooltip',
+        table: {
+          type: {
+            summary: 'IconSpec'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      suffixHint: {
+        description: 'Optional hint text displayed at the end of the option',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      suffixTag: {
+        description: 'Optional tag displayed at the end of the option. Object with properties: label, skin, icon, suffixIcon, hasEllipsis, plain, htmlSafe, size',
+        table: {
+          type: {
+            summary: 'OSSTagArgs'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      suffixIcon: {
+        description: 'Optional icon displayed at the very end of the option. Object with properties: icon, style, tooltip',
+        table: {
+          type: {
+            summary: 'IconSpec'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      onSelect: {
+        type: {
+          required: true
+        },
+        description: 'Callback function called when the option is selected/deselected',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onSelect(value: boolean): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A highly configurable option component for use within infinite select dropdowns. Supports single and multiple selection modes, various prefix/suffix decorators including avatars, badges, icons, country flags, tags, and hints.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    title: 'Title',
+    subtitle: undefined,
+    selectionType: 'single',
+    selected: false,
+    disabled: false,
+    prefixAvatar: undefined,
+    prefixBadge: undefined,
+    prefixIcon: undefined,
+    prefixCountry: undefined,
+    icon: undefined,
+    suffixHint: undefined,
+    suffixTag: undefined,
+    suffixIcon: undefined,
+    onSelect: (0, _addonActions.action)('onSelect')
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 700px; background-color: #ffff;">
+          <OSS::InfiniteSelect::Option
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @selectionType={{this.selectionType}}
+            @selected={{this.selected}}
+            @disabled={{this.disabled}}
+            @prefixAvatar={{this.prefixAvatar}}
+            @prefixBadge={{this.prefixBadge}}
+            @prefixIcon={{this.prefixIcon}}
+            @prefixCountry={{this.prefixCountry}}
+            @icon={{this.icon}}
+            @suffixHint={{this.suffixHint}}
+            @suffixTag={{this.suffixTag}}
+            @suffixIcon={{this.suffixIcon}}
+            @onSelect={{this.onSelect}}
+          />
+        </div>
+      
+    */
+    {
+      "id": "3NQwn2dd",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 700px; background-color: #ffff;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@selectionType\",\"@selected\",\"@disabled\",\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"selectionType\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"prefixAvatar\"]],[30,0,[\"prefixBadge\"]],[30,0,[\"prefixIcon\"]],[30,0,[\"prefixCountry\"]],[30,0,[\"icon\"]],[30,0,[\"suffixHint\"]],[30,0,[\"suffixTag\"]],[30,0,[\"suffixIcon\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/infinite-select/option.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+  const SingleSelectionSelected = _exports.SingleSelectionSelected = Template.bind({});
+  SingleSelectionSelected.args = {
+    ...defaultArgs,
+    title: 'Selected Option',
+    selected: true,
+    selectionType: 'single'
+  };
+  const MultipleSelection = _exports.MultipleSelection = Template.bind({});
+  MultipleSelection.args = {
+    ...defaultArgs,
+    title: 'Multiple Selection Option',
+    selectionType: 'multiple'
+  };
+  const MultipleSelectionSelected = _exports.MultipleSelectionSelected = Template.bind({});
+  MultipleSelectionSelected.args = {
+    ...defaultArgs,
+    title: 'Selected Multiple Option',
+    selected: true,
+    selectionType: 'multiple'
+  };
+  const WithSubtitle = _exports.WithSubtitle = Template.bind({});
+  WithSubtitle.args = {
+    ...defaultArgs,
+    title: 'Title',
+    subtitle: 'Subtitle'
+  };
+  const WithPrefixAvatar = _exports.WithPrefixAvatar = Template.bind({});
+  WithPrefixAvatar.args = {
+    ...defaultArgs,
+    title: 'John Doe',
+    subtitle: 'Software Engineer',
+    prefixAvatar: {
+      initials: 'JV',
+      size: 'sm'
+    }
+  };
+  const WithPrefixBadge = _exports.WithPrefixBadge = Template.bind({});
+  WithPrefixBadge.args = {
+    ...defaultArgs,
+    title: 'Premium Feature',
+    prefixBadge: {
+      icon: 'far fa-thumbs-up',
+      size: 'sm'
+    }
+  };
+  const WithPrefixIcon = _exports.WithPrefixIcon = Template.bind({});
+  WithPrefixIcon.args = {
+    ...defaultArgs,
+    title: 'Important Option',
+    prefixIcon: {
+      icon: 'fa-star',
+      style: 'solid'
+    }
+  };
+  const WithPrefixCountry = _exports.WithPrefixCountry = Template.bind({});
+  WithPrefixCountry.args = {
+    ...defaultArgs,
+    title: 'United States',
+    subtitle: 'North America',
+    prefixCountry: 'us'
+  };
+  const WithIcon = _exports.WithIcon = Template.bind({});
+  WithIcon.args = {
+    ...defaultArgs,
+    title: 'Verified Option',
+    icon: {
+      icon: 'fa-check-circle',
+      style: 'solid'
+    }
+  };
+  const WithSuffixHint = _exports.WithSuffixHint = Template.bind({});
+  WithSuffixHint.args = {
+    ...defaultArgs,
+    title: 'Option with Hint',
+    suffixHint: '+99'
+  };
+  const WithSuffixTag = _exports.WithSuffixTag = Template.bind({});
+  WithSuffixTag.args = {
+    ...defaultArgs,
+    title: 'Tagged Option',
+    suffixTag: {
+      label: 'New',
+      skin: 'success',
+      size: 'xs'
+    }
+  };
+  const WithSuffixIcon = _exports.WithSuffixIcon = Template.bind({});
+  WithSuffixIcon.args = {
+    ...defaultArgs,
+    title: 'Option with Suffix Icon',
+    suffixIcon: {
+      icon: 'fa-external-link'
+    }
+  };
+  const Disabled = _exports.Disabled = Template.bind({});
+  Disabled.args = {
+    ...defaultArgs,
+    title: 'Disabled Option',
+    subtitle: 'This option cannot be selected',
+    disabled: true
+  };
+  const ComplexExample = _exports.ComplexExample = Template.bind({});
+  ComplexExample.args = {
+    ...defaultArgs,
+    title: 'Complex Option',
+    subtitle: 'With multiple decorators',
+    selectionType: 'multiple',
+    selected: true,
+    prefixAvatar: {
+      initials: 'CE',
+      size: 'sm'
+    },
+    icon: {
+      icon: 'fa-info-circle'
+    },
+    suffixTag: {
+      label: 'Premium',
+      skin: 'primary',
+      size: 'xs'
+    },
+    suffixHint: '+5'
+  };
+  const MultipleOptionsTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 700px; background-color: #ffff;">
+          <OSS::InfiniteSelect::Option
+            @title="First Option"
+            @selectionType="single"
+            @selected={{false}}
+            @onSelect={{this.onSelect}}
+          />
+          <OSS::InfiniteSelect::Option
+            @title="Second Option (Selected)"
+            @selectionType="single"
+            @selected={{true}}
+            @onSelect={{this.onSelect}}
+          />
+          <OSS::InfiniteSelect::Option
+            @title="Third Option"
+            @subtitle="With subtitle"
+            @selectionType="single"
+            @selected={{false}}
+            @onSelect={{this.onSelect}}
+          />
+          <OSS::InfiniteSelect::Option
+            @title="Disabled Option"
+            @selectionType="single"
+            @selected={{false}}
+            @disabled={{true}}
+            @onSelect={{this.onSelect}}
+          />
+        </div>
+      
+    */
+    {
+      "id": "iRzlbunD",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 700px; background-color: #ffff;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@onSelect\"],[\"First Option\",\"single\",false,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@onSelect\"],[\"Second Option (Selected)\",\"single\",true,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@selectionType\",\"@selected\",\"@onSelect\"],[\"Third Option\",\"With subtitle\",\"single\",false,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[\"Disabled Option\",\"single\",false,true,[30,0,[\"onSelect\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/infinite-select/option.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const MultipleOptions = _exports.MultipleOptions = MultipleOptionsTemplate.bind({});
+  MultipleOptions.args = {
+    onSelect: (0, _addonActions.action)('onSelect')
+  };
+  const WithNamedBlocksTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 700px; background-color: #ffff;">
+          <OSS::InfiniteSelect::Option
+            @title={{this.title}}
+            @selectionType={{this.selectionType}}
+            @selected={{this.selected}}
+            @onSelect={{this.onSelect}}
+          >
+            <:prefix>
+              <OSS::Icon @icon="fa-custom" class="font-color-primary-500" />
+            </:prefix>
+            <:suffix>
+              <span class="font-weight-bold">Custom</span>
+            </:suffix>
+          </OSS::InfiniteSelect::Option>
+        </div>
+      
+    */
+    {
+      "id": "eDlkJtAk",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 700px; background-color: #ffff;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"selectionType\"]],[30,0,[\"selected\"]],[30,0,[\"onSelect\"]]]],[[\"prefix\",\"suffix\"],[[[[1,\"\\n          \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-custom\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[10,1],[14,0,\"font-weight-bold\"],[12],[1,\"Custom\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select/option\",\"o-s-s/icon\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/infinite-select/option.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const WithNamedBlocks = _exports.WithNamedBlocks = WithNamedBlocksTemplate.bind({});
+  WithNamedBlocks.args = {
+    title: 'Option with Named Blocks',
+    selectionType: 'single',
+    selected: false,
+    onSelect: (0, _addonActions.action)('onSelect')
+  };
+});
 ;define("@upfluence/oss-components/components/o-s-s/information-section", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
   "use strict";
 
@@ -95256,16 +95877,14 @@ interface OSSCodeBlockArgs {
       {{#if this.hasSkins}}
         <div class="oss-progress-bar__segments">
           {{#each this.progressSegments as |skin|}}
-            {{#if (this.isSegmentVisible skin=skin)}}
-              <div
-                class={{this.getSegmentClasses skin=skin}}
-                role="progressbar"
-                aria-valuenow={{this.getSegmentValue skin=skin}}
-                aria-valuemin="0"
-                aria-valuemax="100"
-                style={{this.progressBarStyle value=(this.getSegmentValue skin=skin)}}
-              ></div>
-            {{/if}}
+            <div
+              class={{this.getSegmentClasses skin=skin}}
+              role="progressbar"
+              aria-valuenow={{this.getSegmentValue skin=skin}}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{this.progressBarStyle value=(this.getSegmentValue skin=skin)}}
+            ></div>
           {{/each}}
         </div>
       {{else}}
@@ -95288,23 +95907,18 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "OHS61nRU",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n\"],[41,[30,0,[\"hasSkins\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-progress-bar__segments\"],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"progressSegments\"]]],null]],null],null,[[[41,[28,[30,0,[\"isSegmentVisible\"]],null,[[\"skin\"],[[30,3]]]],[[[1,\"            \"],[10,0],[15,0,[28,[30,0,[\"getSegmentClasses\"]],null,[[\"skin\"],[[30,3]]]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[28,[30,0,[\"getSegmentValue\"]],null,[[\"skin\"],[[30,3]]]]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[28,[30,0,[\"progressBarStyle\"]],null,[[\"value\"],[[28,[30,0,[\"getSegmentValue\"]],null,[[\"skin\"],[[30,3]]]]]]]],[12],[13],[1,\"\\n\"]],[]],null]],[3]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[15,0,[30,0,[\"progressBarInnerClasses\"]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,4]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[30,0,[\"progressBarWidthStyle\"]]],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,0,[\"totalProgress\"]]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@label\",\"skin\",\"@value\",\"@displayValue\"],false,[\"if\",\"each\",\"-track-array\"]]",
+    "id": "Bf2v27VZ",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n\"],[41,[30,0,[\"hasSkins\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-progress-bar__segments\"],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"progressSegments\"]]],null]],null],null,[[[1,\"          \"],[10,0],[15,0,[28,[30,0,[\"getSegmentClasses\"]],null,[[\"skin\"],[[30,3]]]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[28,[30,0,[\"getSegmentValue\"]],null,[[\"skin\"],[[30,3]]]]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[28,[30,0,[\"progressBarStyle\"]],null,[[\"value\"],[[28,[30,0,[\"getSegmentValue\"]],null,[[\"skin\"],[[30,3]]]]]]]],[12],[13],[1,\"\\n\"]],[3]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[15,0,[30,0,[\"progressBarInnerClasses\"]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,4]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[30,0,[\"progressBarWidthStyle\"]]],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,0,[\"totalProgress\"]]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@label\",\"skin\",\"@value\",\"@displayValue\"],false,[\"if\",\"each\",\"-track-array\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/progress-bar.hbs",
     "isStrictMode": false
   });
   class OSSProgressBar extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      _defineProperty(this, "isSegmentVisible", (0, _helper.helper)((_, {
-        skin
-      }) => {
-        return this.hasSkins && (this.skins[skin] || 0) > 0;
-      }));
       _defineProperty(this, "getSegmentValue", (0, _helper.helper)((_, {
         skin
       }) => {
-        return this.hasSkins ? this.skins[skin] || 0 : 0;
+        return this.skins[skin] ?? 0;
       }));
       _defineProperty(this, "progressBarStyle", (0, _helper.helper)((_, {
         value
@@ -95329,7 +95943,7 @@ interface OSSCodeBlockArgs {
       return !!this.args.skins && Object.keys(this.args.skins).length > 0;
     }
     get progressSegments() {
-      return this.hasSkins ? Object.keys(this.skins) : [];
+      return Object.keys(this.skins);
     }
     get computedStyles() {
       const classes = ['oss-progress-bar'];

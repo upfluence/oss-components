@@ -728,7 +728,7 @@ define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-
       this.router = this.owner.lookup('service:router');
       this.transitionToStub = _sinon.default.stub(this.router, 'transitionTo');
     });
-    (0, _qunit.test)('When link is registered in router it render as a anchor element', async function (assert) {
+    (0, _qunit.test)('When link is registered in router it renders as a anchor element', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Anchor @link="http://www.google.fr" target="_blank" >test</OSS::Anchor>
@@ -741,7 +741,7 @@ define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-
       }));
       assert.dom('a').hasNoClass('ember-view');
     });
-    (0, _qunit.test)('When link is registered in router it render as a linkTo helper', async function (assert) {
+    (0, _qunit.test)('When link is registered in router it renders as a linkTo helper', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Anchor @link="index" >test</OSS::Anchor>
@@ -2006,7 +2006,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           assert.dom('.attributes-panel__container.attributes-panel__container--view').doesNotExist();
           assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
         });
-        (0, _qunit.test)('it render a loading state', async function (assert) {
+        (0, _qunit.test)('it renders a loading state', async function (assert) {
           this.onSave.returns(new Promise(() => {}));
           await renderComponentAndClickOnEdit();
           await (0, _testHelpers.click)('[data-control-name="attributes-panel-save-button"]');
@@ -3312,7 +3312,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       assert.dom('.upf-btn').hasClass('upf-btn--default');
       assert.dom('.upf-btn').hasText('Test');
     });
-    (0, _qunit.module)('it render with the correct skin', function () {
+    (0, _qunit.module)('it renders with the correct skin', function () {
       (0, _qunit.test)('when using an unknown skin, it is set to default', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3431,7 +3431,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         assert.dom('.upf-btn').hasClass('upf-btn--social-youtube');
       });
     });
-    (0, _qunit.module)('it render with the right size', function () {
+    (0, _qunit.module)('it renders with the right size', function () {
       (0, _qunit.test)('when using xs', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -7889,6 +7889,973 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
             "isStrictMode": false
           }));
         });
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/infinite-select/option', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.title = 'Title';
+      this.onSelect = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+      */
+      {
+        "id": "S+mlLg34",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-infinite-select-option').exists();
+    });
+    (0, _qunit.module)('for @selectionType argument', () => {
+      (0, _qunit.module)('for "single" value', () => {
+        (0, _qunit.test)('it renders the correct class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="single" @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "I5qY7lXl",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@onSelect\"],[[30,0,[\"title\"]],\"single\",[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-infinite-select-option--single').exists();
+        });
+        (0, _qunit.test)('it sets selectionType to "single" by default', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "S+mlLg34",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-infinite-select-option--single').exists();
+        });
+      });
+      (0, _qunit.test)('for "multiple" value, it renders  the correct class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "Zu1mREKf",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option--multiple').exists();
+      });
+    });
+    (0, _qunit.module)('for @selected argument', () => {
+      (0, _qunit.test)('it renders the correct class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @selected={{true}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "KynX3tmp",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option--selected').exists();
+      });
+      (0, _qunit.module)('for true value', () => {
+        (0, _qunit.test)('for single @selectionType argument, it renders the check icon', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selected={{true}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "KynX3tmp",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('i.fa-check').exists();
+          assert.dom('.upf-checkbox').doesNotExist();
+        });
+        (0, _qunit.test)('for multiple @selectionType argument, it renders the checked checkbox', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @selected={{true}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "9xTkfYQq",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-checkbox input').isChecked();
+          assert.dom('i.fa-check').doesNotExist();
+        });
+      });
+      (0, _qunit.module)('for false value', () => {
+        (0, _qunit.test)('it renders it as default value', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "S+mlLg34",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('i.fa-check').doesNotExist();
+          assert.dom('.upf-checkbox').doesNotExist();
+        });
+        (0, _qunit.test)("for single @selectionType argument, it doesn't renders the check icon", async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selected={{false}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "uDBISTzz",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('i.fa-check').doesNotExist();
+          assert.dom('.upf-checkbox').doesNotExist();
+        });
+        (0, _qunit.test)('for multiple @selectionType argument, it renders the checkbox without check', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @selected={{false}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "81cbYh7K",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-checkbox input').isNotChecked();
+          assert.dom('i.fa-check').doesNotExist();
+        });
+      });
+    });
+    (0, _qunit.module)('for @disabled argument', () => {
+      (0, _qunit.test)('it renders the correct class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @disabled={{true}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "IGsi/Fsw",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@disabled\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option--disabled').exists();
+      });
+      (0, _qunit.module)('for multiple @selectionType argument', () => {
+        (0, _qunit.test)('it renders false value as default value', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "Zu1mREKf",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-checkbox input').isNotDisabled();
+        });
+        (0, _qunit.test)('for true value, it renders the disabled checkbox', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @disabled={{true}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "z50TQhj8",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@disabled\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-checkbox input').isDisabled();
+        });
+        (0, _qunit.test)('for false value, it renders it as default value', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @disabled={{false}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "Q3kVcYId",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@disabled\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-checkbox input').isNotDisabled();
+        });
+      });
+    });
+    (0, _qunit.module)('@onSelect action', () => {
+      (0, _qunit.test)('it calls the onSelect action when clicked', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "S+mlLg34",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-infinite-select-option');
+        assert.ok(this.onSelect.calledOnceWithExactly(true));
+      });
+      (0, _qunit.test)('if @selected is true, it calls the onSelect action with correct value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @selected={{true}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "KynX3tmp",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-infinite-select-option');
+        assert.ok(this.onSelect.calledOnceWithExactly(false));
+      });
+      (0, _qunit.test)("if @disabled is true, it doesn't call the onSelect action", async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @disabled={{true}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "IGsi/Fsw",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@disabled\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-infinite-select-option');
+        assert.ok(this.onSelect.notCalled);
+      });
+      (0, _qunit.module)('for multiple @selectionType argument', () => {
+        (0, _qunit.test)('it calls the onSelect action when clicked', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "Zu1mREKf",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.upf-checkbox input');
+          assert.ok(this.onSelect.calledOnceWithExactly(true));
+        });
+        (0, _qunit.test)('if @selected is true, it calls the onSelect action with correct value', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @selected={{true}} @onSelect={{this.onSelect}} />
+          */
+          {
+            "id": "9xTkfYQq",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",true,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.upf-checkbox input');
+          assert.ok(this.onSelect.calledOnceWithExactly(false));
+        });
+      });
+    });
+    (0, _qunit.module)('for named blocks', () => {
+      (0, _qunit.test)('it renders the prefix named block', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}}>
+                  <:prefix>
+                    <span class="prefix-content">Prefix</span>
+                  </:prefix>
+                </OSS::InfiniteSelect::Option>
+              
+        */
+        {
+          "id": "Wq+XnZdH",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],[[\"prefix\"],[[[[1,\"\\n            \"],[10,1],[14,0,\"prefix-content\"],[12],[1,\"Prefix\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.prefix-content').exists();
+      });
+      (0, _qunit.test)('it renders the suffix named block', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}}>
+                  <:suffix>
+                    <span class="suffix-content">Prefix</span>
+                  </:suffix>
+                </OSS::InfiniteSelect::Option>
+              
+        */
+        {
+          "id": "yoxCBOaM",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],[[\"suffix\"],[[[[1,\"\\n            \"],[10,1],[14,0,\"suffix-content\"],[12],[1,\"Prefix\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.suffix-content').exists();
+      });
+      (0, _qunit.test)('it renders both prefix argument and prefix block when provided', async function (assert) {
+        this.prefixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixIcon={{this.prefixIcon}}>
+                  <:prefix>
+                    <span class="prefix-block-content">Prefix Block</span>
+                  </:prefix>
+                </OSS::InfiniteSelect::Option>
+              
+        */
+        {
+          "id": "4hzcfKm3",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixIcon\"]]]],[[\"prefix\"],[[[[1,\"\\n            \"],[10,1],[14,0,\"prefix-block-content\"],[12],[1,\"Prefix Block\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-icon').exists();
+        assert.dom('.prefix-block-content').exists();
+      });
+      (0, _qunit.test)('it renders both suffix argument and suffix block when provided', async function (assert) {
+        this.suffixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @suffixIcon={{this.suffixIcon}}>
+                  <:suffix>
+                    <span class="suffix-block-content">Suffix Block</span>
+                  </:suffix>
+                </OSS::InfiniteSelect::Option>
+              
+        */
+        {
+          "id": "CJBHe66b",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@suffixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"suffixIcon\"]]]],[[\"suffix\"],[[[[1,\"\\n            \"],[10,1],[14,0,\"suffix-block-content\"],[12],[1,\"Suffix Block\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-icon').exists();
+        assert.dom('.suffix-block-content').exists();
+      });
+    });
+    (0, _qunit.module)('for @prefixAvatar argument', () => {
+      (0, _qunit.test)('it renders the prefix avatar when provided', async function (assert) {
+        this.prefixAvatar = {
+          initials: 'JV'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixAvatar={{this.prefixAvatar}} />
+              
+        */
+        {
+          "id": "KioGwqaT",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixAvatar\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixAvatar\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-avatar').exists();
+      });
+      (0, _qunit.test)('it does not render the prefix avatar when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-avatar').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @prefixBadge argument', () => {
+      (0, _qunit.test)('it renders the prefix badge when provided', async function (assert) {
+        this.prefixBadge = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixBadge={{this.prefixBadge}} />
+              
+        */
+        {
+          "id": "QLRmNKZe",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixBadge\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixBadge\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-badge').exists();
+      });
+      (0, _qunit.test)('it does not render the prefix badge when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-badge').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @prefixIcon argument', () => {
+      (0, _qunit.test)('it renders the prefix icon when provided', async function (assert) {
+        this.prefixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixIcon={{this.prefixIcon}} />
+              
+        */
+        {
+          "id": "gUDL/xGn",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixIcon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-icon').exists();
+      });
+      (0, _qunit.test)('it renders the prefix icon tooltip when provided', async function (assert) {
+        this.prefixIcon = {
+          icon: 'far fa-thumbs-up',
+          tooltip: {
+            title: 'Tooltip'
+          }
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixIcon={{this.prefixIcon}} />
+              
+        */
+        {
+          "id": "gUDL/xGn",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixIcon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        await assert.tooltip('.oss-infinite-select-option__prefix-icon').hasTitle('Tooltip');
+      });
+      (0, _qunit.test)('it does not render the prefix icon when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-icon').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @prefixCountry argument', () => {
+      (0, _qunit.test)('it renders the prefix country when provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixCountry="FR" />
+              
+        */
+        {
+          "id": "avVxNiGm",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixCountry\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],\"FR\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-country').exists();
+      });
+      (0, _qunit.test)('it does not render the prefix country when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-country').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for multiple prefix elements', () => {
+      (0, _qunit.test)('it renders all prefix elements when provided', async function (assert) {
+        this.prefixAvatar = {
+          initials: 'JV'
+        };
+        this.prefixBadge = {
+          icon: 'far fa-star'
+        };
+        this.prefixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @onSelect={{this.onSelect}}
+                  @prefixAvatar={{this.prefixAvatar}}
+                  @prefixBadge={{this.prefixBadge}}
+                  @prefixIcon={{this.prefixIcon}}
+                  @prefixCountry="FR"
+                />
+              
+        */
+        {
+          "id": "eQAPY6Zb",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixAvatar\"]],[30,0,[\"prefixBadge\"]],[30,0,[\"prefixIcon\"]],\"FR\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__prefix-avatar').exists();
+        assert.dom('.oss-infinite-select-option__prefix-badge').exists();
+        assert.dom('.oss-infinite-select-option__prefix-icon').exists();
+        assert.dom('.oss-infinite-select-option__prefix-country').exists();
+      });
+      (0, _qunit.test)('it renders them in the correct order', async function (assert) {
+        this.prefixAvatar = {
+          initials: 'JV'
+        };
+        this.prefixBadge = {
+          icon: 'far fa-star'
+        };
+        this.prefixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @onSelect={{this.onSelect}}
+                  @prefixAvatar={{this.prefixAvatar}}
+                  @prefixBadge={{this.prefixBadge}}
+                  @prefixIcon={{this.prefixIcon}}
+                  @prefixCountry="FR"
+                />
+              
+        */
+        {
+          "id": "eQAPY6Zb",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"prefixAvatar\"]],[30,0,[\"prefixBadge\"]],[30,0,[\"prefixIcon\"]],\"FR\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        const container = this.element.querySelector('.oss-infinite-select-option__container');
+        const elements = Array.from(container.children);
+        const avatarIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__prefix-avatar'));
+        const badgeIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__prefix-badge'));
+        const iconIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__prefix-icon'));
+        const countryIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__prefix-country'));
+        const titleIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__title'));
+        assert.ok(avatarIndex < badgeIndex, 'Avatar should come before Badge');
+        assert.ok(badgeIndex < iconIndex, 'Badge should come before Icon');
+        assert.ok(iconIndex < countryIndex, 'Icon should come before Country');
+        assert.ok(countryIndex < titleIndex, 'Country should come before Title');
+      });
+    });
+    (0, _qunit.module)('for @title argument', () => {
+      (0, _qunit.test)('it renders correct class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @prefixCountry="FR" />
+              
+        */
+        {
+          "id": "avVxNiGm",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@prefixCountry\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],\"FR\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__title').exists();
+      });
+      (0, _qunit.test)('it renders the correct value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__title').hasText('Title');
+      });
+    });
+    (0, _qunit.module)('for @subtitle argument', () => {
+      (0, _qunit.module)('when provided', () => {
+        (0, _qunit.test)('it renders correct class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @subtitle="Subtitle" />
+                
+          */
+          {
+            "id": "fHsvP4lh",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],\"Subtitle\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-infinite-select-option__subtitle').exists();
+        });
+        (0, _qunit.test)('it renders correct value', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @subtitle="Subtitle" />
+                
+          */
+          {
+            "id": "fHsvP4lh",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],\"Subtitle\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-infinite-select-option__subtitle').hasText('Subtitle');
+        });
+      });
+      (0, _qunit.test)('it does not render the subtitle when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__subtitle').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @icon argument', () => {
+      (0, _qunit.test)('it renders the icon when provided', async function (assert) {
+        this.icon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @icon={{this.icon}} />
+              
+        */
+        {
+          "id": "7bdslMhm",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@icon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"icon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__icon').exists();
+      });
+      (0, _qunit.test)('it renders the icon tooltip when provided', async function (assert) {
+        this.icon = {
+          icon: 'far fa-thumbs-up',
+          tooltip: {
+            title: 'Tooltip'
+          }
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @icon={{this.icon}} />
+              
+        */
+        {
+          "id": "7bdslMhm",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@icon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"icon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        await assert.tooltip('.oss-infinite-select-option__icon').hasTitle('Tooltip');
+      });
+      (0, _qunit.test)('it does not render the icon when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__icon').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @suffix-hint argument', () => {
+      (0, _qunit.module)('when provided', () => {
+        (0, _qunit.test)('it renders correct class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @suffixHint="Hint" />
+                
+          */
+          {
+            "id": "cJIR0VG1",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@suffixHint\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],\"Hint\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-infinite-select-option__suffix-hint').exists();
+        });
+        (0, _qunit.test)('it renders correct value', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @suffixHint="Hint" />
+                
+          */
+          {
+            "id": "cJIR0VG1",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@suffixHint\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],\"Hint\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-infinite-select-option__suffix-hint').hasText('Hint');
+        });
+      });
+      (0, _qunit.test)('it does not render the suffix hint when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-hint').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @suffixTag argument', () => {
+      (0, _qunit.test)('it renders the suffix tag when provided', async function (assert) {
+        this.suffixTag = {
+          label: 'Tag'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @suffixTag={{this.suffixTag}} />
+              
+        */
+        {
+          "id": "TqTdSCb3",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@suffixTag\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"suffixTag\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-tag').exists();
+      });
+      (0, _qunit.test)('it does not render the suffix tag when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-tag').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for @suffixIcon argument', () => {
+      (0, _qunit.test)('it renders the suffix icon when provided', async function (assert) {
+        this.suffixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @suffixIcon={{this.suffixIcon}} />
+              
+        */
+        {
+          "id": "zsvCPnT5",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@suffixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"suffixIcon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-icon').exists();
+      });
+      (0, _qunit.test)('it renders the suffix icon tooltip when provided', async function (assert) {
+        this.suffixIcon = {
+          icon: 'far fa-thumbs-up',
+          tooltip: {
+            title: 'Tooltip'
+          }
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} @suffixIcon={{this.suffixIcon}} />
+              
+        */
+        {
+          "id": "zsvCPnT5",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@suffixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],[30,0,[\"suffixIcon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        await assert.tooltip('.oss-infinite-select-option__suffix-icon').hasTitle('Tooltip');
+      });
+      (0, _qunit.test)('it does not render the suffix icon when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> 
+        */
+        {
+          "id": "yyQ2PIOF",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null],[1,\" \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-icon').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('for multiple suffix elements', () => {
+      (0, _qunit.test)('it renders all suffix elements with check icon for single selection when selected', async function (assert) {
+        this.suffixTag = {
+          label: 'Tag'
+        };
+        this.suffixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @onSelect={{this.onSelect}}
+                  @selected={{true}}
+                  @suffixHint="Hint Text"
+                  @suffixTag={{this.suffixTag}}
+                  @suffixIcon={{this.suffixIcon}}
+                />
+              
+        */
+        {
+          "id": "ubty1er9",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@selected\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],true,\"Hint Text\",[30,0,[\"suffixTag\"]],[30,0,[\"suffixIcon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-infinite-select-option__suffix-hint').exists();
+        assert.dom('.oss-infinite-select-option__suffix-tag').exists();
+        assert.dom('.oss-infinite-select-option__suffix-icon').exists();
+        assert.dom('i.fa-check').exists();
+      });
+      (0, _qunit.test)('it renders them in the correct order', async function (assert) {
+        this.suffixTag = {
+          label: 'Tag'
+        };
+        this.suffixIcon = {
+          icon: 'far fa-thumbs-up'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @onSelect={{this.onSelect}}
+                  @selected={{true}}
+                  @suffixHint="Hint Text"
+                  @suffixTag={{this.suffixTag}}
+                  @suffixIcon={{this.suffixIcon}}
+                />
+              
+        */
+        {
+          "id": "ubty1er9",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@onSelect\",\"@selected\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]],true,\"Hint Text\",[30,0,[\"suffixTag\"]],[30,0,[\"suffixIcon\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+        const containers = this.element.querySelectorAll('.oss-infinite-select-option__container');
+        const suffixContainer = containers[1]; // Second container holds suffix elements
+        const elements = Array.from(suffixContainer.children);
+        const hintIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__suffix-hint'));
+        const tagIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__suffix-tag'));
+        const iconIndex = elements.findIndex(el => el.classList.contains('oss-infinite-select-option__suffix-icon'));
+        const checkIconIndex = elements.findIndex(el => el.classList.contains('fa-check'));
+        assert.ok(hintIndex < tagIndex, 'Hint should come before Tag');
+        assert.ok(tagIndex < iconIndex, 'Tag should come before Icon');
+        assert.ok(iconIndex < checkIconIndex, 'Suffix Icon should come before Check Icon');
+      });
+    });
+    (0, _qunit.module)('for errors management', () => {
+      (0, _qunit.test)('The component throws an error if the title parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option />
+        */
+        {
+          "id": "tPSowQeM",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} />
+        */
+        {
+          "id": "Hyf7Ld+u",
+          "block": "[[[8,[39,0],null,[[\"@title\"],[[30,0,[\"title\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select/option-test.ts",
+          "isStrictMode": false
+        }));
       });
     });
   });
@@ -13062,11 +14029,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if the value is defined, the progress bar has the correct multi skin class', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13075,11 +14042,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if the value is defined, the progress bar has the correct success, warning, and danger classes', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13088,14 +14055,33 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         assert.dom('.oss-progress-bar__inner:nth-of-type(3)').hasClass('oss-progress-bar__inner--warning');
         assert.dom('.oss-progress-bar__inner:nth-of-type(4)').hasClass('oss-progress-bar__inner--danger');
       });
+      (0, _qunit.test)('if the values are equals to 0, it renders an empty progress bar', async function (assert) {
+        this.skins = {
+          pending: 0,
+          success: 0,
+          warning: 0,
+          danger: 0
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @skins={{this.skins}} />
+        */
+        {
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar .oss-progress-bar__inner').hasAttribute('style', 'width: 0%;--progress-bar-animation-width: 0%');
+      });
       (0, _qunit.test)('if the value is defined, the progress bar has the correct pending value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13104,11 +14090,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if the value is defined, the progress bar has the correct success value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13117,11 +14103,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if the value is defined, the progress bar has the correct warning value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13130,11 +14116,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if the value is defined, the progress bar has the correct danger value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13146,11 +14132,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash success=30 warning=45 danger=35}} />
+          <OSS::ProgressBar @skins={{hash success=30 warning=45 danger=35}} />
         */
         {
-          "id": "Nxj74gWz",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"success\",\"warning\",\"danger\"],[30,45,35]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "id": "Is0Aziog",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[28,[37,1],null,[[\"success\",\"warning\",\"danger\"],[30,45,35]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13158,11 +14144,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if the value is updated, the classes also update', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+          <OSS::ProgressBar @skins={{this.skins}} />
         */
         {
-          "id": "zvSvLLxZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "id": "b0e+30md",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13179,11 +14165,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if only the pending value is defined, the progress bar has the correct pending value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash pending=33}} />
+          <OSS::ProgressBar @skins={{hash pending=33}} />
         */
         {
-          "id": "BLnpV6bg",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"pending\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "id": "uwXmkFUR",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[28,[37,1],null,[[\"pending\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13193,11 +14179,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if only the success value is defined, the progress bar has the correct success value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash success=33}} />
+          <OSS::ProgressBar @skins={{hash success=33}} />
         */
         {
-          "id": "5tCC3LfZ",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"success\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "id": "5hPWeRMa",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[28,[37,1],null,[[\"success\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13207,11 +14193,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if only the warning value is defined, the progress bar has the correct warning value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash warning=33}} />
+          <OSS::ProgressBar @skins={{hash warning=33}} />
         */
         {
-          "id": "Z0gNkBKR",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"warning\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "id": "KpSjLsZz",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[28,[37,1],null,[[\"warning\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
@@ -13221,11 +14207,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       (0, _qunit.test)('if only the danger value is defined, the progress bar has the correct danger value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash danger=33}} />
+          <OSS::ProgressBar @skins={{hash danger=33}} />
         */
         {
-          "id": "cw3xZ/tU",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"danger\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "id": "+9Uxsh0H",
+          "block": "[[[8,[39,0],null,[[\"@skins\"],[[28,[37,1],null,[[\"danger\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
           "isStrictMode": false
         }));
