@@ -102,21 +102,45 @@
       Context menu
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <OSS::Button
-        @label="toggle menu"
-        {{did-insert this.registerMenuTrigger}}
-        {{on "click" this.toggleContextMenuPanel}}
+      <OSS::ContextMenu
+        @label="Open panel menu"
+        @icon="fa-plane"
+        @skin="primary"
+        @items={{this.customContextMenuItems}}
+        @onMenuOpened={{this.onPanelOpen}}
+        @onMenuClosed={{this.onPanelClose}}
+        @closeOnMouseLeave={{true}}
       />
-      {{#if this.displayContextMenuPanel}}
-        <OSS::ContextMenu::Panel
-          @referenceTarget={{this.referenceTarget}}
-          @items={{this.customContextMenuItems}}
-          @offset={{4}}
-          @placement="bottom-start"
-          @onMouseLeave={{this.onContextMenuPanelMouseLeave}}
-          {{did-insert this.registerContextMenuPanel}}
-        />
-      {{/if}}
+
+      <OSS::ContextMenu
+        @label="Open panel menu"
+        @icon="fa-plane"
+        @skin="primary"
+        @items={{this.customContextMenuItems}}
+        @onMenuOpened={{this.onPanelOpen}}
+        @onMenuClosed={{this.onPanelClose}}
+        @closeOnMouseLeave={{true}}
+      />
+
+      <OSS::ContextMenu
+        @label="Open panel menu"
+        @icon="fa-plane"
+        @skin="primary"
+        @items={{this.customContextMenuItems}}
+        @onMenuOpened={{this.onPanelOpen}}
+        @onMenuClosed={{this.onPanelClose}}
+        @closeOnMouseLeave={{true}}
+      />
+
+      <OSS::ContextMenu
+        @label="Open panel menu"
+        @icon="fa-plane"
+        @skin="primary"
+        @items={{this.customContextMenuItems}}
+        @onMenuOpened={{this.onPanelOpen}}
+        @onMenuClosed={{this.onPanelClose}}
+        @closeOnMouseLeave={{true}}
+      />
     </div>
   </div>
 
