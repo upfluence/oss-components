@@ -7,16 +7,14 @@
     {{#if this.hasSkins}}
       <div class="oss-progress-bar__segments">
         {{#each this.progressSegments as |skin|}}
-          {{#if (this.isSegmentVisible skin=skin)}}
-            <div
-              class={{this.getSegmentClasses skin=skin}}
-              role="progressbar"
-              aria-valuenow={{this.getSegmentValue skin=skin}}
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style={{this.progressBarStyle value=(this.getSegmentValue skin=skin)}}
-            ></div>
-          {{/if}}
+          <div
+            class={{this.getSegmentClasses skin=skin}}
+            role="progressbar"
+            aria-valuenow={{this.getSegmentValue skin=skin}}
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{this.progressBarStyle value=(this.getSegmentValue skin=skin)}}
+          ></div>
         {{/each}}
       </div>
     {{else}}

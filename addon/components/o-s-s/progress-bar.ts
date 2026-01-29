@@ -36,12 +36,8 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     }
   }
 
-  isSegmentVisible = helper((_, { skin }: { skin: ProgressBarSkins }): boolean => {
-    return this.hasSkins && (this.skins[skin] || 0) > 0;
-  });
-
   getSegmentValue = helper((_, { skin }: { skin: ProgressBarSkins }): number => {
-    return this.hasSkins ? this.skins[skin] || 0 : 0;
+    return this.skins[skin] ?? 0;
   });
 
   progressBarStyle = helper((_, { value }: { value: number }): ReturnType<typeof htmlSafe> => {
@@ -59,7 +55,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   }
 
   get progressSegments(): ProgressBarSkins[] {
-    return this.hasSkins ? (Object.keys(this.skins) as ProgressBarSkins[]) : [];
+    return Object.keys(this.skins) as ProgressBarSkins[];
   }
 
   get computedStyles(): string {
