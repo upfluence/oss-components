@@ -1,0 +1,27 @@
+<OSS::Button
+  @skin={{@skin}}
+  @size={{@size}}
+  @loading={{@loading}}
+  @loadingOptions={{@loadingOptions}}
+  @icon={{@icon}}
+  @iconUrl={{@iconUrl}}
+  @label={{@label}}
+  @theme={{@theme}}
+  @square={{@square}}
+  @countDown={{@countDown}}
+  {{did-insert this.registerMenuTrigger}}
+  {{on "click" this.toggleContextMenuPanel}}
+  ...attributes
+/>
+
+{{#if this.displayContextMenuPanel}}
+  <OSS::ContextMenu::Panel
+    @referenceTarget={{this.referenceTarget}}
+    @items={{@items}}
+    @offset={{4}}
+    @placement="bottom-start"
+    @onMouseLeave={{this.onContextMenuPanelMouseLeave}}
+    {{did-insert this.registerContextMenuPanel}}
+    {{on-click-outside this.onClickOutsidePanel useCapture=true}}
+  />
+{{/if}}

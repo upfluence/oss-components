@@ -2,24 +2,15 @@ import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import { next, scheduleOnce } from '@ember/runloop';
 import { isTesting } from '@embroider/macros';
-import type { ensureSafeComponent } from '@embroider/util';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
 
 export const DEFAULT_PLACEMENT = 'bottom-start';
 export const DEFAULT_OFFSET = { mainAxis: 0, crossAxis: 0 };
 export const SUBPANEL_OFFSET = -6;
-
-///////////////////// TODO EXPORT IN PROPER FILE WHEN IMPLEMENTATION IS DONE
-export type ContextMenuItem = {
-  items?: ContextMenuItem[];
-  groupKey?: string;
-  rowRenderer?: ReturnType<typeof ensureSafeComponent>;
-  action: () => void | boolean;
-  [key: string]: unknown;
-};
-//////////////////////
 
 interface OSSContextMenuPanelComponentSignature {
   items: ContextMenuItem[];
@@ -127,6 +118,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     }
 
     this.args.onMouseLeave?.(event);
+    this.clearSubMenu();
   }
 
   @action
@@ -138,6 +130,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     this.displaySubMenu = false;
     this.subReferenceIndex = -1;
     this.subReferenceTarget = null;
+    this.subPanelElement = null;
     this.subItems = [];
   }
 
