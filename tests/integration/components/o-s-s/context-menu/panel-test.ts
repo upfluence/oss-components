@@ -50,8 +50,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     this.set('referenceTarget', buttonRef);
     this.set('isInitialized', true);
     await settled();
-    const panelRef = document.querySelector('.context-menu-panel__dropdown') as HTMLElement;
-
+    const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
     assert.equal(panelRef.style.top, '36px');
     await waitUntil(() => panelRef.style.left === '63.5px', { timeout: 300 });
     assert.equal(panelRef.style.left, '63.5px');
@@ -62,7 +61,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     assert.equal(panelRef.style.left, '113.5px');
   });
 
-  module('placement', function () {
+  module('placement', function (hooks) {
     test('When placement is set to right-start, it positions the panel accordingly', async function (assert) {
       await render(hbs`
       {{#if this.isInitialized}}
@@ -77,7 +76,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
 
       this.set('referenceTarget', buttonRef);
       this.set('isInitialized', true);
-      const panelRef = document.querySelector('.context-menu-panel__dropdown') as HTMLElement;
+      const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
       const qunitTestContainer = buttonRef.offsetParent as HTMLElement;
       const leftPosition = buttonRef.getBoundingClientRect().left - qunitTestContainer.getBoundingClientRect().left;
       await settled();
@@ -102,7 +101,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
 
       this.set('referenceTarget', buttonRef);
       this.set('isInitialized', true);
-      const panelRef = document.querySelector('.context-menu-panel__dropdown') as HTMLElement;
+      const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
       const qunitTestContainer = buttonRef.offsetParent as HTMLElement;
       const topPosition = buttonRef.getBoundingClientRect().top - qunitTestContainer.getBoundingClientRect().top;
       await settled();
@@ -131,7 +130,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
 
       this.set('referenceTarget', buttonRef);
       this.set('isInitialized', true);
-      const panelRef = document.querySelector('.context-menu-panel__dropdown') as HTMLElement;
+      const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
       await settled();
       assert.equal(panelRef.style.top, '36px');
     });
@@ -152,7 +151,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
 
       this.set('referenceTarget', buttonRef);
       this.set('isInitialized', true);
-      const panelRef = document.querySelector('.context-menu-panel__dropdown') as HTMLElement;
+      const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
       await settled();
       assert.equal(panelRef.style.top, '56px');
     });
@@ -161,18 +160,28 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
   module('When items are passed', function () {
     module('if items has subitems', function () {
       test('Clicking on item opens a submenu on the right of the trigger element', async function (assert) {
-        await render(hbs`<OSS::ContextMenu::Panel @items={{this.items}} />`);
+        await render(hbs`
+          {{#if this.isInitialized}}
+            <OSS::ContextMenu::Panel @items={{this.items}} 
+                                    @referenceTarget={{this.referenceTarget}} 
+                                    @placement="bottom-start"
+                                    @offset={{this.offset}} />
+          {{/if}}
+          <OSS::Button id="trigger" @label="Trigger" />
+        `);
 
-        assert.dom('div.context-menu-panel__dropdown').exists({ count: 1 });
-        await click('div.context-menu-panel__dropdown li:nth-of-type(1) .oss-infinite-select-option');
-        assert.dom('div.context-menu-panel__dropdown').exists({ count: 2 });
-        const panels = document.querySelectorAll('div.context-menu-panel__dropdown');
+        const buttonRef = document.querySelector('#trigger') as HTMLElement;
+
+        this.set('referenceTarget', buttonRef);
+        this.set('isInitialized', true);
+
+        assert.dom('div.context-menu-panel__scrollable-container').exists({ count: 1 });
+        await click('div.context-menu-panel__scrollable-container li:nth-of-type(1) .oss-infinite-select-option');
+        assert.dom('div.context-menu-panel__scrollable-container').exists({ count: 2 });
+        const panels = document.querySelectorAll('div.context-menu-panel__scrollable-container');
         const triggerPosition = (
-          panels[0]?.querySelector(
-            'div.context-menu-panel__dropdown li:nth-of-type(1) .oss-infinite-select-option'
-          ) as HTMLElement
+          panels[0]?.querySelector('div.context-menu-panel__dropdown li:nth-of-type(1)') as HTMLElement
         ).getBoundingClientRect();
-
         assert.equal(triggerPosition.x + triggerPosition.width, panels[1]?.getBoundingClientRect().x);
         assert.equal(triggerPosition.y + SUBPANEL_OFFSET / 2, panels[1]?.getBoundingClientRect().y);
       });

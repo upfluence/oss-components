@@ -39,20 +39,15 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   @tracked subItems: ContextMenuItem[] = [];
   @tracked subReferenceTarget: HTMLElement | null = null;
   @tracked subReferenceIndex: number = -1;
-
   @tracked subPanelElement: HTMLElement | null = null;
 
-  cleanupDrodpownAutoplacement?: () => void;
+  cleanupDropdownAutoplacement?: () => void;
   onScrollbound = this.onScroll.bind(this);
 
   subPanelOffset: { mainAxis: number; crossAxis: number } = {
     mainAxis: 0,
     crossAxis: SUBPANEL_OFFSET
   };
-
-  constructor(owner: unknown, args: OSSContextMenuPanelComponentSignature) {
-    super(owner, args);
-  }
 
   @action
   registerPanel(element: HTMLElement): void {
@@ -150,7 +145,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     const referenceTarget = this.args.referenceTarget;
     const floatingTarget = document.querySelector(`#${this.portalId}`);
     if (referenceTarget && floatingTarget) {
-      this.cleanupDrodpownAutoplacement = attachDropdown(
+      this.cleanupDropdownAutoplacement = attachDropdown(
         referenceTarget as HTMLElement,
         floatingTarget as HTMLElement,
         {
