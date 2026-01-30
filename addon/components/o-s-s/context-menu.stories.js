@@ -151,6 +151,31 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    closeOnMouseLeave: {
+      type: { required: false },
+      description: 'If true, the menu will close when the mouse leaves the panel',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
+    onMenuOpened: {
+      type: { required: false },
+      description: 'Callback function called when the menu panel is opened',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onMenuOpened(): void' }
+      }
+    },
+    onMenuClosed: {
+      type: { required: false },
+      description: 'Callback function called when the menu panel is closed',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onMenuClosed(): void' }
+      }
     }
   },
   parameters: {
@@ -188,7 +213,10 @@ const defaultArgs = {
   countDown: undefined,
   loadingOptions: undefined,
   iconUrl: undefined,
-  disabled: false
+  disabled: false,
+  closeOnMouseLeave: false,
+  onMenuOpened: action('onMenuOpened'),
+  onMenuClosed: action('onMenuClosed')
 };
 
 const Template = (args) => ({
@@ -204,6 +232,9 @@ const Template = (args) => ({
                                   @iconUrl={{this.iconUrl}}
                                   @size={{this.size}}
                                   disabled={{this.disabled}}
+                                  @closeOnMouseLeave={{this.closeOnMouseLeave}}
+                                  @onMenuOpened={{this.onMenuOpened}}
+                                  @onMenuClosed={{this.onMenuClosed}}
                                   />`,
   context: args
 });
