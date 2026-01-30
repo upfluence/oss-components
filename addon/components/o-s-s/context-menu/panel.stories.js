@@ -52,6 +52,30 @@ export default {
         type: { summary: 'onMouseLeave(event: MouseEvent): void' }
       }
     },
+    onClose: {
+      type: { required: false },
+      description: 'Callback function called when the context menu panel should be closed',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onClose(): void' }
+      }
+    },
+    registerPanel: {
+      type: { required: false },
+      description: 'Callback function called on render, to register the current element',
+      table: {
+        category: 'Actions',
+        type: { summary: 'registerPanel(element: HTMLElement): void' }
+      }
+    },
+    unregisterPanel: {
+      type: { required: false },
+      description: 'Callback function called on destroy, to notify the current element does not exist anymore',
+      table: {
+        category: 'Actions',
+        type: { summary: 'unregisterPanel(element: HTMLElement): void' }
+      }
+    }
     postRender: {
       table: {
         disable: true
@@ -91,6 +115,9 @@ const defaultArgs = {
   offset: { mainAxis: -100, crossAxis: -100 },
   placement: 'bottom-start',
   onMouseLeave: action('onMouseLeave'),
+  onClose: action('onClose'),
+  registerPanel: action('registerPanel'),
+  unregisterPanel: action('unregisterPanel'),
   isInitialized: false,
   postRender(self, element) {
     self.set('referenceTarget', element);
@@ -108,6 +135,9 @@ const Template = (args) => ({
           @offset={{this.offset}}
           @placement="bottom-start"
           @onMouseLeave={{this.onMouseLeave}}
+          @onClose={{this.onClose}}
+          @registerPanel={{this.registerPanel}}
+          @unregisterPanel={{this.unregisterPanel}}
         />
       {{/if}}
     </div>
