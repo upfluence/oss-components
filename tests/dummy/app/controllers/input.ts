@@ -58,23 +58,26 @@ export default class Input extends Controller {
   subMenu2 = [
     {
       icon: { icon: 'fa-arrow-progress' },
-      title: 'First',
+      title: 'true',
       action: () => {
         console.log('click on first');
+        return true;
       }
     },
     {
       icon: { icon: 'fa-arrow-progress' },
-      title: 'Second',
+      title: 'false',
       action: () => {
         console.log('click on second');
+        return false;
       }
     },
     {
       icon: { icon: 'fa-arrow-progress' },
-      title: 'Third',
+      title: 'void',
       action: () => {
         console.log('click on third');
+        return;
       }
     }
   ];
