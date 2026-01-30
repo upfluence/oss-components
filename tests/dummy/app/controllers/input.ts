@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
 import { isBlank } from '@ember/utils';
-import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu/panel';
+import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
 import { ensureSafeComponent } from '@embroider/util';
 
 export default class Input extends Controller {
@@ -58,23 +58,26 @@ export default class Input extends Controller {
   subMenu2 = [
     {
       icon: { icon: 'fa-arrow-progress' },
-      title: 'First',
+      title: 'true',
       action: () => {
         console.log('click on first');
+        return true;
       }
     },
     {
       icon: { icon: 'fa-arrow-progress' },
-      title: 'Second',
+      title: 'false',
       action: () => {
         console.log('click on second');
+        return false;
       }
     },
     {
       icon: { icon: 'fa-arrow-progress' },
-      title: 'Third',
+      title: 'void',
       action: () => {
         console.log('click on third');
+        return;
       }
     }
   ];
@@ -107,6 +110,10 @@ export default class Input extends Controller {
         console.log('click on second');
       }
     },
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
     this.otherItem,
     this.otherItem,
     this.otherItem,
@@ -283,26 +290,12 @@ export default class Input extends Controller {
   }
 
   @action
-  registerMenuTrigger(element: HTMLElement): void {
-    this.referenceTarget = element;
+  onPanelClose(): void {
+    console.log('panel closed');
   }
 
   @action
-  toggleContextMenuPanel(event: PointerEvent): void {
-    event.stopPropagation();
-    this.displayContextMenuPanel = !this.displayContextMenuPanel;
-  }
-
-  @action
-  onContextMenuPanelMouseLeave(event: MouseEvent): void {
-    if (this.referenceTarget && this.referenceTarget.contains(event.relatedTarget as HTMLElement)) {
-      return;
-    }
-    this.displayContextMenuPanel = false;
-  }
-
-  @action
-  registerContextMenuPanel(element: HTMLElement): void {
-    this.contextMenuPanel = element;
+  onPanelOpen(): void {
+    console.log('panel opened');
   }
 }
