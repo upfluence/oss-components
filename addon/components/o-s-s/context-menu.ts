@@ -22,7 +22,7 @@ interface OSSContextMenuArgs extends OSSButtonArgs {
 export default class OSSContextMenuComponent extends Component<OSSContextMenuArgs> {
   @tracked displayContextMenuPanel: boolean = false;
   @tracked declare referenceTarget: HTMLElement;
-  @tracked contextMenuPanels: HTMLElement[] = [];
+  @tracked private contextMenuPanels: HTMLElement[] = [];
 
   @action
   registerMenuTrigger(element: HTMLElement): void {
