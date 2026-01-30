@@ -75,7 +75,7 @@ export default {
         category: 'Actions',
         type: { summary: 'unregisterPanel(element: HTMLElement): void' }
       }
-    }
+    },
     postRender: {
       table: {
         disable: true
