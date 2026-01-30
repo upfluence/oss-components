@@ -1,4 +1,4 @@
-<div {{did-insert this.registerPanelContainer}} class="context-menu-panel__hidden">
+<div {{did-insert this.registerPanelContainer}} class={{this.panelContainerCustomClasses}}>
   {{#if this.isInitialized}}
     {{#in-element this.portalTarget insertBefore=null}}
       <OSS::ScrollablePanel
@@ -17,7 +17,6 @@
           @enableKeyboard={{false}}
           class="margin-top-px-0 context-menu-panel__dropdown"
           {{on-click-outside this.onClickOutside}}
-          {{did-insert this.registerPanel}}
         >
           <:option as |item index|>
             {{#if item.items}}
@@ -41,7 +40,11 @@
                 class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
               />
             {{else if item.rowRenderer}}
-              <item.rowRenderer @item={{item}} {{on "mouseenter" this.closeSubMenu}} {{on "click" this.closeSubMenu}} />
+              <item.rowRenderer
+                @item={{item}}
+                {{on "mouseenter" this.closeSubMenu}}
+                {{on "click" (fn this.callAction item.action)}}
+              />
             {{else}}
               <OSS::InfiniteSelect::Option
                 @prefixAvatar={{item.prefixAvatar}}
@@ -57,9 +60,8 @@
                 @selectionType={{item.selectionType}}
                 @selected={{item.selected}}
                 @disabled={{item.disabled}}
-                @onSelect={{item.action}}
+                @onSelect={{fn this.callAction item.action}}
                 {{on "mouseenter" this.closeSubMenu}}
-                {{on "click" this.closeSubMenu}}
                 class="infinit-select-option-panel-container"
               />
             {{/if}}
@@ -75,6 +77,9 @@
         @placement="right-start"
         @offset={{this.subPanelOffset}}
         @onMouseLeave={{this.onSubPanelMouseLeave}}
+        @onClose={{@onClose}}
+        @registerPanel={{@registerPanel}}
+        @unregisterPanel={{@unregisterPanel}}
         {{did-insert this.registerSubPanel}}
       />
     {{/if}}
