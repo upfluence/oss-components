@@ -14,17 +14,19 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
 
   hooks.beforeEach(function () {
     this.subItems = [
-      { title: 'Sub Item 1.1', action: () => console.log('Sub Item 1 clicked') },
-      { title: 'Sub Item 1.2', action: () => console.log('Sub Item 2 clicked') },
-      { title: 'Sub Item 1.3', action: () => console.log('Sub Item 3 clicked') }
+      { title: 'Sub Item 1.1', action: sinon.stub() },
+      { title: 'Sub Item 1.2', action: sinon.stub() },
+      { title: 'Sub Item 1.3', action: sinon.stub() }
     ];
     this.items = [
-      { title: 'Item 1', action: () => console.log('Item 1 clicked'), items: this.subItems },
+      { title: 'Item 1', action: sinon.stub(), items: this.subItems },
       {
         title: 'Item 2',
-        action: () => {}
+        action: sinon.stub()
       }
     ];
+
+    this.onCloseStub = sinon.stub();
   });
 
   test('it renders properly', async function (assert) {
@@ -163,9 +165,9 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
         await render(hbs`
           {{#if this.isInitialized}}
             <OSS::ContextMenu::Panel @items={{this.items}} 
-                                    @referenceTarget={{this.referenceTarget}} 
-                                    @placement="bottom-start"
-                                    @offset={{this.offset}} />
+                                     @referenceTarget={{this.referenceTarget}}
+                                     @placement="bottom-start"
+                                     @offset={{this.offset}} />
           {{/if}}
           <OSS::Button id="trigger" @label="Trigger" />
         `);
@@ -233,5 +235,32 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     assert.ok(this.onMouseLeaveStub.notCalled);
     await triggerEvent('.context-menu-panel__dropdown', 'mouseleave');
     assert.ok(this.onMouseLeaveStub.calledOnce);
+  });
+
+  module('When clicking on an item', function () {
+    test('It triggers the item action', async function (assert) {
+      await render(hbs`<OSS::ContextMenu::Panel @items={{this.items}} />`);
+
+      assert.ok(this.items[1].action.notCalled);
+      await click('div.context-menu-panel__dropdown li:nth-of-type(2) .oss-infinite-select-option');
+      assert.ok(this.items[1].action.calledOnce);
+    });
+
+    test('When action returns false, the menu should stay open', async function (assert) {
+      this.items[1].action.returns(false);
+      await render(hbs`<OSS::ContextMenu::Panel @items={{this.items}} @onClose={{this.onCloseStub}} />`);
+
+      assert.ok(this.onCloseStub.notCalled);
+      await click('div.context-menu-panel__dropdown li:nth-of-type(2) .oss-infinite-select-option');
+      assert.ok(this.onCloseStub.notCalled);
+    });
+
+    test('When action returns true or undefined, the menu should close', async function (assert) {
+      await render(hbs`<OSS::ContextMenu::Panel @items={{this.items}} @onClose={{this.onCloseStub}} />`);
+
+      assert.ok(this.onCloseStub.notCalled);
+      await click('div.context-menu-panel__dropdown li:nth-of-type(2) .oss-infinite-select-option');
+      assert.ok(this.onCloseStub.calledOnce);
+    });
   });
 });

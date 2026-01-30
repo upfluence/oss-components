@@ -22,7 +22,7 @@ interface OSSContextMenuArgs extends OSSButtonArgs {
 export default class OSSContextMenuComponent extends Component<OSSContextMenuArgs> {
   @tracked displayContextMenuPanel: boolean = false;
   @tracked declare referenceTarget: HTMLElement;
-  @tracked declare contextMenuPanel: HTMLElement;
+  @tracked contextMenuPanels: HTMLElement[] = [];
 
   @action
   registerMenuTrigger(element: HTMLElement): void {
@@ -32,7 +32,6 @@ export default class OSSContextMenuComponent extends Component<OSSContextMenuArg
   @action
   toggleContextMenuPanel(event: PointerEvent): void {
     event.stopPropagation();
-    console.log('this.args.click');
     if (this.args.loading) return;
     this.displayContextMenuPanel = !this.displayContextMenuPanel;
     this.displayContextMenuPanel ? this.args.onMenuOpened?.() : this.args.onMenuClosed?.();
@@ -46,13 +45,27 @@ export default class OSSContextMenuComponent extends Component<OSSContextMenuArg
 
   @action
   registerContextMenuPanel(element: HTMLElement): void {
-    this.contextMenuPanel = element;
+    this.contextMenuPanels.push(element);
   }
 
   @action
-  onClickOutsidePanel(_: HTMLElement, event: PointerEvent): void {
-    if (event.target && this.referenceTarget?.contains(event.target as Node)) return;
+  unregisterContextMenuPanel(element: HTMLElement): void {
+    this.contextMenuPanels = this.contextMenuPanels.filter((el) => el !== element);
+  }
 
+  @action
+  onClickOutsidePanel(_: HTMLElement, event: Event): void {
+    if (
+      (event.target && this.referenceTarget?.contains(event.target as HTMLElement)) ||
+      this.contextMenuPanels.some((el) => el.contains(event.target as HTMLElement))
+    )
+      return;
+
+    this.hideContextMenuPanel();
+  }
+
+  @action
+  closeContextMenuPanel(): void {
     this.hideContextMenuPanel();
   }
 

@@ -21,7 +21,9 @@
     @offset={{4}}
     @placement="bottom-start"
     @onMouseLeave={{this.onContextMenuPanelMouseLeave}}
-    {{did-insert this.registerContextMenuPanel}}
+    @onClose={{this.closeContextMenuPanel}}
+    @registerPanel={{this.registerContextMenuPanel}}
+    @unregisterPanel={{this.unregisterContextMenuPanel}}
     {{on-click-outside this.onClickOutsidePanel useCapture=true}}
   />
 {{/if}}

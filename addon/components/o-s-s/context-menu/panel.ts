@@ -18,6 +18,9 @@ interface OSSContextMenuPanelComponentSignature {
   placement: 'bottom-start' | 'right-start';
   offset: number | { mainAxis: number; crossAxis: number };
   onMouseLeave?: (event: MouseEvent) => void;
+  onClose?: () => void;
+  registerPanel?: (element: HTMLElement) => void;
+  unregisterPanel?: (element: HTMLElement) => void;
 }
 
 export default class OSSContextMenuPanelComponent extends Component<OSSContextMenuPanelComponentSignature> {
@@ -40,9 +43,14 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     crossAxis: SUBPANEL_OFFSET
   };
 
+  get panelContainerCustomClasses(): string {
+    return isTesting() ? '' : 'context-menu-panel__hidden';
+  }
+
   @action
   registerPanel(element: HTMLElement): void {
     this.currentPanel = element;
+    this.args.registerPanel?.(this.currentPanel);
     scheduleOnce('afterRender', this, () => {
       this.initializeDropdown();
     });
@@ -52,6 +60,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
 
   @action
   willDestroy(): void {
+    this.args.unregisterPanel?.(this.currentPanel);
     super.willDestroy();
     this.currentPanel.querySelector('.oss-scrollable-panel-content')?.removeEventListener('scroll', this.onScrollbound);
   }
@@ -124,6 +133,14 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   @action
   onScroll(): void {
     this.clearSubMenu();
+  }
+
+  @action
+  callAction(action: ContextMenuItem['action']): void {
+    const returnValue = action?.();
+    if (returnValue !== false) {
+      this.args.onClose?.();
+    }
   }
 
   private clearSubMenu(): void {
