@@ -1,38 +1,37 @@
-<div class="fx-col fx-gap-px-6">
-  <div class="upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 {{this.modifierClasses}}" ...attributes>
-    {{#if (has-block "custom-icon")}}
-      <div>{{yield to="custom-icon"}}</div>
-    {{else if @icon}}
-      <OSS::Icon
-        @style={{fa-icon-style @icon}}
-        @icon={{fa-icon-value @icon}}
-        class="upf-badge upf-badge--shape-round upf-badge--size-md"
-      />
-    {{else if @image}}
-      <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
+<div class="upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 {{this.modifierClasses}}" ...attributes>
+  {{#if (has-block "custom-icon")}}
+    <div>{{yield to="custom-icon"}}</div>
+  {{else if @icon}}
+    <OSS::Icon
+      @style={{fa-icon-style @icon}}
+      @icon={{fa-icon-value @icon}}
+      class="upf-badge upf-badge--shape-round upf-badge--size-md"
+    />
+  {{else if @image}}
+    <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
+  {{/if}}
+  <div class="fx-col fx-1 {{if (not-eq @size 'sm') 'fx-gap-px-3'}}">
+    {{#if @title}}
+      <div class="fx-row fx-xalign-center">
+        <span class="font-weight-semibold text-size-5 font-color-gray-900">{{@title}}</span>
+        {{#if (has-block "title-suffix")}}
+          {{yield to="title-suffix"}}
+        {{/if}}
+      </div>
     {{/if}}
-    <div class="fx-col fx-1 {{if (not-eq @size 'sm') 'fx-gap-px-3'}}">
-      {{#if @title}}
-        <div class="fx-row fx-xalign-center">
-          <span class="font-weight-semibold text-size-5 font-color-gray-900">{{@title}}</span>
-          {{#if (has-block "title-suffix")}}
-            {{yield to="title-suffix"}}
-          {{/if}}
-        </div>
-      {{/if}}
-      {{#if @subtitle}}
-        <span class="text-size-4 font-color-gray-500">{{@subtitle}}</span>
-      {{/if}}
-      {{#if (has-block "secondary-actions")}}
-        {{yield to="secondary-actions"}}
-      {{/if}}
-    </div>
-    {{#if (has-block "actions")}}
-      <div>{{yield to="actions"}}</div>
+    {{#if @subtitle}}
+      <span class="text-size-4 font-color-gray-500">{{@subtitle}}</span>
+    {{/if}}
+    {{#if (has-block "secondary-actions")}}
+      {{yield to="secondary-actions"}}
     {{/if}}
   </div>
-
+  {{#if (has-block "actions")}}
+    <div>{{yield to="actions"}}</div>
+  {{/if}}
   {{#if @feedbackMessage.value}}
-    <span class="font-color-error-500">{{@feedbackMessage.value}}</span>
+    <div class="upf-banner--feedback font-color-{{@feedbackMessage.type}}-500">
+      {{@feedbackMessage.value}}
+    </div>
   {{/if}}
 </div>

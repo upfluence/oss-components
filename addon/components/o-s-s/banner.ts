@@ -9,6 +9,7 @@ interface OSSBannerArgs {
   plain?: boolean;
   selected?: boolean;
   disabled?: boolean;
+  hasError?: boolean;
   feedbackMessage?: FeedbackMessage;
 }
 
@@ -26,10 +27,6 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return this.args.selected ? 'upf-banner--selected' : '';
   }
 
-  get errorClass(): string {
-    return this.args.feedbackMessage ? 'upf-banner--error' : '';
-  }
-
   get plainClass(): string {
     return this.args.plain ? 'background-color-gray-50' : 'background-color-white';
   }
@@ -38,8 +35,24 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
   }
 
+  get borderColorClass(): string {
+    if (this.args.hasError) return 'upf-banner--error';
+    return `upf-banner--${this.args.feedbackMessage?.type}`;
+  }
+
+  get feedbackMessageClass(): string {
+    return this.args.feedbackMessage?.value ? 'margin-bottom-px-24' : '';
+  }
+
   get modifierClasses(): string {
-    return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass, this.errorClass]
+    return [
+      this.disabledClass,
+      this.selectedClass,
+      this.plainClass,
+      this.sizeClass,
+      this.borderColorClass,
+      this.feedbackMessageClass
+    ]
       .filter((mc) => !isBlank(mc))
       .join(' ');
   }

@@ -3,6 +3,8 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 
+const ERROR_TYPES = ['error', 'warning', 'success'];
+
 module('Integration | Component | o-s-s/banner', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -158,30 +160,72 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     });
   });
 
+  module('@hasError parameter', function () {
+    test('when the value is truthy, the border is errored', async function (assert) {
+      await render(hbs`<OSS::Banner @hasError={{true}} />`);
+      assert.dom('.upf-banner.upf-banner--error').exists();
+    });
+
+    test('when the value is falsy, the border is not errored', async function (assert) {
+      await render(hbs`<OSS::Banner @hasError={{false}} />`);
+      assert.dom('.upf-banner.upf-banner--error').doesNotExist();
+    });
+
+    test('when the value is undefined, the border is not errored', async function (assert) {
+      await render(hbs`<OSS::Banner />`);
+      assert.dom('.upf-banner.upf-banner--error').doesNotExist();
+    });
+  });
+
   module('@feedbackMessage parameter', function () {
-    hooks.beforeEach(function () {
+    module('feedback message margin class', function () {
+      test('When feedback message is passed, it adds a margin-bottom class to accomodate the message', async function (assert) {
+        this.feedbackMessage = {
+          type: 'error',
+          value: 'This is a feedback message'
+        };
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert.dom('.upf-banner.margin-bottom-px-24').exists();
+      });
+
+      test('When no feedback message is passed, it does not add a margin-bottom class', async function (assert) {
+        await render(hbs`<OSS::Banner />`);
+
+        assert.dom('.upf-banner.margin-bottom-px-24').doesNotExist();
+      });
+    });
+
+    test('the feedback message is rendered below the banner', async function (assert) {
       this.feedbackMessage = {
         type: 'error',
         value: 'This is a feedback message'
       };
-    });
-
-    test('When parameter is passed, it adds upf-banner--error class', async function (assert) {
       await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
 
-      assert.dom('.upf-banner.upf-banner--error').exists();
+      assert.dom('.upf-banner--feedback').hasText('This is a feedback message');
     });
 
-    test('When parameter is passed, the feedback message is swhown', async function (assert) {
-      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+    ERROR_TYPES.forEach((type) => {
+      test(`When feedback type is ${type}, the border has the corresponding class`, async function (assert) {
+        this.feedbackMessage = {
+          type: type,
+          value: 'This is a feedback message'
+        };
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
 
-      assert.dom('.font-color-error-500').hasText('This is a feedback message');
-    });
+        assert.dom(`.upf-banner.upf-banner--${type}`).exists();
+      });
 
-    test('When parameter is not passed, it does not add upf-banner--error class', async function (assert) {
-      await render(hbs`<OSS::Banner />`);
+      test(`when feedback message is ${type}, the feedback text has the corresponding class`, async function (assert) {
+        this.feedbackMessage = {
+          type: type,
+          value: 'This is a feedback message'
+        };
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
 
-      assert.dom('.upf-banner.upf-banner--error').doesNotExist();
+        assert.dom('.upf-banner--feedback').hasClass(`font-color-${type}-500`);
+      });
     });
   });
 });

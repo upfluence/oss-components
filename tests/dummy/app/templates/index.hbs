@@ -297,22 +297,23 @@
         </OSS::Banner>
       </div>
       <div class="fx-row fx-gap-px-12">
+        <OSS::Banner @title="Error" @subtitle="A banner with only an errored border" @hasError={{true}} />
         <OSS::Banner
           @title="Error"
-          @subtitle="A banner with a feedback message"
-          @feedbackMessage={{hash type="error" value="This is a feedback message"}}
+          @subtitle="A banner with an error feedback message"
+          @feedbackMessage={{hash type="error" value="This is an error feedback message"}}
+        />
+        <OSS::Banner
+          @title="Error"
+          @subtitle="A banner with a warning feedback message"
+          @feedbackMessage={{hash type="warning" value="This is a warning feedback message"}}
         />
         <OSS::Banner
           @icon="fas fa-alicorn"
           @title="Another error"
-          @selected={{true}}
-          @subtitle="Another banner with a feedback message"
-          @feedbackMessage={{hash type="error" value="This is another feedback message"}}
-        >
-          <:actions>
-            <OSS::RadioButton @selected={{true}} />
-          </:actions>
-        </OSS::Banner>
+          @subtitle="A banner with a success feedback message"
+          @feedbackMessage={{hash type="success" value="This is a success feedback message"}}
+        />
       </div>
     </div>
   </div>

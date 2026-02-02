@@ -1,4 +1,6 @@
 .upf-banner {
+  position: relative;
+
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-px-18);
@@ -10,7 +12,15 @@
   }
 
   &--error {
-    border: 1px solid var(--color-error-500);
+    .border-color-error;
+  }
+
+  &--warning {
+    .border-color-warning;
+  }
+
+  &--success {
+    .border-color-success;
   }
 
   &--disabled {
@@ -35,6 +45,12 @@
   }
 
   transition: ease-in-out 0.25s;
+}
+
+.upf-banner--feedback {
+  position: absolute;
+  bottom: -25px;
+  left: 0px;
 }
 
 .bg-color-white {
