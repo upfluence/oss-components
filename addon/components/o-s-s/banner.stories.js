@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 const COMPONENT_SIZES = ['sm', 'md', 'lg'];
+const ERROR_TYPES = ['error', 'warning', 'success'];
 
 export default {
   title: 'Components/OSS::Banner',
@@ -77,11 +78,21 @@ export default {
         type: 'boolean'
       }
     },
+    hasError: {
+      description: 'Displays the errrored version of the banner with border in red',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     feedbackMessage: {
-      description: 'An error message that will be displayed below the banner.',
+      description: 'A feedback message that will be displayed below the banner. Its color changes based on its type',
       table: {
         type: {
-          summary: '{ type: string, value: string }'
+          summary: `{ type: ${ERROR_TYPES.join(' | ')}, value: string }`
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -89,7 +100,7 @@ export default {
     },
     size: {
       description:
-        'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`.',
+        'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`',
       table: {
         type: COMPONENT_SIZES.join('|'),
         defaultValue: { summary: 'md' }
@@ -103,7 +114,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle.'
+        component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle'
       },
       iframeHeight: 120
     }
@@ -118,6 +129,8 @@ const defaultArgs = {
   plain: false,
   selected: false,
   disabled: false,
+  hasError: false,
+  feedbackMessage: undefined,
   size: undefined
 };
 
