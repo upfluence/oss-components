@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 const COMPONENT_SIZES = ['sm', 'md', 'lg'];
-const ERROR_TYPES = ['error', 'warning', 'success'];
+const FEEDBACK_TYPES = ['error', 'warning', 'success'];
 
 export default {
   title: 'Components/OSS::Banner',
@@ -92,7 +92,7 @@ export default {
       description: 'A feedback message that will be displayed below the banner. Its color changes based on its type',
       table: {
         type: {
-          summary: `{ type: ${ERROR_TYPES.join(' | ')}, value: string }`
+          summary: `{ type: ${FEEDBACK_TYPES.join(' | ')}, value: string }`
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -137,7 +137,8 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}} />
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}} />
   `,
   context: args
 });
@@ -145,7 +146,8 @@ const Template = (args) => ({
 const CustomTitleTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}>
         <:title-suffix>
           <div class="fx-row fx-gap-px-6 fx-xalign-center">
             <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
@@ -159,7 +161,8 @@ const CustomTitleTemplate = (args) => ({
 const CustomIconTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}>
         <:custom-icon>
           <OSS::Badge @icon="fas fa-check" />
         </:custom-icon>
@@ -171,7 +174,8 @@ const CustomIconTemplate = (args) => ({
 const ActionTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}>
         <:actions>
           <OSS::Button @label="Click me" />
         </:actions>

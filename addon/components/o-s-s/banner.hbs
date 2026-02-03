@@ -29,9 +29,9 @@
   {{#if (has-block "actions")}}
     <div>{{yield to="actions"}}</div>
   {{/if}}
-  {{#if @feedbackMessage.value}}
-    <div class="upf-banner--feedback font-color-{{@feedbackMessage.type}}-500">
-      {{@feedbackMessage.value}}
+  {{#if this.feedbackMessage.value}}
+    <div class="upf-banner--feedback font-color-{{this.feedbackMessage.type}}-500">
+      {{this.feedbackMessage.value}}
     </div>
   {{/if}}
 </div>

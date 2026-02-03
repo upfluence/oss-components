@@ -2,8 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-
-const ERROR_TYPES = ['error', 'warning', 'success'];
+import { FEEDBACK_TYPES, type FeedbackType } from '@upfluence/oss-components/components/o-s-s/input-container';
 
 module('Integration | Component | o-s-s/banner', function (hooks) {
   setupRenderingTest(hooks);
@@ -206,7 +205,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       assert.dom('.upf-banner--feedback').hasText('This is a feedback message');
     });
 
-    ERROR_TYPES.forEach((type) => {
+    FEEDBACK_TYPES.forEach((type: FeedbackType) => {
       test(`When feedback type is ${type}, the border has the corresponding class`, async function (assert) {
         this.feedbackMessage = {
           type: type,
@@ -225,6 +224,31 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
         await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
 
         assert.dom('.upf-banner--feedback').hasClass(`font-color-${type}-500`);
+      });
+    });
+
+    module('invalid feedback type', function (hooks) {
+      hooks.beforeEach(function () {
+        this.feedbackMessage = {
+          type: 'invalid-type',
+          value: 'This is a feedback message'
+        };
+      });
+
+      test('when feedback type is invalid, the border does not have any feedback class', async function (assert) {
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert
+          .dom('.upf-banner')
+          .doesNotHaveClass('upf-banner--error')
+          .doesNotHaveClass('upf-banner--warning')
+          .doesNotHaveClass('upf-banner--success');
+      });
+
+      test('when feedback type is invalid, the feedback text is not displayed', async function (assert) {
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert.dom('.upf-banner--feedback').doesNotExist();
       });
     });
   });

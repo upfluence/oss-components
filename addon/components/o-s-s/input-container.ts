@@ -2,8 +2,11 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
+export const FEEDBACK_TYPES = ['error', 'warning', 'success'];
+export type FeedbackType = (typeof FEEDBACK_TYPES)[number];
+
 export type FeedbackMessage = {
-  type: 'error' | 'warning' | 'success';
+  type: FeedbackType;
   value: string;
 };
 
@@ -23,7 +26,7 @@ export const AutocompleteValues = ['on', 'off'];
 
 export default class OSSInputContainer<T extends OSSInputContainerArgs> extends Component<T> {
   get feedbackMessage(): FeedbackMessage | undefined {
-    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+    if (this.args.feedbackMessage && FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
       return this.args.feedbackMessage;
     }
 

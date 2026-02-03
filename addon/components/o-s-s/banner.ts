@@ -1,6 +1,6 @@
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
-import type { FeedbackMessage } from './input-container';
+import { FEEDBACK_TYPES, type FeedbackMessage } from './input-container';
 
 type SizeType = 'sm' | 'md' | 'lg';
 
@@ -35,13 +35,21 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
   }
 
-  get borderColorClass(): string {
-    if (this.args.hasError) return 'upf-banner--error';
-    return `upf-banner--${this.args.feedbackMessage?.type}`;
+  get feedbackMessage(): FeedbackMessage | undefined {
+    if (this.args.feedbackMessage && FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
+      return this.args.feedbackMessage;
+    }
+    return undefined;
   }
 
-  get feedbackMessageClass(): string {
-    return this.args.feedbackMessage?.value ? 'margin-bottom-px-24' : '';
+  get borderColorClass(): string | undefined {
+    if (this.args.hasError) return 'upf-banner--error';
+    if (this.feedbackMessage) return `upf-banner--${this.args.feedbackMessage?.type}`;
+    return '';
+  }
+
+  get feedbackMarginClass(): string {
+    return this.feedbackMessage?.value ? 'margin-bottom-px-24' : '';
   }
 
   get modifierClasses(): string {
@@ -51,7 +59,7 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
       this.plainClass,
       this.sizeClass,
       this.borderColorClass,
-      this.feedbackMessageClass
+      this.feedbackMarginClass
     ]
       .filter((mc) => !isBlank(mc))
       .join(' ');
