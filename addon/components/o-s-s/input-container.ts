@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
-export const FEEDBACK_TYPES = ['error', 'warning', 'success'];
+export const FEEDBACK_TYPES = ['error', 'warning', 'success'] as const;
 export type FeedbackType = (typeof FEEDBACK_TYPES)[number];
 
 export type FeedbackMessage = {
