@@ -1,14 +1,16 @@
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
-
+import { scheduleOnce } from '@ember/runloop';
+import { tracked } from '@glimmer/tracking';
 import type { IntlService } from 'ember-intl';
 
-import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
-import { scheduleOnce } from '@ember/runloop';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import type { FeedbackMessage } from '@upfluence/oss-components/types';
+
+import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 
 type Item = {
   name: string;
@@ -47,6 +49,20 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
     if (!isEmpty(this.args.value)) {
       scheduleOnce('afterRender', this, this._matchValueWithSourceList);
     }
+  }
+
+  get computedClasses(): string {
+    const classes = ['country-selector-container', 'fx-1'];
+
+    if (this.feedbackMessage?.type && ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.feedbackMessage.type)) {
+      classes.push(`country-selector-container--${this.feedbackMessage?.type}`);
+    }
+
+    return classes.join(' ');
+  }
+
+  get feedbackMessage(): FeedbackMessage | undefined {
+    return this.args.feedbackMessage;
   }
 
   get isCountry(): boolean {

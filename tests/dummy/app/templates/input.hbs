@@ -567,7 +567,7 @@
       Country selector
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <div class="fx-col fx-gap-px-5">
+      <div class="fx-col fx-1 fx-gap-px-5">
         <span>Country</span>
         <OSS::CountrySelector
           @value={{this.selectedCountry.id}}
@@ -577,12 +577,34 @@
       </div>
 
       {{#if (gt this.selectedCountry.provinces.length 0)}}
-        <div class="fx-col fx-gap-px-5">
+        <div class="fx-col fx-1 fx-gap-px-5">
           <span>Province</span>
           <OSS::CountrySelector
             @value={{this.selectedProvince.name}}
             @sourceList={{this.selectedCountry.provinces}}
             @onChange={{this.onProvinceSelected}}
+          />
+        </div>
+      {{/if}}
+
+      <div class="fx-col fx-1 fx-gap-px-5">
+        <span>Country with error</span>
+        <OSS::CountrySelector
+          @value={{this.selectedCountry.id}}
+          @sourceList={{this.countries}}
+          @onChange={{this.onCountrySelected}}
+          @feedbackMessage={{hash type="error" value="This is an error message"}}
+        />
+      </div>
+
+      {{#if (gt this.selectedCountry.provinces.length 0)}}
+        <div class="fx-col fx-1 fx-gap-px-5">
+          <span>Province with error</span>
+          <OSS::CountrySelector
+            @value={{this.selectedProvince.name}}
+            @sourceList={{this.selectedCountry.provinces}}
+            @onChange={{this.onProvinceSelected}}
+            @feedbackMessage={{hash type="error"}}
           />
         </div>
       {{/if}}
