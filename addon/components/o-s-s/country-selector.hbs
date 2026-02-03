@@ -1,6 +1,6 @@
 <div
   id={{this.elementId}}
-  class="country-selector-container fx-1"
+  class={{this.computedClasses}}
   data-toggle="oss-dropdown"
   {{did-insert this.registerContainer}}
   {{will-destroy this.disconnectObserver}}
@@ -50,5 +50,14 @@
         </:option>
       </OSS::InfiniteSelect>
     {{/in-element}}
+  {{/if}}
+
+  {{#if this.feedbackMessage.value}}
+    <span
+      class={{concat "fx-row font-color-" this.feedbackMessage.type "-500 padding-top-px-6"}}
+      data-control-name="country-selector-feedback-message"
+    >
+      {{this.feedbackMessage.value}}
+    </span>
   {{/if}}
 </div>
