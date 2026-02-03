@@ -1,5 +1,4 @@
 import './styles/preview.less';
-import { themes } from '@storybook/theming';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -19,8 +18,5 @@ export const parameters = {
         ['Typography', 'Icons', 'Variables']
       ]
     }
-  },
-  docs: {
-    theme: themes.dark
   }
 };

@@ -51,6 +51,10 @@ export default {
       description: {
         component: 'A component used when there is nothing to display on a page'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=4110-3753&t=JuSMzlMX9VPAFjWU-4'
     }
   }
 };
