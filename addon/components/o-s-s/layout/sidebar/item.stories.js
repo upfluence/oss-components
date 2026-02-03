@@ -65,6 +65,16 @@ export default {
         type: 'text'
       }
     },
+    disableAutoActive: {
+      description: 'Disables automatic active state based on current route, managed by Ember by default',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     lockedAction: {
       description: 'Function to be called on click when item is locked',
       table: {
