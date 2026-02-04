@@ -299,17 +299,22 @@
       <div class="fx-row fx-gap-px-12">
         <OSS::Banner
           @title="Error"
+          @subtitle="A error banner with no feedback message"
+          @feedbackMessage={{hash type="error"}}
+        />
+        <OSS::Banner
+          @title="Error"
           @subtitle="A banner with an error feedback message"
           @feedbackMessage={{hash type="error" value="This is an error feedback message"}}
         />
         <OSS::Banner
-          @title="Error"
+          @title="Warning"
           @subtitle="A banner with a warning feedback message"
           @feedbackMessage={{hash type="warning" value="This is a warning feedback message"}}
         />
         <OSS::Banner
           @icon="fas fa-alicorn"
-          @title="Another error"
+          @title="Success"
           @subtitle="A banner with a success feedback message"
           @feedbackMessage={{hash type="success" value="This is a success feedback message"}}
         />
