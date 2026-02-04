@@ -159,23 +159,6 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     });
   });
 
-  module('@hasError parameter', function () {
-    test('when the value is truthy, the border is errored', async function (assert) {
-      await render(hbs`<OSS::Banner @hasError={{true}} />`);
-      assert.dom('.upf-banner.upf-banner--error').exists();
-    });
-
-    test('when the value is falsy, the border is not errored', async function (assert) {
-      await render(hbs`<OSS::Banner @hasError={{false}} />`);
-      assert.dom('.upf-banner.upf-banner--error').doesNotExist();
-    });
-
-    test('when the value is undefined, the border is not errored', async function (assert) {
-      await render(hbs`<OSS::Banner />`);
-      assert.dom('.upf-banner.upf-banner--error').doesNotExist();
-    });
-  });
-
   module('@feedbackMessage parameter', function () {
     module('feedback message margin class', function () {
       test('When feedback message is passed, it adds a margin-bottom class to accomodate the message', async function (assert) {
@@ -250,6 +233,17 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
 
         assert.dom('.upf-banner--feedback').doesNotExist();
       });
+    });
+
+    test('when feedback value is undefined, the feedback text is not displayed but the border color changes accordingly', async function (assert) {
+      this.feedbackMessage = {
+        type: 'success',
+        value: undefined
+      };
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.upf-banner--feedback').doesNotExist();
+      assert.dom('.upf-banner').hasClass('upf-banner--success');
     });
   });
 });

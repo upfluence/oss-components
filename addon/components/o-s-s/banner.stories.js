@@ -78,16 +78,6 @@ export default {
         type: 'boolean'
       }
     },
-    hasError: {
-      description: 'Displays the errrored version of the banner with border in red',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
     feedbackMessage: {
       description: 'A feedback message that will be displayed below the banner. Its color changes based on its type',
       table: {
@@ -129,7 +119,6 @@ const defaultArgs = {
   plain: false,
   selected: false,
   disabled: false,
-  hasError: false,
   feedbackMessage: undefined,
   size: undefined
 };
@@ -138,7 +127,7 @@ const Template = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
                    @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
-                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}} />
+                   @feedbackMessage={{this.feedbackMessage}} />
   `,
   context: args
 });
@@ -147,7 +136,7 @@ const CustomTitleTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
                    @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
-                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}>
+                   @feedbackMessage={{this.feedbackMessage}}>
         <:title-suffix>
           <div class="fx-row fx-gap-px-6 fx-xalign-center">
             <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
@@ -162,7 +151,7 @@ const CustomIconTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
                    @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
-                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}>
+                   @feedbackMessage={{this.feedbackMessage}}>
         <:custom-icon>
           <OSS::Badge @icon="fas fa-check" />
         </:custom-icon>
@@ -175,7 +164,7 @@ const ActionTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
                    @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
-                   @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}>
+                   @feedbackMessage={{this.feedbackMessage}}>
         <:actions>
           <OSS::Button @label="Click me" />
         </:actions>

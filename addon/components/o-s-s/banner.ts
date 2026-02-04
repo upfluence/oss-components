@@ -9,7 +9,6 @@ interface OSSBannerArgs {
   plain?: boolean;
   selected?: boolean;
   disabled?: boolean;
-  hasError?: boolean;
   feedbackMessage?: FeedbackMessage;
 }
 
@@ -42,9 +41,8 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return undefined;
   }
 
-  get borderColorClass(): string | undefined {
-    if (this.args.hasError) return 'upf-banner--error';
-    if (this.feedbackMessage) return `upf-banner--${this.args.feedbackMessage?.type}`;
+  get borderColorClass(): string {
+    if (this.feedbackMessage) return `upf-banner--${this.feedbackMessage.type}`;
     return '';
   }
 
