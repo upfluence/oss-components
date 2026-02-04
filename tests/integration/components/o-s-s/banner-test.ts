@@ -2,6 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
+import { FEEDBACK_TYPES, type FeedbackType } from '@upfluence/oss-components/components/o-s-s/input-container';
 
 module('Integration | Component | o-s-s/banner', function (hooks) {
   setupRenderingTest(hooks);
@@ -152,8 +153,97 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
 
     test("when the value is undefined, it doesn't add the size class", async function (assert) {
       await render(hbs`<OSS::Banner />`);
+
       assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
       assert.dom('.upf-banner.upf-banner--size-lg').doesNotExist();
+    });
+  });
+
+  module('@feedbackMessage parameter', function () {
+    module('feedback message margin class', function () {
+      test('When feedback message is passed, it adds a margin-bottom class to accomodate the message', async function (assert) {
+        this.feedbackMessage = {
+          type: 'error',
+          value: 'This is a feedback message'
+        };
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert.dom('.upf-banner.margin-bottom-px-24').exists();
+      });
+
+      test('When no feedback message is passed, it does not add a margin-bottom class', async function (assert) {
+        await render(hbs`<OSS::Banner />`);
+
+        assert.dom('.upf-banner.margin-bottom-px-24').doesNotExist();
+      });
+    });
+
+    test('the feedback message is rendered below the banner', async function (assert) {
+      this.feedbackMessage = {
+        type: 'error',
+        value: 'This is a feedback message'
+      };
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.upf-banner--feedback').hasText('This is a feedback message');
+    });
+
+    FEEDBACK_TYPES.forEach((type: FeedbackType) => {
+      test(`When feedback type is ${type}, the border has the corresponding class`, async function (assert) {
+        this.feedbackMessage = {
+          type: type,
+          value: 'This is a feedback message'
+        };
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert.dom(`.upf-banner.upf-banner--${type}`).exists();
+      });
+
+      test(`when feedback message is ${type}, the feedback text has the corresponding class`, async function (assert) {
+        this.feedbackMessage = {
+          type: type,
+          value: 'This is a feedback message'
+        };
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert.dom('.upf-banner--feedback').hasClass(`font-color-${type}-500`);
+      });
+    });
+
+    module('invalid feedback type', function (hooks) {
+      hooks.beforeEach(function () {
+        this.feedbackMessage = {
+          type: 'invalid-type',
+          value: 'This is a feedback message'
+        };
+      });
+
+      test('when feedback type is invalid, the border does not have any feedback class', async function (assert) {
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert
+          .dom('.upf-banner')
+          .doesNotHaveClass('upf-banner--error')
+          .doesNotHaveClass('upf-banner--warning')
+          .doesNotHaveClass('upf-banner--success');
+      });
+
+      test('when feedback type is invalid, the feedback text is not displayed', async function (assert) {
+        await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+        assert.dom('.upf-banner--feedback').doesNotExist();
+      });
+    });
+
+    test('when feedback value is undefined, the feedback text is not displayed but the border color changes accordingly', async function (assert) {
+      this.feedbackMessage = {
+        type: 'success',
+        value: undefined
+      };
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.upf-banner--feedback').doesNotExist();
+      assert.dom('.upf-banner').hasClass('upf-banner--success');
     });
   });
 });
