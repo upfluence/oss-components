@@ -47,8 +47,8 @@
           {{on "click" this.noop}}
           {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
         >
-          <:option as |item|>
-            {{yield item to="option-item"}}
+          <:option as |item index|>
+            {{yield item index to="option-item"}}
           </:option>
 
           <:empty-state>
@@ -71,8 +71,8 @@
           {{on "click" this.noop}}
           {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
         >
-          <:option as |item|>
-            {{yield item to="option-item"}}
+          <:option as |item index|>
+            {{yield item index to="option-item"}}
           </:option>
         </OSS::InfiniteSelect>
       {{/if}}
