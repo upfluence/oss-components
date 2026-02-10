@@ -11344,6 +11344,7 @@ a.upf-btn--sm {
   border-radius: var(--border-radius-md);
   display: inline-block;
   line-height: 1;
+  border-radius: var(--border-radius-round);
 }
 .oss-copy--inline {
   border: 0;
