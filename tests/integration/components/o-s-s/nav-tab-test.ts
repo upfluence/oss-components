@@ -58,6 +58,18 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
       assert.dom('.tab-content .fas.fa-circle').exists();
     });
 
+    test('Tab tag displays properly', async function (assert) {
+      this.tabArray.push({ label: 'Tab', tag: { label: '1', skin: 'danger' } });
+
+      await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
+
+      assert.dom('.tab-container').exists();
+      assert.dom('.tab-container .tab').exists();
+      assert.dom('.tab-container .upf-tag').exists();
+      assert.dom('.tab-container .upf-tag').hasText('1');
+      assert.dom('.tab-container .upf-tag').hasClass('upf-tag--critical');
+    });
+
     test('Tab displays selected state properly', async function (assert) {
       this.tabArray.push({ label: 'Tab', selected: true });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);

@@ -1,6 +1,8 @@
 import { assert } from '@ember/debug';
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+
+import type { OSSTagArgs } from './tag';
 
 interface OSSNavTabArgs {
   onSelection(selectedTab: TabDefinition): void;
@@ -8,12 +10,13 @@ interface OSSNavTabArgs {
 }
 
 export interface TabDefinition {
+  selected: boolean;
+  disabled: boolean;
   icon?: string;
   label?: string;
   infoCircle?: boolean;
   notificationDot?: boolean;
-  selected: boolean;
-  disabled: boolean;
+  tag?: OSSTagArgs;
 }
 
 export default class OSSNavTab extends Component<OSSNavTabArgs> {
