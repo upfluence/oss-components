@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 const COMPONENT_SIZES = ['sm', 'md', 'lg'];
+const FEEDBACK_TYPES = ['error', 'warning', 'success'];
 
 export default {
   title: 'Components/OSS::Banner',
@@ -77,9 +78,19 @@ export default {
         type: 'boolean'
       }
     },
+    feedbackMessage: {
+      description: 'A feedback message that will be displayed below the banner. Its color changes based on its type',
+      table: {
+        type: {
+          summary: `{ type: ${FEEDBACK_TYPES.join(' | ')}, value: string }`
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     size: {
       description:
-        'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`.',
+        'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`',
       table: {
         type: COMPONENT_SIZES.join('|'),
         defaultValue: { summary: 'md' }
@@ -93,7 +104,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle.'
+        component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle'
       },
       iframeHeight: 120
     }
@@ -108,13 +119,15 @@ const defaultArgs = {
   plain: false,
   selected: false,
   disabled: false,
+  feedbackMessage: undefined,
   size: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}} />
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @feedbackMessage={{this.feedbackMessage}} />
   `,
   context: args
 });
@@ -122,7 +135,8 @@ const Template = (args) => ({
 const CustomTitleTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @feedbackMessage={{this.feedbackMessage}}>
         <:title-suffix>
           <div class="fx-row fx-gap-px-6 fx-xalign-center">
             <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
@@ -136,7 +150,8 @@ const CustomTitleTemplate = (args) => ({
 const CustomIconTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @feedbackMessage={{this.feedbackMessage}}>
         <:custom-icon>
           <OSS::Badge @icon="fas fa-check" />
         </:custom-icon>
@@ -148,7 +163,8 @@ const CustomIconTemplate = (args) => ({
 const ActionTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @feedbackMessage={{this.feedbackMessage}}>
         <:actions>
           <OSS::Button @label="Click me" />
         </:actions>
