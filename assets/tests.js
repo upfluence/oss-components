@@ -2582,10 +2582,10 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _inputContainer, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@upfluence/oss-components/components/o-s-s/input-container"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/banner', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', async function (assert) {
@@ -2899,6 +2899,145 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         }));
         assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
         assert.dom('.upf-banner.upf-banner--size-lg').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('@feedbackMessage parameter', function () {
+      (0, _qunit.module)('feedback message margin class', function () {
+        (0, _qunit.test)('When feedback message is passed, it adds a margin-bottom class to accomodate the message', async function (assert) {
+          this.feedbackMessage = {
+            type: 'error',
+            value: 'This is a feedback message'
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "EX0i4few",
+            "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-banner.margin-bottom-px-24').exists();
+        });
+        (0, _qunit.test)('When no feedback message is passed, it does not add a margin-bottom class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Banner />
+          */
+          {
+            "id": "z7u4nn5D",
+            "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-banner.margin-bottom-px-24').doesNotExist();
+        });
+      });
+      (0, _qunit.test)('the feedback message is rendered below the banner', async function (assert) {
+        this.feedbackMessage = {
+          type: 'error',
+          value: 'This is a feedback message'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+        */
+        {
+          "id": "EX0i4few",
+          "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-banner--feedback').hasText('This is a feedback message');
+      });
+      _inputContainer.FEEDBACK_TYPES.forEach(type => {
+        (0, _qunit.test)(`When feedback type is ${type}, the border has the corresponding class`, async function (assert) {
+          this.feedbackMessage = {
+            type: type,
+            value: 'This is a feedback message'
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "EX0i4few",
+            "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom(`.upf-banner.upf-banner--${type}`).exists();
+        });
+        (0, _qunit.test)(`when feedback message is ${type}, the feedback text has the corresponding class`, async function (assert) {
+          this.feedbackMessage = {
+            type: type,
+            value: 'This is a feedback message'
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "EX0i4few",
+            "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-banner--feedback').hasClass(`font-color-${type}-500`);
+        });
+      });
+      (0, _qunit.module)('invalid feedback type', function (hooks) {
+        hooks.beforeEach(function () {
+          this.feedbackMessage = {
+            type: 'invalid-type',
+            value: 'This is a feedback message'
+          };
+        });
+        (0, _qunit.test)('when feedback type is invalid, the border does not have any feedback class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "EX0i4few",
+            "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-banner').doesNotHaveClass('upf-banner--error').doesNotHaveClass('upf-banner--warning').doesNotHaveClass('upf-banner--success');
+        });
+        (0, _qunit.test)('when feedback type is invalid, the feedback text is not displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "EX0i4few",
+            "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-banner--feedback').doesNotExist();
+        });
+      });
+      (0, _qunit.test)('when feedback value is undefined, the feedback text is not displayed but the border color changes accordingly', async function (assert) {
+        this.feedbackMessage = {
+          type: 'success',
+          value: undefined
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Banner @feedbackMessage={{this.feedbackMessage}} />
+        */
+        {
+          "id": "EX0i4few",
+          "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-banner--feedback').doesNotExist();
+        assert.dom('.upf-banner').hasClass('upf-banner--success');
       });
     });
   });

@@ -8508,6 +8508,7 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   }
 }
 .upf-banner {
+  position: relative;
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-px-18);
@@ -8517,6 +8518,15 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   border-color: var(--color-primary-500);
   background-color: var(--color-primary-50);
   transition: ease-in-out 0.25s;
+}
+.upf-banner--error {
+  border-color: var(--color-error-500);
+}
+.upf-banner--warning {
+  border-color: var(--color-warning-500);
+}
+.upf-banner--success {
+  border-color: var(--color-success-500);
 }
 .upf-banner--disabled {
   background-color: var(--color-gray-100);
@@ -8533,6 +8543,11 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 }
 .upf-banner--size-lg {
   padding: var(--spacing-px-24);
+}
+.upf-banner .upf-banner--feedback {
+  position: absolute;
+  bottom: calc(var(--spacing-px-24) * -1);
+  left: 0px;
 }
 .bg-color-white {
   background-color: var(--color-white);

@@ -84387,23 +84387,25 @@ require('@ember/-internals/bootstrap')
     }
   };
 });
-;define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/component", "@ember/utils", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _utils, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/component", "@ember/utils", "@glimmer/component", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_exports, _component, _utils, _component2, _inputContainer, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/utils",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/utils",0,"@glimmer/component",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 {{this.modifierClasses}}"
-              ...attributes>
+    <div class="upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 {{this.modifierClasses}}" ...attributes>
     {{#if (has-block "custom-icon")}}
       <div>{{yield to="custom-icon"}}</div>
     {{else if @icon}}
-      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}}
-                 class="upf-badge upf-badge--shape-round upf-badge--size-md" />
+      <OSS::Icon
+        @style={{fa-icon-style @icon}}
+        @icon={{fa-icon-value @icon}}
+        class="upf-badge upf-badge--shape-round upf-badge--size-md"
+      />
     {{else if @image}}
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
     {{/if}}
@@ -84426,12 +84428,16 @@ require('@ember/-internals/bootstrap')
     {{#if (has-block "actions")}}
       <div>{{yield to="actions"}}</div>
     {{/if}}
+    {{#if this.feedbackMessage.value}}
+      <div class="upf-banner--feedback font-color-{{this.feedbackMessage.type}}-500">
+        {{this.feedbackMessage.value}}
+      </div>
+    {{/if}}
   </div>
-  
   */
   {
-    "id": "Mzp7ZBRp",
-    "block": "[[[11,0],[16,0,[29,[\"upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 \",[30,0,[\"modifierClasses\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[12],[18,7,null],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,2]],null],[28,[37,5],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[15,0,[29,[\"fx-col fx-1 \",[52,[28,[37,6],[[30,4],\"sm\"],null],\"fx-gap-px-3\"]]]],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,5]],[13],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"          \"],[18,8,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@size\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&title-suffix\",\"&secondary-actions\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"not-eq\"]]",
+    "id": "96PI9Hfb",
+    "block": "[[[11,0],[16,0,[29,[\"upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 \",[30,0,[\"modifierClasses\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[12],[18,7,null],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,2]],null],[28,[37,5],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[15,0,[29,[\"fx-col fx-1 \",[52,[28,[37,6],[[30,4],\"sm\"],null],\"fx-gap-px-3\"]]]],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,5]],[13],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"          \"],[18,8,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"feedbackMessage\",\"value\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"upf-banner--feedback font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"]]],[12],[1,\"\\n      \"],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@icon\",\"@image\",\"@size\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&title-suffix\",\"&secondary-actions\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"not-eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/banner.hbs",
     "isStrictMode": false
   });
@@ -84452,8 +84458,21 @@ require('@ember/-internals/bootstrap')
     get sizeClass() {
       return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
     }
+    get feedbackMessage() {
+      if (this.args.feedbackMessage && _inputContainer.FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
+        return this.args.feedbackMessage;
+      }
+      return undefined;
+    }
+    get borderColorClass() {
+      if (this.feedbackMessage) return `upf-banner--${this.feedbackMessage.type}`;
+      return '';
+    }
+    get feedbackMarginClass() {
+      return this.feedbackMessage?.value ? 'margin-bottom-px-24' : '';
+    }
     get modifierClasses() {
-      return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass].filter(mc => !(0, _utils.isBlank)(mc)).join(' ');
+      return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass, this.borderColorClass, this.feedbackMarginClass].filter(mc => !(0, _utils.isBlank)(mc)).join(' ');
     }
   }
   _exports.default = OSSBanner;
@@ -84468,6 +84487,7 @@ require('@ember/-internals/bootstrap')
   _exports.default = _exports.UsageWithImage = _exports.UsageWithIcon = _exports.UsageWithCustomTitle = _exports.UsageWithCustomIcon = _exports.UsageWithActionsBlock = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const COMPONENT_SIZES = ['sm', 'md', 'lg'];
+  const FEEDBACK_TYPES = ['error', 'warning', 'success'];
   var _default = _exports.default = {
     title: 'Components/OSS::Banner',
     component: 'banner',
@@ -84570,8 +84590,22 @@ require('@ember/-internals/bootstrap')
           type: 'boolean'
         }
       },
+      feedbackMessage: {
+        description: 'A feedback message that will be displayed below the banner. Its color changes based on its type',
+        table: {
+          type: {
+            summary: `{ type: ${FEEDBACK_TYPES.join(' | ')}, value: string }`
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
       size: {
-        description: 'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`.',
+        description: 'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`',
         table: {
           type: COMPONENT_SIZES.join('|'),
           defaultValue: {
@@ -84587,7 +84621,7 @@ require('@ember/-internals/bootstrap')
     parameters: {
       docs: {
         description: {
-          component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle.'
+          component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle'
         },
         iframeHeight: 120
       }
@@ -84601,6 +84635,7 @@ require('@ember/-internals/bootstrap')
     plain: false,
     selected: false,
     disabled: false,
+    feedbackMessage: undefined,
     size: undefined
   };
   const Template = args => ({
@@ -84608,12 +84643,13 @@ require('@ember/-internals/bootstrap')
     /*
       
           <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}} />
+                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                       @feedbackMessage={{this.feedbackMessage}} />
       
     */
     {
-      "id": "aOE+1ymM",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\"]]",
+      "id": "VT2lD9qX",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\",\"@feedbackMessage\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]],[30,0,[\"feedbackMessage\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/banner.stories.js",
       "isStrictMode": false
     }),
@@ -84624,7 +84660,8 @@ require('@ember/-internals/bootstrap')
     /*
       
           <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                       @feedbackMessage={{this.feedbackMessage}}>
             <:title-suffix>
               <div class="fx-row fx-gap-px-6 fx-xalign-center">
                 <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
@@ -84634,8 +84671,8 @@ require('@ember/-internals/bootstrap')
       
     */
     {
-      "id": "AJqPnyvw",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"title-suffix\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\"],[\"fa-users\"]],null],[1,\" \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/icon\"]]",
+      "id": "60aQjU2h",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\",\"@feedbackMessage\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]],[30,0,[\"feedbackMessage\"]]]],[[\"title-suffix\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\"],[\"fa-users\"]],null],[1,\" \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/icon\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/banner.stories.js",
       "isStrictMode": false
     }),
@@ -84646,7 +84683,8 @@ require('@ember/-internals/bootstrap')
     /*
       
           <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                       @feedbackMessage={{this.feedbackMessage}}>
             <:custom-icon>
               <OSS::Badge @icon="fas fa-check" />
             </:custom-icon>
@@ -84654,8 +84692,8 @@ require('@ember/-internals/bootstrap')
       
     */
     {
-      "id": "VT27qGJw",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"custom-icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fas fa-check\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/badge\"]]",
+      "id": "33wpv3bV",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\",\"@feedbackMessage\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]],[30,0,[\"feedbackMessage\"]]]],[[\"custom-icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fas fa-check\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/badge\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/banner.stories.js",
       "isStrictMode": false
     }),
@@ -84666,7 +84704,8 @@ require('@ember/-internals/bootstrap')
     /*
       
           <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+                       @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                       @feedbackMessage={{this.feedbackMessage}}>
             <:actions>
               <OSS::Button @label="Click me" />
             </:actions>
@@ -84674,8 +84713,8 @@ require('@ember/-internals/bootstrap')
       
     */
     {
-      "id": "9Qu9yFQz",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Click me\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/button\"]]",
+      "id": "QQBkS6/w",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\",\"@feedbackMessage\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]],[30,0,[\"feedbackMessage\"]]]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Click me\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/button\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/banner.stories.js",
       "isStrictMode": false
     }),
@@ -90886,7 +90925,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.AutocompleteValues = void 0;
+  _exports.default = _exports.FEEDBACK_TYPES = _exports.AutocompleteValues = void 0;
   var _class;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/runloop",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
@@ -90943,10 +90982,11 @@ interface OSSCodeBlockArgs {
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-container.hbs",
     "isStrictMode": false
   });
+  const FEEDBACK_TYPES = _exports.FEEDBACK_TYPES = ['error', 'warning', 'success'];
   const AutocompleteValues = _exports.AutocompleteValues = ['on', 'off'];
   let OSSInputContainer = _exports.default = (_class = class OSSInputContainer extends _component2.default {
     get feedbackMessage() {
-      if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+      if (this.args.feedbackMessage && FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
         return this.args.feedbackMessage;
       }
       return undefined;
