@@ -1,6 +1,8 @@
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
-import { FEEDBACK_TYPES, type FeedbackMessage } from './input-container';
+
+import type { FeedbackMessage } from '@upfluence/oss-components/types';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 type SizeType = 'sm' | 'md' | 'lg';
 
@@ -35,7 +37,7 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
   }
 
   get feedbackMessage(): FeedbackMessage | undefined {
-    if (this.args.feedbackMessage && FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
+    if (this.args.feedbackMessage && ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.args.feedbackMessage.type)) {
       return this.args.feedbackMessage;
     }
     return undefined;
