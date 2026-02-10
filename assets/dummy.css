@@ -7522,6 +7522,7 @@ div.upf-image {
 .upf-infinite-select {
   height: 100%;
   width: 100%;
+  overscroll-behavior: contain;
 }
 .upf-infinite-select ul {
   padding: 0;
@@ -7564,7 +7565,6 @@ div.upf-image {
 .upf-infinite-select__items-container {
   margin: 0;
   overflow: hidden auto;
-  overscroll-behavior: contain;
 }
 .upf-infinite-select__item {
   border-radius: var(--border-radius-sm);
