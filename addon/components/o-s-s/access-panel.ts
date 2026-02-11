@@ -2,11 +2,13 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { later } from '@ember/runloop';
+import { isBlank } from '@ember/utils';
 
 interface OSSAccessPanelArgs {
   records: unknown[];
   initialLoad: boolean;
   loading?: boolean;
+  filtered?: boolean;
   onBottomReached(): void;
   onClose(): void;
   onSearch?(keyword: string): void;
@@ -18,12 +20,12 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
 
   @tracked searchKeyword: string = '';
 
-  get displayEmptyState(): boolean {
-    return (this.args.records || []).length === 0 && !this.args.loading;
+  get filtered(): boolean {
+    return this.args.filtered || !isBlank(this.searchKeyword);
   }
 
-  get hasNoKeyword(): boolean {
-    return !this.searchKeyword;
+  get displayEmptyState(): boolean {
+    return (this.args.records || []).length === 0 && !this.args.loading;
   }
 
   @action
