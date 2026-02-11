@@ -1,7 +1,11 @@
 <div class="fx-row fx-1 tab-container">
   {{#each @tabArray as |tab|}}
-    <button type="button" class="fx-col tab {{if tab.selected "tab--selected"}} {{if tab.disabled "tab--disabled"}}"
-            {{on "click" (fn this.onSelectTab tab)}} disabled={{tab.disabled}}>
+    <button
+      type="button"
+      class="fx-col tab {{if tab.selected 'tab--selected'}} {{if tab.disabled 'tab--disabled'}}"
+      {{on "click" (fn this.onSelectTab tab)}}
+      disabled={{tab.disabled}}
+    >
       <div class="fx-row tab-content fx-xalign-center fx-gap-px-9">
         {{#if tab.icon}}
           <OSS::Icon @style={{fa-icon-style tab.icon}} @icon={{fa-icon-value tab.icon}} />
@@ -14,6 +18,9 @@
         {{/if}}
         {{#if tab.notificationDot}}
           <OSS::Icon @style="solid" @icon="fa-circle" class="font-color-accent text-size-1" />
+        {{/if}}
+        {{#if tab.tag}}
+          <OSS::Tag @label={{tab.tag.label}} @skin={{tab.tag.skin}} @plain={{tab.tag.plain}} />
         {{/if}}
       </div>
     </button>

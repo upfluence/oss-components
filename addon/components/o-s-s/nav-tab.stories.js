@@ -19,7 +19,7 @@ export default {
     tabArray: {
       type: { required: true },
       description:
-        'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> @label or @icon is mandatory for each element of tabArray',
+        'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> -tag: OSS::Tag arg; <br/> @label or @icon is mandatory for each element of tabArray',
       table: {
         type: {
           summary: 'TabDefinition[]'
@@ -40,7 +40,15 @@ const defaultArgs = {
     { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
     { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
     { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
-    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true }
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true },
+    {
+      label: 'Tab',
+      icon: 'far fa-thumbs-up',
+      infoCircle: true,
+      notificationDot: true,
+      selected: true,
+      tag: { label: 'X', skin: 'danger' }
+    }
   ],
   onSelection: action('onSelection')
 };
