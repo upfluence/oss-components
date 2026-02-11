@@ -11431,6 +11431,30 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         assert.dom('.tab-container .tab').exists();
         assert.dom('.tab-content .fas.fa-circle').exists();
       });
+      (0, _qunit.test)('Tab tag displays properly', async function (assert) {
+        this.tabArray.push({
+          label: 'Tab',
+          tag: {
+            label: '1',
+            skin: 'danger'
+          }
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />
+        */
+        {
+          "id": "JcLT9YB4",
+          "block": "[[[8,[39,0],null,[[\"@tabArray\",\"@onSelection\"],[[30,0,[\"tabArray\"]],[30,0,[\"onSelection\"]]]],null]],[],false,[\"o-s-s/nav-tab\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/nav-tab-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.tab-container').exists();
+        assert.dom('.tab-container .tab').exists();
+        assert.dom('.tab-container .upf-tag').exists();
+        assert.dom('.tab-container .upf-tag').hasText('1');
+        assert.dom('.tab-container .upf-tag').hasClass('upf-tag--critical');
+      });
       (0, _qunit.test)('Tab displays selected state properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',

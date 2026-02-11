@@ -93458,7 +93458,7 @@ interface OSSCodeBlockArgs {
     size: undefined
   };
 });
-;define("@upfluence/oss-components/components/o-s-s/nav-tab", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _object, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/nav-tab", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _debug, _object, _component2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -93466,14 +93466,18 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-row fx-1 tab-container">
     {{#each @tabArray as |tab|}}
-      <button type="button" class="fx-col tab {{if tab.selected "tab--selected"}} {{if tab.disabled "tab--disabled"}}"
-              {{on "click" (fn this.onSelectTab tab)}} disabled={{tab.disabled}}>
+      <button
+        type="button"
+        class="fx-col tab {{if tab.selected 'tab--selected'}} {{if tab.disabled 'tab--disabled'}}"
+        {{on "click" (fn this.onSelectTab tab)}}
+        disabled={{tab.disabled}}
+      >
         <div class="fx-row tab-content fx-xalign-center fx-gap-px-9">
           {{#if tab.icon}}
             <OSS::Icon @style={{fa-icon-style tab.icon}} @icon={{fa-icon-value tab.icon}} />
@@ -93487,15 +93491,17 @@ interface OSSCodeBlockArgs {
           {{#if tab.notificationDot}}
             <OSS::Icon @style="solid" @icon="fa-circle" class="font-color-accent text-size-1" />
           {{/if}}
+          {{#if tab.tag}}
+            <OSS::Tag @label={{tab.tag.label}} @skin={{tab.tag.skin}} @plain={{tab.tag.plain}} />
+          {{/if}}
         </div>
       </button>
     {{/each}}
   </div>
-  
   */
   {
-    "id": "prOBJFU9",
-    "block": "[[[10,0],[14,0,\"fx-row fx-1 tab-container\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,1]],null]],null],null,[[[1,\"    \"],[11,\"button\"],[16,0,[29,[\"fx-col tab \",[52,[30,2,[\"selected\"]],\"tab--selected\"],\" \",[52,[30,2,[\"disabled\"]],\"tab--disabled\"]]]],[16,\"disabled\",[30,2,[\"disabled\"]]],[24,4,\"button\"],[4,[38,3],[\"click\",[28,[37,4],[[30,0,[\"onSelectTab\"]],[30,2]],null]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row tab-content fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,2,[\"icon\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,2,[\"icon\"]]],null],[28,[37,7],[[30,2,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"label\"]],[[[1,\"          \"],[10,1],[14,0,\"text-size-6\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"infoCircle\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"notificationDot\"]],[[[1,\"          \"],[8,[39,5],[[24,0,\"font-color-accent text-size-1\"]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[2]],null],[13],[1,\"\\n\"]],[\"@tabArray\",\"tab\"],false,[\"each\",\"-track-array\",\"if\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "gQMLed2l",
+    "block": "[[[10,0],[14,0,\"fx-row fx-1 tab-container\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,1]],null]],null],null,[[[1,\"    \"],[11,\"button\"],[16,0,[29,[\"fx-col tab \",[52,[30,2,[\"selected\"]],\"tab--selected\"],\" \",[52,[30,2,[\"disabled\"]],\"tab--disabled\"]]]],[16,\"disabled\",[30,2,[\"disabled\"]]],[24,4,\"button\"],[4,[38,3],[\"click\",[28,[37,4],[[30,0,[\"onSelectTab\"]],[30,2]],null]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row tab-content fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,2,[\"icon\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,2,[\"icon\"]]],null],[28,[37,7],[[30,2,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"label\"]],[[[1,\"          \"],[10,1],[14,0,\"text-size-6\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"infoCircle\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"notificationDot\"]],[[[1,\"          \"],[8,[39,5],[[24,0,\"font-color-accent text-size-1\"]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"tag\"]],[[[1,\"          \"],[8,[39,8],null,[[\"@label\",\"@skin\",\"@plain\"],[[30,2,[\"tag\",\"label\"]],[30,2,[\"tag\",\"skin\"]],[30,2,[\"tag\",\"plain\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[2]],null],[13]],[\"@tabArray\",\"tab\"],false,[\"each\",\"-track-array\",\"if\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/nav-tab.hbs",
     "isStrictMode": false
   });
@@ -93540,7 +93546,7 @@ interface OSSCodeBlockArgs {
         type: {
           required: true
         },
-        description: 'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> @label or @icon is mandatory for each element of tabArray',
+        description: 'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> -tag: OSS::Tag arg; <br/> @label or @icon is mandatory for each element of tabArray',
         table: {
           type: {
             summary: 'TabDefinition[]'
@@ -93591,6 +93597,16 @@ interface OSSCodeBlockArgs {
       notificationDot: true,
       selected: true,
       disabled: true
+    }, {
+      label: 'Tab',
+      icon: 'far fa-thumbs-up',
+      infoCircle: true,
+      notificationDot: true,
+      selected: true,
+      tag: {
+        label: 'X',
+        skin: 'danger'
+      }
     }],
     onSelection: (0, _addonActions.action)('onSelection')
   };
