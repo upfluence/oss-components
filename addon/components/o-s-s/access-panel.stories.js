@@ -36,6 +36,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    filtered: {
+      description: 'Whether the records displayed are filtered by the parent or not',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: { type: 'boolean' }
+    },
     onBottomReached: {
       description: 'Function triggered when the user scrolls to the bottom of the panel.',
       table: {
@@ -80,6 +90,7 @@ const defaultArgs = {
   records: [{ label: 'foo' }, { label: 'bar' }],
   initialLoad: false,
   loading: false,
+  filtered: undefined,
   onBottomReached: action('onBottomReached'),
   onClose: action('onClose'),
   onSearch: action('onSearch')
@@ -123,6 +134,29 @@ const CustomContentTemplate = (args) => ({
   context: args
 });
 
+const CustomLoadingStatesTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+      <OSS::AccessPanel
+        @records={{this.records}}
+        @initialLoad={{this.initialLoad}}
+        @loading={{this.loading}}
+        @onBottomReached={{this.onBottomReached}}
+        @onClose={{this.onClose}}
+        @onSearch={{this.onSearch}}
+      >
+        <:header>Header</:header>
+        <:empty-state>Empty state</:empty-state>
+        <:columns>Columns</:columns>
+        <:no-results>No results</:no-results>
+        <:row as |record|>{{record.label}}</:row>
+        <:row-skeleton>Loading...</:row-skeleton>
+      </OSS::AccessPanel>
+    </div>
+  `,
+  context: args
+});
+
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = defaultArgs;
 
@@ -139,6 +173,13 @@ SearchDisabled.args = {
 
 export const LoadingState = DefaultUsageTemplate.bind({});
 LoadingState.args = {
+  ...defaultArgs,
+  loading: true,
+  initialLoad: false
+};
+
+export const CustomLoadingState = CustomLoadingStatesTemplate.bind({});
+CustomLoadingState.args = {
   ...defaultArgs,
   loading: true,
   initialLoad: false

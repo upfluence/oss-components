@@ -6,7 +6,7 @@
     </div>
   {{/if}}
 
-  {{#if (and this.displayEmptyState this.hasNoKeyword)}}
+  {{#if (and this.displayEmptyState (not this.filtered))}}
     <div class="fx-1">
       {{yield to="empty-state"}}
     </div>
@@ -27,20 +27,28 @@
         <div class="oss-access-panel-container__rows-header">
           {{yield to="columns"}}
         </div>
-
-        <hr />
       {{/if}}
 
-      {{#if (and this.displayEmptyState this.searchKeyword)}}
+      {{#if (and this.displayEmptyState this.filtered)}}
         {{yield to="no-results"}}
       {{else}}
-        <div class="oss-access-panel-container__rows-container" {{on-bottom-reached @onBottomReached}}>
+        <div
+          class="oss-access-panel-container__rows-container"
+          {{on-bottom-reached @onBottomReached}}
+          {{scroll-shadow}}
+        >
           {{#if (and @loading @initialLoad)}}
             {{#each this.loadingRows}}
-              <div class="oss-access-panel-container__row fx-malign-space-between">
-                <OSS::Skeleton @height={{12}} @width={{150}} />
-                <OSS::Skeleton @height={{12}} @width={{36}} />
-              </div>
+              {{#if (has-block "row-skeleton")}}
+                <div class="oss-access-panel-container__row">
+                  {{yield to="row-skeleton"}}
+                </div>
+              {{else}}
+                <div class="oss-access-panel-container__row fx-malign-space-between">
+                  <OSS::Skeleton @height={{12}} @width={{150}} />
+                  <OSS::Skeleton @height={{12}} @width={{36}} />
+                </div>
+              {{/if}}
             {{/each}}
           {{else}}
             {{#each @records as |record|}}
@@ -56,10 +64,16 @@
 
             {{#if @loading}}
               {{#each this.loadingMoreRows}}
-                <div class="oss-access-panel-container__row fx-malign-space-between">
-                  <OSS::Skeleton @height={{12}} @width={{150}} />
-                  <OSS::Skeleton @height={{12}} @width={{36}} />
-                </div>
+                {{#if (has-block "row-skeleton")}}
+                  <div class="oss-access-panel-container__row">
+                    {{yield to="row-skeleton"}}
+                  </div>
+                {{else}}
+                  <div class="oss-access-panel-container__row fx-malign-space-between">
+                    <OSS::Skeleton @height={{12}} @width={{150}} />
+                    <OSS::Skeleton @height={{12}} @width={{36}} />
+                  </div>
+                {{/if}}
               {{/each}}
             {{/if}}
           {{/if}}
