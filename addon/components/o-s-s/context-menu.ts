@@ -8,7 +8,7 @@ export type ContextMenuItem = {
   items?: ContextMenuItem[];
   groupKey?: string;
   rowRenderer?: ReturnType<typeof ensureSafeComponent>;
-  action: () => void | boolean;
+  action: (event?: MouseEvent) => void | boolean;
   [key: string]: unknown;
 };
 
