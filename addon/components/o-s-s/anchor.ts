@@ -4,8 +4,10 @@ import RouterService from '@ember/routing/router-service';
 
 interface OSSAnchorArgs {
   link: string;
+  routePrefix?: string;
   noopener?: boolean;
   noreferrer?: boolean;
+  disableAutoActive?: boolean;
 }
 
 export default class OSSAnchor extends Component<OSSAnchorArgs> {
@@ -17,6 +19,10 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
 
   get noreferrer(): boolean {
     return this.args.noreferrer ?? true;
+  }
+
+  get currentWhen(): boolean | undefined {
+    return this.args.disableAutoActive !== undefined ? !this.args.disableAutoActive : undefined;
   }
 
   get rel(): string {
@@ -34,8 +40,9 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
   }
 
   get isInternalRoute(): boolean {
+    const route = this.args.routePrefix ? this.args.routePrefix + '.' + this.args.link : this.args.link;
     try {
-      return Boolean(this.router.urlFor(this.args.link));
+      return Boolean(this.router.urlFor(route));
     } catch (error) {
       return false;
     }
