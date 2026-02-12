@@ -136,8 +136,9 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   }
 
   @action
-  callAction(action: ContextMenuItem['action']): void {
-    const returnValue = action?.();
+  callAction(action: ContextMenuItem['action'], eventOrValue?: MouseEvent | boolean): void {
+    const event = eventOrValue instanceof MouseEvent ? eventOrValue : undefined;
+    const returnValue = action?.(event);
     if (returnValue !== false) {
       this.args.onClose?.();
     }
