@@ -20,6 +20,7 @@ const SkinTypes = [
 ];
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
+const GapTypes = ['fx-gap-px-3', 'fx-gap-px-6', 'fx-gap-px-9', 'fx-gap-px-12', 'fx-gap-px-18', 'fx-gap-px-24'];
 
 export default {
   title: 'Components/OSS::Button',
@@ -97,6 +98,25 @@ export default {
         type: 'text'
       }
     },
+    suffixIcon: {
+      description: 'Font Awesome class for an icon displayed after the label (e.g. fas fa-chevron-down)',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
+    gap: {
+      description: 'Gap between icon, label, and suffix icon. Must be a valid fx-gap-px-* class. Defaults to fx-gap-px-6.',
+      table: {
+        type: { summary: GapTypes.join('|') },
+        defaultValue: { summary: 'fx-gap-px-6' }
+      },
+      options: GapTypes,
+      control: { type: 'select' }
+    },
     square: {
       description: 'Displays the button as a square. Useful for icon buttons.',
       table: {
@@ -164,6 +184,8 @@ const defaultArgs = {
   countDown: undefined,
   loadingOptions: undefined,
   iconUrl: undefined,
+  suffixIcon: undefined,
+  gap: undefined,
   disabled: undefined
 };
 
@@ -172,7 +194,8 @@ const Template = (args) => ({
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
       @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
+      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}} @gap={{this.gap}}
+      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
   `,
   context: args
 });
@@ -199,5 +222,21 @@ WithIconUrl.args = {
   ...{
     icon: undefined,
     iconUrl: '/@upfluence/oss-components/assets/heart.svg'
+  }
+};
+
+export const WithSuffixIcon = Template.bind({});
+WithSuffixIcon.args = {
+  ...defaultArgs,
+  ...{
+    suffixIcon: 'fas fa-chevron-down'
+  }
+};
+
+export const WithCustomGap = Template.bind({});
+WithCustomGap.args = {
+  ...defaultArgs,
+  ...{
+    gap: 'fx-gap-px-12'
   }
 };

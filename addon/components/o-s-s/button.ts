@@ -36,6 +36,17 @@ type ThemeDefType = {
 };
 type LoadingOptions = { showLabel?: boolean };
 
+const VALID_GAP_CLASSES = [
+  'fx-gap-px-3',
+  'fx-gap-px-6',
+  'fx-gap-px-9',
+  'fx-gap-px-12',
+  'fx-gap-px-18',
+  'fx-gap-px-24'
+] as const;
+
+export type GapClassType = (typeof VALID_GAP_CLASSES)[number];
+
 const SkinDefinition: SkinDefType = {
   default: 'default',
   primary: 'primary',
@@ -77,6 +88,8 @@ export interface OSSButtonArgs {
   loadingOptions?: LoadingOptions;
   icon?: string;
   iconUrl?: string;
+  suffixIcon?: string;
+  gap?: GapClassType;
   label?: string;
   theme?: string;
   square?: boolean;
@@ -106,6 +119,10 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
       "[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.",
       args.countDown ? args.countDown.callback : true
     );
+    assert(
+      '[component][OSS::Button] When @gap is provided, it must be a valid fx-gap-px-* class.',
+      !this.args.gap || VALID_GAP_CLASSES.includes(this.args.gap)
+    );
   }
 
   get skin(): string {
@@ -128,6 +145,10 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
     }
 
     return this.args.theme;
+  }
+
+  get suffixGapClass(): string {
+    return this.args.gap ?? 'fx-gap-px-6';
   }
 
   get computedClass() {

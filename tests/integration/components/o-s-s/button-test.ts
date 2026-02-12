@@ -50,6 +50,23 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn').hasText('Test');
   });
 
+  test('it applies custom gap when @gap is provided', async function (assert) {
+    await render(hbs`<OSS::Button @label="Test" @suffixIcon="fas fa-chevron-down" @gap="fx-gap-px-12" />`);
+
+    assert.dom('.upf-btn .fx-row').hasClass('fx-gap-px-12');
+  });
+
+  test('it fails when an invalid @gap class is provided', async function (assert) {
+    setupOnerror((err: { message: string }) => {
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::Button] When @gap is provided, it must be a valid fx-gap-px-* class.'
+      );
+    });
+
+    await render(hbs`<OSS::Button @label="Test" @gap="fx-gap-px-99" />`);
+  });
+
   module('it renders with the correct skin', function () {
     test('when using an unknown skin, it is set to default', async function (assert) {
       await render(hbs`<OSS::Button @skin="unknown" @label="Test" />`);
@@ -138,7 +155,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
       assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-      assert.dom('.upf-btn span.margin-left-px-6').doesNotExist();
+      assert.dom('.upf-btn span').doesNotExist();
     });
 
     test('when loading and the showLabel loading option is truthy, the label is displayed', async function (assert) {
@@ -148,8 +165,8 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
       assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-      assert.dom('.upf-btn span.margin-left-px-6').exists();
-      assert.dom('.upf-btn span.margin-left-px-6').hasText('Test');
+      assert.dom('.upf-btn span').exists();
+      assert.dom('.upf-btn span').hasText('Test');
     });
   });
 
