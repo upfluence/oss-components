@@ -20,6 +20,7 @@ const SkinTypes = [
   'xtd-violet'
 ];
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
+const GapTypes = ['fx-gap-px-3', 'fx-gap-px-6', 'fx-gap-px-9', 'fx-gap-px-12', 'fx-gap-px-18', 'fx-gap-px-24'];
 const ThemeTypes = ['light', 'dark'];
 
 export default {
@@ -152,6 +153,15 @@ export default {
         type: 'boolean'
       }
     },
+    chevronGap: {
+      description: 'Gap between label and chevron. Must be a valid fx-gap-px-* class. Same type as OSS::Button @gap.',
+      table: {
+        type: { summary: 'GapClassType' },
+        defaultValue: { summary: 'fx-gap-px-6' }
+      },
+      options: GapTypes,
+      control: { type: 'select' }
+    },
     closeOnMouseLeave: {
       type: { required: false },
       description: 'If true, the menu will close when the mouse leaves the panel',
@@ -231,6 +241,7 @@ const Template = (args) => ({
                                   @loadingOptions={{this.loadingOptions}}
                                   @iconUrl={{this.iconUrl}}
                                   @size={{this.size}}
+                                  @chevronGap={{this.chevronGap}}
                                   disabled={{this.disabled}}
                                   @closeOnMouseLeave={{this.closeOnMouseLeave}}
                                   @onMenuOpened={{this.onMenuOpened}}

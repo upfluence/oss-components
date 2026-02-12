@@ -1,8 +1,10 @@
 import Component from '@glimmer/component';
-import type { OSSButtonArgs } from './button';
+import type { OSSButtonArgs, GapClassType } from './button';
 import type { ensureSafeComponent } from '@embroider/util';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+
+export type { GapClassType } from './button';
 
 export type ContextMenuItem = {
   items?: ContextMenuItem[];
@@ -14,6 +16,7 @@ export type ContextMenuItem = {
 
 interface OSSContextMenuArgs extends OSSButtonArgs {
   items: ContextMenuItem[];
+  chevronGap?: GapClassType;
   closeOnMouseLeave?: boolean;
   onMenuOpened?: () => {};
   onMenuClosed?: () => {};

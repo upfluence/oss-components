@@ -22,6 +22,26 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
     assert.dom('[data-control-name="context-menu"]').hasText(this.label);
   });
 
+  test('it shows chevron-down when closed and chevron-up when open', async function (assert) {
+    this.items = [{ title: 'Item', action: () => {} }];
+    await render(
+      hbs`<OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>`
+    );
+    assert.dom('button i.fa-chevron-down').exists();
+    assert.dom('button i.fa-chevron-up').doesNotExist();
+    await click('button');
+    assert.dom('button i.fa-chevron-up').exists();
+    assert.dom('button i.fa-chevron-down').doesNotExist();
+  });
+
+  test('it accepts chevronGap argument', async function (assert) {
+    this.items = [{ title: 'Item', action: () => {} }];
+    await render(
+      hbs`<OSS::ContextMenu @label={{this.label}} @items={{this.items}} @chevronGap="fx-gap-px-12" data-control-name="context-menu"/>`
+    );
+    assert.dom('button .fx-gap-px-12').exists();
+  });
+
   module('It accepts same arguments as OSSButton component', function () {
     test('it accepts label argument', async function (assert) {
       this.label = 'first';
@@ -54,7 +74,8 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
       );
       assert.dom('button i').hasClass('fa-circle-notch').hasClass('fa-spin');
       this.set('loading', false);
-      assert.dom('button i').doesNotExist();
+      assert.dom('button i.fa-circle-notch').doesNotExist();
+      assert.dom('button i.fa-chevron-down').exists();
     });
 
     test('it accepts loadingOptions argument', async function (assert) {
