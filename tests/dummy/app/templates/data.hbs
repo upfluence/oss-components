@@ -65,7 +65,7 @@
       Scrollable panel
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="height: 300px; width: 500px;">
+      {{!-- <div class="fx-row fx-gap-px-24 fx-xalign-start" style="height: 300px; width: 500px;">
         <OSS::ScrollablePanel>
           <div class="fx-col fx-gap-px-6">
             {{#each this.loop}}
@@ -82,17 +82,20 @@
             {{/each}}
           </div>
         </OSS::ScrollablePanel>
-      </div>
+      </div> --}}
       <div class="fx-row fx-gap-px-24 fx-xalign-start" style="width: 500px;">
-        <OSS::ScrollablePanel @plain={{true}} @horizontal={{true}} @hideScrollbar={{true}}>
+        <OSS::ScrollablePanel @plain={{true}} @horizontal={{true}} @hideScrollbar={{true}} @disableScrollShadows={{true}} @displayScrollArrows={{true}}>
           <div class="fx-row fx-gap-px-6" style="width: fit-content;">
-            {{#each this.loop}}
-              <OSS::Tag @label="toto" />
+            {{#each this.loop as |item index|}}
+              {{!-- <OSS::Tag @label={{concat "nb:" index}} /> --}}
+              <OSS::Button @label={{concat "nb:" index}} />
             {{/each}}
           </div>
         </OSS::ScrollablePanel>
       </div>
     </div>
+    <OSS::Button {{on "click" this.addToLoop}} @label="Add item to loop" />
+    loop count: {{this.loop.length}}
   </div>
 
   <div
