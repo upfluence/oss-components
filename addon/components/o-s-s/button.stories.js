@@ -109,7 +109,8 @@ export default {
       }
     },
     gap: {
-      description: 'Gap between icon, label, and suffix icon. Must be a valid fx-gap-px-* class. Defaults to fx-gap-px-6.',
+      description:
+        'Gap between icon, label, and suffix icon. Must be a valid fx-gap-px-* class. Defaults to fx-gap-px-6.',
       table: {
         type: { summary: GapTypes.join('|') },
         defaultValue: { summary: 'fx-gap-px-6' }
