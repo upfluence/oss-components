@@ -41,7 +41,7 @@ export default class OSSContextMenuComponent extends Component<OSSContextMenuArg
   }
 
   @action
-  onContextMenuPanelMouseLeave(event: MouseEvent): void {
+  onContextMenuPanelMouseLeave(): void {
     if (!this.args.closeOnMouseLeave) return;
     this.hideContextMenuPanel();
   }
