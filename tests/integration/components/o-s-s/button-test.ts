@@ -50,21 +50,16 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn').hasText('Test');
   });
 
-  test('it applies custom gap when @gap is provided', async function (assert) {
-    await render(hbs`<OSS::Button @label="Test" @suffixIcon="fas fa-chevron-down" @gap="fx-gap-px-12" />`);
+  test('it applies margin-left-px-6 to suffix icon when label is present', async function (assert) {
+    await render(hbs`<OSS::Button @label="Test" @suffixIcon="fas fa-chevron-down" />`);
 
-    assert.dom('.upf-btn .fx-row').hasClass('fx-gap-px-12');
+    assert.dom('.upf-btn i.fa-chevron-down').hasClass('margin-left-px-6');
   });
 
-  test('it fails when an invalid @gap class is provided', async function (assert) {
-    setupOnerror((err: { message: string }) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::Button] When @gap is provided, it must be a valid fx-gap-px-* class.'
-      );
-    });
+  test('it does not apply margin to suffix icon when label is absent', async function (assert) {
+    await render(hbs`<OSS::Button @suffixIcon="fas fa-chevron-down" @icon="fas fa-check" />`);
 
-    await render(hbs`<OSS::Button @label="Test" @gap="fx-gap-px-99" />`);
+    assert.dom('.upf-btn i.fa-chevron-down').doesNotHaveClass('margin-left-px-6');
   });
 
   module('it renders with the correct skin', function () {
