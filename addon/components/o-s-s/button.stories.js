@@ -97,6 +97,16 @@ export default {
         type: 'text'
       }
     },
+    suffixIcon: {
+      description: 'Font Awesome class for an icon displayed after the label (e.g. fas fa-chevron-down)',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
     square: {
       description: 'Displays the button as a square. Useful for icon buttons.',
       table: {
@@ -164,6 +174,7 @@ const defaultArgs = {
   countDown: undefined,
   loadingOptions: undefined,
   iconUrl: undefined,
+  suffixIcon: undefined,
   disabled: undefined
 };
 
@@ -172,7 +183,8 @@ const Template = (args) => ({
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
       @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
+      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
+      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
   `,
   context: args
 });
@@ -199,5 +211,13 @@ WithIconUrl.args = {
   ...{
     icon: undefined,
     iconUrl: '/@upfluence/oss-components/assets/heart.svg'
+  }
+};
+
+export const WithSuffixIcon = Template.bind({});
+WithSuffixIcon.args = {
+  ...defaultArgs,
+  ...{
+    suffixIcon: 'fas fa-chevron-down'
   }
 };
