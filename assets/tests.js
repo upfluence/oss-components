@@ -718,20 +718,31 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/service", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _service, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"@ember/service"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  class RoutingMock extends _service.default {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "currentState", 'index');
+      _defineProperty(this, "generateURL", _sinon.default.stub().returns('/'));
+      _defineProperty(this, "isActiveForRoute", _sinon.default.stub());
+    }
+  }
   (0, _qunit.module)('Integration | Component | o-s-s/anchor', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
       this.router = this.owner.lookup('service:router');
       this.transitionToStub = _sinon.default.stub(this.router, 'transitionTo');
     });
-    (0, _qunit.test)('When link is registered in router it renders as a anchor element', async function (assert) {
+    (0, _qunit.test)('When link is not registered in router it renders as a anchor element', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Anchor @link="http://www.google.fr" target="_blank" >test</OSS::Anchor>
+        <OSS::Anchor @link="http://www.google.fr" target="_blank">test</OSS::Anchor>
       */
       {
         "id": "P55/lmUh",
@@ -740,19 +751,75 @@ define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-
         "isStrictMode": false
       }));
       assert.dom('a').hasNoClass('ember-view');
+      assert.dom('a').hasAttribute('href', 'http://www.google.fr');
     });
-    (0, _qunit.test)('When link is registered in router it renders as a linkTo helper', async function (assert) {
-      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-      /*
-        <OSS::Anchor @link="index" >test</OSS::Anchor>
-      */
-      {
-        "id": "uh5pV7IZ",
-        "block": "[[[8,[39,0],null,[[\"@link\"],[\"index\"]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/anchor-test.ts",
-        "isStrictMode": false
-      }));
-      assert.dom('a').hasClass('ember-view');
+    (0, _qunit.module)('When link is registered in router', function (hooks) {
+      hooks.beforeEach(function () {
+        this.owner.register('service:-routing', RoutingMock);
+        this.routing = this.owner.lookup('service:-routing');
+      });
+      (0, _qunit.test)('When routePrefix is defined and an internal route is given, it renders as a linkTo helper', async function (assert) {
+        const urlForStub = _sinon.default.stub(this.router, 'urlFor').returns('/display');
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Anchor @link="index" @routePrefix="display">test</OSS::Anchor>
+        */
+        {
+          "id": "65LrNGXl",
+          "block": "[[[8,[39,0],null,[[\"@link\",\"@routePrefix\"],[\"index\",\"display\"]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/anchor-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(urlForStub.calledWithExactly('display.index'));
+        assert.dom('a').hasClass('ember-view');
+        assert.dom('a').hasAttribute('href', '/');
+      });
+      (0, _qunit.test)('With an internal route, it renders as a linkTo helper', async function (assert) {
+        const urlForSpy = _sinon.default.spy(this.router, 'urlFor');
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Anchor @link="index">test</OSS::Anchor>
+        */
+        {
+          "id": "uh5pV7IZ",
+          "block": "[[[8,[39,0],null,[[\"@link\"],[\"index\"]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/anchor-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(urlForSpy.calledWithExactly('index'));
+        assert.dom('a').hasClass('ember-view');
+        assert.dom('a').hasAttribute('href', '/');
+      });
+      (0, _qunit.test)('It renders as active by default when on the correct route', async function (assert) {
+        this.routing.isActiveForRoute.returns(true);
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Anchor @link="index">test</OSS::Anchor>
+        */
+        {
+          "id": "uh5pV7IZ",
+          "block": "[[[8,[39,0],null,[[\"@link\"],[\"index\"]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/anchor-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('a').hasClass('ember-view');
+        assert.dom('a').hasClass('active');
+      });
+      (0, _qunit.test)('When disableAutoActive is true and the route matches, it does not render as active', async function (assert) {
+        this.routing.isActiveForRoute.returns(false);
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Anchor @link="index" @disableAutoActive={{true}}>test</OSS::Anchor>
+        */
+        {
+          "id": "S47s78is",
+          "block": "[[[8,[39,0],null,[[\"@link\",\"@disableAutoActive\"],[\"index\",true]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/anchor-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('a').hasClass('ember-view');
+        assert.dom('a').doesNotHaveClass('active');
+      });
     });
   });
 });
@@ -9809,6 +9876,24 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
       });
     });
     (0, _qunit.module)('Named blocks', () => {
+      (0, _qunit.test)('The header named-block is properly displayed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Layout::Sidebar>
+                  <:header>
+                    <p>This is the header</p>
+                  </:header>
+                </OSS::Layout::Sidebar>
+        */
+        {
+          "id": "69RM5yQU",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,null,[[\"header\"],[[[[1,\"\\n            \"],[10,2],[12],[1,\"This is the header\"],[13],[1,\"\\n          \"]],[]]]]]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container__header').hasText('This is the header');
+      });
       (0, _qunit.test)('The content named-block is properly displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9949,12 +10034,73 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
         }));
         assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
         await (0, _testHelpers.click)('[data-control-name="sidebar-expanded-state-toggle"]');
-        await (0, _testHelpers.settled)();
         assert.dom('.oss-sidebar-container').doesNotHaveClass('oss-sidebar-container--expanded');
         assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
         await (0, _testHelpers.click)('[data-control-name="sidebar-expanded-state-toggle"]');
         assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
         assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
+      });
+    });
+    (0, _qunit.module)('AlwaysExpanded behavior', hooks => {
+      hooks.beforeEach(function () {
+        this.expandable = true;
+        this.homeParameters = {
+          logo: '/assets/images/brand-icon.svg',
+          url: '/home'
+        };
+      });
+      (0, _qunit.test)('the toggle button is not displayed when alwaysExpanded is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{this.expandable}} @alwaysExpanded={{true}} />
+        */
+        {
+          "id": "5OV3aLbO",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\",\"@alwaysExpanded\"],[[30,0,[\"homeParameters\"]],[30,0,[\"expandable\"]],true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container__expand').doesNotExist();
+      });
+      (0, _qunit.test)('the toggle button is displayed when alwaysExpanded is false', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{this.expandable}} />
+        */
+        {
+          "id": "00jghIea",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[30,0,[\"homeParameters\"]],[30,0,[\"expandable\"]]]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container__expand').exists();
+        assert.dom('.oss-sidebar-container__expand').hasText(this.intl.t('oss-components.sidebar.collapse'));
+      });
+      (0, _qunit.test)('the sidebar is expanded when alwaysExpanded is true and expandable is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{this.expandable}} @alwaysExpanded={{true}} />
+        */
+        {
+          "id": "5OV3aLbO",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\",\"@alwaysExpanded\"],[[30,0,[\"homeParameters\"]],[30,0,[\"expandable\"]],true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
+      });
+      (0, _qunit.test)('the sidebar is expanded when alwaysExpanded is true and expandable is false', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{false}} @alwaysExpanded={{true}} />
+        */
+        {
+          "id": "gaY61ZzU",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\",\"@alwaysExpanded\"],[[30,0,[\"homeParameters\"]],false,true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
       });
     });
   });
@@ -10114,7 +10260,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
     (0, _qunit.test)('it renders', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Layout::Sidebar::Item @icon="far fa-search" />
+        <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
       */
       {
         "id": "zRXo9p88",
@@ -10127,7 +10273,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
     (0, _qunit.test)('it renders the icon when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Layout::Sidebar::Item @icon="fal fa-search" />
+        <OSS::Layout::Sidebar::Item @icon="fal fa-search"/>
       */
       {
         "id": "olgroMY7",
@@ -10136,6 +10282,20 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         "isStrictMode": false
       }));
       assert.dom('.oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-search');
+    });
+    (0, _qunit.test)('it does not render the icon div when no icon is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Layout::Sidebar::Item />
+      */
+      {
+        "id": "PplAjQ9b",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-sidebar-item .oss-sidebar-item__icon').doesNotExist();
+      assert.dom('.oss-sidebar-item__label--no-icon').exists();
     });
     (0, _qunit.test)('it renders the icon named block instead of the icon argument when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -10155,7 +10315,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('Default value for locked is false', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
         */
         {
           "id": "zRXo9p88",
@@ -10168,7 +10328,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('When locked is true', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}}/>
         */
         {
           "id": "56tac0XL",
@@ -10181,7 +10341,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('Default value for hasNotification is false', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
         */
         {
           "id": "zRXo9p88",
@@ -10208,7 +10368,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         (0, _qunit.test)('the wrapper container is applied', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label" />
+            <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label"/>
           */
           {
             "id": "+pWc17XT",
@@ -10221,7 +10381,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         (0, _qunit.test)('the label is displayed', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label" />
+            <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label"/>
           */
           {
             "id": "+pWc17XT",
@@ -10244,7 +10404,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         const router = this.owner.lookup('service:router');
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}} />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}}/>
         */
         {
           "id": "IUtR/p3O",
@@ -10259,7 +10419,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('When locked is true lockedAction is triggered', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
         */
         {
           "id": "hO9alJPM",
@@ -10274,7 +10434,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('on click, when item is not locked, the action is called ', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{false}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} @action={{this.action}} />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{false}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} @action={{this.action}}/>
         */
         {
           "id": "GzbbhAEY",
@@ -10291,7 +10451,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('passing an extra class is applied to the component', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" class="my-extra-class" />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" class="my-extra-class"/>
         */
         {
           "id": "rLwL9Iqk",
@@ -10304,7 +10464,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('passing data-control-name works', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" data-control-name="layout-sidebar" />
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" data-control-name="layout-sidebar"/>
         */
         {
           "id": "MwyCNW+P",

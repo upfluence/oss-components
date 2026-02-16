@@ -14811,6 +14811,12 @@ a.upf-btn--sm {
 .oss-sidebar-container .logo-container .oss-sidebar-item img {
   overflow: hidden;
 }
+.oss-sidebar-container__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 .oss-sidebar-container__content {
   padding: var(--spacing-px-12) var(--spacing-px-9);
   display: flex;
@@ -14841,6 +14847,8 @@ a.oss-sidebar-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  min-width: 28px;
+  min-height: 28px;
   color: var(--sidebar-font-color);
   font-size: var(--font-size-sm);
   border-radius: var(--border-radius-sm);
@@ -14860,6 +14868,9 @@ a.oss-sidebar-item {
   overflow: hidden;
   white-space: nowrap;
   transition: width 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+.oss-sidebar-item__label--no-icon {
+  padding-left: var(--spacing-px-9);
 }
 .oss-sidebar-item__notification {
   width: 3px;

@@ -82055,14 +82055,14 @@ require('@ember/-internals/bootstrap')
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     {{#if this.isInternalRoute}}
-    <LinkTo @route={{@link}} rel={{this.rel}} ...attributes>{{yield}}</LinkTo>
+    <LinkTo @route={{@link}} @current-when={{this.currentWhen}} rel={{this.rel}} ...attributes>{{yield}}</LinkTo>
   {{else}}
     <a href={{@link}} rel={{this.rel}} ...attributes>{{yield}}</a>
   {{/if}}
   */
   {
-    "id": "ZCG9qkbK",
-    "block": "[[[41,[30,0,[\"isInternalRoute\"]],[[[1,\"  \"],[8,[39,1],[[16,\"rel\",[30,0,[\"rel\"]]],[17,1]],[[\"@route\"],[[30,2]]],[[\"default\"],[[[[18,3,null]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"  \"],[11,3],[16,6,[30,2]],[16,\"rel\",[30,0,[\"rel\"]]],[17,1],[12],[18,3,null],[13],[1,\"\\n\"]],[]]]],[\"&attrs\",\"@link\",\"&default\"],false,[\"if\",\"link-to\",\"yield\"]]",
+    "id": "KmC/CsF8",
+    "block": "[[[41,[30,0,[\"isInternalRoute\"]],[[[1,\"  \"],[8,[39,1],[[16,\"rel\",[30,0,[\"rel\"]]],[17,1]],[[\"@route\",\"@current-when\"],[[30,2],[30,0,[\"currentWhen\"]]]],[[\"default\"],[[[[18,3,null]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"  \"],[11,3],[16,6,[30,2]],[16,\"rel\",[30,0,[\"rel\"]]],[17,1],[12],[18,3,null],[13],[1,\"\\n\"]],[]]]],[\"&attrs\",\"@link\",\"&default\"],false,[\"if\",\"link-to\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/anchor.hbs",
     "isStrictMode": false
   });
@@ -82077,6 +82077,9 @@ require('@ember/-internals/bootstrap')
     get noreferrer() {
       return this.args.noreferrer ?? true;
     }
+    get currentWhen() {
+      return this.args.disableAutoActive !== undefined ? !this.args.disableAutoActive : undefined;
+    }
     get rel() {
       const relations = [];
       if (this.noopener) {
@@ -82088,8 +82091,9 @@ require('@ember/-internals/bootstrap')
       return relations.join(' ');
     }
     get isInternalRoute() {
+      const route = this.args.routePrefix ? this.args.routePrefix + '.' + this.args.link : this.args.link;
       try {
-        return Boolean(this.router.urlFor(this.args.link));
+        return Boolean(this.router.urlFor(route));
       } catch (error) {
         return false;
       }
@@ -82126,6 +82130,34 @@ require('@ember/-internals/bootstrap')
         },
         control: {
           type: 'text'
+        }
+      },
+      routePrefix: {
+        description: 'Optional route prefix (engine) name to use for routing',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: ''
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      disableAutoActive: {
+        description: 'Disables automatic active state based on current route',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
         }
       },
       noreferrer: {
@@ -82185,6 +82217,7 @@ require('@ember/-internals/bootstrap')
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = {
     link: 'https://www.upfluence.com',
+    disableAutoActive: false,
     noopener: true,
     noreferrer: true
   };
@@ -91593,7 +91626,11 @@ interface OSSCodeBlockArgs {
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class={{this.computedClasses}} ...attributes>
-    {{#if (or @homeParameters (and @logo @homeURL))}}
+    {{#if (has-block "header")}}
+      <div class="oss-sidebar-container__header">
+        {{yield (hash expanded=this.expanded) to="header"}}
+      </div>
+    {{else if (or @homeParameters (and @logo @homeURL))}}
       <div class="logo-container">
         <OSS::Layout::Sidebar::Item
           @link={{or @homeParameters.url @homeURL}}
@@ -91613,7 +91650,7 @@ interface OSSCodeBlockArgs {
         {{yield (hash expanded=this.expanded) to="content"}}
       </div>
   
-      {{#if @expandable}}
+      {{#if this.displayExpandedStateToggle}}
         <div class="oss-sidebar-container__expand">
           <OSS::Layout::Sidebar::Item
             @icon={{if this.expanded "fa-arrow-left-to-line" "fa-arrow-right-to-line"}}
@@ -91633,8 +91670,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "juIf0vcA",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[41,[28,[37,1],[[30,2],[28,[37,2],[[30,3],[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n      \"],[8,[39,3],[[24,\"data-control-name\",\"sidebar-home-route-item\"],[4,[38,4],null,[[\"title\",\"placement\"],[[30,2,[\"tooltip\"]],\"right\"]]]],[[\"@link\",\"@expanded\"],[[28,[37,1],[[30,2,[\"url\"]],[30,4]],null],[30,0,[\"expanded\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[10,\"img\"],[15,\"src\",[28,[37,1],[[30,2,[\"logo\"]],[30,3]],null]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-container__content\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-9 width-pc-100\"],[12],[1,\"\\n      \"],[18,6,[[28,[37,6],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-sidebar-container__expand\"],[12],[1,\"\\n        \"],[8,[39,3],[[24,\"data-control-name\",\"sidebar-expanded-state-toggle\"],[4,[38,8],[\"click\",[30,0,[\"toggleExpandedState\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\"],[[52,[30,0,[\"expanded\"]],\"fa-arrow-left-to-line\",\"fa-arrow-right-to-line\"],[28,[37,7],[\"oss-components.sidebar.collapse\"],null],[30,0,[\"expanded\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-container__footer\"],[12],[1,\"\\n      \"],[18,7,[[28,[37,6],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@homeParameters\",\"@logo\",\"@homeURL\",\"@expandable\",\"&content\",\"&footer\"],false,[\"if\",\"or\",\"and\",\"o-s-s/layout/sidebar/item\",\"enable-tooltip\",\"yield\",\"hash\",\"t\",\"on\",\"has-block\"]]",
+    "id": "dKs7HAQG",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-container__header\"],[12],[1,\"\\n      \"],[18,5,[[28,[37,3],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[28,[37,4],[[30,2],[28,[37,5],[[30,3],[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n      \"],[8,[39,6],[[24,\"data-control-name\",\"sidebar-home-route-item\"],[4,[38,7],null,[[\"title\",\"placement\"],[[30,2,[\"tooltip\"]],\"right\"]]]],[[\"@link\",\"@expanded\"],[[28,[37,4],[[30,2,[\"url\"]],[30,4]],null],[30,0,[\"expanded\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[30,2,[\"logo\"]],[30,3]],null]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-container__content\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-9 width-pc-100\"],[12],[1,\"\\n      \"],[18,6,[[28,[37,3],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayExpandedStateToggle\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-sidebar-container__expand\"],[12],[1,\"\\n        \"],[8,[39,6],[[24,\"data-control-name\",\"sidebar-expanded-state-toggle\"],[4,[38,9],[\"click\",[30,0,[\"toggleExpandedState\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\"],[[52,[30,0,[\"expanded\"]],\"fa-arrow-left-to-line\",\"fa-arrow-right-to-line\"],[28,[37,8],[\"oss-components.sidebar.collapse\"],null],[30,0,[\"expanded\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-container__footer\"],[12],[1,\"\\n      \"],[18,7,[[28,[37,3],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@homeParameters\",\"@logo\",\"@homeURL\",\"&header\",\"&content\",\"&footer\"],false,[\"if\",\"has-block\",\"yield\",\"hash\",\"or\",\"and\",\"o-s-s/layout/sidebar/item\",\"enable-tooltip\",\"t\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar.hbs",
     "isStrictMode": false
   });
@@ -91653,13 +91690,16 @@ interface OSSCodeBlockArgs {
       }
       return classes.join(' ');
     }
+    get displayExpandedStateToggle() {
+      return Boolean(this.args.expandable) && !this.args.alwaysExpanded;
+    }
     toggleExpandedState() {
       this.expanded = !this.expanded;
       this.upfLocalStorage.saveItem(SIDEBAR_EXPANDED_STATE, String(this.expanded));
       document.documentElement.style.setProperty('--sidebar-width', 'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)');
     }
     initializeSidebarState() {
-      this.expanded = Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false';
+      this.expanded = this.args.alwaysExpanded || Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false';
       document.documentElement.style.setProperty('--sidebar-width', 'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)');
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "expanded", [_tracking.tracked], {
@@ -91711,6 +91751,20 @@ interface OSSCodeBlockArgs {
         control: {
           type: 'boolean'
         }
+      },
+      alwaysExpanded: {
+        description: 'Whether the sidebar is always expanded and cannot be collapsed',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -91727,14 +91781,15 @@ interface OSSCodeBlockArgs {
     homeParameters: {
       logo: '/assets/images/brand-icon.svg',
       url: 'https://www.upfluence.com'
-    }
+    },
+    alwaysExpanded: false
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
     /*
       
         <div style="height:100vh; padding:5px;">
-          <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} style="height:95vh; overflow: visible">
+          <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} @alwaysExpanded={{this.alwaysExpanded}} style="height:95vh; overflow: visible">
             <:content as |sidebar|>
               <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" class="active" @homeAction={{this.homeAction}} />
               <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />
@@ -91749,8 +91804,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "m1MYcqqM",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:100vh; padding:5px;\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,5,\"height:95vh; overflow: visible\"]],[[\"@expandable\",\"@homeParameters\"],[[30,0,[\"expandable\"]],[30,0,[\"homeParameters\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          \"],[8,[39,1],[[24,0,\"active\"]],[[\"@expanded\",\"@icon\",\"@label\",\"@homeAction\"],[[30,1,[\"expanded\"]],\"far fa-search\",\"Search\",[30,0,[\"homeAction\"]]]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\"],[[30,1,[\"expanded\"]],\"far fa-list\",\"Community\"]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\",\"@hasNotifications\"],[[30,1,[\"expanded\"]],\"far fa-envelope\",\"Inbox\",true]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\",\"@locked\"],[[30,1,[\"expanded\"]],\"far fa-credit-card\",\"Payment\",true]],null],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[8,[39,2],null,[[\"@initials\"],[\"Ts\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"sidebar\"],false,[\"o-s-s/layout/sidebar\",\"o-s-s/layout/sidebar/item\",\"o-s-s/avatar\"]]",
+      "id": "sCEIVlfv",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:100vh; padding:5px;\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,5,\"height:95vh; overflow: visible\"]],[[\"@expandable\",\"@homeParameters\",\"@alwaysExpanded\"],[[30,0,[\"expandable\"]],[30,0,[\"homeParameters\"]],[30,0,[\"alwaysExpanded\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          \"],[8,[39,1],[[24,0,\"active\"]],[[\"@expanded\",\"@icon\",\"@label\",\"@homeAction\"],[[30,1,[\"expanded\"]],\"far fa-search\",\"Search\",[30,0,[\"homeAction\"]]]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\"],[[30,1,[\"expanded\"]],\"far fa-list\",\"Community\"]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\",\"@hasNotifications\"],[[30,1,[\"expanded\"]],\"far fa-envelope\",\"Inbox\",true]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\",\"@locked\"],[[30,1,[\"expanded\"]],\"far fa-credit-card\",\"Payment\",true]],null],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[8,[39,2],null,[[\"@initials\"],[\"Ts\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"sidebar\"],false,[\"o-s-s/layout/sidebar\",\"o-s-s/layout/sidebar/item\",\"o-s-s/avatar\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar.stories.js",
       "isStrictMode": false
     }),
@@ -91837,8 +91892,10 @@ interface OSSCodeBlockArgs {
             @locked={{item.locked}}
             @hasNotifications={{item.hasNotifications}}
             @link={{item.link}}
+            @routePrefix={{item.routePrefix}}
             @lockedAction={{item.lockedAction}}
             @action={{item.action}}
+            @disableAutoActive={{item.disableAutoActive}}
             data-control-name={{item.dataControlName}}
             class={{if item.active "active"}}
           />
@@ -91848,8 +91905,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "mtCGHpxd",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,7,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n        \"],[1,[30,4]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,5]],null]],null],null,[[[1,\"        \"],[8,[39,3],[[16,\"data-control-name\",[30,6,[\"dataControlName\"]]],[16,0,[52,[30,6,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@lockedAction\",\"@action\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,6,[\"icon\"]],[30,6,[\"label\"]],[30,6,[\"locked\"]],[30,6,[\"hasNotifications\"]],[30,6,[\"link\"]],[30,6,[\"lockedAction\"]],[30,6,[\"action\"]]]],null],[1,\"\\n\"]],[6]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"@items\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
+    "id": "afQ79leK",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,7,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n        \"],[1,[30,4]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,5]],null]],null],null,[[[1,\"        \"],[8,[39,3],[[16,\"data-control-name\",[30,6,[\"dataControlName\"]]],[16,0,[52,[30,6,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@routePrefix\",\"@lockedAction\",\"@action\",\"@disableAutoActive\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,6,[\"icon\"]],[30,6,[\"label\"]],[30,6,[\"locked\"]],[30,6,[\"hasNotifications\"]],[30,6,[\"link\"]],[30,6,[\"routePrefix\"]],[30,6,[\"lockedAction\"]],[30,6,[\"action\"]],[30,6,[\"disableAutoActive\"]]]],null],[1,\"\\n\"]],[6]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"@items\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/group.hbs",
     "isStrictMode": false
   });
@@ -92131,6 +92188,8 @@ interface OSSCodeBlockArgs {
   /*
     <OSS::Anchor
     @link={{@link}}
+    @routePrefix={{@routePrefix}}
+    @disableAutoActive={{@disableAutoActive}}
     class={{this.computedClasses}}
     disabled={{this.locked}}
     {{on "click" this.onClick}}
@@ -92147,13 +92206,13 @@ interface OSSCodeBlockArgs {
       <div class="oss-sidebar-item__icon">
         {{yield (hash expanded=@expanded) to="icon"}}
       </div>
-    {{else}}
+    {{else if @icon}}
       <div class="oss-sidebar-item__icon">
         <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       </div>
     {{/if}}
   
-    <div class="oss-sidebar-item__label">
+    <div class={{concat "oss-sidebar-item__label" (unless @icon " oss-sidebar-item__label--no-icon")}}>
       {{@label}}
     </div>
   
@@ -92163,8 +92222,8 @@ interface OSSCodeBlockArgs {
   </OSS::Anchor>
   */
   {
-    "id": "2qlf2FvV",
-    "block": "[[[8,[39,0],[[16,0,[30,0,[\"computedClasses\"]]],[16,\"disabled\",[30,0,[\"locked\"]]],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null]],[[\"@link\"],[[30,2]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__lock\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__icon\"],[12],[1,\"\\n      \"],[18,6,[[28,[37,6],null,[[\"expanded\"],[[30,3]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__icon\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,7],[[30,4]],null],[28,[37,8],[[30,4]],null]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-item__label\"],[12],[1,\"\\n    \"],[1,[30,5]],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@expanded\",\"@icon\",\"@label\",\"&icon\"],false,[\"o-s-s/anchor\",\"on\",\"if\",\"o-s-s/icon\",\"has-block\",\"yield\",\"hash\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "S7/ognbq",
+    "block": "[[[8,[39,0],[[16,0,[30,0,[\"computedClasses\"]]],[16,\"disabled\",[30,0,[\"locked\"]]],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null]],[[\"@link\",\"@routePrefix\",\"@disableAutoActive\"],[[30,2],[30,3],[30,4]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__lock\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__icon\"],[12],[1,\"\\n      \"],[18,8,[[28,[37,6],null,[[\"expanded\"],[[30,5]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__icon\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,7],[[30,6]],null],[28,[37,8],[[30,6]],null]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n  \"],[10,0],[15,0,[28,[37,9],[\"oss-sidebar-item__label\",[52,[51,[30,6]],\" oss-sidebar-item__label--no-icon\"]],null]],[12],[1,\"\\n    \"],[1,[30,7]],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@routePrefix\",\"@disableAutoActive\",\"@expanded\",\"@icon\",\"@label\",\"&icon\"],false,[\"o-s-s/anchor\",\"on\",\"if\",\"o-s-s/icon\",\"has-block\",\"yield\",\"hash\",\"fa-icon-style\",\"fa-icon-value\",\"concat\",\"unless\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
     "isStrictMode": false
   });
@@ -92292,6 +92351,20 @@ interface OSSCodeBlockArgs {
         },
         control: {
           type: 'text'
+        }
+      },
+      disableAutoActive: {
+        description: 'Disables automatic active state based on current route, managed by Ember by default',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
         }
       },
       lockedAction: {
