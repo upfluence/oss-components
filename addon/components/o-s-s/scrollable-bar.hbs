@@ -1,0 +1,47 @@
+<div class="scrollable-bar-container" id={{this.scrollableBarId}} ...attributes>
+  {{#if this.isLeftScrollable}}
+    {{#if (eq this.buttonStyle "icon")}}
+      <button
+        class="scroll-to-left-icon"
+        data-control-name="scrollable-bar-container-scroll-to-left-icon"
+        {{on "click" this.scrollToLeft}}
+      >
+        <OSS::Icon @style={{fa-icon-style "fa-chevron-left"}} @icon={{fa-icon-value "fa-chevron-left"}} />
+      </button>
+    {{else}}
+      <OSS::Button
+        class="scroll-to-left-btn"
+        @icon="fa-arrow-left"
+        @size="sm"
+        @square={{true}}
+        data-control-name="scrollable-bar-container-scroll-to-left-btn"
+        {{on "click" this.scrollToLeft}}
+      />
+    {{/if}}
+  {{/if}}
+
+  <div class={{this.innerContainerStyle}}>
+    {{yield (hash setupFn=this.observeIntersection teardownFn=this.unobserveIntersection) to="content"}}
+  </div>
+
+  {{#if this.isRightScrollable}}
+    {{#if (eq this.buttonStyle "icon")}}
+      <button
+        class="scroll-to-right-icon"
+        data-control-name="scrollable-bar-container-scroll-to-right-icon"
+        {{on "click" this.scrollToRight}}
+      >
+        <OSS::Icon @style={{fa-icon-style "fa-chevron-right"}} @icon={{fa-icon-value "fa-chevron-right"}} />
+      </button>
+    {{else}}
+      <OSS::Button
+        class="scroll-to-right-btn"
+        @icon="fa-arrow-right"
+        @size="sm"
+        @square={{true}}
+        data-control-name="scrollable-bar-container-scroll-to-right-btn"
+        {{on "click" this.scrollToRight}}
+      />
+    {{/if}}
+  {{/if}}
+</div>
