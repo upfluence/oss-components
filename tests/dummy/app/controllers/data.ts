@@ -18,7 +18,7 @@ export default class Data extends Controller {
   @tracked revealed: boolean = false;
   @tracked starRatingValue: number = 3;
 
-  loop: null[] = Array(15);
+  @tracked loop: null[] = Array(15);
 
   subdomainRegex: RegExp = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
 
@@ -98,5 +98,10 @@ export default class Data extends Controller {
         return res('success');
       }, 1000);
     });
+  }
+
+  @action
+  addToLoop(): void {
+    this.loop = [...this.loop, null];
   }
 }
