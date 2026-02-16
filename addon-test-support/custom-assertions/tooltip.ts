@@ -1,11 +1,24 @@
 import { triggerEvent, waitFor } from '@ember/test-helpers';
 import * as QUnit from 'qunit';
 import { isEmpty } from '@ember/utils';
+import sinon from 'sinon';
+import { ANIMATION_DURATION, RENDERING_DELAY } from '@upfluence/oss-components/modifiers/enable-tooltip';
 
 export type Placement = 'top' | 'bottom' | 'left' | 'right' | undefined;
 
 async function triggerEventOnElement(selector: string, trigger?: string) {
-  await triggerEvent(selector, trigger || 'mouseover');
+  const element = document.querySelector(selector) as HTMLElement;
+  const clock = sinon.useFakeTimers();
+
+  if (element?.hasAttribute('disabled')) {
+    element.dispatchEvent(new Event(trigger || 'mouseover', { bubbles: true }));
+  } else {
+    await triggerEvent(selector, trigger || 'mouseover');
+  }
+
+  clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
+  clock.restore();
+
   await waitFor('.upf-tooltip');
 }
 
@@ -41,9 +54,12 @@ const assertion = (selector: string) => {
     doesNotExist: async (trigger?: string, message?: string) => {
       let result: boolean = false;
       let actual: Element | null = null;
+      const clock = sinon.useFakeTimers();
 
       await triggerEvent(selector, trigger || 'mouseover');
-      await waitFor('.upf-tooltip', { timeout: 350 })
+      clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
+      clock.restore();
+      await waitFor('.upf-tooltip', { timeout: 50 })
         .catch((err) => {
           if (err.message === 'waitFor timed out waiting for selector ".upf-tooltip"') {
             result = true;

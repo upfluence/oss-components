@@ -16,7 +16,7 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
   async function renderTooltip() {
     await render(hbs`
       <div class="test-container" style="height: 20px; width: 40px"
-           {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
+        {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
       </div>
     `);
   }
@@ -143,6 +143,50 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
       this.html = false;
       await renderTooltip();
       await assert.tooltip('.test-container').isNotHtmlSafe();
+    });
+  });
+
+  module('works on disabled elements', () => {
+    async function renderDisabledButton() {
+      await render(hbs`
+        <button class="test-button" disabled
+          {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
+          Disabled button
+        </button>
+      `);
+    }
+
+    test('it renders the tooltip on disabled button and using the custom assertion can verify its existence', async function (assert) {
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').exists();
+    });
+
+    test('it renders the tooltip on disabled button and using the custom assertion can verify its title', async function (assert) {
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').hasTitle(this.title);
+    });
+
+    test('it renders the tooltip on disabled button and using the custom assertion can verify its subtitle', async function (assert) {
+      this.subtitle = 'subtitle';
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').hasSubtitle(this.subtitle);
+    });
+
+    test('it renders the tooltip on disabled button and using the custom assertion can verify its icon', async function (assert) {
+      this.icon = 'far fa-wine-glass-alt';
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').hasIcon(this.icon);
+    });
+
+    test('it renders the tooltip on disabled button and using the custom assertion can verify its placement', async function (assert) {
+      this.placement = 'top';
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').hasPlacement(this.placement);
     });
   });
 });
