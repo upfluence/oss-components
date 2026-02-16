@@ -74,34 +74,34 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
     });
     test('When content has no overflow, it does not display tooltip on hover', async function (assert) {
       await render(hbs`
-      <div class="test-container" style="height: 20px; width: 40px"
-           {{enable-tooltip title=this.title
-                            subtitle=this.subtitle
-                            placement=this.placement
-                            icon=this.icon
-                            trigger=this.trigger
-                            html=this.html
-                            displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
-           abc
-      </div>
-    `);
+        <div class="test-container" style="height: 20px; width: 40px"
+          {{enable-tooltip title=this.title
+                           subtitle=this.subtitle
+                           placement=this.placement
+                           icon=this.icon
+                           trigger=this.trigger
+                           html=this.html
+                           displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+            abc
+        </div>
+      `);
 
       await assert.tooltip('.test-container').doesNotExist();
     });
 
     test('When content has overflow, it displays tooltip on hover', async function (assert) {
       await render(hbs`
-      <div class="test-container" style="height: 20px; width: 40px"
-           {{enable-tooltip title=this.title
-                            subtitle=this.subtitle
-                            placement=this.placement
-                            icon=this.icon
-                            trigger=this.trigger
-                            html=this.html
-                            displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
-           abcdefghijklmnopqrstuvwxyz
-      </div>
-    `);
+        <div class="test-container" style="height: 20px; width: 40px"
+          {{enable-tooltip title=this.title
+                           subtitle=this.subtitle
+                           placement=this.placement
+                           icon=this.icon
+                           trigger=this.trigger
+                           html=this.html
+                           displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+          abcdefghijklmnopqrstuvwxyz
+        </div>
+      `);
 
       await assert.tooltip('.test-container').exists();
     });
@@ -187,6 +187,34 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
       await renderDisabledButton();
 
       await assert.tooltip('.test-button').hasPlacement(this.placement);
+    });
+
+    test("it renders the tooltip on disabled button and using the custom assertion can verify it doesn't have an icon", async function (assert) {
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').doesNotHaveIcon();
+    });
+
+    test("it renders the tooltip on disabled button and using the custom assertion can verify it doesn't have a subtitle", async function (assert) {
+      await renderDisabledButton();
+
+      await assert.tooltip('.test-button').doesNotHaveSubtitle();
+    });
+
+    module('html attribute', () => {
+      test('it renders the tooltip on disabled button and using the custom assertion can verify its html safe mode', async function (assert) {
+        this.html = true;
+        await renderDisabledButton();
+
+        await assert.tooltip('.test-button').isHtmlSafe();
+      });
+
+      test('it renders the tooltip on disabled button and using the custom assertion can verify it is not in html safe mode', async function (assert) {
+        this.html = false;
+        await renderDisabledButton();
+
+        await assert.tooltip('.test-button').isNotHtmlSafe();
+      });
     });
   });
 });

@@ -6,20 +6,22 @@ import { ANIMATION_DURATION, RENDERING_DELAY } from '@upfluence/oss-components/m
 
 export type Placement = 'top' | 'bottom' | 'left' | 'right' | undefined;
 
-async function triggerEventOnElement(selector: string, trigger?: string) {
+async function triggerEventOnElement(selector: string, trigger: string = 'mouseover') {
   const element = document.querySelector(selector) as HTMLElement;
   const clock = sinon.useFakeTimers();
 
-  if (element?.hasAttribute('disabled')) {
-    element.dispatchEvent(new Event(trigger || 'mouseover', { bubbles: true }));
-  } else {
-    await triggerEvent(selector, trigger || 'mouseover');
+  try {
+    if (element?.hasAttribute('disabled')) {
+      element.dispatchEvent(new MouseEvent(trigger, { bubbles: true }));
+    } else {
+      await triggerEvent(selector, trigger);
+    }
+
+    clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
+    await waitFor('.upf-tooltip');
+  } finally {
+    clock.restore();
   }
-
-  clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
-  clock.restore();
-
-  await waitFor('.upf-tooltip');
 }
 
 export interface TooltipAssertions {
@@ -51,12 +53,12 @@ const assertion = (selector: string) => {
       });
     },
 
-    doesNotExist: async (trigger?: string, message?: string) => {
+    doesNotExist: async (trigger: string = 'mouseover', message?: string) => {
       let result: boolean = false;
       let actual: Element | null = null;
       const clock = sinon.useFakeTimers();
 
-      await triggerEvent(selector, trigger || 'mouseover');
+      await triggerEvent(selector, trigger);
       clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
       clock.restore();
       await waitFor('.upf-tooltip', { timeout: 50 })
