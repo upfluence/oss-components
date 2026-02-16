@@ -29,8 +29,7 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
   }
 
   get scrollWidth(): number {
-    // May be updated, waiting for product input
-    return (this.containerElement.clientWidth / 3) * 2;
+    return this.containerElement.clientWidth / 3;
   }
 
   get isLeftScrollable(): boolean {
