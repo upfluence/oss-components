@@ -1,5 +1,5 @@
 {{#if this.isInternalRoute}}
-  <LinkTo @route={{@link}} rel={{this.rel}} ...attributes>{{yield}}</LinkTo>
+  <LinkTo @route={{@link}} @current-when={{this.currentWhen}} rel={{this.rel}} ...attributes>{{yield}}</LinkTo>
 {{else}}
   <a href={{@link}} rel={{this.rel}} ...attributes>{{yield}}</a>
 {{/if}}

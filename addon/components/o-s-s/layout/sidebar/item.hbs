@@ -1,5 +1,7 @@
 <OSS::Anchor
   @link={{@link}}
+  @routePrefix={{@routePrefix}}
+  @disableAutoActive={{@disableAutoActive}}
   class={{this.computedClasses}}
   disabled={{this.locked}}
   {{on "click" this.onClick}}
@@ -16,13 +18,13 @@
     <div class="oss-sidebar-item__icon">
       {{yield (hash expanded=@expanded) to="icon"}}
     </div>
-  {{else}}
+  {{else if @icon}}
     <div class="oss-sidebar-item__icon">
       <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     </div>
   {{/if}}
 
-  <div class="oss-sidebar-item__label">
+  <div class={{concat "oss-sidebar-item__label" (unless @icon " oss-sidebar-item__label--no-icon")}}>
     {{@label}}
   </div>
 

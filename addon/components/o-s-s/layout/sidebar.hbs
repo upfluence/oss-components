@@ -1,5 +1,9 @@
 <div class={{this.computedClasses}} ...attributes>
-  {{#if (or @homeParameters (and @logo @homeURL))}}
+  {{#if (has-block "header")}}
+    <div class="oss-sidebar-container__header">
+      {{yield (hash expanded=this.expanded) to="header"}}
+    </div>
+  {{else if (or @homeParameters (and @logo @homeURL))}}
     <div class="logo-container">
       <OSS::Layout::Sidebar::Item
         @link={{or @homeParameters.url @homeURL}}
@@ -19,7 +23,7 @@
       {{yield (hash expanded=this.expanded) to="content"}}
     </div>
 
-    {{#if @expandable}}
+    {{#if this.displayExpandedStateToggle}}
       <div class="oss-sidebar-container__expand">
         <OSS::Layout::Sidebar::Item
           @icon={{if this.expanded "fa-arrow-left-to-line" "fa-arrow-right-to-line"}}

@@ -18,6 +18,7 @@ interface OSSLayoutSidebarArgs {
   logo?: string;
   homeURL?: string;
   expandable?: boolean;
+  alwaysExpanded?: boolean;
 }
 
 export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
@@ -41,6 +42,10 @@ export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
     return classes.join(' ');
   }
 
+  get displayExpandedStateToggle(): boolean {
+    return Boolean(this.args.expandable) && !this.args.alwaysExpanded;
+  }
+
   @action
   toggleExpandedState(): void {
     this.expanded = !this.expanded;
@@ -52,7 +57,9 @@ export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
   }
 
   private initializeSidebarState(): void {
-    this.expanded = Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false';
+    this.expanded =
+      this.args.alwaysExpanded ||
+      (Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false');
     document.documentElement.style.setProperty(
       '--sidebar-width',
       'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)'

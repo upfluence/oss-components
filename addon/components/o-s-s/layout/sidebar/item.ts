@@ -5,12 +5,14 @@ import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag'
 
 interface OSSLayoutSidebarItemArgs {
   link: string;
+  routePrefix?: string;
   icon?: string;
   locked?: boolean;
   hasNotifications?: boolean;
   tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
   expanded?: boolean;
   label?: string;
+  disableAutoActive?: boolean;
   lockedAction?(): void;
   action?(): void;
 }

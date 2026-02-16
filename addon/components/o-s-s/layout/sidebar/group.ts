@@ -9,8 +9,10 @@ export type GroupItem = {
   label?: string;
   hasNotifications?: boolean;
   link: string;
+  routePrefix?: string;
   active: boolean;
   dataControlName?: string;
+  disableAutoActive?: boolean;
   lockedAction?(): unknown;
   action?(): void;
 };
