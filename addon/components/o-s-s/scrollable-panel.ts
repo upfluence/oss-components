@@ -22,11 +22,6 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   resizeObserver = new ResizeObserver(this.resizeObserverCallback.bind(this));
   mutationObserver = new MutationObserver(this.resizeObserverCallback.bind(this));
 
-  private mutationObserverCallback(mutations: MutationRecord[]): void {
-    console.log('mutation observed');
-    mutations;
-  }
-
   get offset(): number {
     return this.args.offset ?? 0;
   }
@@ -69,7 +64,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   @action
   scrollToStart(): void {
     this.parentElement.scrollTo({
-      left: 0,
+      left: this.parentElement.scrollLeft - this.parentElement.clientWidth,
       behavior: 'smooth'
     });
   }
@@ -77,7 +72,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   @action
   scrollToEnd(): void {
     this.parentElement.scrollTo({
-      left: this.parentElement.scrollWidth,
+      left: this.parentElement.scrollLeft + this.parentElement.clientWidth,
       behavior: 'smooth'
     });
   }

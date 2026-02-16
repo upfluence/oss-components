@@ -16,13 +16,13 @@
     {{did-insert this.initScrollListener}}
   >
     {{#if (and @displayScrollArrows this.shadowLeftVisible)}}
-      <OSS::Icon @icon="fa-chevron-left" class="scroll-arrow-left" {{on "click" this.scrollToStart}} />
+      <OSS::Button @square={{true}} @icon="fa-chevron-left" class="scroll-arrow-left" {{on "click" this.scrollToStart}} />
     {{/if}}
     <div {{did-insert this.initResizeObserver}}>
       {{yield}}
     </div>
     {{#if (and @displayScrollArrows this.shadowRightVisible)}}
-      <OSS::Icon @icon="fa-chevron-right" class="scroll-arrow-right" {{on "click" this.scrollToEnd}} />
+      <OSS::Button @square={{true}} @icon="fa-chevron-right" class="scroll-arrow-right" {{on "click" this.scrollToEnd}} />
     {{/if}}
   </div>
   {{#if (and this.shadowBottomVisible (not @disableShadows))}}
