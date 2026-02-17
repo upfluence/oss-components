@@ -45,7 +45,6 @@ const Template = (args) => ({
           </OSS::ScrollableBar>
     </div>
   `,
-
   context: args
 });
 

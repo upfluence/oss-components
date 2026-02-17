@@ -29,6 +29,7 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
   }
 
   get scrollWidth(): number {
+    if (!this.containerElement) return 0;
     return this.containerElement.clientWidth / 3;
   }
 
@@ -45,7 +46,7 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
   }
 
   get buttonStyle(): string {
-    return this.args.buttonStyle === 'icon' ? 'icon' : 'button';
+    return this.args.buttonStyle ?? 'button';
   }
 
   get innerContainerStyle(): string {

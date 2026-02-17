@@ -79,6 +79,12 @@ module('Integration | Component | o-s-s/scrollable-bar', function (hooks) {
     });
   });
 
+  test('it renders the content', async function (this: TestContext, assert) {
+    await renderComponentDefaultButton();
+    assert.dom('div').exists();
+    assert.dom('div').hasText('All Replies Applications Emails Payment Drafts');
+  });
+
   async function renderComponentDefaultButton() {
     await render(hbs`
         <OSS::ScrollableBar style="max-width:250px;">
