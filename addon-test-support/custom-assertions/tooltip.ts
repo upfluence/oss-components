@@ -1,12 +1,30 @@
 import { triggerEvent, waitFor } from '@ember/test-helpers';
 import * as QUnit from 'qunit';
 import { isEmpty } from '@ember/utils';
+import sinon from 'sinon';
+import { ANIMATION_DURATION, RENDERING_DELAY } from '@upfluence/oss-components/modifiers/enable-tooltip';
 
 export type Placement = 'top' | 'bottom' | 'left' | 'right' | undefined;
 
-async function triggerEventOnElement(selector: string, trigger?: string) {
-  await triggerEvent(selector, trigger || 'mouseover');
-  await waitFor('.upf-tooltip');
+async function triggerEventOnElement(selector: string, trigger: string = 'mouseover') {
+  const element = document.querySelector(selector) as HTMLElement;
+  const existingClock = sinon.clock;
+  const clock = existingClock ?? sinon.useFakeTimers();
+
+  try {
+    if (element?.hasAttribute('disabled')) {
+      element.dispatchEvent(new MouseEvent(trigger, { bubbles: true }));
+    } else {
+      await triggerEvent(selector, trigger);
+    }
+
+    clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
+    await waitFor('.upf-tooltip');
+  } finally {
+    if (!existingClock) {
+      clock.restore();
+    }
+  }
 }
 
 export interface TooltipAssertions {
@@ -38,12 +56,21 @@ const assertion = (selector: string) => {
       });
     },
 
-    doesNotExist: async (trigger?: string, message?: string) => {
+    doesNotExist: async (trigger: string = 'mouseover', message?: string) => {
       let result: boolean = false;
       let actual: Element | null = null;
+      const existingClock = sinon.clock;
+      const clock = existingClock ?? sinon.useFakeTimers();
 
-      await triggerEvent(selector, trigger || 'mouseover');
-      await waitFor('.upf-tooltip', { timeout: 350 })
+      try {
+        await triggerEvent(selector, trigger);
+        clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
+      } finally {
+        if (!existingClock) {
+          clock.restore();
+        }
+      }
+      await waitFor('.upf-tooltip', { timeout: 50 })
         .catch((err) => {
           if (err.message === 'waitFor timed out waiting for selector ".upf-tooltip"') {
             result = true;

@@ -30,8 +30,8 @@ type EnableTooltipState = {
   isRendered: boolean;
 };
 
-const ANIMATION_DURATION = 250;
-const RENDERING_DELAY = 300;
+export const ANIMATION_DURATION = 250;
+export const RENDERING_DELAY = 300;
 const DEFAULT_CONFIGURATION = {
   placement: 'bottom' as Placement,
   trigger: 'hover focus',
