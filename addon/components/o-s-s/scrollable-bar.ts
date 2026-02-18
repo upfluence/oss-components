@@ -24,7 +24,7 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
     });
   }
 
-  get containerElement(): HTMLElement {
+  get containerElement(): HTMLElement | null {
     return document.querySelector(`#${this.scrollableBarId} .inner-container`) as HTMLElement;
   }
 
@@ -77,11 +77,13 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
 
   @action
   scrollToRight(): void {
+    if (!this.containerElement) return;
     this.containerElement.scrollBy({ left: this.scrollWidth, behavior: 'smooth' });
   }
 
   @action
   scrollToLeft(): void {
+    if (!this.containerElement) return;
     this.containerElement.scrollBy({ left: -this.scrollWidth, behavior: 'smooth' });
   }
 
