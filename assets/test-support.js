@@ -23704,17 +23704,33 @@ define("@storybook/ember-cli-storybook/test-support/render-story", ["exports", "
     return context;
   }
 });
-define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exports", "@ember/test-helpers", "qunit", "@ember/utils"], function (_exports, _testHelpers, QUnit, _utils) {
+define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exports", "@ember/test-helpers", "qunit", "@ember/utils", "sinon", "@upfluence/oss-components/modifiers/enable-tooltip"], function (_exports, _testHelpers, QUnit, _utils, _sinon, _enableTooltip) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"qunit",0,"@ember/utils"eaimeta@70e063a35619d71f
-  async function triggerEventOnElement(selector, trigger) {
-    await (0, _testHelpers.triggerEvent)(selector, trigger || 'mouseover');
-    await (0, _testHelpers.waitFor)('.upf-tooltip');
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"qunit",0,"@ember/utils",0,"sinon",0,"@upfluence/oss-components/modifiers/enable-tooltip"eaimeta@70e063a35619d71f
+  async function triggerEventOnElement(selector, trigger = 'mouseover') {
+    const element = document.querySelector(selector);
+    const existingClock = _sinon.default.clock;
+    const clock = existingClock ?? _sinon.default.useFakeTimers();
+    try {
+      if (element?.hasAttribute('disabled')) {
+        element.dispatchEvent(new MouseEvent(trigger, {
+          bubbles: true
+        }));
+      } else {
+        await (0, _testHelpers.triggerEvent)(selector, trigger);
+      }
+      clock.tick(_enableTooltip.RENDERING_DELAY + _enableTooltip.ANIMATION_DURATION);
+      await (0, _testHelpers.waitFor)('.upf-tooltip');
+    } finally {
+      if (!existingClock) {
+        clock.restore();
+      }
+    }
   }
   const assertion = selector => {
     return {
@@ -23729,12 +23745,21 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
           message: message ?? 'Tooltip is rendered with success'
         });
       },
-      doesNotExist: async (trigger, message) => {
+      doesNotExist: async (trigger = 'mouseover', message) => {
         let result = false;
         let actual = null;
-        await (0, _testHelpers.triggerEvent)(selector, trigger || 'mouseover');
+        const existingClock = _sinon.default.clock;
+        const clock = existingClock ?? _sinon.default.useFakeTimers();
+        try {
+          await (0, _testHelpers.triggerEvent)(selector, trigger);
+          clock.tick(_enableTooltip.RENDERING_DELAY + _enableTooltip.ANIMATION_DURATION);
+        } finally {
+          if (!existingClock) {
+            clock.restore();
+          }
+        }
         await (0, _testHelpers.waitFor)('.upf-tooltip', {
-          timeout: 350
+          timeout: 50
         }).catch(err => {
           if (err.message === 'waitFor timed out waiting for selector ".upf-tooltip"') {
             result = true;

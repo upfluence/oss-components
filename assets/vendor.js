@@ -106271,12 +106271,12 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
+  _exports.default = _exports.RENDERING_DELAY = _exports.ANIMATION_DURATION = void 0;
   _exports.initEventListener = initEventListener;
   0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@upfluence/oss-components/utils/dope",0,"@ember/runloop",0,"@upfluence/oss-components/utils/animation-manager",0,"@upfluence/oss-components/utils/element",0,"@embroider/macros",0,"@ember/utils"eaimeta@70e063a35619d71f
   // @ts-ignore
-  const ANIMATION_DURATION = 250;
-  const RENDERING_DELAY = 300;
+  const ANIMATION_DURATION = _exports.ANIMATION_DURATION = 250;
+  const RENDERING_DELAY = _exports.RENDERING_DELAY = 300;
   const DEFAULT_CONFIGURATION = {
     placement: 'bottom',
     trigger: 'hover focus',

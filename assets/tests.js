@@ -101,7 +101,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
       /*
         
             <div class="test-container" style="height: 20px; width: 40px"
-                 {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
+              {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
             </div>
           
       */
@@ -160,21 +160,21 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           
-              <div class="test-container" style="height: 20px; width: 40px"
-                   {{enable-tooltip title=this.title
-                                    subtitle=this.subtitle
-                                    placement=this.placement
-                                    icon=this.icon
-                                    trigger=this.trigger
-                                    html=this.html
-                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
-                   abc
-              </div>
-            
+                <div class="test-container" style="height: 20px; width: 40px"
+                  {{enable-tooltip title=this.title
+                                   subtitle=this.subtitle
+                                   placement=this.placement
+                                   icon=this.icon
+                                   trigger=this.trigger
+                                   html=this.html
+                                   displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+                    abc
+                </div>
+              
         */
         {
-          "id": "t+wHtW3M",
-          "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"test-container\"],[24,5,\"height: 20px; width: 40px\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n           abc\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"enable-tooltip\"]]",
+          "id": "nPzenLLl",
+          "block": "[[[1,\"\\n        \"],[11,0],[24,0,\"test-container\"],[24,5,\"height: 20px; width: 40px\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n            abc\\n        \"],[13],[1,\"\\n      \"]],[],false,[\"enable-tooltip\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
           "isStrictMode": false
         }));
@@ -184,21 +184,21 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           
-              <div class="test-container" style="height: 20px; width: 40px"
-                   {{enable-tooltip title=this.title
-                                    subtitle=this.subtitle
-                                    placement=this.placement
-                                    icon=this.icon
-                                    trigger=this.trigger
-                                    html=this.html
-                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
-                   abcdefghijklmnopqrstuvwxyz
-              </div>
-            
+                <div class="test-container" style="height: 20px; width: 40px"
+                  {{enable-tooltip title=this.title
+                                   subtitle=this.subtitle
+                                   placement=this.placement
+                                   icon=this.icon
+                                   trigger=this.trigger
+                                   html=this.html
+                                   displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+                  abcdefghijklmnopqrstuvwxyz
+                </div>
+              
         */
         {
-          "id": "SKZMEj+a",
-          "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"test-container\"],[24,5,\"height: 20px; width: 40px\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n           abcdefghijklmnopqrstuvwxyz\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"enable-tooltip\"]]",
+          "id": "iQL3zNMJ",
+          "block": "[[[1,\"\\n        \"],[11,0],[24,0,\"test-container\"],[24,5,\"height: 20px; width: 40px\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n          abcdefghijklmnopqrstuvwxyz\\n        \"],[13],[1,\"\\n      \"]],[],false,[\"enable-tooltip\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
           "isStrictMode": false
         }));
@@ -236,6 +236,68 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         this.html = false;
         await renderTooltip();
         await assert.tooltip('.test-container').isNotHtmlSafe();
+      });
+    });
+    (0, _qunit.module)('works on disabled elements', () => {
+      async function renderDisabledButton() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <button class="test-button" disabled
+                  {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
+                  Disabled button
+                </button>
+              
+        */
+        {
+          "id": "dySAxAzQ",
+          "block": "[[[1,\"\\n        \"],[11,\"button\"],[24,0,\"test-button\"],[24,\"disabled\",\"\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]]]]],[12],[1,\"\\n          Disabled button\\n        \"],[13],[1,\"\\n      \"]],[],false,[\"enable-tooltip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify its existence', async function (assert) {
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').exists();
+      });
+      (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify its title', async function (assert) {
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').hasTitle(this.title);
+      });
+      (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify its subtitle', async function (assert) {
+        this.subtitle = 'subtitle';
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').hasSubtitle(this.subtitle);
+      });
+      (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify its icon', async function (assert) {
+        this.icon = 'far fa-wine-glass-alt';
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').hasIcon(this.icon);
+      });
+      (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify its placement', async function (assert) {
+        this.placement = 'top';
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').hasPlacement(this.placement);
+      });
+      (0, _qunit.test)("it renders the tooltip on disabled button and using the custom assertion can verify it doesn't have an icon", async function (assert) {
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').doesNotHaveIcon();
+      });
+      (0, _qunit.test)("it renders the tooltip on disabled button and using the custom assertion can verify it doesn't have a subtitle", async function (assert) {
+        await renderDisabledButton();
+        await assert.tooltip('.test-button').doesNotHaveSubtitle();
+      });
+      (0, _qunit.module)('html attribute', () => {
+        (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify its html safe mode', async function (assert) {
+          this.html = true;
+          await renderDisabledButton();
+          await assert.tooltip('.test-button').isHtmlSafe();
+        });
+        (0, _qunit.test)('it renders the tooltip on disabled button and using the custom assertion can verify it is not in html safe mode', async function (assert) {
+          this.html = false;
+          await renderDisabledButton();
+          await assert.tooltip('.test-button').isNotHtmlSafe();
+        });
       });
     });
   });
