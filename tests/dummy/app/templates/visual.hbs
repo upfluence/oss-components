@@ -903,4 +903,48 @@
       <OSS::Pill @label="Pill" @selected={{this.selectedPill}} @disabled={{true}} />
     </div>
   </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Scrollable bar
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <div class="width-pc-20">
+        With default "button" style:
+        <div class="fx-row fx-gap-px-24 fx-xalign-center width-pc-100">
+          <OSS::ScrollableBar>
+            <:content as |callbacks|>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>All</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Replies</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications2</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails2</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments2</div>
+            </:content>
+          </OSS::ScrollableBar>
+        </div>
+      </div>
+      <div class="width-pc-20">
+        With "icon" style:
+        <div class="fx-row fx-gap-px-24 fx-xalign-center width-pc-100">
+          <OSS::ScrollableBar @buttonStyle="icon">
+            <:content as |callbacks|>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>All</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Replies</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications2</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails2</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments2</div>
+            </:content>
+          </OSS::ScrollableBar>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

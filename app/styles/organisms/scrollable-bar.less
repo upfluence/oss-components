@@ -1,0 +1,120 @@
+.scrollable-bar-container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+
+  .scroll-to-left-btn,
+  .scroll-to-left-icon {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+  }
+
+  .scroll-to-left-icon,
+  .scroll-to-right-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 12px;
+    border: none;
+
+    &:hover {
+      color: var(--color-gray-500);
+    }
+  }
+
+  .scroll-to-right-btn,
+  .scroll-to-right-icon {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+
+  .scroll-to-left-btn,
+  .scroll-to-right-btn {
+    top: var(--spacing-px-9);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+  }
+
+  .scroll-to-left-icon,
+  .scroll-to-right-icon {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:hover {
+    .scroll-to-left-btn,
+    .scroll-to-right-btn {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .inner-container {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-px-9);
+    overflow: auto;
+    padding: var(--spacing-px-9) var(--spacing-px-3) var(--spacing-px-9) var(--spacing-px-3);
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .inner-container-btn {
+    &--scrollable-right::after {
+      position: absolute;
+      content: ' ';
+      right: 0;
+      height: 100%;
+      width: 36px;
+      background: linear-gradient(180deg, rgba(249, 250, 251, 0.11323) 0%, var(--color-gray-50) 100%);
+      transform: rotate(-90deg);
+    }
+
+    &--scrollable-left::before {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      height: 100%;
+      width: 36px;
+      background: linear-gradient(180deg, rgba(249, 250, 251, 0.11323) 0%, var(--color-gray-50) 100%);
+      transform: rotate(90deg);
+    }
+  }
+
+  .inner-container-icon {
+    &--scrollable-right::after {
+      position: absolute;
+      content: ' ';
+      right: 12px;
+      height: 100%;
+      width: 36px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--color-white) 100%);
+
+      transform: rotate(-90deg);
+    }
+
+    &--scrollable-left::before {
+      position: absolute;
+      content: ' ';
+      left: 12px;
+      height: 100%;
+      width: 36px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--color-white) 100%);
+
+      transform: rotate(90deg);
+    }
+  }
+}
