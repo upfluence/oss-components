@@ -1,6 +1,6 @@
 {
   "name": "@upfluence/oss-components",
-  "version": "3.89.9",
+  "version": "3.89.10",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
