@@ -85076,16 +85076,22 @@ require('@ember/-internals/bootstrap')
       {{else if @iconUrl}}
         <img src={{@iconUrl}} alt="icon" />
       {{/if}}
-  
       {{#if @label}}
         <span class={{if (or @icon @iconUrl) "margin-left-px-6"}}>{{@label}}</span>
+      {{/if}}
+      {{#if @suffixIcon}}
+        <OSS::Icon
+          @style={{fa-icon-style @suffixIcon}}
+          @icon={{fa-icon-value @suffixIcon}}
+          class={{if @label "margin-left-px-18"}}
+        />
       {{/if}}
     {{/if}}
   </button>
   */
   {
-    "id": "oQbxSiWl",
-    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,2],[30,3,[\"showLabel\"]]],null],[[[1,\"      \"],[10,1],[14,0,\"margin-left-px-6\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null]],[]],[[[41,[30,4],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,4]],null],[28,[37,7],[[30,4]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,5]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n    \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,1],[15,0,[52,[28,[37,8],[[30,4],[30,5]],null],\"margin-left-px-6\"]],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13]],[\"&attrs\",\"@label\",\"@loadingOptions\",\"@icon\",\"@iconUrl\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"and\",\"fa-icon-style\",\"fa-icon-value\",\"or\"]]",
+    "id": "kRdBSQvI",
+    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,2],[30,3,[\"showLabel\"]]],null],[[[1,\"      \"],[10,1],[14,0,\"margin-left-px-6\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null]],[]],[[[41,[30,4],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,4]],null],[28,[37,7],[[30,4]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,5]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n    \"]],[]],null]],[]]],[41,[30,2],[[[1,\"      \"],[10,1],[15,0,[52,[28,[37,8],[[30,4],[30,5]],null],\"margin-left-px-6\"]],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[8,[39,4],[[16,0,[52,[30,2],\"margin-left-px-18\"]]],[[\"@style\",\"@icon\"],[[28,[37,6],[[30,6]],null],[28,[37,7],[[30,6]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13]],[\"&attrs\",\"@label\",\"@loadingOptions\",\"@icon\",\"@iconUrl\",\"@suffixIcon\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"and\",\"fa-icon-style\",\"fa-icon-value\",\"or\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button.hbs",
     "isStrictMode": false
   });
@@ -85237,7 +85243,7 @@ require('@ember/-internals/bootstrap')
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.WithIconUrl = _exports.WithCountDown = _exports.Default = void 0;
+  _exports.default = _exports.WithSuffixIcon = _exports.WithIconUrl = _exports.WithCountDown = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const SkinTypes = ['default', 'primary', 'secondary', 'destructive', 'alert', 'success', 'instagram', 'facebook', 'youtube', 'primary-gradient', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet'];
   const SizeTypes = ['xs', 'sm', 'md', 'lg'];
@@ -85346,6 +85352,20 @@ require('@ember/-internals/bootstrap')
           type: 'text'
         }
       },
+      suffixIcon: {
+        description: 'Font Awesome class for an icon displayed after the label (e.g. fas fa-chevron-down)',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       square: {
         description: 'Displays the button as a square. Useful for icon buttons.',
         table: {
@@ -85423,6 +85443,7 @@ require('@ember/-internals/bootstrap')
     countDown: undefined,
     loadingOptions: undefined,
     iconUrl: undefined,
+    suffixIcon: undefined,
     disabled: undefined
   };
   const Template = args => ({
@@ -85432,12 +85453,13 @@ require('@ember/-internals/bootstrap')
         <OSS::Button
           @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
           @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-          @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
+          @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
+          @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
       
     */
     {
-      "id": "NZHmgXlt",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"disabled\"]]]],[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@iconUrl\",\"@loadingOptions\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"iconUrl\"]],[30,0,[\"loadingOptions\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
+      "id": "YPjGFeZ5",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"disabled\"]]]],[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@iconUrl\",\"@suffixIcon\",\"@loadingOptions\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"iconUrl\"]],[30,0,[\"suffixIcon\"]],[30,0,[\"loadingOptions\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/button.stories.js",
       "isStrictMode": false
     }),
@@ -85463,6 +85485,13 @@ require('@ember/-internals/bootstrap')
     ...{
       icon: undefined,
       iconUrl: '/@upfluence/oss-components/assets/heart.svg'
+    }
+  };
+  const WithSuffixIcon = _exports.WithSuffixIcon = Template.bind({});
+  WithSuffixIcon.args = {
+    ...defaultArgs,
+    ...{
+      suffixIcon: 'fas fa-chevron-down'
     }
   };
 });

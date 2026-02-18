@@ -3580,6 +3580,32 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       assert.dom('.upf-btn').hasClass('upf-btn--default');
       assert.dom('.upf-btn').hasText('Test');
     });
+    (0, _qunit.test)('it applies margin-left-px-18 to suffix icon when label is present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Button @label="Test" @suffixIcon="fas fa-chevron-down" />
+      */
+      {
+        "id": "v9vbPZNB",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@suffixIcon\"],[\"Test\",\"fas fa-chevron-down\"]],null]],[],false,[\"o-s-s/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-btn i.fa-chevron-down').hasClass('margin-left-px-18');
+    });
+    (0, _qunit.test)('it does not apply margin to suffix icon when label is absent', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Button @suffixIcon="fas fa-chevron-down" @icon="fas fa-check" />
+      */
+      {
+        "id": "YCPqo+xZ",
+        "block": "[[[8,[39,0],null,[[\"@suffixIcon\",\"@icon\"],[\"fas fa-chevron-down\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-btn i.fa-chevron-down').doesNotHaveClass('margin-left-px-18');
+    });
     (0, _qunit.module)('it renders with the correct skin', function () {
       (0, _qunit.test)('when using an unknown skin, it is set to default', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -3768,7 +3794,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         assert.dom('.upf-btn i.fas').exists();
         assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
         assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-        assert.dom('.upf-btn span.margin-left-px-6').doesNotExist();
+        assert.dom('.upf-btn span').doesNotExist();
       });
       (0, _qunit.test)('when loading and the showLabel loading option is truthy, the label is displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -3784,8 +3810,8 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         assert.dom('.upf-btn i.fas').exists();
         assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
         assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-        assert.dom('.upf-btn span.margin-left-px-6').exists();
-        assert.dom('.upf-btn span.margin-left-px-6').hasText('Test');
+        assert.dom('.upf-btn span').exists();
+        assert.dom('.upf-btn span').hasText('Test');
       });
     });
     (0, _qunit.module)('it renders a square button', function () {
