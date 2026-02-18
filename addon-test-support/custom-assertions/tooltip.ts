@@ -10,7 +10,6 @@ async function triggerEventOnElement(selector: string, trigger: string = 'mouseo
   const element = document.querySelector(selector) as HTMLElement;
   const existingClock = sinon.clock;
   const clock = existingClock ?? sinon.useFakeTimers();
-  const shouldRestore = !existingClock;
 
   try {
     if (element?.hasAttribute('disabled')) {
@@ -22,7 +21,7 @@ async function triggerEventOnElement(selector: string, trigger: string = 'mouseo
     clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
     await waitFor('.upf-tooltip');
   } finally {
-    if (shouldRestore) {
+    if (!existingClock) {
       clock.restore();
     }
   }
@@ -62,12 +61,14 @@ const assertion = (selector: string) => {
       let actual: Element | null = null;
       const existingClock = sinon.clock;
       const clock = existingClock ?? sinon.useFakeTimers();
-      const shouldRestore = !existingClock;
 
-      await triggerEvent(selector, trigger);
-      clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
-      if (shouldRestore) {
-        clock.restore();
+      try {
+        await triggerEvent(selector, trigger);
+        clock.tick(RENDERING_DELAY + ANIMATION_DURATION);
+      } finally {
+        if (!existingClock) {
+          clock.restore();
+        }
       }
       await waitFor('.upf-tooltip', { timeout: 50 })
         .catch((err) => {
