@@ -18,7 +18,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Container which automatically handle horizontal scroll behavior with left and right buttons'
+        component: 'Container which automatically handles horizontal scroll behavior with left and right buttons'
       }
     }
   }
@@ -30,7 +30,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <div style="width: 300px; background-color: white; " >
+    <div style="width: 300px; background-color: white;" >
       <OSS::ScrollableBar @buttonStyle={{this.buttonStyle}}>
             <:content as |callbacks|>
               <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>All</div>

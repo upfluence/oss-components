@@ -24,15 +24,6 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
     });
   }
 
-  get containerElement(): HTMLElement | null {
-    return document.querySelector(`#${this.scrollableBarId} .inner-container`) as HTMLElement;
-  }
-
-  get scrollWidth(): number {
-    if (!this.containerElement) return 0;
-    return this.containerElement.clientWidth / 3;
-  }
-
   get isLeftScrollable(): boolean {
     if (this.filterEntries.length === 0 || this.getFilterNodes().length === 0) return false;
     const entry = this.filterEntries.find((f) => f.target === this.getFilterNodes()[0]);
@@ -59,6 +50,15 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
       innerContainerStyle += ` ${baseStyle}--scrollable-right`;
     }
     return innerContainerStyle;
+  }
+
+  private get containerElement(): HTMLElement | null {
+    return document.querySelector(`#${this.scrollableBarId} .inner-container`) as HTMLElement;
+  }
+
+  private get scrollWidth(): number {
+    if (!this.containerElement) return 0;
+    return this.containerElement.clientWidth / 3;
   }
 
   @action

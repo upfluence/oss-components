@@ -87,25 +87,25 @@ module('Integration | Component | o-s-s/scrollable-bar', function (hooks) {
 
   async function renderComponentDefaultButton() {
     await render(hbs`
-        <OSS::ScrollableBar style="max-width:250px;">
-          <:content as |callbacks|>
-            {{#each this.items as |item|}}
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>{{item}}</div>
-            {{/each}}
-          </:content>
-        </OSS::ScrollableBar>
+      <OSS::ScrollableBar style="max-width:250px;">
+        <:content as |callbacks|>
+          {{#each this.items as |item|}}
+            <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>{{item}}</div>
+          {{/each}}
+        </:content>
+      </OSS::ScrollableBar>
     `);
   }
 
   async function renderComponentWithIcon() {
     await render(hbs`
-        <OSS::ScrollableBar @buttonStyle="icon" style="max-width:250px;">
-          <:content as |callbacks|>
-            {{#each this.items as |item|}}
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>{{item}}</div>
-            {{/each}}
-          </:content>
-        </OSS::ScrollableBar>
+      <OSS::ScrollableBar @buttonStyle="icon" style="max-width:250px;">
+        <:content as |callbacks|>
+          {{#each this.items as |item|}}
+            <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>{{item}}</div>
+          {{/each}}
+        </:content>
+      </OSS::ScrollableBar>
     `);
   }
 });
