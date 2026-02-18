@@ -3,7 +3,7 @@ export function hasOverflow(element: HTMLElement): boolean {
     return element.offsetWidth < element.scrollWidth;
   }
 
-  return Array.from(element.children).some((child: HTMLElement) => {
-    return hasOverflow(child);
+  return Array.from(element.children).some((child: Element) => {
+    return hasOverflow(child as HTMLElement);
   });
 }
