@@ -50,6 +50,18 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn').hasText('Test');
   });
 
+  test('it applies margin-left-px-18 to suffix icon when label is present', async function (assert) {
+    await render(hbs`<OSS::Button @label="Test" @suffixIcon="fas fa-chevron-down" />`);
+
+    assert.dom('.upf-btn i.fa-chevron-down').hasClass('margin-left-px-18');
+  });
+
+  test('it does not apply margin to suffix icon when label is absent', async function (assert) {
+    await render(hbs`<OSS::Button @suffixIcon="fas fa-chevron-down" @icon="fas fa-check" />`);
+
+    assert.dom('.upf-btn i.fa-chevron-down').doesNotHaveClass('margin-left-px-18');
+  });
+
   module('it renders with the correct skin', function () {
     test('when using an unknown skin, it is set to default', async function (assert) {
       await render(hbs`<OSS::Button @skin="unknown" @label="Test" />`);
@@ -138,7 +150,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
       assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-      assert.dom('.upf-btn span.margin-left-px-6').doesNotExist();
+      assert.dom('.upf-btn span').doesNotExist();
     });
 
     test('when loading and the showLabel loading option is truthy, the label is displayed', async function (assert) {
@@ -148,8 +160,8 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
       assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-      assert.dom('.upf-btn span.margin-left-px-6').exists();
-      assert.dom('.upf-btn span.margin-left-px-6').hasText('Test');
+      assert.dom('.upf-btn span').exists();
+      assert.dom('.upf-btn span').hasText('Test');
     });
   });
 

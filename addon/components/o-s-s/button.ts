@@ -77,6 +77,7 @@ export interface OSSButtonArgs {
   loadingOptions?: LoadingOptions;
   icon?: string;
   iconUrl?: string;
+  suffixIcon?: string;
   label?: string;
   theme?: string;
   square?: boolean;
