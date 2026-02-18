@@ -9,6 +9,7 @@
   @theme={{@theme}}
   @square={{@square}}
   @countDown={{@countDown}}
+  @suffixIcon={{if this.displayContextMenuPanel "fa-chevron-up" "fa-chevron-down"}}
   {{did-insert this.registerMenuTrigger}}
   {{on "click" this.toggleContextMenuPanel}}
   ...attributes
