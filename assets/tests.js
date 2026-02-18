@@ -14780,6 +14780,120 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/scrollable-bar-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/scrollable-bar', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.items = ['All', 'Replies', 'Applications', 'Emails', 'Payment', 'Drafts'];
+    });
+    (0, _qunit.module)('With default button', function () {
+      (0, _qunit.test)('it renders only the left button if the scroll position is already fully at the right', async function (assert) {
+        await renderComponentDefaultButton();
+        await (0, _testHelpers.waitUntil)(function () {
+          return Boolean(document.querySelector('.scroll-to-left-btn'));
+        }, {
+          timeout: 2000
+        });
+        assert.dom('.scroll-to-left-btn').exists();
+        assert.dom('.scroll-to-right-btn').doesNotExist();
+      });
+      (0, _qunit.test)('it renders only the right button if the scroll position is already fully at the left', async function (assert) {
+        await renderComponentDefaultButton();
+        await (0, _testHelpers.settled)();
+        await (0, _testHelpers.waitUntil)(function () {
+          return Boolean(document.querySelector('.scroll-to-left-btn'));
+        }, {
+          timeout: 2000
+        });
+        await (0, _testHelpers.click)('.scroll-to-left-btn');
+        await (0, _testHelpers.waitUntil)(function () {
+          return !document.querySelector('.scroll-to-left-btn');
+        }, {
+          timeout: 2000
+        });
+        assert.dom('.scroll-to-left-btn').doesNotExist();
+        assert.dom('.scroll-to-right-btn').exists();
+      });
+    });
+    (0, _qunit.module)('With icon button', function () {
+      (0, _qunit.test)('it renders only the left button if the scroll position is already fully at the right', async function (assert) {
+        await renderComponentWithIcon();
+        await (0, _testHelpers.waitUntil)(function () {
+          return Boolean(document.querySelector('.scroll-to-left-icon'));
+        }, {
+          timeout: 2000
+        });
+        assert.dom('.scroll-to-left-icon').exists();
+        assert.dom('.scroll-to-right-icon').doesNotExist();
+      });
+      (0, _qunit.test)('it renders only the right button if the scroll position is already fully at the left', async function (assert) {
+        await renderComponentWithIcon();
+        await (0, _testHelpers.settled)();
+        await (0, _testHelpers.waitUntil)(function () {
+          return Boolean(document.querySelector('.scroll-to-left-icon'));
+        }, {
+          timeout: 2000
+        });
+        await (0, _testHelpers.click)('.scroll-to-left-icon');
+        await (0, _testHelpers.waitUntil)(function () {
+          return !document.querySelector('.scroll-to-left-icon');
+        }, {
+          timeout: 2000
+        });
+        assert.dom('.scroll-to-left-icon').doesNotExist();
+        assert.dom('.scroll-to-right-icon').exists();
+      });
+    });
+    (0, _qunit.test)('it renders the content', async function (assert) {
+      await renderComponentDefaultButton();
+      assert.dom('div').exists();
+      assert.dom('div').hasText('All Replies Applications Emails Payment Drafts');
+    });
+    async function renderComponentDefaultButton() {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::ScrollableBar style="max-width:250px;">
+              <:content as |callbacks|>
+                {{#each this.items as |item|}}
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>{{item}}</div>
+                {{/each}}
+              </:content>
+            </OSS::ScrollableBar>
+          
+      */
+      {
+        "id": "a56AOxJs",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,5,\"max-width:250px;\"]],null,[[\"content\"],[[[[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"            \"],[11,0],[4,[38,3],[[30,1,[\"setupFn\"]]],null],[4,[38,4],[[30,1,[\"teardownFn\"]]],null],[12],[1,[30,2]],[13],[1,\"\\n\"]],[2]],null],[1,\"        \"]],[1]]]]],[1,\"\\n    \"]],[\"callbacks\",\"item\"],false,[\"o-s-s/scrollable-bar\",\"each\",\"-track-array\",\"did-insert\",\"will-destroy\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-bar-test.ts",
+        "isStrictMode": false
+      }));
+    }
+    async function renderComponentWithIcon() {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::ScrollableBar @buttonStyle="icon" style="max-width:250px;">
+              <:content as |callbacks|>
+                {{#each this.items as |item|}}
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>{{item}}</div>
+                {{/each}}
+              </:content>
+            </OSS::ScrollableBar>
+          
+      */
+      {
+        "id": "nkWGHd0S",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,5,\"max-width:250px;\"]],[[\"@buttonStyle\"],[\"icon\"]],[[\"content\"],[[[[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"            \"],[11,0],[4,[38,3],[[30,1,[\"setupFn\"]]],null],[4,[38,4],[[30,1,[\"teardownFn\"]]],null],[12],[1,[30,2]],[13],[1,\"\\n\"]],[2]],null],[1,\"        \"]],[1]]]]],[1,\"\\n    \"]],[\"callbacks\",\"item\"],false,[\"o-s-s/scrollable-bar\",\"each\",\"-track-array\",\"did-insert\",\"will-destroy\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-bar-test.ts",
+        "isStrictMode": false
+      }));
+    }
+  });
+});
 define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 

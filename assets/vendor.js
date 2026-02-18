@@ -96465,6 +96465,233 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/scrollable-bar", ["exports", "@ember/component", "@ember/object", "@ember/object/internals", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _object, _internals, _component2, _tracking, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/object/internals",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="scrollable-bar-container" id={{this.scrollableBarId}} ...attributes>
+    {{#if this.isLeftScrollable}}
+      {{#if (eq this.buttonStyle "icon")}}
+        <button
+          class="scroll-to-left-icon"
+          data-control-name="scrollable-bar-container-scroll-to-left-icon"
+          {{on "click" this.scrollToLeft}}
+        >
+          <OSS::Icon @style={{fa-icon-style "fa-chevron-left"}} @icon={{fa-icon-value "fa-chevron-left"}} />
+        </button>
+      {{else}}
+        <OSS::Button
+          class="scroll-to-left-btn"
+          @icon="fa-arrow-left"
+          @size="sm"
+          @square={{true}}
+          data-control-name="scrollable-bar-container-scroll-to-left-btn"
+          {{on "click" this.scrollToLeft}}
+        />
+      {{/if}}
+    {{/if}}
+  
+    <div class={{this.innerContainerStyle}}>
+      {{yield (hash setupFn=this.observeIntersection teardownFn=this.unobserveIntersection) to="content"}}
+    </div>
+  
+    {{#if this.isRightScrollable}}
+      {{#if (eq this.buttonStyle "icon")}}
+        <button
+          class="scroll-to-right-icon"
+          data-control-name="scrollable-bar-container-scroll-to-right-icon"
+          {{on "click" this.scrollToRight}}
+        >
+          <OSS::Icon @style={{fa-icon-style "fa-chevron-right"}} @icon={{fa-icon-value "fa-chevron-right"}} />
+        </button>
+      {{else}}
+        <OSS::Button
+          class="scroll-to-right-btn"
+          @icon="fa-arrow-right"
+          @size="sm"
+          @square={{true}}
+          data-control-name="scrollable-bar-container-scroll-to-right-btn"
+          {{on "click" this.scrollToRight}}
+        />
+      {{/if}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "Vhm8lNyc",
+    "block": "[[[11,0],[24,0,\"scrollable-bar-container\"],[16,1,[30,0,[\"scrollableBarId\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"isLeftScrollable\"]],[[[41,[28,[37,1],[[30,0,[\"buttonStyle\"]],\"icon\"],null],[[[1,\"      \"],[11,\"button\"],[24,0,\"scroll-to-left-icon\"],[24,\"data-control-name\",\"scrollable-bar-container-scroll-to-left-icon\"],[4,[38,2],[\"click\",[30,0,[\"scrollToLeft\"]]],null],[12],[1,\"\\n        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[\"fa-chevron-left\"],null],[28,[37,5],[\"fa-chevron-left\"],null]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,6],[[24,0,\"scroll-to-left-btn\"],[24,\"data-control-name\",\"scrollable-bar-container-scroll-to-left-btn\"],[4,[38,2],[\"click\",[30,0,[\"scrollToLeft\"]]],null]],[[\"@icon\",\"@size\",\"@square\"],[\"fa-arrow-left\",\"sm\",true]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"innerContainerStyle\"]]],[12],[1,\"\\n    \"],[18,2,[[28,[37,8],null,[[\"setupFn\",\"teardownFn\"],[[30,0,[\"observeIntersection\"]],[30,0,[\"unobserveIntersection\"]]]]]]],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isRightScrollable\"]],[[[41,[28,[37,1],[[30,0,[\"buttonStyle\"]],\"icon\"],null],[[[1,\"      \"],[11,\"button\"],[24,0,\"scroll-to-right-icon\"],[24,\"data-control-name\",\"scrollable-bar-container-scroll-to-right-icon\"],[4,[38,2],[\"click\",[30,0,[\"scrollToRight\"]]],null],[12],[1,\"\\n        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[\"fa-chevron-right\"],null],[28,[37,5],[\"fa-chevron-right\"],null]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,6],[[24,0,\"scroll-to-right-btn\"],[24,\"data-control-name\",\"scrollable-bar-container-scroll-to-right-btn\"],[4,[38,2],[\"click\",[30,0,[\"scrollToRight\"]]],null]],[[\"@icon\",\"@size\",\"@square\"],[\"fa-arrow-right\",\"sm\",true]],null],[1,\"\\n\"]],[]]]],[]],null],[13]],[\"&attrs\",\"&content\"],false,[\"if\",\"eq\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/button\",\"yield\",\"hash\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/scrollable-bar.hbs",
+    "isStrictMode": false
+  });
+  var _default = _exports.default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, (_class = class _class extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _initializerDefineProperty(this, "filterEntries", _descriptor, this);
+      _defineProperty(this, "scrollableBarId", (0, _internals.guidFor)(this));
+      this.intersectionObserver = new IntersectionObserver(this.intersectionObserverCallback.bind(this), {
+        root: null,
+        rootMargin: '0px',
+        threshold: [0, 1]
+      });
+    }
+    get isLeftScrollable() {
+      if (this.filterEntries.length === 0 || this.getFilterNodes().length === 0) return false;
+      const entry = this.filterEntries.find(f => f.target === this.getFilterNodes()[0]);
+      return entry !== undefined && entry.intersectionRatio < 1;
+    }
+    get isRightScrollable() {
+      if (this.filterEntries.length === 0 || this.getFilterNodes().length === 0) return false;
+      const entry = this.filterEntries.find(f => f.target === this.getFilterNodes()[this.getFilterNodes().length - 1]);
+      return entry !== undefined && entry.intersectionRatio < 1;
+    }
+    get buttonStyle() {
+      return this.args.buttonStyle ?? 'button';
+    }
+    get innerContainerStyle() {
+      const baseStyle = this.args.buttonStyle === 'icon' ? 'inner-container-icon' : 'inner-container-btn';
+      let innerContainerStyle = 'inner-container';
+      if (this.isLeftScrollable) {
+        innerContainerStyle += ` ${baseStyle}--scrollable-left`;
+      }
+      if (this.isRightScrollable) {
+        innerContainerStyle += ` ${baseStyle}--scrollable-right`;
+      }
+      return innerContainerStyle;
+    }
+    get containerElement() {
+      return document.querySelector(`#${this.scrollableBarId} .inner-container`);
+    }
+    get scrollWidth() {
+      if (!this.containerElement) return 0;
+      return this.containerElement.clientWidth / 3;
+    }
+    observeIntersection(element) {
+      this.intersectionObserver.observe(element);
+      if (this.containerElement) {
+        this.containerElement.scrollLeft = this.containerElement.scrollWidth;
+      }
+    }
+    unobserveIntersection(element) {
+      this.filterEntries = this.filterEntries.filter(e => e.target !== element);
+      this.intersectionObserver.unobserve(element);
+    }
+    scrollToRight() {
+      if (!this.containerElement) return;
+      this.containerElement.scrollBy({
+        left: this.scrollWidth,
+        behavior: 'smooth'
+      });
+    }
+    scrollToLeft() {
+      if (!this.containerElement) return;
+      this.containerElement.scrollBy({
+        left: -this.scrollWidth,
+        behavior: 'smooth'
+      });
+    }
+    getFilterNodes() {
+      return Array.from(this.containerElement?.childNodes || []).filter(node => node instanceof HTMLElement);
+    }
+    intersectionObserverCallback(entries) {
+      entries.forEach(entry => {
+        if (entry.rootBounds) {
+          this.filterEntries = [...this.filterEntries.filter(e => e.target !== entry.target), entry];
+        } else {
+          this.filterEntries = [...this.filterEntries.filter(e => e.target !== entry.target)];
+        }
+      });
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "filterEntries", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [];
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "observeIntersection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "observeIntersection"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "unobserveIntersection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "unobserveIntersection"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "scrollToRight", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "scrollToRight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "scrollToLeft", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "scrollToLeft"), _class.prototype)), _class));
+});
+;define("@upfluence/oss-components/components/o-s-s/scrollable-bar.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::ScrollableBar',
+    component: 'scrollable-bar',
+    argTypes: {
+      buttonStyle: {
+        description: 'Updates the style of scroll buttons. Defaults to "button"',
+        table: {
+          type: {
+            summary: 'button | icon'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Container which automatically handles horizontal scroll behavior with left and right buttons'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    buttonStyle: undefined
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 300px; background-color: white;" >
+          <OSS::ScrollableBar @buttonStyle={{this.buttonStyle}}>
+                <:content as |callbacks|>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>All</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Replies</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications2</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails2</div>
+                  <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments2</div>
+                </:content>
+              </OSS::ScrollableBar>
+        </div>
+      
+    */
+    {
+      "id": "LGhb4Qqj",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 300px; background-color: white;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@buttonStyle\"],[[30,0,[\"buttonStyle\"]]]],[[\"content\"],[[[[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"All\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Replies\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Applications\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Emails\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Payments\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Applications2\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Emails2\"],[13],[1,\"\\n              \"],[11,0],[4,[38,1],[[30,1,[\"setupFn\"]]],null],[4,[38,2],[[30,1,[\"teardownFn\"]]],null],[12],[1,\"Payments2\"],[13],[1,\"\\n            \"]],[1]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"callbacks\"],false,[\"o-s-s/scrollable-bar\",\"did-insert\",\"will-destroy\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-bar.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _templateFactory) {
   "use strict";
 
