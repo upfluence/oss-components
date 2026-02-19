@@ -125,7 +125,7 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
   });
 
   module('When clicking on the button', function () {
-    test('it shows chevron-down when closed', async function (assert) {
+    test('it shows chevron-down when panel isclosed', async function (assert) {
       this.items = [{ title: 'Item', action: () => {} }];
       await render(
         hbs`<OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>`
@@ -134,7 +134,7 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
       assert.dom('button i.fa-chevron-up').doesNotExist();
     });
 
-    test('it shows chevron-up when open', async function (assert) {
+    test('it shows chevron-up when panel is open', async function (assert) {
       this.items = [{ title: 'Item', action: () => {} }];
       await render(
         hbs`<OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>`
