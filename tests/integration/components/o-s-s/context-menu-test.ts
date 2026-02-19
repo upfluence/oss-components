@@ -54,7 +54,7 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
       );
       assert.dom('button i').hasClass('fa-circle-notch').hasClass('fa-spin');
       this.set('loading', false);
-      assert.dom('button i').doesNotExist();
+      assert.dom('button i.fa-circle-notch').doesNotExist();
     });
 
     test('it accepts loadingOptions argument', async function (assert) {
@@ -125,6 +125,25 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
   });
 
   module('When clicking on the button', function () {
+    test('it shows chevron-down when panel isclosed', async function (assert) {
+      this.items = [{ title: 'Item', action: () => {} }];
+      await render(
+        hbs`<OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>`
+      );
+      assert.dom('button i.fa-chevron-down').exists();
+      assert.dom('button i.fa-chevron-up').doesNotExist();
+    });
+
+    test('it shows chevron-up when panel is open', async function (assert) {
+      this.items = [{ title: 'Item', action: () => {} }];
+      await render(
+        hbs`<OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>`
+      );
+      await click('button');
+      assert.dom('button i.fa-chevron-up').exists();
+      assert.dom('button i.fa-chevron-down').doesNotExist();
+    });
+
     test('it opens the panel', async function (assert) {
       await render(hbs`<OSS::ContextMenu @label={{this.label}}
                                          @onMenuOpened={{this.onOpenStub}}
