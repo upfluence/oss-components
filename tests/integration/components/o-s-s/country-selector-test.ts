@@ -6,9 +6,11 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
 import { click, findAll, render } from '@ember/test-helpers';
-import { countries } from '@upfluence/oss-components/utils/country-codes';
 import { set } from '@ember/object';
 import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
+
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
+import { countries } from '@upfluence/oss-components/utils/country-codes';
 
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);
@@ -229,6 +231,112 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       });
       await render(hbs`<OSS::CountrySelector @sourceList={{this.countries}} />`);
       await settled();
+    });
+  });
+
+  module('@feedbackMessageMessage argument', () => {
+    hooks.beforeEach(function () {
+      this.feedbackMessage = { type: 'error', value: 'This is an error message' };
+    });
+
+    module('when @feedbackMessage is provided', () => {
+      test('no error message is displayed', async function (assert) {
+        await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
+        assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+      });
+
+      test('no error border is displayed', async function (assert) {
+        await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
+        assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+      });
+    });
+
+    module('when @feedbackMessage is null', () => {
+      test('no error message is displayed', async function (assert) {
+        this.feedbackMessage = null;
+        await render(
+          hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+        );
+        assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+      });
+
+      test('no border is displayed', async function (assert) {
+        this.feedbackMessage = null;
+        await render(
+          hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+        );
+        assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+      });
+    });
+
+    test('when @feedbackMessage changes from a message to null, the error message is removed', async function (assert) {
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+      );
+      assert.dom('.country-selector-container').hasClass('country-selector-container--error');
+      assert.dom('[data-control-name="country-selector-feedback-message"]').hasText('This is an error message');
+
+      set(this, 'feedbackMessage', null);
+      await settled();
+
+      assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+      assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+    });
+
+    test('when @feedbackMessage changes from null to a message, the error message is displayed', async function (assert) {
+      this.feedbackMessage = null;
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+      );
+
+      assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+      assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+
+      set(this, 'feedbackMessage', { type: 'error', value: 'This is an error message' });
+      await settled();
+
+      assert.dom('.country-selector-container').hasClass('country-selector-container--error');
+      assert.dom('[data-control-name="country-selector-feedback-message"]').hasText('This is an error message');
+    });
+
+    ALLOWED_FEEDBACK_MESSAGE_TYPES.forEach((type) => {
+      module(`for ${type} type`, () => {
+        module('when @feedbackMessage is provided', () => {
+          test(`the correct message is displayed`, async function (assert) {
+            this.feedbackMessage = { type: type, value: `This is an ${type} message` };
+            await render(
+              hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+            );
+            assert.dom('[data-control-name="country-selector-feedback-message"]').hasText(`This is an ${type} message`);
+          });
+
+          test(`the correct border is displayed`, async function (assert) {
+            this.feedbackMessage = { type: type, value: `This is an ${type} message` };
+            await render(
+              hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+            );
+            assert.dom('.country-selector-container').hasClass(`country-selector-container--${type}`);
+          });
+        });
+
+        module('when @feedbackMessage has undefined value', () => {
+          test('no message is displayed', async function (assert) {
+            this.feedbackMessage = { type };
+            await render(
+              hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+            );
+            assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+          });
+
+          test('the correct border is displayed', async function (assert) {
+            this.feedbackMessage = { type };
+            await render(
+              hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />`
+            );
+            assert.dom('.country-selector-container').hasClass(`country-selector-container--${type}`);
+          });
+        });
+      });
     });
   });
 });

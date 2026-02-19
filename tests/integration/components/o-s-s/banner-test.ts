@@ -2,7 +2,9 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { FEEDBACK_TYPES, type FeedbackType } from '@upfluence/oss-components/components/o-s-s/input-container';
+
+import type { FeedbackMessageType } from '@upfluence/oss-components/types';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 module('Integration | Component | o-s-s/banner', function (hooks) {
   setupRenderingTest(hooks);
@@ -188,7 +190,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       assert.dom('.upf-banner--feedback').hasText('This is a feedback message');
     });
 
-    FEEDBACK_TYPES.forEach((type: FeedbackType) => {
+    ALLOWED_FEEDBACK_MESSAGE_TYPES.forEach((type: FeedbackMessageType) => {
       test(`When feedback type is ${type}, the border has the corresponding class`, async function (assert) {
         this.feedbackMessage = {
           type: type,

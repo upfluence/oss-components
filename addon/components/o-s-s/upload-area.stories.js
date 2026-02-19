@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
-import { MockUploader } from 'dummy/controllers/application';
+import { MockUploader } from 'dummy/controllers/extra';
 
 const PrivacyTypes = ['public', 'private'];
 const SizeTypes = ['md', 'lg'];
@@ -112,7 +112,21 @@ export default {
         defaultValue: { summary: false }
       }
     },
+    feedbackMessage: {
+      description:
+        'A feedback message to display below the upload area. The message object contains a type and value.<br>' +
+        'Allowed types are: <code>error</code>, <code>warning</code>, <code>success</code>.<br>' +
+        'The type determines the color of the message and applies a CSS class to the upload area.',
+      table: {
+        type: {
+          summary: 'FeedbackMessage'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     onUploadSuccess: {
+      type: { required: true },
       description:
         'Action called when the file is upload with success. This action has two definitions:<br>' +
         '- onUploadSuccess(artifact: FileArtifact): void (single mode)<br>' +
@@ -214,8 +228,8 @@ const DefaultUsageTemplate = (args) => ({
     <div style="padding: 24px; background-color: white">
         <OSS::UploadArea @uploader={{this.uploader}} @subtitle={{this.subtitle}} @disabled={{this.disabled}}
                          @privacy={{this.privacy}} @scope={{this.scope}} @rules={{this.rules}} @artifact={{this.artifact}}
-                         @size={{this.size}} @multiple={{this.multiple}} @onUploadSuccess={{this.onUploadSuccess}}
-                         @onFileDeletion={{this.onFileDeletion}} />
+                         @size={{this.size}} @multiple={{this.multiple}} @feedbackMessage={{this.feedbackMessage}}
+                         @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
     </div>
   `,
   context: args
@@ -223,6 +237,14 @@ const DefaultUsageTemplate = (args) => ({
 
 export const Default = DefaultUsageTemplate.bind({});
 Default.args = defaultArgs;
+
+export const WithFeedbackMessage = DefaultUsageTemplate.bind({});
+WithFeedbackMessage.args = {
+  ...defaultArgs,
+  ...{
+    feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
+  }
+};
 
 export const SingleWithArtifact = DefaultUsageTemplate.bind({});
 SingleWithArtifact.args = {

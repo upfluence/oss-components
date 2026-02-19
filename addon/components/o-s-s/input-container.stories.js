@@ -113,6 +113,7 @@ const defaultArgs = {
   disabled: false,
   type: undefined,
   placeholder: 'this is the placeholder',
+  feedbackMessage: undefined,
   errorMessage: undefined,
   autocomplete: undefined,
   onChange: action('onChange')
@@ -121,7 +122,7 @@ const defaultArgs = {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                           @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
+                           @feedbackMessage={{this.feedbackMessage}} @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
   `,
   context: args
 });

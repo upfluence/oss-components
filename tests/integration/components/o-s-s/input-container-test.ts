@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, typeIn, triggerEvent } from '@ember/test-helpers';
+import { render, typeIn, triggerEvent } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/input-container', function (hooks) {
@@ -45,19 +45,17 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
   });
 
   module('Component Parameters', (hooks) => {
-    let onValueChange;
-
     hooks.beforeEach(function () {
-      onValueChange = sinon.fake.returns(true);
-      this.set('value', 'testValue');
-      this.set('placeholder', 'Type your text');
-      this.set('onValueChange', onValueChange);
-      this.set('autocomplete', undefined);
+      this.value = 'testValue';
+      this.placeholder = 'Type your text';
+      this.onChange = sinon.stub();
+      this.autocomplete = undefined;
     });
+
     async function renderComponentWithParameters() {
       await render(hbs`
         <OSS::InputContainer @value={{this.value}}
-                             @onChange={{this.onValueChange}}
+                             @onChange={{this.onChange}}
                              @placeholder={{this.placeholder}}
                              @autocomplete={{this.autocomplete}} />`);
     }
@@ -69,26 +67,22 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
 
     test('Passing a @placeholder parameter works', async function (assert) {
       await renderComponentWithParameters();
-      let inputElement = find('.upf-input');
-      assert.equal(inputElement.getAttribute('placeholder'), 'Type your text');
+      assert.dom('.upf-input').hasAttribute('placeholder', 'Type your text');
     });
 
     test('Passing an @onChange method works and is triggered on input changes', async function (assert) {
       await renderComponentWithParameters();
-      let inputElement = find('.upf-input');
-      await typeIn(inputElement, 'a');
-      assert.ok(onValueChange.called);
+      await typeIn('.upf-input', 's', { delay: 0 });
+      assert.ok(this.onChange.calledOnceWithExactly('testValues'));
     });
 
     test('Passing an @onChange method works and is triggered on copy event', async function (assert) {
-      this.onChange = sinon.stub();
-      await render(hbs`<OSS::InputContainer data-control-name="firstname-input" @onChange={{this.onChange}} />`);
+      await renderComponentWithParameters();
 
-      assert.ok(this.onChange.notCalled);
       await triggerEvent('.oss-input-container input', 'paste', {
-        clipboardData: { getData: (format) => `clipboardFormat/${format}` }
+        clipboardData: { getData: (format: any) => `clipboardFormat/${format}` }
       });
-      assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
+      assert.ok(this.onChange.calledOnceWithExactly('testValueclipboardFormat/Text'));
     });
 
     test('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
@@ -185,8 +179,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::InputContainer data-control-name="firstname-input" />`);
-      let inputWrapper = find('.oss-input-container');
-      assert.equal(inputWrapper.getAttribute('data-control-name'), 'firstname-input');
+      assert.dom('.oss-input-container').hasAttribute('data-control-name', 'firstname-input');
     });
   });
 });

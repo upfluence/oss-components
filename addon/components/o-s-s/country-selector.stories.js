@@ -98,6 +98,17 @@ export default {
       },
       control: { type: 'text' }
     },
+    feedbackMessage: {
+      description:
+        'A feedback message to display below the country selector. The message object contains a type and value. Allowed types are: <code>error</code>, <code>warning</code>, <code>success</code>. The type determines the color of the message and applies a CSS class to the upload area.',
+      table: {
+        type: {
+          summary: 'FeedbackMessage'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     onChange: {
       type: { required: true },
       description: 'A callback that sends the selected country/province object to the parent component',
@@ -122,6 +133,7 @@ export default {
 const defaultArgs = {
   sourceList: partialCountries,
   value: undefined,
+  feedbackMessage: undefined,
   onChange: action('onChange')
 };
 
@@ -146,4 +158,12 @@ export const PrefilledUsage = Template.bind({});
 PrefilledUsage.args = {
   ...defaultArgs,
   ...{ value: 'FR' }
+};
+
+export const WithFeedbackMessage = Template.bind({});
+WithFeedbackMessage.args = {
+  ...defaultArgs,
+  ...{
+    feedbackMessage: { type: 'error', value: 'This is an error message' }
+  }
 };
