@@ -34,6 +34,8 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   @tracked displayTooltip: boolean = false;
   @tracked inputRangeElement: HTMLElement | null = null;
   @tracked tooltipElement: HTMLElement | null = null;
+  @tracked numberInputElement: HTMLElement | null = null;
+  @tracked actualInputValue: string | null = null;
 
   get defaultValue(): string {
     return this.args.defaultValue ?? DEFAULT_VALUE;
@@ -70,7 +72,15 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   }
 
   get activeBackgroundWidth(): ReturnType<typeof htmlSafe> {
-    const percentage = Math.round(this.getPercentage(this.args.value ?? '0') * 100);
+    let valueForBackground: string;
+
+    if (this.actualInputValue !== null) {
+      valueForBackground = this.actualInputValue;
+    } else {
+      valueForBackground = this.currentRangeValue;
+    }
+
+    const percentage = Math.round(this.getPercentage(valueForBackground) * 100);
     return htmlSafe(`--range-percentage: ${percentage}%`);
   }
 
@@ -94,6 +104,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   @action
   onNumberInput(event: InputEvent): void {
     const value = (event.target as HTMLInputElement).value;
+    this.actualInputValue = value;
     this.checkUserInput(value);
   }
 
@@ -117,22 +128,25 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     this.tooltipElement = element;
   }
 
+  @action
+  initializeNumberInput(element: HTMLElement): void {
+    this.numberInputElement = element;
+  }
+
   private getPercentage(value: string): number {
     let correction = 0;
     const convertedValue = parseFloat(isBlank(value) ? '0' : value);
+    const min = this.args.min ?? 0;
+    const max = this.args.max ?? 100;
 
     if (this.args.step) {
       correction =
         convertedValue % this.args.step >= this.args.step / 2
           ? this.args.step - (convertedValue % this.args.step)
-          : -value % this.args.step;
+          : -convertedValue % this.args.step;
     }
 
-    return Math.min(
-      Math.max(convertedValue + correction - this.sliderOptions.min, 0) /
-        (this.sliderOptions.max - this.sliderOptions.min),
-      1
-    );
+    return Math.min(Math.max(convertedValue + correction - min, 0) / (max - min), 1);
   }
 
   private checkUserInput(value: string | null): void {

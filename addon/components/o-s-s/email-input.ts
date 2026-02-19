@@ -44,17 +44,24 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
     return this.args.errorMessage || this.regexError || null;
   }
 
-  @action
-  validateInput(): void {
-    this.regexError = '';
-    this.args.onChange?.(this.args.value ? this.args.value.toLowerCase() : this.args.value);
+  get onChangeHandler() {
+    return (value: string | null) => this.validateInput(value);
+  }
 
-    if (!this._runValidation || !this.args.value) {
+  @action
+  validateInput(value: string | null): void {
+    const normalizedValue = value ? value.toLowerCase() : value;
+
+    this.args.onChange?.(normalizedValue);
+
+    if (!this._runValidation || !value) {
+      this.regexError = '';
       this.args.validates?.(true);
-    } else if (!EMAIL_REGEXP.test(this.args.value)) {
+    } else if (!EMAIL_REGEXP.test(value)) {
       this.regexError = this.intl.t('oss-components.email-input.regex_error');
       this.args.validates?.(false);
     } else {
+      this.regexError = '';
       this.args.validates?.(true);
     }
   }
