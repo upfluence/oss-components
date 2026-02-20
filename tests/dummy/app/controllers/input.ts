@@ -5,6 +5,8 @@ import { action } from '@ember/object';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
 import { isBlank } from '@ember/utils';
+import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
+import { ensureSafeComponent } from '@embroider/util';
 
 export default class Input extends Controller {
   @tracked shopUrl: string = '';
@@ -26,9 +28,15 @@ export default class Input extends Controller {
     'Black Panther',
     'Captain Marvel'
   ];
-  @tracked items: { name: string; label: string }[] = [
+  @tracked items: { name: string; label: string; groupKey?: string }[] = [
     { name: 'foo', label: 'foo' },
-    { name: 'bar', label: 'bar' }
+    { name: 'bar', label: 'bar' },
+    { name: 'banana', label: 'banana', groupKey: 'fruit' },
+    { name: 'lettuce', label: 'lettuce', groupKey: 'vegetable' },
+    { name: 'orange', label: 'orange', groupKey: 'fruit' },
+    { name: 'carrot', label: 'carrot', groupKey: 'vegetable' },
+    { name: 'apple', label: 'apple', groupKey: 'fruit' },
+    { name: 'spinach', label: 'spinach', groupKey: 'vegetable' }
   ];
   @tracked selectedItem: { name: string; label: string } | undefined = this.items[0];
   @tracked emailInputValue: string = '';
@@ -43,6 +51,114 @@ export default class Input extends Controller {
   @tracked currencyOnly: string = '';
   @tracked formInstance?: FormInstance;
   @tracked formFieldValue: string = '';
+  @tracked declare referenceTarget: HTMLElement;
+  @tracked declare contextMenuPanel: HTMLElement;
+  @tracked displayContextMenuPanel: boolean = false;
+
+  subMenu2 = [
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'true',
+      action: () => {
+        console.log('click on first');
+        return true;
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'false',
+      action: () => {
+        console.log('click on second');
+        return false;
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'void',
+      action: () => {
+        console.log('click on third');
+        return;
+      }
+    }
+  ];
+
+  otherItem = {
+    prefixIcon: { icon: 'fa-arrow-progress' },
+    title: 'Other',
+    groupKey: 'other',
+    action: () => {
+      console.log('click on other');
+    }
+  };
+
+  subMenu1 = [
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'First sub action',
+      items: this.subMenu2,
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on first');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'Second sub action',
+      items: this.subMenu2,
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on second');
+      }
+    },
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem
+  ];
+
+  @tracked customContextMenuItems: ContextMenuItem[] = [
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'Move to next step',
+      items: this.subMenu1,
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on move to next step');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-paper-plane' },
+      title: 'Direct action',
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on direct action');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-paper-plane' },
+      title: 'Custom action',
+      groupKey: 'custom',
+      rowRenderer: ensureSafeComponent('panel/example-row', this),
+      action: () => {
+        console.log('click on direct action');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-trash' },
+      title: 'Delete',
+      groupKey: 'overall',
+      action: () => {
+        console.log('click on delete');
+      }
+    }
+  ];
 
   countries: CountryData[] = countries;
   allowedCurrencies: { code: string; symbol: string }[] = [
@@ -171,5 +287,15 @@ export default class Input extends Controller {
   @action
   onInfiniteSelectOptionChange(value: boolean): void {
     console.log('Infinite select option changed', value);
+  }
+
+  @action
+  onPanelClose(): void {
+    console.log('panel closed');
+  }
+
+  @action
+  onPanelOpen(): void {
+    console.log('panel opened');
   }
 }

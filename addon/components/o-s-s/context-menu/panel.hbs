@@ -1,0 +1,87 @@
+<div {{did-insert this.registerPanelContainer}} class={{this.panelContainerCustomClasses}}>
+  {{#if this.isInitialized}}
+    {{#in-element this.portalTarget insertBefore=null}}
+      <OSS::ScrollablePanel
+        id={{this.portalId}}
+        class="context-menu-panel__scrollable-container"
+        {{did-insert this.registerPanel}}
+        {{on "mouseleave" this.mouseLeave}}
+        {{on "scroll" this.onScroll}}
+        ...attributes
+      >
+        <OSS::InfiniteSelect
+          @items={{@items}}
+          @searchEnabled={{false}}
+          @onSelect={{this.noop}}
+          @onClose={{this.closeDropdown}}
+          @enableKeyboard={{false}}
+          class="margin-top-px-0 context-menu-panel__dropdown"
+          {{on-click-outside this.onClickOutside}}
+        >
+          <:option as |item index|>
+            {{#if item.items}}
+              <OSS::InfiniteSelect::Option
+                @prefixAvatar={{item.prefixAvatar}}
+                @prefixBadge={{item.prefixBadge}}
+                @prefixIcon={{item.prefixIcon}}
+                @prefixCountry={{item.prefixCountry}}
+                @title={{item.title}}
+                @subtitle={{item.subtitle}}
+                @icon={{item.icon}}
+                @suffixHint={{item.suffixHint}}
+                @suffixTag={{item.suffixTag}}
+                @suffixIcon={{or item.suffixIcon (hash icon="fa-chevron-right")}}
+                @selectionType={{item.selectionType}}
+                @selected={{item.selected}}
+                @disabled={{item.disabled}}
+                @onSelect={{item.action}}
+                {{did-insert registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
+                {{on "click" (fn this.toggleSubMenu item.items index)}}
+                class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
+              />
+            {{else if item.rowRenderer}}
+              <item.rowRenderer
+                @item={{item}}
+                {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
+                {{on "click" (fn this.callAction item.action)}}
+              />
+            {{else}}
+              <OSS::InfiniteSelect::Option
+                @prefixAvatar={{item.prefixAvatar}}
+                @prefixBadge={{item.prefixBadge}}
+                @prefixIcon={{item.prefixIcon}}
+                @prefixCountry={{item.prefixCountry}}
+                @title={{item.title}}
+                @subtitle={{item.subtitle}}
+                @icon={{item.icon}}
+                @suffixHint={{item.suffixHint}}
+                @suffixTag={{item.suffixTag}}
+                @suffixIcon={{item.suffixIcon}}
+                @selectionType={{item.selectionType}}
+                @selected={{item.selected}}
+                @disabled={{item.disabled}}
+                @onSelect={{fn this.callAction item.action}}
+                {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
+                class="infinit-select-option-panel-container"
+              />
+            {{/if}}
+          </:option>
+        </OSS::InfiniteSelect>
+      </OSS::ScrollablePanel>
+    {{/in-element}}
+
+    {{#if this.displaySubMenu}}
+      <OSS::ContextMenu::Panel
+        @referenceTarget={{this.subReferenceTarget}}
+        @items={{this.subItems}}
+        @placement="right-start"
+        @offset={{this.subPanelOffset}}
+        @onMouseLeave={{this.onSubPanelMouseLeave}}
+        @onClose={{@onClose}}
+        @registerPanel={{@registerPanel}}
+        @unregisterPanel={{@unregisterPanel}}
+        {{did-insert this.registerSubPanel}}
+      />
+    {{/if}}
+  {{/if}}
+</div>

@@ -13,7 +13,7 @@ import {
 } from '@floating-ui/dom';
 
 export type AttachmentOptions = {
-  offset?: number;
+  offset?: number | { mainAxis: number; crossAxis: number };
   width?: number;
   maxHeight?: number;
   maxWidth?: number;
@@ -62,7 +62,7 @@ export default function attachDropdown(
         }
 
         if (mergedOptions.maxHeight) {
-          floatingStyle.maxHeight = `${floatingStyle.maxHeight}px`;
+          floatingStyle.maxHeight = `${mergedOptions.maxHeight}px`;
           elements.floating.style.setProperty('--floating-max-height', `${mergedOptions.maxHeight}px`);
         }
 
