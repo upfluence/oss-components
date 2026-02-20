@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking';
 
 interface OSSScrollableBarComponentSignature {
   buttonStyle?: 'button' | 'icon';
+  focusNewElementOnEntry?: boolean;
 }
 
 export default class extends Component<OSSScrollableBarComponentSignature> {
@@ -40,6 +41,10 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
     return this.args.buttonStyle ?? 'button';
   }
 
+  get focusNewElementOnEntry(): boolean {
+    return this.args.focusNewElementOnEntry ?? true;
+  }
+
   get innerContainerStyle(): string {
     const baseStyle = this.args.buttonStyle === 'icon' ? 'inner-container-icon' : 'inner-container-btn';
     let innerContainerStyle = 'inner-container';
@@ -64,7 +69,7 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
   @action
   observeIntersection(element: HTMLElement): void {
     this.intersectionObserver.observe(element);
-    if (this.containerElement) {
+    if (this.focusNewElementOnEntry && this.containerElement) {
       this.containerElement.scrollLeft = this.containerElement.scrollWidth;
     }
   }

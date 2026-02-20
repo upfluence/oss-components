@@ -23,7 +23,8 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
     await render(
       hbs`<OSS::AccessPanel
           @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
-          @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}>
+          @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}
+          @filtered={{this.filtered}}>
             <:header>Header</:header>
             <:columns>Columns</:columns>
             <:row as |record|>row display: {{record.label}}</:row>
@@ -50,13 +51,60 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
     assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({ count: 24 });
   });
 
-  test('the initial loading state is correctly displayed', async function (assert) {
+  test('the initial loading state uses the row-skeleton named block if passed', async function (assert) {
+    this.loading = true;
+    this.initialLoad = true;
+
+    await render(
+      hbs`<OSS::AccessPanel
+          @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
+          @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}
+          @filtered={{this.filtered}}>
+            <:header>Header</:header>
+            <:columns>Columns</:columns>
+            <:row as |record|>row display: {{record.label}}</:row>
+            <:empty-state><div class="empty-state">empty state</div></:empty-state>
+            <:no-results><div class="no-results">no search results</div></:no-results>
+            <:row-skeleton><div class="super-skeleton">custom loading state</div></:row-skeleton>
+          </OSS::AccessPanel>
+      `
+    );
+
+    assert.dom('.oss-access-panel-container__row').exists({ count: 12 });
+    assert.dom('.oss-access-panel-container__row .super-skeleton').exists({ count: 12 });
+  });
+
+  test('the loading state when loading more records is correctly displayed', async function (assert) {
     this.loading = true;
     this.initialLoad = false;
+
     await renderComponent();
 
     assert.dom('.oss-access-panel-container__row').exists({ count: 5 });
     assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({ count: 6 });
+  });
+
+  test('the loading state when loading more records uses the row-skeleton named block if passed', async function (assert) {
+    this.loading = true;
+    this.initialLoad = false;
+
+    await render(
+      hbs`<OSS::AccessPanel
+          @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
+          @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}
+          @filtered={{this.filtered}}>
+            <:header>Header</:header>
+            <:columns>Columns</:columns>
+            <:row as |record|>row display: {{record.label}}</:row>
+            <:empty-state><div class="empty-state">empty state</div></:empty-state>
+            <:no-results><div class="no-results">no search results</div></:no-results>
+            <:row-skeleton><div class="super-skeleton">custom loading state</div></:row-skeleton>
+          </OSS::AccessPanel>
+      `
+    );
+
+    assert.dom('.oss-access-panel-container__row').exists({ count: 5 });
+    assert.dom('.oss-access-panel-container__row .super-skeleton').exists({ count: 3 });
   });
 
   test('The header named block is correctly filled', async function (assert) {
@@ -99,6 +147,17 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
       await renderComponent();
       await fillIn('.oss-input-container input', 'fo');
       await typeIn('.oss-input-container input', 'o', { delay: 0 });
+
+      assert.dom('.no-results').exists();
+      assert.dom('.no-results').hasText('no search results');
+    });
+
+    test('it renders the right empty state when no records are found and there is an ongoing search handled by the parent', async function (assert) {
+      this.onSearch = undefined;
+      this.records = [];
+      this.filtered = true;
+
+      await renderComponent();
 
       assert.dom('.no-results').exists();
       assert.dom('.no-results').hasText('no search results');
