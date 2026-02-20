@@ -143,6 +143,15 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     }
   }
 
+  @action
+  registerMouseEnterOnParent(element: HTMLElement, templateArgs: Array<(event: PointerEvent) => void>): void {
+    const callback = templateArgs[0];
+    if (callback) {
+      const targetElement = element.parentElement?.matches('li[role="button"]') ? element.parentElement : element;
+      targetElement.addEventListener('pointerenter', callback);
+    }
+  }
+
   private clearSubMenu(): void {
     this.displaySubMenu = false;
     this.subReferenceIndex = -1;

@@ -35,14 +35,14 @@
                 @selected={{item.selected}}
                 @disabled={{item.disabled}}
                 @onSelect={{item.action}}
-                {{on "mouseenter" (fn this.openSubMenu item.items index)}}
+                {{did-insert registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
                 {{on "click" (fn this.toggleSubMenu item.items index)}}
                 class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
               />
             {{else if item.rowRenderer}}
               <item.rowRenderer
                 @item={{item}}
-                {{on "mouseenter" this.closeSubMenu}}
+                {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
                 {{on "click" (fn this.callAction item.action)}}
               />
             {{else}}
@@ -61,7 +61,7 @@
                 @selected={{item.selected}}
                 @disabled={{item.disabled}}
                 @onSelect={{fn this.callAction item.action}}
-                {{on "mouseenter" this.closeSubMenu}}
+                {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
                 class="infinit-select-option-panel-container"
               />
             {{/if}}
