@@ -57,7 +57,7 @@ export default class Input extends Controller {
 
   subMenu2 = [
     {
-      icon: { icon: 'fa-arrow-progress' },
+      prefixIcon: { icon: 'fa-arrow-progress' },
       title: 'true',
       action: () => {
         console.log('click on first');
@@ -65,7 +65,7 @@ export default class Input extends Controller {
       }
     },
     {
-      icon: { icon: 'fa-arrow-progress' },
+      prefixIcon: { icon: 'fa-arrow-progress' },
       title: 'false',
       action: () => {
         console.log('click on second');
@@ -73,7 +73,7 @@ export default class Input extends Controller {
       }
     },
     {
-      icon: { icon: 'fa-arrow-progress' },
+      prefixIcon: { icon: 'fa-arrow-progress' },
       title: 'void',
       action: () => {
         console.log('click on third');
@@ -83,7 +83,7 @@ export default class Input extends Controller {
   ];
 
   otherItem = {
-    icon: { icon: 'fa-arrow-progress' },
+    prefixIcon: { icon: 'fa-arrow-progress' },
     title: 'Other',
     groupKey: 'other',
     action: () => {
