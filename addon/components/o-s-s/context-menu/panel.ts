@@ -123,7 +123,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   @action
   mouseLeave(event: MouseEvent): void {
     const relatedTarget = event.relatedTarget as HTMLElement;
-    if (this.subPanelElement?.contains(relatedTarget) || relatedTarget.classList.contains('upf-tooltip')) {
+    if (this.subPanelElement?.contains(relatedTarget) || relatedTarget?.classList.contains('upf-tooltip')) {
       return;
     }
 
