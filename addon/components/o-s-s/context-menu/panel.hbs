@@ -38,6 +38,7 @@
                 {{did-insert registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
                 {{on "click" (fn this.openSubMenu item.items index)}}
                 class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
+                data-control-name={{item.dataControlName}}
               />
             {{else if item.rowRenderer}}
               <item.rowRenderer
@@ -63,6 +64,7 @@
                 @onSelect={{fn this.callAction item.action}}
                 {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
                 class="infinit-select-option-panel-container"
+                data-control-name={{item.dataControlName}}
               />
             {{/if}}
           </:option>
