@@ -36,7 +36,7 @@
                 @disabled={{item.disabled}}
                 @onSelect={{item.action}}
                 {{did-insert registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
-                {{on "click" (fn this.toggleSubMenu item.items index)}}
+                {{on "click" (fn this.openSubMenu item.items index)}}
                 class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
               />
             {{else if item.rowRenderer}}

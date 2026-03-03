@@ -87,15 +87,6 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   }
 
   @action
-  toggleSubMenu(items: ContextMenuItem[], index: number, event: PointerEvent): void {
-    if (this.subReferenceIndex === index) {
-      this.clearSubMenu();
-      return;
-    }
-    this.openSubMenu(items, index, event);
-  }
-
-  @action
   noop(): void {}
 
   @action
