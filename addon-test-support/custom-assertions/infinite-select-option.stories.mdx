@@ -1,0 +1,134 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta
+  title="Custom Assertions/InfiniteSelectOption"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# InfiniteSelectOption Assertion
+
+The `infiniteSelectOption` custom assertion provides a fluent API for testing `OSS::InfiniteSelect::Option` components in your QUnit tests.
+
+## Usage
+
+```typescript
+assert.infiniteSelectOption('<selector>').hasTitle('Option Title');
+```
+
+## Installation
+
+This assertion is automatically registered when you call `registerAssertions(assert)` in your test setup.
+
+## API Reference
+
+### Element Existence
+- `.exists(message?: string)` - Assert option exists
+- `.doesNotExist(message?: string)` - Assert option doesn't exist
+
+### Content
+- `.hasTitle(title: string, message?: string)` - Assert title text
+- `.hasSubtitle(subtitle: string, message?: string)` - Assert subtitle text
+- `.doesNotHaveSubtitle(message?: string)` - Assert no subtitle
+
+### State
+- `.isSelected(message?: string)` - Assert selected state
+- `.isNotSelected(message?: string)` - Assert not selected
+- `.isDisabled(message?: string)` - Assert disabled state
+- `.isNotDisabled(message?: string)` - Assert not disabled
+- `.hasSelectionType(type: 'single' | 'multiple', message?: string)` - Assert selection type
+
+### Prefix Elements
+- `.hasPrefixAvatar(message?: string)` - Assert has prefix avatar
+- `.doesNotHavePrefixAvatar(message?: string)` - Assert no prefix avatar
+- `.hasPrefixBadge(message?: string)` - Assert has prefix badge
+- `.doesNotHavePrefixBadge(message?: string)` - Assert no prefix badge
+- `.hasPrefixIcon(message?: string)` - Assert has prefix icon
+- `.doesNotHavePrefixIcon(message?: string)` - Assert no prefix icon
+- `.hasPrefixCountry(countryCode: string, message?: string)` - Assert has country flag
+- `.doesNotHavePrefixCountry(message?: string)` - Assert no country flag
+
+### Main Icon
+- `.hasIcon(message?: string)` - Assert has main icon
+- `.doesNotHaveIcon(message?: string)` - Assert no main icon
+
+### Suffix Elements
+- `.hasSuffixHint(hint: string, message?: string)` - Assert suffix hint text
+- `.doesNotHaveSuffixHint(message?: string)` - Assert no suffix hint
+- `.hasSuffixTag(message?: string)` - Assert has suffix tag
+- `.doesNotHaveSuffixTag(message?: string)` - Assert no suffix tag
+- `.hasSuffixIcon(message?: string)` - Assert has suffix icon
+- `.doesNotHaveSuffixIcon(message?: string)` - Assert no suffix icon
+
+## Complete Example
+
+```typescript
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
+
+module('Integration | Component | my-component', function (hooks) {
+  setupRenderingTest(hooks);
+
+  test('it renders the option with all features', async function (assert) {
+    this.onSelect = sinon.stub();
+    this.prefixAvatar = { initials: 'JD' };
+    this.suffixTag = { label: 'Premium', skin: 'primary' };
+
+    await render(hbs\`
+      <OSS::InfiniteSelect::Option
+        @title="John Doe"
+        @subtitle="Premium User"
+        @prefixAvatar={{this.prefixAvatar}}
+        @suffixTag={{this.suffixTag}}
+        @suffixHint="+10"
+        @selected={{true}}
+        @selectionType="single"
+        @onSelect={{this.onSelect}}
+      />
+    \`);
+
+    // All these assertions will pass
+    assert.infiniteSelectOption('.oss-infinite-select-option').exists();
+    assert.infiniteSelectOption('.oss-infinite-select-option').hasTitle('John Doe');
+    assert.infiniteSelectOption('.oss-infinite-select-option').hasSubtitle('Premium User');
+    assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefixAvatar();
+    assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffixTag();
+    assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffixHint('+10');
+    assert.infiniteSelectOption('.oss-infinite-select-option').isSelected();
+    assert.infiniteSelectOption('.oss-infinite-select-option').hasSelectionType('single');
+    assert.infiniteSelectOption('.oss-infinite-select-option').isNotDisabled();
+  });
+});
+```
+
+## Migrating Existing Tests
+
+### Before (using assert.dom)
+```typescript
+test('it renders the option', async function (assert) {
+  await render(hbs`<OSS::InfiniteSelect::Option @title="Test" @onSelect={{this.onSelect}} />`);
+
+  assert.dom('.oss-infinite-select-option').exists();
+  assert.dom('.oss-infinite-select-option__title').hasText('Test');
+  assert.dom('.oss-infinite-select-option--selected').exists();
+  assert.dom('.oss-infinite-select-option--disabled').doesNotExist();
+});
+```
+
+### After (using custom assertion)
+```typescript
+test('it renders the option', async function (assert) {
+  await render(hbs`<OSS::InfiniteSelect::Option @title="Test" @onSelect={{this.onSelect}} />`);
+
+  assert.infiniteSelectOption('.oss-infinite-select-option').exists();
+  assert.infiniteSelectOption('.oss-infinite-select-option').hasTitle('Test');
+  assert.infiniteSelectOption('.oss-infinite-select-option').isSelected();
+  assert.infiniteSelectOption('.oss-infinite-select-option').isNotDisabled();
+});
+```
+
