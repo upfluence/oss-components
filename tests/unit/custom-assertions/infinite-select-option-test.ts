@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -140,7 +140,7 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
     });
   });
 
-  module('.hasPrefixAvatar()', () => {
+  module('.hasPrefix()', () => {
     test('it passes when prefix avatar is present', async function (assert) {
       this.prefixAvatar = { initials: 'JD' };
       await render(hbs`
@@ -151,19 +151,9 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefixAvatar();
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('avatar');
     });
-  });
 
-  module('.doesNotHavePrefixAvatar()', () => {
-    test('it passes when prefix avatar is not present', async function (assert) {
-      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
-
-      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefixAvatar();
-    });
-  });
-
-  module('.hasPrefixBadge()', () => {
     test('it passes when prefix badge is present', async function (assert) {
       this.prefixBadge = { icon: 'fa-star' };
       await render(hbs`
@@ -174,11 +164,9 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefixBadge();
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('badge');
     });
-  });
 
-  module('.hasPrefixIcon()', () => {
     test('it passes when prefix icon is present', async function (assert) {
       this.prefixIcon = { icon: 'fa-star' };
       await render(hbs`
@@ -189,12 +177,10 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefixIcon();
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('icon');
     });
-  });
 
-  module('.hasPrefixCountry()', () => {
-    test('it passes when prefix country matches', async function (assert) {
+    test('it passes when prefix country is present', async function (assert) {
       await render(hbs`
         <OSS::InfiniteSelect::Option
           @title={{this.title}}
@@ -203,7 +189,33 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefixCountry('US');
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('country');
+    });
+  });
+
+  module('.doesNotHavePrefix()', () => {
+    test('it passes when prefix avatar is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('avatar');
+    });
+
+    test('it passes when prefix badge is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('badge');
+    });
+
+    test('it passes when prefix icon is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('icon');
+    });
+
+    test('it passes when prefix country is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('country');
     });
   });
 
@@ -222,7 +234,15 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
     });
   });
 
-  module('.hasSuffixHint()', () => {
+  module('.doesNotHaveIcon()', () => {
+    test('it passes when icon is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveIcon();
+    });
+  });
+
+  module('.hasSuffix()', () => {
     test('it passes when suffix hint matches', async function (assert) {
       await render(hbs`
         <OSS::InfiniteSelect::Option
@@ -232,11 +252,9 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffixHint('+5');
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffix('hint', '+5');
     });
-  });
 
-  module('.hasSuffixTag()', () => {
     test('it passes when suffix tag is present', async function (assert) {
       this.suffixTag = { label: 'Premium' };
       await render(hbs`
@@ -247,11 +265,9 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffixTag();
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffix('tag');
     });
-  });
 
-  module('.hasSuffixIcon()', () => {
     test('it passes when suffix icon is present', async function (assert) {
       this.suffixIcon = { icon: 'fa-chevron-right' };
       await render(hbs`
@@ -262,7 +278,27 @@ module('Test Support | Custom Assertions | infinite-select-option', function (ho
         />
       `);
 
-      assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffixIcon();
+      assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffix('icon');
+    });
+  });
+
+  module('.doesNotHaveSuffix()', () => {
+    test('it passes when suffix hint is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSuffix('hint');
+    });
+
+    test('it passes when suffix tag is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSuffix('tag');
+    });
+
+    test('it passes when suffix icon is not present', async function (assert) {
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
+
+      assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSuffix('icon');
     });
   });
 

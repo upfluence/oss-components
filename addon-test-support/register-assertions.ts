@@ -3,7 +3,7 @@ import infiniteSelectOptionAssertions from '@upfluence/oss-components/test-suppo
 
 const ASSERTIONS = [tooltipAssertions, infiniteSelectOptionAssertions];
 
-export default function registerAssertions(assert: any) {
+export default function registerAssertions(assert: Assert) {
   ASSERTIONS.forEach((assertion) => {
     // @ts-ignore
     assert[assertion.__name__] = assertion;

@@ -28,21 +28,21 @@ async function triggerEventOnElement(selector: string, trigger: string = 'mouseo
 }
 
 export interface TooltipAssertions {
-  exists(trigger?: string, message?: string): void;
-  doesNotExist(trigger?: string, message?: string): void;
-  hasTitle(title: string, message?: string): void;
-  hasSubtitle(subtitle: string, message?: string): void;
-  doesNotHaveSubtitle(message?: string): void;
-  hasIcon(icon: string, message?: string): void;
-  doesNotHaveIcon(message?: string): void;
-  hasPlacement(placement: Placement, message?: string): void;
+  exists(trigger?: string, message?: string): Promise<void>;
+  doesNotExist(trigger?: string, message?: string): Promise<void>;
+  hasTitle(title: string, message?: string): Promise<void>;
+  hasSubtitle(subtitle: string, message?: string): Promise<void>;
+  doesNotHaveSubtitle(message?: string): Promise<void>;
+  hasIcon(icon: string, message?: string): Promise<void>;
+  doesNotHaveIcon(message?: string): Promise<void>;
+  hasPlacement(placement: Placement, message?: string): Promise<void>;
   isHtmlSafe(message?: string): void;
-  isNotHtmlSafe(message?: string): void;
+  isNotHtmlSafe(message?: string): Promise<void>;
 }
 
-const assertion = (selector: string) => {
+const assertion = (selector: string): TooltipAssertions => {
   return {
-    exists: async (trigger?: string, message?: string) => {
+    exists: async (trigger?: string, message?: string): Promise<void> => {
       let result: boolean = true;
       let actual: Element | null = null;
 
@@ -56,7 +56,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    doesNotExist: async (trigger: string = 'mouseover', message?: string) => {
+    doesNotExist: async (trigger: string = 'mouseover', message?: string): Promise<void> => {
       let result: boolean = false;
       let actual: Element | null = null;
       const existingClock = sinon.clock;
@@ -88,7 +88,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    hasTitle: async (title: string, message?: string) => {
+    hasTitle: async (title: string, message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       let result: boolean = false;
@@ -108,7 +108,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    hasSubtitle: async (subtitle: string, message?: string) => {
+    hasSubtitle: async (subtitle: string, message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       let result: boolean = false;
@@ -128,7 +128,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    doesNotHaveSubtitle: async (message?: string) => {
+    doesNotHaveSubtitle: async (message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       let result = false;
@@ -146,7 +146,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    hasIcon: async (icon: string, message?: string) => {
+    hasIcon: async (icon: string, message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       let result: boolean = false;
@@ -166,7 +166,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    doesNotHaveIcon: async (message?: string) => {
+    doesNotHaveIcon: async (message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       const iconI = document.querySelector('.upf-tooltip .title-container i');
@@ -181,7 +181,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    hasPlacement: async (placement: Placement, message?: string) => {
+    hasPlacement: async (placement: Placement, message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       let result: boolean = false;
@@ -201,7 +201,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    isHtmlSafe: async (message?: string) => {
+    isHtmlSafe: async (message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       const titleContainer = document.querySelector('.upf-tooltip .title-container .title');
@@ -216,7 +216,7 @@ const assertion = (selector: string) => {
       });
     },
 
-    isNotHtmlSafe: async (message?: string) => {
+    isNotHtmlSafe: async (message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
       const titleContainer = document.querySelector('.upf-tooltip .title-container .title');
