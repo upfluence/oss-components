@@ -23704,6 +23704,244 @@ define("@storybook/ember-cli-storybook/test-support/render-story", ["exports", "
     return context;
   }
 });
+define("@upfluence/oss-components/test-support/custom-assertions/infinite-select-option", ["exports", "qunit", "@ember/utils"], function (_exports, QUnit, _utils) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"@ember/utils"eaimeta@70e063a35619d71f
+  const PREFIX_TYPE_CLASS_MAP = {
+    avatar: '.oss-infinite-select-option__prefix-avatar',
+    badge: '.oss-infinite-select-option__prefix-badge',
+    icon: '.oss-infinite-select-option__prefix-icon',
+    country: '.oss-infinite-select-option__prefix-country'
+  };
+  const SUFFIX_TYPE_CLASS_MAP = {
+    hint: '.oss-infinite-select-option__suffix-hint',
+    tag: '.oss-infinite-select-option__suffix-tag',
+    icon: '.oss-infinite-select-option__suffix-icon'
+  };
+  const assertion = selector => {
+    const getElement = () => {
+      return document.querySelector(selector);
+    };
+    const assertElementExists = methodName => {
+      const element = getElement();
+      if (element) return true;
+      QUnit.assert.pushResult({
+        result: false,
+        actual: element !== null,
+        expected: true,
+        message: `[assert.infinite-select-option] Element with selector "${selector}" not found. Make sure the component is rendered before calling .${methodName}()`
+      });
+      return false;
+    };
+    return {
+      exists: message => {
+        const element = getElement();
+        const result = element !== null && element.classList.contains('oss-infinite-select-option');
+        QUnit.assert.pushResult({
+          result,
+          actual: element !== null,
+          expected: true,
+          message: message ?? `InfiniteSelect::Option exists at selector "${selector}"`
+        });
+      },
+      doesNotExist: message => {
+        const element = getElement();
+        const result = element === null || !element.classList.contains('oss-infinite-select-option');
+        QUnit.assert.pushResult({
+          result,
+          actual: element === null,
+          expected: true,
+          message: message ?? `InfiniteSelect::Option does not exist at selector "${selector}"`
+        });
+      },
+      hasTitle: (title, message) => {
+        if (!assertElementExists('hasTitle')) return;
+        const element = getElement();
+        const titleElement = element.querySelector('.oss-infinite-select-option__title');
+        const actual = titleElement ? titleElement.textContent?.trim() : '';
+        const result = actual === title;
+        QUnit.assert.pushResult({
+          result,
+          actual,
+          expected: title,
+          message: message ?? `InfiniteSelect::Option has title "${title}"`
+        });
+      },
+      hasSubtitle: (subtitle, message) => {
+        if (!assertElementExists('hasSubtitle')) return;
+        const element = getElement();
+        const subtitleElement = element.querySelector('.oss-infinite-select-option__subtitle');
+        const actual = subtitleElement ? subtitleElement.textContent?.trim() : '';
+        const result = actual === subtitle;
+        QUnit.assert.pushResult({
+          result,
+          actual,
+          expected: subtitle,
+          message: message ?? `InfiniteSelect::Option has subtitle "${subtitle}"`
+        });
+      },
+      doesNotHaveSubtitle: message => {
+        if (!assertElementExists('doesNotHaveSubtitle')) return;
+        const element = getElement();
+        const subtitleElement = element.querySelector('.oss-infinite-select-option__subtitle');
+        const actual = subtitleElement ? subtitleElement.textContent?.trim() : undefined;
+        const result = (0, _utils.isEmpty)(actual);
+        QUnit.assert.pushResult({
+          result,
+          actual,
+          expected: undefined,
+          message: message ?? 'InfiniteSelect::Option does not have a subtitle'
+        });
+      },
+      isSelected: message => {
+        if (!assertElementExists('isSelected')) return;
+        const element = getElement();
+        const result = element.classList.contains('oss-infinite-select-option--selected');
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option is selected'
+        });
+      },
+      isNotSelected: message => {
+        if (!assertElementExists('isNotSelected')) return;
+        const element = getElement();
+        const result = !element.classList.contains('oss-infinite-select-option--selected');
+        QUnit.assert.pushResult({
+          result,
+          actual: !result,
+          expected: false,
+          message: message ?? 'InfiniteSelect::Option is not selected'
+        });
+      },
+      isDisabled: message => {
+        if (!assertElementExists('isDisabled')) return;
+        const element = getElement();
+        const result = element.classList.contains('oss-infinite-select-option--disabled');
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option is disabled'
+        });
+      },
+      isNotDisabled: message => {
+        if (!assertElementExists('isNotDisabled')) return;
+        const element = getElement();
+        const result = !element.classList.contains('oss-infinite-select-option--disabled');
+        QUnit.assert.pushResult({
+          result,
+          actual: !result,
+          expected: false,
+          message: message ?? 'InfiniteSelect::Option is not disabled'
+        });
+      },
+      hasSelectionType: (selectionType, message) => {
+        if (!assertElementExists('hasSelectionType')) return;
+        const element = getElement();
+        const type = selectionType ?? 'single';
+        const result = element.classList.contains(`oss-infinite-select-option--${type}`);
+        QUnit.assert.pushResult({
+          result,
+          actual: element.classList.contains('oss-infinite-select-option--single') ? 'single' : element.classList.contains('oss-infinite-select-option--multiple') ? 'multiple' : undefined,
+          expected: type,
+          message: message ?? `InfiniteSelect::Option has selectionType "${type}"`
+        });
+      },
+      hasPrefix: (type, message) => {
+        if (!assertElementExists('hasPrefix')) return;
+        const element = getElement();
+        const prefixElement = element.querySelector(PREFIX_TYPE_CLASS_MAP[type]);
+        const result = prefixElement !== null;
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option has a prefix avatar'
+        });
+      },
+      doesNotHavePrefix: (type, message) => {
+        if (!assertElementExists('doesNotHavePrefix')) return;
+        const element = getElement();
+        const prefixElement = element.querySelector(PREFIX_TYPE_CLASS_MAP[type]);
+        const result = prefixElement === null;
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option does not have a prefix avatar'
+        });
+      },
+      hasIcon: message => {
+        if (!assertElementExists('hasIcon')) return;
+        const element = getElement();
+        const iconElement = element.querySelector('.oss-infinite-select-option__icon');
+        const result = iconElement !== null;
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option has an icon'
+        });
+      },
+      doesNotHaveIcon: message => {
+        if (!assertElementExists('doesNotHaveIcon')) return;
+        const element = getElement();
+        const iconElement = element.querySelector('.oss-infinite-select-option__icon');
+        const result = iconElement === null;
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option does not have an icon'
+        });
+      },
+      hasSuffix: (type, value, message) => {
+        if (!assertElementExists('hasSuffix')) return;
+        const element = getElement();
+        const suffixElement = element.querySelector(SUFFIX_TYPE_CLASS_MAP[type]);
+        if (type === 'hint') {
+          const actualValue = suffixElement ? suffixElement.textContent?.trim() : '';
+          const result = actualValue === value;
+          QUnit.assert.pushResult({
+            result,
+            actual: actualValue,
+            expected: value,
+            message: message ?? `InfiniteSelect::Option has suffix hint "${value}"`
+          });
+        } else {
+          const result = suffixElement !== null;
+          QUnit.assert.pushResult({
+            result,
+            actual: result,
+            expected: true,
+            message: message ?? 'InfiniteSelect::Option has a prefix avatar'
+          });
+        }
+      },
+      doesNotHaveSuffix: (type, message) => {
+        if (!assertElementExists('doesNotHaveSuffix')) return;
+        const element = getElement();
+        const suffixElement = element.querySelector(SUFFIX_TYPE_CLASS_MAP[type]);
+        const result = suffixElement === null;
+        QUnit.assert.pushResult({
+          result,
+          actual: result,
+          expected: true,
+          message: message ?? 'InfiniteSelect::Option does not have a suffix hint'
+        });
+      }
+    };
+  };
+  assertion.__name__ = 'infiniteSelectOption';
+  var _default = _exports.default = assertion;
+});
 define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exports", "@ember/test-helpers", "qunit", "@ember/utils", "sinon", "@upfluence/oss-components/modifiers/enable-tooltip"], function (_exports, _testHelpers, QUnit, _utils, _sinon, _enableTooltip) {
   "use strict";
 
@@ -23913,15 +24151,15 @@ define("@upfluence/oss-components/test-support/index", ["exports", "@upfluence/o
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/setup-clipboard",0,"@upfluence/oss-components/test-support/setup-toast"eaimeta@70e063a35619d71f
 });
-define("@upfluence/oss-components/test-support/register-assertions", ["exports", "@upfluence/oss-components/test-support/custom-assertions/tooltip"], function (_exports, _tooltip) {
+define("@upfluence/oss-components/test-support/register-assertions", ["exports", "@upfluence/oss-components/test-support/custom-assertions/tooltip", "@upfluence/oss-components/test-support/custom-assertions/infinite-select-option"], function (_exports, _tooltip, _infiniteSelectOption) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = registerAssertions;
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/custom-assertions/tooltip"eaimeta@70e063a35619d71f
-  const ASSERTIONS = [_tooltip.default];
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/custom-assertions/tooltip",0,"@upfluence/oss-components/test-support/custom-assertions/infinite-select-option"eaimeta@70e063a35619d71f
+  const ASSERTIONS = [_tooltip.default, _infiniteSelectOption.default];
   function registerAssertions(assert) {
     ASSERTIONS.forEach(assertion => {
       // @ts-ignore

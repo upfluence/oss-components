@@ -24077,6 +24077,536 @@ define("dummy/tests/test-helper", ["dummy/app", "dummy/config/environment", "@em
   (0, _testHelpers.setApplication)(_app.default.create(_environment.default.APP));
   (0, _emberQunit.start)();
 });
+define("dummy/tests/unit/custom-assertions/infinite-select-option-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Test Support | Custom Assertions | infinite-select-option', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.title = 'Test Option';
+      this.onSelect = _sinon.default.stub();
+    });
+    (0, _qunit.module)('.exists()', () => {
+      (0, _qunit.test)('it passes when the option exists', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').exists();
+      });
+    });
+    (0, _qunit.module)('.doesNotExist()', () => {
+      (0, _qunit.test)('it passes when the option does not exist', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div></div>
+        */
+        {
+          "id": "il5kebIf",
+          "block": "[[[10,0],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.non-existent').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('.hasTitle()', () => {
+      (0, _qunit.test)('it passes when the title matches', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title="My Title" @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "K2wzkx+m",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[\"My Title\",[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasTitle('My Title');
+      });
+    });
+    (0, _qunit.module)('.hasSubtitle()', () => {
+      (0, _qunit.test)('it passes when the subtitle matches', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @subtitle="My Subtitle"
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "VoTMZNCm",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@onSelect\"],[[30,0,[\"title\"]],\"My Subtitle\",[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSubtitle('My Subtitle');
+      });
+    });
+    (0, _qunit.module)('.doesNotHaveSubtitle()', () => {
+      (0, _qunit.test)('it passes when there is no subtitle', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSubtitle();
+      });
+    });
+    (0, _qunit.module)('.isSelected()', () => {
+      (0, _qunit.test)('it passes when the option is selected', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @selected={{true}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "pNlx3oRa",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').isSelected();
+      });
+    });
+    (0, _qunit.module)('.isNotSelected()', () => {
+      (0, _qunit.test)('it passes when the option is not selected', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @selected={{false}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "4uuMHhdn",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,0,[\"title\"]],false,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').isNotSelected();
+      });
+    });
+    (0, _qunit.module)('.isDisabled()', () => {
+      (0, _qunit.test)('it passes when the option is disabled', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @disabled={{true}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "rCgj/sAM",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@disabled\",\"@onSelect\"],[[30,0,[\"title\"]],true,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').isDisabled();
+      });
+    });
+    (0, _qunit.module)('.isNotDisabled()', () => {
+      (0, _qunit.test)('it passes when the option is not disabled', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @disabled={{false}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "N6SsddV+",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@disabled\",\"@onSelect\"],[[30,0,[\"title\"]],false,[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').isNotDisabled();
+      });
+    });
+    (0, _qunit.module)('.hasSelectionType()', () => {
+      (0, _qunit.test)('it passes when selectionType is single', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @selectionType="single"
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "pGzsOFgi",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@onSelect\"],[[30,0,[\"title\"]],\"single\",[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSelectionType('single');
+      });
+      (0, _qunit.test)('it passes when selectionType is multiple', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @selectionType="multiple"
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "v1G8O+Tp",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@selectionType\",\"@onSelect\"],[[30,0,[\"title\"]],\"multiple\",[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSelectionType('multiple');
+      });
+    });
+    (0, _qunit.module)('.hasPrefix()', () => {
+      (0, _qunit.test)('it passes when prefix avatar is present', async function (assert) {
+        this.prefixAvatar = {
+          initials: 'JD'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @prefixAvatar={{this.prefixAvatar}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "0kO7xfHr",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@prefixAvatar\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"prefixAvatar\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('avatar');
+      });
+      (0, _qunit.test)('it passes when prefix badge is present', async function (assert) {
+        this.prefixBadge = {
+          icon: 'fa-star'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @prefixBadge={{this.prefixBadge}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "coTfJCzz",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@prefixBadge\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"prefixBadge\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('badge');
+      });
+      (0, _qunit.test)('it passes when prefix icon is present', async function (assert) {
+        this.prefixIcon = {
+          icon: 'fa-star'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @prefixIcon={{this.prefixIcon}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "9hYtPwnE",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@prefixIcon\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"prefixIcon\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('icon');
+      });
+      (0, _qunit.test)('it passes when prefix country is present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @prefixCountry="US"
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "uxDlNj9Z",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@prefixCountry\",\"@onSelect\"],[[30,0,[\"title\"]],\"US\",[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasPrefix('country');
+      });
+    });
+    (0, _qunit.module)('.doesNotHavePrefix()', () => {
+      (0, _qunit.test)('it passes when prefix avatar is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('avatar');
+      });
+      (0, _qunit.test)('it passes when prefix badge is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('badge');
+      });
+      (0, _qunit.test)('it passes when prefix icon is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('icon');
+      });
+      (0, _qunit.test)('it passes when prefix country is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHavePrefix('country');
+      });
+    });
+    (0, _qunit.module)('.hasIcon()', () => {
+      (0, _qunit.test)('it passes when icon is present', async function (assert) {
+        this.icon = {
+          icon: 'fa-info-circle'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @icon={{this.icon}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "DO8qCbOJ",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasIcon();
+      });
+    });
+    (0, _qunit.module)('.doesNotHaveIcon()', () => {
+      (0, _qunit.test)('it passes when icon is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveIcon();
+      });
+    });
+    (0, _qunit.module)('.hasSuffix()', () => {
+      (0, _qunit.test)('it passes when suffix hint matches', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @suffixHint="+5"
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "/SDXVU7V",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@suffixHint\",\"@onSelect\"],[[30,0,[\"title\"]],\"+5\",[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffix('hint', '+5');
+      });
+      (0, _qunit.test)('it passes when suffix tag is present', async function (assert) {
+        this.suffixTag = {
+          label: 'Premium'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @suffixTag={{this.suffixTag}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "Y9fOEF00",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@suffixTag\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"suffixTag\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffix('tag');
+      });
+      (0, _qunit.test)('it passes when suffix icon is present', async function (assert) {
+        this.suffixIcon = {
+          icon: 'fa-chevron-right'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title={{this.title}}
+                  @suffixIcon={{this.suffixIcon}}
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "nVNCpaoX",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@suffixIcon\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"suffixIcon\"]],[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSuffix('icon');
+      });
+    });
+    (0, _qunit.module)('.doesNotHaveSuffix()', () => {
+      (0, _qunit.test)('it passes when suffix hint is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSuffix('hint');
+      });
+      (0, _qunit.test)('it passes when suffix tag is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSuffix('tag');
+      });
+      (0, _qunit.test)('it passes when suffix icon is not present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "UmKEI0Zb",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@onSelect\"],[[30,0,[\"title\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').doesNotHaveSuffix('icon');
+      });
+    });
+    (0, _qunit.module)('chaining assertions', () => {
+      (0, _qunit.test)('it supports multiple assertions on the same element', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::InfiniteSelect::Option
+                  @title="Complex Option"
+                  @subtitle="With subtitle"
+                  @selected={{true}}
+                  @selectionType="single"
+                  @onSelect={{this.onSelect}}
+                />
+              
+        */
+        {
+          "id": "kcQhTu+n",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@selected\",\"@selectionType\",\"@onSelect\"],[\"Complex Option\",\"With subtitle\",true,\"single\",[30,0,[\"onSelect\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/infinite-select/option\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/infinite-select-option-test.ts",
+          "isStrictMode": false
+        }));
+        assert.infiniteSelectOption('.oss-infinite-select-option').exists();
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasTitle('Complex Option');
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSubtitle('With subtitle');
+        assert.infiniteSelectOption('.oss-infinite-select-option').isSelected();
+        assert.infiniteSelectOption('.oss-infinite-select-option').hasSelectionType('single');
+      });
+    });
+  });
+});
 define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
   "use strict";
 
