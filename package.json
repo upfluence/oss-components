@@ -46,6 +46,7 @@
     "broccoli-funnel": "^3.0.8",
     "broccoli-merge-trees": "^4.2.0",
     "calculate-cache-key-for-tree": "^2.0.0",
+    "dompurify": "^3.3.0",
     "ember-auto-import": "^2.7.2",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-htmlbars": "^6.3.0",
