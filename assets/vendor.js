@@ -81501,7 +81501,7 @@ require('@ember/-internals/bootstrap')
     classNames: ['upf-loading']
   });
 });
-;define("@upfluence/oss-components/components/o-s-s/access-panel", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/runloop", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _runloop, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/access-panel", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/runloop", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _runloop, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -81509,7 +81509,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/runloop",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/runloop",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -81526,7 +81526,7 @@ require('@ember/-internals/bootstrap')
       </div>
     {{/if}}
   
-    {{#if (and this.displayEmptyState this.hasNoKeyword)}}
+    {{#if (and this.displayEmptyState (not this.filtered))}}
       <div class="fx-1">
         {{yield to="empty-state"}}
       </div>
@@ -81547,20 +81547,28 @@ require('@ember/-internals/bootstrap')
           <div class="oss-access-panel-container__rows-header">
             {{yield to="columns"}}
           </div>
-  
-          <hr />
         {{/if}}
   
-        {{#if (and this.displayEmptyState this.searchKeyword)}}
+        {{#if (and this.displayEmptyState this.filtered)}}
           {{yield to="no-results"}}
         {{else}}
-          <div class="oss-access-panel-container__rows-container" {{on-bottom-reached @onBottomReached}}>
+          <div
+            class="oss-access-panel-container__rows-container"
+            {{on-bottom-reached @onBottomReached}}
+            {{scroll-shadow}}
+          >
             {{#if (and @loading @initialLoad)}}
               {{#each this.loadingRows}}
-                <div class="oss-access-panel-container__row fx-malign-space-between">
-                  <OSS::Skeleton @height={{12}} @width={{150}} />
-                  <OSS::Skeleton @height={{12}} @width={{36}} />
-                </div>
+                {{#if (has-block "row-skeleton")}}
+                  <div class="oss-access-panel-container__row">
+                    {{yield to="row-skeleton"}}
+                  </div>
+                {{else}}
+                  <div class="oss-access-panel-container__row fx-malign-space-between">
+                    <OSS::Skeleton @height={{12}} @width={{150}} />
+                    <OSS::Skeleton @height={{12}} @width={{36}} />
+                  </div>
+                {{/if}}
               {{/each}}
             {{else}}
               {{#each @records as |record|}}
@@ -81576,10 +81584,16 @@ require('@ember/-internals/bootstrap')
   
               {{#if @loading}}
                 {{#each this.loadingMoreRows}}
-                  <div class="oss-access-panel-container__row fx-malign-space-between">
-                    <OSS::Skeleton @height={{12}} @width={{150}} />
-                    <OSS::Skeleton @height={{12}} @width={{36}} />
-                  </div>
+                  {{#if (has-block "row-skeleton")}}
+                    <div class="oss-access-panel-container__row">
+                      {{yield to="row-skeleton"}}
+                    </div>
+                  {{else}}
+                    <div class="oss-access-panel-container__row fx-malign-space-between">
+                      <OSS::Skeleton @height={{12}} @width={{150}} />
+                      <OSS::Skeleton @height={{12}} @width={{36}} />
+                    </div>
+                  {{/if}}
                 {{/each}}
               {{/if}}
             {{/if}}
@@ -81590,8 +81604,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "O3MnXHfb",
-    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n        \"],[8,[39,6],[[4,[38,8],null,null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"searchKeyword\"]],[28,[37,7],[\"oss-components.access-panel.search_placeholder\"],null],[30,0,[\"onSearch\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"        \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n          \"],[18,11,null],[1,\"\\n        \"],[13],[1,\"\\n\\n        \"],[10,\"hr\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,12,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,9],[[30,4]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,5],[30,6]],null],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,11],[[28,[37,11],[[30,7]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,13],[\"oss-access-panel-container__row\",[52,[30,8,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,13,[[30,8]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[8]],null],[1,\"\\n\"],[41,[30,5],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onSearch\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/search-field\",\"t\",\"enable-input-autofocus\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
+    "id": "rwmp9fjq",
+    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[28,[37,6],[[30,0,[\"filtered\"]]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n        \"],[8,[39,7],[[4,[38,9],null,null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"searchKeyword\"]],[28,[37,8],[\"oss-components.access-panel.search_placeholder\"],null],[30,0,[\"onSearch\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"        \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n          \"],[18,11,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"filtered\"]]],null],[[[1,\"        \"],[18,12,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,10],[[30,4]],null],[4,[38,11],null,null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,5],[30,6]],null],[[[42,[28,[37,13],[[28,[37,13],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[41,[48,[30,13]],[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row\"],[12],[1,\"\\n                  \"],[18,13,null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,14],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,14],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]]]],[]],null]],[]],[[[42,[28,[37,13],[[28,[37,13],[[30,7]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,15],[\"oss-access-panel-container__row\",[52,[30,8,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,14,[[30,8]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[8]],null],[1,\"\\n\"],[41,[30,5],[[[42,[28,[37,13],[[28,[37,13],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[41,[48,[30,13]],[[[1,\"                  \"],[10,0],[14,0,\"oss-access-panel-container__row\"],[12],[1,\"\\n                    \"],[18,13,null],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                    \"],[8,[39,14],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                    \"],[8,[39,14],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]]]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onSearch\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row-skeleton\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"not\",\"o-s-s/search-field\",\"t\",\"enable-input-autofocus\",\"on-bottom-reached\",\"scroll-shadow\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/access-panel.hbs",
     "isStrictMode": false
   });
@@ -81602,11 +81616,11 @@ require('@ember/-internals/bootstrap')
       _defineProperty(this, "loadingMoreRows", new Array(3));
       _initializerDefineProperty(this, "searchKeyword", _descriptor, this);
     }
+    get filtered() {
+      return this.args.filtered || !(0, _utils.isBlank)(this.searchKeyword);
+    }
     get displayEmptyState() {
       return (this.args.records || []).length === 0 && !this.args.loading;
-    }
-    get hasNoKeyword() {
-      return !this.searchKeyword;
     }
     setupAnimation(element) {
       (0, _runloop.later)(this, () => {
@@ -81633,7 +81647,7 @@ require('@ember/-internals/bootstrap')
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.SearchDisabled = _exports.LoadingState = _exports.CustomContent = _exports.BasicUsage = void 0;
+  _exports.default = _exports.SearchDisabled = _exports.LoadingState = _exports.CustomLoadingState = _exports.CustomContent = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   var _default = _exports.default = {
     title: 'Components/OSS::AccessPanel',
@@ -81675,6 +81689,20 @@ require('@ember/-internals/bootstrap')
           },
           defaultValue: {
             summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      filtered: {
+        description: 'Whether the records displayed are filtered by the parent or not',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: undefined
           }
         },
         control: {
@@ -81731,6 +81759,7 @@ require('@ember/-internals/bootstrap')
     }],
     initialLoad: false,
     loading: false,
+    filtered: undefined,
     onBottomReached: (0, _addonActions.action)('onBottomReached'),
     onClose: (0, _addonActions.action)('onClose'),
     onSearch: (0, _addonActions.action)('onSearch')
@@ -81789,6 +81818,37 @@ require('@ember/-internals/bootstrap')
     }),
     context: args
   });
+  const CustomLoadingStatesTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+          <OSS::AccessPanel
+            @records={{this.records}}
+            @initialLoad={{this.initialLoad}}
+            @loading={{this.loading}}
+            @onBottomReached={{this.onBottomReached}}
+            @onClose={{this.onClose}}
+            @onSearch={{this.onSearch}}
+          >
+            <:header>Header</:header>
+            <:empty-state>Empty state</:empty-state>
+            <:columns>Columns</:columns>
+            <:no-results>No results</:no-results>
+            <:row as |record|>{{record.label}}</:row>
+            <:row-skeleton>Loading...</:row-skeleton>
+          </OSS::AccessPanel>
+        </div>
+      
+    */
+    {
+      "id": "akwGMrL9",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@records\",\"@initialLoad\",\"@loading\",\"@onBottomReached\",\"@onClose\",\"@onSearch\"],[[30,0,[\"records\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loading\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"onClose\"]],[30,0,[\"onSearch\"]]]],[[\"header\",\"empty-state\",\"columns\",\"no-results\",\"row\",\"row-skeleton\"],[[[[1,\"Header\"]],[]],[[[1,\"Empty state\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"No results\"]],[]],[[[1,[30,1,[\"label\"]]]],[1]],[[[1,\"Loading...\"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/access-panel.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
   const CustomContent = _exports.CustomContent = CustomContentTemplate.bind({});
@@ -81802,6 +81862,12 @@ require('@ember/-internals/bootstrap')
   };
   const LoadingState = _exports.LoadingState = DefaultUsageTemplate.bind({});
   LoadingState.args = {
+    ...defaultArgs,
+    loading: true,
+    initialLoad: false
+  };
+  const CustomLoadingState = _exports.CustomLoadingState = CustomLoadingStatesTemplate.bind({});
+  CustomLoadingState.args = {
     ...defaultArgs,
     loading: true,
     initialLoad: false
@@ -93594,7 +93660,7 @@ interface OSSCodeBlockArgs {
             <OSS::Icon @style="solid" @icon="fa-circle" class="font-color-accent text-size-1" />
           {{/if}}
           {{#if tab.tag}}
-            <OSS::Tag @label={{tab.tag.label}} @skin={{tab.tag.skin}} @plain={{tab.tag.plain}} />
+            <OSS::Tag @label={{tab.tag.label}} @size="xs" @skin={{tab.tag.skin}} @plain={{tab.tag.plain}} />
           {{/if}}
         </div>
       </button>
@@ -93602,8 +93668,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "gQMLed2l",
-    "block": "[[[10,0],[14,0,\"fx-row fx-1 tab-container\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,1]],null]],null],null,[[[1,\"    \"],[11,\"button\"],[16,0,[29,[\"fx-col tab \",[52,[30,2,[\"selected\"]],\"tab--selected\"],\" \",[52,[30,2,[\"disabled\"]],\"tab--disabled\"]]]],[16,\"disabled\",[30,2,[\"disabled\"]]],[24,4,\"button\"],[4,[38,3],[\"click\",[28,[37,4],[[30,0,[\"onSelectTab\"]],[30,2]],null]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row tab-content fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,2,[\"icon\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,2,[\"icon\"]]],null],[28,[37,7],[[30,2,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"label\"]],[[[1,\"          \"],[10,1],[14,0,\"text-size-6\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"infoCircle\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"notificationDot\"]],[[[1,\"          \"],[8,[39,5],[[24,0,\"font-color-accent text-size-1\"]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"tag\"]],[[[1,\"          \"],[8,[39,8],null,[[\"@label\",\"@skin\",\"@plain\"],[[30,2,[\"tag\",\"label\"]],[30,2,[\"tag\",\"skin\"]],[30,2,[\"tag\",\"plain\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[2]],null],[13]],[\"@tabArray\",\"tab\"],false,[\"each\",\"-track-array\",\"if\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
+    "id": "IcFq9Jzu",
+    "block": "[[[10,0],[14,0,\"fx-row fx-1 tab-container\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,1]],null]],null],null,[[[1,\"    \"],[11,\"button\"],[16,0,[29,[\"fx-col tab \",[52,[30,2,[\"selected\"]],\"tab--selected\"],\" \",[52,[30,2,[\"disabled\"]],\"tab--disabled\"]]]],[16,\"disabled\",[30,2,[\"disabled\"]]],[24,4,\"button\"],[4,[38,3],[\"click\",[28,[37,4],[[30,0,[\"onSelectTab\"]],[30,2]],null]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row tab-content fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,2,[\"icon\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,2,[\"icon\"]]],null],[28,[37,7],[[30,2,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"label\"]],[[[1,\"          \"],[10,1],[14,0,\"text-size-6\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"infoCircle\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"notificationDot\"]],[[[1,\"          \"],[8,[39,5],[[24,0,\"font-color-accent text-size-1\"]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"tag\"]],[[[1,\"          \"],[8,[39,8],null,[[\"@label\",\"@size\",\"@skin\",\"@plain\"],[[30,2,[\"tag\",\"label\"]],\"xs\",[30,2,[\"tag\",\"skin\"]],[30,2,[\"tag\",\"plain\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[2]],null],[13]],[\"@tabArray\",\"tab\"],false,[\"each\",\"-track-array\",\"if\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/nav-tab.hbs",
     "isStrictMode": false
   });
@@ -96589,6 +96655,9 @@ interface OSSCodeBlockArgs {
     get buttonStyle() {
       return this.args.buttonStyle ?? 'button';
     }
+    get focusNewElementOnEntry() {
+      return this.args.focusNewElementOnEntry ?? true;
+    }
     get innerContainerStyle() {
       const baseStyle = this.args.buttonStyle === 'icon' ? 'inner-container-icon' : 'inner-container-btn';
       let innerContainerStyle = 'inner-container';
@@ -96609,7 +96678,7 @@ interface OSSCodeBlockArgs {
     }
     observeIntersection(element) {
       this.intersectionObserver.observe(element);
-      if (this.containerElement) {
+      if (this.focusNewElementOnEntry && this.containerElement) {
         this.containerElement.scrollLeft = this.containerElement.scrollWidth;
       }
     }

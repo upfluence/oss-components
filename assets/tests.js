@@ -506,7 +506,8 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       /*
         <OSS::AccessPanel
                 @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
-                @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}>
+                @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}
+                @filtered={{this.filtered}}>
                   <:header>Header</:header>
                   <:columns>Columns</:columns>
                   <:row as |record|>row display: {{record.label}}</:row>
@@ -516,8 +517,8 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
             
       */
       {
-        "id": "p+Z3gD81",
-        "block": "[[[8,[39,0],null,[[\"@records\",\"@loading\",\"@initialLoad\",\"@onBottomReached\",\"@onSearch\",\"@onClose\"],[[30,0,[\"records\"]],[30,0,[\"loading\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loadMore\"]],[30,0,[\"onSearch\"]],[30,0,[\"onClose\"]]]],[[\"header\",\"columns\",\"row\",\"empty-state\",\"no-results\"],[[[[1,\"Header\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"row display: \"],[1,[30,1,[\"label\"]]]],[1]],[[[10,0],[14,0,\"empty-state\"],[12],[1,\"empty state\"],[13]],[]],[[[10,0],[14,0,\"no-results\"],[12],[1,\"no search results\"],[13]],[]]]]],[1,\"\\n      \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
+        "id": "B3dTkT7U",
+        "block": "[[[8,[39,0],null,[[\"@records\",\"@loading\",\"@initialLoad\",\"@onBottomReached\",\"@onSearch\",\"@onClose\",\"@filtered\"],[[30,0,[\"records\"]],[30,0,[\"loading\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loadMore\"]],[30,0,[\"onSearch\"]],[30,0,[\"onClose\"]],[30,0,[\"filtered\"]]]],[[\"header\",\"columns\",\"row\",\"empty-state\",\"no-results\"],[[[[1,\"Header\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"row display: \"],[1,[30,1,[\"label\"]]]],[1]],[[[10,0],[14,0,\"empty-state\"],[12],[1,\"empty state\"],[13]],[]],[[[10,0],[14,0,\"no-results\"],[12],[1,\"no search results\"],[13]],[]]]]],[1,\"\\n      \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/access-panel-test.ts",
         "isStrictMode": false
       }));
@@ -539,7 +540,38 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         count: 24
       });
     });
-    (0, _qunit.test)('the initial loading state is correctly displayed', async function (assert) {
+    (0, _qunit.test)('the initial loading state uses the row-skeleton named block if passed', async function (assert) {
+      this.loading = true;
+      this.initialLoad = true;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::AccessPanel
+                @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
+                @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}
+                @filtered={{this.filtered}}>
+                  <:header>Header</:header>
+                  <:columns>Columns</:columns>
+                  <:row as |record|>row display: {{record.label}}</:row>
+                  <:empty-state><div class="empty-state">empty state</div></:empty-state>
+                  <:no-results><div class="no-results">no search results</div></:no-results>
+                  <:row-skeleton><div class="super-skeleton">custom loading state</div></:row-skeleton>
+                </OSS::AccessPanel>
+            
+      */
+      {
+        "id": "emkY8peq",
+        "block": "[[[8,[39,0],null,[[\"@records\",\"@loading\",\"@initialLoad\",\"@onBottomReached\",\"@onSearch\",\"@onClose\",\"@filtered\"],[[30,0,[\"records\"]],[30,0,[\"loading\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loadMore\"]],[30,0,[\"onSearch\"]],[30,0,[\"onClose\"]],[30,0,[\"filtered\"]]]],[[\"header\",\"columns\",\"row\",\"empty-state\",\"no-results\",\"row-skeleton\"],[[[[1,\"Header\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"row display: \"],[1,[30,1,[\"label\"]]]],[1]],[[[10,0],[14,0,\"empty-state\"],[12],[1,\"empty state\"],[13]],[]],[[[10,0],[14,0,\"no-results\"],[12],[1,\"no search results\"],[13]],[]],[[[10,0],[14,0,\"super-skeleton\"],[12],[1,\"custom loading state\"],[13]],[]]]]],[1,\"\\n      \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/access-panel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-access-panel-container__row').exists({
+        count: 12
+      });
+      assert.dom('.oss-access-panel-container__row .super-skeleton').exists({
+        count: 12
+      });
+    });
+    (0, _qunit.test)('the loading state when loading more records is correctly displayed', async function (assert) {
       this.loading = true;
       this.initialLoad = false;
       await renderComponent();
@@ -548,6 +580,37 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       });
       assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({
         count: 6
+      });
+    });
+    (0, _qunit.test)('the loading state when loading more records uses the row-skeleton named block if passed', async function (assert) {
+      this.loading = true;
+      this.initialLoad = false;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::AccessPanel
+                @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
+                @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}
+                @filtered={{this.filtered}}>
+                  <:header>Header</:header>
+                  <:columns>Columns</:columns>
+                  <:row as |record|>row display: {{record.label}}</:row>
+                  <:empty-state><div class="empty-state">empty state</div></:empty-state>
+                  <:no-results><div class="no-results">no search results</div></:no-results>
+                  <:row-skeleton><div class="super-skeleton">custom loading state</div></:row-skeleton>
+                </OSS::AccessPanel>
+            
+      */
+      {
+        "id": "emkY8peq",
+        "block": "[[[8,[39,0],null,[[\"@records\",\"@loading\",\"@initialLoad\",\"@onBottomReached\",\"@onSearch\",\"@onClose\",\"@filtered\"],[[30,0,[\"records\"]],[30,0,[\"loading\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loadMore\"]],[30,0,[\"onSearch\"]],[30,0,[\"onClose\"]],[30,0,[\"filtered\"]]]],[[\"header\",\"columns\",\"row\",\"empty-state\",\"no-results\",\"row-skeleton\"],[[[[1,\"Header\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"row display: \"],[1,[30,1,[\"label\"]]]],[1]],[[[10,0],[14,0,\"empty-state\"],[12],[1,\"empty state\"],[13]],[]],[[[10,0],[14,0,\"no-results\"],[12],[1,\"no search results\"],[13]],[]],[[[10,0],[14,0,\"super-skeleton\"],[12],[1,\"custom loading state\"],[13]],[]]]]],[1,\"\\n      \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/access-panel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-access-panel-container__row').exists({
+        count: 5
+      });
+      assert.dom('.oss-access-panel-container__row .super-skeleton').exists({
+        count: 3
       });
     });
     (0, _qunit.test)('The header named block is correctly filled', async function (assert) {
@@ -590,6 +653,14 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         await (0, _testHelpers.typeIn)('.oss-input-container input', 'o', {
           delay: 0
         });
+        assert.dom('.no-results').exists();
+        assert.dom('.no-results').hasText('no search results');
+      });
+      (0, _qunit.test)('it renders the right empty state when no records are found and there is an ongoing search handled by the parent', async function (assert) {
+        this.onSearch = undefined;
+        this.records = [];
+        this.filtered = true;
+        await renderComponent();
         assert.dom('.no-results').exists();
         assert.dom('.no-results').hasText('no search results');
       });
