@@ -5,7 +5,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 
-const FALLBACK_SVG_URL = '/assets/images/picture-frame.svg';
+const FALLBACK_SVG_URL = '@upfluence/oss-components/assets/images/picture-frame.svg';
 type size = 'sm' | 'md' | 'lg';
 
 interface OSSSmartImmersiveLogoArgs {

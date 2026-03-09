@@ -19,7 +19,7 @@ export interface OSSAvatarArgs {
   loading?: boolean;
 }
 
-export const DEFAULT_IMAGE_URL: string = '/assets/images/avatar-placeholder.svg';
+export const DEFAULT_IMAGE_URL: string = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';
 
 export default class OSSAvatar extends Component<OSSAvatarArgs> {
   @tracked hasError: boolean = false;

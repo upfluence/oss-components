@@ -48,7 +48,7 @@ export default {
 const defaultArgs = {
   expandable: false,
   homeParameters: {
-    logo: '/assets/images/brand-icon.svg',
+    logo: '/@upfluence/oss-components/assets/images/brand-icon.svg',
     url: 'https://www.upfluence.com'
   },
   alwaysExpanded: false

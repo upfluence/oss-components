@@ -282,12 +282,12 @@
             <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} @size="sm" />
           </:actions>
         </OSS::Banner>
-        <OSS::Banner @icon="fas fa-helicopter" @title="Helicopter" @size="sm" @disabled={{true}}>
+        <OSS::Banner @icon="fas fa-helicopter" @title="Helicopter" @subtitle="Hello" @size="sm">
           <:actions>
             <OSS::Icon @icon="fa-ban" />
           </:actions>
           <:secondary-actions>
-            <OSS::Link @label="Configure" />
+            <OSS::Alert @title="Alert" @subtitle="Subtitle" @skin="error" />
           </:secondary-actions>
         </OSS::Banner>
         <OSS::Banner @icon="fas fa-user-injured" @title="Injured" @selected={{false}} @size="sm">

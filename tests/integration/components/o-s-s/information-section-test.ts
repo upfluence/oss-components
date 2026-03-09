@@ -12,7 +12,7 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
     this.subtitle = 'Information Section subtitle';
     this.namedBlockContent = 'Information Section Custom Content';
     this.icon = 'fa-pen';
-    this.imageUrl = '/assets/images/upfluence-white-logo.svg';
+    this.imageUrl = '/@upfluence/oss-components/assets/images/upfluence-white-logo.svg';
     this.actionButton = {
       label: 'Test Button',
       icon: 'fa-pen'
