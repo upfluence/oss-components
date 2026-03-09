@@ -9,8 +9,8 @@
   <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
     <div class="array-input-container {{this.inputBorderStateClass}} fx-row padding-px-6 {{if this.isOpen 'active'}}">
       <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
-        {{#each @selectedItems as |selectedItem|}}
-          {{yield selectedItem to="selected-item"}}
+        {{#each @selectedItems as |selectedItem index|}}
+          {{yield selectedItem index to="selected-item"}}
         {{else}}
           <span class="text-size-5 text-color-default-light">
             {{this.placeholder}}
