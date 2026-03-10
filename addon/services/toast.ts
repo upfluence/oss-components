@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { run } from '@ember/runloop';
 import type { IntlService } from 'ember-intl';
+import { isSafeString } from '@upfluence/oss-components/utils';
 
 enum ToastType {
   INFO = 'info',
@@ -155,17 +156,23 @@ export default class Toast extends Service {
       const badgeContainer: Element = this._buildElement(
         'div',
         ['upf-badge', 'upf-badge--shape-round', 'upf-badge--size-md'],
-        badgeContent
+        badgeContent,
+        true
       );
       parent.append(badgeContainer);
     } else {
-      const iconContainer: Element = this._buildElement('span', ['icon'], `<i class="${ICON_CLASSES[type]}"></i>`);
+      const iconContainer: Element = this._buildElement(
+        'span',
+        ['icon'],
+        `<i class="${ICON_CLASSES[type]}"></i>`,
+        true
+      );
       parent.append(iconContainer);
     }
   }
 
   private _buildCloseButton(parent: Element) {
-    const closeButton: Element = this._buildElement('button', [], '<i class="far fa-times"></i>');
+    const closeButton: Element = this._buildElement('button', [], '<i class="far fa-times"></i>', true);
     run(() => {
       closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
     });
@@ -285,12 +292,21 @@ export default class Toast extends Service {
     });
   }
 
-  private _buildElement(tagName: string, classes: string[], content?: string | ReturnType<IntlService['t']>): Element {
+  private _buildElement(
+    tagName: string,
+    classes: string[],
+    content?: string | ReturnType<IntlService['t']>,
+    htmlSafe?: boolean
+  ): Element {
     const element: Element = document.createElement(tagName);
     element.classList.add(...classes);
 
-    if (content) {
-      element.innerHTML = content as string;
+    if (!content) return element;
+
+    if (isSafeString(content) || htmlSafe) {
+      element.innerHTML = content.toString();
+    } else {
+      element.textContent = content as string;
     }
 
     return element;
