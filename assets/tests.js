@@ -5324,6 +5324,774 @@ define("dummy/tests/integration/components/o-s-s/content-panel-test", ["qunit", 
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/context-menu-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "ember-intl/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _testSupport, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"ember-intl/test-support"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/context-menu', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.label = 'Open menu';
+      this.onOpenStub = _sinon.default.stub();
+      this.onCloseStub = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ContextMenu @label={{this.label}} data-control-name="context-menu"/>
+      */
+      {
+        "id": "invLawjP",
+        "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\"],[[30,0,[\"label\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('[data-control-name="context-menu"]').exists();
+      assert.dom('[data-control-name="context-menu"]').hasText(this.label);
+    });
+    (0, _qunit.module)('It accepts same arguments as OSSButton component', function () {
+      (0, _qunit.test)('it accepts label argument', async function (assert) {
+        this.label = 'first';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "invLawjP",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\"],[[30,0,[\"label\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button').hasText('first');
+        this.set('label', 'secondary');
+        assert.dom('button').hasText('secondary');
+      });
+      (0, _qunit.test)('it accepts skin argument', async function (assert) {
+        this.skin = 'primary';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @skin={{this.skin}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "yzwZS0nN",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@skin\"],[[30,0,[\"label\"]],[30,0,[\"skin\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button').hasClass('upf-btn--primary');
+        this.set('skin', 'secondary');
+        assert.dom('button').hasClass('upf-btn--secondary');
+      });
+      (0, _qunit.test)('it accepts size argument', async function (assert) {
+        this.size = 'sm';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @size={{this.size}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "fW7kf//M",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@size\"],[[30,0,[\"label\"]],[30,0,[\"size\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button').hasClass('upf-btn--sm');
+        this.set('size', 'md');
+        assert.dom('button').hasClass('upf-btn--md');
+      });
+      (0, _qunit.test)('it accepts loading argument', async function (assert) {
+        this.loading = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @loading={{this.loading}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "1l+YSG9f",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@loading\"],[[30,0,[\"label\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button i').hasClass('fa-circle-notch').hasClass('fa-spin');
+        this.set('loading', false);
+        assert.dom('button i.fa-circle-notch').doesNotExist();
+      });
+      (0, _qunit.test)('it accepts loadingOptions argument', async function (assert) {
+        this.loadingOptions = {
+          showLabel: true
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}}
+                                      @loading={{true}}
+                                      @loadingOptions={{this.loadingOptions}}
+                                      data-control-name="context-menu" />
+        */
+        {
+          "id": "N03bmUD/",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@loading\",\"@loadingOptions\"],[[30,0,[\"label\"]],true,[30,0,[\"loadingOptions\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button i').hasClass('fa-circle-notch').hasClass('fa-spin');
+        assert.dom('button').hasText(this.label);
+        this.set('loadingOptions', {
+          showLabel: false
+        });
+        assert.dom('button').hasNoText();
+      });
+      (0, _qunit.test)('it accepts icon argument', async function (assert) {
+        this.icon = 'fa-plane';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @icon={{this.icon}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "80JCWJGI",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@icon\"],[[30,0,[\"label\"]],[30,0,[\"icon\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button i').hasClass('fa-plane');
+        this.set('icon', 'fa-plus');
+        assert.dom('button i').hasClass('fa-plus');
+      });
+      (0, _qunit.test)('it accepts iconUrl argument', async function (assert) {
+        this.iconUrl = '/@upfluence/oss-components/assets/heart.svg';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @iconUrl={{this.iconUrl}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "pm7sehbb",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@iconUrl\"],[[30,0,[\"label\"]],[30,0,[\"iconUrl\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button img').hasAttribute('src', this.iconUrl);
+      });
+      (0, _qunit.test)('it accepts theme argument', async function (assert) {
+        this.theme = 'light';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @theme={{this.theme}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "WlJevXVk",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@theme\"],[[30,0,[\"label\"]],[30,0,[\"theme\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button').hasNoClass('upf-btn--dark-bg');
+        this.set('theme', 'dark');
+        assert.dom('button').hasClass('upf-btn--dark-bg');
+      });
+      (0, _qunit.test)('it accepts square argument', async function (assert) {
+        this.square = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @square={{this.square}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "9K/l2A8o",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@square\"],[[30,0,[\"label\"]],[30,0,[\"square\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button').hasClass('upf-square-btn');
+        this.set('square', false);
+        assert.dom('button').doesNotHaveClass('upf-square-btn');
+      });
+      (0, _qunit.test)('it accepts countDown argument', async function (assert) {
+        const clock = _sinon.default.useFakeTimers({
+          shouldAdvanceTime: true
+        });
+        this.countDown = {
+          callback: _sinon.default.stub(),
+          time: 50,
+          step: 10
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @countDown={{this.countDown}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "WeCy9oVP",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@countDown\"],[[30,0,[\"label\"]],[30,0,[\"countDown\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('button');
+        assert.true(this.countDown.callback.notCalled);
+        clock.tick(100);
+        assert.true(this.countDown.callback.calledOnce);
+        clock.restore();
+      });
+    });
+    (0, _qunit.module)('When clicking on the button', function () {
+      (0, _qunit.test)('it shows chevron-down when panel isclosed', async function (assert) {
+        this.items = [{
+          title: 'Item',
+          action: () => {}
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "rUaixFCQ",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@items\"],[[30,0,[\"label\"]],[30,0,[\"items\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('button i.fa-chevron-down').exists();
+        assert.dom('button i.fa-chevron-up').doesNotExist();
+      });
+      (0, _qunit.test)('it shows chevron-up when panel is open', async function (assert) {
+        this.items = [{
+          title: 'Item',
+          action: () => {}
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}} @items={{this.items}} data-control-name="context-menu"/>
+        */
+        {
+          "id": "rUaixFCQ",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"context-menu\"]],[[\"@label\",\"@items\"],[[30,0,[\"label\"]],[30,0,[\"items\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('button');
+        assert.dom('button i.fa-chevron-up').exists();
+        assert.dom('button i.fa-chevron-down').doesNotExist();
+      });
+      (0, _qunit.test)('it opens the panel', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}}
+                                                 @onMenuOpened={{this.onOpenStub}}
+                                                 @onMenuClosed={{this.onCloseStub}} />
+        */
+        {
+          "id": "EAPuIXoT",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.context-menu-panel__scrollable-container').doesNotExist();
+        await (0, _testHelpers.click)('button');
+        assert.dom('.context-menu-panel__scrollable-container').exists();
+      });
+      (0, _qunit.test)('it trigger the onMenuOpened callback', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu @label={{this.label}}
+                                                 @onMenuOpened={{this.onOpenStub}}
+                                                 @onMenuClosed={{this.onCloseStub}} />
+        */
+        {
+          "id": "EAPuIXoT",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(this.onOpenStub.notCalled);
+        await (0, _testHelpers.click)('button');
+        assert.ok(this.onOpenStub.calledOnce);
+      });
+      (0, _qunit.module)('When clicking a second time on the button', function () {
+        (0, _qunit.test)('it closes the panel', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ContextMenu @label={{this.label}}
+                                                   @onMenuOpened={{this.onOpenStub}}
+                                                   @onMenuClosed={{this.onCloseStub}} />
+          */
+          {
+            "id": "EAPuIXoT",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('button');
+          assert.dom('.context-menu-panel__scrollable-container').exists();
+          await (0, _testHelpers.click)('button');
+          assert.dom('.context-menu-panel__scrollable-container').doesNotExist();
+        });
+        (0, _qunit.test)('it trigger the onMenuOpened callback', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ContextMenu @label={{this.label}}
+                                                   @onMenuOpened={{this.onOpenStub}}
+                                                   @onMenuClosed={{this.onCloseStub}} />
+          */
+          {
+            "id": "EAPuIXoT",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('button');
+          assert.ok(this.onCloseStub.notCalled);
+          await (0, _testHelpers.click)('button');
+          assert.ok(this.onCloseStub.calledOnce);
+        });
+      });
+    });
+    (0, _qunit.module)('When the panel is opened', function () {
+      (0, _qunit.test)('On click outside of the panel, it closes', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div data-control-name="outside-container">
+                                  <OSS::ContextMenu @label={{this.label}}
+                                                    @onMenuOpened={{this.onOpenStub}}
+                                                    @onMenuClosed={{this.onCloseStub}} />
+                                </div>
+        */
+        {
+          "id": "QgfJxwA1",
+          "block": "[[[10,0],[14,\"data-control-name\",\"outside-container\"],[12],[1,\"\\n                          \"],[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]]]],null],[1,\"\\n                        \"],[13]],[],false,[\"o-s-s/context-menu\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('button');
+        assert.ok(this.onCloseStub.notCalled);
+        await (0, _testHelpers.click)('[data-control-name="outside-container"]');
+        assert.ok(this.onCloseStub.calledOnce);
+      });
+      (0, _qunit.module)('CloseOnMouseLeave', () => {
+        (0, _qunit.test)('When closeOnMouseLeave is true, on mouse leave it closes the panel', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ContextMenu @label={{this.label}}
+                                                   @onMenuOpened={{this.onOpenStub}}
+                                                   @onMenuClosed={{this.onCloseStub}}
+                                                   @closeOnMouseLeave={{true}} />
+          */
+          {
+            "id": "zgN4bGqX",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\",\"@closeOnMouseLeave\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]],true]],null]],[],false,[\"o-s-s/context-menu\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('button');
+          assert.dom('.context-menu-panel__scrollable-container').exists();
+          await (0, _testHelpers.triggerEvent)('.context-menu-panel__scrollable-container', 'mouseleave');
+          assert.dom('.context-menu-panel__scrollable-container').doesNotExist();
+          assert.ok(this.onCloseStub.calledOnce);
+        });
+        (0, _qunit.test)('When closeOnMouseLeave is false, on mouse leave it does not close the panel', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ContextMenu @label={{this.label}}
+                                                   @onMenuOpened={{this.onOpenStub}}
+                                                   @onMenuClosed={{this.onCloseStub}}
+                                                   @closeOnMouseLeave={{false}} />
+          */
+          {
+            "id": "LsBJ2MsG",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\",\"@closeOnMouseLeave\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]],false]],null]],[],false,[\"o-s-s/context-menu\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('button');
+          assert.dom('.context-menu-panel__scrollable-container').exists();
+          await (0, _testHelpers.triggerEvent)('.context-menu-panel__scrollable-container', 'mouseleave');
+          assert.dom('.context-menu-panel__scrollable-container').exists();
+          assert.ok(this.onCloseStub.notCalled);
+        });
+      });
+    });
+    (0, _qunit.test)('When button is loading, clicking does nothing', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ContextMenu @label={{this.label}}
+                                               @onMenuOpened={{this.onOpenStub}}
+                                               @onMenuClosed={{this.onCloseStub}} 
+                                               @loading={{true}} />
+      */
+      {
+        "id": "a1vjjmgb",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@onMenuOpened\",\"@onMenuClosed\",\"@loading\"],[[30,0,[\"label\"]],[30,0,[\"onOpenStub\"]],[30,0,[\"onCloseStub\"]],true]],null]],[],false,[\"o-s-s/context-menu\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu-test.ts",
+        "isStrictMode": false
+      }));
+      assert.ok(this.onOpenStub.notCalled);
+      await (0, _testHelpers.click)('button');
+      assert.ok(this.onOpenStub.notCalled);
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "sinon", "@ember/component", "@glimmer/component", "@upfluence/oss-components/components/o-s-s/context-menu/panel", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _sinon, _component, _component2, _panel, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"sinon",0,"@ember/component",0,"@glimmer/component",0,"@upfluence/oss-components/components/o-s-s/context-menu/panel"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.subItems = [{
+        title: 'Sub Item 1.1',
+        action: _sinon.default.stub()
+      }, {
+        title: 'Sub Item 1.2',
+        action: _sinon.default.stub()
+      }, {
+        title: 'Sub Item 1.3',
+        action: _sinon.default.stub()
+      }];
+      this.items = [{
+        title: 'Item 1',
+        action: _sinon.default.stub(),
+        items: this.subItems
+      }, {
+        title: 'Item 2',
+        action: _sinon.default.stub()
+      }];
+      this.onCloseStub = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders properly', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ContextMenu::Panel @items={{this.items}} />
+      */
+      {
+        "id": "JNoTqgMM",
+        "block": "[[[8,[39,0],null,[[\"@items\"],[[30,0,[\"items\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.context-menu-panel__dropdown').exists();
+      assert.dom('.context-menu-panel__dropdown li .oss-infinite-select-option').exists({
+        count: 2
+      });
+    });
+    (0, _qunit.test)('When referenceTarget is passed, it attaches and moves with the target', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            {{#if this.isInitialized}}
+              <OSS::ContextMenu::Panel @items={{this.items}} 
+                                       @referenceTarget={{this.referenceTarget}} 
+                                       @placement="bottom-start" />
+            {{/if}}
+            <OSS::Button id="first_button" @label="first" />
+            <OSS::Button id="second_button" @label="second" />
+          
+      */
+      {
+        "id": "mquhrsw6",
+        "block": "[[[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"        \"],[8,[39,1],null,[[\"@items\",\"@referenceTarget\",\"@placement\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],\"bottom-start\"]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[8,[39,2],[[24,1,\"first_button\"]],[[\"@label\"],[\"first\"]],null],[1,\"\\n      \"],[8,[39,2],[[24,1,\"second_button\"]],[[\"@label\"],[\"second\"]],null],[1,\"\\n    \"]],[],false,[\"if\",\"o-s-s/context-menu/panel\",\"o-s-s/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+        "isStrictMode": false
+      }));
+      const buttonRef = document.querySelector('#second_button');
+      this.set('referenceTarget', buttonRef);
+      this.set('isInitialized', true);
+      await (0, _testHelpers.settled)();
+      const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
+      assert.equal(panelRef.style.top, '36px');
+      await (0, _testHelpers.waitUntil)(() => panelRef.style.left === '63.5px', {
+        timeout: 300
+      });
+      assert.equal(panelRef.style.left, '63.5px');
+      buttonRef.style.marginLeft = '50px';
+      await (0, _testHelpers.settled)();
+      assert.equal(panelRef.style.top, '36px');
+      await (0, _testHelpers.waitUntil)(() => panelRef.style.left === '113.5px', {
+        timeout: 300
+      });
+      assert.equal(panelRef.style.left, '113.5px');
+    });
+    (0, _qunit.module)('placement', function (hooks) {
+      (0, _qunit.test)('When placement is set to right-start, it positions the panel accordingly', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+              {{#if this.isInitialized}}
+                <OSS::ContextMenu::Panel @items={{this.items}} 
+                                         @referenceTarget={{this.referenceTarget}} 
+                                         @placement="right-start" />
+              {{/if}}
+              <OSS::Button id="trigger" @label="Trigger" />
+            
+        */
+        {
+          "id": "Da23lccM",
+          "block": "[[[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"        \"],[8,[39,1],null,[[\"@items\",\"@referenceTarget\",\"@placement\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],\"right-start\"]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[8,[39,2],[[24,1,\"trigger\"]],[[\"@label\"],[\"Trigger\"]],null],[1,\"\\n    \"]],[],false,[\"if\",\"o-s-s/context-menu/panel\",\"o-s-s/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        const buttonRef = document.querySelector('#trigger');
+        this.set('referenceTarget', buttonRef);
+        this.set('isInitialized', true);
+        const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
+        const qunitTestContainer = buttonRef.offsetParent;
+        const leftPosition = buttonRef.getBoundingClientRect().left - qunitTestContainer.getBoundingClientRect().left;
+        await (0, _testHelpers.settled)();
+        const expectedLeftPosition = Number(((leftPosition + buttonRef.getBoundingClientRect().width) * 2).toFixed(4)) + 'px';
+        const expectedTopPosition = 0 + 'px';
+        assert.equal(expectedLeftPosition, panelRef.style.left);
+        assert.equal(expectedTopPosition, panelRef.style.top);
+      });
+      (0, _qunit.test)('When placement is set to bottom-start, it positions the panel accordingly', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+              {{#if this.isInitialized}}
+                <OSS::ContextMenu::Panel @items={{this.items}} 
+                                         @referenceTarget={{this.referenceTarget}} 
+                                         @placement="bottom-start" />
+              {{/if}}
+              <OSS::Button id="trigger" @label="Trigger" />
+            
+        */
+        {
+          "id": "r+iOseE0",
+          "block": "[[[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"        \"],[8,[39,1],null,[[\"@items\",\"@referenceTarget\",\"@placement\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],\"bottom-start\"]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[8,[39,2],[[24,1,\"trigger\"]],[[\"@label\"],[\"Trigger\"]],null],[1,\"\\n    \"]],[],false,[\"if\",\"o-s-s/context-menu/panel\",\"o-s-s/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        const buttonRef = document.querySelector('#trigger');
+        this.set('referenceTarget', buttonRef);
+        this.set('isInitialized', true);
+        const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
+        const qunitTestContainer = buttonRef.offsetParent;
+        const topPosition = buttonRef.getBoundingClientRect().top - qunitTestContainer.getBoundingClientRect().top;
+        await (0, _testHelpers.settled)();
+        const expectedLeftPosition = 0 + 'px';
+        const expectedTopPosition = Number(((topPosition + buttonRef.getBoundingClientRect().height) * 2).toFixed(4)) + 'px';
+        assert.equal(expectedLeftPosition, panelRef.style.left);
+        assert.equal(expectedTopPosition, panelRef.style.top);
+      });
+    });
+    (0, _qunit.module)('Offset', function () {
+      (0, _qunit.test)('When offset is 0, panel is stuck to his reference target', async function (assert) {
+        this.offset = 0;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+              {{#if this.isInitialized}}
+                <OSS::ContextMenu::Panel @items={{this.items}} 
+                                         @referenceTarget={{this.referenceTarget}} 
+                                         @placement="bottom-start"
+                                         @offset={{this.offset}} />
+              {{/if}}
+              <OSS::Button id="trigger" @label="Trigger" />
+            
+        */
+        {
+          "id": "GbUdTgnT",
+          "block": "[[[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"        \"],[8,[39,1],null,[[\"@items\",\"@referenceTarget\",\"@placement\",\"@offset\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],\"bottom-start\",[30,0,[\"offset\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[8,[39,2],[[24,1,\"trigger\"]],[[\"@label\"],[\"Trigger\"]],null],[1,\"\\n    \"]],[],false,[\"if\",\"o-s-s/context-menu/panel\",\"o-s-s/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        const buttonRef = document.querySelector('#trigger');
+        this.set('referenceTarget', buttonRef);
+        this.set('isInitialized', true);
+        const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
+        await (0, _testHelpers.settled)();
+        assert.equal(panelRef.style.top, '36px');
+      });
+      (0, _qunit.test)('When offset is defined, panel is is moved by that many pixels than defined to his reference target', async function (assert) {
+        this.offset = 20;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+              {{#if this.isInitialized}}
+                <OSS::ContextMenu::Panel @items={{this.items}} 
+                                         @referenceTarget={{this.referenceTarget}} 
+                                         @placement="bottom-start"
+                                         @offset={{this.offset}} />
+              {{/if}}
+              <OSS::Button id="trigger" @label="Trigger" />
+            
+        */
+        {
+          "id": "GbUdTgnT",
+          "block": "[[[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"        \"],[8,[39,1],null,[[\"@items\",\"@referenceTarget\",\"@placement\",\"@offset\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],\"bottom-start\",[30,0,[\"offset\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[8,[39,2],[[24,1,\"trigger\"]],[[\"@label\"],[\"Trigger\"]],null],[1,\"\\n    \"]],[],false,[\"if\",\"o-s-s/context-menu/panel\",\"o-s-s/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        const buttonRef = document.querySelector('#trigger');
+        this.set('referenceTarget', buttonRef);
+        this.set('isInitialized', true);
+        const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
+        await (0, _testHelpers.settled)();
+        assert.equal(panelRef.style.top, '56px');
+      });
+    });
+    (0, _qunit.module)('When items are passed', function () {
+      (0, _qunit.module)('if items has subitems', function () {
+        (0, _qunit.test)('Clicking on item opens a submenu on the right of the trigger element', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    {{#if this.isInitialized}}
+                      <OSS::ContextMenu::Panel @items={{this.items}} 
+                                               @referenceTarget={{this.referenceTarget}}
+                                               @placement="bottom-start"
+                                               @offset={{this.offset}} />
+                    {{/if}}
+                    <OSS::Button id="trigger" @label="Trigger" />
+                  
+          */
+          {
+            "id": "qoFlrzXb",
+            "block": "[[[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"            \"],[8,[39,1],null,[[\"@items\",\"@referenceTarget\",\"@placement\",\"@offset\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],\"bottom-start\",[30,0,[\"offset\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[8,[39,2],[[24,1,\"trigger\"]],[[\"@label\"],[\"Trigger\"]],null],[1,\"\\n        \"]],[],false,[\"if\",\"o-s-s/context-menu/panel\",\"o-s-s/button\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+            "isStrictMode": false
+          }));
+          const buttonRef = document.querySelector('#trigger');
+          this.set('referenceTarget', buttonRef);
+          this.set('isInitialized', true);
+          assert.dom('div.context-menu-panel__scrollable-container').exists({
+            count: 1
+          });
+          await (0, _testHelpers.click)('div.context-menu-panel__scrollable-container li:nth-of-type(1) .oss-infinite-select-option');
+          assert.dom('div.context-menu-panel__scrollable-container').exists({
+            count: 2
+          });
+          const panels = document.querySelectorAll('div.context-menu-panel__scrollable-container');
+          const triggerPosition = (panels[0]?.querySelector('div.context-menu-panel__dropdown li:nth-of-type(1)')).getBoundingClientRect();
+          assert.equal(triggerPosition.x + triggerPosition.width, panels[1]?.getBoundingClientRect().x);
+          assert.equal(triggerPosition.y + _panel.SUBPANEL_OFFSET / 2, panels[1]?.getBoundingClientRect().y);
+        });
+        (0, _qunit.test)('Submenu items are properly displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ContextMenu::Panel @items={{this.items}} />
+          */
+          {
+            "id": "JNoTqgMM",
+            "block": "[[[8,[39,0],null,[[\"@items\"],[[30,0,[\"items\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('div.context-menu-panel__dropdown').exists({
+            count: 1
+          });
+          await (0, _testHelpers.click)('div.context-menu-panel__dropdown li:nth-of-type(1) .oss-infinite-select-option');
+          assert.dom('div.context-menu-panel__dropdown').exists({
+            count: 2
+          });
+          const panels = document.querySelectorAll('div.context-menu-panel__dropdown');
+          assert.equal(panels[1]?.querySelectorAll('li').length, 3);
+          assert.equal((panels[1]?.querySelector('li:nth-of-type(1)')).textContent?.trim(), 'Sub Item 1.1');
+          assert.equal((panels[1]?.querySelector('li:nth-of-type(2)')).textContent?.trim(), 'Sub Item 1.2');
+          assert.equal((panels[1]?.querySelector('li:nth-of-type(3)')).textContent?.trim(), 'Sub Item 1.3');
+        });
+      });
+      (0, _qunit.test)('If item has custom component it render the component instead of default one', async function (assert) {
+        class TestComponent extends _component2.default {}
+        (0, _component.setComponentTemplate)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div data-control-name="custom-row">{{@item.title}}</div>
+        */
+        {
+          "id": "6mKvHnJL",
+          "block": "[[[10,0],[14,\"data-control-name\",\"custom-row\"],[12],[1,[30,1,[\"title\"]]],[13]],[\"@item\"],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }), TestComponent);
+        const component = this.owner.register('component:test-component', TestComponent);
+        this.items = [{
+          title: 'custom',
+          action: () => console.log('Item 1 clicked'),
+          rowRenderer: TestComponent
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu::Panel @items={{this.items}} />
+        */
+        {
+          "id": "JNoTqgMM",
+          "block": "[[[8,[39,0],null,[[\"@items\"],[[30,0,[\"items\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.context-menu-panel__dropdown li [data-control-name="custom-row"]').exists();
+      });
+    });
+    (0, _qunit.test)('When no items are passed, it displays the empty state', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ContextMenu::Panel  />
+      */
+      {
+        "id": "UZtcs7aa",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-infinite-select__items-container--empty').exists();
+    });
+    (0, _qunit.test)('When mouse leave the panel, it triggers onMouseLeave action', async function (assert) {
+      this.onMouseLeaveStub = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ContextMenu::Panel  @onMouseLeave={{this.onMouseLeaveStub}} />
+      */
+      {
+        "id": "c/u0Qxhx",
+        "block": "[[[8,[39,0],null,[[\"@onMouseLeave\"],[[30,0,[\"onMouseLeaveStub\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.ok(this.onMouseLeaveStub.notCalled);
+      await (0, _testHelpers.triggerEvent)('.context-menu-panel__dropdown', 'mouseleave');
+      assert.ok(this.onMouseLeaveStub.calledOnce);
+    });
+    (0, _qunit.module)('When clicking on an item', function () {
+      (0, _qunit.test)('It triggers the item action', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu::Panel @items={{this.items}} />
+        */
+        {
+          "id": "JNoTqgMM",
+          "block": "[[[8,[39,0],null,[[\"@items\"],[[30,0,[\"items\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(this.items[1].action.notCalled);
+        await (0, _testHelpers.click)('div.context-menu-panel__dropdown li:nth-of-type(2) .oss-infinite-select-option');
+        assert.ok(this.items[1].action.calledOnce);
+      });
+      (0, _qunit.test)('When action returns false, the menu should stay open', async function (assert) {
+        this.items[1].action.returns(false);
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu::Panel @items={{this.items}} @onClose={{this.onCloseStub}} />
+        */
+        {
+          "id": "RyRYAqNO",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@onClose\"],[[30,0,[\"items\"]],[30,0,[\"onCloseStub\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(this.onCloseStub.notCalled);
+        await (0, _testHelpers.click)('div.context-menu-panel__dropdown li:nth-of-type(2) .oss-infinite-select-option');
+        assert.ok(this.onCloseStub.notCalled);
+      });
+      (0, _qunit.test)('When action returns true or undefined, the menu should close', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ContextMenu::Panel @items={{this.items}} @onClose={{this.onCloseStub}} />
+        */
+        {
+          "id": "RyRYAqNO",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@onClose\"],[[30,0,[\"items\"]],[30,0,[\"onCloseStub\"]]]],null]],[],false,[\"o-s-s/context-menu/panel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(this.onCloseStub.notCalled);
+        await (0, _testHelpers.click)('div.context-menu-panel__dropdown li:nth-of-type(2) .oss-infinite-select-option');
+        assert.ok(this.onCloseStub.calledOnce);
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@upfluence/oss-components/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _testSupport2, _templateFactory) {
   "use strict";
 
@@ -7657,6 +8425,34 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     name: 'Wolverine',
     characters: 'James Howlett'
   }];
+  const FAKE_DATA_GROUPED = [{
+    name: 'banana',
+    label: 'banana',
+    groupKey: 'fruit'
+  }, {
+    name: 'lettuce',
+    label: 'lettuce',
+    groupKey: 'vegetable'
+  }, {
+    name: 'orange',
+    label: 'orange',
+    groupKey: 'fruit'
+  }, {
+    name: 'carrot',
+    label: 'carrot',
+    groupKey: 'vegetable'
+  }, {
+    name: 'apple',
+    label: 'apple',
+    groupKey: 'fruit'
+  }, {
+    name: 'spinach',
+    label: 'spinach',
+    groupKey: 'vegetable'
+  }, {
+    name: 'other',
+    label: 'other'
+  }];
   (0, _qunit.module)('Integration | Component | o-s-s/infinite-select', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
@@ -8256,6 +9052,62 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
         });
       });
     });
+    (0, _qunit.module)('When data has groupKey', function (hooks) {
+      hooks.beforeEach(function () {
+        this.items = FAKE_DATA_GROUPED;
+        this.onSelect = () => {};
+      });
+      (0, _qunit.test)('For each different groupKey, a group is created', async function (assert) {
+        await renderGrouped();
+        assert.dom('.upf-infinite-select__items-container ul').exists({
+          count: 3
+        });
+        assert.dom('.upf-infinite-select__items-container ul:nth-of-type(1)').hasAttribute('data-control-name', 'infinite-select-group-fruit');
+        assert.dom('.upf-infinite-select__items-container ul:nth-of-type(2)').hasAttribute('data-control-name', 'infinite-select-group-vegetable');
+        assert.dom('.upf-infinite-select__items-container ul:nth-of-type(3)').hasAttribute('data-control-name', 'infinite-select-group-_ungrouped_');
+      });
+      (0, _qunit.test)('Items are placed in their respective group', async function (assert) {
+        await renderGrouped();
+        const groupFruitItems = Array.from(document.querySelectorAll('.upf-infinite-select__items-container ul:nth-of-type(1) .upf-infinite-select__item')).map(el => el.textContent.trim());
+        const groupVegetableItems = Array.from(document.querySelectorAll('.upf-infinite-select__items-container ul:nth-of-type(2) .upf-infinite-select__item')).map(el => el.textContent.trim());
+        const groupUngroupedItems = Array.from(document.querySelectorAll('.upf-infinite-select__items-container ul:nth-of-type(3) .upf-infinite-select__item')).map(el => el.textContent.trim());
+        assert.deepEqual(groupFruitItems, ['banana', 'orange', 'apple']);
+        assert.deepEqual(groupVegetableItems, ['lettuce', 'carrot', 'spinach']);
+        assert.deepEqual(groupUngroupedItems, ['other']);
+      });
+      (0, _qunit.module)('Separators', function () {
+        (0, _qunit.test)('A separator is rendered between each group', async function (assert) {
+          await renderGrouped();
+          assert.dom('.upf-infinite-select__items-container hr.group-separator').exists({
+            count: 2
+          });
+        });
+        (0, _qunit.test)('There is no separator after the last group', async function (assert) {
+          await renderGrouped();
+          assert.dom('.upf-infinite-select__items-container ul:last-of-type + hr.group-separator').doesNotExist();
+        });
+      });
+    });
+    async function renderGrouped() {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::InfiniteSelect
+                  @items={{this.items}}
+                  @searchEnabled={{false}}
+                  @onSelect={{this.onSelect}}
+                >
+                  <:option as |item index|>
+                    <div class="index">{{item.label}}</div>
+                  </:option>
+                </OSS::InfiniteSelect>
+      */
+      {
+        "id": "EwR9fT9t",
+        "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[10,0],[14,0,\"index\"],[12],[1,[30,1,[\"label\"]]],[13],[1,\"\\n            \"]],[1,2]]]]]],[\"item\",\"index\"],false,[\"o-s-s/infinite-select\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+        "isStrictMode": false
+      }));
+    }
   });
 });
 define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
@@ -21094,6 +21946,94 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
           "isStrictMode": false
         }));
+      });
+      (0, _qunit.test)('when @hasError is true, textarea has errored class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @hasError={{true}} />
+        */
+        {
+          "id": "XX1aBPaV",
+          "block": "[[[8,[39,0],null,[[\"@hasError\"],[true]],null]],[],false,[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasClass('oss-textarea--errored');
+        assert.dom('.oss-textarea-container').hasClass('oss-textarea-container--errored');
+      });
+      (0, _qunit.test)('when @hasError is false, textarea does not have errored class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @hasError={{false}} />
+        */
+        {
+          "id": "QRI4zgTV",
+          "block": "[[[8,[39,0],null,[[\"@hasError\"],[false]],null]],[],false,[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--errored');
+        assert.dom('.oss-textarea-container').hasNoClass('oss-textarea-container--errored');
+      });
+      (0, _qunit.test)('when @errorMessage is provided, textarea has errored class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @errorMessage="This is an error" />
+        */
+        {
+          "id": "I/wWxyL9",
+          "block": "[[[8,[39,0],null,[[\"@errorMessage\"],[\"This is an error\"]],null]],[],false,[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasClass('oss-textarea--errored');
+        assert.dom('.oss-textarea-container').hasClass('oss-textarea-container--errored');
+        assert.dom('.font-color-error-500').exists();
+        assert.dom('.font-color-error-500').hasText('This is an error');
+      });
+      (0, _qunit.test)('when @errorMessage is empty string, textarea does not have errored class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @errorMessage="" />
+        */
+        {
+          "id": "lHo3o1u8",
+          "block": "[[[8,[39,0],null,[[\"@errorMessage\"],[\"\"]],null]],[],false,[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--errored');
+        assert.dom('.oss-textarea-container').hasNoClass('oss-textarea-container--errored');
+      });
+      (0, _qunit.test)('when both @hasError and @errorMessage are provided, textarea has errored class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @hasError={{true}} @errorMessage="Error message" />
+        */
+        {
+          "id": "XWaLLN2F",
+          "block": "[[[8,[39,0],null,[[\"@hasError\",\"@errorMessage\"],[true,\"Error message\"]],null]],[],false,[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasClass('oss-textarea--errored');
+        assert.dom('.oss-textarea-container').hasClass('oss-textarea-container--errored');
+        assert.dom('.font-color-error-500').exists();
+        assert.dom('.font-color-error-500').hasText('Error message');
+      });
+      (0, _qunit.test)('when neither @hasError nor @errorMessage are provided, textarea does not have errored class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea />
+        */
+        {
+          "id": "Hw2OU7Sd",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--errored');
+        assert.dom('.oss-textarea-container').hasNoClass('oss-textarea-container--errored');
       });
     });
   });

@@ -86992,6 +86992,899 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = BasicUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/context-menu", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::Button
+    @skin={{@skin}}
+    @size={{@size}}
+    @loading={{@loading}}
+    @loadingOptions={{@loadingOptions}}
+    @icon={{@icon}}
+    @iconUrl={{@iconUrl}}
+    @label={{@label}}
+    @theme={{@theme}}
+    @square={{@square}}
+    @countDown={{@countDown}}
+    @suffixIcon={{if this.displayContextMenuPanel "fa-chevron-up" "fa-chevron-down"}}
+    {{did-insert this.registerMenuTrigger}}
+    {{on "click" this.toggleContextMenuPanel}}
+    ...attributes
+  />
+  
+  {{#if this.displayContextMenuPanel}}
+    <OSS::ContextMenu::Panel
+      @referenceTarget={{this.referenceTarget}}
+      @items={{@items}}
+      @offset={{4}}
+      @placement="bottom-start"
+      @onMouseLeave={{this.onContextMenuPanelMouseLeave}}
+      @onClose={{this.closeContextMenuPanel}}
+      @registerPanel={{this.registerContextMenuPanel}}
+      @unregisterPanel={{this.unregisterContextMenuPanel}}
+      {{on-click-outside this.onClickOutsidePanel useCapture=true}}
+    />
+  {{/if}}
+  */
+  {
+    "id": "kmi4br8U",
+    "block": "[[[8,[39,0],[[17,1],[4,[38,2],[[30,0,[\"registerMenuTrigger\"]]],null],[4,[38,3],[\"click\",[30,0,[\"toggleContextMenuPanel\"]]],null]],[[\"@skin\",\"@size\",\"@loading\",\"@loadingOptions\",\"@icon\",\"@iconUrl\",\"@label\",\"@theme\",\"@square\",\"@countDown\",\"@suffixIcon\"],[[30,2],[30,3],[30,4],[30,5],[30,6],[30,7],[30,8],[30,9],[30,10],[30,11],[52,[30,0,[\"displayContextMenuPanel\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n\\n\"],[41,[30,0,[\"displayContextMenuPanel\"]],[[[1,\"  \"],[8,[39,4],[[4,[38,5],[[30,0,[\"onClickOutsidePanel\"]]],[[\"useCapture\"],[true]]]],[[\"@referenceTarget\",\"@items\",\"@offset\",\"@placement\",\"@onMouseLeave\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],[[30,0,[\"referenceTarget\"]],[30,12],4,\"bottom-start\",[30,0,[\"onContextMenuPanelMouseLeave\"]],[30,0,[\"closeContextMenuPanel\"]],[30,0,[\"registerContextMenuPanel\"]],[30,0,[\"unregisterContextMenuPanel\"]]]],null],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@skin\",\"@size\",\"@loading\",\"@loadingOptions\",\"@icon\",\"@iconUrl\",\"@label\",\"@theme\",\"@square\",\"@countDown\",\"@items\"],false,[\"o-s-s/button\",\"if\",\"did-insert\",\"on\",\"o-s-s/context-menu/panel\",\"on-click-outside\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/context-menu.hbs",
+    "isStrictMode": false
+  });
+  let OSSContextMenuComponent = _exports.default = (_class = class OSSContextMenuComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "displayContextMenuPanel", _descriptor, this);
+      _initializerDefineProperty(this, "referenceTarget", _descriptor2, this);
+      _initializerDefineProperty(this, "contextMenuPanels", _descriptor3, this);
+    }
+    registerMenuTrigger(element) {
+      this.referenceTarget = element;
+    }
+    toggleContextMenuPanel(event) {
+      event.stopPropagation();
+      if (this.args.loading) return;
+      this.displayContextMenuPanel = !this.displayContextMenuPanel;
+      this.displayContextMenuPanel ? this.args.onMenuOpened?.() : this.args.onMenuClosed?.();
+    }
+    onContextMenuPanelMouseLeave() {
+      if (!this.args.closeOnMouseLeave) return;
+      this.hideContextMenuPanel();
+    }
+    registerContextMenuPanel(element) {
+      this.contextMenuPanels.push(element);
+    }
+    unregisterContextMenuPanel(element) {
+      this.contextMenuPanels = this.contextMenuPanels.filter(el => el !== element);
+    }
+    onClickOutsidePanel(_, event) {
+      if (event.target && this.referenceTarget?.contains(event.target) || this.contextMenuPanels.some(el => el.contains(event.target))) return;
+      this.hideContextMenuPanel();
+    }
+    closeContextMenuPanel() {
+      this.hideContextMenuPanel();
+    }
+    hideContextMenuPanel() {
+      this.displayContextMenuPanel = false;
+      this.args.onMenuClosed?.();
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayContextMenuPanel", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "referenceTarget", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "contextMenuPanels", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [];
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "registerMenuTrigger", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerMenuTrigger"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleContextMenuPanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleContextMenuPanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onContextMenuPanelMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onContextMenuPanelMouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerContextMenuPanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContextMenuPanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "unregisterContextMenuPanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "unregisterContextMenuPanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutsidePanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutsidePanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeContextMenuPanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeContextMenuPanel"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSContextMenuComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/context-menu.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@storybook/addon-actions",0,"htmlbars-inline-precompile"eaimeta@70e063a35619d71f
+  const SkinTypes = ['default', 'primary', 'secondary', 'destructive', 'alert', 'success', 'instagram', 'facebook', 'youtube', 'primary-gradient', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet'];
+  const SizeTypes = ['xs', 'sm', 'md', 'lg'];
+  const ThemeTypes = ['light', 'dark'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::ContextMenu',
+    component: 'o-s-s/context-menu',
+    argTypes: {
+      items: {
+        type: {
+          required: true
+        },
+        description: 'An array of context menu items to be displayed in the panel',
+        table: {
+          type: {
+            summary: 'ContextMenuItem[]'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      skin: {
+        description: 'Adjust appearance',
+        table: {
+          type: {
+            summary: SkinTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'default'
+          }
+        },
+        options: SkinTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      size: {
+        description: 'Adjust size',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'null'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      loading: {
+        description: 'Display loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      loadingOptions: {
+        description: 'Options to configure the loading state',
+        table: {
+          type: {
+            summary: '{ showLabel?: boolean }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      label: {
+        description: 'Text content of the button',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      iconUrl: {
+        description: 'Url of an icon that will be shown within the button',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      square: {
+        description: 'Displays the button as a square. Useful for icon buttons.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      theme: {
+        description: 'Whether the button is being on a dark background or not',
+        table: {
+          type: {
+            summary: ThemeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'light'
+          }
+        },
+        options: ThemeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      countDown: {
+        description: 'Definition of countDown object, it takes 3 keys:<br/>' + "- 'callback' (mandatory): function to call at the end<br/>" + "- 'time' (optional): time between execute callback. It is representing entire second in millisecond, for exemple 1000, 2000 or 5000<br/>" + "- 'step' (optional): the step value, it should be in the same unit as the time",
+        table: {
+          type: {
+            summary: '{ callback: () => {}, time?: number, step?: number }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      disabled: {
+        description: 'This is a non-ember parameter, it is passed to the HTML input tag using the splattributes. (It should not be passed with `@` prefix)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      closeOnMouseLeave: {
+        type: {
+          required: false
+        },
+        description: 'If true, the menu will close when the mouse leaves the panel',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onMenuOpened: {
+        type: {
+          required: false
+        },
+        description: 'Callback function called when the menu panel is opened',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onMenuOpened(): void'
+          }
+        }
+      },
+      onMenuClosed: {
+        type: {
+          required: false
+        },
+        description: 'Callback function called when the menu panel is closed',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onMenuClosed(): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The `OSS::ContextMenu` component provides a button that, when clicked, displays a context menu with various options. It supports nested sub-menus, loading states, and customizable appearance through skins and sizes.'
+        }
+      }
+    }
+  };
+  const items = [{
+    title: 'Item 1',
+    action: () => console.log('Item 1 selected')
+  }, {
+    title: 'Item 2',
+    action: () => console.log('Item 2 selected'),
+    items: [{
+      title: 'Sub Item 1',
+      action: () => console.log('Sub Item 1 selected')
+    }]
+  }, {
+    title: 'Item 3',
+    action: () => console.log('Item 3 selected')
+  }];
+  const defaultArgs = {
+    items: items,
+    label: 'Open menu',
+    skin: 'default',
+    loading: false,
+    icon: 'far fa-envelope-open',
+    theme: 'light',
+    size: 'md',
+    square: false,
+    countDown: undefined,
+    loadingOptions: undefined,
+    iconUrl: undefined,
+    disabled: false,
+    closeOnMouseLeave: false,
+    onMenuOpened: (0, _addonActions.action)('onMenuOpened'),
+    onMenuClosed: (0, _addonActions.action)('onMenuClosed')
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      <OSS::ContextMenu @items={{this.items}}
+                                      @label={{this.label}} 
+                                      @skin={{this.skin}} 
+                                      @loading={{this.loading}}
+                                      @icon={{this.icon}}
+                                      @theme={{this.theme}}
+                                      @square={{this.square}}
+                                      @countDown={{this.countDown}}
+                                      @loadingOptions={{this.loadingOptions}}
+                                      @iconUrl={{this.iconUrl}}
+                                      @size={{this.size}}
+                                      disabled={{this.disabled}}
+                                      @closeOnMouseLeave={{this.closeOnMouseLeave}}
+                                      @onMenuOpened={{this.onMenuOpened}}
+                                      @onMenuClosed={{this.onMenuClosed}}
+                                      />
+    */
+    {
+      "id": "2KpiuE4G",
+      "block": "[[[8,[39,0],[[16,\"disabled\",[30,0,[\"disabled\"]]]],[[\"@items\",\"@label\",\"@skin\",\"@loading\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@loadingOptions\",\"@iconUrl\",\"@size\",\"@closeOnMouseLeave\",\"@onMenuOpened\",\"@onMenuClosed\"],[[30,0,[\"items\"]],[30,0,[\"label\"]],[30,0,[\"skin\"]],[30,0,[\"loading\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"loadingOptions\"]],[30,0,[\"iconUrl\"]],[30,0,[\"size\"]],[30,0,[\"closeOnMouseLeave\"]],[30,0,[\"onMenuOpened\"]],[30,0,[\"onMenuClosed\"]]]],null]],[],false,[\"o-s-s/context-menu\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/context-menu.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/context-menu/panel", ["exports", "@ember/component", "@ember/object", "@ember/object/internals", "@ember/runloop", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/attach-dropdown", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _object, _internals, _runloop, _component2, _tracking, _attachDropdown, _templateFactory, _runtime) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.SUBPANEL_OFFSET = _exports.DEFAULT_PLACEMENT = _exports.DEFAULT_OFFSET = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/object/internals",0,"@ember/runloop",0,"@embroider/macros",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div {{did-insert this.registerPanelContainer}} class={{this.panelContainerCustomClasses}}>
+    {{#if this.isInitialized}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        <OSS::ScrollablePanel
+          id={{this.portalId}}
+          class="context-menu-panel__scrollable-container"
+          {{did-insert this.registerPanel}}
+          {{on "mouseleave" this.mouseLeave}}
+          {{on "scroll" this.onScroll}}
+          ...attributes
+        >
+          <OSS::InfiniteSelect
+            @items={{@items}}
+            @searchEnabled={{false}}
+            @onSelect={{this.noop}}
+            @onClose={{this.closeDropdown}}
+            @enableKeyboard={{false}}
+            class="margin-top-px-0 context-menu-panel__dropdown"
+            {{on-click-outside this.onClickOutside}}
+          >
+            <:option as |item index|>
+              {{#if item.items}}
+                <OSS::InfiniteSelect::Option
+                  @prefixAvatar={{item.prefixAvatar}}
+                  @prefixBadge={{item.prefixBadge}}
+                  @prefixIcon={{item.prefixIcon}}
+                  @prefixCountry={{item.prefixCountry}}
+                  @title={{item.title}}
+                  @subtitle={{item.subtitle}}
+                  @icon={{item.icon}}
+                  @suffixHint={{item.suffixHint}}
+                  @suffixTag={{item.suffixTag}}
+                  @suffixIcon={{or item.suffixIcon (hash icon="fa-chevron-right")}}
+                  @selectionType={{item.selectionType}}
+                  @selected={{item.selected}}
+                  @disabled={{item.disabled}}
+                  @onSelect={{item.action}}
+                  {{did-insert registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
+                  {{on "click" (fn this.openSubMenu item.items index)}}
+                  class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
+                  data-control-name={{item.dataControlName}}
+                />
+              {{else if item.rowRenderer}}
+                <item.rowRenderer
+                  @item={{item}}
+                  {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
+                  {{on "click" (fn this.callAction item.action)}}
+                />
+              {{else}}
+                <OSS::InfiniteSelect::Option
+                  @prefixAvatar={{item.prefixAvatar}}
+                  @prefixBadge={{item.prefixBadge}}
+                  @prefixIcon={{item.prefixIcon}}
+                  @prefixCountry={{item.prefixCountry}}
+                  @title={{item.title}}
+                  @subtitle={{item.subtitle}}
+                  @icon={{item.icon}}
+                  @suffixHint={{item.suffixHint}}
+                  @suffixTag={{item.suffixTag}}
+                  @suffixIcon={{item.suffixIcon}}
+                  @selectionType={{item.selectionType}}
+                  @selected={{item.selected}}
+                  @disabled={{item.disabled}}
+                  @onSelect={{fn this.callAction item.action}}
+                  {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
+                  class="infinit-select-option-panel-container"
+                  data-control-name={{item.dataControlName}}
+                />
+              {{/if}}
+            </:option>
+          </OSS::InfiniteSelect>
+        </OSS::ScrollablePanel>
+      {{/in-element}}
+  
+      {{#if this.displaySubMenu}}
+        <OSS::ContextMenu::Panel
+          @referenceTarget={{this.subReferenceTarget}}
+          @items={{this.subItems}}
+          @placement="right-start"
+          @offset={{this.subPanelOffset}}
+          @onMouseLeave={{this.onSubPanelMouseLeave}}
+          @onClose={{@onClose}}
+          @registerPanel={{@registerPanel}}
+          @unregisterPanel={{@unregisterPanel}}
+          {{did-insert this.registerSubPanel}}
+        />
+      {{/if}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "8arOHm6B",
+    "block": "[[[11,0],[16,0,[30,0,[\"panelContainerCustomClasses\"]]],[4,[38,0],[[30,0,[\"registerPanelContainer\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[40,[[[1,\"      \"],[8,[39,4],[[16,1,[30,0,[\"portalId\"]]],[24,0,\"context-menu-panel__scrollable-container\"],[17,1],[4,[38,0],[[30,0,[\"registerPanel\"]]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"mouseLeave\"]]],null],[4,[38,5],[\"scroll\",[30,0,[\"onScroll\"]]],null]],null,[[\"default\"],[[[[1,\"\\n        \"],[8,[39,6],[[24,0,\"margin-top-px-0 context-menu-panel__dropdown\"],[4,[38,7],[[30,0,[\"onClickOutside\"]]],null]],[[\"@items\",\"@searchEnabled\",\"@onSelect\",\"@onClose\",\"@enableKeyboard\"],[[30,2],false,[30,0,[\"noop\"]],[30,0,[\"closeDropdown\"]],false]],[[\"option\"],[[[[1,\"\\n\"],[41,[30,3,[\"items\"]],[[[1,\"              \"],[8,[39,8],[[16,0,[29,[\"infinit-select-option-panel-container \",[52,[28,[37,9],[[30,4],[30,0,[\"subReferenceIndex\"]]],null],\"active\",\"\"]]]],[16,\"data-control-name\",[30,3,[\"dataControlName\"]]],[4,[38,0],[[33,12],[28,[37,13],[[30,0,[\"openSubMenu\"]],[30,3,[\"items\"]],[30,4]],null]],null],[4,[38,5],[\"click\",[28,[37,13],[[30,0,[\"openSubMenu\"]],[30,3,[\"items\"]],[30,4]],null]],null]],[[\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[[30,3,[\"prefixAvatar\"]],[30,3,[\"prefixBadge\"]],[30,3,[\"prefixIcon\"]],[30,3,[\"prefixCountry\"]],[30,3,[\"title\"]],[30,3,[\"subtitle\"]],[30,3,[\"icon\"]],[30,3,[\"suffixHint\"]],[30,3,[\"suffixTag\"]],[28,[37,10],[[30,3,[\"suffixIcon\"]],[28,[37,11],null,[[\"icon\"],[\"fa-chevron-right\"]]]],null],[30,3,[\"selectionType\"]],[30,3,[\"selected\"]],[30,3,[\"disabled\"]],[30,3,[\"action\"]]]],null],[1,\"\\n\"]],[]],[[[41,[30,3,[\"rowRenderer\"]],[[[1,\"              \"],[8,[30,3,[\"rowRenderer\"]],[[4,[38,0],[[33,12],[30,0,[\"closeSubMenu\"]]],null],[4,[38,5],[\"click\",[28,[37,13],[[30,0,[\"callAction\"]],[30,3,[\"action\"]]],null]],null]],[[\"@item\"],[[30,3]]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,8],[[24,0,\"infinit-select-option-panel-container\"],[16,\"data-control-name\",[30,3,[\"dataControlName\"]]],[4,[38,0],[[33,12],[30,0,[\"closeSubMenu\"]]],null]],[[\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[[30,3,[\"prefixAvatar\"]],[30,3,[\"prefixBadge\"]],[30,3,[\"prefixIcon\"]],[30,3,[\"prefixCountry\"]],[30,3,[\"title\"]],[30,3,[\"subtitle\"]],[30,3,[\"icon\"]],[30,3,[\"suffixHint\"]],[30,3,[\"suffixTag\"]],[30,3,[\"suffixIcon\"]],[30,3,[\"selectionType\"]],[30,3,[\"selected\"]],[30,3,[\"disabled\"]],[28,[37,13],[[30,0,[\"callAction\"]],[30,3,[\"action\"]]],null]]],null],[1,\"\\n            \"]],[]]]],[]]],[1,\"          \"]],[3,4]]]]],[1,\"\\n      \"]],[]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,3],[[30,0,[\"portalTarget\"]]],null],null],[1,\"\\n\"],[41,[30,0,[\"displaySubMenu\"]],[[[1,\"      \"],[8,[39,14],[[4,[38,0],[[30,0,[\"registerSubPanel\"]]],null]],[[\"@referenceTarget\",\"@items\",\"@placement\",\"@offset\",\"@onMouseLeave\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],[[30,0,[\"subReferenceTarget\"]],[30,0,[\"subItems\"]],\"right-start\",[30,0,[\"subPanelOffset\"]],[30,0,[\"onSubPanelMouseLeave\"]],[30,5],[30,6],[30,7]]],null],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"&attrs\",\"@items\",\"item\",\"index\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],false,[\"did-insert\",\"if\",\"in-element\",\"-in-el-null\",\"o-s-s/scrollable-panel\",\"on\",\"o-s-s/infinite-select\",\"on-click-outside\",\"o-s-s/infinite-select/option\",\"eq\",\"or\",\"hash\",\"registerMouseEnterOnParent\",\"fn\",\"o-s-s/context-menu/panel\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/context-menu/panel.hbs",
+    "isStrictMode": false
+  });
+  const DEFAULT_PLACEMENT = _exports.DEFAULT_PLACEMENT = 'bottom-start';
+  const DEFAULT_OFFSET = _exports.DEFAULT_OFFSET = {
+    mainAxis: 0,
+    crossAxis: 0
+  };
+  const SUBPANEL_OFFSET = _exports.SUBPANEL_OFFSET = -6;
+  let OSSContextMenuPanelComponent = _exports.default = (_class = class OSSContextMenuPanelComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "portalId", (0, _internals.guidFor)(this));
+      _initializerDefineProperty(this, "isInitialized", _descriptor, this);
+      _initializerDefineProperty(this, "displaySubMenu", _descriptor2, this);
+      _initializerDefineProperty(this, "subItems", _descriptor3, this);
+      _initializerDefineProperty(this, "subReferenceTarget", _descriptor4, this);
+      _initializerDefineProperty(this, "subReferenceIndex", _descriptor5, this);
+      _initializerDefineProperty(this, "subPanelElement", _descriptor6, this);
+      _defineProperty(this, "cleanupDropdownAutoplacement", void 0);
+      _defineProperty(this, "onScrollbound", this.onScroll.bind(this));
+      _defineProperty(this, "subPanelOffset", {
+        mainAxis: 0,
+        crossAxis: SUBPANEL_OFFSET
+      });
+    }
+    get panelContainerCustomClasses() {
+      return (0, _runtime.isTesting)() ? '' : 'context-menu-panel__hidden';
+    }
+    registerPanel(element) {
+      this.currentPanel = element;
+      this.args.registerPanel?.(this.currentPanel);
+      (0, _runloop.scheduleOnce)('afterRender', this, () => {
+        this.initializeDropdown();
+      });
+      this.currentPanel.querySelector('.oss-scrollable-panel-content')?.addEventListener('scroll', this.onScrollbound);
+    }
+    willDestroy() {
+      this.args.unregisterPanel?.(this.currentPanel);
+      super.willDestroy();
+      this.currentPanel.querySelector('.oss-scrollable-panel-content')?.removeEventListener('scroll', this.onScrollbound);
+    }
+    registerPanelContainer(element) {
+      this.portalTarget = (0, _runtime.isTesting)() ? element : document.body;
+      this.isInitialized = true;
+    }
+    openSubMenu(items, index, event) {
+      if (this.subReferenceIndex === index) return;
+      this.displaySubMenu = false;
+      (0, _runloop.next)(() => {
+        this.setupSubMenu(items, index, event);
+      });
+    }
+    closeSubMenu() {
+      this.clearSubMenu();
+    }
+    noop() {}
+    onClickOutside(_, event) {
+      this.clearSubMenu();
+      this.args.onMouseLeave?.(event);
+    }
+    onSubPanelMouseLeave(event) {
+      if (this.subReferenceTarget && !this.subReferenceTarget.contains(event.relatedTarget)) {
+        this.clearSubMenu();
+      }
+      if (this.currentPanel && this.currentPanel.contains(event.relatedTarget)) {
+        return;
+      }
+      this.args.onMouseLeave?.(event);
+    }
+    registerSubPanel(element) {
+      this.subPanelElement = element;
+    }
+    mouseLeave(event) {
+      const relatedTarget = event.relatedTarget;
+      if (this.subPanelElement?.contains(relatedTarget) || relatedTarget?.classList.contains('upf-tooltip')) {
+        return;
+      }
+      this.args.onMouseLeave?.(event);
+      this.clearSubMenu();
+    }
+    onScroll() {
+      this.clearSubMenu();
+    }
+    callAction(action, event) {
+      const returnValue = action?.(event);
+      if (returnValue !== false) {
+        this.args.onClose?.();
+      }
+    }
+    registerMouseEnterOnParent(element, templateArgs) {
+      const callback = templateArgs[0];
+      if (callback) {
+        const targetElement = element.parentElement?.matches('li[role="button"]') ? element.parentElement : element;
+        targetElement.addEventListener('pointerenter', callback);
+      }
+    }
+    clearSubMenu() {
+      this.displaySubMenu = false;
+      this.subReferenceIndex = -1;
+      this.subReferenceTarget = null;
+      this.subPanelElement = null;
+      this.subItems = [];
+    }
+    initializeDropdown() {
+      const referenceTarget = this.args.referenceTarget;
+      const floatingTarget = document.querySelector(`#${this.portalId}`);
+      if (referenceTarget && floatingTarget) {
+        this.cleanupDropdownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+          placement: this.args.placement ?? DEFAULT_PLACEMENT,
+          offset: this.args.offset ?? DEFAULT_OFFSET,
+          width: 250,
+          maxHeight: 480
+        });
+      }
+    }
+    setupSubMenu(items, index, event) {
+      this.subItems = items;
+      this.displaySubMenu = true;
+      const parentElement = event.target.closest('li[role="button"]');
+      this.subReferenceTarget = parentElement ? parentElement : event.target;
+      this.subReferenceIndex = index;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isInitialized", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "displaySubMenu", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "subItems", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [];
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "subReferenceTarget", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return null;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "subReferenceIndex", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return -1;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "subPanelElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return null;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "registerPanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerPanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "willDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "willDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerPanelContainer", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerPanelContainer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openSubMenu", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openSubMenu"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeSubMenu", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeSubMenu"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSubPanelMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSubPanelMouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerSubPanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerSubPanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "mouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onScroll", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onScroll"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "callAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "callAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerMouseEnterOnParent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerMouseEnterOnParent"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSContextMenuPanelComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/context-menu/panel.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@storybook/addon-actions",0,"htmlbars-inline-precompile"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::ContextMenu::Panel',
+    component: 'o-s-s/context-menu/panel',
+    argTypes: {
+      items: {
+        type: {
+          required: true
+        },
+        description: 'An array of context menu items to be displayed in the panel',
+        table: {
+          type: {
+            summary: 'ContextMenuItem[]'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      referenceTarget: {
+        description: 'The reference HTMLElement to which the context menu panel is anchored',
+        table: {
+          type: {
+            summary: 'HTMLElement'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      offset: {
+        type: {
+          required: false
+        },
+        description: 'The offset distance between the context menu panel and its reference target. Can be a number or an object specifying mainAxis and crossAxis offsets.',
+        table: {
+          type: {
+            summary: 'number | { mainAxis: number; crossAxis: number }'
+          },
+          defaultValue: {
+            summary: '{ mainAxis: 0, crossAxis: 0 }'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      placement: {
+        type: {
+          required: false
+        },
+        description: 'The placement of the context menu panel relative to its reference target. Options are "bottom-start" or "right-start".',
+        table: {
+          type: {
+            summary: '"bottom-start" | "right-start"'
+          },
+          defaultValue: {
+            summary: 'bottom-start'
+          }
+        },
+        control: {
+          type: 'select',
+          options: ['bottom-start', 'right-start']
+        }
+      },
+      onMouseLeave: {
+        type: {
+          required: false
+        },
+        description: 'Callback function called when the mouse leaves the context menu panel',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onMouseLeave(event: MouseEvent): void'
+          }
+        }
+      },
+      onClose: {
+        type: {
+          required: false
+        },
+        description: 'Callback function called when the context menu panel should be closed',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onClose(): void'
+          }
+        }
+      },
+      registerPanel: {
+        type: {
+          required: false
+        },
+        description: 'Callback function called on render, to register the current element',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'registerPanel(element: HTMLElement): void'
+          }
+        }
+      },
+      unregisterPanel: {
+        type: {
+          required: false
+        },
+        description: 'Callback function called on destroy, to notify the current element does not exist anymore',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'unregisterPanel(element: HTMLElement): void'
+          }
+        }
+      },
+      postRender: {
+        table: {
+          disable: true
+        }
+      },
+      isInitialized: {
+        table: {
+          disable: true
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The `OSS::ContextMenu::Panel` component displays a context menu panel anchored to a specified reference target. It supports nested submenus, customizable placement, and offset options. The panel can trigger actions when menu items are selected and handle mouse leave events.'
+        }
+      }
+    }
+  };
+  const items = [{
+    title: 'Item 1',
+    action: () => console.log('Item 1 selected')
+  }, {
+    title: 'Item 2',
+    action: () => console.log('Item 2 selected'),
+    items: [{
+      title: 'Sub Item 1',
+      action: () => console.log('Sub Item 1 selected')
+    }]
+  }, {
+    title: 'Item 3',
+    action: () => console.log('Item 3 selected')
+  }];
+  const defaultArgs = {
+    items: items,
+    offset: {
+      mainAxis: -100,
+      crossAxis: -100
+    },
+    placement: 'bottom-start',
+    onMouseLeave: (0, _addonActions.action)('onMouseLeave'),
+    onClose: (0, _addonActions.action)('onClose'),
+    registerPanel: (0, _addonActions.action)('registerPanel'),
+    unregisterPanel: (0, _addonActions.action)('unregisterPanel'),
+    isInitialized: false,
+    postRender(self, element) {
+      self.set('referenceTarget', element);
+      self.set('isInitialized', true);
+    }
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="background-color: #ffff;" {{did-insert (fn this.postRender this)}}>
+          {{#if this.isInitialized}}
+            <OSS::ContextMenu::Panel 
+              @items={{this.items}}
+              @referenceTarget={{this.referenceTarget}}
+              @offset={{this.offset}}
+              @placement="bottom-start"
+              @onMouseLeave={{this.onMouseLeave}}
+              @onClose={{this.onClose}}
+              @registerPanel={{this.registerPanel}}
+              @unregisterPanel={{this.unregisterPanel}}
+            />
+          {{/if}}
+        </div>
+      
+    */
+    {
+      "id": "K6+oMq8Y",
+      "block": "[[[1,\"\\n    \"],[11,0],[24,5,\"background-color: #ffff;\"],[4,[38,0],[[28,[37,1],[[30,0,[\"postRender\"]],[30,0]],null]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[1,\"        \"],[8,[39,3],null,[[\"@items\",\"@referenceTarget\",\"@offset\",\"@placement\",\"@onMouseLeave\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],[[30,0,[\"items\"]],[30,0,[\"referenceTarget\"]],[30,0,[\"offset\"]],\"bottom-start\",[30,0,[\"onMouseLeave\"]],[30,0,[\"onClose\"]],[30,0,[\"registerPanel\"]],[30,0,[\"unregisterPanel\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"]],[],false,[\"did-insert\",\"fn\",\"if\",\"o-s-s/context-menu/panel\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/context-menu/panel.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/service", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _component2, _object, _tracking, _service, _templateFactory, _runtime) {
   "use strict";
 
@@ -89550,7 +90443,7 @@ interface OSSCodeBlockArgs {
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _internals, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/component/helper", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _helper, _internals, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -89558,7 +90451,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/object/internals",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/component/helper",0,"@ember/object/internals",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -89597,25 +90490,34 @@ interface OSSCodeBlockArgs {
         {{#if (and @loading (not @loadingMore))}}
           <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
         {{else}}
-          {{#each this.items as |item index|}}
-            <li
-              class="upf-infinite-select__item
-                {{if
-                  (and (eq index this._focusElement) this.focusStylesDisabled)
-                  ' upf-infinite-select__item--disabled-focus'
-                }}"
-              role="button"
-              {{on "mouseenter" (fn this.handleItemHover index)}}
-              {{on "mouseleave" this.clearHoverState}}
-              {{on "click" (fn this.didSelectItem item)}}
-              tabindex="0"
-            >
-              {{#if (has-block "option")}}
-                {{yield item index to="option"}}
-              {{else}}
-                {{get item this.itemLabel}}
+          {{#each-in this.groups as |groupKey items|}}
+            <ul class="group-container" data-control-name={{concat "infinite-select-group-" groupKey}}>
+              {{#each items as |item|}}
+                {{#let (this.findItemIndex item=item) as |index|}}
+                  <li
+                    class="upf-infinite-select__item
+                      {{if
+                        (and (eq index this._focusElement) this.focusStylesDisabled)
+                        ' upf-infinite-select__item--disabled-focus'
+                      }}"
+                    role="button"
+                    {{on "mouseenter" (fn this.handleItemHover index)}}
+                    {{on "mouseleave" this.clearHoverState}}
+                    {{on "click" (fn this.didSelectItem item)}}
+                    tabindex="0"
+                  >
+                    {{#if (has-block "option")}}
+                      {{yield item index to="option"}}
+                    {{else}}
+                      {{get item this.itemLabel}}
+                    {{/if}}
+                  </li>
+                {{/let}}
+              {{/each}}
+              {{#if (not-eq groupKey this.lastKey)}}
+                <hr class="group-separator" />
               {{/if}}
-            </li>
+            </ul>
           {{else}}
             <div class="fx-col fx-xalign-center">
               {{#if (has-block "empty-state")}}
@@ -89637,8 +90539,7 @@ interface OSSCodeBlockArgs {
                 </div>
               {{/if}}
             </div>
-          {{/each}}
-  
+          {{/each-in}}
           {{#if @loadingMore}}
             <OSS::Skeleton @width="100%" @height="18" @multiple={{3}} @direction="col" />
           {{/if}}
@@ -89659,8 +90560,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "2FgNS5th",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select\\n    \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"],\"\\n    upf-infinite-select--\",[30,0,[\"skin\"]]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-infinite-select--search\"],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,1],[[30,0,[\"initSearchInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,8],[[28,[37,5],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,13],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"              \"],[18,8,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,18],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[8,[39,19],[[24,0,\"width-pc-100\"],[24,\"data-control-name\",\"infinite-select-footer-action-button\"],[4,[38,4],[\"click\",[30,6,[\"onClick\"]]],null]],[[\"@size\",\"@label\",\"@skin\",\"@icon\"],[\"sm\",[30,6,[\"label\"]],[30,6,[\"skin\"]],[30,6,[\"icon\"]]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"@action\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\",\"o-s-s/button\"]]",
+    "id": "cW+LQUHJ",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select\\n    \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"],\"\\n    upf-infinite-select--\",[30,0,[\"skin\"]]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-infinite-select--search\"],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,1],[[30,0,[\"initSearchInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[30,0,[\"groups\"]]],null],null,[[[1,\"          \"],[10,\"ul\"],[14,0,\"group-container\"],[15,\"data-control-name\",[28,[37,13],[\"infinite-select-group-\",[30,5]],null]],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,4]],null]],null],null,[[[44,[[28,[30,0,[\"findItemIndex\"]],null,[[\"item\"],[[30,6]]]]],[[[1,\"                \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n                    \",[52,[28,[37,8],[[28,[37,5],[[30,7],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,16],[[30,0,[\"handleItemHover\"]],[30,7]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,16],[[30,0,[\"didSelectItem\"]],[30,6]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"                    \"],[18,9,[[30,6],[30,7]]],[1,\"\\n\"]],[]],[[[1,\"                    \"],[1,[28,[35,19],[[30,6],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"                \"],[13],[1,\"\\n\"]],[7]]]],[6]],null],[41,[28,[37,20],[[30,5],[30,0,[\"lastKey\"]]],null],[[[1,\"              \"],[10,\"hr\"],[14,0,\"group-separator\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"              \"],[18,10,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,21],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,22],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,22],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,22],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,8],[[[1,\"    \"],[8,[39,23],[[24,0,\"width-pc-100\"],[24,\"data-control-name\",\"infinite-select-footer-action-button\"],[4,[38,4],[\"click\",[30,8,[\"onClick\"]]],null]],[[\"@size\",\"@label\",\"@skin\",\"@icon\"],[\"sm\",[30,8,[\"label\"]],[30,8,[\"skin\"]],[30,8,[\"icon\"]]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"items\",\"groupKey\",\"item\",\"index\",\"@action\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-each-in\",\"concat\",\"-track-array\",\"let\",\"fn\",\"has-block\",\"yield\",\"get\",\"not-eq\",\"o-s-s/illustration\",\"t\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -89673,8 +90574,26 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "focusStylesDisabled", _descriptor3, this);
       _initializerDefineProperty(this, "elementId", _descriptor4, this);
       _defineProperty(this, "searchInput", null);
+      _defineProperty(this, "findItemIndex", (0, _helper.helper)((_, {
+        item
+      }) => {
+        return Object.values(this.groups).flat().findIndex(element => element === item);
+      }));
       (true && !(this.searchEnabled ? typeof this.args.onSearch === 'function' : true) && (0, _debug.assert)('[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed', this.searchEnabled ? typeof this.args.onSearch === 'function' : true));
       (true && !(typeof this.args.onSelect === 'function') && (0, _debug.assert)('[component][OSS::InfiniteSelect] `onSelect` action is mandatory', typeof this.args.onSelect === 'function'));
+    }
+    get groups() {
+      return (this.args.items ?? []).reduce((groups, item) => {
+        const groupKey = item.groupKey ?? '_ungrouped_';
+        if (!groups[groupKey]) {
+          groups[groupKey] = [];
+        }
+        groups[groupKey].push(item);
+        return groups;
+      }, {});
+    }
+    get lastKey() {
+      return Object.keys(this.groups).slice(-1)[0];
     }
     get enableKeyboard() {
       return this.args.enableKeyboard ?? false;
@@ -89758,7 +90677,7 @@ interface OSSCodeBlockArgs {
     initSearchInput(element) {
       this.searchInput = element.querySelector('input');
     }
-    handleItemHover(index) {
+    handleItemHover(index, event) {
       if (document.activeElement === this.searchInput) {
         return;
       }
@@ -89848,7 +90767,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.WithOptionBlock = _exports.EmptyState = _exports.Default = void 0;
+  _exports.default = _exports.WithOptionBlock = _exports.WithGroupsBlock = _exports.EmptyState = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   const FAKE_DATA = [{
     superhero: 'Batman',
@@ -90156,6 +91075,16 @@ interface OSSCodeBlockArgs {
     ...defaultArgs,
     ...{
       items: []
+    }
+  };
+  const WithGroupsBlock = _exports.WithGroupsBlock = Template.bind({});
+  WithGroupsBlock.args = {
+    ...defaultArgs,
+    ...{
+      items: FAKE_DATA.map((item, index) => ({
+        ...item,
+        groupKey: index % 2 === 0 ? 'Group A' : 'Group B'
+      }))
     }
   };
 });
@@ -103514,7 +104443,7 @@ interface OSSCodeBlockArgs {
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-1">
-    <div class="oss-textarea-container {{if @errorMessage ' oss-textarea-container--errored'}}" ...attributes>
+    <div class="oss-textarea-container {{if this.hasError ' oss-textarea-container--errored'}}" ...attributes>
       <Textarea
         @value={{@value}}
         placeholder={{@placeholder}}
@@ -103530,8 +104459,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "HXrtmOMH",
-    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,1],\" oss-textarea-container--errored\"]]]],[17,2],[12],[1,\"\\n    \"],[8,[39,1],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[16,\"rows\",[30,0,[\"rows\"]]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[4,[38,2],[\"keyup\",[28,[37,3],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,1]],[13],[1,\"\\n\"]],[]],null],[13]],[\"@errorMessage\",\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\"],false,[\"if\",\"textarea\",\"on\",\"fn\"]]",
+    "id": "um37+MnC",
+    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,0,[\"hasError\"]],\" oss-textarea-container--errored\"]]]],[17,1],[12],[1,\"\\n    \"],[8,[39,1],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[16,\"rows\",[30,0,[\"rows\"]]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[4,[38,2],[\"keyup\",[28,[37,3],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\"],[[30,4]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\"],false,[\"if\",\"textarea\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/text-area.hbs",
     "isStrictMode": false
   });
@@ -103548,9 +104477,13 @@ interface OSSCodeBlockArgs {
     get resize() {
       return this.args.resize;
     }
+    get hasError() {
+      return this.args.hasError || !!this.args.errorMessage;
+    }
     get computedClass() {
       const classes = [];
       if (this.resize === 'vertical') classes.push('oss-textarea--resize-v');else if (this.resize === 'horizontal') classes.push('oss-textarea--resize-h');else if (this.resize === 'none') classes.push('oss-textarea--resize-none');
+      if (this.hasError) classes.push('oss-textarea--errored');
       return classes.join(' ');
     }
     _onChange(value) {
@@ -103565,7 +104498,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.BasicUsage = void 0;
+  _exports.default = _exports.WithErrorMessage = _exports.WithError = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   const ResizeTypes = ['horizontal', 'vertical', 'none', null];
   var _default = _exports.default = {
@@ -103657,6 +104590,20 @@ interface OSSCodeBlockArgs {
           type: 'text'
         }
       },
+      hasError: {
+        description: 'Indicates if the textarea has an error state (adds danger-500 border)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onChange: {
         description: 'Method called every time the textarea is updated',
         table: {
@@ -103682,6 +104629,7 @@ interface OSSCodeBlockArgs {
     disabled: false,
     placeholder: 'this is the placeholder',
     errorMessage: undefined,
+    hasError: false,
     onChange: (0, _addonActions.action)('onChange')
   };
   const DefaultUsageTemplate = args => ({
@@ -103689,13 +104637,13 @@ interface OSSCodeBlockArgs {
     /*
       
           <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                         @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @rows={{this.rows}}
+                         @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
                          @resize={{this.resize}} />
       
     */
     {
-      "id": "JUnWx8vY",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@errorMessage\",\"@onChange\",\"@rows\",\"@resize\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]],[30,0,[\"rows\"]],[30,0,[\"resize\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/text-area\"]]",
+      "id": "h60ZCUKr",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@errorMessage\",\"@hasError\",\"@onChange\",\"@rows\",\"@resize\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]],[30,0,[\"rows\"]],[30,0,[\"resize\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/text-area\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/text-area.stories.js",
       "isStrictMode": false
     }),
@@ -103703,6 +104651,16 @@ interface OSSCodeBlockArgs {
   });
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
+  const WithError = _exports.WithError = DefaultUsageTemplate.bind({});
+  WithError.args = {
+    ...defaultArgs,
+    hasError: true
+  };
+  const WithErrorMessage = _exports.WithErrorMessage = DefaultUsageTemplate.bind({});
+  WithErrorMessage.args = {
+    ...defaultArgs,
+    errorMessage: 'This field is required'
+  };
 });
 ;define("@upfluence/oss-components/components/o-s-s/tip", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
   "use strict";
@@ -108043,7 +109001,7 @@ interface OSSCodeBlockArgs {
           floatingStyle.maxWidth = `${mergedOptions.maxWidth}px`;
         }
         if (mergedOptions.maxHeight) {
-          floatingStyle.maxHeight = `${floatingStyle.maxHeight}px`;
+          floatingStyle.maxHeight = `${mergedOptions.maxHeight}px`;
           elements.floating.style.setProperty('--floating-max-height', `${mergedOptions.maxHeight}px`);
         }
         Object.assign(elements.floating.style, floatingStyle);
