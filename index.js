@@ -31,6 +31,14 @@ module.exports = {
     }
   },
 
+  treeForAddon(tree) {
+    const filtered = new Funnel(tree, {
+      exclude: ['**/*.stories.js', '**/*.stories.ts', '**/*.stories.mdx']
+    });
+
+    return this._super.treeForAddon.apply(this, [filtered]);
+  },
+
   treeForPublic() {
     const publicTree = this._super.treeForPublic.apply(this, arguments);
     const trees = [];
