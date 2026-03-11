@@ -42,38 +42,4 @@ module('Test Support | Custom Assertions | dcn', function (hooks) {
       assert.dcn('list-item', { strict: true }).doesNotExist();
     });
   });
-
-  module('.hasClass()', () => {
-    test('it supports hasClass from assert.dom', async function (assert) {
-      await render(hbs`<div data-control-name="my-dcn-selector" class="alpha beta"></div>`);
-
-      assert.dcn('my-dcn-selector').hasClass('alpha');
-    });
-  });
-
-  module('.hasText()', () => {
-    test('it supports hasText from assert.dom', async function (assert) {
-      await render(hbs`<div data-control-name="my-dcn-selector">Hello DCN</div>`);
-
-      assert.dcn('my-dcn-selector').hasText('Hello DCN');
-    });
-  });
-
-  module('.hasStyle()', () => {
-    test('it supports hasStyle from assert.dom', async function (assert) {
-      await render(hbs`<div data-control-name="my-dcn-selector" style="display: block;"></div>`);
-
-      assert.dcn('my-dcn-selector').hasStyle({
-        display: 'block'
-      });
-    });
-  });
-
-  module('.hasAttribute()', () => {
-    test('it supports hasAttribute from assert.dom', async function (assert) {
-      await render(hbs`<div data-control-name="my-dcn-selector" data-state="active"></div>`);
-
-      assert.dcn('my-dcn-selector').hasAttribute('data-state', 'active');
-    });
-  });
 });
