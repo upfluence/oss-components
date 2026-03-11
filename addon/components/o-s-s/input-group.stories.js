@@ -105,6 +105,10 @@ export default {
         component:
           'The OSS version of the input-group component. This component exposes the same arguments as the input-container as well as a suffix & a prefix.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=8613-231391&t=4fMFcsVGXOxOKmLh-4'
     }
   }
 };

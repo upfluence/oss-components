@@ -104,6 +104,17 @@ export default {
         type: 'boolean'
       }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A rounded and colored chip with a label and possibly a prefix and a cross icon to remove the chip.'
+      }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1142-1255&p=f&t=pVIlyZlo6oyvIQxs-0'
+    }
   }
 };
 

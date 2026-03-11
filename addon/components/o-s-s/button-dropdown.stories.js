@@ -75,6 +75,10 @@ export default {
         component: 'A button that provides multiple actions in dropdown menu.'
       },
       iframeHeight: 120
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1142-1253&p=f&t=pVIlyZlo6oyvIQxs-0'
     }
   }
 };

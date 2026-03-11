@@ -82,6 +82,10 @@ export default {
       description: {
         component: 'The OSS and configurable version of the HTML Checkbox component.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1142-1259&p=f&t=pVIlyZlo6oyvIQxs-0'
     }
   }
 };
