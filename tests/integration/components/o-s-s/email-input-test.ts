@@ -23,6 +23,27 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     assert.dom('.text-color-error').hasText('This is the error message');
   });
 
+  ['error', 'warning', 'success'].forEach((type) => {
+    test(`it properly displays the feedback message when the @feedbackMessage type is ${type} and has a value`, async function (assert) {
+      this.feedbackMessage = { type, value: `This is a ${type} message` };
+
+      await render(hbs`<OSS::EmailInput @value="foo@bar.com" @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.oss-input-container').hasClass(`oss-input-container--${type}`);
+      assert.dom(`.oss-input-container + .font-color-${type}-500`).exists();
+      assert.dom(`.oss-input-container + .font-color-${type}-500`).hasText(`This is a ${type} message`);
+    });
+
+    test(`it only displays the input in the feedback style when the @feedbackMessage type is ${type} w/ no value`, async function (assert) {
+      this.feedbackMessage = { type, value: undefined };
+
+      await render(hbs`<OSS::EmailInput @value="foo@bar.com" @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.oss-input-container').hasClass(`oss-input-container--${type}`);
+      assert.dom(`.oss-input-container + .font-color-${type}-500`).doesNotExist();
+    });
+  });
+
   test('If the email regex isnt matched, then the error message is displayed', async function (assert) {
     this.value = '';
     await render(hbs`<OSS::EmailInput @value={{this.value}} />`);

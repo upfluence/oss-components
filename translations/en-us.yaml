@@ -46,9 +46,15 @@ oss-components:
       filetype:
         title: Unsupported format
         description: The uploaded file format is not allowed
+        feedback: Invalid format. Please upload a correctly formatted file.
       filesize:
         title: File size too large
         description: 'The maximum file size is {max_filesize}'
+        feedback: Invalid size. The maximum file size is {max_filesize}.
+    tooltips:
+      edit: Edit
+      view: View
+      delete: Delete
   url-input:
     default_format_error: This is not a valid URL.
   copy:

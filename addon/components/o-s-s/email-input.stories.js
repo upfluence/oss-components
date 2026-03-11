@@ -25,6 +25,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: '{ type: string, value: string }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     errorMessage: {
       description: 'Error message that is displayed when the email pattern is invalid',
       table: {
@@ -73,6 +83,7 @@ const defaultArgs = {
   value: 'john.doe@example.com',
   placeholder: 'foo@bar.org',
   errorMessage: undefined,
+  feedbackMessage: undefined,
   validateFormat: false,
   validates: action('validates')
 };
@@ -80,7 +91,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
       <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
-                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} />
+                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} />
   `,
   context: args
 });
