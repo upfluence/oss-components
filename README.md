@@ -5,16 +5,16 @@ components for usage in our projects.
 
 [Short description of the addon.]
 
+## Compatibility
 
-Compatibility
 ------------------------------------------------------------------------------
 
 * Ember.js v3.24 or above
 * Ember CLI v3.24 or above
 * Node.js v12 or above
 
+## Installation
 
-Installation
 ------------------------------------------------------------------------------
 
 As any NPM package, you can install it via:
@@ -40,7 +40,7 @@ Here are the steps to add OSS-Components to an Ember project:
   install --save upfluence-oss`
 * In your `ember-cli-build.js` file, add the following lines for enabling Asset Map file generation, and importing the Upfluence OSS framework:
 
-```
+```javascript
 // In the "fingerprint" configuration
 fingerprint: {
   generateAssetMap: true,
@@ -56,9 +56,10 @@ lessOptions: {
   ]
 }
 ```
+
 * Enable the `ember-cli-ifa`, in the `config/environment.js` file
 
-```
+```javascript
 module.exports = function(environment) {
   var ENV = {
     ...,
@@ -74,7 +75,7 @@ module.exports = function(environment) {
 
 * And finally, import the OSS framework in your `app/styles/app.less` file
 
-```
+```less
 @import 'bootstrap';
 @import 'upfluence-oss';
 @import 'upf-utils';

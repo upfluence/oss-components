@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Custom Assertions/DTC"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# DTC Assertion
+
+It's now possible to use `assert.dtc('my-selector')` in your tests as a shortcut for:
+
+```typescript
+assert.dom('[data-control-name="my-selector"]')
+```
+
+## Usage
+
+```typescript
+assert.dtc('my-selector').exists();
+assert.dtc('list-item-42').exists();
+assert.dtc('list-item', { strict: false }).exists();
+assert.dtc('my-selector').hasText('My label');
+assert.dtc('my-selector').hasClass('is-active');
+assert.dtc('my-selector').hasStyle({ display: 'block' });
+assert.dtc('my-selector').hasAttribute('data-state', 'active');
+```
+
+## assert.dtc('data-control-name')
+
+`dtc(controlName: string, options?: { strict?: boolean })`
+
+Creates a selector matching the given data-control-name and returns `assert.dom(...)` assertions.
+
+| Name | Description |
+|------|-------------|
+| controlName | Value of the `data-control-name` attribute |
+| options.strict (optional) | Exact match when `true` (default), substring match when `false` |
+
+## Strict vs Loose
+
+By default, matching is strict (exact value):
+
+```typescript
+assert.dtc('list-item-1').exists();
+// equivalent to assert.dom('[data-control-name="list-item-1"]')
+```
+
+For loose matching (substring), pass `strict: false`:
+
+```typescript
+assert.dtc('list-item', { strict: false }).exists();
+// equivalent to assert.dom('[data-control-name*="list-item"]')
+```
+
+## Inherited Assertions
+
+Since `assert.dtc(...)` returns the same assertion object as `assert.dom(...)`, all qunit-dom assertions are available.
+Commonly used methods include:
+
+- `.exists()`
+- `.doesNotExist()`
+- `.hasText(...)`
+- `.hasClass(...)`
+- `.hasStyle(...)`
+- `.hasAttribute(...)`
+
+For the full API, refer to qunit-dom documentation.
