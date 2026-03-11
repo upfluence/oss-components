@@ -32,16 +32,25 @@ export default {
 
 const defaultArgs = {
   tabArray: [
-    { label: 'Tab', icon: 'far fa-thumbs-up' },
-    { label: 'Tab2', icon: 'far fa-thumbs-up' },
-    { label: 'Tab3' },
-    { icon: 'far fa-thumbs-up' },
-    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true },
-    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
-    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
-    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
-    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true },
+    { key: 'tab', label: 'Tab', icon: 'far fa-thumbs-up' },
+    { key: 'tab2', label: 'Tab2', icon: 'far fa-thumbs-up' },
+    { key: 'tab3', label: 'Tab3' },
+    { key: 'tab4', icon: 'far fa-thumbs-up' },
+    { key: 'tab5', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true },
+    { key: 'tab6', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
+    { key: 'tab7', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
+    { key: 'tab8', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
     {
+      key: 'tab9',
+      label: 'Tab',
+      icon: 'far fa-thumbs-up',
+      infoCircle: true,
+      notificationDot: true,
+      selected: true,
+      disabled: true
+    },
+    {
+      key: 'tab10',
       label: 'Tab',
       icon: 'far fa-thumbs-up',
       infoCircle: true,
