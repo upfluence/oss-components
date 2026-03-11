@@ -4392,6 +4392,26 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     }
   };
 });
+;define("dummy/instance-initializers/override-intl", ["exports", "@upfluence/oss-components/instance-initializers/override-intl"], function (_exports, _overrideIntl) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _overrideIntl.default;
+    }
+  });
+  Object.defineProperty(_exports, "initialize", {
+    enumerable: true,
+    get: function () {
+      return _overrideIntl.initialize;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/instance-initializers/override-intl"eaimeta@70e063a35619d71f
+});
 ;define("dummy/modifiers/attach-element", ["exports", "@upfluence/oss-components/modifiers/attach-element"], function (_exports, _attachElement) {
   "use strict";
 

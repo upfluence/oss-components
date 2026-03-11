@@ -92343,6 +92343,37 @@ require('@ember/-internals/bootstrap')
   }
   _exports.default = _default;
 });
+;define("@upfluence/oss-components/instance-initializers/override-intl", ["exports", "@ember/template", "dompurify", "@upfluence/oss-components/utils/sanitize-config"], function (_exports, _template, _dompurify, _sanitizeConfig) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  _exports.initialize = initialize;
+  0; //eaimeta@70e063a35619d71f0,"@ember/template",0,"dompurify",0,"@upfluence/oss-components/utils/sanitize-config"eaimeta@70e063a35619d71f
+  const OVERRIDE_APPLIED_KEY = '__ossOverrideIntlApplied';
+  function initialize(appInstance) {
+    const intl = appInstance.lookup('service:intl');
+    if (intl[OVERRIDE_APPLIED_KEY]) {
+      return;
+    }
+    const originalT = intl.t.bind(intl);
+    intl.t = (key, options) => {
+      let result = originalT(key, options);
+      if (options && options.htmlSafe) {
+        const stringToSanitize = (0, _template.isHTMLSafe)(result) ? result.toString() : result;
+        const sanitized = _dompurify.default.sanitize(stringToSanitize, _sanitizeConfig.RICH_TEXT_SVG_CONFIG);
+        result = (0, _template.htmlSafe)(sanitized);
+      }
+      return result;
+    };
+    intl[OVERRIDE_APPLIED_KEY] = true;
+  }
+  var _default = _exports.default = {
+    initialize
+  };
+});
 ;define("@upfluence/oss-components/modifiers/attach-element", ["exports", "@ember/modifier", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown"], function (_exports, _modifier, _runloop, _attachDropdown) {
   "use strict";
 
@@ -93055,14 +93086,14 @@ require('@ember/-internals/bootstrap')
     }
   })), _class);
 });
-;define("@upfluence/oss-components/services/toast", ["exports", "@ember/service", "@ember/utils", "@ember/runloop"], function (_exports, _service, _utils, _runloop) {
+;define("@upfluence/oss-components/services/toast", ["exports", "@ember/service", "@ember/utils", "@ember/runloop", "@upfluence/oss-components/utils"], function (_exports, _service, _utils, _runloop, _utils2) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/utils",0,"@ember/runloop"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/utils",0,"@ember/runloop",0,"@upfluence/oss-components/utils"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -93189,15 +93220,15 @@ require('@ember/-internals/bootstrap')
         } else if (opts.badge?.text) {
           badgeContent = `<span class="upf-badge__text">${opts.badge.text}</span>`;
         }
-        const badgeContainer = this._buildElement('div', ['upf-badge', 'upf-badge--shape-round', 'upf-badge--size-md'], badgeContent);
+        const badgeContainer = this._buildElement('div', ['upf-badge', 'upf-badge--shape-round', 'upf-badge--size-md'], badgeContent, true);
         parent.append(badgeContainer);
       } else {
-        const iconContainer = this._buildElement('span', ['icon'], `<i class="${ICON_CLASSES[type]}"></i>`);
+        const iconContainer = this._buildElement('span', ['icon'], `<i class="${ICON_CLASSES[type]}"></i>`, true);
         parent.append(iconContainer);
       }
     }
     _buildCloseButton(parent) {
-      const closeButton = this._buildElement('button', [], '<i class="far fa-times"></i>');
+      const closeButton = this._buildElement('button', [], '<i class="far fa-times"></i>', true);
       (0, _runloop.run)(() => {
         closeButton.addEventListener('click', this._onToastClose.bind(this), {
           once: true
@@ -93282,11 +93313,14 @@ require('@ember/-internals/bootstrap')
         toast.addEventListener('mouseleave', this._playCounterAnimation.bind(this));
       });
     }
-    _buildElement(tagName, classes, content) {
+    _buildElement(tagName, classes, content, htmlSafe) {
       const element = document.createElement(tagName);
       element.classList.add(...classes);
-      if (content) {
-        element.innerHTML = content;
+      if (!content) return element;
+      if ((0, _utils2.isSafeString)(content) || htmlSafe) {
+        element.innerHTML = content.toString();
+      } else {
+        element.textContent = content;
       }
       return element;
     }
@@ -98966,6 +99000,44 @@ require('@ember/-internals/bootstrap')
       }, ANIMATION_DURATION);
     }
   }
+});
+;define("@upfluence/oss-components/utils/sanitize-config", ["exports", "dompurify"], function (_exports, _dompurify) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.RICH_TEXT_SVG_CONFIG = void 0;
+  0; //eaimeta@70e063a35619d71f0,"dompurify"eaimeta@70e063a35619d71f
+  /**
+   * Configure DOMPurify hooks.
+   */
+  _dompurify.default.addHook('afterSanitizeAttributes', node => {
+    // Fix Reverse Tabnabbing for standard links
+    if (node.tagName === 'A' && node.getAttribute('target') === '_blank') {
+      node.setAttribute('rel', 'noopener noreferrer');
+    }
+
+    // Block url(), @import, @font-face and hex-encoded variants in style attributes
+    if (node.hasAttribute('style')) {
+      const styleValue = node.getAttribute('style') || '';
+      if (/(\burl\s*\(|\\75\\72\\6[cC]|@import|@font-face)/i.test(styleValue)) {
+        node.removeAttribute('style');
+      }
+    }
+  });
+
+  /**
+   * Strict configuration allowing Rich Text and Inline SVGs (No <use> tags).
+   */
+  const RICH_TEXT_SVG_CONFIG = _exports.RICH_TEXT_SVG_CONFIG = {
+    ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms):|[^a-z]|[a-z+.\-]+(?:[^a-z+.-:]|$))/i,
+    USE_PROFILES: {
+      html: true,
+      svg: false,
+      mathMl: false
+    }
+  };
 });
 ;define("@upfluence/oss-components/utils/upf-local-storage", ["exports", "@ember/debug"], function (_exports, _debug) {
   "use strict";
