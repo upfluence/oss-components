@@ -1,3 +1,7 @@
+import { isHTMLSafe } from '@ember/template';
+
 export function isSafeString(arg: any): boolean {
-  return arg?.constructor?.name === 'SafeString';
+  if (!arg) return false;
+
+  return (arg.constructor && arg.constructor.name === 'SafeString') || isHTMLSafe(arg);
 }
