@@ -13,7 +13,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
 
   module('Default behavior', () => {
     test('basic render', async function (assert) {
-      this.tabArray.push({ label: 'Tab' });
+      this.tabArray.push({ label: 'Tab', key: 'foo' });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
       assert.dom('.tab-container').exists();
@@ -24,7 +24,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('Tab Icon displays properly', async function (assert) {
-      this.tabArray.push({ label: 'Tab', icon: 'far fa-thumbs-up' });
+      this.tabArray.push({ label: 'Tab', key: 'foo', icon: 'far fa-thumbs-up' });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
       assert.dom('.tab-container').exists();
@@ -37,7 +37,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('Tab info-circle displays properly', async function (assert) {
-      this.tabArray.push({ label: 'Tab', infoCircle: true });
+      this.tabArray.push({ label: 'Tab', key: 'foo', infoCircle: true });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
       assert.dom('.tab-container').exists();
@@ -50,7 +50,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('Tab notification dot displays properly', async function (assert) {
-      this.tabArray.push({ label: 'Tab', notificationDot: true });
+      this.tabArray.push({ label: 'Tab', key: 'foo', notificationDot: true });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
       assert.dom('.tab-container').exists();
@@ -59,7 +59,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('Tab tag displays properly', async function (assert) {
-      this.tabArray.push({ label: 'Tab', tag: { label: '1', skin: 'danger' } });
+      this.tabArray.push({ label: 'Tab', key: 'foo', tag: { label: '1', skin: 'danger' } });
 
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
@@ -71,7 +71,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('Tab displays selected state properly', async function (assert) {
-      this.tabArray.push({ label: 'Tab', selected: true });
+      this.tabArray.push({ label: 'Tab', key: 'foo', selected: true });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
       assert.dom('.tab-container').exists();
@@ -83,7 +83,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('Tab displays disabled state properly', async function (assert) {
-      this.tabArray.push({ label: 'Tab', disabled: true });
+      this.tabArray.push({ label: 'Tab', key: 'foo', disabled: true });
       await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
 
       assert.dom('.tab-container').exists();
@@ -93,11 +93,20 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
       assert.dom('.tab-container .tab').hasClass('tab--disabled');
       assert.dom('.tab-content span').hasText('Tab');
     });
+
+    test('Tab has the right data-control-name set', async function (assert) {
+      this.tabArray.push({ label: 'Tab', key: 'foo', disabled: true });
+      await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
+
+      assert.dom('.tab-container').exists();
+      assert.dom('.tab-container .tab').exists();
+      assert.dom('.tab-container .tab').hasAttribute('data-control-name', 'tab-foo');
+    });
   });
 
   test('When clicking on Tab element, the component triggers the @onSelection method', async function (assert) {
     this.onSelection = sinon.stub();
-    this.tabArray.push({ label: 'Tab' });
+    this.tabArray.push({ label: 'Tab', key: 'foo' });
     await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
     await click('.tab');
     assert.true(this.onSelection.calledOnce);
@@ -127,7 +136,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
-      this.tabArray.push({ label: '', icon: '' });
+      this.tabArray.push({ label: '', key: 'foo', icon: '' });
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
