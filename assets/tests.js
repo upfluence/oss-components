@@ -12522,7 +12522,8 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
     (0, _qunit.module)('Default behavior', () => {
       (0, _qunit.test)('basic render', async function (assert) {
         this.tabArray.push({
-          label: 'Tab'
+          label: 'Tab',
+          key: 'foo'
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -12542,6 +12543,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('Tab Icon displays properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',
+          key: 'foo',
           icon: 'far fa-thumbs-up'
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12564,6 +12566,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('Tab info-circle displays properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',
+          key: 'foo',
           infoCircle: true
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12586,6 +12589,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('Tab notification dot displays properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',
+          key: 'foo',
           notificationDot: true
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12605,6 +12609,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('Tab tag displays properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',
+          key: 'foo',
           tag: {
             label: '1',
             skin: 'danger'
@@ -12629,6 +12634,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('Tab displays selected state properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',
+          key: 'foo',
           selected: true
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12650,6 +12656,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('Tab displays disabled state properly', async function (assert) {
         this.tabArray.push({
           label: 'Tab',
+          key: 'foo',
           disabled: true
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12668,11 +12675,32 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         assert.dom('.tab-container .tab').hasClass('tab--disabled');
         assert.dom('.tab-content span').hasText('Tab');
       });
+      (0, _qunit.test)('Tab has the right data-control-name set', async function (assert) {
+        this.tabArray.push({
+          label: 'Tab',
+          key: 'foo',
+          disabled: true
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />
+        */
+        {
+          "id": "JcLT9YB4",
+          "block": "[[[8,[39,0],null,[[\"@tabArray\",\"@onSelection\"],[[30,0,[\"tabArray\"]],[30,0,[\"onSelection\"]]]],null]],[],false,[\"o-s-s/nav-tab\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/nav-tab-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.tab-container').exists();
+        assert.dom('.tab-container .tab').exists();
+        assert.dom('.tab-container .tab').hasAttribute('data-control-name', 'tab-foo');
+      });
     });
     (0, _qunit.test)('When clicking on Tab element, the component triggers the @onSelection method', async function (assert) {
       this.onSelection = _sinon.default.stub();
       this.tabArray.push({
-        label: 'Tab'
+        label: 'Tab',
+        key: 'foo'
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -12734,6 +12762,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       (0, _qunit.test)('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
         this.tabArray.push({
           label: '',
+          key: 'foo',
           icon: ''
         });
         (0, _testHelpers.setupOnerror)(err => {
