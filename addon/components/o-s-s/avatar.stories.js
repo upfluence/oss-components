@@ -51,6 +51,18 @@ export default {
       },
       control: { type: 'boolean' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'An avatar component that can display an image or initials, and has a loading state.'
+      },
+      iframeHeight: 120
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1134-326&p=f&t=pVIlyZlo6oyvIQxs-0'
+    }
   }
 };
 

@@ -1,9 +1,11 @@
 ### What does this PR do?
+
 <!-- A brief description of the context of this pull request and its purpose. -->
 
 Related to: #<!-- enter issue number here -->
 
 ### What are the observable changes?
+
 <!-- This question could be adequate with multiple use cases, for example: -->
 
 <!-- Frontend: explain the feature created / updated, give instructions telling how to see the change in staging -->
@@ -12,11 +14,12 @@ Related to: #<!-- enter issue number here -->
 <!-- Feature: Implements X thrift service / Z HTTP REST API added, provide instructions on how leverage your feature from staging or your workstation -->
 
 ### Good PR checklist
+
 - [ ] Title makes sense
 - [ ] Is against the correct branch
 - [ ] Only addresses one issue
 - [ ] Properly assigned
 - [ ] Added/updated tests
-- [ ] Added/updated documentation
+- [ ] Added/updated documentation (with Figma link)
 - [ ] Migrated touched components to Glimmer Components
 - [ ] Properly labeled

@@ -73,6 +73,10 @@ export default {
         component:
           'A panel component used to display a searchable and scrollable list of records, with optional loading and empty states.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1475-10417&p=f&t=4fMFcsVGXOxOKmLh-0'
     }
   }
 };
