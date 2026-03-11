@@ -10,6 +10,7 @@ interface OSSNavTabArgs {
 }
 
 export interface TabDefinition {
+  key: string;
   selected: boolean;
   disabled: boolean;
   icon?: string;
