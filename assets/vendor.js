@@ -98938,16 +98938,17 @@ require('@ember/-internals/bootstrap')
     return iconValues.join(' ');
   }
 });
-;define("@upfluence/oss-components/utils/index", ["exports"], function (_exports) {
+;define("@upfluence/oss-components/utils/index", ["exports", "@ember/template"], function (_exports, _template) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.isSafeString = isSafeString;
-  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/template"eaimeta@70e063a35619d71f
   function isSafeString(arg) {
-    return arg?.constructor?.name === 'SafeString';
+    if (!arg) return false;
+    return arg.constructor && arg.constructor.name === 'SafeString' || (0, _template.isHTMLSafe)(arg);
   }
 });
 ;define("@upfluence/oss-components/utils/keyboard", ["exports"], function (_exports) {
