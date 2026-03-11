@@ -1,4 +1,4 @@
-interface DTCOptions {
+interface DCNOptions {
   /**
    * Controls how `controlName` is matched against `data-control-name`.
    *
@@ -11,15 +11,12 @@ interface DTCOptions {
 /**
  * Shortcut for `assert.dom(...)` targeting a `data-control-name` attribute.
  */
-const assertion = function (
-  this: Assert,
-  controlName: string,
-  options: DTCOptions = { strict: true }
-): ReturnType<Assert['dom']> {
-  return this.dom(options.strict ? `[data-control-name="${controlName}"]` : `[data-control-name*="${controlName}"]`);
+const assertion = function (this: Assert, controlName: string, options?: DCNOptions): ReturnType<Assert['dom']> {
+  const strict = options?.strict ?? true;
+  return this.dom(strict ? `[data-control-name="${controlName}"]` : `[data-control-name*="${controlName}"]`);
 };
 
-assertion.__name__ = 'dtc';
+assertion.__name__ = 'dcn';
 
 export default assertion;
 
@@ -32,6 +29,6 @@ declare global {
      * @param options Matching options.
      * @param options.strict When `true` (default), use exact match; when `false`, use substring match.
      */
-    dtc(controlName: string, options?: DTCOptions): ReturnType<Assert['dom']>;
+    dcn(controlName: string, options?: DCNOptions): ReturnType<Assert['dom']>;
   }
 }
