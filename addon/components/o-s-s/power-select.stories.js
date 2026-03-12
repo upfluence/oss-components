@@ -145,6 +145,10 @@ export default {
         component: 'Used for selecting multiple items of a list, based on a pre-filled dropdown menu.'
       },
       iframeHeight: 200
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1142-1256&p=f&t=pVIlyZlo6oyvIQxs-0'
     }
   }
 };
