@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Components/Stats',
+  title: 'Components/OSS::Stats',
   component: 'upf-stat',
   argTypes: {
     name: {
