@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Custom Assertions/hasHtmlText"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# hasHtmlText Assertion
+
+`assert.hasHtmlText(selector, htmlTextValue)` lets you assert text content from an HTML string without creating a temporary DOM element in every test.
+
+## Usage
+
+```typescript
+assert.hasHtmlText(
+  '.plans-table-container .plan-table-column:nth-of-type(1) .plan-table-row:nth-of-type(2)',
+  this.intl.t('inbox.no_mailings.perks.some-perk', { htmlSafe: true })
+);
+```
+
+It also works with a plain HTML string:
+
+```typescript
+assert.hasHtmlText('.my-selector', '<strong>Premium</strong> plan');
+```
+
+## Before / After
+
+Before:
+
+```typescript
+const tmp = document.createElement('div');
+tmp.innerHTML = this.intl.t('inbox.no_mailings.perks.some-perk', { htmlSafe: true });
+
+assert.dom('.my-selector').hasText(tmp.textContent || tmp.innerText || '');
+```
+
+After:
+
+```typescript
+assert.hasHtmlText('.my-selector', this.intl.t('inbox.no_mailings.perks.some-perk', { htmlSafe: true }));
+```
+
+## API
+
+`hasHtmlText(selector: string, htmlTextValue: { toString(): string } | null | undefined, message?: string): void`
+
+| Name | Description |
+|------|-------------|
+| selector | Target element selector |
+| htmlTextValue | HTML value to parse into visible text |
+| message (optional) | Custom assertion message |
