@@ -62,6 +62,10 @@ export default {
           'A component to automaticaly wrap link into an anchor element or a LinkTo helper based on application router knowledge.'
       },
       iframeHeight: 100
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1142-1257&p=f&t=4fMFcsVGXOxOKmLh-0'
     }
   }
 };

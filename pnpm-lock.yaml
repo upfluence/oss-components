@@ -107,7 +107,7 @@ importers:
         version: 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-essentials':
         specifier: 6.4.9
-        version: 6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0(@babel/core@7.23.9)(webpack@5.90.1))(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
+        version: 6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0(@babel/core@7.23.9)(webpack@5.90.1))(eslint@7.32.0)(lit-html@2.8.0)(lit@2.8.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
       '@storybook/addon-links':
         specifier: 6.4.9
         version: 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -270,6 +270,9 @@ importers:
       qunit-dom:
         specifier: ^3.0.0
         version: 3.0.0
+      storybook-addon-designs:
+        specifier: ^6.3.1
+        version: 6.3.1(react@16.14.0)
       style-loader:
         specifier: ^2.0.0
         version: 2.0.0(webpack@5.90.1)
@@ -1196,6 +1199,14 @@ packages:
     resolution: {integrity: sha512-J6KFFz5QCYUJq3pf0mjEcCJVERbzv71PUIDczuh9JkwGEzced6CO5ADLHB1rbf/+oPBtoPfMYNOpGDzCANlbXw==}
     engines: {node: ^10.12.0 || >=12.0.0}
 
+  '@figspec/components@1.0.3':
+    resolution: {integrity: sha512-fBwHzJ4ouuOUJEi+yBZIrOy+0/fAjB3AeTcIHTT1PRxLz8P63xwC7R0EsIJXhScIcc+PljGmqbbVJCjLsnaGYA==}
+
+  '@figspec/react@1.0.4':
+    resolution: {integrity: sha512-jaPvkIef4d6NjsRiw91OZabrfdPH9FtoPGYcY5mpXjYEcdUqIq1aHtLq3SkMVyVysEapTEJ6yS8amy93MyXBEQ==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   '@floating-ui/core@1.6.0':
     resolution: {integrity: sha512-PcF++MykgmTj3CIyOQbKA/hDzOAiqI3mhuoN44WRCopIs1sgoDoU4oty4Jtqaj/y3oDU6fnVSm4QG0a3t5i0+g==}
 
@@ -1376,6 +1387,15 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.22':
     resolution: {integrity: sha512-Wf963MzWtA2sjrNt+g18IAln9lKnlRp+K2eH4jjIoF1wYeq3aMREpG09xhlhdzS0EjwU7qmUJYangWa+151vZw==}
+
+  '@lit-labs/react@1.2.1':
+    resolution: {integrity: sha512-DiZdJYFU0tBbdQkfwwRSwYyI/mcWkg3sWesKRsHUd4G+NekTmmeq9fzsurvcKTNVa0comNljwtg4Hvi1ds3V+A==}
+
+  '@lit-labs/ssr-dom-shim@1.4.0':
+    resolution: {integrity: sha512-ficsEARKnmmW5njugNYKipTm4SFnbik7CXtoencDZzmzo/dQ+2Q0bgkzJuoJP20Aj0F+izzJjOqsnkd6F/o1bw==}
+
+  '@lit/reactive-element@1.6.3':
+    resolution: {integrity: sha512-QuTgnG52Poic7uM1AN5yJ09QMe0O28e10XzSvWDz02TJiiKee4stsiownEIadWm8nYzyDAyT+gKzUoZmiWQtsQ==}
 
   '@mdx-js/loader@1.6.22':
     resolution: {integrity: sha512-9CjGwy595NaxAYp0hF9B/A0lH6C8Rms97e2JS9d3jVUtILn6pT5i5IV965ra3lIWc7Rs1GG1tBdVF7dCowYe6Q==}
@@ -2031,6 +2051,9 @@ packages:
 
   '@types/tapable@1.0.12':
     resolution: {integrity: sha512-bTHG8fcxEqv1M9+TD14P8ok8hjxoOCkfKc8XXLaaD05kI7ohpeI956jtDOD3XHKBQrlyPughUtzm1jtVhHpA5Q==}
+
+  '@types/trusted-types@2.0.7':
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
   '@types/uglify-js@3.17.4':
     resolution: {integrity: sha512-Hm/T0kV3ywpJyMGNbsItdivRhYNCQQf1IIsYsXnoVPES4t+FMLyDe0/K+Ea7ahWtMtSNb22ZdY7MIyoD9rqARg==}
@@ -5690,6 +5713,15 @@ packages:
   linkify-it@3.0.3:
     resolution: {integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==}
 
+  lit-element@3.3.3:
+    resolution: {integrity: sha512-XbeRxmTHubXENkV4h8RIPyr8lXc+Ff28rkcQzw3G6up2xg5E8Zu1IgOWIwBLEQsu3cOVFqdYwiVi0hv0SlpqUA==}
+
+  lit-html@2.8.0:
+    resolution: {integrity: sha512-o9t+MQM3P4y7M7yNzqAyjp7z+mQGa4NS4CxiyLqFPyFWyc4O+nodLrkrxSaCTrla6M5YOLaT3RpbbqjszB5g3Q==}
+
+  lit@2.8.0:
+    resolution: {integrity: sha512-4Sc3OFX9QHOJaHbmTMk28SYgVxLN3ePDjg7hofEft2zWlehFL3LiAuapWc4U/kYwMYJSh2hTCPZ6/LIC7ii0MA==}
+
   livereload-js@3.4.1:
     resolution: {integrity: sha512-5MP0uUeVCec89ZbNOT/i97Mc+q3SxXmiUGhRFOTmhrGPn//uWVQdCvcLJDy64MSBR5MidFdOR7B9viumoavy6g==}
 
@@ -7626,6 +7658,9 @@ packages:
 
   store2@2.14.2:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
+
+  storybook-addon-designs@6.3.1:
+    resolution: {integrity: sha512-QCHZp4KuUikOq52MPiMfU8QifYTfhHar5vWlbcfkFDz1YrgGMy+QAEt5Y3Vdnffl4GKSK1lAsLuvTuzqTBRvnw==}
 
   stream-browserify@2.0.2:
     resolution: {integrity: sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg==}
@@ -9760,6 +9795,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@figspec/components@1.0.3':
+    dependencies:
+      lit: 2.8.0
+
+  '@figspec/react@1.0.4(react@16.14.0)':
+    dependencies:
+      '@figspec/components': 1.0.3
+      '@lit-labs/react': 1.2.1
+      react: 16.14.0
+
   '@floating-ui/core@1.6.0':
     dependencies:
       '@floating-ui/utils': 0.2.1
@@ -10004,6 +10049,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  '@lit-labs/react@1.2.1': {}
+
+  '@lit-labs/ssr-dom-shim@1.4.0': {}
+
+  '@lit/reactive-element@1.6.3':
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.4.0
+
   '@mdx-js/loader@1.6.22(react@16.14.0)':
     dependencies:
       '@mdx-js/mdx': 1.6.22
@@ -10171,7 +10224,7 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/addon-docs@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
+  '@storybook/addon-docs@6.4.9(eslint@7.32.0)(lit-html@2.8.0)(lit@2.8.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
       '@babel/core': 7.23.9
       '@babel/generator': 7.23.6
@@ -10220,6 +10273,8 @@ snapshots:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
     optionalDependencies:
+      lit: 2.8.0
+      lit-html: 2.8.0
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       webpack: 5.90.1
@@ -10238,13 +10293,13 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/addon-essentials@6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0(@babel/core@7.23.9)(webpack@5.90.1))(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
+  '@storybook/addon-essentials@6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0(@babel/core@7.23.9)(webpack@5.90.1))(eslint@7.32.0)(lit-html@2.8.0)(lit@2.8.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
       '@babel/core': 7.23.9
       '@storybook/addon-actions': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-backgrounds': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-controls': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
-      '@storybook/addon-docs': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
+      '@storybook/addon-docs': 6.4.9(eslint@7.32.0)(lit-html@2.8.0)(lit@2.8.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
       '@storybook/addon-measure': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-outline': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-toolbars': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -10257,6 +10312,7 @@ snapshots:
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
     optionalDependencies:
+      lit-html: 2.8.0
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       webpack: 5.90.1
@@ -11389,6 +11445,8 @@ snapshots:
   '@types/symlink-or-copy@1.2.2': {}
 
   '@types/tapable@1.0.12': {}
+
+  '@types/trusted-types@2.0.7': {}
 
   '@types/uglify-js@3.17.4':
     dependencies:
@@ -16360,6 +16418,22 @@ snapshots:
     dependencies:
       uc.micro: 1.0.6
 
+  lit-element@3.3.3:
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.4.0
+      '@lit/reactive-element': 1.6.3
+      lit-html: 2.8.0
+
+  lit-html@2.8.0:
+    dependencies:
+      '@types/trusted-types': 2.0.7
+
+  lit@2.8.0:
+    dependencies:
+      '@lit/reactive-element': 1.6.3
+      lit-element: 3.3.3
+      lit-html: 2.8.0
+
   livereload-js@3.4.1: {}
 
   load-json-file@4.0.0:
@@ -18553,6 +18627,12 @@ snapshots:
       internal-slot: 1.0.7
 
   store2@2.14.2: {}
+
+  storybook-addon-designs@6.3.1(react@16.14.0):
+    dependencies:
+      '@figspec/react': 1.0.4(react@16.14.0)
+    transitivePeerDependencies:
+      - react
 
   stream-browserify@2.0.2:
     dependencies:
