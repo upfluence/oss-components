@@ -23704,6 +23704,50 @@ define("@storybook/ember-cli-storybook/test-support/render-story", ["exports", "
     return context;
   }
 });
+define("@upfluence/oss-components/test-support/custom-assertions/dcn", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  /**
+   * Shortcut for `assert.dom(...)` targeting a `data-control-name` attribute.
+   */
+  const assertion = function (controlName, options) {
+    const strict = options?.strict ?? true;
+    return this.dom(strict ? `[data-control-name="${controlName}"]` : `[data-control-name*="${controlName}"]`);
+  };
+  assertion.__name__ = 'dcn';
+  var _default = _exports.default = assertion;
+});
+define("@upfluence/oss-components/test-support/custom-assertions/has-html-text", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const getTextFromHtml = htmlText => {
+    const element = document.createElement('div');
+    element.innerHTML = htmlText?.toString() ?? '';
+    return element.textContent || element.innerText || '';
+  };
+
+  /**
+   * Assert that an element has the text content represented by an HTML string.
+   *
+   * This is equivalent to parsing the HTML string and comparing the element's
+   * visible text with the parsed text output.
+   */
+  const assertion = function (selector, html, message) {
+    this.dom(selector).hasText(getTextFromHtml(html), message);
+  };
+  assertion.__name__ = 'hasHtmlText';
+  var _default = _exports.default = assertion;
+});
 define("@upfluence/oss-components/test-support/custom-assertions/infinite-select-option", ["exports", "qunit", "@ember/utils"], function (_exports, QUnit, _utils) {
   "use strict";
 
@@ -24151,15 +24195,15 @@ define("@upfluence/oss-components/test-support/index", ["exports", "@upfluence/o
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/setup-clipboard",0,"@upfluence/oss-components/test-support/setup-toast"eaimeta@70e063a35619d71f
 });
-define("@upfluence/oss-components/test-support/register-assertions", ["exports", "@upfluence/oss-components/test-support/custom-assertions/tooltip", "@upfluence/oss-components/test-support/custom-assertions/infinite-select-option"], function (_exports, _tooltip, _infiniteSelectOption) {
+define("@upfluence/oss-components/test-support/register-assertions", ["exports", "@upfluence/oss-components/test-support/custom-assertions/tooltip", "@upfluence/oss-components/test-support/custom-assertions/infinite-select-option", "@upfluence/oss-components/test-support/custom-assertions/dcn", "@upfluence/oss-components/test-support/custom-assertions/has-html-text"], function (_exports, _tooltip, _infiniteSelectOption, _dcn, _hasHtmlText) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = registerAssertions;
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/custom-assertions/tooltip",0,"@upfluence/oss-components/test-support/custom-assertions/infinite-select-option"eaimeta@70e063a35619d71f
-  const ASSERTIONS = [_tooltip.default, _infiniteSelectOption.default];
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/custom-assertions/tooltip",0,"@upfluence/oss-components/test-support/custom-assertions/infinite-select-option",0,"@upfluence/oss-components/test-support/custom-assertions/dcn",0,"@upfluence/oss-components/test-support/custom-assertions/has-html-text"eaimeta@70e063a35619d71f
+  const ASSERTIONS = [_tooltip.default, _infiniteSelectOption.default, _dcn.default, _hasHtmlText.default];
   function registerAssertions(assert) {
     ASSERTIONS.forEach(assertion => {
       // @ts-ignore

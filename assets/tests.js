@@ -25108,14 +25108,162 @@ define("dummy/tests/test-helper", ["dummy/app", "dummy/config/environment", "@em
   // @ts-nocheck
   (0, _registerAssertions.default)(QUnit.assert);
   (0, _qunitDom.setup)(QUnit.assert);
-  QUnit.done(async function () {
-    (0, _testSupport.forceModulesToBeLoaded)((_, moduleName) => {
-      return !moduleName.endsWith('.stories');
-    });
+  QUnit.done(async () => {
+    (0, _testSupport.forceModulesToBeLoaded)((_, moduleName) => !moduleName.endsWith('.stories'));
     await (0, _testSupport.sendCoverage)();
   });
   (0, _testHelpers.setApplication)(_app.default.create(_environment.default.APP));
   (0, _emberQunit.start)();
+});
+define("dummy/tests/unit/custom-assertions/dcn-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Test Support | Custom Assertions | dcn', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.module)('.exists()', () => {
+      (0, _qunit.test)('it passes when the data-control-name element exists', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div data-control-name="my-dcn-selector"></div>
+        */
+        {
+          "id": "NoSkJd9h",
+          "block": "[[[10,0],[14,\"data-control-name\",\"my-dcn-selector\"],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/dcn-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dcn('my-dcn-selector').exists();
+      });
+    });
+    (0, _qunit.module)('.doesNotExist()', () => {
+      (0, _qunit.test)('it passes when the data-control-name element does not exist', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div></div>
+        */
+        {
+          "id": "b8nnFj34",
+          "block": "[[[10,0],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/dcn-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dcn('my-dcn-selector').doesNotExist();
+      });
+      (0, _qunit.test)('it uses strict matching by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div data-control-name="list-item-1"></div>
+        */
+        {
+          "id": "Lih6oKgC",
+          "block": "[[[10,0],[14,\"data-control-name\",\"list-item-1\"],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/dcn-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dcn('list-item').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('options.strict', () => {
+      (0, _qunit.test)('it supports loose matching when strict is false', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div data-control-name="list-item-1"></div>
+        */
+        {
+          "id": "Lih6oKgC",
+          "block": "[[[10,0],[14,\"data-control-name\",\"list-item-1\"],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/dcn-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dcn('list-item', {
+          strict: false
+        }).exists();
+      });
+      (0, _qunit.test)('it supports explicit strict matching when strict is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div data-control-name="list-item-1"></div>
+        */
+        {
+          "id": "Lih6oKgC",
+          "block": "[[[10,0],[14,\"data-control-name\",\"list-item-1\"],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/dcn-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dcn('list-item-1', {
+          strict: true
+        }).exists();
+        assert.dcn('list-item', {
+          strict: true
+        }).doesNotExist();
+      });
+    });
+  });
+});
+define("dummy/tests/unit/custom-assertions/has-html-text-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Test Support | Custom Assertions | hasHtmlText', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.module)('hasHtmlText()', () => {
+      (0, _qunit.test)('it strips HTML tags and compares the visible text', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div class="target">Hello world</div>
+        */
+        {
+          "id": "Z02svx5r",
+          "block": "[[[10,0],[14,0,\"target\"],[12],[1,\"Hello world\"],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/has-html-text-test.ts",
+          "isStrictMode": false
+        }));
+        assert.hasHtmlText('.target', 'Hello <strong>world</strong>');
+      });
+      (0, _qunit.test)('it decodes HTML entities', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div class="target">Cool! Plan</div>
+        */
+        {
+          "id": "bvm8JhMt",
+          "block": "[[[10,0],[14,0,\"target\"],[12],[1,\"Cool! Plan\"],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/has-html-text-test.ts",
+          "isStrictMode": false
+        }));
+        assert.hasHtmlText('.target', '<span>Cool!</span> <em>Plan</em>');
+      });
+      (0, _qunit.test)('it works with a plain string (no tags)', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div class="target">Simple label</div>
+        */
+        {
+          "id": "Av+WdqAh",
+          "block": "[[[10,0],[14,0,\"target\"],[12],[1,\"Simple label\"],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/has-html-text-test.ts",
+          "isStrictMode": false
+        }));
+        assert.hasHtmlText('.target', 'Simple label');
+      });
+      (0, _qunit.test)('it handles null and undefined values as empty text', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div class="target"></div>
+        */
+        {
+          "id": "l9f4WYAU",
+          "block": "[[[10,0],[14,0,\"target\"],[12],[13]],[],false,[]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/unit/custom-assertions/has-html-text-test.ts",
+          "isStrictMode": false
+        }));
+        assert.hasHtmlText('.target', '');
+        assert.hasHtmlText('.target', null);
+        assert.hasHtmlText('.target', undefined);
+      });
+    });
+  });
 });
 define("dummy/tests/unit/custom-assertions/infinite-select-option-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
