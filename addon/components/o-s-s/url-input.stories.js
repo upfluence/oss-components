@@ -93,6 +93,10 @@ export default {
         component:
           'A URL input component where prefix/suffix can be set and where a Regex parameter can be specified to test against the input value.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=8613-231391&t=4fMFcsVGXOxOKmLh-4'
     }
   }
 };
