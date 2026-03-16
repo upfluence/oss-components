@@ -229,13 +229,14 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '0%');
     });
 
-    test('it renders the slider with a maximum value when @min is provided', async function (assert) {
+    test('it renders the slider with a maximum value when @max is provided', async function (assert) {
       this.max = 1000;
+      this.inputOptions = { max: this.max - 1 };
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @unit="percentage" @onChange={{this.onChange}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @inputOptions={{this.inputOptions}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @unit="percentage" @onChange={{this.onChange}} />`
       );
 
-      await fillIn('.oss-slider__number-input input', '1000');
+      await fillIn('.oss-slider__number-input input', this.max);
       const element = this.element.querySelector('.oss-slider__range');
       assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '100%');
     });
