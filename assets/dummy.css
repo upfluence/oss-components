@@ -9871,6 +9871,78 @@ For complete information visit: www.freakflagsprite.com
 .country-selector-container .upf-infinite-select .row-selected span {
   color: var(--color-gray-900);
 }
+.country-selector-container--success .yielded-input input,
+.country-selector-container--success .upf-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-success-500);
+  border-radius: var(--border-radius-sm);
+}
+.country-selector-container--success .yielded-input input:not(:disabled, .disabled):hover,
+.country-selector-container--success .upf-input:not(:disabled, .disabled):hover {
+  border-color: var(--color-success-500);
+  background-color: var(--color-gray-100);
+}
+.country-selector-container--success .yielded-input input:not(:disabled, .disabled):active,
+.country-selector-container--success .upf-input:not(:disabled, .disabled):active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.country-selector-container--success .yielded-input input:not(:disabled, .disabled):focus,
+.country-selector-container--success .upf-input:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-success-500);
+}
+.country-selector-container--warning .yielded-input input,
+.country-selector-container--warning .upf-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-warning-500);
+  border-radius: var(--border-radius-sm);
+}
+.country-selector-container--warning .yielded-input input:not(:disabled, .disabled):hover,
+.country-selector-container--warning .upf-input:not(:disabled, .disabled):hover {
+  border-color: var(--color-warning-500);
+  background-color: var(--color-gray-100);
+}
+.country-selector-container--warning .yielded-input input:not(:disabled, .disabled):active,
+.country-selector-container--warning .upf-input:not(:disabled, .disabled):active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.country-selector-container--warning .yielded-input input:not(:disabled, .disabled):focus,
+.country-selector-container--warning .upf-input:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-warning-500);
+}
+.country-selector-container--error .yielded-input input,
+.country-selector-container--error .upf-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-error-500);
+  border-radius: var(--border-radius-sm);
+}
+.country-selector-container--error .yielded-input input:not(:disabled, .disabled):hover,
+.country-selector-container--error .upf-input:not(:disabled, .disabled):hover {
+  border-color: var(--color-error-500);
+  background-color: var(--color-gray-100);
+}
+.country-selector-container--error .yielded-input input:not(:disabled, .disabled):active,
+.country-selector-container--error .upf-input:not(:disabled, .disabled):active {
+  border-color: var(--color-error-500);
+  box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.country-selector-container--error .yielded-input input:not(:disabled, .disabled):focus,
+.country-selector-container--error .upf-input:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-error-500);
+}
 :root {
   --mode-switch__border-radius: 20px;
   --mode-switch__default-label-width: 80px;
@@ -13812,10 +13884,10 @@ a.upf-btn--sm {
   border: 1px dashed var(--color-border-default);
   border-radius: var(--border-radius-lg);
 }
-.oss-upload-area-container .oss-upload-area .oss-upload-area__illustration {
+.oss-upload-area-container .oss-upload-area__illustration {
   position: relative;
 }
-.oss-upload-area-container .oss-upload-area .oss-upload-area__illustration img {
+.oss-upload-area-container .oss-upload-area__illustration img {
   border-radius: var(--border-radius-sm);
 }
 .oss-upload-area-container .oss-upload-area .upf-link {
@@ -13910,6 +13982,15 @@ a.upf-btn--sm {
 .oss-upload-area-container .oss-upload-area--disabled {
   background-color: var(--color-gray-200);
   border-color: var(--color-gray-300);
+}
+.oss-upload-area-container .oss-upload-area--error {
+  border-color: var(--color-error-500);
+}
+.oss-upload-area-container .oss-upload-area--warning {
+  border-color: var(--color-warning-500);
+}
+.oss-upload-area-container .oss-upload-area--success {
+  border-color: var(--color-success-500);
 }
 .oss-upload-area-container .oss-upload-item {
   display: flex;

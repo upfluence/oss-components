@@ -2782,10 +2782,10 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _inputContainer, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _utils, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@upfluence/oss-components/components/o-s-s/input-container"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@upfluence/oss-components/utils"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/banner', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', async function (assert) {
@@ -3151,7 +3151,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         }));
         assert.dom('.upf-banner--feedback').hasText('This is a feedback message');
       });
-      _inputContainer.FEEDBACK_TYPES.forEach(type => {
+      _utils.ALLOWED_FEEDBACK_MESSAGE_TYPES.forEach(type => {
         (0, _qunit.test)(`When feedback type is ${type}, the border has the corresponding class`, async function (assert) {
           this.feedbackMessage = {
             type: type,
@@ -6282,10 +6282,10 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@ember/test-helpers/setup-onerror", "@ember/test-helpers/settled", "sinon", "qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "@upfluence/oss-components/utils/country-codes", "@ember/object", "@ember/test-helpers/dom/trigger-key-event", "@ember/template-factory"], function (_setupOnerror, _settled, _sinon, _qunit, _emberQunit, _testSupport, _testHelpers, _countryCodes, _object, _triggerKeyEvent, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@ember/test-helpers/setup-onerror", "@ember/test-helpers/settled", "sinon", "qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "@ember/object", "@ember/test-helpers/dom/trigger-key-event", "@upfluence/oss-components/utils", "@upfluence/oss-components/utils/country-codes", "@ember/template-factory"], function (_setupOnerror, _settled, _sinon, _qunit, _emberQunit, _testSupport, _testHelpers, _object, _triggerKeyEvent, _utils, _countryCodes, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/test-helpers/setup-onerror",0,"@ember/test-helpers/settled",0,"sinon",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"@upfluence/oss-components/utils/country-codes",0,"@ember/object",0,"@ember/test-helpers/dom/trigger-key-event"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/test-helpers/setup-onerror",0,"@ember/test-helpers/settled",0,"sinon",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"@ember/object",0,"@ember/test-helpers/dom/trigger-key-event",0,"@upfluence/oss-components/utils",0,"@upfluence/oss-components/utils/country-codes"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/country-selector', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
@@ -6625,6 +6625,186 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
           "isStrictMode": false
         }));
         await (0, _settled.default)();
+      });
+    });
+    (0, _qunit.module)('@feedbackMessageMessage argument', () => {
+      hooks.beforeEach(function () {
+        this.feedbackMessage = {
+          type: 'error',
+          value: 'This is an error message'
+        };
+      });
+      (0, _qunit.module)('when @feedbackMessage is provided', () => {
+        (0, _qunit.test)('no error message is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
+          */
+          {
+            "id": "qYzSGkKr",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+        });
+        (0, _qunit.test)('no error border is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
+          */
+          {
+            "id": "qYzSGkKr",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+        });
+      });
+      (0, _qunit.module)('when @feedbackMessage is null', () => {
+        (0, _qunit.test)('no error message is displayed', async function (assert) {
+          this.feedbackMessage = null;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "PsoC8Kgs",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+        });
+        (0, _qunit.test)('no border is displayed', async function (assert) {
+          this.feedbackMessage = null;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+          */
+          {
+            "id": "PsoC8Kgs",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+        });
+      });
+      (0, _qunit.test)('when @feedbackMessage changes from a message to null, the error message is removed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+        */
+        {
+          "id": "PsoC8Kgs",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.country-selector-container').hasClass('country-selector-container--error');
+        assert.dom('[data-control-name="country-selector-feedback-message"]').hasText('This is an error message');
+        (0, _object.set)(this, 'feedbackMessage', null);
+        await (0, _settled.default)();
+        assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+        assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+      });
+      (0, _qunit.test)('when @feedbackMessage changes from null to a message, the error message is displayed', async function (assert) {
+        this.feedbackMessage = null;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+        */
+        {
+          "id": "PsoC8Kgs",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.country-selector-container').doesNotHaveClass('country-selector-container--error');
+        assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+        (0, _object.set)(this, 'feedbackMessage', {
+          type: 'error',
+          value: 'This is an error message'
+        });
+        await (0, _settled.default)();
+        assert.dom('.country-selector-container').hasClass('country-selector-container--error');
+        assert.dom('[data-control-name="country-selector-feedback-message"]').hasText('This is an error message');
+      });
+      _utils.ALLOWED_FEEDBACK_MESSAGE_TYPES.forEach(type => {
+        (0, _qunit.module)(`for ${type} type`, () => {
+          (0, _qunit.module)('when @feedbackMessage is provided', () => {
+            (0, _qunit.test)(`the correct message is displayed`, async function (assert) {
+              this.feedbackMessage = {
+                type: type,
+                value: `This is an ${type} message`
+              };
+              await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+              */
+              {
+                "id": "PsoC8Kgs",
+                "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+                "isStrictMode": false
+              }));
+              assert.dom('[data-control-name="country-selector-feedback-message"]').hasText(`This is an ${type} message`);
+            });
+            (0, _qunit.test)(`the correct border is displayed`, async function (assert) {
+              this.feedbackMessage = {
+                type: type,
+                value: `This is an ${type} message`
+              };
+              await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+              */
+              {
+                "id": "PsoC8Kgs",
+                "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+                "isStrictMode": false
+              }));
+              assert.dom('.country-selector-container').hasClass(`country-selector-container--${type}`);
+            });
+          });
+          (0, _qunit.module)('when @feedbackMessage has undefined value', () => {
+            (0, _qunit.test)('no message is displayed', async function (assert) {
+              this.feedbackMessage = {
+                type
+              };
+              await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+              */
+              {
+                "id": "PsoC8Kgs",
+                "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+                "isStrictMode": false
+              }));
+              assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();
+            });
+            (0, _qunit.test)('the correct border is displayed', async function (assert) {
+              this.feedbackMessage = {
+                type
+              };
+              await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @feedbackMessage={{this.feedbackMessage}} />
+              */
+              {
+                "id": "PsoC8Kgs",
+                "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@feedbackMessage\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+                "isStrictMode": false
+              }));
+              assert.dom('.country-selector-container').hasClass(`country-selector-container--${type}`);
+            });
+          });
+        });
       });
     });
   });
@@ -7564,6 +7744,45 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       }));
       assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
       assert.dom('.text-color-error').hasText('This is the error message');
+    });
+    ['error', 'warning', 'success'].forEach(type => {
+      (0, _qunit.test)(`it properly displays the feedback message when the @feedbackMessage type is ${type} and has a value`, async function (assert) {
+        this.feedbackMessage = {
+          type,
+          value: `This is a ${type} message`
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmailInput @value="foo@bar.com" @feedbackMessage={{this.feedbackMessage}} />
+        */
+        {
+          "id": "J75FRvWJ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo@bar.com\",[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/email-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container').hasClass(`oss-input-container--${type}`);
+        assert.dom(`.oss-input-container + .font-color-${type}-500`).exists();
+        assert.dom(`.oss-input-container + .font-color-${type}-500`).hasText(`This is a ${type} message`);
+      });
+      (0, _qunit.test)(`it only displays the input in the feedback style when the @feedbackMessage type is ${type} w/ no value`, async function (assert) {
+        this.feedbackMessage = {
+          type,
+          value: undefined
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmailInput @value="foo@bar.com" @feedbackMessage={{this.feedbackMessage}} />
+        */
+        {
+          "id": "J75FRvWJ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo@bar.com\",[30,0,[\"feedbackMessage\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/email-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container').hasClass(`oss-input-container--${type}`);
+        assert.dom(`.oss-input-container + .font-color-${type}-500`).doesNotExist();
+      });
     });
     (0, _qunit.test)('If the email regex isnt matched, then the error message is displayed', async function (assert) {
       this.value = '';
@@ -10281,9 +10500,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         <OSS::InputContainer />
       */
       {
-        "id": "/S7gOB9A",
+        "id": "Nbf09vQJ",
         "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/input-container\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.upf-input').exists();
@@ -10306,9 +10525,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
               </OSS::InputContainer>
         */
         {
-          "id": "g69wZ47T",
+          "id": "T/OB1QyB",
           "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-user\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,2],[[24,1,\"custom-input\"]],null,null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n        \"]],[]]]]]],[],false,[\"o-s-s/input-container\",\"o-s-s/icon\",\"input\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
       }
@@ -10326,27 +10545,25 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
       });
     });
     (0, _qunit.module)('Component Parameters', hooks => {
-      let onValueChange;
       hooks.beforeEach(function () {
-        onValueChange = _sinon.default.fake.returns(true);
-        this.set('value', 'testValue');
-        this.set('placeholder', 'Type your text');
-        this.set('onValueChange', onValueChange);
-        this.set('autocomplete', undefined);
+        this.value = 'testValue';
+        this.placeholder = 'Type your text';
+        this.onChange = _sinon.default.stub();
+        this.autocomplete = undefined;
       });
       async function renderComponentWithParameters() {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           
                 <OSS::InputContainer @value={{this.value}}
-                                     @onChange={{this.onValueChange}}
+                                     @onChange={{this.onChange}}
                                      @placeholder={{this.placeholder}}
                                      @autocomplete={{this.autocomplete}} />
         */
         {
-          "id": "GLKeiy0u",
-          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@onChange\",\"@placeholder\",\"@autocomplete\"],[[30,0,[\"value\"]],[30,0,[\"onValueChange\"]],[30,0,[\"placeholder\"]],[30,0,[\"autocomplete\"]]]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "id": "cI60lbME",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@onChange\",\"@placeholder\",\"@autocomplete\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]],[30,0,[\"placeholder\"]],[30,0,[\"autocomplete\"]]]],null]],[],false,[\"o-s-s/input-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
       }
@@ -10356,34 +10573,23 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
       });
       (0, _qunit.test)('Passing a @placeholder parameter works', async function (assert) {
         await renderComponentWithParameters();
-        let inputElement = (0, _testHelpers.find)('.upf-input');
-        assert.equal(inputElement.getAttribute('placeholder'), 'Type your text');
+        assert.dom('.upf-input').hasAttribute('placeholder', 'Type your text');
       });
       (0, _qunit.test)('Passing an @onChange method works and is triggered on input changes', async function (assert) {
         await renderComponentWithParameters();
-        let inputElement = (0, _testHelpers.find)('.upf-input');
-        await (0, _testHelpers.typeIn)(inputElement, 'a');
-        assert.ok(onValueChange.called);
+        await (0, _testHelpers.typeIn)('.upf-input', 's', {
+          delay: 0
+        });
+        assert.ok(this.onChange.calledOnceWithExactly('testValues'));
       });
       (0, _qunit.test)('Passing an @onChange method works and is triggered on copy event', async function (assert) {
-        this.onChange = _sinon.default.stub();
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::InputContainer data-control-name="firstname-input" @onChange={{this.onChange}} />
-        */
-        {
-          "id": "T23nYTSA",
-          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"firstname-input\"]],[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
-          "isStrictMode": false
-        }));
-        assert.ok(this.onChange.notCalled);
+        await renderComponentWithParameters();
         await (0, _testHelpers.triggerEvent)('.oss-input-container input', 'paste', {
           clipboardData: {
             getData: format => `clipboardFormat/${format}`
           }
         });
-        assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
+        assert.ok(this.onChange.calledOnceWithExactly('testValueclipboardFormat/Text'));
       });
       (0, _qunit.test)('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
         await renderComponentWithParameters();
@@ -10402,9 +10608,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @feedbackMessage={{hash type="success" value="This is a success message"}} />
         */
         {
-          "id": "uLNYThG4",
+          "id": "R9J3NwVD",
           "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"success\",\"This is a success message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').hasClass('oss-input-container--success');
@@ -10417,9 +10623,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @feedbackMessage={{hash type="warning" value="This is a warning message"}} />
         */
         {
-          "id": "XZd22ntW",
+          "id": "Jf12rIpJ",
           "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"warning\",\"This is a warning message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').hasClass('oss-input-container--warning');
@@ -10432,9 +10638,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @feedbackMessage={{hash type="error" value="This is an error message"}} />
         */
         {
-          "id": "SdspPatn",
+          "id": "lKASlaIJ",
           "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"error\",\"This is an error message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').hasClass('oss-input-container--error');
@@ -10446,9 +10652,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @feedbackMessage={{hash type="invalid" value="This is an invalid message"}} />
         */
         {
-          "id": "Iz4Fl5KU",
+          "id": "cRBluVDl",
           "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"invalid\",\"This is an invalid message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-input').exists();
@@ -10465,9 +10671,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @errorMessage="This is an error message" />
         */
         {
-          "id": "rhUmu+UH",
+          "id": "jBmD7jce",
           "block": "[[[8,[39,0],null,[[\"@errorMessage\"],[\"This is an error message\"]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
@@ -10479,9 +10685,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @errorMessage="" />
         */
         {
-          "id": "8B1zdt7L",
+          "id": "ElKlbrgA",
           "block": "[[[8,[39,0],null,[[\"@errorMessage\"],[\"\"]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
@@ -10493,9 +10699,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @hasError={{true}} />
         */
         {
-          "id": "dyHL4R8o",
+          "id": "3Ee/nacW",
           "block": "[[[8,[39,0],null,[[\"@hasError\"],[true]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
@@ -10506,9 +10712,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @hasError={{false}} />
         */
         {
-          "id": "3T/0079a",
+          "id": "5rVC7JUN",
           "block": "[[[8,[39,0],null,[[\"@hasError\"],[false]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
@@ -10519,9 +10725,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @hasError={{undefined}} />
         */
         {
-          "id": "OEJuKlrB",
+          "id": "uLD5FnRO",
           "block": "[[[8,[39,0],null,[[\"@hasError\"],[[27]]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
@@ -10532,9 +10738,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer @errorMessage="This is an error message" @hasError={{true}} />
         */
         {
-          "id": "fVwEVyNr",
+          "id": "sE8NQRWr",
           "block": "[[[8,[39,0],null,[[\"@errorMessage\",\"@hasError\"],[\"This is an error message\",true]],null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
@@ -10548,9 +10754,9 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer class="my-extra-class" />
         */
         {
-          "id": "HMD2z53l",
+          "id": "TSGXXx5x",
           "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],null,null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.my-extra-class').exists();
@@ -10561,13 +10767,12 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           <OSS::InputContainer data-control-name="firstname-input" />
         */
         {
-          "id": "0R+dVRfx",
+          "id": "wZ+/HQCc",
           "block": "[[[8,[39,0],[[24,\"data-control-name\",\"firstname-input\"]],null,null]],[],false,[\"o-s-s/input-container\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = (0, _testHelpers.find)('.oss-input-container');
-        assert.equal(inputWrapper.getAttribute('data-control-name'), 'firstname-input');
+        assert.dom('.oss-input-container').hasAttribute('data-control-name', 'firstname-input');
       });
     });
   });
@@ -22836,12 +23041,15 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "sinon", "@upfluence/oss-components/test-support/services/uploader", "@upfluence/oss-components/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _sinon, _uploader, _testSupport2, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "sinon", "@upfluence/oss-components/test-support/services/uploader", "@upfluence/oss-components/test-support", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _sinon, _uploader, _testSupport2, _utils, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"sinon",0,"@upfluence/oss-components/test-support/services/uploader",0,"@upfluence/oss-components/test-support"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"sinon",0,"@upfluence/oss-components/test-support/services/uploader",0,"@upfluence/oss-components/test-support",0,"@upfluence/oss-components/utils"eaimeta@70e063a35619d71f
   const file = new File([new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])], '1px.png', {
     type: 'image/png'
+  });
+  const PDFfile = new File([new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])], '1px.pdf', {
+    type: 'pdf'
   });
   (0, _qunit.module)('Integration | Component | o-s-s/upload-area', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
@@ -23130,10 +23338,134 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
               files: [this.file]
             }
           });
-          assert.ok(this.toastErrorStub.calledWith(this.intl.t(`oss-components.upload-area.errors.filetype.description`), this.intl.t(`oss-components.upload-area.errors.filetype.title`)));
-          assert.ok(this.toastErrorStub.calledWith(this.intl.t('oss-components.upload-area.errors.filesize.description', {
+          assert.ok(this.toastErrorStub.getCall(0).calledWithExactly(this.intl.t('oss-components.upload-area.errors.filesize.description', {
             max_filesize: '1B'
           }), this.intl.t('oss-components.upload-area.errors.filesize.title')));
+          assert.ok(this.toastErrorStub.getCall(1).calledWithExactly(this.intl.t(`oss-components.upload-area.errors.filetype.description`), this.intl.t(`oss-components.upload-area.errors.filetype.title`)));
+        });
+        (0, _qunit.test)('for filesize rules, it renders the correct local feedback message', async function (assert) {
+          this.validationRules = [{
+            type: 'filesize',
+            value: '1B'
+          }];
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadArea
+                      @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                      @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "5tJ4y9Ce",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [this.file]
+            }
+          });
+          assert.dom('.oss-upload-area').hasClass('oss-upload-area--error');
+          assert.dom(`.oss-upload-area-container .font-color-error-500`).hasText(this.intl.t('oss-components.upload-area.errors.filesize.feedback', {
+            max_filesize: '1B'
+          }));
+        });
+        (0, _qunit.test)('for filetype rules, it renders the correct local feedback message', async function (assert) {
+          this.validationRules = [{
+            type: 'filetype',
+            value: ['pdf']
+          }];
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadArea
+                      @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                      @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "5tJ4y9Ce",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [this.file]
+            }
+          });
+          assert.dom('.oss-upload-area').hasClass('oss-upload-area--error');
+          assert.dom(`.oss-upload-area-container .font-color-error-500`).hasText(this.intl.t('oss-components.upload-area.errors.filetype.feedback'));
+        });
+        (0, _qunit.test)('the local feedback is removed after new upload', async function (assert) {
+          this.validationRules = [{
+            type: 'filetype',
+            value: ['pdf']
+          }];
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::UploadArea
+                    @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                    @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                    @onHandleFileUpload={{this.onHandleFileUpload}} />
+                
+          */
+          {
+            "id": "5cZHev/R",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [file]
+            }
+          });
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [PDFfile]
+            }
+          });
+          await (0, _testHelpers.waitFor)('[data-control-name="upload-item-remove-button"]');
+          await (0, _testHelpers.click)('[data-control-name="upload-item-remove-button"]');
+          assert.dom('.oss-upload-area').doesNotHaveClass('oss-upload-area--error');
+          assert.dom(`.oss-upload-area-container .font-color-error-500`).doesNotExist();
+        });
+        (0, _qunit.test)('the local feedback is removed after new upload in multiple mode', async function (assert) {
+          this.validationRules = [{
+            type: 'filetype',
+            value: ['pdf']
+          }];
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::UploadArea
+                    @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                    @subtitle={{this.subtitle}} @multiple={{true}} @onUploadSuccess={{this.onUploadSuccess}}
+                    @onHandleFileUpload={{this.onHandleFileUpload}} />
+                
+          */
+          {
+            "id": "5FvvBIT4",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@multiple\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],true,[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [file]
+            }
+          });
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [PDFfile]
+            }
+          });
+          assert.dom('.oss-upload-area').doesNotHaveClass('oss-upload-area--error');
+          assert.dom(`.oss-upload-area-container .font-color-error-500`).doesNotExist();
         });
         (0, _qunit.test)('if onDryRun is passed, the uploaded file is passed to it if validated and no upload item is displayed', async function (assert) {
           this.onDryRun = _sinon.default.stub();
@@ -23371,6 +23703,260 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         });
       });
     });
+    (0, _qunit.module)('for @onHandleFileUpload', function (hooks) {
+      hooks.beforeEach(function () {
+        this.onHandleFileUpload = _sinon.default.stub();
+      });
+      (0, _qunit.test)('it is called when a file is dropped', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onHandleFileUpload={{this.onHandleFileUpload}} />
+              
+        */
+        {
+          "id": "5cZHev/R",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        assert.true(this.onHandleFileUpload.calledOnceWithExactly());
+      });
+      (0, _qunit.test)('it is called when a file is selected via the file input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onHandleFileUpload={{this.onHandleFileUpload}} />
+              
+        */
+        {
+          "id": "5cZHev/R",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        const fileInput = document.querySelector('.oss-upload-area-container input[type="file"]');
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        fileInput.files = dataTransfer.files;
+        await (0, _testHelpers.triggerEvent)(fileInput, 'change');
+        assert.true(this.onHandleFileUpload.calledOnceWithExactly());
+      });
+      (0, _qunit.test)('it is called before validation occurs', async function (assert) {
+        this.validationRules = [{
+          type: 'filetype',
+          value: ['pdf']
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onHandleFileUpload={{this.onHandleFileUpload}} />
+              
+        */
+        {
+          "id": "5cZHev/R",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        assert.true(this.onHandleFileUpload.calledOnceWithExactly());
+      });
+      (0, _qunit.test)('it is called in multiple mode for each file upload', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onHandleFileUpload={{this.onHandleFileUpload}} />
+              
+        */
+        {
+          "id": "e/e34qg9",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@multiple\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],true,[30,0,[\"validationRules\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        assert.true(this.onHandleFileUpload.calledTwice);
+      });
+      (0, _qunit.test)('it is not called when component is disabled', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onHandleFileUpload={{this.onHandleFileUpload}} />
+              
+        */
+        {
+          "id": "YX7faxVJ",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\",\"@onHandleFileUpload\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],true,[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onHandleFileUpload\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        assert.true(this.onHandleFileUpload.notCalled);
+      });
+    });
+    (0, _qunit.module)('for @feedbackMessage', function () {
+      (0, _qunit.test)('it does not display feedback message when not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+              
+        */
+        {
+          "id": "wkLUM5pJ",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-upload-area-container .font-color-error-500').doesNotExist();
+        assert.dom('.oss-upload-area-container .font-color-warning-500').doesNotExist();
+        assert.dom('.oss-upload-area-container .font-color-success-500').doesNotExist();
+      });
+      (0, _qunit.test)('it does not display feedback message when value is empty', async function (assert) {
+        this.feedbackMessage = {
+          type: 'error',
+          value: ''
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @feedbackMessage={{this.feedbackMessage}} />
+              
+        */
+        {
+          "id": "TgzGTUIR",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@feedbackMessage\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"feedbackMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-upload-area-container .font-color-error-500').doesNotExist();
+      });
+      _utils.ALLOWED_FEEDBACK_MESSAGE_TYPES.forEach(type => {
+        (0, _qunit.test)(`it displays ${type} feedback message with proper styling`, async function (assert) {
+          this.feedbackMessage = {
+            type,
+            value: `This is an ${type} message`
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <OSS::UploadArea
+                    @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                    @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                    @feedbackMessage={{this.feedbackMessage}} />
+                
+          */
+          {
+            "id": "TgzGTUIR",
+            "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@feedbackMessage\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"feedbackMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-upload-area').hasClass(`oss-upload-area--${type}`);
+          assert.dom(`.oss-upload-area-container .font-color-${type}-500`).hasText(`This is an ${type} message`);
+        });
+        (0, _qunit.test)('after internal error, the correct feedback message takes precedence over this one', async function (assert) {
+          this.feedbackMessage = {
+            type,
+            value: `This is an ${type} message`
+          };
+          this.validationRules = [{
+            type: 'filetype',
+            value: ['pdf']
+          }];
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadArea
+                      @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                      @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                      @feedbackMessage={{this.feedbackMessage}} />
+                  
+          */
+          {
+            "id": "4k68TrD2",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@feedbackMessage\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"feedbackMessage\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+            dataTransfer: {
+              files: [this.file]
+            }
+          });
+          assert.dom('.oss-upload-area').hasClass(`oss-upload-area--${type}`);
+          assert.dom(`.oss-upload-area-container .font-color-${type}-500`).hasText(`This is an ${type} message`);
+        });
+      });
+      (0, _qunit.test)('it does not apply type class when feedback message type is invalid', async function (assert) {
+        this.feedbackMessage = {
+          type: 'invalid',
+          value: 'Some message'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @feedbackMessage={{this.feedbackMessage}} />
+              
+        */
+        {
+          "id": "TgzGTUIR",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@feedbackMessage\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"feedbackMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--invalid');
+        assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--error');
+        assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--warning');
+        assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--success');
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@upfluence/oss-components/test-support/services/uploader", "@upfluence/oss-components/types/uploader", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _uploader, _uploader2, _templateFactory) {
@@ -23501,29 +24087,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('[data-control-name="upload-item-filesize]').doesNotExist();
-      });
-      (0, _qunit.test)('clicking the view button opens the file url', async function (assert) {
-        const windowOpenStub = _sinon.default.stub(window, 'open');
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          
-                <OSS::UploadItem
-                  @uploader={{this.uploader}} @file={{this.file}}
-                  @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-                  @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-                  @onUploadSuccess={{this.onUploadSuccess}} />
-              
-        */
-        {
-          "id": "M0ZtCxHJ",
-          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-item\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
-          "isStrictMode": false
-        }));
-        await (0, _testHelpers.click)('[data-control-name="upload-item-view-button"]');
-        assert.ok(windowOpenStub.calledOnceWithExactly(this.file.url, '_blank'));
-        windowOpenStub.restore();
+        assert.dom('[data-control-name="upload-item-filesize"]').doesNotExist();
       });
     });
     (0, _qunit.module)('provided file is a native File object', function (hooks) {
@@ -23672,45 +24236,130 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
       });
     });
     (0, _qunit.module)('common actions', function () {
-      (0, _qunit.test)('clicking the edit button triggers the onEdition action', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          
-                <OSS::UploadItem
-                  @uploader={{this.uploader}} @file={{this.file}}
-                  @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-                  @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-                  @onUploadSuccess={{this.onUploadSuccess}} />
-              
-        */
-        {
-          "id": "M0ZtCxHJ",
-          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-item\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
-          "isStrictMode": false
-        }));
-        await (0, _testHelpers.click)('[data-control-name="upload-item-edit-button"]');
-        assert.ok(this.onEdition.calledOnce);
+      (0, _qunit.module)('for edition button', () => {
+        (0, _qunit.test)('clicking on it triggers the onEdition action', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadItem
+                      @uploader={{this.uploader}} @file={{this.file}}
+                      @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+                      @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+                      @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "i1WjPun3",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('[data-control-name="upload-item-edit-button"]');
+          assert.ok(this.onEdition.calledOnce);
+        });
+        (0, _qunit.test)('it renders the correct tooltip', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadItem
+                      @uploader={{this.uploader}} @file={{this.file}}
+                      @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+                      @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+                      @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "i1WjPun3",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('[data-control-name="upload-item-edit-button"]').hasTitle(this.intl.t('oss-components.upload-area.tooltips.edit'));
+        });
       });
-      (0, _qunit.test)('clicking the remove button triggers the onDeletion action', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          
-                <OSS::UploadItem
-                  @uploader={{this.uploader}} @file={{this.file}}
-                  @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-                  @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-                  @onUploadSuccess={{this.onUploadSuccess}} />
-              
-        */
-        {
-          "id": "M0ZtCxHJ",
-          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-item\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
-          "isStrictMode": false
-        }));
-        await (0, _testHelpers.click)('[data-control-name="upload-item-remove-button"]');
-        assert.ok(this.onFileDeletion.calledOnce);
+      (0, _qunit.module)('for view button', () => {
+        (0, _qunit.test)('clicking on it opens the file url', async function (assert) {
+          const windowOpenStub = _sinon.default.stub(window, 'open');
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadItem
+                      @uploader={{this.uploader}} @file={{this.file}}
+                      @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+                      @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+                      @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "i1WjPun3",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('[data-control-name="upload-item-view-button"]');
+          assert.ok(windowOpenStub.calledOnceWithExactly(this.file.url, '_blank'));
+          windowOpenStub.restore();
+        });
+        (0, _qunit.test)('it renders the correct tooltip', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadItem
+                      @uploader={{this.uploader}} @file={{this.file}}
+                      @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+                      @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+                      @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "i1WjPun3",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('[data-control-name="upload-item-view-button"]').hasTitle(this.intl.t('oss-components.upload-area.tooltips.view'));
+        });
+      });
+      (0, _qunit.module)('for delete button', () => {
+        (0, _qunit.test)('clicking on it triggers the onDeletion action', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadItem
+                      @uploader={{this.uploader}} @file={{this.file}}
+                      @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+                      @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+                      @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "i1WjPun3",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('[data-control-name="upload-item-remove-button"]');
+          assert.ok(this.onFileDeletion.calledOnce);
+        });
+        (0, _qunit.test)('it renders the correct tooltip', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::UploadItem
+                      @uploader={{this.uploader}} @file={{this.file}}
+                      @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+                      @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+                      @onUploadSuccess={{this.onUploadSuccess}} />
+                  
+          */
+          {
+            "id": "i1WjPun3",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"validationRules\"]],[30,0,[\"scope\"]],[30,0,[\"privacy\"]],[30,0,[\"onEdition\"]],[30,0,[\"onFileDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-item-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('[data-control-name="upload-item-remove-button"]').hasTitle(this.intl.t('oss-components.upload-area.tooltips.delete'));
+        });
       });
     });
   });

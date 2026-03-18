@@ -82653,14 +82653,14 @@ require('@ember/-internals/bootstrap')
   _exports.default = OSSBadge;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSBadge);
 });
-;define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/component", "@ember/utils", "@glimmer/component", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_exports, _component, _utils, _component2, _inputContainer, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/component", "@ember/utils", "@glimmer/component", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _utils, _component2, _utils2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/utils",0,"@glimmer/component",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/utils",0,"@glimmer/component",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 {{this.modifierClasses}}" ...attributes>
@@ -82725,7 +82725,7 @@ require('@ember/-internals/bootstrap')
       return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
     }
     get feedbackMessage() {
-      if (this.args.feedbackMessage && _inputContainer.FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
+      if (this.args.feedbackMessage && _utils2.ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.args.feedbackMessage.type)) {
         return this.args.feedbackMessage;
       }
       return undefined;
@@ -84180,7 +84180,7 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "copy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copy"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCopy);
 });
-;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@ember/object", "@glimmer/tracking", "@ember/debug", "@ember/service", "@ember/utils", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@ember/template-factory"], function (_exports, _component, _object, _tracking, _debug, _service, _utils, _baseDropdown, _runloop, _attachDropdown, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@ember/object", "@ember/debug", "@ember/service", "@ember/utils", "@ember/runloop", "@glimmer/tracking", "@upfluence/oss-components/utils", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _object, _debug, _service, _utils, _runloop, _tracking, _utils2, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -84188,7 +84188,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/service",0,"@ember/utils",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/debug",0,"@ember/service",0,"@ember/utils",0,"@ember/runloop",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -84199,7 +84199,7 @@ require('@ember/-internals/bootstrap')
   /*
     <div
     id={{this.elementId}}
-    class="country-selector-container fx-1"
+    class={{this.computedClasses}}
     data-toggle="oss-dropdown"
     {{did-insert this.registerContainer}}
     {{will-destroy this.disconnectObserver}}
@@ -84250,11 +84250,20 @@ require('@ember/-internals/bootstrap')
         </OSS::InfiniteSelect>
       {{/in-element}}
     {{/if}}
+  
+    {{#if this.feedbackMessage.value}}
+      <span
+        class={{concat "fx-row font-color-" this.feedbackMessage.type "-500 padding-top-px-6"}}
+        data-control-name="country-selector-feedback-message"
+      >
+        {{this.feedbackMessage.value}}
+      </span>
+    {{/if}}
   </div>
   */
   {
-    "id": "0ku79FEa",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[24,0,\"country-selector-container fx-1\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,3],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,3],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,5],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,8],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,9],[\"margin-top-px-0 country-selector-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,11],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,10],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,12],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"              \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,12],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"              \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n              \"],[8,[39,5],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[2]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,7],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"item\"],false,[\"did-insert\",\"will-destroy\",\"if\",\"on\",\"unless\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "RSD50h7v",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,0,[30,0,[\"computedClasses\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,3],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,3],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,5],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,8],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,9],[\"margin-top-px-0 country-selector-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,11],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,10],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,12],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"              \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,12],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"              \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n              \"],[8,[39,5],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[2]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,7],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,0,[\"feedbackMessage\",\"value\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,9],[\"fx-row font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500 padding-top-px-6\"],null]],[14,\"data-control-name\",\"country-selector-feedback-message\"],[12],[1,\"\\n      \"],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"item\"],false,[\"did-insert\",\"will-destroy\",\"if\",\"on\",\"unless\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/country-selector.hbs",
     "isStrictMode": false
   });
@@ -84270,6 +84279,16 @@ require('@ember/-internals/bootstrap')
       if (!(0, _utils.isEmpty)(this.args.value)) {
         (0, _runloop.scheduleOnce)('afterRender', this, this._matchValueWithSourceList);
       }
+    }
+    get computedClasses() {
+      const classes = ['country-selector-container', 'fx-1'];
+      if (this.feedbackMessage?.type && _utils2.ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.feedbackMessage.type)) {
+        classes.push(`country-selector-container--${this.feedbackMessage?.type}`);
+      }
+      return classes.join(' ');
+    }
+    get feedbackMessage() {
+      return this.args.feedbackMessage;
     }
     get isCountry() {
       return this.args.sourceList[0]?.id !== undefined;
@@ -84752,13 +84771,17 @@ require('@ember/-internals/bootstrap')
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <OSS::InputContainer
-    @value={{@value}} @placeholder={{this.placeholder}} @errorMessage={{this.errorMessage}}
-    @onChange={{this.validateInput}} ...attributes />
-  
+    @value={{@value}}
+    @placeholder={{this.placeholder}}
+    @errorMessage={{this.errorMessage}}
+    @feedbackMessage={{@feedbackMessage}}
+    @onChange={{this.validateInput}}
+    ...attributes
+  />
   */
   {
-    "id": "gdCcpUeL",
-    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@placeholder\",\"@errorMessage\",\"@onChange\"],[[30,2],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,0,[\"validateInput\"]]]],null],[1,\"\\n\"]],[\"&attrs\",\"@value\"],false,[\"o-s-s/input-container\"]]",
+    "id": "HszlWj0/",
+    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@placeholder\",\"@errorMessage\",\"@feedbackMessage\",\"@onChange\"],[[30,2],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,3],[30,0,[\"validateInput\"]]]],null]],[\"&attrs\",\"@value\",\"@feedbackMessage\"],false,[\"o-s-s/input-container\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/email-input.hbs",
     "isStrictMode": false
   });
@@ -85821,15 +85844,15 @@ require('@ember/-internals/bootstrap')
   _exports.default = OSSInformationSection;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInformationSection);
 });
-;define("@upfluence/oss-components/components/o-s-s/input-container", ["exports", "@ember/component", "@ember/object", "@ember/runloop", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _runloop, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/input-container", ["exports", "@ember/component", "@ember/object", "@ember/runloop", "@glimmer/component", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _object, _runloop, _component2, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.FEEDBACK_TYPES = _exports.AutocompleteValues = void 0;
+  _exports.default = _exports.AutocompleteValues = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/runloop",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/runloop",0,"@glimmer/component",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
@@ -85868,7 +85891,7 @@ require('@ember/-internals/bootstrap')
     </div>
     {{#if @errorMessage}}
       <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
-    {{else if this.feedbackMessage}}
+    {{else if this.feedbackMessage.value}}
       <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
         {{#unless (eq this.feedbackMessage.type "error")}}
           <OSS::Icon @icon={{this.messageIcon}} />
@@ -85879,16 +85902,15 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "cmcyL9QB",
-    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[30,0,[\"containerClass\"]],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[16,\"autocomplete\",[30,0,[\"autocomplete\"]]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null],[4,[38,4],[\"paste\",[30,0,[\"onPaste\"]]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,6],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,8],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,9],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
+    "id": "pAmcI7Ap",
+    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[30,0,[\"containerClass\"]],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[16,\"autocomplete\",[30,0,[\"autocomplete\"]]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null],[4,[38,4],[\"paste\",[30,0,[\"onPaste\"]]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\",\"value\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,6],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,8],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,9],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-container.hbs",
     "isStrictMode": false
   });
-  const FEEDBACK_TYPES = _exports.FEEDBACK_TYPES = ['error', 'warning', 'success'];
   const AutocompleteValues = _exports.AutocompleteValues = ['on', 'off'];
   let OSSInputContainer = _exports.default = (_class = class OSSInputContainer extends _component2.default {
     get feedbackMessage() {
-      if (this.args.feedbackMessage && FEEDBACK_TYPES.includes(this.args.feedbackMessage.type)) {
+      if (this.args.feedbackMessage && _utils.ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.args.feedbackMessage.type)) {
         return this.args.feedbackMessage;
       }
       return undefined;
@@ -91282,15 +91304,15 @@ require('@ember/-internals/bootstrap')
   }, (_applyDecoratedDescriptor(_class.prototype, "switchState", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "switchState"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSToggleSwitchComponent);
 });
-;define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@upfluence/oss-components/types/uploader", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _service, _uploader, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@upfluence/oss-components/types/uploader", "@ember/utils", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _service, _uploader, _utils, _utils2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@upfluence/oss-components/types/uploader",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@upfluence/oss-components/types/uploader",0,"@ember/utils",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -91310,7 +91332,7 @@ require('@ember/-internals/bootstrap')
         {{on "click" this.triggerFileBrowser}}
         {{on "mouseenter" this._mouseEnter}}
         {{on "mouseleave" this._mouseLeave}}
-        {{did-insert this.init}}
+        {{did-insert this.onInit}}
         ...attributes
       >
         <div class="fx-gap-px-18 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
@@ -91371,11 +91393,16 @@ require('@ember/-internals/bootstrap')
     {{/if}}
   
     <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
+    {{#if this.feedbackMessage.value}}
+      <span class={{concat "fx-row font-color-" this.feedbackMessage.type "-500 padding-top-px-6"}}>
+        {{this.feedbackMessage.value}}
+      </span>
+    {{/if}}
   </div>
   */
   {
-    "id": "JrenuXnU",
-    "block": "[[[10,0],[14,0,\"oss-upload-area-container fx-1\"],[12],[1,\"\\n\"],[41,[30,0,[\"displayUploadArea\"]],[[[1,\"    \"],[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,1],[\"dragover\",[30,0,[\"_allowDropEvent\"]]],null],[4,[38,1],[\"dragenter\",[30,0,[\"_onDragEnter\"]]],null],[4,[38,1],[\"dragleave\",[30,0,[\"_onDragLeave\"]]],null],[4,[38,1],[\"drop\",[30,0,[\"_onDrop\"]]],null],[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"_mouseEnter\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"_mouseLeave\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fx-gap-px-18 fx-xalign-center \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-col\",\"fx-row fx-1\"]]]],[12],[1,\"\\n        \"],[10,0],[15,0,[30,0,[\"computedClassIllustration\"]]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/disabled-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[14,\"alt\",\"Upload area - disabled\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/default-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[14,\"alt\",\"Upload area\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-3 \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-xalign-center\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[52,[30,2],\"font-color-gray-500\",\"font-color-gray-900\"]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"              \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.disabled\"],null]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.default\"],null]],[1,\"\\n              \"],[8,[39,7],[[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null]],[[\"@label\"],[[28,[37,6],[\"oss-components.upload-area.browse\"],null]]],null],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n              \"],[1,[30,3]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"selectedFiles\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-6 \",[52,[30,0,[\"multiple\"]],\"margin-top-px-12\"]]]],[12],[1,\"\\n\"],[42,[28,[37,9],[[28,[37,9],[[30,0,[\"selectedFiles\"]]],null]],null],null,[[[1,\"        \"],[8,[39,10],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\",\"@onUploadFailure\",\"@displayPreview\"],[[30,6],[30,4],[30,7],[30,0,[\"scope\"]],[30,0,[\"filePrivacy\"]],[28,[37,11],[[30,0,[\"onFileEdition\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onFileDeletion\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadSuccess\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadFailure\"]],[30,5]],null],[30,8]]],null],[1,\"\\n\"]],[4,5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[11,\"input\"],[24,4,\"file\"],[4,[38,1],[\"change\",[30,0,[\"onFileSelected\"]]],null],[4,[38,2],[[30,0,[\"assignFileInput\"]]],null],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@disabled\",\"@subtitle\",\"selectedFile\",\"index\",\"@uploader\",\"@rules\",\"@displayPreview\"],false,[\"if\",\"on\",\"did-insert\",\"eq\",\"asset-map\",\"concat\",\"t\",\"o-s-s/link\",\"each\",\"-track-array\",\"o-s-s/upload-item\",\"fn\"]]",
+    "id": "TEMahQC3",
+    "block": "[[[10,0],[14,0,\"oss-upload-area-container fx-1\"],[12],[1,\"\\n\"],[41,[30,0,[\"displayUploadArea\"]],[[[1,\"    \"],[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,1],[\"dragover\",[30,0,[\"_allowDropEvent\"]]],null],[4,[38,1],[\"dragenter\",[30,0,[\"_onDragEnter\"]]],null],[4,[38,1],[\"dragleave\",[30,0,[\"_onDragLeave\"]]],null],[4,[38,1],[\"drop\",[30,0,[\"_onDrop\"]]],null],[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"_mouseEnter\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"_mouseLeave\"]]],null],[4,[38,2],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fx-gap-px-18 fx-xalign-center \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-col\",\"fx-row fx-1\"]]]],[12],[1,\"\\n        \"],[10,0],[15,0,[30,0,[\"computedClassIllustration\"]]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/disabled-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[14,\"alt\",\"Upload area - disabled\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/default-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[14,\"alt\",\"Upload area\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-3 \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-xalign-center\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[52,[30,2],\"font-color-gray-500\",\"font-color-gray-900\"]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"              \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.disabled\"],null]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.default\"],null]],[1,\"\\n              \"],[8,[39,7],[[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null]],[[\"@label\"],[[28,[37,6],[\"oss-components.upload-area.browse\"],null]]],null],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n              \"],[1,[30,3]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"selectedFiles\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-6 \",[52,[30,0,[\"multiple\"]],\"margin-top-px-12\"]]]],[12],[1,\"\\n\"],[42,[28,[37,9],[[28,[37,9],[[30,0,[\"selectedFiles\"]]],null]],null],null,[[[1,\"        \"],[8,[39,10],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\",\"@onUploadFailure\",\"@displayPreview\"],[[30,6],[30,4],[30,7],[30,0,[\"scope\"]],[30,0,[\"filePrivacy\"]],[28,[37,11],[[30,0,[\"onFileEdition\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onFileDeletion\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadSuccess\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadFailure\"]],[30,5]],null],[30,8]]],null],[1,\"\\n\"]],[4,5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[11,\"input\"],[24,4,\"file\"],[4,[38,1],[\"change\",[30,0,[\"onFileSelected\"]]],null],[4,[38,2],[[30,0,[\"assignFileInput\"]]],null],[12],[13],[1,\"\\n\"],[41,[30,0,[\"feedbackMessage\",\"value\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,5],[\"fx-row font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500 padding-top-px-6\"],null]],[12],[1,\"\\n      \"],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@disabled\",\"@subtitle\",\"selectedFile\",\"index\",\"@uploader\",\"@rules\",\"@displayPreview\"],false,[\"if\",\"on\",\"did-insert\",\"eq\",\"asset-map\",\"concat\",\"t\",\"o-s-s/link\",\"each\",\"-track-array\",\"o-s-s/upload-item\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/upload-area.hbs",
     "isStrictMode": false
   });
@@ -91390,6 +91417,7 @@ require('@ember/-internals/bootstrap')
       _initializerDefineProperty(this, "dragging", _descriptor4, this);
       _initializerDefineProperty(this, "hover", _descriptor5, this);
       _initializerDefineProperty(this, "alreadyTriggerAnimation", _descriptor6, this);
+      _initializerDefineProperty(this, "localFeedbackMessage", _descriptor7, this);
       (true && !(args.uploader) && (0, _debug.assert)('[OSS::UploadArea] The uploader argument is mandatory', args.uploader));
       if (args.artifact) {
         this.selectedFiles = [args.artifact];
@@ -91400,6 +91428,9 @@ require('@ember/-internals/bootstrap')
       classes.push(`oss-upload-area--${this.size}`);
       if (this.args.disabled) {
         classes.push('oss-upload-area--disabled');
+      }
+      if (this.feedbackMessage?.type && _utils2.ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.feedbackMessage.type)) {
+        classes.push(`oss-upload-area--${this.feedbackMessage?.type}`);
       }
       if (this.dragging) {
         classes.push('oss-upload-area--dragging');
@@ -91431,7 +91462,13 @@ require('@ember/-internals/bootstrap')
     get displayUploadArea() {
       return this.multiple || this.selectedFiles.length === 0;
     }
-    init(element) {
+    get hasFeedbackMessageValue() {
+      return !(0, _utils.isBlank)(this.args.feedbackMessage?.value);
+    }
+    get feedbackMessage() {
+      return this.args.feedbackMessage ?? this.localFeedbackMessage;
+    }
+    onInit(element) {
       this._DOMElement = element;
     }
     assignFileInput(element) {
@@ -91487,7 +91524,7 @@ require('@ember/-internals/bootstrap')
       event?.stopPropagation();
       if (this.multiple) {
         this.selectedFiles.splice(index, 1);
-        this.selectedFiles = this.selectedFiles;
+        this.selectedFiles = [...this.selectedFiles];
         this.args.onFileDeletion?.(index);
       } else {
         this.selectedFiles = [];
@@ -91509,7 +91546,9 @@ require('@ember/-internals/bootstrap')
       }
     }
     _handleFileUpload(file) {
+      if (this.args.disabled) return;
       this.args.onHandleFileUpload?.();
+      this.localFeedbackMessage = undefined;
       if (this._validateFile(file)) {
         if (this.args.onDryRun) {
           this.args.onDryRun(file);
@@ -91517,7 +91556,7 @@ require('@ember/-internals/bootstrap')
         }
         if (this.editingFileIndex !== undefined) {
           this.selectedFiles[this.editingFileIndex] = file;
-          this.selectedFiles = this.selectedFiles;
+          this.selectedFiles = [...this.selectedFiles];
           this.editingFileIndex = undefined;
         } else {
           this.selectedFiles = [...this.selectedFiles, ...[file]];
@@ -91539,6 +91578,10 @@ require('@ember/-internals/bootstrap')
         if (v.rule.type === 'filesize') {
           intlArgs.max_filesize = v.rule.value;
         }
+        this.localFeedbackMessage = {
+          type: 'error',
+          value: this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.feedback`, intlArgs)
+        };
         this.toast.error(this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.description`, intlArgs), this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.title`));
       });
       this.args.onVerificationFailure?.();
@@ -91582,7 +91625,12 @@ require('@ember/-internals/bootstrap')
     initializer: function () {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "init", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "init"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "assignFileInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "assignFileInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerFileBrowser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerFileBrowser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileSelected"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileEdition", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileEdition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_allowDropEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_allowDropEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDrop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDrop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileDeletion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileDeletion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype)), _class);
+  }), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, "localFeedbackMessage", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "assignFileInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "assignFileInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerFileBrowser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerFileBrowser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileSelected"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileEdition", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileEdition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_allowDropEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_allowDropEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDrop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDrop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileDeletion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileDeletion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSUploadArea);
 });
 ;define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@upfluence/oss-components/utils/filesize-parser", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _filesizeParser, _templateFactory) {
@@ -91604,8 +91652,7 @@ require('@ember/-internals/bootstrap')
   /*
     <div class="oss-upload-item {{if this.error 'oss-upload-item--errored'}}">
     {{#if this.shouldDisplayPreview}}
-      <div class="upf-badge upf-badge--shape-round upf-badge--size-md"
-           style={{this.dynamicBackgroundImage}}></div>
+      <div class="upf-badge upf-badge--shape-round upf-badge--size-md" style={{this.dynamicBackgroundImage}}></div>
     {{else}}
       <OSS::Badge @icon={{this.icon}} />
     {{/if}}
@@ -91635,37 +91682,47 @@ require('@ember/-internals/bootstrap')
           </div>
         {{else}}
           {{#if this.error}}
-            <span class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center" role="button"
-                  data-control-name="upload-item-try-again-button" {{on "click" this.performUpload}}>
-              <OSS::Icon @icon="fa-redo" /> {{t "oss-components.upload-area.errors.try_again"}}
+            <span
+              class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center"
+              role="button"
+              data-control-name="upload-item-try-again-button"
+              {{on "click" this.performUpload}}
+            >
+              <OSS::Icon @icon="fa-redo" />
+              {{t "oss-components.upload-area.errors.try_again"}}
             </span>
           {{else}}
             <OSS::Button
               @icon="far fa-pen"
               @square={{true}}
               data-control-name="upload-item-edit-button"
-              {{on "click" @onEdition}} />
+              {{on "click" @onEdition}}
+              {{enable-tooltip title=(t "oss-components.upload-area.tooltips.edit") placement="top"}}
+            />
             <OSS::Button
               @icon="far fa-eye"
               @square={{true}}
               data-control-name="upload-item-view-button"
-              {{on "click" (redirect-to url=this.fileUrl target="_blank")}} />
+              {{on "click" (redirect-to url=this.fileUrl target="_blank")}}
+              {{enable-tooltip title=(t "oss-components.upload-area.tooltips.view")}}
+            />
           {{/if}}
   
           <OSS::Button
             @icon="far fa-trash"
             @square={{true}}
             data-control-name="upload-item-remove-button"
-            {{on "click" @onDeletion}} />
+            {{on "click" @onDeletion}}
+            {{enable-tooltip title=(t "oss-components.upload-area.tooltips.delete") placement="top"}}
+          />
         {{/if}}
       </div>
     </div>
   </div>
-  
   */
   {
-    "id": "YI1HSBHh",
-    "block": "[[[10,0],[15,0,[29,[\"oss-upload-item \",[52,[30,0,[\"error\"]],\"oss-upload-item--errored\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"shouldDisplayPreview\"]],[[[1,\"    \"],[10,0],[14,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"],[15,5,[30,0,[\"dynamicBackgroundImage\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-900 text-ellipsis padding-right-px-12\"],[14,\"data-control-name\",\"upload-item-filename\"],[12],[1,\"\\n        \"],[1,[30,0,[\"filename\"]]],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[28,[35,2],[\"oss-components.upload-area.errors.server\"],null]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"filesize\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-gray-500\"],[14,\"data-control-name\",\"upload-item-filesize\"],[12],[1,\"\\n          \"],[1,[30,0,[\"filesize\"]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,0,[\"uploading\"]],[[[1,\"        \"],[10,0],[14,0,\"oss-upload-item__loader\"],[22,5,[30,0,[\"loaderStyle\"]]],[12],[1,\"\\n          \"],[10,0],[14,0,\"value\"],[12],[1,\"\\n            \"],[1,[30,0,[\"uploadProgress\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"error\"]],[[[1,\"          \"],[11,1],[24,0,\"fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"upload-item-try-again-button\"],[4,[38,3],[\"click\",[30,0,[\"performUpload\"]]],null],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@icon\"],[\"fa-redo\"]],null],[1,\" \"],[1,[28,[35,2],[\"oss-components.upload-area.errors.try_again\"],null]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-edit-button\"],[4,[38,3],[\"click\",[30,1]],null]],[[\"@icon\",\"@square\"],[\"far fa-pen\",true]],null],[1,\"\\n          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-view-button\"],[4,[38,3],[\"click\",[28,[37,6],null,[[\"url\",\"target\"],[[30,0,[\"fileUrl\"]],\"_blank\"]]]],null]],[[\"@icon\",\"@square\"],[\"far fa-eye\",true]],null],[1,\"\\n\"]],[]]],[1,\"\\n        \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-remove-button\"],[4,[38,3],[\"click\",[30,2]],null]],[[\"@icon\",\"@square\"],[\"far fa-trash\",true]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@onEdition\",\"@onDeletion\"],false,[\"if\",\"o-s-s/badge\",\"t\",\"on\",\"o-s-s/icon\",\"o-s-s/button\",\"redirect-to\"]]",
+    "id": "vpSxBY6U",
+    "block": "[[[10,0],[15,0,[29,[\"oss-upload-item \",[52,[30,0,[\"error\"]],\"oss-upload-item--errored\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"shouldDisplayPreview\"]],[[[1,\"    \"],[10,0],[14,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"],[15,5,[30,0,[\"dynamicBackgroundImage\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-900 text-ellipsis padding-right-px-12\"],[14,\"data-control-name\",\"upload-item-filename\"],[12],[1,\"\\n        \"],[1,[30,0,[\"filename\"]]],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[28,[35,2],[\"oss-components.upload-area.errors.server\"],null]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"filesize\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-gray-500\"],[14,\"data-control-name\",\"upload-item-filesize\"],[12],[1,\"\\n          \"],[1,[30,0,[\"filesize\"]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,0,[\"uploading\"]],[[[1,\"        \"],[10,0],[14,0,\"oss-upload-item__loader\"],[22,5,[30,0,[\"loaderStyle\"]]],[12],[1,\"\\n          \"],[10,0],[14,0,\"value\"],[12],[1,\"\\n            \"],[1,[30,0,[\"uploadProgress\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"error\"]],[[[1,\"          \"],[11,1],[24,0,\"fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"upload-item-try-again-button\"],[4,[38,3],[\"click\",[30,0,[\"performUpload\"]]],null],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@icon\"],[\"fa-redo\"]],null],[1,\"\\n            \"],[1,[28,[35,2],[\"oss-components.upload-area.errors.try_again\"],null]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-edit-button\"],[4,[38,3],[\"click\",[30,1]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.edit\"],null],\"top\"]]]],[[\"@icon\",\"@square\"],[\"far fa-pen\",true]],null],[1,\"\\n          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-view-button\"],[4,[38,3],[\"click\",[28,[37,7],null,[[\"url\",\"target\"],[[30,0,[\"fileUrl\"]],\"_blank\"]]]],null],[4,[38,6],null,[[\"title\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.view\"],null]]]]],[[\"@icon\",\"@square\"],[\"far fa-eye\",true]],null],[1,\"\\n\"]],[]]],[1,\"\\n        \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-remove-button\"],[4,[38,3],[\"click\",[30,2]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.delete\"],null],\"top\"]]]],[[\"@icon\",\"@square\"],[\"far fa-trash\",true]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@onEdition\",\"@onDeletion\"],false,[\"if\",\"o-s-s/badge\",\"t\",\"on\",\"o-s-s/icon\",\"o-s-s/button\",\"enable-tooltip\",\"redirect-to\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/upload-item.hbs",
     "isStrictMode": false
   });
@@ -93624,6 +93681,14 @@ require('@ember/-internals/bootstrap')
       return false;
     }
   })), _class);
+});
+;define("@upfluence/oss-components/types", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
 });
 ;define("@upfluence/oss-components/types/uploader", ["exports"], function (_exports) {
   "use strict";
@@ -98944,12 +99009,14 @@ require('@ember/-internals/bootstrap')
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
+  _exports.ALLOWED_FEEDBACK_MESSAGE_TYPES = void 0;
   _exports.isSafeString = isSafeString;
   0; //eaimeta@70e063a35619d71f0,"@ember/template"eaimeta@70e063a35619d71f
   function isSafeString(arg) {
     if (!arg) return false;
     return arg.constructor && arg.constructor.name === 'SafeString' || (0, _template.isHTMLSafe)(arg);
   }
+  const ALLOWED_FEEDBACK_MESSAGE_TYPES = _exports.ALLOWED_FEEDBACK_MESSAGE_TYPES = ['error', 'warning', 'success'];
 });
 ;define("@upfluence/oss-components/utils/keyboard", ["exports"], function (_exports) {
   "use strict";
@@ -100849,14 +100916,21 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
         "errors": {
           "filesize": {
             "description": "The maximum file size is {max_filesize}",
+            "feedback": "Invalid size. The maximum file size is {max_filesize}.",
             "title": "File size too large"
           },
           "filetype": {
             "description": "The uploaded file format is not allowed",
+            "feedback": "Invalid format. Please upload a correctly formatted file.",
             "title": "Unsupported format"
           },
           "server": "Upload failed, please try again",
           "try_again": "Try again"
+        },
+        "tooltips": {
+          "delete": "Delete",
+          "edit": "Edit",
+          "view": "View"
         }
       },
       "url-input": {
