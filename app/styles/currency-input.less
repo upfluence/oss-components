@@ -46,6 +46,7 @@
       margin-right: 0;
       width: 100%;
       background-color: transparent;
+      color: var(--color-gray-900);
     }
 
     &.currency-input--active {
@@ -160,10 +161,15 @@
     margin-top: var(--spacing-px-6);
     max-width: 100%;
     min-width: 150px;
-    padding: var(--spacing-px-12);
+    padding: var(--spacing-px-6);
 
     .upf-infinite-select__item {
-      padding: var(--spacing-px-6) 0;
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
     }
 
     .row-selected span {
@@ -172,7 +178,6 @@
   }
 
   .symbol {
-    .font-weight-semibold;
     width: 22px;
   }
 }

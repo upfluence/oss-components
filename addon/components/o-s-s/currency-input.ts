@@ -22,6 +22,9 @@ export interface OSSCurrencyInputArgs {
   feedbackMessage?: FeedbackMessage;
   allowedCurrencies?: Currency[];
   allowFloatValues?: boolean;
+  options?: {
+    allowSearch?: boolean;
+  };
 }
 
 const NUMERIC_ONLY = /^\d$/i;
@@ -117,6 +120,10 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
 
   get disabled(): boolean {
     return this.args.disabled ?? false;
+  }
+
+  get enabledSearch(): boolean {
+    return this.args.options?.allowSearch ?? true;
   }
 
   get computedClasses(): string {

@@ -113,6 +113,16 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'boolean' }
+    },
+    options: {
+      description: 'Configuration object for additional component options.',
+      table: {
+        type: {
+          summary: '{ allowSearch?: boolean }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
     }
   },
   parameters: {
@@ -140,7 +150,10 @@ const defaultArgs = {
   allowCurrencyUpdate: true,
   allowedCurrencies: undefined,
   placeholder: undefined,
-  allowFloatValues: undefined
+  allowFloatValues: undefined,
+  options: {
+    allowSearch: true
+  }
 };
 
 const Template = (args) => ({
@@ -149,7 +162,7 @@ const Template = (args) => ({
         <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
                             @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
                             @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
-                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} @allowFloatValues={{this.allowFloatValues}} />
+                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} @allowFloatValues={{this.allowFloatValues}} @options={{this.options}} />
       </div>
   `,
   context: args

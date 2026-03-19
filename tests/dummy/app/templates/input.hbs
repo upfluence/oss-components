@@ -743,6 +743,8 @@
           @onChange={{this.onCurrencyInputChange}}
           @allowedCurrencies={{this.allowedCurrencies}}
         />
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
         <OSS::CurrencyInput
           @currency={{this.currency}}
           @value={{this.currencyValue}}
@@ -754,6 +756,12 @@
           @onChange={{this.onCurrencyOnlyChange}}
           @onlyCurrency={{true}}
           @allowedCurrencies={{this.allowedCurrencies}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currencyOnly}}
+          @onChange={{this.onCurrencyOnlyChange}}
+          @onlyCurrency={{true}}
+          @options={{hash allowSearch=false}}
         />
       </div>
       <div class="fx-row fx-gap-px-24 fx-xalign-start">
