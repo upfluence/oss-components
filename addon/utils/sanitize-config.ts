@@ -23,5 +23,6 @@ DOMPurify.addHook('afterSanitizeAttributes', (node: Element) => {
  */
 export const RICH_TEXT_SVG_CONFIG: DOMPurify.Config = {
   ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms):|[^a-z]|[a-z+.\-]+(?:[^a-z+.-:]|$))/i,
-  USE_PROFILES: { html: true, svg: false, mathMl: false }
+  USE_PROFILES: { html: true, svg: false, mathMl: false },
+  ADD_ATTR: ['target']
 };
