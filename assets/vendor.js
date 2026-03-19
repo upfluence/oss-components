@@ -99104,7 +99104,8 @@ require('@ember/-internals/bootstrap')
       html: true,
       svg: false,
       mathMl: false
-    }
+    },
+    ADD_ATTR: ['target']
   };
 });
 ;define("@upfluence/oss-components/utils/upf-local-storage", ["exports", "@ember/debug"], function (_exports, _debug) {
