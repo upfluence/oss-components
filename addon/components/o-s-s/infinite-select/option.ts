@@ -33,7 +33,7 @@ interface OSSInfiniteSelectOptionComponentSignature {
     selectionType?: 'multiple' | 'single';
     selected?: boolean;
     disabled?: boolean;
-    onSelect(value: boolean): void;
+    onSelect(value: boolean, event?: PointerEvent): void;
   };
 
   Blocks: {
@@ -93,6 +93,6 @@ export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfin
     event?.stopPropagation();
 
     if (this.args.disabled) return;
-    this.args.onSelect(value);
+    this.args.onSelect(value, event);
   }
 }
