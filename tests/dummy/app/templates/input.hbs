@@ -760,8 +760,9 @@
         <OSS::CurrencyInput
           @currency={{this.currencyOnly}}
           @onChange={{this.onCurrencyOnlyChange}}
+          @placeholder="Select a currency"
           @onlyCurrency={{true}}
-          @options={{hash allowSearch=false}}
+          @options={{hash allowSearch=false allowEmpty=true}}
         />
       </div>
       <div class="fx-row fx-gap-px-24 fx-xalign-start">
