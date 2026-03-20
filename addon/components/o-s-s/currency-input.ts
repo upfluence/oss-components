@@ -223,7 +223,7 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
   }
 
   @action
-  onSelect(value: Currency, selected: boolean, event: PointerEvent): void {
+  onSelect(value: Currency, _selected: boolean, event: PointerEvent): void {
     event.stopPropagation();
     this.args.onChange(value.code, this.localValue);
     this.hideCurrencySelector();
