@@ -11,8 +11,13 @@
     >
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">
-          <span>{{this.selectedCurrencySymbol}}</span>
-          {{#if @onlyCurrency}}
+          {{#if this.displayOnlyCurrencyPlaceholder}}
+            <span class="font-color-gray-400">{{@placeholder}}</span>
+          {{else}}
+            <span>{{this.selectedCurrencySymbol}}</span>
+          {{/if}}
+
+          {{#if (and @onlyCurrency (not this.displayOnlyCurrencyPlaceholder))}}
             <span class="margin-right-px-12">{{this.selectedCurrencyCode}}</span>
           {{/if}}
         </div>
