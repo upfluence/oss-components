@@ -2,16 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import {
-  render,
-  setupOnerror,
-  click,
-  findAll,
-  typeIn,
-  triggerKeyEvent,
-  triggerEvent,
-  fillIn
-} from '@ember/test-helpers';
+import { render, setupOnerror, click, findAll, typeIn, triggerKeyEvent, triggerEvent } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/currency-input', function (hooks) {
@@ -134,6 +125,34 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
       assert.equal(clickableRows.length, 2);
+    });
+
+    module('Selected currency highlighting', () => {
+      test('Selected currency has the selected class', async function (assert) {
+        await render(hbs`<OSS::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />`);
+        await click('.currency-selector');
+
+        assert.dom('.oss-infinite-select-option--selected').exists({ count: 1 });
+        assert.dom('.oss-infinite-select-option--selected').containsText('EUR');
+      });
+
+      test('Selected currency has a check icon', async function (assert) {
+        await render(hbs`<OSS::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />`);
+        await click('.currency-selector');
+
+        assert.dom('.oss-infinite-select-option--selected .fa-check').exists({ count: 1 });
+      });
+
+      test('Only the selected currency symbol is highlighted with primary color', async function (assert) {
+        await render(hbs`<OSS::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />`);
+        await click('.currency-selector');
+
+        assert.dom('.oss-infinite-select-option--selected .font-color-primary-500');
+        assert.dom('.oss-infinite-select-option--selected .font-color-primary-500').hasText('€');
+        assert
+          .dom('.oss-infinite-select-option:not(.oss-infinite-select-option--selected) .font-color-primary-500')
+          .doesNotExist();
+      });
     });
   });
 
@@ -357,6 +376,90 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       });
 
       assert.dom('input').hasValue('12345.67');
+    });
+  });
+
+  module('@options argument', () => {
+    module('@options.allowSearch', () => {
+      test('When no @options.allowSearch is passed, search is enabled by default', async function (assert) {
+        await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} />`);
+        await click('.currency-selector');
+
+        assert.dom('.upf-infinite-select input').exists();
+      });
+
+      test('When true @options.allowSearch is passed, search is enabled', async function (assert) {
+        this.options = { allowSearch: true };
+        await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @options={{this.options}} />`);
+        await click('.currency-selector');
+
+        assert.dom('.upf-infinite-select input').exists();
+      });
+    });
+
+    test('When false @options.allowSearch is passed, search is disabled', async function (assert) {
+      this.options = { allowSearch: false };
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @options={{this.options}} />`);
+      await click('.currency-selector');
+
+      assert.dom('.upf-infinite-select input').doesNotExist();
+    });
+  });
+
+  module('@options.allowEmpty', () => {
+    test('When @options.allowEmpty is not passed, the first currency is selected by default', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} />`);
+      assert.dom('.currency-selector').hasText('$');
+    });
+
+    test('When @options.allowEmpty is true and no @currency is passed, no currency is selected in the dropdown', async function (assert) {
+      this.options = { allowEmpty: true };
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @options={{this.options}} />`);
+      await click('.currency-selector');
+      assert.dom('.oss-infinite-select-option--selected').doesNotExist();
+    });
+
+    test('When @options.allowEmpty is true and a @currency is passed, it is marked as selected in the dropdown', async function (assert) {
+      this.options = { allowEmpty: true };
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @currency="EUR" @options={{this.options}} />`);
+      await click('.currency-selector');
+      assert.dom('.oss-infinite-select-option--selected').exists({ count: 1 });
+      assert.dom('.oss-infinite-select-option--selected').containsText('EUR');
+    });
+
+    module('With @onlyCurrency', () => {
+      test('When @options.allowEmpty is true and no @currency is passed, the placeholder is displayed', async function (assert) {
+        this.options = { allowEmpty: true };
+        await render(
+          hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @placeholder="Select a currency" @options={{this.options}} />`
+        );
+        assert.dom('.currency-selector').hasText('Select a currency');
+      });
+
+      test('When @options.allowEmpty is true and no @currency is passed, the placeholder has the correct style', async function (assert) {
+        this.options = { allowEmpty: true };
+        await render(
+          hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @placeholder="Select a currency" @options={{this.options}} />`
+        );
+        assert.dom('.currency-selector .font-color-gray-400').hasText('Select a currency');
+      });
+
+      test('When @options.allowEmpty is true and a @currency is passed, the currency is displayed instead of the placeholder', async function (assert) {
+        this.options = { allowEmpty: true };
+        await render(
+          hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @currency="EUR" @placeholder="Select a currency" @options={{this.options}} />`
+        );
+        assert.dom('.currency-selector').hasText('€ EUR');
+        assert.dom('.currency-selector').doesNotContainText('Select a currency');
+      });
+
+      test('When @options.allowEmpty is true but no @placeholder is passed, the default — is displayed', async function (assert) {
+        this.options = { allowEmpty: true };
+        await render(
+          hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @options={{this.options}} />`
+        );
+        assert.dom('.currency-selector').hasText('— —');
+      });
     });
   });
 });
