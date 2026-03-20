@@ -24,6 +24,7 @@ export interface OSSCurrencyInputArgs {
   allowFloatValues?: boolean;
   options?: {
     allowSearch?: boolean;
+    allowEmpty?: boolean;
   };
 }
 
@@ -100,15 +101,19 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
   }
 
   get selectedCurrencySymbol(): string {
-    return this.selectedCurrency.symbol || '—';
+    return this.selectedCurrency?.symbol || '—';
   }
 
   get selectedCurrencyCode(): string {
-    return this.selectedCurrency.code || '—';
+    return this.selectedCurrency?.code || '—';
   }
 
-  get selectedCurrency(): Currency {
+  get selectedCurrency(): Currency | undefined {
     if (isEmpty(this.args.currency)) {
+      if (this.args.options?.allowEmpty) {
+        return undefined;
+      }
+
       return this.currencies[0]!;
     }
     return this.currencies.find((currency: Currency) => currency.code === this.args.currency) ?? this.currencies[0]!;
@@ -124,6 +129,10 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
 
   get enabledSearch(): boolean {
     return this.args.options?.allowSearch ?? true;
+  }
+
+  get displayOnlyCurrencyPlaceholder(): boolean {
+    return !this.selectedCurrency && !!this.args.onlyCurrency && !!this.args.placeholder;
   }
 
   get computedClasses(): string {
@@ -200,6 +209,7 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
 
   @action
   notifyChanges(): void {
+    if (!this.selectedCurrency) return;
     this.args.onChange(this.selectedCurrency.code, this.localValue);
   }
 
