@@ -118,7 +118,7 @@ export default {
       description: 'Configuration object for additional component options.',
       table: {
         type: {
-          summary: '{ allowSearch?: boolean }'
+          summary: '{ allowSearch?: boolean, allowEmpty?: boolean }'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -152,7 +152,8 @@ const defaultArgs = {
   placeholder: undefined,
   allowFloatValues: undefined,
   options: {
-    allowSearch: true
+    allowSearch: true,
+    allowEmpty: false
   }
 };
 
