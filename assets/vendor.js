@@ -85554,7 +85554,7 @@ require('@ember/-internals/bootstrap')
     initSearchInput(element) {
       this.searchInput = element.querySelector('input');
     }
-    handleItemHover(index, event) {
+    handleItemHover(index) {
       if (document.activeElement === this.searchInput) {
         return;
       }
