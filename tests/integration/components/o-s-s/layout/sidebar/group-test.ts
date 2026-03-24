@@ -181,6 +181,32 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
     });
   });
 
+  module('@items is empty', function (hooks) {
+    hooks.beforeEach(function () {
+      this.items = [];
+      this.expanded = true;
+    });
+
+    test('the group renders without items', async function (assert) {
+      await renderComponent();
+      assert.dom('.oss-sidebar-group').exists();
+      assert.dom('.oss-sidebar-group__items-container').doesNotExist();
+    });
+
+    test('the group has no notification dot', async function (assert) {
+      await renderComponent();
+      assert.dom('.oss-sidebar-group .oss-sidebar-item__notification').doesNotExist();
+    });
+
+    test('hovering the group does not display an empty popup', async function (assert) {
+      this.expanded = false;
+      await renderComponent();
+
+      await triggerEvent('.oss-sidebar-group > div .oss-sidebar-item', 'mouseenter');
+      assert.dom('.oss-sidebar-group__items-container').doesNotExist();
+    });
+  });
+
   module('icon named-block', function () {
     test('it renders the icon named block instead of the icon argument when present', async function (assert) {
       await render(hbs`
