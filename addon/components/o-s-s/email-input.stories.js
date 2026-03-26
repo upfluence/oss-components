@@ -55,6 +55,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    autocomplete: {
+      description: 'Whether or not to enable autocomplete for the email input',
+      table: {
+        type: {
+          summary: "'on' | 'off'"
+        },
+        defaultValue: { summary: 'on' }
+      },
+      control: { type: 'select', options: ['on', 'off'] }
+    },
     validates: {
       description: 'A callback that indicates whether or not the current input matches the regex',
       table: {
@@ -89,13 +99,14 @@ const defaultArgs = {
   errorMessage: undefined,
   feedbackMessage: undefined,
   validateFormat: false,
+  autocomplete: 'on',
   validates: action('validates')
 };
 
 const Template = (args) => ({
   template: hbs`
       <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
-                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} />
+                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} @autocomplete={{this.autocomplete}} />
   `,
   context: args
 });

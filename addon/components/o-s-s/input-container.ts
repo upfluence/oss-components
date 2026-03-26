@@ -46,7 +46,11 @@ export default class OSSInputContainer<T extends OSSInputContainerArgs> extends 
     return this.args.type ?? 'text';
   }
 
-  get autocomplete(): 'on' | 'off' {
+  get autocomplete(): 'on' | 'off' | 'new-password' {
+    if (this.args.autocomplete === 'off') {
+      return 'new-password';
+    }
+
     return AutocompleteValues.includes(this.args.autocomplete ?? '') ? this.args.autocomplete! : 'on';
   }
 
