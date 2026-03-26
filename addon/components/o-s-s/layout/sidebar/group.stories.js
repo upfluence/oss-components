@@ -50,7 +50,8 @@ export default {
       table: {
         type: {
           summary: 'GroupItem[]'
-        }
+        },
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'array' }
     }
