@@ -11444,6 +11444,27 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/group-test", ["q
         assert.dom('.oss-sidebar-group').hasClass('oss-sidebar-group--collapsed');
       });
     });
+    (0, _qunit.module)('@items is empty', function (hooks) {
+      hooks.beforeEach(function () {
+        this.items = [];
+        this.expanded = true;
+      });
+      (0, _qunit.test)('the group renders without items', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group').exists();
+        assert.dom('.oss-sidebar-group__items-container').doesNotExist();
+      });
+      (0, _qunit.test)('the group has no notification dot', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group .oss-sidebar-item__notification').doesNotExist();
+      });
+      (0, _qunit.test)('hovering the group does not display an empty popup', async function (assert) {
+        this.expanded = false;
+        await renderComponent();
+        await (0, _testHelpers.triggerEvent)('.oss-sidebar-group > div .oss-sidebar-item', 'mouseenter');
+        assert.dom('.oss-sidebar-group__items-container').doesNotExist();
+      });
+    });
     (0, _qunit.module)('icon named-block', function () {
       (0, _qunit.test)('it renders the icon named block instead of the icon argument when present', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

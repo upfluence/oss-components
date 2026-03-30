@@ -86193,46 +86193,47 @@ require('@ember/-internals/bootstrap')
           {{on "click" this.toggleCollapsed}}
         />
       {{/if}}
-  
     </div>
   
-    <div
-      class={{concat
-        "oss-sidebar-group__items-container"
-        (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
-      }}
-      {{on "mouseenter" this.handleGroupListEnter}}
-      {{on "mouseleave" this.handleGroupListLeave}}
-    >
-      {{#unless @expanded}}
-        <div class="group-name">
-          {{@label}}
+    {{#if this.hasItems}}
+      <div
+        class={{concat
+          "oss-sidebar-group__items-container"
+          (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
+        }}
+        {{on "mouseenter" this.handleGroupListEnter}}
+        {{on "mouseleave" this.handleGroupListLeave}}
+      >
+        {{#unless @expanded}}
+          <div class="group-name">
+            {{@label}}
+          </div>
+        {{/unless}}
+        <div class="group-list">
+          {{#each this.items as |item|}}
+            <OSS::Layout::Sidebar::Item
+              @expanded={{or @expanded this.displayGroupList}}
+              @icon={{item.icon}}
+              @label={{item.label}}
+              @locked={{item.locked}}
+              @hasNotifications={{item.hasNotifications}}
+              @link={{item.link}}
+              @routePrefix={{item.routePrefix}}
+              @lockedAction={{item.lockedAction}}
+              @action={{item.action}}
+              @disableAutoActive={{item.disableAutoActive}}
+              data-control-name={{item.dataControlName}}
+              class={{if item.active "active"}}
+            />
+          {{/each}}
         </div>
-      {{/unless}}
-      <div class="group-list">
-        {{#each @items as |item|}}
-          <OSS::Layout::Sidebar::Item
-            @expanded={{or @expanded this.displayGroupList}}
-            @icon={{item.icon}}
-            @label={{item.label}}
-            @locked={{item.locked}}
-            @hasNotifications={{item.hasNotifications}}
-            @link={{item.link}}
-            @routePrefix={{item.routePrefix}}
-            @lockedAction={{item.lockedAction}}
-            @action={{item.action}}
-            @disableAutoActive={{item.disableAutoActive}}
-            data-control-name={{item.dataControlName}}
-            class={{if item.active "active"}}
-          />
-        {{/each}}
       </div>
-    </div>
+    {{/if}}
   </div>
   */
   {
-    "id": "afQ79leK",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,7,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n        \"],[1,[30,4]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,5]],null]],null],null,[[[1,\"        \"],[8,[39,3],[[16,\"data-control-name\",[30,6,[\"dataControlName\"]]],[16,0,[52,[30,6,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@routePrefix\",\"@lockedAction\",\"@action\",\"@disableAutoActive\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,6,[\"icon\"]],[30,6,[\"label\"]],[30,6,[\"locked\"]],[30,6,[\"hasNotifications\"]],[30,6,[\"link\"]],[30,6,[\"routePrefix\"]],[30,6,[\"lockedAction\"]],[30,6,[\"action\"]],[30,6,[\"disableAutoActive\"]]]],null],[1,\"\\n\"]],[6]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"@items\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
+    "id": "0Bl7q2GY",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,6,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"hasItems\"]],[[[1,\"    \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"        \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n          \"],[1,[30,4]],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[8,[39,3],[[16,\"data-control-name\",[30,5,[\"dataControlName\"]]],[16,0,[52,[30,5,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@routePrefix\",\"@lockedAction\",\"@action\",\"@disableAutoActive\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,5,[\"icon\"]],[30,5,[\"label\"]],[30,5,[\"locked\"]],[30,5,[\"hasNotifications\"]],[30,5,[\"link\"]],[30,5,[\"routePrefix\"]],[30,5,[\"lockedAction\"]],[30,5,[\"action\"]],[30,5,[\"disableAutoActive\"]]]],null],[1,\"\\n\"]],[5]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/group.hbs",
     "isStrictMode": false
   });
@@ -86252,11 +86253,17 @@ require('@ember/-internals/bootstrap')
     get collapsible() {
       return this.args.collapsible ?? false;
     }
+    get items() {
+      return this.args.items ?? [];
+    }
+    get hasItems() {
+      return this.items.length > 0;
+    }
     get hasNotifications() {
-      return this.args.items.some(item => item.hasNotifications);
+      return this.items.some(item => item.hasNotifications);
     }
     get isActive() {
-      return !this.args.expanded && this.args.items.some(item => item.active);
+      return !this.args.expanded && this.items.some(item => item.active);
     }
     get computedClasses() {
       const classes = ['oss-sidebar-group'];
