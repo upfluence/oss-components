@@ -34,39 +34,40 @@
         {{on "click" this.toggleCollapsed}}
       />
     {{/if}}
-
   </div>
 
-  <div
-    class={{concat
-      "oss-sidebar-group__items-container"
-      (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
-    }}
-    {{on "mouseenter" this.handleGroupListEnter}}
-    {{on "mouseleave" this.handleGroupListLeave}}
-  >
-    {{#unless @expanded}}
-      <div class="group-name">
-        {{@label}}
+  {{#if this.hasItems}}
+    <div
+      class={{concat
+        "oss-sidebar-group__items-container"
+        (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
+      }}
+      {{on "mouseenter" this.handleGroupListEnter}}
+      {{on "mouseleave" this.handleGroupListLeave}}
+    >
+      {{#unless @expanded}}
+        <div class="group-name">
+          {{@label}}
+        </div>
+      {{/unless}}
+      <div class="group-list">
+        {{#each this.items as |item|}}
+          <OSS::Layout::Sidebar::Item
+            @expanded={{or @expanded this.displayGroupList}}
+            @icon={{item.icon}}
+            @label={{item.label}}
+            @locked={{item.locked}}
+            @hasNotifications={{item.hasNotifications}}
+            @link={{item.link}}
+            @routePrefix={{item.routePrefix}}
+            @lockedAction={{item.lockedAction}}
+            @action={{item.action}}
+            @disableAutoActive={{item.disableAutoActive}}
+            data-control-name={{item.dataControlName}}
+            class={{if item.active "active"}}
+          />
+        {{/each}}
       </div>
-    {{/unless}}
-    <div class="group-list">
-      {{#each @items as |item|}}
-        <OSS::Layout::Sidebar::Item
-          @expanded={{or @expanded this.displayGroupList}}
-          @icon={{item.icon}}
-          @label={{item.label}}
-          @locked={{item.locked}}
-          @hasNotifications={{item.hasNotifications}}
-          @link={{item.link}}
-          @routePrefix={{item.routePrefix}}
-          @lockedAction={{item.lockedAction}}
-          @action={{item.action}}
-          @disableAutoActive={{item.disableAutoActive}}
-          data-control-name={{item.dataControlName}}
-          class={{if item.active "active"}}
-        />
-      {{/each}}
     </div>
-  </div>
+  {{/if}}
 </div>

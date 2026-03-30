@@ -20,7 +20,7 @@ export type GroupItem = {
 interface OSSLayoutSidebarGroupComponentSignature {
   label: string;
   expanded: boolean;
-  items: GroupItem[];
+  items?: GroupItem[];
   icon?: string;
   collapsible?: boolean;
 }
@@ -48,12 +48,20 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
     return this.args.collapsible ?? false;
   }
 
+  get items(): GroupItem[] {
+    return this.args.items ?? [];
+  }
+
+  get hasItems(): boolean {
+    return this.items.length > 0;
+  }
+
   get hasNotifications(): boolean {
-    return this.args.items.some((item) => item.hasNotifications);
+    return this.items.some((item) => item.hasNotifications);
   }
 
   get isActive(): boolean {
-    return !this.args.expanded && this.args.items.some((item) => item.active);
+    return !this.args.expanded && this.items.some((item) => item.active);
   }
 
   get computedClasses(): string {
