@@ -15319,19 +15319,21 @@ a.oss-sidebar-item {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  height: 36px;
+  height: 30px;
   width: 100%;
   padding: var(--spacing-px-9) var(--spacing-px-12);
   gap: var(--spacing-px-9);
   flex-shrink: 0;
   background: var(--color-white);
+  color: var(--color-gray-600);
+  border-radius: var(--border-radius-sm);
 }
 .oss-panel .oss-panel-content--row-disabled {
   cursor: not-allowed;
 }
 .oss-panel .oss-panel-content--row-disabled:hover {
   background-color: var(--color-gray-50);
-  transition: background-color 0.3s ease;
+  transition: background-color 300ms ease-in-out;
 }
 .oss-panel .oss-panel-content--row-disabled:hover .oss-panel-content--row--icon-wrapper i,
 .oss-panel .oss-panel-content--row-disabled:hover .oss-panel-content--row--text {
@@ -15341,17 +15343,14 @@ a.oss-sidebar-item {
 .oss-panel .oss-panel-content--row-disabled .oss-panel-content--row--text {
   color: var(--color-gray-400);
 }
-.oss-panel .oss-panel-content--row .far {
-  color: var(--color-gray-400);
-}
 .oss-panel .oss-panel-content--row:hover {
-  background-color: var(--color-gray-50);
-  transition: background-color 300ms ease;
+  background-color: var(--color-primary-50);
+  transition: background-color 300ms ease-in-out;
 }
-.oss-panel .oss-panel-content--row:hover .far,
-.oss-panel .oss-panel-content--row:hover span {
-  color: var(--color-primary-500);
-  transition: color 300ms ease;
+.oss-panel .oss-panel-content--row:hover .oss-panel-content--row--icon-wrapper i,
+.oss-panel .oss-panel-content--row:hover .oss-panel-content--row--text {
+  color: var(--color-gray-900);
+  transition: color 300ms ease-in-out;
 }
 .oss-panel .oss-panel-content--row span {
   margin-bottom: 0;

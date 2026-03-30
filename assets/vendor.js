@@ -87103,14 +87103,14 @@ require('@ember/-internals/bootstrap')
         <OSS::Icon @icon={{@icon}} />
       </div>
     {{/if}}
-    <span class="font-color-gray-500 oss-panel-content--row--text">
+    <span class="oss-panel-content--row--text">
       {{@label}}
     </span>
   </div>
   */
   {
-    "id": "HOqkmoGc",
-    "block": "[[[11,0],[16,0,[29,[\"oss-panel-content--row \",[52,[30,1],\"oss-panel-content--row-disabled\"]]]],[17,2],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"oss-panel-content--row--icon-wrapper\"],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"font-color-gray-500 oss-panel-content--row--text\"],[12],[1,\"\\n    \"],[1,[30,4]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@disabled\",\"&attrs\",\"@icon\",\"@label\"],false,[\"if\",\"o-s-s/icon\"]]",
+    "id": "yO3ocfpg",
+    "block": "[[[11,0],[16,0,[29,[\"oss-panel-content--row \",[52,[30,1],\"oss-panel-content--row-disabled\"]]]],[17,2],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"oss-panel-content--row--icon-wrapper\"],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"oss-panel-content--row--text\"],[12],[1,\"\\n    \"],[1,[30,4]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@disabled\",\"&attrs\",\"@icon\",\"@label\"],false,[\"if\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/panel/row.hbs",
     "isStrictMode": false
   });
