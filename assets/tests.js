@@ -10598,7 +10598,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
       (0, _qunit.test)('Passing a @autocomplete parameter works', async function (assert) {
         this.autocomplete = 'off';
         await renderComponentWithParameters();
-        assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
+        assert.dom('.upf-input').hasAttribute('autocomplete', 'new-password');
       });
     });
     (0, _qunit.module)('feedback messages', () => {
@@ -10860,7 +10860,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-group-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
+      assert.dom('.upf-input').hasAttribute('autocomplete', 'new-password');
     });
     (0, _qunit.test)('Passing the @errorMessage parameter displays the error message', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

@@ -84775,13 +84775,14 @@ require('@ember/-internals/bootstrap')
     @placeholder={{this.placeholder}}
     @errorMessage={{this.errorMessage}}
     @feedbackMessage={{@feedbackMessage}}
+    @autocomplete={{@autocomplete}}
     @onChange={{this.validateInput}}
     ...attributes
   />
   */
   {
-    "id": "HszlWj0/",
-    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@placeholder\",\"@errorMessage\",\"@feedbackMessage\",\"@onChange\"],[[30,2],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,3],[30,0,[\"validateInput\"]]]],null]],[\"&attrs\",\"@value\",\"@feedbackMessage\"],false,[\"o-s-s/input-container\"]]",
+    "id": "9dvm86U9",
+    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@placeholder\",\"@errorMessage\",\"@feedbackMessage\",\"@autocomplete\",\"@onChange\"],[[30,2],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,3],[30,4],[30,0,[\"validateInput\"]]]],null]],[\"&attrs\",\"@value\",\"@feedbackMessage\",\"@autocomplete\"],false,[\"o-s-s/input-container\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/email-input.hbs",
     "isStrictMode": false
   });
@@ -85929,6 +85930,9 @@ require('@ember/-internals/bootstrap')
       return this.args.type ?? 'text';
     }
     get autocomplete() {
+      if (this.args.autocomplete === 'off') {
+        return 'new-password';
+      }
       return AutocompleteValues.includes(this.args.autocomplete ?? '') ? this.args.autocomplete : 'on';
     }
     _onChange(value) {
