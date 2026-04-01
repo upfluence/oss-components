@@ -408,6 +408,38 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
   });
 
+  module('@skin argument', function () {
+    test('when @skin is not passed, the dropdown defaults to the default skin', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--default');
+    });
+
+    test('when @skin="smart" is passed, the dropdown has the smart skin class', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @skin="smart">
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--smart');
+    });
+  });
+
   module('Error management', function () {
     test('it throws an error if no @onChange arg is passed', async function (assert) {
       setupOnerror((err: Error) => {

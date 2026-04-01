@@ -1,6 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
+const SkinTypes = ['default', 'smart'];
+
 const FAKE_DATA = [
   { name: 'Batman', characters: 'Bruce Wayne' },
   { name: 'Superman', characters: 'Kal-El' },
@@ -133,6 +135,17 @@ export default {
         }
       },
       control: { type: 'object' }
+    },
+    skin: {
+      description: 'Adjust the skin of the dropdown',
+      table: {
+        type: {
+          summary: SkinTypes.join('|')
+        },
+        defaultValue: { summary: 'default' }
+      },
+      options: SkinTypes,
+      control: { type: 'select' }
     }
   },
   parameters: {
@@ -159,6 +172,7 @@ const defaultArgs = {
   errorMessage: undefined,
   successMessage: undefined,
   addressableAs: undefined,
+  skin: 'default',
   action: {
     skin: 'tertiary',
     label: 'Add Hero',
@@ -176,7 +190,23 @@ const Template = (args) => ({
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}>
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
+      @skin={{this.skin}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+  `,
+  context: args
+});
+
+const SmartSkinTemplate = (args) => ({
+  template: hbs`
+  <div style="width: 250px">
+    <OSS::Select
+      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @skin="smart">
       <:option as |item|>
         {{item.name}}
       </:option>
@@ -229,6 +259,9 @@ const WithEmptyStateNamedBlockTemplate = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const SmartSkin = SmartSkinTemplate.bind({});
+SmartSkin.args = defaultArgs;
 
 export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
 WithSelectedNamedBlock.args = defaultArgs;
