@@ -133,6 +133,25 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.dom('.array-input-container').hasText('placeholder');
     });
+
+    test('each @selectedItems element has its index accessible for dynamic classes', async function (assert) {
+      this.selectedItems = ['value1', 'value2'];
+      await render(hbs`
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                          @onSearch={{this.onSearch}}>
+          <:selected-item as |selectedItem index|>
+            <span class="selected-item-{{index}}">{{selectedItem}}</span>
+          </:selected-item>
+          <:option-item as |item|>
+            {{item}}
+          </:option-item>
+        </OSS::PowerSelect>
+      `);
+
+      await click('.upf-power-select__array-container');
+      assert.dom('span.selected-item-0').hasText('value1');
+      assert.dom('span.selected-item-1').hasText('value2');
+    });
   });
 
   module('with @items', (hooks) => {
@@ -157,6 +176,24 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       const domTags = findAll('.upf-infinite-select__item');
       assert.dom(domTags[0]).hasText('value1');
       assert.dom(domTags[1]).hasText('value2');
+    });
+
+    test('each @items element has its index accessible for dynamic classes', async function (assert) {
+      await render(hbs`
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                          @onSearch={{this.onSearch}}>
+          <:selected-item as |selectedItem|>
+            {{selectedItem}}
+          </:selected-item>
+          <:option-item as |item index|>
+            <span class="item-{{index}}">{{item}}</span>
+          </:option-item>
+        </OSS::PowerSelect>
+      `);
+
+      await click('.upf-power-select__array-container');
+      assert.dom('span.item-0').hasText('value1');
+      assert.dom('span.item-1').hasText('value2');
     });
   });
 
