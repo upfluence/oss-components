@@ -71,7 +71,17 @@
             {{item}}
           </:option>
         </OSS::Select>
-
+        <OSS::Select
+          @value={{this.selectedItem}}
+          @items={{this.items}}
+          @onChange={{this.onSelect}}
+          @skin="smart"
+          class="fx-1"
+        >
+          <:option as |item|>
+            {{item.name}}
+          </:option>
+        </OSS::Select>
         <OSS::Select
           @value={{this.selectedItem}}
           @items={{this.superHeroes}}

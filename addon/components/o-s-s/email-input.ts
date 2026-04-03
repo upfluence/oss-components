@@ -11,6 +11,7 @@ interface OSSEmailInputArgs {
   feedbackMessage?: FeedbackMessage;
   errorMessage?: string;
   validateFormat?: boolean;
+  autocomplete?: 'on' | 'off';
   validates?(isPassing: boolean): void;
   onChange?(value: string | null): void;
 }

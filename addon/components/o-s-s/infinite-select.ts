@@ -197,7 +197,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  handleItemHover(index: number, event: MouseEvent): void {
+  handleItemHover(index: number): void {
     if (document.activeElement === this.searchInput) {
       return;
     }
