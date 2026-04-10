@@ -34,7 +34,7 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
 
   test('Passing a @autocomplete parameter works', async function (assert) {
     await render(hbs`<OSS::InputGroup @prefix="email" @suffix="@domain.com" @autocomplete="off"/>`);
-    assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
+    assert.dom('.upf-input').hasAttribute('autocomplete', 'new-password');
   });
 
   test('Passing the @errorMessage parameter displays the error message', async function (assert) {

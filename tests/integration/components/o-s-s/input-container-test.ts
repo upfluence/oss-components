@@ -93,7 +93,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
     test('Passing a @autocomplete parameter works', async function (assert) {
       this.autocomplete = 'off';
       await renderComponentWithParameters();
-      assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
+      assert.dom('.upf-input').hasAttribute('autocomplete', 'new-password');
     });
   });
 
