@@ -14925,6 +14925,32 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         }));
         assert.dom('.array-input-container').hasText('placeholder');
       });
+      (0, _qunit.test)('each @selectedItems element has its index accessible for dynamic classes', async function (assert) {
+        this.selectedItems = ['value1', 'value2'];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                                  @onSearch={{this.onSearch}}>
+                  <:selected-item as |selectedItem index|>
+                    <span class="selected-item-{{index}}">{{selectedItem}}</span>
+                  </:selected-item>
+                  <:option-item as |item|>
+                    {{item}}
+                  </:option-item>
+                </OSS::PowerSelect>
+              
+        */
+        {
+          "id": "plKTTXKD",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n            \"],[10,1],[15,0,[29,[\"selected-item-\",[30,2]]]],[12],[1,[30,1]],[13],[1,\"\\n          \"]],[1,2]],[[[1,\"\\n            \"],[1,[30,3]],[1,\"\\n          \"]],[3]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"index\",\"item\"],false,[\"o-s-s/power-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-power-select__array-container');
+        assert.dom('span.selected-item-0').hasText('value1');
+        assert.dom('span.selected-item-1').hasText('value2');
+      });
     });
     (0, _qunit.module)('with @items', hooks => {
       hooks.beforeEach(function () {
@@ -14955,6 +14981,31 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         const domTags = (0, _testHelpers.findAll)('.upf-infinite-select__item');
         assert.dom(domTags[0]).hasText('value1');
         assert.dom(domTags[1]).hasText('value2');
+      });
+      (0, _qunit.test)('each @items element has its index accessible for dynamic classes', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                                  @onSearch={{this.onSearch}}>
+                  <:selected-item as |selectedItem|>
+                    {{selectedItem}}
+                  </:selected-item>
+                  <:option-item as |item index|>
+                    <span class="item-{{index}}">{{item}}</span>
+                  </:option-item>
+                </OSS::PowerSelect>
+              
+        */
+        {
+          "id": "TwU4nWOD",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n            \"],[1,[30,1]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[10,1],[15,0,[29,[\"item-\",[30,3]]]],[12],[1,[30,2]],[13],[1,\"\\n          \"]],[2,3]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"item\",\"index\"],false,[\"o-s-s/power-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-power-select__array-container');
+        assert.dom('span.item-0').hasText('value1');
+        assert.dom('span.item-1').hasText('value2');
       });
     });
     (0, _qunit.module)('with @onChange', hooks => {
