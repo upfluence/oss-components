@@ -107,6 +107,10 @@ export default {
         component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle'
       },
       iframeHeight: 120
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6190&p=f&t=eK7N52oGFl9Y0IDC-0'
     }
   }
 };

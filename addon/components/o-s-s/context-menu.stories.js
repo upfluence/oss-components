@@ -184,6 +184,10 @@ export default {
         component:
           'The `OSS::ContextMenu` component provides a button that, when clicked, displays a context menu with various options. It supports nested sub-menus, loading states, and customizable appearance through skins and sizes.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6188&p=f&t=AsdGbaychQPIaGnK-0'
     }
   }
 };
