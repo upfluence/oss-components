@@ -46,6 +46,17 @@ export default {
         type: 'text'
       }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `Popover is a non-modal UI surface that displays contextual content and actions.`
+      }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=4559-5946&p=f&t=AsdGbaychQPIaGnK-0'
+    }
   }
 };
 
