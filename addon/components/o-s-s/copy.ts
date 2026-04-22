@@ -12,7 +12,7 @@ interface OSSCopyArgs {
   inline?: boolean;
   icon?: string;
   tooltip?: string;
-  withAnimation?: boolean;
+  animated?: boolean;
 }
 
 export default class OSSCopy extends Component<OSSCopyArgs> {
@@ -20,12 +20,15 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   @service declare toast: ToastService;
 
   @tracked accessibleClipboard: boolean = false;
-  @tracked inline: boolean = this.args.inline ?? false;
-  @tracked withAnimation: boolean = this.args.withAnimation ?? false;
+  @tracked inline: boolean;
+  @tracked animated: boolean;
   @tracked showCheckmark: boolean = false;
 
   constructor(owner: unknown, args: OSSCopyArgs) {
     super(owner, args);
+
+    this.inline = this.args.inline ?? false;
+    this.animated = this.args.animated ?? false;
 
     if (!(window as any).chrome && !isTesting()) {
       this.accessibleClipboard = true;
@@ -49,13 +52,13 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   }
 
   @action
-  copy(event: PointerEvent) {
+  copy(event: PointerEvent): void {
     event.stopPropagation();
 
     navigator.clipboard
       .writeText(this.args.value)
       .then(() => {
-        if (this.withAnimation) {
+        if (this.animated) {
           this.showCheckmark = true;
           return;
         }
@@ -74,7 +77,7 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   }
 
   @action
-  resetCheckmarkOnAnimationEnd() {
+  resetCheckmarkOnAnimationEnd(): void {
     this.showCheckmark = false;
   }
 }

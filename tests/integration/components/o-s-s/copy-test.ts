@@ -89,7 +89,10 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       await click('.upf-btn--default');
 
       assert.true(
-        this.toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard')
+        this.toastInfoStub.calledOnceWithExactly(
+          this.intl.t('upfluence.oss-components.copy.success-message'),
+          this.intl.t('upfluence.oss-components.copy.success-title')
+        )
       );
     });
 
@@ -100,13 +103,16 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       await click('.upf-btn--default');
 
       assert.true(
-        this.toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error')
+        this.toastErrorStub.calledOnceWithExactly(
+          this.intl.t('upfluence.oss-components.copy.error-message'),
+          this.intl.t('upfluence.oss-components.copy.error-title')
+        )
       );
     });
 
     test('the clipboard writeText method is called', async function (assert) {
       const writeTextStub = sinon.stub(navigator.clipboard, 'writeText').resolves();
-      this.toastInfoStub.resolves();
+
       this.textForCopy = 'test';
 
       await render(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
@@ -115,29 +121,32 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
     });
 
-    module('with @withAnimation', function (hooks) {
+    module('with @animated', function (hooks) {
       hooks.beforeEach(function () {
         sinon.stub(navigator.clipboard, 'writeText').resolves();
       });
 
       test('when animation is disabled, info toast is rendered', async function (assert) {
-        await render(hbs`<OSS::Copy @value="test" @withAnimation={{false}} />`);
+        await render(hbs`<OSS::Copy @value="test" @animated={{false}} />`);
         await click('.upf-btn--default');
 
         assert.true(
-          this.toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard')
+          this.toastInfoStub.calledOnceWithExactly(
+            this.intl.t('upfluence.oss-components.copy.success-message'),
+            this.intl.t('upfluence.oss-components.copy.success-title')
+          )
         );
       });
 
       test('when animation is enabled, no toast is rendered', async function (assert) {
-        await render(hbs`<OSS::Copy @value="test" @withAnimation={{true}} />`);
+        await render(hbs`<OSS::Copy @value="test" @animated={{true}} />`);
         await click('.upf-btn--default');
 
-        assert.false(this.toastInfoStub.called);
+        assert.true(this.toastInfoStub.notCalled);
       });
 
       test('when animation is enabled, checkmark icon is displayed', async function (assert) {
-        await render(hbs`<OSS::Copy @value="test" @withAnimation={{true}} />`);
+        await render(hbs`<OSS::Copy @value="test" @animated={{true}} />`);
 
         assert.dom('i.fa-check').doesNotExist();
 
@@ -147,7 +156,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       });
 
       test('when animation is enabled, button has animation class during animation', async function (assert) {
-        await render(hbs`<OSS::Copy @value="test" @withAnimation={{true}} />`);
+        await render(hbs`<OSS::Copy @value="test" @animated={{true}} />`);
 
         assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').doesNotExist();
 
@@ -157,7 +166,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       });
 
       test('when animation is enabled on inline copy, checkmark is displayed', async function (assert) {
-        await render(hbs`<OSS::Copy @value="test" @inline={{true}} @withAnimation={{true}} />`);
+        await render(hbs`<OSS::Copy @value="test" @inline={{true}} @animated={{true}} />`);
 
         assert.dom('i.fa-check').doesNotExist();
 

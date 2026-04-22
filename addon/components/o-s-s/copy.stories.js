@@ -48,7 +48,7 @@ export default {
       },
       control: { type: 'text' }
     },
-    withAnimation: {
+    animated: {
       type: { name: 'boolean' },
       description: 'Enable green checkmark animation on click (3 second, no toast)',
       table: {
@@ -75,43 +75,16 @@ const defaultArgs = {
   inline: false,
   icon: undefined,
   tooltip: undefined,
-  withAnimation: false
+  animated: false
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div class="fx-col">
-      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} @withAnimation={{this.withAnimation}} />
+      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} @animated={{this.animated}} />
     </div>`,
   context: args
 });
 
 export const Default = BasicUsageTemplate.bind({});
 Default.args = defaultArgs;
-
-export const WithAnimation = BasicUsageTemplate.bind({});
-WithAnimation.args = {
-  ...defaultArgs,
-  withAnimation: true
-};
-WithAnimation.parameters = {
-  docs: {
-    description: {
-      story: 'Shows the green checkmark animation on click for 3 seconds. No toast notification is displayed.'
-    }
-  }
-};
-
-export const InlineWithAnimation = BasicUsageTemplate.bind({});
-InlineWithAnimation.args = {
-  ...defaultArgs,
-  inline: true,
-  withAnimation: true
-};
-InlineWithAnimation.parameters = {
-  docs: {
-    description: {
-      story: 'Inline version with the green checkmark animation on click.'
-    }
-  }
-};
