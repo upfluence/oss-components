@@ -50,7 +50,8 @@ export default {
     },
     animated: {
       type: { name: 'boolean' },
-      description: 'Enable green checkmark animation on click (3 second, no toast)',
+      description:
+        'Enables a green checkmark animation (3 seconds) when the user clicks on the button. It also disables the success feedback toast.',
       table: {
         type: {
           summary: 'boolean'
