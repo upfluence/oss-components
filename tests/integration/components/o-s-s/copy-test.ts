@@ -56,6 +56,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
     test('nothing is rendered', async function (assert) {
       await render(hbs`<OSS::Copy />`);
+
       assert.dom('.upf-btn--default').exists();
     });
   });
@@ -86,8 +87,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(navigator.clipboard, 'writeText').resolves();
 
       await render(hbs`<OSS::Copy @value="test" />`);
-      await click('.upf-btn--default');
 
+      await click('.upf-btn--default');
       assert.true(
         this.toastInfoStub.calledOnceWithExactly(
           this.intl.t('oss-components.copy.success.subtitle'),
@@ -100,8 +101,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(navigator.clipboard, 'writeText').rejects();
 
       await render(hbs`<OSS::Copy @value="test" />`);
-      await click('.upf-btn--default');
 
+      await click('.upf-btn--default');
       assert.true(
         this.toastErrorStub.calledOnceWithExactly(
           this.intl.t('oss-components.copy.error.subtitle'),
@@ -112,12 +113,11 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
     test('the clipboard writeText method is called', async function (assert) {
       const writeTextStub = sinon.stub(navigator.clipboard, 'writeText').resolves();
-
       this.textForCopy = 'test';
 
       await render(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
-      await click('.upf-btn--default');
 
+      await click('.upf-btn--default');
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
     });
 
@@ -128,8 +128,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
       test('when animation is disabled, info toast is rendered', async function (assert) {
         await render(hbs`<OSS::Copy @value="test" @animated={{false}} />`);
-        await click('.upf-btn--default');
 
+        await click('.upf-btn--default');
         assert.true(
           this.toastInfoStub.calledOnceWithExactly(
             this.intl.t('oss-components.copy.success.subtitle'),
@@ -140,8 +140,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
       test('when animation is enabled, no toast is rendered', async function (assert) {
         await render(hbs`<OSS::Copy @value="test" @animated={{true}} />`);
-        await click('.upf-btn--default');
 
+        await click('.upf-btn--default');
         assert.true(this.toastInfoStub.notCalled);
       });
 
@@ -149,9 +149,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
         await render(hbs`<OSS::Copy @value="test" @animated={{true}} />`);
 
         assert.dom('i.fa-check').doesNotExist();
-
         await click('.upf-btn--default');
-
         assert.dom('i.fa-check').exists();
       });
 
@@ -159,9 +157,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
         await render(hbs`<OSS::Copy @value="test" @animated={{true}} />`);
 
         assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').doesNotExist();
-
         await click('[data-control-name="copy-content-button"]');
-
         assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').exists();
       });
 
@@ -169,9 +165,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
         await render(hbs`<OSS::Copy @value="test" @inline={{true}} @animated={{true}} />`);
 
         assert.dom('i.fa-check').doesNotExist();
-
         await click('[data-control-name="copy-content-button"]');
-
         assert.dom('i.fa-check').exists();
       });
     });
