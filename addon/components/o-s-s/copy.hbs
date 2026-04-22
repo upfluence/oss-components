@@ -1,7 +1,7 @@
 {{#if this.accessibleClipboard}}
   {{#if this.inline}}
     <OSS::Icon
-      @icon={{if this.showCheckmark "fas fa-check" this.icon}}
+      @icon={{this.icon}}
       class="oss-copy--inline {{if this.showCheckmark 'oss-copy--animation'}}"
       {{on "click" this.copy}}
       {{on "animationend" this.resetCheckmarkOnAnimationEnd}}
@@ -11,7 +11,7 @@
     />
   {{else}}
     <OSS::Button
-      @icon={{if this.showCheckmark "fas fa-check" this.icon}}
+      @icon={{this.icon}}
       @square={{true}}
       @size="sm"
       {{on "click" this.copy}}

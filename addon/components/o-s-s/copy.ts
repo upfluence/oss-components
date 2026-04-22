@@ -44,6 +44,8 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   }
 
   get icon(): string {
+    if (this.showCheckmark) return 'far fa-check';
+
     return this.args.icon ?? 'far fa-copy';
   }
 
