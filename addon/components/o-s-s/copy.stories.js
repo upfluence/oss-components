@@ -47,6 +47,17 @@ export default {
         defaultValue: { summary: 'Copy' }
       },
       control: { type: 'text' }
+    },
+    withAnimation: {
+      type: { name: 'boolean' },
+      description: 'Enable green checkmark animation on click (3 second, no toast)',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -63,16 +74,44 @@ const defaultArgs = {
   value: 'Your copied value',
   inline: false,
   icon: undefined,
-  tooltip: undefined
+  tooltip: undefined,
+  withAnimation: false
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div class="fx-col">
-      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} />
+      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} @withAnimation={{this.withAnimation}} />
     </div>`,
   context: args
 });
 
 export const Default = BasicUsageTemplate.bind({});
 Default.args = defaultArgs;
+
+export const WithAnimation = BasicUsageTemplate.bind({});
+WithAnimation.args = {
+  ...defaultArgs,
+  withAnimation: true
+};
+WithAnimation.parameters = {
+  docs: {
+    description: {
+      story: 'Shows the green checkmark animation on click for 3 seconds. No toast notification is displayed.'
+    }
+  }
+};
+
+export const InlineWithAnimation = BasicUsageTemplate.bind({});
+InlineWithAnimation.args = {
+  ...defaultArgs,
+  inline: true,
+  withAnimation: true
+};
+InlineWithAnimation.parameters = {
+  docs: {
+    description: {
+      story: 'Inline version with the green checkmark animation on click.'
+    }
+  }
+};

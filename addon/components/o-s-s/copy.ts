@@ -12,6 +12,7 @@ interface OSSCopyArgs {
   inline?: boolean;
   icon?: string;
   tooltip?: string;
+  withAnimation?: boolean;
 }
 
 export default class OSSCopy extends Component<OSSCopyArgs> {
@@ -20,6 +21,8 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
 
   @tracked accessibleClipboard: boolean = false;
   @tracked inline: boolean = this.args.inline ?? false;
+  @tracked withAnimation: boolean = this.args.withAnimation ?? false;
+  @tracked showCheckmark: boolean = false;
 
   constructor(owner: unknown, args: OSSCopyArgs) {
     super(owner, args);
@@ -52,6 +55,11 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
     navigator.clipboard
       .writeText(this.args.value)
       .then(() => {
+        if (this.withAnimation) {
+          this.showCheckmark = true;
+          return;
+        }
+
         this.toast.info(
           this.intl.t('oss-components.copy.success.subtitle'),
           this.intl.t('oss-components.copy.success.title')
@@ -63,5 +71,10 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
           this.intl.t('oss-components.copy.error.title')
         );
       });
+  }
+
+  @action
+  resetCheckmarkOnAnimationEnd() {
+    this.showCheckmark = false;
   }
 }

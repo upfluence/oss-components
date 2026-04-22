@@ -114,5 +114,57 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
     });
+
+    module('with @withAnimation', function (hooks) {
+      hooks.beforeEach(function () {
+        sinon.stub(navigator.clipboard, 'writeText').resolves();
+      });
+
+      test('when animation is disabled, info toast is rendered', async function (assert) {
+        await render(hbs`<OSS::Copy @value="test" @withAnimation={{false}} />`);
+        await click('.upf-btn--default');
+
+        assert.true(
+          this.toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard')
+        );
+      });
+
+      test('when animation is enabled, no toast is rendered', async function (assert) {
+        await render(hbs`<OSS::Copy @value="test" @withAnimation={{true}} />`);
+        await click('.upf-btn--default');
+
+        assert.false(this.toastInfoStub.called);
+      });
+
+      test('when animation is enabled, checkmark icon is displayed', async function (assert) {
+        await render(hbs`<OSS::Copy @value="test" @withAnimation={{true}} />`);
+
+        assert.dom('i.fa-check').doesNotExist();
+
+        await click('.upf-btn--default');
+
+        assert.dom('i.fa-check').exists();
+      });
+
+      test('when animation is enabled, button has animation class during animation', async function (assert) {
+        await render(hbs`<OSS::Copy @value="test" @withAnimation={{true}} />`);
+
+        assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').doesNotExist();
+
+        await click('[data-control-name="copy-content-button"]');
+
+        assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').exists();
+      });
+
+      test('when animation is enabled on inline copy, checkmark is displayed', async function (assert) {
+        await render(hbs`<OSS::Copy @value="test" @inline={{true}} @withAnimation={{true}} />`);
+
+        assert.dom('i.fa-check').doesNotExist();
+
+        await click('[data-control-name="copy-content-button"]');
+
+        assert.dom('i.fa-check').exists();
+      });
+    });
   });
 });
