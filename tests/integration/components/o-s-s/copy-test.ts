@@ -71,7 +71,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     test('nothing is rendered', async function (assert) {
       await render(hbs`<OSS::Copy />`);
 
-      assert.ok(this.permissionQueryStub.calledOnceWithExactly({ name: 'clipboard-write' as PermissionName }));
+      assert.ok(this.permissionQueryStub.calledOnceWithExactly({ name: 'clipboard-write' }));
       assert.dom('.oss-copy--inline').doesNotExist();
       assert.dom('.upf-btn--default').doesNotExist();
     });
@@ -90,8 +90,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
       assert.true(
         this.toastInfoStub.calledOnceWithExactly(
-          this.intl.t('upfluence.oss-components.copy.success-message'),
-          this.intl.t('upfluence.oss-components.copy.success-title')
+          this.intl.t('oss-components.copy.success.subtitle'),
+          this.intl.t('oss-components.copy.success.title')
         )
       );
     });
@@ -104,8 +104,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
       assert.true(
         this.toastErrorStub.calledOnceWithExactly(
-          this.intl.t('upfluence.oss-components.copy.error-message'),
-          this.intl.t('upfluence.oss-components.copy.error-title')
+          this.intl.t('oss-components.copy.error.subtitle'),
+          this.intl.t('oss-components.copy.error.title')
         )
       );
     });
@@ -132,8 +132,8 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
         assert.true(
           this.toastInfoStub.calledOnceWithExactly(
-            this.intl.t('upfluence.oss-components.copy.success-message'),
-            this.intl.t('upfluence.oss-components.copy.success-title')
+            this.intl.t('oss-components.copy.success.subtitle'),
+            this.intl.t('oss-components.copy.success.title')
           )
         );
       });
