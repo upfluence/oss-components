@@ -47,6 +47,18 @@ export default {
         defaultValue: { summary: 'Copy' }
       },
       control: { type: 'text' }
+    },
+    animated: {
+      type: { name: 'boolean' },
+      description:
+        'Enables a green checkmark animation (3 seconds) when the user clicks on the button. It also disables the success feedback toast.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -63,13 +75,14 @@ const defaultArgs = {
   value: 'Your copied value',
   inline: false,
   icon: undefined,
-  tooltip: undefined
+  tooltip: undefined,
+  animated: false
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div class="fx-col">
-      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} />
+      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} @animated={{this.animated}} />
     </div>`,
   context: args
 });

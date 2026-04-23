@@ -15,3 +15,32 @@
     box-shadow: none;
   }
 }
+
+.oss-copy--animation {
+  --animation-duration: 3s;
+  will-change: color, opacity;
+
+  &,
+  & i {
+    animation: checkmark var(--animation-duration);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    opacity: 0.6;
+    color: var(--color-success-500);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  90% {
+    color: var(--color-success-500);
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}

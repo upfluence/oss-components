@@ -2,8 +2,9 @@
   {{#if this.inline}}
     <OSS::Icon
       @icon={{this.icon}}
-      class="oss-copy--inline"
+      class="oss-copy--inline {{if this.showCheckmark 'oss-copy--animation'}}"
       {{on "click" this.copy}}
+      {{on "animationend" this.resetCheckmarkOnAnimationEnd}}
       {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
       data-control-name="copy-content-button"
       ...attributes
@@ -14,8 +15,10 @@
       @square={{true}}
       @size="sm"
       {{on "click" this.copy}}
+      {{on "animationend" this.resetCheckmarkOnAnimationEnd}}
       {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
       data-control-name="copy-content-button"
+      class="{{if this.showCheckmark 'oss-copy--animation'}}"
       ...attributes
     />
   {{/if}}
