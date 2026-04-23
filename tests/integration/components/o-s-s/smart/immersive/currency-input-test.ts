@@ -101,6 +101,39 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       const clickableRows = findAll('.upf-infinite-select__item');
       assert.equal(clickableRows.length, 2);
     });
+
+    module('Selected currency highlighting', () => {
+      test('The selected currency has the selected class', async function (assert) {
+        await render(
+          hbs`<OSS::Smart::Immersive::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />`
+        );
+        await click('.currency-selector');
+
+        assert.dom('.oss-infinite-select-option--selected').exists({ count: 1 });
+        assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('EUR');
+      });
+
+      test('The selected currency has a check icon', async function (assert) {
+        await render(
+          hbs`<OSS::Smart::Immersive::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />`
+        );
+        await click('.currency-selector');
+
+        assert.dom('.oss-infinite-select-option--selected .fa-check').exists({ count: 1 });
+      });
+
+      test('Only the selected currency symbol is highlighted with primary color', async function (assert) {
+        await render(
+          hbs`<OSS::Smart::Immersive::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />`
+        );
+        await click('.currency-selector');
+
+        assert.dom('.oss-infinite-select-option--selected .font-color-primary-500').hasText('€');
+        assert
+          .dom('.oss-infinite-select-option:not(.oss-infinite-select-option--selected) .font-color-primary-500')
+          .doesNotExist();
+      });
+    });
   });
 
   module('Currency Input', () => {
