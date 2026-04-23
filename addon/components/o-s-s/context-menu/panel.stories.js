@@ -93,6 +93,10 @@ export default {
         component:
           'The `OSS::ContextMenu::Panel` component displays a context menu panel anchored to a specified reference target. It supports nested submenus, customizable placement, and offset options. The panel can trigger actions when menu items are selected and handle mouse leave events.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6188&p=f&t=AsdGbaychQPIaGnK-0'
     }
   }
 };
