@@ -102,19 +102,6 @@ export default {
         type: 'boolean'
       }
     },
-    enableKeyboard: {
-      description: 'Enable or not keyboard navigation inside infinite select',
-      type: { name: 'boolean' },
-      table: {
-        type: {
-          summary: 'boolean'
-        },
-        defaultValue: { summary: false }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
     action: {
       description:
         'An optional action button to display in the footer of the select dropdown. The action object accepts the following properties: `skin` (string, default: "primary"), `label` (string, optional), `icon` (string, optional), `onClick` (function, required), `closeOnClick` (boolean, default: true).',
@@ -182,7 +169,6 @@ const defaultArgs = {
   loading: false,
   loadingMore: false,
   inline: false,
-  enableKeyboard: false,
   skin: 'default',
   action: {
     skin: 'tertiary',
@@ -202,8 +188,8 @@ const Template = (args) => ({
       <OSS::InfiniteSelect
         @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
+        @skin={{this.skin}} @didRender={{this.didRender}} @action={{this.action}}
         class="upf-align--absolute-center"/>
   `,
   context: args
@@ -214,8 +200,8 @@ const OptionBlockTemplate = (args) => ({
     <OSS::InfiniteSelect
       @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-        @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center">
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
+        @didRender={{this.didRender}} class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
       </:option>
