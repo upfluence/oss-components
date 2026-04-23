@@ -72,7 +72,9 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
   }
 
   get dropdownAddressableClass(): string {
-    return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+    return this.args.addressableAs
+      ? `smart-immersive-currency-input-container__dropdown ${this.args.addressableAs}__dropdown`
+      : 'smart-immersive-currency-input-container__dropdown';
   }
 
   cleanupDrodpownAutoplacement?: () => void;

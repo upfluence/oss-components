@@ -22,7 +22,6 @@
     background-color: var(--color-white);
 
     &:not(.disabled, :disabled) {
-
       &:hover,
       &:focus-within {
         border: 1px dashed var(--color-gray-500);
@@ -81,15 +80,17 @@
 
       .rainbow-text-animated {
         .font-weight-semibold;
-        background: linear-gradient(130deg,
-            var(--color-gray-400) 18%,
-            var(--color-gray-300) 25%,
-            rgba(250, 198, 255, 1) 56%,
-            var(--color-primary-100) 62%,
-            var(--color-white) 66%,
-            rgba(250, 198, 255, 0.58) 68%,
-            var(--color-gray-300) 73%,
-            var(--color-gray-400) 85%);
+        background: linear-gradient(
+          130deg,
+          var(--color-gray-400) 18%,
+          var(--color-gray-300) 25%,
+          rgba(250, 198, 255, 1) 56%,
+          var(--color-primary-100) 62%,
+          var(--color-white) 66%,
+          rgba(250, 198, 255, 0.58) 68%,
+          var(--color-gray-300) 73%,
+          var(--color-gray-400) 85%
+        );
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -97,6 +98,12 @@
         background-size: 600% 100%;
         padding: 5px 6px;
       }
+    }
+  }
+
+  &__dropdown {
+    .upf-infinite-select__item {
+      padding: 0;
     }
   }
 
@@ -115,7 +122,6 @@
       }
 
       &:not(.disabled, :disabled) {
-
         &:focus-within,
         &:active {
           border-color: var(--color-primary-400);
@@ -138,7 +144,6 @@
       .border-color-error;
 
       &:not(.disabled, :disabled) {
-
         &:focus-within,
         &:hover {
           .border-color-error;
