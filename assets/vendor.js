@@ -84081,7 +84081,7 @@ require('@ember/-internals/bootstrap')
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/service",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -84095,8 +84095,9 @@ require('@ember/-internals/bootstrap')
     {{#if this.inline}}
       <OSS::Icon
         @icon={{this.icon}}
-        class="oss-copy--inline"
+        class="oss-copy--inline {{if this.showCheckmark 'oss-copy--animation'}}"
         {{on "click" this.copy}}
+        {{on "animationend" this.resetCheckmarkOnAnimationEnd}}
         {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
         data-control-name="copy-content-button"
         ...attributes
@@ -84107,16 +84108,18 @@ require('@ember/-internals/bootstrap')
         @square={{true}}
         @size="sm"
         {{on "click" this.copy}}
+        {{on "animationend" this.resetCheckmarkOnAnimationEnd}}
         {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
         data-control-name="copy-content-button"
+        class="{{if this.showCheckmark 'oss-copy--animation'}}"
         ...attributes
       />
     {{/if}}
   {{/if}}
   */
   {
-    "id": "hJuw17eP",
-    "block": "[[[41,[30,0,[\"accessibleClipboard\"]],[[[41,[30,0,[\"inline\"]],[[[1,\"    \"],[8,[39,1],[[24,0,\"oss-copy--inline\"],[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[30,0,[\"tooltip\"]],\"hover\"]]]],[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,4],[[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[30,0,[\"tooltip\"]],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[[30,0,[\"icon\"]],true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[]],null]],[\"&attrs\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"o-s-s/button\"]]",
+    "id": "jC/SFMko",
+    "block": "[[[41,[30,0,[\"accessibleClipboard\"]],[[[41,[30,0,[\"inline\"]],[[[1,\"    \"],[8,[39,1],[[16,0,[29,[\"oss-copy--inline \",[52,[30,0,[\"showCheckmark\"]],\"oss-copy--animation\"]]]],[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,2],[\"animationend\",[30,0,[\"resetCheckmarkOnAnimationEnd\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[30,0,[\"tooltip\"]],\"hover\"]]]],[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,4],[[24,\"data-control-name\",\"copy-content-button\"],[16,0,[29,[[52,[30,0,[\"showCheckmark\"]],\"oss-copy--animation\"]]]],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,2],[\"animationend\",[30,0,[\"resetCheckmarkOnAnimationEnd\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[30,0,[\"tooltip\"]],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[[30,0,[\"icon\"]],true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[]],null]],[\"&attrs\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/copy.hbs",
     "isStrictMode": false
   });
@@ -84127,6 +84130,10 @@ require('@ember/-internals/bootstrap')
       _initializerDefineProperty(this, "toast", _descriptor2, this);
       _initializerDefineProperty(this, "accessibleClipboard", _descriptor3, this);
       _initializerDefineProperty(this, "inline", _descriptor4, this);
+      _initializerDefineProperty(this, "animated", _descriptor5, this);
+      _initializerDefineProperty(this, "showCheckmark", _descriptor6, this);
+      this.inline = this.args.inline ?? false;
+      this.animated = this.args.animated ?? false;
       if (!window.chrome && !(0, _runtime.isTesting)()) {
         this.accessibleClipboard = true;
         return;
@@ -84140,6 +84147,7 @@ require('@ember/-internals/bootstrap')
       }).catch(() => {});
     }
     get icon() {
+      if (this.showCheckmark) return 'far fa-check';
       return this.args.icon ?? 'far fa-copy';
     }
     get tooltip() {
@@ -84148,10 +84156,17 @@ require('@ember/-internals/bootstrap')
     copy(event) {
       event.stopPropagation();
       navigator.clipboard.writeText(this.args.value).then(() => {
+        if (this.animated) {
+          this.showCheckmark = true;
+          return;
+        }
         this.toast.info(this.intl.t('oss-components.copy.success.subtitle'), this.intl.t('oss-components.copy.success.title'));
       }).catch(() => {
         this.toast.error(this.intl.t('oss-components.copy.error.subtitle'), this.intl.t('oss-components.copy.error.title'));
       });
+    }
+    resetCheckmarkOnAnimationEnd() {
+      this.showCheckmark = false;
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
@@ -84174,10 +84189,20 @@ require('@ember/-internals/bootstrap')
     configurable: true,
     enumerable: true,
     writable: true,
+    initializer: null
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "animated", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "showCheckmark", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
     initializer: function () {
-      return this.args.inline ?? false;
+      return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "copy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copy"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "copy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "resetCheckmarkOnAnimationEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "resetCheckmarkOnAnimationEnd"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCopy);
 });
 ;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@ember/object", "@ember/debug", "@ember/service", "@ember/utils", "@ember/runloop", "@glimmer/tracking", "@upfluence/oss-components/utils", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _object, _debug, _service, _utils, _runloop, _tracking, _utils2, _attachDropdown, _baseDropdown, _templateFactory) {

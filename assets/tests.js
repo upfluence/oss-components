@@ -6245,7 +6245,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
           "isStrictMode": false
         }));
         await (0, _testHelpers.click)('.upf-btn--default');
-        assert.true(this.toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
+        assert.true(this.toastInfoStub.calledOnceWithExactly(this.intl.t('oss-components.copy.success.subtitle'), this.intl.t('oss-components.copy.success.title')));
       });
       (0, _qunit.test)('the error toast is rendered', async function (assert) {
         _sinon.default.stub(navigator.clipboard, 'writeText').rejects();
@@ -6260,11 +6260,10 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
           "isStrictMode": false
         }));
         await (0, _testHelpers.click)('.upf-btn--default');
-        assert.true(this.toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
+        assert.true(this.toastErrorStub.calledOnceWithExactly(this.intl.t('oss-components.copy.error.subtitle'), this.intl.t('oss-components.copy.error.title')));
       });
       (0, _qunit.test)('the clipboard writeText method is called', async function (assert) {
         const writeTextStub = _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
-        this.toastInfoStub.resolves();
         this.textForCopy = 'test';
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -6278,6 +6277,84 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         }));
         await (0, _testHelpers.click)('.upf-btn--default');
         assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
+      });
+      (0, _qunit.module)('with @animated', function (hooks) {
+        hooks.beforeEach(function () {
+          _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
+        });
+        (0, _qunit.test)('when animation is disabled, info toast is rendered', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Copy @value="test" @animated={{false}} />
+          */
+          {
+            "id": "2YTJksLz",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@animated\"],[\"test\",false]],null]],[],false,[\"o-s-s/copy\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.upf-btn--default');
+          assert.true(this.toastInfoStub.calledOnceWithExactly(this.intl.t('oss-components.copy.success.subtitle'), this.intl.t('oss-components.copy.success.title')));
+        });
+        (0, _qunit.test)('when animation is enabled, no toast is rendered', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Copy @value="test" @animated={{true}} />
+          */
+          {
+            "id": "gKRu/i9t",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@animated\"],[\"test\",true]],null]],[],false,[\"o-s-s/copy\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.upf-btn--default');
+          assert.true(this.toastInfoStub.notCalled);
+        });
+        (0, _qunit.test)('when animation is enabled, checkmark icon is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Copy @value="test" @animated={{true}} />
+          */
+          {
+            "id": "gKRu/i9t",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@animated\"],[\"test\",true]],null]],[],false,[\"o-s-s/copy\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('i.fa-check').doesNotExist();
+          await (0, _testHelpers.click)('.upf-btn--default');
+          assert.dom('i.fa-check').exists();
+        });
+        (0, _qunit.test)('when animation is enabled, button has animation class during animation', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Copy @value="test" @animated={{true}} />
+          */
+          {
+            "id": "gKRu/i9t",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@animated\"],[\"test\",true]],null]],[],false,[\"o-s-s/copy\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').doesNotExist();
+          await (0, _testHelpers.click)('[data-control-name="copy-content-button"]');
+          assert.dom('[data-control-name="copy-content-button"].oss-copy--animation').exists();
+        });
+        (0, _qunit.test)('when animation is enabled on inline copy, checkmark is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Copy @value="test" @inline={{true}} @animated={{true}} />
+          */
+          {
+            "id": "07C9y+3X",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@inline\",\"@animated\"],[\"test\",true,true]],null]],[],false,[\"o-s-s/copy\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('i.fa-check').doesNotExist();
+          await (0, _testHelpers.click)('[data-control-name="copy-content-button"]');
+          assert.dom('i.fa-check').exists();
+        });
       });
     });
   });
