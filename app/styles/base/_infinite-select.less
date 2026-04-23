@@ -3,6 +3,10 @@
   width: 100%;
   overscroll-behavior: contain;
 
+  .upf-infinite-select--search {
+    margin: var(--spacing-px-3) var(--spacing-px-6) 0 var(--spacing-px-6);
+  }
+
   ul {
     padding: 0;
   }
@@ -26,6 +30,7 @@
 
 .upf-infinite-select__container {
   position: relative;
+  overflow: auto;
 }
 
 .upf-infinite-select__items-container {
@@ -66,7 +71,7 @@
   padding: var(--spacing-px-6);
   gap: var(--spacing-px-6);
 
-  &.upf-power-select__dropdown  {
+  &.upf-power-select__dropdown {
     overflow: auto;
   }
 
