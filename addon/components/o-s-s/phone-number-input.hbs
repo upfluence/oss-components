@@ -50,17 +50,13 @@
         {{on "click" this.noop}}
       >
         <:option as |country|>
-          <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
-            <div class="fflag fflag-{{country.id}} ff-sm ff-rounded"></div>
-            <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
-            <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get
-                country.countryCallingCodes
-                0
-              }})</span>
-            {{#if (eq this.selectedCountry country)}}
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
-            {{/if}}
-          </div>
+          <OSS::InfiniteSelect::Option
+            @title={{country.name}}
+            @prefixCountry={{country.id}}
+            @suffixHint={{concat "(+" (get country.countryCallingCodes 0) ")"}}
+            @selected={{eq this.selectedCountry country}}
+            @onSelect={{fn this.onSelect country}}
+          />
         </:option>
       </OSS::InfiniteSelect>
     {{/in-element}}
