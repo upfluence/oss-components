@@ -53,7 +53,7 @@
           <OSS::InfiniteSelect::Option
             @title={{country.name}}
             @prefixCountry={{country.id}}
-            @suffixHint={{concat "(+" (get country.countryCallingCodes 0) ")"}}
+            @subtitle={{concat "(+" (get country.countryCallingCodes 0) ")"}}
             @selected={{eq this.selectedCountry country}}
             @onSelect={{fn this.onSelect country}}
           />
