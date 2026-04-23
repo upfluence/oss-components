@@ -129,12 +129,12 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
   }
 
   @action
-  onItemSelected(value: Item, preventFocus: boolean = false): void {
-    this.closeDropdown(preventFocus);
+  onItemSelected(value: Item): void {
+    this.closeDropdown();
     this.args.onChange(value);
   }
 
   private _matchValueWithSourceList(): void {
-    if (this.selectedCountry) this.onItemSelected(this.selectedCountry, true);
+    if (this.selectedCountry) this.args.onChange(this.selectedCountry);
   }
 }

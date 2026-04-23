@@ -37,16 +37,12 @@
         {{on "click" this.noop}}
       >
         <:option as |item|>
-          <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
-            {{#if item.id}}
-              <div class="fflag fflag-{{item.id}} ff-sm ff-rounded"></div>
-            {{/if}}
-            <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
-            {{#if (eq this.selectedCountry item)}}
-              <div class="fx-1"></div>
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-            {{/if}}
-          </div>
+          <OSS::InfiniteSelect::Option
+            @title={{item.name}}
+            @prefixCountry={{item.id}}
+            @selected={{eq this.selectedCountry item}}
+            @onSelect={{fn this.onItemSelected item}}
+          />
         </:option>
       </OSS::InfiniteSelect>
     {{/in-element}}
