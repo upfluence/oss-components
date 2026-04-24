@@ -18,9 +18,10 @@
 }
 
 .upf-floating-menu {
-  background-color: #ffffff;
-  border-radius: var(--border-radius-sm);
-  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.2);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-md);
 
   display: flex;
   flex-direction: column;
@@ -28,7 +29,7 @@
   overflow: hidden auto;
   max-height: var(--floating-max-height, 250px);
   max-width: 350px;
-  padding: var(--spacing-px-6);
+  padding: var(--spacing-px-9) var(--spacing-px-6);
   margin-top: var(--spacing-px-12);
   position: absolute;
   z-index: 1100;

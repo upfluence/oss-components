@@ -78,6 +78,23 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
       assert.equal(clickableRows.length, 2);
       assert.dom(clickableRows[0]).hasText('France (+33)');
     });
+
+    module('Selected country highlighting', () => {
+      test('The selected country has the selected class', async function (assert) {
+        await render(hbs`<OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />`);
+        await click('.country-selector');
+
+        assert.dom('.oss-infinite-select-option--selected').exists({ count: 1 });
+        assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('France');
+      });
+
+      test('The selected country has a check icon', async function (assert) {
+        await render(hbs`<OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />`);
+        await click('.country-selector');
+
+        assert.dom('.oss-infinite-select-option--selected .fa-check').exists({ count: 1 });
+      });
+    });
   });
 
   module('Phone Number Input', (hooks) => {
