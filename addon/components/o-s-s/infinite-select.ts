@@ -23,7 +23,6 @@ interface InfiniteSelectArgs {
   searchPlaceholder: string;
   items: InfinityItem[];
   inline: boolean;
-  enableKeyboard?: boolean;
   skin?: 'default' | 'smart';
   action?: InfiniteSelectAction;
 
@@ -85,10 +84,6 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     return Object.keys(this.groups).slice(-1)[0];
   }
 
-  get enableKeyboard(): boolean {
-    return this.args.enableKeyboard ?? false;
-  }
-
   get searchEnabled(): boolean {
     return this.args.searchEnabled ?? true;
   }
@@ -116,10 +111,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @action
   onRender(): void {
     this.args.didRender?.();
-
-    if (this.enableKeyboard) {
-      this.autoFocus();
-    }
+    this.autoFocus();
   }
 
   @action
@@ -152,29 +144,18 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEventInput(e: KeyboardEvent): void {
-    if (!this.searchEnabled && this.enableKeyboard) {
-      if (this.focusStylesDisabled === true) {
-        this.focusStylesDisabled = false;
-        return;
-      }
-
-      this.focusStylesDisabled = false;
-    }
-
     const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.focusFirstItem,
       Enter: this.focusFirstItem,
       Escape: this.handleEscape
     };
 
-    if (this.enableKeyboard) {
-      actionsForKeys[e.key]?.(this, e);
-    }
+    actionsForKeys[e.key]?.(this, e);
   }
 
   @action
   handleKeyEvent(e: KeyboardEvent): void {
-    if (!this.searchEnabled && this.enableKeyboard) {
+    if (!this.searchEnabled) {
       this.focusStylesDisabled = false;
     }
 
@@ -186,9 +167,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
       Escape: this.handleEscape
     };
 
-    if (this.enableKeyboard) {
-      actionsForKeys[e.key]?.(this, e);
-    }
+    actionsForKeys[e.key]?.(this, e);
   }
 
   @action
