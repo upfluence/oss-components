@@ -75,13 +75,13 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-      <OSS::FeatureCard
-        @title={{this.title}}
-        @description={{this.description}}
-        @image={{this.image}}
-        @colorVariant={{this.colorVariant}}
-        @shadowVariant={{this.shadowVariant}}
-      />
+    <OSS::FeatureCard
+      @title={{this.title}}
+      @description={{this.description}}
+      @image={{this.image}}
+      @colorVariant={{this.colorVariant}}
+      @shadowVariant={{this.shadowVariant}}
+    />
   `,
   context: args
 });

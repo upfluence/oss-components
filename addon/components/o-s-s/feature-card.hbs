@@ -1,12 +1,8 @@
-<div
-  class="oss-feature-card oss-feature-card--color-{{this.colorVariant}} oss-feature-card--shadow-{{this.shadowVariant}}"
-  ...attributes
->
+<div class={{this.computedClasses}} ...attributes>
   <div class="oss-feature-card__content">
     <h3 class="oss-feature-card__title">{{@title}}</h3>
     <p class="oss-feature-card__description">{{@description}}</p>
   </div>
 
   <img class="oss-feature-card__illustration" src={{@image.src}} alt={{this.imageAlt}} />
-
 </div>

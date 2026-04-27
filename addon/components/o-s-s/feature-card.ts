@@ -60,6 +60,14 @@ export default class OSSFeatureCard extends Component<OSSFeatureCardArgs> {
     return this.args.shadowVariant ?? DEFAULT_SHADOW_VARIANT;
   }
 
+  get computedClasses(): string {
+    return [
+      'oss-feature-card',
+      `oss-feature-card--color-${this.colorVariant}`,
+      `oss-feature-card--shadow-${this.shadowVariant}`
+    ].join(' ');
+  }
+
   get imageAlt(): string {
     return this.args.image.alt ?? '';
   }

@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { COLOR_VARIANTS, SHADOW_VARIANTS } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
 module('Integration | Component | o-s-s/feature-card', function (hooks) {
   setupRenderingTest(hooks);
@@ -15,33 +16,68 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     };
   });
 
-  test('it renders', async function (assert) {
-    await render(
-      hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />`
-    );
+  module('Rendering', () => {
+    test('it renders the title', async function (assert) {
+      await render(
+        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />`
+      );
 
-    assert.dom('.oss-feature-card').exists();
-    assert.dom('.oss-feature-card__title').hasText(this.title);
-    assert.dom('.oss-feature-card__description').hasText(this.description);
-    assert.dom('.oss-feature-card__illustration').hasAttribute('src', this.image.src);
-    assert.dom('.oss-feature-card__illustration').hasAttribute('alt', this.image.alt);
+      assert.dom('.oss-feature-card').exists();
+      assert.dom('.oss-feature-card__title').hasText(this.title);
+    });
+
+    test('it renders the description', async function (assert) {
+      await render(
+        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />`
+      );
+
+      assert.dom('.oss-feature-card').exists();
+      assert.dom('.oss-feature-card__description').hasText(this.description);
+    });
+
+    test('it renders the image', async function (assert) {
+      await render(
+        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />`
+      );
+
+      assert.dom('.oss-feature-card').exists();
+      assert.dom('.oss-feature-card__illustration').hasAttribute('src', this.image.src);
+      assert.dom('.oss-feature-card__illustration').hasAttribute('alt', this.image.alt);
+    });
+
+    test('it renders extra attributes (splattributes)', async function (assert) {
+      await render(
+        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} data-control-name="feature-card-test" />`
+      );
+
+      assert.dom('[data-control-name="feature-card-test"]').exists();
+    });
   });
 
-  test('it renders extra attributes (splattributes)', async function (assert) {
-    await render(
-      hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} data-control-name="feature-card-test" />`
-    );
+  module('Variants', () => {
+    COLOR_VARIANTS.forEach((colorVariant) => {
+      test(`it supports the ${colorVariant} color variant`, async function (assert) {
+        this.colorVariant = colorVariant;
 
-    assert.dom('[data-control-name="feature-card-test"]').exists();
-  });
+        await render(
+          hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant={{this.colorVariant}} />`
+        );
 
-  test('it supports color and shadow variants', async function (assert) {
-    await render(
-      hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant="blue" @shadowVariant="lg" />`
-    );
+        assert.dom('.oss-feature-card').hasClass(`oss-feature-card--color-${colorVariant}`);
+      });
+    });
 
-    assert.dom('.oss-feature-card').hasClass('oss-feature-card--color-blue');
-    assert.dom('.oss-feature-card').hasClass('oss-feature-card--shadow-lg');
+    SHADOW_VARIANTS.forEach((shadowVariant) => {
+      test(`it supports the ${shadowVariant} shadow variant`, async function (assert) {
+        this.shadowVariant = shadowVariant;
+
+        await render(
+          hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @shadowVariant={{this.shadowVariant}} />`
+        );
+
+        assert.dom('.oss-feature-card').hasClass(`oss-feature-card--shadow-${shadowVariant}`);
+      });
+    });
   });
 
   module('Error management', () => {
@@ -70,6 +106,29 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
       });
 
       await render(hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} />`);
+    });
+
+    test('it throws when @colorVariant is unknown', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [OSS::FeatureCard] @colorVariant must be one of: blue, violet, yellow'
+        );
+      });
+
+      await render(
+        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant="green" />`
+      );
+    });
+
+    test('it throws when @shadowVariant is unknown', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
+      });
+
+      await render(
+        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @shadowVariant="xl" />`
+      );
     });
   });
 });

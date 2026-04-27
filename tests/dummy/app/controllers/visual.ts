@@ -113,12 +113,12 @@ export default class Visual extends Controller {
   @tracked feedbackMessageWarning: FeedbackMessage = { type: 'warning', value: '' };
   @tracked feedbackMessageSuccess: FeedbackMessage = { type: 'success', value: '' };
 
-  @tracked featureCardImage: OSSFeatureCardImage = {
+  featureCardImage: OSSFeatureCardImage = {
     src: '/@upfluence/oss-components/assets/images/no-image.svg',
     alt: 'No image illustration'
   };
 
-  @tracked twoFeatureCards: OSSFeatureCardArgs[] = [
+  twoFeatureCards: OSSFeatureCardArgs[] = [
     {
       title: 'Creator discovery at scale',
       description:
@@ -131,7 +131,7 @@ export default class Visual extends Controller {
       image: this.featureCardImage
     }
   ];
-  @tracked threeFeatureCards: OSSFeatureCardArgs[] = [
+  threeFeatureCards: OSSFeatureCardArgs[] = [
     {
       title: 'Creator discovery at scale',
       description:
@@ -149,7 +149,7 @@ export default class Visual extends Controller {
       image: this.featureCardImage
     }
   ];
-  @tracked featureCard: OSSFeatureCardArgs = this.threeFeatureCards[1]!;
+  featureCard: OSSFeatureCardArgs = this.threeFeatureCards[1]!;
 
   @tracked progressBarSuccess: number = 30;
   @tracked progressBarWarning: number = 25;

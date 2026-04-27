@@ -5,7 +5,7 @@ export default {
   component: 'feature-cards-container',
   argTypes: {
     cards: {
-      description: '2 or 3 feature cards. Colors, shadows and rotation are automatically set by the container.',
+      description: '1 to 3 feature cards. Colors, shadows and rotation are automatically set by the container.',
       table: {
         type: { summary: 'Array<{ title: string; description: string; image: { src: string; alt?: string } }>' },
         defaultValue: { summary: 'undefined' }
@@ -18,7 +18,7 @@ export default {
     docs: {
       description: {
         component:
-          'Wrapper that lays out 2 or 3 OSS::FeatureCard components with colors, shadows, angles and overlap. See [OSS::FeatureCard](?path=/story/components-oss-featurecard--default) for individual card details.'
+          'Wrapper that lays out 1 to 3 OSS::FeatureCard components with colors, shadows, angles and overlap. See [OSS::FeatureCard](?path=/story/components-oss-featurecard--default) for individual card details.'
       }
     }
   }
@@ -54,6 +54,10 @@ const twoCardsArgs = {
   cards: threeCardsArgs.cards.slice(0, 2)
 };
 
+const oneCardArgs = {
+  cards: threeCardsArgs.cards.slice(0, 1)
+};
+
 const Template = (args) => ({
   template: hbs`
     <div style="display: flex; justify-content: center; overflow-x: auto; min-inline-size: 950px;">
@@ -68,3 +72,6 @@ ThreeCards.args = threeCardsArgs;
 
 export const TwoCards = Template.bind({});
 TwoCards.args = twoCardsArgs;
+
+export const OneCard = Template.bind({});
+OneCard.args = oneCardArgs;

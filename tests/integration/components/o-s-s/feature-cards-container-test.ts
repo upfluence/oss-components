@@ -37,6 +37,25 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 3 });
   });
 
+  test('it supports 1 card layout', async function (assert) {
+    this.set('cards', this.cards.slice(0, 1));
+
+    await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
+
+    assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 1 });
+
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1)')
+      .hasAttribute('style', 'transform: translateX(0) rotate(0deg);');
+    assert.dom('.oss-feature-cards-container__item:nth-child(1)').hasClass('oss-feature-cards-container__item--center');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
+      .hasClass('oss-feature-card--color-violet');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
+      .hasClass('oss-feature-card--shadow-lg');
+  });
+
   test('it supports 2 cards layout', async function (assert) {
     this.set('cards', this.cards.slice(0, 2));
 
@@ -110,12 +129,12 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     });
 
     test('it throws when @cards has invalid count', async function (assert) {
-      this.cards = [this.cards[0]];
+      this.cards = [];
 
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [OSS::FeatureCardsContainer] @cards must contain exactly 2 or 3 cards'
+          'Assertion Failed: [OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards'
         );
       });
 

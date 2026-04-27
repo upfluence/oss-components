@@ -8,6 +8,7 @@ type OSSFeatureCardsContainerArgs = {
 };
 
 type OSSFeatureCardsContainerComputedCard = Required<OSSFeatureCardArgs> & {
+  className: string;
   isCenter: boolean;
   style: string;
 };
@@ -15,8 +16,10 @@ type OSSFeatureCardsContainerComputedCard = Required<OSSFeatureCardArgs> & {
 const TWO_CARDS_OFFSET_X = '45%';
 const THREE_CARD_OFFSET_X = '80%';
 const ROTATION_ANGLE = 11.25;
+const BASE_ITEM_CLASS = 'oss-feature-cards-container__item';
 
 const CARDS_LAYOUT = {
+  1: [{ colorVariant: 'violet', shadowVariant: 'lg', rotation: 0, offsetX: '0', isCenter: true }],
   2: [
     {
       colorVariant: 'blue',
@@ -64,8 +67,8 @@ export default class OSSFeatureCardsContainer extends Component<OSSFeatureCardsC
 
     assert('[OSS::FeatureCardsContainer] The @cards parameter is mandatory', Array.isArray(args.cards));
     assert(
-      '[OSS::FeatureCardsContainer] @cards must contain exactly 2 or 3 cards',
-      args.cards.length === 2 || args.cards.length === 3
+      '[OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards',
+      args.cards.length >= 1 && args.cards.length <= 3
     );
   }
 
@@ -82,6 +85,7 @@ export default class OSSFeatureCardsContainer extends Component<OSSFeatureCardsC
 
       return {
         ...card,
+        className: isCenter ? `${BASE_ITEM_CLASS} ${BASE_ITEM_CLASS}--center` : BASE_ITEM_CLASS,
         colorVariant,
         shadowVariant,
         isCenter,
