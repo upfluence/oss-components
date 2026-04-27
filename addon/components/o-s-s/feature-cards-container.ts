@@ -70,10 +70,11 @@ export default class OSSFeatureCardsContainer extends Component<OSSFeatureCardsC
   }
 
   get cardsWithLayout(): OSSFeatureCardsContainerComputedCard[] {
-    const layout = CARDS_LAYOUT[this.args.cards.length as keyof typeof CARDS_LAYOUT];
+    const cards = this.args.cards ?? [];
+    const layout = CARDS_LAYOUT[cards.length as keyof typeof CARDS_LAYOUT];
     assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', !!layout);
 
-    return this.args.cards.map((card, index) => {
+    return cards.map((card, index) => {
       const cardLayout = layout[index];
       assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', !!cardLayout);
 

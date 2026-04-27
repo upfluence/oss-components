@@ -43,6 +43,61 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 2 });
+
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1)')
+      .hasAttribute('style', 'transform: translateX(-45%) rotate(-11.25deg);');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
+      .hasClass('oss-feature-card--color-blue');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
+      .hasClass('oss-feature-card--shadow-sm');
+
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(2)')
+      .hasAttribute('style', 'transform: translateX(45%) rotate(11.25deg);');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
+      .hasClass('oss-feature-card--color-yellow');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
+      .hasClass('oss-feature-card--shadow-sm');
+  });
+
+  test('it applies computed layout rules for 3 cards', async function (assert) {
+    await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
+
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1)')
+      .hasAttribute('style', 'transform: translateX(-80%) rotate(-11.25deg);');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
+      .hasClass('oss-feature-card--color-blue');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
+      .hasClass('oss-feature-card--shadow-sm');
+
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(2)')
+      .hasAttribute('style', 'transform: translateX(0) rotate(0deg);');
+    assert.dom('.oss-feature-cards-container__item:nth-child(2)').hasClass('oss-feature-cards-container__item--center');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
+      .hasClass('oss-feature-card--color-violet');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
+      .hasClass('oss-feature-card--shadow-lg');
+
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(3)')
+      .hasAttribute('style', 'transform: translateX(80%) rotate(11.25deg);');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(3) .oss-feature-card')
+      .hasClass('oss-feature-card--color-yellow');
+    assert
+      .dom('.oss-feature-cards-container__item:nth-child(3) .oss-feature-card')
+      .hasClass('oss-feature-card--shadow-sm');
   });
 
   module('Error management', () => {
