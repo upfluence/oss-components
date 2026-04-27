@@ -283,9 +283,14 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     });
 
     module('If keyboard is disabled', function () {
+      hooks.beforeEach(function () {
+        this.enableKeyboard = false;
+      });
+
       test('The first element should not be focused on load', async function (assert) {
         await render(
-          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                   @enableKeyboard={{this.enableKeyboard}} />`
         );
 
         assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
@@ -293,7 +298,8 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
 
       test('The keyboard controls are disabled', async function (assert) {
         await render(
-          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                   @enableKeyboard={{this.enableKeyboard}} />`
         );
 
         assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
