@@ -1,0 +1,23 @@
+.oss-feature-cards-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 430px;
+  inline-size: 100%;
+
+  &__item {
+    position: absolute;
+
+    &--center {
+      top: 30px;
+    }
+  }
+
+  & > :nth-child(odd) {
+    top: 76px;
+  }
+  & > :nth-child(even) {
+    z-index: 2;
+  }
+}

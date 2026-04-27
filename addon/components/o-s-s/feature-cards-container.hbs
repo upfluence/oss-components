@@ -1,0 +1,16 @@
+<div class="oss-feature-cards-container" ...attributes>
+  {{#each this.cardsWithLayout as |card|}}
+    <div
+      class="oss-feature-cards-container__item oss-feature-cards-container__item{{if card.isCenter '--center'}}"
+      style={{card.style}}
+    >
+      <OSS::FeatureCard
+        @title={{card.title}}
+        @description={{card.description}}
+        @image={{card.image}}
+        @colorVariant={{card.colorVariant}}
+        @shadowVariant={{card.shadowVariant}}
+      />
+    </div>
+  {{/each}}
+</div>
