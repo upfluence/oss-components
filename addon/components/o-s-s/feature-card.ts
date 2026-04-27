@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { isSafeString } from '@upfluence/oss-components/utils';
 
 export const COLOR_VARIANTS = ['blue', 'violet', 'yellow'] as const;
 export type OSSFeatureCardColorVariant = (typeof COLOR_VARIANTS)[number];
@@ -28,11 +29,11 @@ export default class OSSFeatureCard extends Component<OSSFeatureCardArgs> {
 
     assert(
       '[OSS::FeatureCard] The @title parameter is mandatory',
-      typeof args.title === 'string' && args.title.trim().length > 0
+      typeof (args.title === 'string' || isSafeString(args.title)) && args.title.trim().length > 0
     );
     assert(
       '[OSS::FeatureCard] The @description parameter is mandatory',
-      typeof args.description === 'string' && args.description.trim().length > 0
+      typeof (args.description === 'string' || isSafeString(args.description)) && args.description.trim().length > 0
     );
     assert(
       '[OSS::FeatureCard] The @image parameter is mandatory and must contain a src key',
