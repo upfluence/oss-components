@@ -25,7 +25,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
       );
 
       assert.dom('.oss-feature-card').exists();
-      assert.dom('.oss-feature-card__title').hasText(this.title.toString());
+      assert.dom('.oss-feature-card>:first-child>:first-child').hasText(this.title.toString());
     });
 
     test('it renders the description', async function (assert) {
