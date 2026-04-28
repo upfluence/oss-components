@@ -55,11 +55,7 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 1 });
-
-    assert
-      .dom('.oss-feature-cards-container>:nth-child(1)')
-      .hasAttribute('style', 'transform: translateX(0) rotate(0deg);');
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-cards-container__item--center');
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-cards-container__item');
 
     assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
     assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
@@ -72,16 +68,9 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 2 });
 
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1)')
-      .hasAttribute('style', 'transform: translateX(-45%) rotate(-11.25deg);');
-
     assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
 
     assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(2)')
-      .hasAttribute('style', 'transform: translateX(45%) rotate(11.25deg);');
     assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-blue');
 
     assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-sm');
@@ -92,22 +81,13 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
-    assert
-      .dom('.oss-feature-cards-container>:nth-child(1)')
-      .hasAttribute('style', 'transform: translateX(-80%) rotate(-11.25deg);');
     assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
     assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
 
-    assert
-      .dom('.oss-feature-cards-container>:nth-child(2)')
-      .hasAttribute('style', 'transform: translateX(0) rotate(0deg);');
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-cards-container__item--center');
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-cards-container__item');
     assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-blue');
     assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-lg');
 
-    assert
-      .dom('.oss-feature-cards-container>:nth-child(3)')
-      .hasAttribute('style', 'transform: translateX(80%) rotate(11.25deg);');
     assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--color-yellow');
     assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--shadow-sm');
   });

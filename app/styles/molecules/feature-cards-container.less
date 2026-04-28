@@ -1,4 +1,10 @@
 .oss-feature-cards-container {
+  --two-cards-offset-x: 45%;
+  --three-cards-offset-x: 80%;
+  --rotation-angle: 11.25deg;
+  --center-card-top: 30px;
+  --side-cards-top: 58px;
+
   position: relative;
   display: flex;
   align-items: center;
@@ -9,15 +15,31 @@
   &__item {
     position: absolute;
 
-    &--center {
-      top: 30px;
+    // To target child i in a list of n, we can use: :nth-child(i):nth-last-child(n - i + 1)
+    // Specific 2 cards layout
+    &:first-child:nth-last-child(2) {
+      translate: calc(-1 * var(--two-cards-offset-x));
+      rotate: calc(-1 * var(--rotation-angle));
     }
-  }
+    &:last-child:nth-child(2) {
+      translate: var(--two-cards-offset-x);
+      rotate: var(--rotation-angle);
+    }
 
-  & > :nth-child(odd) {
-    top: 76px;
-  }
-  & > :nth-child(even) {
-    z-index: 2;
+    // Specific 3 cards layout
+    &:first-child:nth-last-child(3) {
+      top: var(--side-cards-top);
+      translate: calc(-1 * var(--three-cards-offset-x));
+      rotate: calc(-1 * var(--rotation-angle));
+    }
+    &:nth-child(2):nth-last-child(2) {
+      top: var(--center-card-top);
+      z-index: 1;
+    }
+    &:last-child:nth-child(3) {
+      top: var(--side-cards-top);
+      translate: var(--three-cards-offset-x);
+      rotate: var(--rotation-angle);
+    }
   }
 }

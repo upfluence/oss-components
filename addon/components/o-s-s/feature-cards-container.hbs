@@ -1,13 +1,12 @@
 <div class="oss-feature-cards-container" ...attributes>
-  {{#each this.cardsWithLayout as |card|}}
+  {{#each this.cardsWithComputedVariants as |card|}}
     <OSS::FeatureCard
       @title={{card.title}}
       @description={{card.description}}
       @image={{card.image}}
       @colorVariant={{card.colorVariant}}
       @shadowVariant={{card.shadowVariant}}
-      style={{card.style}}
-      class={{concat "oss-feature-cards-container__item " card.className}}
+      class="oss-feature-cards-container__item"
     />
   {{/each}}
 </div>
