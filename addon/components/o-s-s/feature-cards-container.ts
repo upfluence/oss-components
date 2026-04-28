@@ -1,16 +1,16 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
-import type { OSSFeatureCardArgs } from './feature-card';
+import type { OSSFeatureCardArgs, OSSFeatureCardColorVariant, OSSFeatureCardShadowVariant } from './feature-card';
+import { htmlSafe } from '@ember/template';
 
 type OSSFeatureCardsContainerArgs = {
-  cards: Pick<OSSFeatureCardArgs, 'title' | 'description' | 'image'>[];
+  cards: OSSFeatureCardArgs[];
 };
 
-type OSSFeatureCardsContainerComputedCard = Required<OSSFeatureCardArgs> & {
+type OSSFeatureCardsContainerComputedCard = OSSFeatureCardArgs & {
   className: string;
-  isCenter: boolean;
-  style: string;
+  style: ReturnType<typeof htmlSafe>;
 };
 
 const TWO_CARDS_OFFSET_X = '45%';
@@ -18,48 +18,42 @@ const THREE_CARD_OFFSET_X = '80%';
 const ROTATION_ANGLE = 11.25;
 const BASE_ITEM_CLASS = 'oss-feature-cards-container__item';
 
-const CARDS_LAYOUT = {
-  1: [{ colorVariant: 'violet', shadowVariant: 'lg', rotation: 0, offsetX: '0', isCenter: true }],
-  2: [
-    {
-      colorVariant: 'blue',
-      shadowVariant: 'sm',
-      rotation: -ROTATION_ANGLE,
-      offsetX: `-${TWO_CARDS_OFFSET_X}`,
-      isCenter: false
-    },
-    {
-      colorVariant: 'yellow',
-      shadowVariant: 'sm',
-      rotation: ROTATION_ANGLE,
-      offsetX: TWO_CARDS_OFFSET_X,
-      isCenter: false
-    }
-  ],
-  3: [
-    {
-      colorVariant: 'blue',
-      shadowVariant: 'sm',
-      rotation: -ROTATION_ANGLE,
-      offsetX: `-${THREE_CARD_OFFSET_X}`,
-      isCenter: false
-    },
-    { colorVariant: 'violet', shadowVariant: 'lg', rotation: 0, offsetX: '0', isCenter: true },
-    {
-      colorVariant: 'yellow',
-      shadowVariant: 'sm',
-      rotation: ROTATION_ANGLE,
-      offsetX: THREE_CARD_OFFSET_X,
-      isCenter: false
-    }
-  ]
-} as const satisfies Record<
-  number,
-  (Pick<OSSFeatureCardsContainerComputedCard, 'colorVariant' | 'shadowVariant' | 'isCenter'> & {
-    rotation: number;
-    offsetX: string;
-  })[]
->;
+function getCardRotation(cardsCount: number, index: number): number {
+  if (isCenterCard(cardsCount, index)) return 0;
+
+  if (cardsCount === 2 || cardsCount === 3) return index === 0 ? -ROTATION_ANGLE : ROTATION_ANGLE;
+
+  assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false);
+}
+
+function getCardOffsetX(cardsCount: number, index: number): string {
+  if (isCenterCard(cardsCount, index)) return '0';
+
+  if (cardsCount === 2) return index === 0 ? `-${TWO_CARDS_OFFSET_X}` : TWO_CARDS_OFFSET_X;
+  if (cardsCount === 3) return index === 0 ? `-${THREE_CARD_OFFSET_X}` : THREE_CARD_OFFSET_X;
+
+  assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false);
+}
+
+function isCenterCard(cardsCount: number, index: number): boolean {
+  return cardsCount === 1 || (cardsCount === 3 && index === 1);
+}
+
+function getDefaultCardColorVariant(cardsCount: number, index: number): OSSFeatureCardColorVariant {
+  if (isCenterCard(cardsCount, index)) return 'violet';
+
+  if (cardsCount === 2 || cardsCount === 3) return index === 0 ? 'blue' : 'yellow';
+
+  assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false);
+}
+
+function getDefaultCardShadowVariant(cardsCount: number, index: number): OSSFeatureCardShadowVariant {
+  if (isCenterCard(cardsCount, index)) return 'lg';
+
+  if (cardsCount === 2 || cardsCount === 3) return 'sm';
+
+  assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false);
+}
 
 export default class OSSFeatureCardsContainer extends Component<OSSFeatureCardsContainerArgs> {
   constructor(owner: unknown, args: OSSFeatureCardsContainerArgs) {
@@ -74,22 +68,22 @@ export default class OSSFeatureCardsContainer extends Component<OSSFeatureCardsC
 
   get cardsWithLayout(): OSSFeatureCardsContainerComputedCard[] {
     const cards = this.args.cards ?? [];
-    const layout = CARDS_LAYOUT[cards.length as keyof typeof CARDS_LAYOUT];
-    assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', !!layout);
 
     return cards.map((card, index) => {
-      const cardLayout = layout[index];
-      assert('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', !!cardLayout);
-
-      const { colorVariant, shadowVariant, isCenter, rotation, offsetX } = cardLayout;
+      const cardCount = cards.length;
+      const colorVariant = card.colorVariant ?? getDefaultCardColorVariant(cardCount, index);
+      const shadowVariant = card.shadowVariant ?? getDefaultCardShadowVariant(cardCount, index);
+      const className = isCenterCard(cardCount, index) ? `${BASE_ITEM_CLASS}--center` : '';
+      const style = htmlSafe(
+        `transform: translateX(${getCardOffsetX(cardCount, index)}) rotate(${getCardRotation(cardCount, index)}deg);`
+      );
 
       return {
         ...card,
-        className: isCenter ? `${BASE_ITEM_CLASS} ${BASE_ITEM_CLASS}--center` : BASE_ITEM_CLASS,
         colorVariant,
         shadowVariant,
-        isCenter,
-        style: `transform: translateX(${offsetX}) rotate(${rotation}deg);`
+        className,
+        style
       };
     });
   }

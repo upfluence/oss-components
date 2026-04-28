@@ -5,9 +5,13 @@ export default {
   component: 'feature-cards-container',
   argTypes: {
     cards: {
-      description: '1 to 3 feature cards. Colors, shadows and rotation are automatically set by the container.',
+      description:
+        '1 to 3 feature cards. Uses the same argument shape as OSS::FeatureCard; overlap and rotation are handled by the container. If colorVariant or shadowVariant are omitted, container defaults are applied.',
       table: {
-        type: { summary: 'Array<{ title: string; description: string; image: { src: string; alt?: string } }>' },
+        type: {
+          summary:
+            'Array<{ title: string; description: string; image: { src: string; alt?: string }; colorVariant?: "blue"|"violet"|"yellow"; shadowVariant?: "sm"|"lg" }>'
+        },
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'object' },
@@ -18,7 +22,7 @@ export default {
     docs: {
       description: {
         component:
-          'Wrapper that lays out 1 to 3 OSS::FeatureCard components with colors, shadows, angles and overlap. See [OSS::FeatureCard](?path=/story/components-oss-featurecard--default) for individual card details.'
+          'Wrapper that lays out 1 to 3 OSS::FeatureCard components with angles and overlap. Card color/shadow values are passed through from each card object, with defaults when variants are omitted. See [OSS::FeatureCard](?path=/story/components-oss-featurecard--default) for individual card details.'
       }
     }
   }
@@ -35,23 +39,37 @@ const threeCardsArgs = {
       title: 'Creator discovery at scale',
       description:
         'Discover and enrich creators via API using platform, region, and key attributes to power precise scouting.',
-      image: defaultImage
+      image: defaultImage,
+      colorVariant: 'blue',
+      shadowVariant: 'sm'
     },
     {
       title: 'Audience & content insights',
       description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
-      image: defaultImage
+      image: defaultImage,
+      colorVariant: 'violet',
+      shadowVariant: 'lg'
     },
     {
       title: 'Campaign performance tracking',
       description: 'Track contribution stages, orders and ROI, then sync results to your CRM.',
-      image: defaultImage
+      image: defaultImage,
+      colorVariant: 'yellow',
+      shadowVariant: 'sm'
     }
   ]
 };
 
 const twoCardsArgs = {
   cards: threeCardsArgs.cards.slice(0, 2)
+};
+
+const threeCardsWithDefaultsArgs = {
+  cards: threeCardsArgs.cards.map(({ title, description, image }) => ({
+    title,
+    description,
+    image
+  }))
 };
 
 const oneCardArgs = {
@@ -69,6 +87,9 @@ const Template = (args) => ({
 
 export const ThreeCards = Template.bind({});
 ThreeCards.args = threeCardsArgs;
+
+export const ThreeCardsWithContainerDefaults = Template.bind({});
+ThreeCardsWithContainerDefaults.args = threeCardsWithDefaultsArgs;
 
 export const TwoCards = Template.bind({});
 TwoCards.args = twoCardsArgs;

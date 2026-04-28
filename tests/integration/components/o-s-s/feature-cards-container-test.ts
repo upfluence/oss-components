@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import type { OSSFeatureCardArgs } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
 module('Integration | Component | o-s-s/feature-cards-container', function (hooks) {
   setupRenderingTest(hooks);
@@ -15,12 +16,15 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
       {
         title: 'Creator discovery at scale',
         description: 'Discover and enrich creators via API.',
-        image: this.image
+        image: this.image,
+        colorVariant: 'yellow',
+        shadowVariant: 'lg'
       },
       {
         title: 'Audience & content insights',
         description: 'Pull demographics and media performance into your BI.',
-        image: this.image
+        image: this.image,
+        colorVariant: 'blue'
       },
       {
         title: 'Campaign performance tracking',
@@ -28,9 +32,17 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
         image: this.image
       }
     ];
+
+    this.defaultedCards = this.cards.map((card: OSSFeatureCardArgs) => ({
+      title: card.title,
+      description: card.description,
+      image: card.image
+    }));
   });
 
   test('it renders', async function (assert) {
+    this.cards = this.cards.slice(0, 3);
+
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
     assert.dom('.oss-feature-cards-container').exists();
@@ -38,22 +50,19 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
   });
 
   test('it supports 1 card layout', async function (assert) {
-    this.set('cards', this.cards.slice(0, 1));
+    this.cards = this.cards.slice(0, 1);
 
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 1 });
 
     assert
-      .dom('.oss-feature-cards-container__item:nth-child(1)')
+      .dom('.oss-feature-cards-container>:nth-child(1)')
       .hasAttribute('style', 'transform: translateX(0) rotate(0deg);');
-    assert.dom('.oss-feature-cards-container__item:nth-child(1)').hasClass('oss-feature-cards-container__item--center');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
-      .hasClass('oss-feature-card--color-violet');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
-      .hasClass('oss-feature-card--shadow-lg');
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-cards-container__item--center');
+
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
   });
 
   test('it supports 2 cards layout', async function (assert) {
@@ -66,57 +75,58 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     assert
       .dom('.oss-feature-cards-container__item:nth-child(1)')
       .hasAttribute('style', 'transform: translateX(-45%) rotate(-11.25deg);');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
-      .hasClass('oss-feature-card--color-blue');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
-      .hasClass('oss-feature-card--shadow-sm');
 
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
+
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
     assert
       .dom('.oss-feature-cards-container__item:nth-child(2)')
       .hasAttribute('style', 'transform: translateX(45%) rotate(11.25deg);');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
-      .hasClass('oss-feature-card--color-yellow');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
-      .hasClass('oss-feature-card--shadow-sm');
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-blue');
+
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-sm');
   });
 
   test('it applies computed layout rules for 3 cards', async function (assert) {
+    this.cards = this.cards.slice(0, 3);
+
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
     assert
-      .dom('.oss-feature-cards-container__item:nth-child(1)')
+      .dom('.oss-feature-cards-container>:nth-child(1)')
       .hasAttribute('style', 'transform: translateX(-80%) rotate(-11.25deg);');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
-      .hasClass('oss-feature-card--color-blue');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(1) .oss-feature-card')
-      .hasClass('oss-feature-card--shadow-sm');
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
 
     assert
-      .dom('.oss-feature-cards-container__item:nth-child(2)')
+      .dom('.oss-feature-cards-container>:nth-child(2)')
       .hasAttribute('style', 'transform: translateX(0) rotate(0deg);');
-    assert.dom('.oss-feature-cards-container__item:nth-child(2)').hasClass('oss-feature-cards-container__item--center');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
-      .hasClass('oss-feature-card--color-violet');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(2) .oss-feature-card')
-      .hasClass('oss-feature-card--shadow-lg');
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-cards-container__item--center');
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-blue');
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-lg');
 
     assert
-      .dom('.oss-feature-cards-container__item:nth-child(3)')
+      .dom('.oss-feature-cards-container>:nth-child(3)')
       .hasAttribute('style', 'transform: translateX(80%) rotate(11.25deg);');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(3) .oss-feature-card')
-      .hasClass('oss-feature-card--color-yellow');
-    assert
-      .dom('.oss-feature-cards-container__item:nth-child(3) .oss-feature-card')
-      .hasClass('oss-feature-card--shadow-sm');
+    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--color-yellow');
+    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--shadow-sm');
+  });
+
+  test('it sets default color and shadow variants when missing', async function (assert) {
+    this.cards = this.defaultedCards;
+
+    await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
+
+    assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 3 });
+
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-blue');
+    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-sm');
+
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-violet');
+    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-lg');
+
+    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--color-yellow');
+    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--shadow-sm');
   });
 
   module('Error management', () => {

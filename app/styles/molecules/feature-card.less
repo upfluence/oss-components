@@ -48,10 +48,17 @@
   }
 
   &__description {
+    --max-number-of-lines: 4;
+
     font-size: var(--font-size-sm);
     color: var(--color-gray-600);
     text-wrap: balance;
     margin: 0;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-number-of-lines);
+    line-clamp: var(--max-number-of-lines);
   }
 
   &__illustration {
