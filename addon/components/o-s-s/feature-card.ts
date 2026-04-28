@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { isSafeString } from '@upfluence/oss-components/utils';
+import type { IntlService } from 'ember-intl';
 
 export const COLOR_VARIANTS = ['blue', 'violet', 'yellow'] as const;
 export type OSSFeatureCardColorVariant = (typeof COLOR_VARIANTS)[number];
@@ -16,8 +17,8 @@ export type OSSFeatureCardImage = {
 };
 
 export type OSSFeatureCardArgs = {
-  title: string;
-  description: string;
+  title: string | ReturnType<IntlService['t']>;
+  description: string | ReturnType<IntlService['t']>;
   image: OSSFeatureCardImage;
   colorVariant?: OSSFeatureCardColorVariant;
   shadowVariant?: OSSFeatureCardShadowVariant;
@@ -29,11 +30,12 @@ export default class OSSFeatureCard extends Component<OSSFeatureCardArgs> {
 
     assert(
       '[OSS::FeatureCard] The @title parameter is mandatory',
-      typeof (args.title === 'string' || isSafeString(args.title)) && args.title.trim().length > 0
+      (typeof args.title === 'string' || isSafeString(args.title)) && args.title.toString().trim().length > 0
     );
     assert(
       '[OSS::FeatureCard] The @description parameter is mandatory',
-      typeof (args.description === 'string' || isSafeString(args.description)) && args.description.trim().length > 0
+      (typeof args.description === 'string' || isSafeString(args.description)) &&
+        args.description.toString().trim().length > 0
     );
     assert(
       '[OSS::FeatureCard] The @image parameter is mandatory and must contain a src key',

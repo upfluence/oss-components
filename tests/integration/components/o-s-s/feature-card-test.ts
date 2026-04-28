@@ -3,12 +3,14 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { COLOR_VARIANTS, SHADOW_VARIANTS } from '@upfluence/oss-components/components/o-s-s/feature-card';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/feature-card', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
-    this.title = 'Audience & content insights';
+    this.title = this.intl.t('Audience & content insights', { htmlSafe: true });
     this.description = 'Pull demographics and media performance into your BI to target smarter and report faster.';
     this.image = {
       src: '/@upfluence/oss-components/assets/images/no-image.svg',
@@ -23,7 +25,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
       );
 
       assert.dom('.oss-feature-card').exists();
-      assert.dom('.oss-feature-card__title').hasText(this.title);
+      assert.dom('.oss-feature-card__title').hasText(this.title.toString());
     });
 
     test('it renders the description', async function (assert) {
