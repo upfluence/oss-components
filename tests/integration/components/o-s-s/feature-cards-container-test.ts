@@ -55,10 +55,11 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 1 });
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-cards-container__item');
-
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
+    assert
+      .dom('.oss-feature-cards-container>:first-child')
+      .hasClass('oss-feature-cards-container__item')
+      .hasClass('oss-feature-card--color-yellow')
+      .hasClass('oss-feature-card--shadow-lg');
   });
 
   test('it supports 2 cards layout', async function (assert) {
@@ -68,12 +69,15 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 2 });
 
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
+    assert
+      .dom('.oss-feature-cards-container>:first-child')
+      .hasClass('oss-feature-card--color-yellow')
+      .hasClass('oss-feature-card--shadow-lg');
 
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-blue');
-
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-sm');
+    assert
+      .dom('.oss-feature-cards-container>:last-child')
+      .hasClass('oss-feature-card--color-blue')
+      .hasClass('oss-feature-card--shadow-sm');
   });
 
   test('it applies computed layout rules for 3 cards', async function (assert) {
@@ -81,15 +85,21 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
     await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
 
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-yellow');
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-lg');
+    assert
+      .dom('.oss-feature-cards-container>:first-child')
+      .hasClass('oss-feature-card--color-yellow')
+      .hasClass('oss-feature-card--shadow-lg');
 
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-cards-container__item');
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-blue');
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-lg');
+    assert
+      .dom('.oss-feature-cards-container>:nth-child(2)')
+      .hasClass('oss-feature-cards-container__item')
+      .hasClass('oss-feature-card--color-blue')
+      .hasClass('oss-feature-card--shadow-lg');
 
-    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--color-yellow');
-    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--shadow-sm');
+    assert
+      .dom('.oss-feature-cards-container>:last-child')
+      .hasClass('oss-feature-card--color-yellow')
+      .hasClass('oss-feature-card--shadow-sm');
   });
 
   test('it sets default color and shadow variants when missing', async function (assert) {
@@ -99,14 +109,20 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
     assert.dom('.oss-feature-cards-container .oss-feature-card').exists({ count: 3 });
 
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-blue');
-    assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--shadow-sm');
+    assert
+      .dom('.oss-feature-cards-container>:nth-child(1)')
+      .hasClass('oss-feature-card--color-blue')
+      .hasClass('oss-feature-card--shadow-sm');
 
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-violet');
-    assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--shadow-lg');
+    assert
+      .dom('.oss-feature-cards-container>:nth-child(2)')
+      .hasClass('oss-feature-card--color-violet')
+      .hasClass('oss-feature-card--shadow-lg');
 
-    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--color-yellow');
-    assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--shadow-sm');
+    assert
+      .dom('.oss-feature-cards-container>:nth-child(3)')
+      .hasClass('oss-feature-card--color-yellow')
+      .hasClass('oss-feature-card--shadow-sm');
   });
 
   module('Error management', () => {
