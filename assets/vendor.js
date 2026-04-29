@@ -85008,6 +85008,129 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "handleExpansion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleExpansion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "expand", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "expand"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "collapse", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "collapse"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSExpandableBadgeComponent);
 });
+;define("@upfluence/oss-components/components/o-s-s/feature-card", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _utils, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.SHADOW_VARIANTS = _exports.COLOR_VARIANTS = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClasses}} ...attributes>
+    <div class="oss-feature-card__content">
+      <span class="font-size-md font-weight-semibold">{{@title}}</span>
+      <p class="oss-feature-card__description text-ellipsis">{{@description}}</p>
+    </div>
+  
+    <img class="oss-feature-card__illustration" src={{@image.src}} alt={{this.imageAlt}} />
+  </div>
+  */
+  {
+    "id": "/F3Q/y90",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-feature-card__content\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[10,2],[14,0,\"oss-feature-card__description text-ellipsis\"],[12],[1,[30,3]],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,\"img\"],[14,0,\"oss-feature-card__illustration\"],[15,\"src\",[30,4,[\"src\"]]],[15,\"alt\",[30,0,[\"imageAlt\"]]],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@description\",\"@image\"],false,[]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/feature-card.hbs",
+    "isStrictMode": false
+  });
+  const COLOR_VARIANTS = _exports.COLOR_VARIANTS = ['blue', 'violet', 'yellow'];
+  const DEFAULT_COLOR_VARIANT = 'violet';
+  const SHADOW_VARIANTS = _exports.SHADOW_VARIANTS = ['sm', 'lg'];
+  const DEFAULT_SHADOW_VARIANT = 'sm';
+  class OSSFeatureCard extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !((typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && args.title.toString().trim().length > 0) && (0, _debug.assert)('[OSS::FeatureCard] The @title parameter is mandatory', (typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && args.title.toString().trim().length > 0));
+      (true && !((typeof args.description === 'string' || (0, _utils.isSafeString)(args.description)) && args.description.toString().trim().length > 0) && (0, _debug.assert)('[OSS::FeatureCard] The @description parameter is mandatory', (typeof args.description === 'string' || (0, _utils.isSafeString)(args.description)) && args.description.toString().trim().length > 0));
+      (true && !(typeof args?.image?.src === 'string' && args.image.src.trim().length > 0) && (0, _debug.assert)('[OSS::FeatureCard] The @image parameter is mandatory and must contain a src key', typeof args?.image?.src === 'string' && args.image.src.trim().length > 0));
+      if (args.colorVariant) {
+        (true && !(COLOR_VARIANTS.includes(args.colorVariant)) && (0, _debug.assert)(`[OSS::FeatureCard] @colorVariant must be one of: ${COLOR_VARIANTS.join(', ')}`, COLOR_VARIANTS.includes(args.colorVariant)));
+      }
+      if (args.shadowVariant) {
+        (true && !(SHADOW_VARIANTS.includes(args.shadowVariant)) && (0, _debug.assert)(`[OSS::FeatureCard] @shadowVariant must be one of: ${SHADOW_VARIANTS.join(', ')}`, SHADOW_VARIANTS.includes(args.shadowVariant)));
+      }
+    }
+    get colorVariant() {
+      return this.args.colorVariant ?? DEFAULT_COLOR_VARIANT;
+    }
+    get shadowVariant() {
+      return this.args.shadowVariant ?? DEFAULT_SHADOW_VARIANT;
+    }
+    get computedClasses() {
+      return ['oss-feature-card', `oss-feature-card--color-${this.colorVariant}`, `oss-feature-card--shadow-${this.shadowVariant}`].join(' ');
+    }
+    get imageAlt() {
+      return this.args.image.alt ?? '';
+    }
+  }
+  _exports.default = OSSFeatureCard;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSFeatureCard);
+});
+;define("@upfluence/oss-components/components/o-s-s/feature-cards-container", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-feature-cards-container" ...attributes>
+    {{#each this.cardsWithComputedVariants as |card|}}
+      <OSS::FeatureCard
+        @title={{card.title}}
+        @description={{card.description}}
+        @image={{card.image}}
+        @colorVariant={{card.colorVariant}}
+        @shadowVariant={{card.shadowVariant}}
+        class="oss-feature-cards-container__item"
+      />
+    {{/each}}
+  </div>
+  */
+  {
+    "id": "Tebh7goq",
+    "block": "[[[11,0],[24,0,\"oss-feature-cards-container\"],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"cardsWithComputedVariants\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[24,0,\"oss-feature-cards-container__item\"]],[[\"@title\",\"@description\",\"@image\",\"@colorVariant\",\"@shadowVariant\"],[[30,2,[\"title\"]],[30,2,[\"description\"]],[30,2,[\"image\"]],[30,2,[\"colorVariant\"]],[30,2,[\"shadowVariant\"]]]],null],[1,\"\\n\"]],[2]],null],[13]],[\"&attrs\",\"card\"],false,[\"each\",\"-track-array\",\"o-s-s/feature-card\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/feature-cards-container.hbs",
+    "isStrictMode": false
+  });
+  function isCenterCard(cardsCount, index) {
+    return cardsCount === 1 || cardsCount === 3 && index === 1;
+  }
+  function getDefaultCardColorVariant(cardsCount, index) {
+    if (isCenterCard(cardsCount, index)) return 'violet';
+    if (cardsCount === 2 || cardsCount === 3) return index === 0 ? 'blue' : 'yellow';
+    (true && !(false) && (0, _debug.assert)('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false));
+  }
+  function getDefaultCardShadowVariant(cardsCount, index) {
+    if (isCenterCard(cardsCount, index)) return 'lg';
+    if (cardsCount === 2 || cardsCount === 3) return 'sm';
+    (true && !(false) && (0, _debug.assert)('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false));
+  }
+  class OSSFeatureCardsContainer extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !(Array.isArray(args.cards)) && (0, _debug.assert)('[OSS::FeatureCardsContainer] The @cards parameter is mandatory', Array.isArray(args.cards)));
+      (true && !(args.cards.length >= 1 && args.cards.length <= 3) && (0, _debug.assert)('[OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards', args.cards.length >= 1 && args.cards.length <= 3));
+    }
+    get cardsWithComputedVariants() {
+      const cards = this.args.cards ?? [];
+      return cards.map((card, index) => {
+        const cardCount = cards.length;
+        const colorVariant = card.colorVariant ?? getDefaultCardColorVariant(cardCount, index);
+        const shadowVariant = card.shadowVariant ?? getDefaultCardShadowVariant(cardCount, index);
+        return {
+          ...card,
+          colorVariant,
+          shadowVariant
+        };
+      });
+    }
+  }
+  _exports.default = OSSFeatureCardsContainer;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSFeatureCardsContainer);
+});
 ;define("@upfluence/oss-components/components/o-s-s/form", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _service, _templateFactory) {
   "use strict";
 

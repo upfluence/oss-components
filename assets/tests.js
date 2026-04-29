@@ -8496,6 +8496,349 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/feature-card-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/feature-card", "ember-intl/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _featureCard, _testSupport, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/feature-card",0,"ember-intl/test-support"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/feature-card', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.title = this.intl.t('Audience & content insights', {
+        htmlSafe: true
+      });
+      this.description = 'Pull demographics and media performance into your BI to target smarter and report faster.';
+      this.image = {
+        src: '/@upfluence/oss-components/assets/images/no-image.svg',
+        alt: 'No image illustration'
+      };
+    });
+    (0, _qunit.module)('Rendering', () => {
+      (0, _qunit.test)('it renders the title', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />
+        */
+        {
+          "id": "8icY7Ri9",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-feature-card').exists();
+        assert.dom('.oss-feature-card>:first-child>:first-child').hasText(this.title.toString());
+      });
+      (0, _qunit.test)('it renders the description', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />
+        */
+        {
+          "id": "8icY7Ri9",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-feature-card').exists();
+        assert.dom('.oss-feature-card__description').hasText(this.description);
+      });
+      (0, _qunit.test)('it renders the image', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} />
+        */
+        {
+          "id": "8icY7Ri9",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-feature-card').exists();
+        assert.dom('.oss-feature-card__illustration').hasAttribute('src', this.image.src);
+        assert.dom('.oss-feature-card__illustration').hasAttribute('alt', this.image.alt);
+      });
+      (0, _qunit.test)('it renders extra attributes (splattributes)', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} data-control-name="feature-card-test" />
+        */
+        {
+          "id": "yfv1ZCVP",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"feature-card-test\"]],[[\"@title\",\"@description\",\"@image\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="feature-card-test"]').exists();
+      });
+    });
+    (0, _qunit.module)('Variants', () => {
+      _featureCard.COLOR_VARIANTS.forEach(colorVariant => {
+        (0, _qunit.test)(`it supports the ${colorVariant} color variant`, async function (assert) {
+          this.colorVariant = colorVariant;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant={{this.colorVariant}} />
+          */
+          {
+            "id": "sRoO8v4v",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\",\"@colorVariant\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]],[30,0,[\"colorVariant\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-feature-card').hasClass(`oss-feature-card--color-${colorVariant}`);
+        });
+      });
+      _featureCard.SHADOW_VARIANTS.forEach(shadowVariant => {
+        (0, _qunit.test)(`it supports the ${shadowVariant} shadow variant`, async function (assert) {
+          this.shadowVariant = shadowVariant;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @shadowVariant={{this.shadowVariant}} />
+          */
+          {
+            "id": "R3TaLeZU",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\",\"@shadowVariant\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]],[30,0,[\"shadowVariant\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-feature-card').hasClass(`oss-feature-card--shadow-${shadowVariant}`);
+        });
+      });
+    });
+    (0, _qunit.module)('Error management', () => {
+      (0, _qunit.test)('it throws when @title is missing', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @description={{this.description}} @image={{this.image}} />
+        */
+        {
+          "id": "MLV4DXZW",
+          "block": "[[[8,[39,0],null,[[\"@description\",\"@image\"],[[30,0,[\"description\"]],[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws when @description is missing', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @image={{this.image}} />
+        */
+        {
+          "id": "l/6XuSpu",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@image\"],[[30,0,[\"title\"]],[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws when @image is missing', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @image parameter is mandatory and must contain a src key');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} />
+        */
+        {
+          "id": "OGRlSS+k",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@description\"],[[30,0,[\"title\"]],[30,0,[\"description\"]]]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws when @colorVariant is unknown', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] @colorVariant must be one of: blue, violet, yellow');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant="green" />
+        */
+        {
+          "id": "Cd5jLcAZ",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\",\"@colorVariant\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]],\"green\"]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws when @shadowVariant is unknown', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @shadowVariant="xl" />
+        */
+        {
+          "id": "wz/qOT8x",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@description\",\"@image\",\"@shadowVariant\"],[[30,0,[\"title\"]],[30,0,[\"description\"]],[30,0,[\"image\"]],\"xl\"]],null]],[],false,[\"o-s-s/feature-card\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-card-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/feature-cards-container-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/feature-cards-container', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.image = {
+        src: '/@upfluence/oss-components/assets/images/no-image.svg',
+        alt: 'No image illustration'
+      };
+      this.cards = [{
+        title: 'Creator discovery at scale',
+        description: 'Discover and enrich creators via API.',
+        image: this.image,
+        colorVariant: 'yellow',
+        shadowVariant: 'lg'
+      }, {
+        title: 'Audience & content insights',
+        description: 'Pull demographics and media performance into your BI.',
+        image: this.image,
+        colorVariant: 'blue'
+      }, {
+        title: 'Campaign performance tracking',
+        description: 'Track contribution stages and ROI.',
+        image: this.image
+      }];
+      this.defaultedCards = this.cards.map(card => ({
+        title: card.title,
+        description: card.description,
+        image: card.image
+      }));
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      this.cards = this.cards.slice(0, 3);
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::FeatureCardsContainer @cards={{this.cards}} />
+      */
+      {
+        "id": "AexQoKAT",
+        "block": "[[[8,[39,0],null,[[\"@cards\"],[[30,0,[\"cards\"]]]],null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-feature-cards-container').exists();
+      assert.dom('.oss-feature-cards-container .oss-feature-card').exists({
+        count: 3
+      });
+    });
+    (0, _qunit.test)('it supports 1 card layout', async function (assert) {
+      this.cards = this.cards.slice(0, 1);
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::FeatureCardsContainer @cards={{this.cards}} />
+      */
+      {
+        "id": "AexQoKAT",
+        "block": "[[[8,[39,0],null,[[\"@cards\"],[[30,0,[\"cards\"]]]],null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-feature-cards-container .oss-feature-card').exists({
+        count: 1
+      });
+      assert.dom('.oss-feature-cards-container>:first-child').hasClass('oss-feature-cards-container__item').hasClass('oss-feature-card--color-yellow').hasClass('oss-feature-card--shadow-lg');
+    });
+    (0, _qunit.test)('it supports 2 cards layout', async function (assert) {
+      this.set('cards', this.cards.slice(0, 2));
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::FeatureCardsContainer @cards={{this.cards}} />
+      */
+      {
+        "id": "AexQoKAT",
+        "block": "[[[8,[39,0],null,[[\"@cards\"],[[30,0,[\"cards\"]]]],null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-feature-cards-container .oss-feature-card').exists({
+        count: 2
+      });
+      assert.dom('.oss-feature-cards-container>:first-child').hasClass('oss-feature-card--color-yellow').hasClass('oss-feature-card--shadow-lg');
+      assert.dom('.oss-feature-cards-container>:last-child').hasClass('oss-feature-card--color-blue').hasClass('oss-feature-card--shadow-sm');
+    });
+    (0, _qunit.test)('it applies computed layout rules for 3 cards', async function (assert) {
+      this.cards = this.cards.slice(0, 3);
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::FeatureCardsContainer @cards={{this.cards}} />
+      */
+      {
+        "id": "AexQoKAT",
+        "block": "[[[8,[39,0],null,[[\"@cards\"],[[30,0,[\"cards\"]]]],null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-feature-cards-container>:first-child').hasClass('oss-feature-card--color-yellow').hasClass('oss-feature-card--shadow-lg');
+      assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-cards-container__item').hasClass('oss-feature-card--color-blue').hasClass('oss-feature-card--shadow-lg');
+      assert.dom('.oss-feature-cards-container>:last-child').hasClass('oss-feature-card--color-yellow').hasClass('oss-feature-card--shadow-sm');
+    });
+    (0, _qunit.test)('it sets default color and shadow variants when missing', async function (assert) {
+      this.cards = this.defaultedCards;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::FeatureCardsContainer @cards={{this.cards}} />
+      */
+      {
+        "id": "AexQoKAT",
+        "block": "[[[8,[39,0],null,[[\"@cards\"],[[30,0,[\"cards\"]]]],null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-feature-cards-container .oss-feature-card').exists({
+        count: 3
+      });
+      assert.dom('.oss-feature-cards-container>:nth-child(1)').hasClass('oss-feature-card--color-blue').hasClass('oss-feature-card--shadow-sm');
+      assert.dom('.oss-feature-cards-container>:nth-child(2)').hasClass('oss-feature-card--color-violet').hasClass('oss-feature-card--shadow-lg');
+      assert.dom('.oss-feature-cards-container>:nth-child(3)').hasClass('oss-feature-card--color-yellow').hasClass('oss-feature-card--shadow-sm');
+    });
+    (0, _qunit.module)('Error management', () => {
+      (0, _qunit.test)('it throws when @cards is missing', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] The @cards parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCardsContainer />
+        */
+        {
+          "id": "h+ewfQzT",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws when @cards has invalid count', async function (assert) {
+        this.cards = [];
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::FeatureCardsContainer @cards={{this.cards}} />
+        */
+        {
+          "id": "AexQoKAT",
+          "block": "[[[8,[39,0],null,[[\"@cards\"],[[30,0,[\"cards\"]]]],null]],[],false,[\"o-s-s/feature-cards-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/feature-cards-container-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/form-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
