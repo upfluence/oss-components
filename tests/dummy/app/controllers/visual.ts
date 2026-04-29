@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action, set } from '@ember/object';
 import type { ModeSwitchOption } from '@upfluence/oss-components/components/o-s-s/mode-switch';
 import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import type { OSSFeatureCardArgs, OSSFeatureCardImage } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
 export default class Visual extends Controller {
   @tracked toggleValue: boolean = false;
@@ -111,6 +112,44 @@ export default class Visual extends Controller {
   @tracked feedbackMessageError: FeedbackMessage = { type: 'error', value: '' };
   @tracked feedbackMessageWarning: FeedbackMessage = { type: 'warning', value: '' };
   @tracked feedbackMessageSuccess: FeedbackMessage = { type: 'success', value: '' };
+
+  featureCardImage: OSSFeatureCardImage = {
+    src: '/@upfluence/oss-components/assets/images/no-image.svg',
+    alt: 'No image illustration'
+  };
+
+  twoFeatureCards: OSSFeatureCardArgs[] = [
+    {
+      title: 'Creator discovery at scale',
+      description:
+        'Discover and enrich creators via API using platform, region, and key attributes to power precise, data-driven scouting.',
+      image: this.featureCardImage
+    },
+    {
+      title: 'Audience & content insights',
+      description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
+      image: this.featureCardImage
+    }
+  ];
+  threeFeatureCards: OSSFeatureCardArgs[] = [
+    {
+      title: 'Creator discovery at scale',
+      description:
+        'Discover and enrich creators via API using platform, region, and key attributes to power precise, data-driven scouting.',
+      image: this.featureCardImage
+    },
+    {
+      title: 'Audience & content insights',
+      description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
+      image: this.featureCardImage
+    },
+    {
+      title: 'Campaign performance tracking',
+      description: 'Track contribution stages, orders and discount-code ROI, then sync results to your CRM.',
+      image: this.featureCardImage
+    }
+  ];
+  featureCard: OSSFeatureCardArgs = this.threeFeatureCards[1]!;
 
   @tracked progressBarSuccess: number = 30;
   @tracked progressBarWarning: number = 25;
