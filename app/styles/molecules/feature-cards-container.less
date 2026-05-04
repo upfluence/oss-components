@@ -16,11 +16,13 @@
     position: absolute;
 
     &:first-child:nth-last-child(2) {
+      top: var(--side-cards-top);
       translate: calc(-1 * var(--two-cards-offset-x));
       rotate: calc(-1 * var(--rotation-angle));
     }
 
     &:last-child:nth-child(2) {
+      top: var(--side-cards-top);
       translate: var(--two-cards-offset-x);
       rotate: var(--rotation-angle);
     }
