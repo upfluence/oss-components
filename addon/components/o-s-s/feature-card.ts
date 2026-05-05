@@ -55,20 +55,20 @@ export default class OSSFeatureCard extends Component<OSSFeatureCardArgs> {
     }
   }
 
-  get colorVariant(): OSSFeatureCardColorVariant {
-    return this.args.colorVariant ?? DEFAULT_COLOR_VARIANT;
-  }
-
-  get shadowVariant(): OSSFeatureCardShadowVariant {
-    return this.args.shadowVariant ?? DEFAULT_SHADOW_VARIANT;
-  }
-
   get computedClasses(): string {
     return [
       'oss-feature-card',
       `oss-feature-card--color-${this.colorVariant}`,
       `oss-feature-card--shadow-${this.shadowVariant}`
     ].join(' ');
+  }
+
+  private get colorVariant(): OSSFeatureCardColorVariant {
+    return this.args.colorVariant ?? DEFAULT_COLOR_VARIANT;
+  }
+
+  private get shadowVariant(): OSSFeatureCardShadowVariant {
+    return this.args.shadowVariant ?? DEFAULT_SHADOW_VARIANT;
   }
 
   get imageAlt(): string {
