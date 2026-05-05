@@ -85050,14 +85050,14 @@ require('@ember/-internals/bootstrap')
         (true && !(SHADOW_VARIANTS.includes(args.shadowVariant)) && (0, _debug.assert)(`[OSS::FeatureCard] @shadowVariant must be one of: ${SHADOW_VARIANTS.join(', ')}`, SHADOW_VARIANTS.includes(args.shadowVariant)));
       }
     }
+    get computedClasses() {
+      return ['oss-feature-card', `oss-feature-card--color-${this.colorVariant}`, `oss-feature-card--shadow-${this.shadowVariant}`].join(' ');
+    }
     get colorVariant() {
       return this.args.colorVariant ?? DEFAULT_COLOR_VARIANT;
     }
     get shadowVariant() {
       return this.args.shadowVariant ?? DEFAULT_SHADOW_VARIANT;
-    }
-    get computedClasses() {
-      return ['oss-feature-card', `oss-feature-card--color-${this.colorVariant}`, `oss-feature-card--shadow-${this.shadowVariant}`].join(' ');
     }
     get imageAlt() {
       return this.args.image.alt ?? '';
@@ -85095,19 +85095,6 @@ require('@ember/-internals/bootstrap')
     "moduleName": "@upfluence/oss-components/components/o-s-s/feature-cards-container.hbs",
     "isStrictMode": false
   });
-  function isCenterCard(cardsCount, index) {
-    return cardsCount === 1 || cardsCount === 3 && index === 1;
-  }
-  function getDefaultCardColorVariant(cardsCount, index) {
-    if (isCenterCard(cardsCount, index)) return 'violet';
-    if (cardsCount === 2 || cardsCount === 3) return index === 0 ? 'blue' : 'yellow';
-    (true && !(false) && (0, _debug.assert)('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false));
-  }
-  function getDefaultCardShadowVariant(cardsCount, index) {
-    if (isCenterCard(cardsCount, index)) return 'lg';
-    if (cardsCount === 2 || cardsCount === 3) return 'sm';
-    (true && !(false) && (0, _debug.assert)('[OSS::FeatureCardsContainer] Internal layout configuration mismatch', false));
-  }
   class OSSFeatureCardsContainer extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
@@ -85118,14 +85105,25 @@ require('@ember/-internals/bootstrap')
       const cards = this.args.cards ?? [];
       return cards.map((card, index) => {
         const cardCount = cards.length;
-        const colorVariant = card.colorVariant ?? getDefaultCardColorVariant(cardCount, index);
-        const shadowVariant = card.shadowVariant ?? getDefaultCardShadowVariant(cardCount, index);
+        const colorVariant = card.colorVariant ?? this.getDefaultCardColorVariant(cardCount, index);
+        const shadowVariant = card.shadowVariant ?? this.getDefaultCardShadowVariant(cardCount, index);
         return {
           ...card,
           colorVariant,
           shadowVariant
         };
       });
+    }
+    getDefaultCardShadowVariant(cardsCount, index) {
+      if (this.isCenterCard(cardsCount, index)) return 'lg';
+      return 'sm';
+    }
+    getDefaultCardColorVariant(cardsCount, index) {
+      if (this.isCenterCard(cardsCount, index)) return 'violet';
+      return index === 0 ? 'blue' : 'yellow';
+    }
+    isCenterCard(cardsCount, index) {
+      return cardsCount === 1 || cardsCount === 3 && index === 1;
     }
   }
   _exports.default = OSSFeatureCardsContainer;

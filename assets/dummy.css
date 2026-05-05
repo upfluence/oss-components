@@ -6165,6 +6165,13 @@ label {
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/redditsans/v6/EYqgmaFOxq1T_-ETdN7EKSlnU2dHRsBCV5uxbYxmAQ.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Reddit Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redditsans/v6/EYqgmaFOxq1T_-ETdN7EKSlnU2dHRsBCV5uxs4tmAQ.ttf) format('truetype');
+}
 h1 {
   font-size: 3rem;
 }
@@ -14533,10 +14540,12 @@ a.upf-btn--sm {
   position: absolute;
 }
 .oss-feature-cards-container__item:first-child:nth-last-child(2) {
+  top: var(--side-cards-top);
   translate: calc(-1 * var(--two-cards-offset-x));
   rotate: calc(-1 * var(--rotation-angle));
 }
 .oss-feature-cards-container__item:last-child:nth-child(2) {
+  top: var(--side-cards-top);
   translate: var(--two-cards-offset-x);
   rotate: var(--rotation-angle);
 }
