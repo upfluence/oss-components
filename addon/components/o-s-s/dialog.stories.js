@@ -82,6 +82,10 @@ export default {
       description: {
         component: 'A component that displays a dialog with a title and two buttons.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=4804-790&p=f&t=eK7N52oGFl9Y0IDC-0'
     }
   }
 };

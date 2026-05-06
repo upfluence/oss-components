@@ -86,6 +86,10 @@ export default {
         - The footer part of the component defaults to fx-row fx-gap-px-12 in desktop mode.<br>
         - In mobile mode it defaults to fx-col (with column-reverse to have the cancel buttons at the bottom) and fx-gap-px-9`
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6196&p=f&t=AsdGbaychQPIaGnK-0'
     }
   }
 };

@@ -131,6 +131,10 @@ export default {
         component:
           'A highly configurable option component for use within infinite select dropdowns. Supports single and multiple selection modes, various prefix/suffix decorators including avatars, badges, icons, country flags, tags, and hints.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6188&p=f&t=AsdGbaychQPIaGnK-0'
     }
   }
 };
