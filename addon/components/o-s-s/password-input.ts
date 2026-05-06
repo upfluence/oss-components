@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { isEmpty } from '@ember/utils';
 import { helper } from '@ember/component/helper';
+import type { FeedbackMessage } from './input-container';
 
 export type ValidatorSet = Record<string, { labelKey: string; regex: RegExp }>;
 export const INPUT_VALIDATORS: ValidatorSet = {
@@ -17,6 +18,7 @@ interface OSSPasswordInputArgs {
   value: string | null;
   placeholder?: string;
   errorMessage?: string;
+  feedbackMessage?: FeedbackMessage;
   disabled?: boolean;
   validates?(isPassing: boolean): void;
   validatorSet?: ValidatorSet;
