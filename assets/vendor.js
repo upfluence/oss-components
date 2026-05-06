@@ -98320,6 +98320,13 @@ require('@ember/-internals/bootstrap')
     currencies: ['SRD'],
     name: 'Suriname'
   }, {
+    id: 'SS',
+    alpha2: 'SS',
+    alpha3: 'SSD',
+    countryCallingCodes: ['+211'],
+    currencies: ['SSP'],
+    name: 'South Sudan'
+  }, {
     id: 'ST',
     alpha2: 'ST',
     alpha3: 'STP',
@@ -98785,6 +98792,13 @@ require('@ember/-internals/bootstrap')
     countryCallingCodes: ['685'],
     currencies: ['WST'],
     name: 'Samoa'
+  }, {
+    id: 'XK',
+    alpha2: 'XK',
+    alpha3: 'XXK',
+    countryCallingCodes: ['+383'],
+    currencies: ['EUR'],
+    name: 'Kosovo, Republic of'
   }, {
     id: 'YE',
     alpha2: 'YE',
