@@ -168,6 +168,31 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     });
   });
 
+  module('feedbackMessage', () => {
+    test('Passing an error @feedbackMessage displays the message and sets the border to red', async function (assert) {
+      await render(
+        hbs`<OSS::PasswordInput @value="" @feedbackMessage={{hash type="error" value="This is an error message"}} />`
+      );
+      assert.dom('.oss-input-container').hasClass('oss-input-container--error');
+      assert.dom('.font-color-error-500').hasText('This is an error message');
+    });
+
+    test('Passing a @feedbackMessage without a value only applies the container state class', async function (assert) {
+      await render(hbs`<OSS::PasswordInput @value="" @feedbackMessage={{hash type="success"}} />`);
+      assert.dom('.oss-input-container').hasClass('oss-input-container--success');
+      assert.dom('.font-color-success-500').doesNotExist();
+    });
+
+    test('@errorMessage takes precedence over @feedbackMessage', async function (assert) {
+      await render(
+        hbs`<OSS::PasswordInput @value="" @errorMessage="Error takes priority" @feedbackMessage={{hash type="success" value="Success message"}} />`
+      );
+      assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
+      assert.dom('.text-color-error').hasText('Error takes priority');
+      assert.dom('.font-color-success-500').doesNotExist();
+    });
+  });
+
   test('it throws an error when the @value parameter is missing', async function (assert) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
