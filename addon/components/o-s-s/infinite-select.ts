@@ -86,7 +86,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   get enableKeyboard(): boolean {
-    return this.args.enableKeyboard ?? false;
+    return this.args.enableKeyboard ?? true;
   }
 
   get searchEnabled(): boolean {
