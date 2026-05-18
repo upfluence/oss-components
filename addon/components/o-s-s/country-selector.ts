@@ -47,7 +47,7 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
     );
 
     if (!isEmpty(this.args.value)) {
-      scheduleOnce('afterRender', this, this._matchValueWithSourceList);
+      scheduleOnce('afterRender', this, this.matchValueWithSourceList);
     }
   }
 
@@ -134,7 +134,7 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
     this.args.onChange(value);
   }
 
-  private _matchValueWithSourceList(): void {
+  private matchValueWithSourceList(): void {
     if (this.selectedCountry) this.onItemSelected(this.selectedCountry, true);
   }
 }

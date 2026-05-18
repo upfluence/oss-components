@@ -115,6 +115,37 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       await click('[data-control-name="country-selector-input"]');
       assert.dom('.upf-infinite-select__item' + ' .fflag.fflag-US').exists();
     });
+
+    module('Selected item highlighting', () => {
+      test('The selected country has the selected class', async function (assert) {
+        await render(
+          hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />`
+        );
+        await click('[data-control-name="country-selector-input"]');
+
+        assert.dom('.oss-infinite-select-option--selected').exists({ count: 1 });
+        assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('France');
+      });
+
+      test('The selected country has a check icon', async function (assert) {
+        await render(
+          hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />`
+        );
+        await click('[data-control-name="country-selector-input"]');
+
+        assert.dom('.oss-infinite-select-option--selected .fa-check').exists({ count: 1 });
+      });
+
+      test('The selected province has the selected class', async function (assert) {
+        await render(
+          hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} @value="AL" />`
+        );
+        await click('[data-control-name="country-selector-input"]');
+
+        assert.dom('.oss-infinite-select-option--selected').exists({ count: 1 });
+        assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('Alabama');
+      });
+    });
   });
 
   test('If @sourceList contains ids, then the country placeholder is displayed', async function (assert) {

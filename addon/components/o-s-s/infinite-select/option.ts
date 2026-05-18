@@ -89,7 +89,9 @@ export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfin
   }
 
   @action
-  onSelect(value: boolean): void {
+  onSelect(value: boolean, event?: PointerEvent): void {
+    event?.stopPropagation();
+
     if (this.args.disabled) return;
     this.args.onSelect(value);
   }

@@ -109,7 +109,7 @@ export default {
         type: {
           summary: 'boolean'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: true }
       },
       control: {
         type: 'boolean'
@@ -182,7 +182,7 @@ const defaultArgs = {
   loading: false,
   loadingMore: false,
   inline: false,
-  enableKeyboard: false,
+  enableKeyboard: true,
   skin: 'default',
   action: {
     skin: 'tertiary',
@@ -202,7 +202,7 @@ const Template = (args) => ({
       <OSS::InfiniteSelect
         @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
         @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
         class="upf-align--absolute-center"/>
   `,
@@ -214,7 +214,7 @@ const OptionBlockTemplate = (args) => ({
     <OSS::InfiniteSelect
       @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
         @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
