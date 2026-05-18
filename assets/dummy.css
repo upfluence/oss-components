@@ -7484,15 +7484,16 @@ div.upf-image {
   }
 }
 .upf-floating-menu {
-  background-color: #ffffff;
-  border-radius: var(--border-radius-sm);
-  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.2);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-md);
   display: flex;
   flex-direction: column;
   overflow: hidden auto;
   max-height: var(--floating-max-height, 250px);
   max-width: 350px;
-  padding: var(--spacing-px-6);
+  padding: var(--spacing-px-9) var(--spacing-px-6);
   margin-top: var(--spacing-px-12);
   position: absolute;
   z-index: 1100;
@@ -7531,6 +7532,9 @@ div.upf-image {
   width: 100%;
   overscroll-behavior: contain;
 }
+.upf-infinite-select .upf-infinite-select--search {
+  margin: var(--spacing-px-3) var(--spacing-px-6) 0 var(--spacing-px-6);
+}
 .upf-infinite-select ul {
   padding: 0;
 }
@@ -7544,15 +7548,16 @@ div.upf-image {
   margin: 0 var(--spacing-px-12);
 }
 .upf-infinite-select--absolute {
-  background-color: #ffffff;
-  border-radius: var(--border-radius-sm);
-  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.2);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-md);
   display: flex;
   flex-direction: column;
   overflow: hidden auto;
   max-height: var(--floating-max-height, 250px);
   max-width: 350px;
-  padding: var(--spacing-px-6);
+  padding: var(--spacing-px-9) var(--spacing-px-6);
   margin-top: var(--spacing-px-12);
   position: absolute;
   z-index: 1100;
@@ -7577,6 +7582,7 @@ div.upf-image {
 }
 .upf-infinite-select__container {
   position: relative;
+  overflow: auto;
 }
 .upf-infinite-select__items-container {
   margin: 0;
@@ -9540,16 +9546,12 @@ For complete information visit: www.freakflagsprite.com
 .phone-number-container {
   position: relative;
 }
-.phone-number-container .upf-infinite-select {
-  max-width: 100%;
-  padding: var(--spacing-px-12);
-  margin-top: var(--spacing-px-6);
+.phone-number-container__dropdown .upf-infinite-select__item {
+  padding: 0;
 }
-.phone-number-container .upf-infinite-select .upf-infinite-select__item {
-  padding: var(--spacing-px-6);
-}
-.phone-number-container .upf-infinite-select .row-selected span {
-  color: var(--color-gray-900);
+.phone-number-container__dropdown .upf-infinite-select__item:hover,
+.phone-number-container__dropdown .upf-infinite-select__item:focus {
+  background-color: transparent;
 }
 .phone-number-container .phone-number-input {
   border-radius: var(--border-radius-sm);
@@ -9861,22 +9863,12 @@ For complete information visit: www.freakflagsprite.com
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
-.country-selector-container .row-selected span {
-  color: #1b1e21;
+.country-selector-container__dropdown .upf-infinite-select__item {
+  padding: 0;
 }
-.country-selector-container .upf-infinite-select {
-  max-width: 100%;
-  padding: var(--spacing-px-12);
-  margin-top: var(--spacing-px-6);
-}
-.country-selector-container .upf-infinite-select .upf-infinite-select__item:focus {
-  background-color: var(--color-gray-100);
-}
-.country-selector-container .upf-infinite-select .upf-infinite-select__item:focus-visible {
-  outline: none;
-}
-.country-selector-container .upf-infinite-select .row-selected span {
-  color: var(--color-gray-900);
+.country-selector-container__dropdown .upf-infinite-select__item:hover,
+.country-selector-container__dropdown .upf-infinite-select__item:focus {
+  background-color: transparent;
 }
 .country-selector-container--success .yielded-input input,
 .country-selector-container--success .upf-input {
@@ -12601,6 +12593,13 @@ a.upf-btn--sm {
   background-size: 600% 100%;
   padding: 5px 6px;
 }
+.smart-immersive-currency-input-container__dropdown .upf-infinite-select__item {
+  padding: 0;
+}
+.smart-immersive-currency-input-container__dropdown .upf-infinite-select__item:hover,
+.smart-immersive-currency-input-container__dropdown .upf-infinite-select__item:focus {
+  background-color: transparent;
+}
 .smart-immersive-currency-input-container--filled .smart-immersive-currency-input {
   border-color: var(--color-primary-400);
 }
@@ -14654,7 +14653,6 @@ a.upf-btn--sm {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  flex: 1;
 }
 .oss-infinite-select-option__prefix-icon {
   width: var(--spacing-px-12);
@@ -14686,7 +14684,8 @@ a.upf-btn--sm {
 .oss-infinite-select-option--selected {
   background-color: var(--color-primary-50);
 }
-.oss-infinite-select-option--selected .oss-infinite-select-option__title {
+.oss-infinite-select-option--selected .oss-infinite-select-option__title,
+.oss-infinite-select-option--selected .oss-infinite-select-option__prefix-icon {
   color: var(--color-primary-500);
 }
 .oss-infinite-select-option--disabled {

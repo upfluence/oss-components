@@ -6516,6 +6516,58 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         await (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
         assert.dom('.upf-infinite-select__item' + ' .fflag.fflag-US').exists();
       });
+      (0, _qunit.module)('Selected item highlighting', () => {
+        (0, _qunit.test)('The selected country has the selected class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />
+          */
+          {
+            "id": "oPXm/aww",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],\"FR\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+          assert.dom('.oss-infinite-select-option--selected').exists({
+            count: 1
+          });
+          assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('France');
+        });
+        (0, _qunit.test)('The selected country has a check icon', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />
+          */
+          {
+            "id": "oPXm/aww",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],\"FR\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+          assert.dom('.oss-infinite-select-option--selected .fa-check').exists({
+            count: 1
+          });
+        });
+        (0, _qunit.test)('The selected province has the selected class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} @value="AL" />
+          */
+          {
+            "id": "VKJ+1lq/",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"provinces\"]],\"AL\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/country-selector-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+          assert.dom('.oss-infinite-select-option--selected').exists({
+            count: 1
+          });
+          assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('Alabama');
+        });
+      });
     });
     (0, _qunit.test)('If @sourceList contains ids, then the country placeholder is displayed', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -9390,14 +9442,18 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
         this.onSearch = () => {};
       });
       (0, _qunit.module)('If keyboard is disabled', function () {
+        hooks.beforeEach(function () {
+          this.enableKeyboard = false;
+        });
         (0, _qunit.test)('The first element should not be focused on load', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />
+            <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                             @enableKeyboard={{this.enableKeyboard}} />
           */
           {
-            "id": "pX8GiE7G",
-            "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+            "id": "dDi5PIb8",
+            "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
             "isStrictMode": false
           }));
@@ -9406,11 +9462,12 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
         (0, _qunit.test)('The keyboard controls are disabled', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />
+            <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                             @enableKeyboard={{this.enableKeyboard}} />
           */
           {
-            "id": "pX8GiE7G",
-            "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+            "id": "dDi5PIb8",
+            "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
             "isStrictMode": false
           }));
@@ -14663,6 +14720,41 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.equal(clickableRows.length, 2);
         assert.dom(clickableRows[0]).hasText('France (+33)');
       });
+      (0, _qunit.module)('Selected country highlighting', () => {
+        (0, _qunit.test)('The selected country has the selected class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "NbndV2yb",
+            "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\"],[\"+33\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _click.default)('.country-selector');
+          assert.dom('.oss-infinite-select-option--selected').exists({
+            count: 1
+          });
+          assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('France');
+        });
+        (0, _qunit.test)('The selected country has a check icon', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "NbndV2yb",
+            "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\"],[\"+33\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _click.default)('.country-selector');
+          assert.dom('.oss-infinite-select-option--selected .fa-check').exists({
+            count: 1
+          });
+        });
+      });
     });
     (0, _qunit.module)('Phone Number Input', hooks => {
       hooks.beforeEach(function () {
@@ -19036,6 +19128,56 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         await (0, _testHelpers.click)('.currency-selector');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
         assert.equal(clickableRows.length, 2);
+      });
+      (0, _qunit.module)('Selected currency highlighting', () => {
+        (0, _qunit.test)('The selected currency has the selected class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Immersive::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "+AUxGHC2",
+            "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"EUR\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.oss-infinite-select-option--selected').exists({
+            count: 1
+          });
+          assert.dom('.oss-infinite-select-option--selected .oss-infinite-select-option__title').hasText('EUR');
+        });
+        (0, _qunit.test)('The selected currency has a check icon', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Immersive::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "+AUxGHC2",
+            "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"EUR\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.oss-infinite-select-option--selected .fa-check').exists({
+            count: 1
+          });
+        });
+        (0, _qunit.test)('Only the selected currency symbol is highlighted with primary color', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Immersive::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "+AUxGHC2",
+            "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"EUR\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.oss-infinite-select-option--selected .font-color-primary-500').hasText('€');
+          assert.dom('.oss-infinite-select-option:not(.oss-infinite-select-option--selected) .font-color-primary-500').doesNotExist();
+        });
       });
     });
     (0, _qunit.module)('Currency Input', () => {
