@@ -20,6 +20,7 @@ interface OSSPasswordInputArgs {
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   disabled?: boolean;
+  autocomplete?: 'on' | 'off';
   validates?(isPassing: boolean): void;
   validatorSet?: ValidatorSet;
 }
@@ -94,6 +95,14 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
         icon: STATE_ICON_MAPPING[state]
       };
     });
+  }
+
+  get autocomplete(): string {
+    if (this.args.autocomplete === 'off') {
+      return 'new-password';
+    }
+
+    return 'current-password';
   }
 
   validatorAttributes = helper((_, { type }: { type: InputValidator }): ValidationTemplateAttributes => {
