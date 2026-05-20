@@ -9,6 +9,10 @@ export default {
         component: 'Layout component to display an item in a navbar, which may be active.'
       },
       iframeHeight: 120
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6206&p=f&t=AsdGbaychQPIaGnK-0'
     }
   },
   argTypes: {

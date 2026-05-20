@@ -102,6 +102,10 @@ export default {
       description: {
         component: 'A component that allows to toggle the visibility of a section. Useful for settings.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=7951-6682&p=f&t=AsdGbaychQPIaGnK-0'
     }
   }
 };

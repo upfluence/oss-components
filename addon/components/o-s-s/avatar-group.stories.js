@@ -69,6 +69,10 @@ export default {
           'UI component that displays a collection of user or entity avatars grouped together in a visually cohesive manner. It typically showcases profile pictures or initials representing multiple individuals or entities, arranged horizontally. They provide a quick and intuitive way for users to identify and associate individuals within a group context, fostering a sense of community and connection.'
       },
       iframeHeight: 100
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6202&p=f&t=eK7N52oGFl9Y0IDC-0'
     }
   }
 };
