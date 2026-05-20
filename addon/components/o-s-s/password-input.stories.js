@@ -46,12 +46,13 @@ export default {
       control: { type: 'object' }
     },
     autocomplete: {
-      description: 'Whether or not the input should have autocomplete enabled.',
+      description:
+        'Whether or not the input should have autocomplete enabled. If set to "off", it will use "new-password" to prevent browsers from filling in the password. It can be set to any custom value if needed.',
       table: {
         type: {
-          summary: 'on | off'
+          summary: 'on | off | string'
         },
-        defaultValue: { summary: 'undefined' }
+        defaultValue: { summary: 'current-password' }
       },
       control: { type: 'text' }
     },

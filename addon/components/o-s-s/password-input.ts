@@ -20,7 +20,7 @@ interface OSSPasswordInputArgs {
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   disabled?: boolean;
-  autocomplete?: 'on' | 'off';
+  autocomplete?: 'on' | 'off' | string;
   validates?(isPassing: boolean): void;
   validatorSet?: ValidatorSet;
 }
@@ -101,6 +101,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     if (this.args.autocomplete === 'off') {
       return 'new-password';
     }
+    if (this.args.autocomplete) return this.args.autocomplete;
 
     return 'current-password';
   }

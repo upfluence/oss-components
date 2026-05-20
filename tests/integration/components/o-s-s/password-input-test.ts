@@ -199,9 +199,9 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
       assert.dom('input').hasAttribute('autocomplete', 'current-password');
     });
 
-    test('@autocomplete="on" sets autocomplete to current-password', async function (assert) {
-      await render(hbs`<OSS::PasswordInput @value="" @autocomplete="on" />`);
-      assert.dom('input').hasAttribute('autocomplete', 'current-password');
+    test('@autocomplete="yes-please" sets autocomplete to passed value', async function (assert) {
+      await render(hbs`<OSS::PasswordInput @value="" @autocomplete="yes-please" />`);
+      assert.dom('input').hasAttribute('autocomplete', 'yes-please');
     });
 
     test('@autocomplete="off" sets autocomplete to new-password', async function (assert) {
