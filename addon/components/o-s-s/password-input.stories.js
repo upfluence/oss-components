@@ -45,6 +45,16 @@ export default {
       },
       control: { type: 'object' }
     },
+    autocomplete: {
+      description: 'Whether or not the input should have autocomplete enabled.',
+      table: {
+        type: {
+          summary: 'on | off'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     disabled: {
       description: 'Whether or not the input is disabled',
       table: {
@@ -89,6 +99,7 @@ const defaultArgs = {
   disabled: false,
   placeholder: '*****',
   errorMessage: undefined,
+  autocomplete: undefined,
   validates: action('validates'),
   validatorSet: undefined
 };
@@ -96,7 +107,7 @@ const defaultArgs = {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
-                          @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
+                          @autocomplete={{this.autocomplete}} @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
   `,
   context: args
 });
