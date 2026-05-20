@@ -125,11 +125,12 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   );
 
   @action
-  validateInput(): void {
+  validateInput(event: InputEvent): void {
+    const value = (event?.target as HTMLInputElement)?.value;
     this.regexError = '';
-    if (!this.runValidation || !this.args.value) {
+    if (!this.runValidation || !value) {
       this.args.validates?.(true);
-    } else if (!this.testAllValidators()) {
+    } else if (!this.testAllValidators(value)) {
       this.regexError = this.intl.t('oss-components.password-input.regex_error');
       this.args.validates?.(false);
     } else {
@@ -142,10 +143,10 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     this.visibility = this.visibility === 'password' ? 'text' : 'password';
   }
 
-  private testAllValidators(): boolean {
+  private testAllValidators(value: string): boolean {
     return this.inputValidators.every((key: InputValidator) => {
       if (!this.validatorSet[key]) return false;
-      return this.validatorSet[key]!.regex.test(this.args.value!);
+      return this.validatorSet[key]!.regex.test(value!);
     });
   }
 
