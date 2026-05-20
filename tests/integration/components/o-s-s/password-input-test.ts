@@ -193,6 +193,23 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     });
   });
 
+  module('autocomplete', () => {
+    test('defaults to current-password autocomplete', async function (assert) {
+      await render(hbs`<OSS::PasswordInput @value="" />`);
+      assert.dom('input').hasAttribute('autocomplete', 'current-password');
+    });
+
+    test('@autocomplete="on" sets autocomplete to current-password', async function (assert) {
+      await render(hbs`<OSS::PasswordInput @value="" @autocomplete="on" />`);
+      assert.dom('input').hasAttribute('autocomplete', 'current-password');
+    });
+
+    test('@autocomplete="off" sets autocomplete to new-password', async function (assert) {
+      await render(hbs`<OSS::PasswordInput @value="" @autocomplete="off" />`);
+      assert.dom('input').hasAttribute('autocomplete', 'new-password');
+    });
+  });
+
   test('it throws an error when the @value parameter is missing', async function (assert) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
