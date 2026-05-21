@@ -20,6 +20,7 @@ interface OSSPasswordInputArgs {
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   disabled?: boolean;
+  autocomplete?: 'on' | 'off' | string;
   validates?(isPassing: boolean): void;
   validatorSet?: ValidatorSet;
 }
@@ -96,6 +97,15 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     });
   }
 
+  get autocomplete(): string {
+    if (this.args.autocomplete === 'off') {
+      return 'new-password';
+    }
+    if (this.args.autocomplete) return this.args.autocomplete;
+
+    return 'current-password';
+  }
+
   validatorAttributes = helper((_, { type }: { type: InputValidator }): ValidationTemplateAttributes => {
     const state = this.validationStateFromRegex(this.validatorSet[type]!.regex);
     return {
@@ -116,11 +126,12 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   );
 
   @action
-  validateInput(): void {
+  validateInput(event: InputEvent): void {
+    const value = (event?.target as HTMLInputElement)?.value;
     this.regexError = '';
-    if (!this.runValidation || !this.args.value) {
+    if (!this.runValidation || !value) {
       this.args.validates?.(true);
-    } else if (!this.testAllValidators()) {
+    } else if (!this.testAllValidators(value)) {
       this.regexError = this.intl.t('oss-components.password-input.regex_error');
       this.args.validates?.(false);
     } else {
@@ -133,10 +144,10 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     this.visibility = this.visibility === 'password' ? 'text' : 'password';
   }
 
-  private testAllValidators(): boolean {
+  private testAllValidators(value: string): boolean {
     return this.inputValidators.every((key: InputValidator) => {
       if (!this.validatorSet[key]) return false;
-      return this.validatorSet[key]!.regex.test(this.args.value!);
+      return this.validatorSet[key]!.regex.test(value!);
     });
   }
 
