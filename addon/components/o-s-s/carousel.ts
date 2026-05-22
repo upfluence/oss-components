@@ -28,7 +28,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   @tracked declare prevPageIndex: number;
   @tracked ongoingAnimation = false;
 
-  private declare autoPlayInterval: number;
+  declare private autoPlayInterval: number;
 
   get buttonIcon(): string {
     return this.args.buttonIcon ?? DEFAULT_BUTTON_ICON;

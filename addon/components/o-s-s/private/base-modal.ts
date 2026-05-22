@@ -9,9 +9,9 @@ export interface BaseModalArgs {
 }
 
 export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
-  private declare _elem: HTMLElement;
-  private declare _parent: HTMLElement;
-  protected declare initialTarget: HTMLElement | null;
+  declare private _elem: HTMLElement;
+  declare private _parent: HTMLElement;
+  declare protected initialTarget: HTMLElement | null;
   private prevBodyOverflow: string | null = null;
   private prevBodyPadding: string | null = null;
 

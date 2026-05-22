@@ -14,7 +14,7 @@ interface OSSAlertArgs {
 }
 
 export default class OSSAlert extends Component<OSSAlertArgs> {
-  private declare _DOMElement: HTMLElement;
+  declare private _DOMElement: HTMLElement;
 
   get skinClass(): string {
     return `upf-alert--${this.args.skin || DEFAULT_SKIN}`;

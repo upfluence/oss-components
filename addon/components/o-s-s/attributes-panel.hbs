@@ -13,8 +13,13 @@
         {{#if (has-block "contextual-action")}}
           {{yield to="contextual-action"}}
         {{/if}}
-        <OSS::Button @icon={{this.editIcon}} @square={{true}} @size="sm" {{on "click" this.onEdit}}
-                     data-control-name="attributes-panel-mode-switch-button" />
+        <OSS::Button
+          @icon={{this.editIcon}}
+          @square={{true}}
+          @size="sm"
+          {{on "click" this.onEdit}}
+          data-control-name="attributes-panel-mode-switch-button"
+        />
       </div>
     {{/if}}
   </div>
@@ -29,10 +34,19 @@
         <div class="fx-col fx-gap-px-18">
           {{yield to="edition-mode"}}
           <div class="fx-row fx-gap-px-18 fx-malign-end">
-            <OSS::Button @label={{t "oss-components.attributes_panel.cancel"}} {{on "click" this.onCancel}}
-                         data-control-name="attributes-panel-cancel-button" />
-            <OSS::Button @skin="primary" @label={{t "oss-components.attributes_panel.save"}} @loading={{this.isLoading}}
-                         disabled={{@isSaveDisabled}} {{on "click" this.onSave}} data-control-name="attributes-panel-save-button" />
+            <OSS::Button
+              @label={{t "oss-components.attributes_panel.cancel"}}
+              {{on "click" this.onCancel}}
+              data-control-name="attributes-panel-cancel-button"
+            />
+            <OSS::Button
+              @skin="primary"
+              @label={{t "oss-components.attributes_panel.save"}}
+              @loading={{this.isLoading}}
+              disabled={{@isSaveDisabled}}
+              {{on "click" this.onSave}}
+              data-control-name="attributes-panel-save-button"
+            />
           </div>
         </div>
       {{/if}}

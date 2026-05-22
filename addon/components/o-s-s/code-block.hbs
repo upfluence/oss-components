@@ -3,26 +3,39 @@
   <div class="code-container {{if @scrollable 'scrollable' 'scroll-shadow scroll-shadow--default'}}">
     <pre class="code">
     {{#each this.codeLineArray as |codeline|}}
-      <code>{{codeline}}</code>
-    {{/each}}
+        <code>{{codeline}}</code>
+      {{/each}}
     </pre>
   </div>
   {{#if @copyable}}
     <div class="floating-copy-btn">
-      <OSS::Button @skin="default" @size="sm"
-                   @label={{t "oss-components.code-block.copy"}}
-                   {{on "click" this.copyToClipboard}} />
+      <OSS::Button
+        @skin="default"
+        @size="sm"
+        @label={{t "oss-components.code-block.copy"}}
+        {{on "click" this.copyToClipboard}}
+      />
     </div>
   {{/if}}
   {{#if this.collapsable}}
     {{#if this.collapsed}}
-      <OSS::Button class="floating-collapse-btn" @skin="default" @size="xs"
-                   @label={{t "oss-components.code-block.uncollapse"}}
-                   @icon="fas fa-angle-down" {{on "click" this.uncollapse}} />
+      <OSS::Button
+        class="floating-collapse-btn"
+        @skin="default"
+        @size="xs"
+        @label={{t "oss-components.code-block.uncollapse"}}
+        @icon="fas fa-angle-down"
+        {{on "click" this.uncollapse}}
+      />
     {{else}}
-      <OSS::Button class="floating-collapse-btn" @skin="default" @size="xs"
-                   @label={{t "oss-components.code-block.collapse"}}
-                   @icon="fas fa-angle-up" {{on "click" this.collapse}} />
+      <OSS::Button
+        class="floating-collapse-btn"
+        @skin="default"
+        @size="xs"
+        @label={{t "oss-components.code-block.collapse"}}
+        @icon="fas fa-angle-up"
+        {{on "click" this.collapse}}
+      />
     {{/if}}
   {{/if}}
 </div>

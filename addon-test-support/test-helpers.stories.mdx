@@ -35,10 +35,10 @@ module('Integration | Component | o-s-s/my-component', function (hooks) {
   setupRenderingTest(hooks);
   setupToast(hooks);
 
-  test('it renders a toast when clicked', function(assert) {
-    await render(hbs`<OSS::MyComponent />`)
-    await click('.button-that-triggers-a-toast')
+  test('it renders a toast when clicked', function (assert) {
+    await render(hbs`<OSS::MyComponent />`);
+    await click('.button-that-triggers-a-toast');
     assert.ok(this.toastSuccessStub.calledOnce);
-  })
+  });
 });
 ```

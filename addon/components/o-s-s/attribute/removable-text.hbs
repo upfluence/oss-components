@@ -1,7 +1,10 @@
-<OSS::Attribute::Base @copyable={{false}} data-control-name="attribute-removable-text"
-                      {{on "mouseenter" (fn (mut this.displayRemoveIcon) true)}}
-                      {{on "mouseleave" (fn (mut this.displayRemoveIcon) false)}}
-                      ...attributes>
+<OSS::Attribute::Base
+  @copyable={{false}}
+  data-control-name="attribute-removable-text"
+  {{on "mouseenter" (fn (mut this.displayRemoveIcon) true)}}
+  {{on "mouseleave" (fn (mut this.displayRemoveIcon) false)}}
+  ...attributes
+>
   <:label>
     <span>{{@label}}</span>
   </:label>
@@ -11,8 +14,12 @@
       {{#if this.loading}}
         <OSS::Icon @icon="fa-circle-notch fa-spin" />
       {{else if this.displayRemoveIcon}}
-        <OSS::Icon @icon="fa-trash" {{on "click" this.onRemove}} role="button"
-                   {{enable-tooltip title=this.removeTooltip placement="top"}} />
+        <OSS::Icon
+          @icon="fa-trash"
+          {{on "click" this.onRemove}}
+          role="button"
+          {{enable-tooltip title=this.removeTooltip placement="top"}}
+        />
       {{/if}}
     </div>
   </:value>

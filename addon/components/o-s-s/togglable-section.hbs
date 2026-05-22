@@ -1,6 +1,12 @@
 <div class="togglable-section fx-1 fx-col border fx-xalign-center" ...attributes>
-  <div class="header-block fx-row {{this.paddingClass}} fx-gap-px-12 fx-xalign-center width-pc-100 inner-header
-              {{if @toggled "background-color-gray-50"}}" {{on "click" this.onHeaderClick}} role="button">
+  <div
+    class="header-block fx-row
+      {{this.paddingClass}}
+      fx-gap-px-12 fx-xalign-center width-pc-100 inner-header
+      {{if @toggled 'background-color-gray-50'}}"
+    {{on "click" this.onHeaderClick}}
+    role="button"
+  >
     {{#if @iconUrl}}
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@iconUrl}} alt={{@title}} />
     {{else if @icon}}

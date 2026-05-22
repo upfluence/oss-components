@@ -102,4 +102,4 @@ oss-components:
     collapse: Collapse
   smart:
     tag_input:
-      placeholder: "Add keywords, @mentions and #hashtags"
+      placeholder: 'Add keywords, @mentions and #hashtags'

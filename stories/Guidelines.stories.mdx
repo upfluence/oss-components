@@ -32,7 +32,7 @@ john@acme:~$ pnpm lint:js
 
 ### Formatting with Prettier
 
-Our code is  automatically formatted with [Prettier](https://prettier.io/) to follow the defined guidelines.
+Our code is automatically formatted with [Prettier](https://prettier.io/) to follow the defined guidelines.
 Prettier is taking care of formatting `.js`, `.html`, `.hbs` and `.less` based on its standard
 rules. You can find all settings for Prettier in `.prettierrc.js`.
 
@@ -61,12 +61,12 @@ export interface CustomAssertions {
 
 const assertion = (selector: string) => {
   return {
-    exists(value:string, message?:string) {
+    exists(value: string, message?: string) {
       // your implementation
       QUnit.assert.pushResult({ result, actual, expected, message });
     }
-  }
-}
+  };
+};
 
 assertion.__name__ = 'yourCustomName';
 

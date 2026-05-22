@@ -188,8 +188,8 @@ const assertion = (selector: string): InfiniteSelectOptionAssertions => {
         actual: element.classList.contains('oss-infinite-select-option--single')
           ? 'single'
           : element.classList.contains('oss-infinite-select-option--multiple')
-          ? 'multiple'
-          : undefined,
+            ? 'multiple'
+            : undefined,
         expected: type,
         message: message ?? `InfiniteSelect::Option has selectionType "${type}"`
       });

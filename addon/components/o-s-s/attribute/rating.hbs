@@ -4,8 +4,14 @@
   </:label>
   <:value>
     {{#if @rating}}
-      <OSS::StarRating @rating={{@rating}} @totalStars={{5}} @activeColor="yellow"
-                       @passiveColor="yellow" @passiveStyle="regular" @disablePointerCursor={{true}} />
+      <OSS::StarRating
+        @rating={{@rating}}
+        @totalStars={{5}}
+        @activeColor="yellow"
+        @passiveColor="yellow"
+        @passiveStyle="regular"
+        @disablePointerCursor={{true}}
+      />
     {{else}}
       -
     {{/if}}

@@ -25,8 +25,8 @@ module.exports = {
 
 <!--RULES_TABLE_START-->
 
-| Name                                                                                                      | Description |
-| :-------------------------------------------------------------------------------------------------------- | :-- | 
-| no-bare-button                                           | Warns against usage of raw `button` element 
+| Name           | Description                                 |
+| :------------- | :------------------------------------------ |
+| no-bare-button | Warns against usage of raw `button` element |
 
 <!--RULES_TABLE_END-->
