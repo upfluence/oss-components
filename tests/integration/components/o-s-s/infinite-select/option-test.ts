@@ -128,7 +128,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
     test('it calls the onSelect action when clicked', async function (assert) {
       await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
       await click('.oss-infinite-select-option');
-      assert.ok(this.onSelect.calledOnceWithExactly(true));
+      assert.ok(this.onSelect.calledOnceWith(true, sinon.match.instanceOf(MouseEvent)));
     });
 
     test('if @selected is true, it calls the onSelect action with correct value', async function (assert) {
@@ -136,7 +136,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
         hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @selected={{true}} @onSelect={{this.onSelect}} />`
       );
       await click('.oss-infinite-select-option');
-      assert.ok(this.onSelect.calledOnceWithExactly(false));
+      assert.ok(this.onSelect.calledOnceWith(false, sinon.match.instanceOf(MouseEvent)));
     });
 
     test("if @disabled is true, it doesn't call the onSelect action", async function (assert) {
@@ -153,7 +153,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
           hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @onSelect={{this.onSelect}} />`
         );
         await click('.upf-checkbox input');
-        assert.ok(this.onSelect.calledOnceWithExactly(true));
+        assert.ok(this.onSelect.calledOnceWith(true));
       });
 
       test('if @selected is true, it calls the onSelect action with correct value', async function (assert) {
@@ -161,7 +161,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
           hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @selected={{true}} @onSelect={{this.onSelect}} />`
         );
         await click('.upf-checkbox input');
-        assert.ok(this.onSelect.calledOnceWithExactly(false));
+        assert.ok(this.onSelect.calledOnceWith(false));
       });
     });
   });
