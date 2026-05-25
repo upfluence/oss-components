@@ -84403,8 +84403,13 @@ require('@ember/-internals/bootstrap')
       >
         <div class="fx-col">
           <div class="fx-row fx-gap-px-9">
-            <span>{{this.selectedCurrencySymbol}}</span>
-            {{#if @onlyCurrency}}
+            {{#if this.displayOnlyCurrencyPlaceholder}}
+              <span class="font-color-gray-400">{{@placeholder}}</span>
+            {{else}}
+              <span>{{this.selectedCurrencySymbol}}</span>
+            {{/if}}
+  
+            {{#if (and @onlyCurrency (not this.displayOnlyCurrencyPlaceholder))}}
               <span class="margin-right-px-12">{{this.selectedCurrencyCode}}</span>
             {{/if}}
           </div>
@@ -84450,25 +84455,28 @@ require('@ember/-internals/bootstrap')
         @items={{this.filteredCurrencies}}
         @onSearch={{this.onSearch}}
         @onSelect={{this.onSelect}}
+        @searchEnabled={{this.enabledSearch}}
         @searchPlaceholder={{t "oss-components.currency-input.search"}}
         {{on-click-outside this.hideCurrencySelector}}
       >
         <:option as |currency|>
-          <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
-            <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
-            <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
-            {{#if (eq this.selectedCurrency currency)}}
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-            {{/if}}
-          </div>
+          <OSS::InfiniteSelect::Option
+            @title={{currency.code}}
+            @selected={{eq this.selectedCurrency currency}}
+            @onSelect={{fn this.onSelect currency}}
+          >
+            <:prefix>
+              <span class={{if (eq this.selectedCurrency currency) "font-color-primary-500"}}>{{currency.symbol}}</span>
+            </:prefix>
+          </OSS::InfiniteSelect::Option>
         </:option>
       </OSS::InfiniteSelect>
     {{/if}}
   </div>
   */
   {
-    "id": "EZia3fOP",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n      \",[52,[30,2],\"onlycurrency\"],\"\\n      \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,0,\"fx-1\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\",\"@type\"],[[30,0,[\"localValue\"]],\"text\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[30,0,[\"feedbackMessageComputedClasses\"]]],[12],[1,\"\\n\"],[41,[51,[28,[37,7],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,4],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,8],[[4,[38,10],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,9],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"eq\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\"]]",
+    "id": "9UPJaCDO",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n      \",[52,[30,2],\"onlycurrency\"],\"\\n      \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,0,[\"displayOnlyCurrencyPlaceholder\"]],[[[1,\"            \"],[10,1],[14,0,\"font-color-gray-400\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[28,[37,2],[[30,2],[28,[37,3],[[30,0,[\"displayOnlyCurrencyPlaceholder\"]]],null]],null],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,0,\"fx-1\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\",\"@type\"],[[30,0,[\"localValue\"]],\"text\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[30,0,[\"feedbackMessageComputedClasses\"]]],[12],[1,\"\\n\"],[41,[51,[28,[37,7],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,4],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,8],[[4,[38,10],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"enabledSearch\"]],[28,[37,9],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[8,[39,11],null,[[\"@title\",\"@selected\",\"@onSelect\"],[[30,5,[\"code\"]],[28,[37,7],[[30,0,[\"selectedCurrency\"]],[30,5]],null],[28,[37,12],[[30,0,[\"onSelect\"]],[30,5]],null]]],[[\"prefix\"],[[[[1,\"\\n            \"],[10,1],[15,0,[52,[28,[37,7],[[30,0,[\"selectedCurrency\"]],[30,5]],null],\"font-color-primary-500\"]],[12],[1,[30,5,[\"symbol\"]]],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[5]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@placeholder\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"eq\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"o-s-s/infinite-select/option\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -84577,13 +84585,16 @@ require('@ember/-internals/bootstrap')
       return this.args.allowCurrencyUpdate ?? true;
     }
     get selectedCurrencySymbol() {
-      return this.selectedCurrency.symbol || '—';
+      return this.selectedCurrency?.symbol || '—';
     }
     get selectedCurrencyCode() {
-      return this.selectedCurrency.code || '—';
+      return this.selectedCurrency?.code || '—';
     }
     get selectedCurrency() {
       if ((0, _utils.isEmpty)(this.args.currency)) {
+        if (this.args.options?.allowEmpty) {
+          return undefined;
+        }
         return this.currencies[0];
       }
       return this.currencies.find(currency => currency.code === this.args.currency) ?? this.currencies[0];
@@ -84593,6 +84604,12 @@ require('@ember/-internals/bootstrap')
     }
     get disabled() {
       return this.args.disabled ?? false;
+    }
+    get enabledSearch() {
+      return this.args.options?.allowSearch ?? true;
+    }
+    get displayOnlyCurrencyPlaceholder() {
+      return !this.selectedCurrency && !!this.args.onlyCurrency && !!this.args.placeholder;
     }
     get computedClasses() {
       const classes = ['currency-input-container'];
@@ -84653,6 +84670,7 @@ require('@ember/-internals/bootstrap')
       this.notifyChanges();
     }
     notifyChanges() {
+      if (!this.selectedCurrency) return;
       this.args.onChange(this.selectedCurrency.code, this.localValue);
     }
     onSearch(keyword) {
@@ -84660,7 +84678,8 @@ require('@ember/-internals/bootstrap')
         return currency.code.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || currency.symbol.indexOf(keyword) !== -1;
       });
     }
-    onSelect(value) {
+    onSelect(value, _selected, event) {
+      event?.stopPropagation();
       this.args.onChange(value.code, this.localValue);
       this.hideCurrencySelector();
     }
@@ -85921,7 +85940,7 @@ require('@ember/-internals/bootstrap')
     onSelect(value, event) {
       event?.stopPropagation();
       if (this.args.disabled) return;
-      this.args.onSelect(value);
+      this.args.onSelect(value, event);
     }
   }, (_applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInfiniteSelectOptionComponent);
@@ -88771,6 +88790,7 @@ require('@ember/-internals/bootstrap')
             @searchEnabled={{this.searchEnabled}}
             @searchPlaceholder={{this.searchPlaceholder}}
             @action={{this.actionArguments}}
+            @skin={{@skin}}
             id={{this.portalId}}
             class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
             {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
@@ -88801,6 +88821,7 @@ require('@ember/-internals/bootstrap')
             @searchEnabled={{this.searchEnabled}}
             @searchPlaceholder={{this.searchPlaceholder}}
             @action={{this.actionArguments}}
+            @skin={{@skin}}
             id={{this.portalId}}
             class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
             {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
@@ -88838,10 +88859,11 @@ require('@ember/-internals/bootstrap')
       </div>
     {{/if}}
   </div>
+  
   */
   {
-    "id": "XGaPgMn0",
-    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,11]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,12]],[[[1,\"          \"],[18,12,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"text-ellipsis\"],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,13]],[[[1,\"        \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@action\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"actionArguments\"]]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,5]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"                \"],[18,11,[[30,5],[30,6]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,5]],null],[[[1,\"                \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"]],[5,6]],[[[1,\"\\n            \"],[18,13,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@action\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"actionArguments\"]]]],[[\"option\"],[[[[1,\"\\n            \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,7]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"                \"],[18,11,[[30,7],[30,8]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,7]],null],[[[1,\"                \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"]],[7,8]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,9],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,9]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,10],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,10]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"@items\",\"@captureClickOutside\",\"item\",\"index\",\"item\",\"index\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
+    "id": "F1yLSmjt",
+    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,12]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,13]],[[[1,\"          \"],[18,13,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"text-ellipsis\"],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,14]],[[[1,\"        \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,5]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@action\",\"@skin\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"actionArguments\"]],[30,4]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,6]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,12]],[[[1,\"                \"],[18,12,[[30,6],[30,7]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,6]],null],[[[1,\"                \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"]],[6,7]],[[[1,\"\\n            \"],[18,14,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,5]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@action\",\"@skin\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"actionArguments\"]],[30,4]]],[[\"option\"],[[[[1,\"\\n            \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,8]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,12]],[[[1,\"                \"],[18,12,[[30,8],[30,9]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,8]],null],[[[1,\"                \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"]],[8,9]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,10],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,10]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,11],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,11]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@items\",\"@skin\",\"@captureClickOutside\",\"item\",\"index\",\"item\",\"index\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/select.hbs",
     "isStrictMode": false
   });

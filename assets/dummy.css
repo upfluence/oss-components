@@ -9663,6 +9663,7 @@ For complete information visit: www.freakflagsprite.com
   margin-right: 0;
   width: 100%;
   background-color: transparent;
+  color: var(--color-gray-900);
 }
 .currency-input-container .onlycurrency.currency-input--active {
   border: 1px solid var(--color-primary-500);
@@ -9765,16 +9766,16 @@ For complete information visit: www.freakflagsprite.com
   margin-top: var(--spacing-px-6);
   max-width: 100%;
   min-width: 150px;
-  padding: var(--spacing-px-12);
+  padding: var(--spacing-px-6);
 }
 .currency-input-container .upf-infinite-select .upf-infinite-select__item {
-  padding: var(--spacing-px-6) 0;
+  padding: 0;
 }
-.currency-input-container .upf-infinite-select .row-selected span {
-  color: var(--color-gray-900);
+.currency-input-container .upf-infinite-select .upf-infinite-select__item:hover,
+.currency-input-container .upf-infinite-select .upf-infinite-select__item:focus {
+  background-color: transparent;
 }
 .currency-input-container .symbol {
-  font-weight: var(--font-weight-semibold);
   width: 22px;
 }
 .upf-alert {
@@ -12380,6 +12381,7 @@ a.upf-btn--sm {
   margin-right: 0;
   width: 100%;
   background-color: transparent;
+  color: var(--color-gray-900);
 }
 .smart-immersive-currency-input-container .onlycurrency.currency-input--active {
   border: 1px solid var(--color-primary-500);
@@ -12482,16 +12484,16 @@ a.upf-btn--sm {
   margin-top: var(--spacing-px-6);
   max-width: 100%;
   min-width: 150px;
-  padding: var(--spacing-px-12);
+  padding: var(--spacing-px-6);
 }
 .smart-immersive-currency-input-container .upf-infinite-select .upf-infinite-select__item {
-  padding: var(--spacing-px-6) 0;
+  padding: 0;
 }
-.smart-immersive-currency-input-container .upf-infinite-select .row-selected span {
-  color: var(--color-gray-900);
+.smart-immersive-currency-input-container .upf-infinite-select .upf-infinite-select__item:hover,
+.smart-immersive-currency-input-container .upf-infinite-select .upf-infinite-select__item:focus {
+  background-color: transparent;
 }
 .smart-immersive-currency-input-container .symbol {
-  font-weight: var(--font-weight-semibold);
   width: 22px;
 }
 .smart-immersive-currency-input-container.smart-rotating-gradient .smart-immersive-currency-input {

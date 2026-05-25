@@ -7180,6 +7180,57 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
         assert.equal(clickableRows.length, 2);
       });
+      (0, _qunit.module)('Selected currency highlighting', () => {
+        (0, _qunit.test)('Selected currency has the selected class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "QNGNaEn7",
+            "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"EUR\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.oss-infinite-select-option--selected').exists({
+            count: 1
+          });
+          assert.dom('.oss-infinite-select-option--selected').containsText('EUR');
+        });
+        (0, _qunit.test)('Selected currency has a check icon', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "QNGNaEn7",
+            "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"EUR\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.oss-infinite-select-option--selected .fa-check').exists({
+            count: 1
+          });
+        });
+        (0, _qunit.test)('Only the selected currency symbol is highlighted with primary color', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @currency="EUR" @value="" @onChange={{this.onChange}} />
+          */
+          {
+            "id": "QNGNaEn7",
+            "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"EUR\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.oss-infinite-select-option--selected .font-color-primary-500');
+          assert.dom('.oss-infinite-select-option--selected .font-color-primary-500').hasText('€');
+          assert.dom('.oss-infinite-select-option:not(.oss-infinite-select-option--selected) .font-color-primary-500').doesNotExist();
+        });
+      });
     });
     (0, _qunit.module)('Currency Input', () => {
       (0, _qunit.test)('Typing numbers in the currency input triggers the onChange method', async function (assert) {
@@ -7536,6 +7587,173 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
           }
         });
         assert.dom('input').hasValue('12345.67');
+      });
+    });
+    (0, _qunit.module)('@options argument', () => {
+      (0, _qunit.module)('@options.allowSearch', () => {
+        (0, _qunit.test)('When no @options.allowSearch is passed, search is enabled by default', async function (assert) {
+          this.options = {
+            allowSearch: true
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @onChange={{this.onChange}} />
+          */
+          {
+            "id": "VZbpOfOA",
+            "block": "[[[8,[39,0],null,[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.upf-infinite-select input').exists();
+        });
+        (0, _qunit.test)('When true @options.allowSearch is passed, search is enabled', async function (assert) {
+          this.options = {
+            allowSearch: true
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @onChange={{this.onChange}} @options={{this.options}} />
+          */
+          {
+            "id": "PWgx/2PE",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@options\"],[[30,0,[\"onChange\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          await (0, _testHelpers.click)('.currency-selector');
+          assert.dom('.upf-infinite-select input').exists();
+        });
+      });
+      (0, _qunit.test)('When false @options.allowSearch is passed, search is disabled', async function (assert) {
+        this.options = {
+          allowSearch: false
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @options={{this.options}} />
+        */
+        {
+          "id": "PWgx/2PE",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@options\"],[[30,0,[\"onChange\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.upf-infinite-select input').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('@options.allowEmpty', () => {
+      (0, _qunit.test)('When @options.allowEmpty is not passed, the first currency is selected by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} />
+        */
+        {
+          "id": "VZbpOfOA",
+          "block": "[[[8,[39,0],null,[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.currency-selector').hasText('$');
+      });
+      (0, _qunit.test)('When @options.allowEmpty is true and no @currency is passed, no currency is selected in the dropdown', async function (assert) {
+        this.options = {
+          allowEmpty: true
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @options={{this.options}} />
+        */
+        {
+          "id": "PWgx/2PE",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@options\"],[[30,0,[\"onChange\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.oss-infinite-select-option--selected').doesNotExist();
+      });
+      (0, _qunit.test)('When @options.allowEmpty is true and a @currency is passed, it is marked as selected in the dropdown', async function (assert) {
+        this.options = {
+          allowEmpty: true
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @currency="EUR" @options={{this.options}} />
+        */
+        {
+          "id": "JObQFgbB",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@currency\",\"@options\"],[[30,0,[\"onChange\"]],\"EUR\",[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.oss-infinite-select-option--selected').exists({
+          count: 1
+        });
+        assert.dom('.oss-infinite-select-option--selected').containsText('EUR');
+      });
+      (0, _qunit.module)('With @onlyCurrency', () => {
+        hooks.beforeEach(function () {
+          this.options = {
+            allowEmpty: true
+          };
+        });
+        (0, _qunit.test)('When @options.allowEmpty is true and no @currency is passed, the placeholder is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @placeholder="Select a currency" @options={{this.options}} />
+          */
+          {
+            "id": "VHVe++9i",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@onlyCurrency\",\"@placeholder\",\"@options\"],[[30,0,[\"onChange\"]],true,\"Select a currency\",[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.currency-selector').hasText('Select a currency');
+        });
+        (0, _qunit.test)('When @options.allowEmpty is true and no @currency is passed, the placeholder has the correct style', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @placeholder="Select a currency" @options={{this.options}} />
+          */
+          {
+            "id": "VHVe++9i",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@onlyCurrency\",\"@placeholder\",\"@options\"],[[30,0,[\"onChange\"]],true,\"Select a currency\",[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.currency-selector .font-color-gray-400').hasText('Select a currency');
+        });
+        (0, _qunit.test)('When @options.allowEmpty is true and a @currency is passed, the currency is displayed instead of the placeholder', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @currency="EUR" @placeholder="Select a currency" @options={{this.options}} />
+          */
+          {
+            "id": "DsM7MKi8",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@onlyCurrency\",\"@currency\",\"@placeholder\",\"@options\"],[[30,0,[\"onChange\"]],true,\"EUR\",\"Select a currency\",[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.currency-selector').hasText('€ EUR');
+          assert.dom('.currency-selector').doesNotContainText('Select a currency');
+        });
+        (0, _qunit.test)('When @options.allowEmpty is true but no @placeholder is passed, the default — is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CurrencyInput @onChange={{this.onChange}} @onlyCurrency={{true}} @options={{this.options}} />
+          */
+          {
+            "id": "kMDBaOJ3",
+            "block": "[[[8,[39,0],null,[[\"@onChange\",\"@onlyCurrency\",\"@options\"],[[30,0,[\"onChange\"]],true,[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.currency-selector').hasText('— —');
+        });
       });
     });
   });
@@ -10030,7 +10248,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", [
           "isStrictMode": false
         }));
         await (0, _testHelpers.click)('.oss-infinite-select-option');
-        assert.ok(this.onSelect.calledOnceWithExactly(true));
+        assert.ok(this.onSelect.calledOnceWith(true, _sinon.default.match.instanceOf(MouseEvent)));
       });
       (0, _qunit.test)('if @selected is true, it calls the onSelect action with correct value', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -10044,7 +10262,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", [
           "isStrictMode": false
         }));
         await (0, _testHelpers.click)('.oss-infinite-select-option');
-        assert.ok(this.onSelect.calledOnceWithExactly(false));
+        assert.ok(this.onSelect.calledOnceWith(false, _sinon.default.match.instanceOf(MouseEvent)));
       });
       (0, _qunit.test)("if @disabled is true, it doesn't call the onSelect action", async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -10073,7 +10291,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", [
             "isStrictMode": false
           }));
           await (0, _testHelpers.click)('.upf-checkbox input');
-          assert.ok(this.onSelect.calledOnceWithExactly(true));
+          assert.ok(this.onSelect.calledOnceWith(true));
         });
         (0, _qunit.test)('if @selected is true, it calls the onSelect action with correct value', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -10087,7 +10305,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", [
             "isStrictMode": false
           }));
           await (0, _testHelpers.click)('.upf-checkbox input');
-          assert.ok(this.onSelect.calledOnceWithExactly(false));
+          assert.ok(this.onSelect.calledOnceWith(false));
         });
       });
     });
@@ -17447,6 +17665,48 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
           "isStrictMode": false
         }));
         assert.dom('[data-control-name="infinite-select-footer-action-button"]').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('@skin argument', function () {
+      (0, _qunit.test)('when @skin is not passed, the dropdown defaults to the default skin', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "PT32Z2Yu",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-input div');
+        assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--default');
+      });
+      (0, _qunit.test)('when @skin="smart" is passed, the dropdown has the smart skin class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @skin="smart">
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "0EGxAiJP",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@skin\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],\"smart\"]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-input div');
+        assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--smart');
       });
     });
     (0, _qunit.module)('Error management', function () {
