@@ -205,7 +205,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
     });
   });
 
-  module('Loading', () => {
+  module('Loading', (hooks) => {
     hooks.beforeEach(function () {
       this.loading = true;
     });
