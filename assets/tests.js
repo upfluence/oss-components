@@ -19553,7 +19553,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         assert.dom('input').hasValue('123407890');
       });
     });
-    (0, _qunit.module)('Loading', () => {
+    (0, _qunit.module)('Loading', hooks => {
       hooks.beforeEach(function () {
         this.loading = true;
       });
@@ -19781,10 +19781,10 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/input-test", ["
     }
   });
 });
-define("dummy/tests/integration/components/o-s-s/smart/immersive/logo-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "dummy/utils/logo-config", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _logoConfig, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/smart/immersive/logo-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@upfluence/oss-components/utils/logo-config", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _logoConfig, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"dummy/utils/logo-config"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"@upfluence/oss-components/utils/logo-config"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {

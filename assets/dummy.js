@@ -8892,16 +8892,25 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/utils/keyboard"eaimeta@70e063a35619d71f
 });
-;define("dummy/utils/logo-config", ["exports"], function (_exports) {
+;define("dummy/utils/logo-config", ["exports", "@upfluence/oss-components/utils/logo-config"], function (_exports, _logoConfig) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.LOGO_ICONS = _exports.LOGO_COLORS = void 0;
-  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
-  const LOGO_ICONS = _exports.LOGO_ICONS = ['rabbit', 'star', 'heart', 'rocket-launch', 'money-bill', 'glass-whiskey-rocks', 'joystick', 'scroll', 'carrot', 'volleyball-ball', 'crown', 'chart-bar', 'users', 'saxophone', 'duck', 'university', 'tree-palm', 'trophy', 'pizza-slice', 'popcorn', 'chart-line', 'analytics', 'hat-wizard', 'chart-network', 'leaf', 'utensils', 'ufo', 'hat-winter', 'guitar', 'parachute-box', 'sheep', 'boot', 'shopping-basket', 'shopping-cart', 'shopping-bag', 'tags', 'meteor', 'globe-americas', 'globe-snow'];
-  const LOGO_COLORS = _exports.LOGO_COLORS = ['stone', 'rose', 'orange', 'yellow', 'lime', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuschia', 'pink', 'slate'];
+  Object.defineProperty(_exports, "LOGO_COLORS", {
+    enumerable: true,
+    get: function () {
+      return _logoConfig.LOGO_COLORS;
+    }
+  });
+  Object.defineProperty(_exports, "LOGO_ICONS", {
+    enumerable: true,
+    get: function () {
+      return _logoConfig.LOGO_ICONS;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/utils/logo-config"eaimeta@70e063a35619d71f
 });
 ;define("dummy/utils/upf-local-storage", ["exports", "@upfluence/oss-components/utils/upf-local-storage"], function (_exports, _upfLocalStorage) {
   "use strict";

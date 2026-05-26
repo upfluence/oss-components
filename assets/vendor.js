@@ -83850,7 +83850,7 @@ require('@ember/-internals/bootstrap')
                   @selected={{item.selected}}
                   @disabled={{item.disabled}}
                   @onSelect={{item.action}}
-                  {{did-insert registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
+                  {{did-insert this.registerMouseEnterOnParent (fn this.openSubMenu item.items index)}}
                   {{on "click" (fn this.openSubMenu item.items index)}}
                   class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
                   data-control-name={{item.dataControlName}}
@@ -83858,7 +83858,7 @@ require('@ember/-internals/bootstrap')
               {{else if item.rowRenderer}}
                 <item.rowRenderer
                   @item={{item}}
-                  {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
+                  {{did-insert this.registerMouseEnterOnParent this.closeSubMenu}}
                   {{on "click" (fn this.callAction item.action)}}
                 />
               {{else}}
@@ -83877,7 +83877,7 @@ require('@ember/-internals/bootstrap')
                   @selected={{item.selected}}
                   @disabled={{item.disabled}}
                   @onSelect={{fn this.callAction item.action}}
-                  {{did-insert registerMouseEnterOnParent this.closeSubMenu}}
+                  {{did-insert this.registerMouseEnterOnParent this.closeSubMenu}}
                   class="infinit-select-option-panel-container"
                   data-control-name={{item.dataControlName}}
                 />
@@ -83904,8 +83904,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "8arOHm6B",
-    "block": "[[[11,0],[16,0,[30,0,[\"panelContainerCustomClasses\"]]],[4,[38,0],[[30,0,[\"registerPanelContainer\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[40,[[[1,\"      \"],[8,[39,4],[[16,1,[30,0,[\"portalId\"]]],[24,0,\"context-menu-panel__scrollable-container\"],[17,1],[4,[38,0],[[30,0,[\"registerPanel\"]]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"mouseLeave\"]]],null],[4,[38,5],[\"scroll\",[30,0,[\"onScroll\"]]],null]],null,[[\"default\"],[[[[1,\"\\n        \"],[8,[39,6],[[24,0,\"margin-top-px-0 context-menu-panel__dropdown\"],[4,[38,7],[[30,0,[\"onClickOutside\"]]],null]],[[\"@items\",\"@searchEnabled\",\"@onSelect\",\"@onClose\",\"@enableKeyboard\"],[[30,2],false,[30,0,[\"noop\"]],[30,0,[\"closeDropdown\"]],false]],[[\"option\"],[[[[1,\"\\n\"],[41,[30,3,[\"items\"]],[[[1,\"              \"],[8,[39,8],[[16,0,[29,[\"infinit-select-option-panel-container \",[52,[28,[37,9],[[30,4],[30,0,[\"subReferenceIndex\"]]],null],\"active\",\"\"]]]],[16,\"data-control-name\",[30,3,[\"dataControlName\"]]],[4,[38,0],[[33,12],[28,[37,13],[[30,0,[\"openSubMenu\"]],[30,3,[\"items\"]],[30,4]],null]],null],[4,[38,5],[\"click\",[28,[37,13],[[30,0,[\"openSubMenu\"]],[30,3,[\"items\"]],[30,4]],null]],null]],[[\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[[30,3,[\"prefixAvatar\"]],[30,3,[\"prefixBadge\"]],[30,3,[\"prefixIcon\"]],[30,3,[\"prefixCountry\"]],[30,3,[\"title\"]],[30,3,[\"subtitle\"]],[30,3,[\"icon\"]],[30,3,[\"suffixHint\"]],[30,3,[\"suffixTag\"]],[28,[37,10],[[30,3,[\"suffixIcon\"]],[28,[37,11],null,[[\"icon\"],[\"fa-chevron-right\"]]]],null],[30,3,[\"selectionType\"]],[30,3,[\"selected\"]],[30,3,[\"disabled\"]],[30,3,[\"action\"]]]],null],[1,\"\\n\"]],[]],[[[41,[30,3,[\"rowRenderer\"]],[[[1,\"              \"],[8,[30,3,[\"rowRenderer\"]],[[4,[38,0],[[33,12],[30,0,[\"closeSubMenu\"]]],null],[4,[38,5],[\"click\",[28,[37,13],[[30,0,[\"callAction\"]],[30,3,[\"action\"]]],null]],null]],[[\"@item\"],[[30,3]]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,8],[[24,0,\"infinit-select-option-panel-container\"],[16,\"data-control-name\",[30,3,[\"dataControlName\"]]],[4,[38,0],[[33,12],[30,0,[\"closeSubMenu\"]]],null]],[[\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[[30,3,[\"prefixAvatar\"]],[30,3,[\"prefixBadge\"]],[30,3,[\"prefixIcon\"]],[30,3,[\"prefixCountry\"]],[30,3,[\"title\"]],[30,3,[\"subtitle\"]],[30,3,[\"icon\"]],[30,3,[\"suffixHint\"]],[30,3,[\"suffixTag\"]],[30,3,[\"suffixIcon\"]],[30,3,[\"selectionType\"]],[30,3,[\"selected\"]],[30,3,[\"disabled\"]],[28,[37,13],[[30,0,[\"callAction\"]],[30,3,[\"action\"]]],null]]],null],[1,\"\\n            \"]],[]]]],[]]],[1,\"          \"]],[3,4]]]]],[1,\"\\n      \"]],[]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,3],[[30,0,[\"portalTarget\"]]],null],null],[1,\"\\n\"],[41,[30,0,[\"displaySubMenu\"]],[[[1,\"      \"],[8,[39,14],[[4,[38,0],[[30,0,[\"registerSubPanel\"]]],null]],[[\"@referenceTarget\",\"@items\",\"@placement\",\"@offset\",\"@onMouseLeave\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],[[30,0,[\"subReferenceTarget\"]],[30,0,[\"subItems\"]],\"right-start\",[30,0,[\"subPanelOffset\"]],[30,0,[\"onSubPanelMouseLeave\"]],[30,5],[30,6],[30,7]]],null],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"&attrs\",\"@items\",\"item\",\"index\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],false,[\"did-insert\",\"if\",\"in-element\",\"-in-el-null\",\"o-s-s/scrollable-panel\",\"on\",\"o-s-s/infinite-select\",\"on-click-outside\",\"o-s-s/infinite-select/option\",\"eq\",\"or\",\"hash\",\"registerMouseEnterOnParent\",\"fn\",\"o-s-s/context-menu/panel\"]]",
+    "id": "JNZUOqDD",
+    "block": "[[[11,0],[16,0,[30,0,[\"panelContainerCustomClasses\"]]],[4,[38,0],[[30,0,[\"registerPanelContainer\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isInitialized\"]],[[[40,[[[1,\"      \"],[8,[39,4],[[16,1,[30,0,[\"portalId\"]]],[24,0,\"context-menu-panel__scrollable-container\"],[17,1],[4,[38,0],[[30,0,[\"registerPanel\"]]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"mouseLeave\"]]],null],[4,[38,5],[\"scroll\",[30,0,[\"onScroll\"]]],null]],null,[[\"default\"],[[[[1,\"\\n        \"],[8,[39,6],[[24,0,\"margin-top-px-0 context-menu-panel__dropdown\"],[4,[38,7],[[30,0,[\"onClickOutside\"]]],null]],[[\"@items\",\"@searchEnabled\",\"@onSelect\",\"@onClose\",\"@enableKeyboard\"],[[30,2],false,[30,0,[\"noop\"]],[30,0,[\"closeDropdown\"]],false]],[[\"option\"],[[[[1,\"\\n\"],[41,[30,3,[\"items\"]],[[[1,\"              \"],[8,[39,8],[[16,0,[29,[\"infinit-select-option-panel-container \",[52,[28,[37,9],[[30,4],[30,0,[\"subReferenceIndex\"]]],null],\"active\",\"\"]]]],[16,\"data-control-name\",[30,3,[\"dataControlName\"]]],[4,[38,0],[[30,0,[\"registerMouseEnterOnParent\"]],[28,[37,12],[[30,0,[\"openSubMenu\"]],[30,3,[\"items\"]],[30,4]],null]],null],[4,[38,5],[\"click\",[28,[37,12],[[30,0,[\"openSubMenu\"]],[30,3,[\"items\"]],[30,4]],null]],null]],[[\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[[30,3,[\"prefixAvatar\"]],[30,3,[\"prefixBadge\"]],[30,3,[\"prefixIcon\"]],[30,3,[\"prefixCountry\"]],[30,3,[\"title\"]],[30,3,[\"subtitle\"]],[30,3,[\"icon\"]],[30,3,[\"suffixHint\"]],[30,3,[\"suffixTag\"]],[28,[37,10],[[30,3,[\"suffixIcon\"]],[28,[37,11],null,[[\"icon\"],[\"fa-chevron-right\"]]]],null],[30,3,[\"selectionType\"]],[30,3,[\"selected\"]],[30,3,[\"disabled\"]],[30,3,[\"action\"]]]],null],[1,\"\\n\"]],[]],[[[41,[30,3,[\"rowRenderer\"]],[[[1,\"              \"],[8,[30,3,[\"rowRenderer\"]],[[4,[38,0],[[30,0,[\"registerMouseEnterOnParent\"]],[30,0,[\"closeSubMenu\"]]],null],[4,[38,5],[\"click\",[28,[37,12],[[30,0,[\"callAction\"]],[30,3,[\"action\"]]],null]],null]],[[\"@item\"],[[30,3]]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,8],[[24,0,\"infinit-select-option-panel-container\"],[16,\"data-control-name\",[30,3,[\"dataControlName\"]]],[4,[38,0],[[30,0,[\"registerMouseEnterOnParent\"]],[30,0,[\"closeSubMenu\"]]],null]],[[\"@prefixAvatar\",\"@prefixBadge\",\"@prefixIcon\",\"@prefixCountry\",\"@title\",\"@subtitle\",\"@icon\",\"@suffixHint\",\"@suffixTag\",\"@suffixIcon\",\"@selectionType\",\"@selected\",\"@disabled\",\"@onSelect\"],[[30,3,[\"prefixAvatar\"]],[30,3,[\"prefixBadge\"]],[30,3,[\"prefixIcon\"]],[30,3,[\"prefixCountry\"]],[30,3,[\"title\"]],[30,3,[\"subtitle\"]],[30,3,[\"icon\"]],[30,3,[\"suffixHint\"]],[30,3,[\"suffixTag\"]],[30,3,[\"suffixIcon\"]],[30,3,[\"selectionType\"]],[30,3,[\"selected\"]],[30,3,[\"disabled\"]],[28,[37,12],[[30,0,[\"callAction\"]],[30,3,[\"action\"]]],null]]],null],[1,\"\\n            \"]],[]]]],[]]],[1,\"          \"]],[3,4]]]]],[1,\"\\n      \"]],[]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,3],[[30,0,[\"portalTarget\"]]],null],null],[1,\"\\n\"],[41,[30,0,[\"displaySubMenu\"]],[[[1,\"      \"],[8,[39,13],[[4,[38,0],[[30,0,[\"registerSubPanel\"]]],null]],[[\"@referenceTarget\",\"@items\",\"@placement\",\"@offset\",\"@onMouseLeave\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],[[30,0,[\"subReferenceTarget\"]],[30,0,[\"subItems\"]],\"right-start\",[30,0,[\"subPanelOffset\"]],[30,0,[\"onSubPanelMouseLeave\"]],[30,5],[30,6],[30,7]]],null],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"&attrs\",\"@items\",\"item\",\"index\",\"@onClose\",\"@registerPanel\",\"@unregisterPanel\"],false,[\"did-insert\",\"if\",\"in-element\",\"-in-el-null\",\"o-s-s/scrollable-panel\",\"on\",\"o-s-s/infinite-select\",\"on-click-outside\",\"o-s-s/infinite-select/option\",\"eq\",\"or\",\"hash\",\"fn\",\"o-s-s/context-menu/panel\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/context-menu/panel.hbs",
     "isStrictMode": false
   });
@@ -91393,6 +91393,7 @@ require('@ember/-internals/bootstrap')
       <div
         class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) ' oss-toggle-buttons-btn--selected'}}"
         role="button"
+        data-control-name={{concat "oss-toggle-button-option-" toggle.value}}
         {{on "click" (fn this.onSelectToggle toggle.value)}}
       >
         {{#if toggle.icon}}
@@ -91404,8 +91405,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "SZrXxblj",
-    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-toggle-buttons-container \",[52,[30,1],\"oss-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "HK5Z4sBm",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-toggle-buttons-container \",[52,[30,1],\"oss-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[16,\"data-control-name\",[28,[37,0],[\"oss-toggle-button-option-\",[30,4,[\"value\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/toggle-buttons.hbs",
     "isStrictMode": false
   });
@@ -99232,6 +99233,17 @@ require('@ember/-internals/bootstrap')
       event.preventDefault();
     }
   }
+});
+;define("@upfluence/oss-components/utils/logo-config", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.LOGO_ICONS = _exports.LOGO_COLORS = void 0;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const LOGO_ICONS = _exports.LOGO_ICONS = ['rabbit', 'star', 'heart', 'rocket-launch', 'money-bill', 'glass-whiskey-rocks', 'joystick', 'scroll', 'carrot', 'volleyball-ball', 'crown', 'chart-bar', 'users', 'saxophone', 'duck', 'university', 'tree-palm', 'trophy', 'pizza-slice', 'popcorn', 'chart-line', 'analytics', 'hat-wizard', 'chart-network', 'leaf', 'utensils', 'ufo', 'hat-winter', 'guitar', 'parachute-box', 'sheep', 'boot', 'shopping-basket', 'shopping-cart', 'shopping-bag', 'tags', 'meteor', 'globe-americas', 'globe-snow'];
+  const LOGO_COLORS = _exports.LOGO_COLORS = ['stone', 'rose', 'orange', 'yellow', 'lime', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuschia', 'pink', 'slate'];
 });
 ;define("@upfluence/oss-components/utils/run-smart-gradient-animation", ["exports"], function (_exports) {
   "use strict";
