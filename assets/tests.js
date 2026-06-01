@@ -14792,6 +14792,92 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         assert.true(this.validates.calledOnceWith(true));
       });
     });
+    (0, _qunit.module)('feedbackMessage', () => {
+      (0, _qunit.test)('Passing an error @feedbackMessage displays the message and sets the border to red', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PasswordInput @value="" @feedbackMessage={{hash type="error" value="This is an error message"}} />
+        */
+        {
+          "id": "0R36x+/f",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"\",[28,[37,1],null,[[\"type\",\"value\"],[\"error\",\"This is an error message\"]]]]],null]],[],false,[\"o-s-s/password-input\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/password-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container').hasClass('oss-input-container--error');
+        assert.dom('.font-color-error-500').hasText('This is an error message');
+      });
+      (0, _qunit.test)('Passing a @feedbackMessage without a value only applies the container state class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PasswordInput @value="" @feedbackMessage={{hash type="success"}} />
+        */
+        {
+          "id": "Y7rl0U+k",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"\",[28,[37,1],null,[[\"type\"],[\"success\"]]]]],null]],[],false,[\"o-s-s/password-input\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/password-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container').hasClass('oss-input-container--success');
+        assert.dom('.font-color-success-500').doesNotExist();
+      });
+      (0, _qunit.test)('@errorMessage takes precedence over @feedbackMessage', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PasswordInput @value="" @errorMessage="Error takes priority" @feedbackMessage={{hash type="success" value="Success message"}} />
+        */
+        {
+          "id": "nIqR8eeV",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@errorMessage\",\"@feedbackMessage\"],[\"\",\"Error takes priority\",[28,[37,1],null,[[\"type\",\"value\"],[\"success\",\"Success message\"]]]]],null]],[],false,[\"o-s-s/password-input\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/password-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
+        assert.dom('.text-color-error').hasText('Error takes priority');
+        assert.dom('.font-color-success-500').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('autocomplete', () => {
+      (0, _qunit.test)('defaults to current-password autocomplete', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PasswordInput @value="" />
+        */
+        {
+          "id": "QAN48+2e",
+          "block": "[[[8,[39,0],null,[[\"@value\"],[\"\"]],null]],[],false,[\"o-s-s/password-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/password-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasAttribute('autocomplete', 'current-password');
+      });
+      (0, _qunit.test)('@autocomplete="yes-please" sets autocomplete to passed value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PasswordInput @value="" @autocomplete="yes-please" />
+        */
+        {
+          "id": "+02WnEBV",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@autocomplete\"],[\"\",\"yes-please\"]],null]],[],false,[\"o-s-s/password-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/password-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasAttribute('autocomplete', 'yes-please');
+      });
+      (0, _qunit.test)('@autocomplete="off" sets autocomplete to new-password', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PasswordInput @value="" @autocomplete="off" />
+        */
+        {
+          "id": "/dfaJ5t8",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@autocomplete\"],[\"\",\"off\"]],null]],[],false,[\"o-s-s/password-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/password-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasAttribute('autocomplete', 'new-password');
+      });
+    });
     (0, _qunit.test)('it throws an error when the @value parameter is missing', async function (assert) {
       (0, _testHelpers.setupOnerror)(err => {
         assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');

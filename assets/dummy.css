@@ -7812,7 +7812,7 @@ div.upf-image {
 .split-settings__info {
   flex: 1;
   padding-right: var(--spacing-px-60);
-  padding-bottom: var(--spacing-px-24);
+  padding-bottom: var(--spacing-px-18);
 }
 .split-settings__info .title {
   font-size: 1.5rem;
@@ -14868,7 +14868,7 @@ a.upf-btn--sm {
 }
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   .oss-modal-dialog {
-    height: 90vh;
+    max-height: 90vh;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     position: fixed;
@@ -14876,7 +14876,7 @@ a.upf-btn--sm {
   }
   @supports (height: 90dvh) {
     .oss-modal-dialog {
-      height: 90dvh;
+      max-height: 90dvh;
     }
   }
   .oss-modal-dialog footer {

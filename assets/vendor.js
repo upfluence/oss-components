@@ -87298,37 +87298,46 @@ require('@ember/-internals/bootstrap')
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-col fx-1 fx-gap-px-6">
-    <OSS::InputContainer @errorMessage={{this.errorMessage}} ...attributes>
+    <OSS::InputContainer @feedbackMessage={{@feedbackMessage}} @errorMessage={{this.errorMessage}} ...attributes>
       <:input>
         <Input
           @value={{@value}}
           @type={{this.visibility}}
           disabled={{@disabled}}
           placeholder={{this.placeholder}}
-          autocomplete="current-password"
-          {{on "keyup" this.validateInput}}
+          autocomplete={{this.autocomplete}}
+          {{on "input" this.validateInput}}
         />
       </:input>
       <:suffix>
         {{#if @disabled}}
           <OSS::Icon class="font-color-gray-500" @icon={{this.visibilityIcon}} />
         {{else}}
-          <OSS::Button class="margin-px-6" @icon={{this.visibilityIcon}} @square={{true}}
-                       {{on "click" this.toggleVisibility}} />
+          <OSS::Button
+            class="margin-px-6"
+            @icon={{this.visibilityIcon}}
+            @square={{true}}
+            {{on "click" this.toggleVisibility}}
+          />
         {{/if}}
       </:suffix>
     </OSS::InputContainer>
     {{#if @validates}}
-      <div class="fx-row fx-gap-px-12" data-control-name="password-input-validators">
+      <div class="fx-row fx-gap-px-12 fx-wrap" data-control-name="password-input-validators">
         {{#each this.inputValidators as |inputValidator|}}
           {{#let (this.validatorAttributes type=inputValidator) as |validator|}}
-            <div class="password-input-validator fx-row fx-gap-px-6"
-                 data-control-name="password-input-validator-{{inputValidator}}">
+            <div
+              class="password-input-validator fx-row fx-gap-px-6"
+              data-control-name="password-input-validator-{{inputValidator}}"
+            >
               <div class="validator-icon-container">
                 {{#each this.validationIcons as |validationIcon|}}
-                  <OSS::Icon @icon={{validationIcon.icon}}
-                             class="validator-icon {{validator.iconClass}}
-                                    {{this.validationIconVisibility validator=validator state=validationIcon.state}}" />
+                  <OSS::Icon
+                    @icon={{validationIcon.icon}}
+                    class="validator-icon
+                      {{validator.iconClass}}
+                      {{this.validationIconVisibility validator=validator state=validationIcon.state}}"
+                  />
                 {{/each}}
               </div>
               <span class={{validator.labelClass}}>{{t validator.labelKey}}</span>
@@ -87340,8 +87349,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "zGp9XQ3G",
-    "block": "[[[10,0],[14,0,\"fx-col fx-1 fx-gap-px-6\"],[12],[1,\"\\n  \"],[8,[39,0],[[17,1]],[[\"@errorMessage\"],[[30,0,[\"errorMessage\"]]]],[[\"input\",\"suffix\"],[[[[1,\"\\n      \"],[8,[39,1],[[16,\"disabled\",[30,2]],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,\"autocomplete\",\"current-password\"],[4,[38,2],[\"keyup\",[30,0,[\"validateInput\"]]],null]],[[\"@value\",\"@type\"],[[30,3],[30,0,[\"visibility\"]]]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,4],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[[30,0,[\"visibilityIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,5],[[24,0,\"margin-px-6\"],[4,[38,2],[\"click\",[30,0,[\"toggleVisibility\"]]],null]],[[\"@icon\",\"@square\"],[[30,0,[\"visibilityIcon\"]],true]],null],[1,\"\\n\"]],[]]],[1,\"    \"]],[]]]]],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[14,\"data-control-name\",\"password-input-validators\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"inputValidators\"]]],null]],null],null,[[[44,[[28,[30,0,[\"validatorAttributes\"]],null,[[\"type\"],[[30,5]]]]],[[[1,\"          \"],[10,0],[14,0,\"password-input-validator fx-row fx-gap-px-6\"],[15,\"data-control-name\",[29,[\"password-input-validator-\",[30,5]]]],[12],[1,\"\\n            \"],[10,0],[14,0,\"validator-icon-container\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"validationIcons\"]]],null]],null],null,[[[1,\"                \"],[8,[39,4],[[16,0,[29,[\"validator-icon \",[30,6,[\"iconClass\"]],\"\\n                                  \",[28,[30,0,[\"validationIconVisibility\"]],null,[[\"validator\",\"state\"],[[30,6],[30,7,[\"state\"]]]]]]]]],[[\"@icon\"],[[30,7,[\"icon\"]]]],null],[1,\"\\n\"]],[7]],null],[1,\"            \"],[13],[1,\"\\n            \"],[10,1],[15,0,[30,6,[\"labelClass\"]]],[12],[1,[28,[35,9],[[30,6,[\"labelKey\"]]],null]],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[6]]]],[5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@disabled\",\"@value\",\"@validates\",\"inputValidator\",\"validator\",\"validationIcon\"],false,[\"o-s-s/input-container\",\"input\",\"on\",\"if\",\"o-s-s/icon\",\"o-s-s/button\",\"each\",\"-track-array\",\"let\",\"t\"]]",
+    "id": "COtUQam0",
+    "block": "[[[10,0],[14,0,\"fx-col fx-1 fx-gap-px-6\"],[12],[1,\"\\n  \"],[8,[39,0],[[17,1]],[[\"@feedbackMessage\",\"@errorMessage\"],[[30,2],[30,0,[\"errorMessage\"]]]],[[\"input\",\"suffix\"],[[[[1,\"\\n      \"],[8,[39,1],[[16,\"disabled\",[30,3]],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"autocomplete\",[30,0,[\"autocomplete\"]]],[4,[38,2],[\"input\",[30,0,[\"validateInput\"]]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"visibility\"]]]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,4],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[[30,0,[\"visibilityIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,5],[[24,0,\"margin-px-6\"],[4,[38,2],[\"click\",[30,0,[\"toggleVisibility\"]]],null]],[[\"@icon\",\"@square\"],[[30,0,[\"visibilityIcon\"]],true]],null],[1,\"\\n\"]],[]]],[1,\"    \"]],[]]]]],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-wrap\"],[14,\"data-control-name\",\"password-input-validators\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"inputValidators\"]]],null]],null],null,[[[44,[[28,[30,0,[\"validatorAttributes\"]],null,[[\"type\"],[[30,6]]]]],[[[1,\"          \"],[10,0],[14,0,\"password-input-validator fx-row fx-gap-px-6\"],[15,\"data-control-name\",[29,[\"password-input-validator-\",[30,6]]]],[12],[1,\"\\n            \"],[10,0],[14,0,\"validator-icon-container\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"validationIcons\"]]],null]],null],null,[[[1,\"                \"],[8,[39,4],[[16,0,[29,[\"validator-icon\\n                    \",[30,7,[\"iconClass\"]],\"\\n                    \",[28,[30,0,[\"validationIconVisibility\"]],null,[[\"validator\",\"state\"],[[30,7],[30,8,[\"state\"]]]]]]]]],[[\"@icon\"],[[30,8,[\"icon\"]]]],null],[1,\"\\n\"]],[8]],null],[1,\"            \"],[13],[1,\"\\n            \"],[10,1],[15,0,[30,7,[\"labelClass\"]]],[12],[1,[28,[35,9],[[30,7,[\"labelKey\"]]],null]],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[7]]]],[6]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@feedbackMessage\",\"@disabled\",\"@value\",\"@validates\",\"inputValidator\",\"validator\",\"validationIcon\"],false,[\"o-s-s/input-container\",\"input\",\"on\",\"if\",\"o-s-s/icon\",\"o-s-s/button\",\"each\",\"-track-array\",\"let\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/password-input.hbs",
     "isStrictMode": false
   });
@@ -87426,11 +87435,19 @@ require('@ember/-internals/bootstrap')
         };
       });
     }
-    validateInput() {
+    get autocomplete() {
+      if (this.args.autocomplete === 'off') {
+        return 'new-password';
+      }
+      if (this.args.autocomplete) return this.args.autocomplete;
+      return 'current-password';
+    }
+    validateInput(event) {
+      const value = event?.target?.value;
       this.regexError = '';
-      if (!this.runValidation || !this.args.value) {
+      if (!this.runValidation || !value) {
         this.args.validates?.(true);
-      } else if (!this.testAllValidators()) {
+      } else if (!this.testAllValidators(value)) {
         this.regexError = this.intl.t('oss-components.password-input.regex_error');
         this.args.validates?.(false);
       } else {
@@ -87440,10 +87457,10 @@ require('@ember/-internals/bootstrap')
     toggleVisibility() {
       this.visibility = this.visibility === 'password' ? 'text' : 'password';
     }
-    testAllValidators() {
+    testAllValidators(value) {
       return this.inputValidators.every(key => {
         if (!this.validatorSet[key]) return false;
-        return this.validatorSet[key].regex.test(this.args.value);
+        return this.validatorSet[key].regex.test(value);
       });
     }
     validationStateFromRegex(regex) {
