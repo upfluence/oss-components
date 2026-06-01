@@ -35,6 +35,27 @@ export default {
       },
       control: { type: 'text' }
     },
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: '{ type: string, value: string }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
+    autocomplete: {
+      description:
+        'Whether or not the input should have autocomplete enabled. If set to "off", it will use "new-password" to prevent browsers from filling in the password. It can be set to any custom value if needed.',
+      table: {
+        type: {
+          summary: 'on | off | string'
+        },
+        defaultValue: { summary: 'current-password' }
+      },
+      control: { type: 'text' }
+    },
     disabled: {
       description: 'Whether or not the input is disabled',
       table: {
@@ -79,6 +100,7 @@ const defaultArgs = {
   disabled: false,
   placeholder: '*****',
   errorMessage: undefined,
+  autocomplete: undefined,
   validates: action('validates'),
   validatorSet: undefined
 };
@@ -86,7 +108,7 @@ const defaultArgs = {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
-                          @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
+                          @autocomplete={{this.autocomplete}} @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
   `,
   context: args
 });
