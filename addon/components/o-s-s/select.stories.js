@@ -146,6 +146,17 @@ export default {
       },
       options: SkinTypes,
       control: { type: 'select' }
+    },
+    placeholderEllipsis: {
+      description:
+        'When enabled, the placeholder text is truncated with an ellipsis and a tooltip is shown on overflow.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -172,6 +183,7 @@ const defaultArgs = {
   errorMessage: undefined,
   successMessage: undefined,
   addressableAs: undefined,
+  placeholderEllipsis: false,
   skin: 'default',
   action: {
     skin: 'tertiary',
@@ -191,7 +203,7 @@ const Template = (args) => ({
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
       @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
-      @skin={{this.skin}}>
+      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}}>
       <:option as |item|>
         {{item.name}}
       </:option>

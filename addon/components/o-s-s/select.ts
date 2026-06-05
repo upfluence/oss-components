@@ -21,6 +21,7 @@ interface OSSSelectArgs extends BaseDropdownArgs {
   addressableAs?: string;
   action?: InfiniteSelectAction;
   skin?: 'default' | 'smart';
+  placeholderEllipsis?: boolean;
   onChange(value: any): void;
   onSearch?(keyword: string): void;
 }

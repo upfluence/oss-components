@@ -171,6 +171,53 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
   });
 
+  module('@placeholderEllipsis argument', function () {
+    test('when @placeholderEllipsis is not passed, the placeholder does not have the text-ellipsis class', async function (assert) {
+      this.value = null;
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input--placeholder').doesNotHaveClass('text-ellipsis');
+    });
+
+    test('when @placeholderEllipsis={{true}}, the placeholder has the text-ellipsis class', async function (assert) {
+      this.value = null;
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @placeholderEllipsis={{true}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input--placeholder').hasClass('text-ellipsis');
+    });
+
+    test('when @placeholderEllipsis={{false}}, the placeholder does not have the text-ellipsis class', async function (assert) {
+      this.value = null;
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @placeholderEllipsis={{false}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input--placeholder').doesNotHaveClass('text-ellipsis');
+    });
+  });
+
   module('disabled state', function () {
     test('the dropdown does not open when the select is clicked', async function (assert) {
       await render(
