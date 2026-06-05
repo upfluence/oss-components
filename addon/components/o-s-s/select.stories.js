@@ -157,6 +157,27 @@ export default {
         defaultValue: { summary: false }
       },
       control: { type: 'boolean' }
+    },
+    dropdownWidth: {
+      description: 'The width of the dropdown in pixels. By default, the dropdown width matches the input width.',
+      table: {
+        type: {
+          summary: 'number'
+        },
+        defaultValue: { summary: 'input width' }
+      },
+      control: { type: 'number' }
+    },
+    dropdownPlacementOptions: {
+      description:
+        'Options to be passed to the floating-ui library to control the dropdown placement. For more information, see https://github.com/upfluence/oss-components/blob/master/addon/utils/attach-dropdown.ts#L26',
+      type: { name: 'object' },
+      table: {
+        type: {
+          summary: 'AttachmentOptions'
+        }
+      },
+      control: { type: 'object' }
     }
   },
   parameters: {
@@ -184,6 +205,8 @@ const defaultArgs = {
   successMessage: undefined,
   addressableAs: undefined,
   placeholderEllipsis: false,
+  dropdownWidth: undefined,
+  dropdownPlacementOptions: undefined,
   skin: 'default',
   action: {
     skin: 'tertiary',
@@ -203,7 +226,7 @@ const Template = (args) => ({
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
       @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
-      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}}>
+      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
       <:option as |item|>
         {{item.name}}
       </:option>

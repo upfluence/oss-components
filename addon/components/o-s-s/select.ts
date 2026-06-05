@@ -6,7 +6,7 @@ import { isEmpty } from '@ember/utils';
 import { scheduleOnce } from '@ember/runloop';
 
 import type IntlService from 'ember-intl/services/intl';
-import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import attachDropdown, { type AttachmentOptions } from '@upfluence/oss-components/utils/attach-dropdown';
 import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 import type { InfiniteSelectAction } from './infinite-select';
 
@@ -22,6 +22,8 @@ interface OSSSelectArgs extends BaseDropdownArgs {
   action?: InfiniteSelectAction;
   skin?: 'default' | 'smart';
   placeholderEllipsis?: boolean;
+  dropdownWidth?: number;
+  dropdownPlacementOptions?: AttachmentOptions;
   onChange(value: any): void;
   onSearch?(keyword: string): void;
 }
@@ -150,11 +152,18 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
     const referenceTarget = this.container.querySelector('.upf-input');
     const floatingTarget = document.querySelector(`#${this.portalId}`);
 
+    const attachDropdownOptions: AttachmentOptions = {
+      maxHeight: 300,
+      ...(this.args.dropdownWidth ? { width: this.args.dropdownWidth } : {}),
+      ...(this.args.dropdownPlacementOptions ?? { placementStrategy: 'auto' })
+    };
+    if (this.args.dropdownWidth) attachDropdownOptions.width = this.args.dropdownWidth;
+
     if (referenceTarget && floatingTarget) {
       this.cleanupDrodpownAutoplacement = attachDropdown(
         referenceTarget as HTMLElement,
         floatingTarget as HTMLElement,
-        { maxHeight: 300, placementStrategy: 'auto' }
+        attachDropdownOptions
       );
     }
   }
