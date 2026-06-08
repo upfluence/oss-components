@@ -48,7 +48,7 @@ export default {
 const defaultArgs = {
   title: 'Welcome to OSS',
   subtitle: 'Get started by following the steps below.',
-  imageUrl: '/@upfluence/oss-components/assets/images/upfluence-full-blue-logo.svg'
+  imageUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
 };
 
 const Template = (args) => ({

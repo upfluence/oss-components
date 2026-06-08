@@ -186,7 +186,9 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
     />`);
 
     assert.dom('.smart-logo-image').exists('Fallback image container is rendered');
-    assert.dom('.smart-logo-image').hasAttribute('src', '/assets/images/picture-frame.svg');
+    assert
+      .dom('.smart-logo-image')
+      .hasAttribute('src', '/@upfluence/oss-components/assets/images/picture-frame.svg');
   });
 
   module('@size', () => {

@@ -9,7 +9,7 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
   hooks.beforeEach(function () {
     this.avatars = [
       {
-        image: '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg',
+        image: '/assets/images/brand-icon.svg',
         initials: 'TS'
       },
       {
@@ -24,7 +24,7 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
     assert.dom('.upf-avatar').exists({ count: 2 });
     assert
       .dom('.upf-avatar:first-child img')
-      .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+      .hasAttribute('src', '/assets/images/brand-icon.svg');
     assert
       .dom('.upf-avatar:last-child img')
       .hasAttribute('src', '/@upfluence/oss-components/assets/images/avatar-placeholder.svg');
@@ -47,7 +47,7 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
     assert.dom('.upf-avatar').exists({ count: 2 });
     assert
       .dom('.upf-avatar:first-child img')
-      .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+      .hasAttribute('src', '/assets/images/brand-icon.svg');
     assert.dom('.upf-avatar:last-child img').doesNotExist();
     assert.dom('.upf-avatar:last-child').hasText('+1');
   });

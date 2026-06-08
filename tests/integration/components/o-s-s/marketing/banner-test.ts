@@ -6,7 +6,7 @@ import { setupIntl } from 'ember-intl/test-support';
 
 import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
 
-const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg';
+const ILLUSTRATION_SRC = '/assets/images/brand-icon.svg';
 
 module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
   setupRenderingTest(hooks);

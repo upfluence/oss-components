@@ -142,6 +142,6 @@ WithIconUrl.args = {
   ...defaultArgs,
   ...{
     icon: undefined,
-    iconUrl: '/@upfluence/oss-components/assets/star-icon.svg'
+    iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };

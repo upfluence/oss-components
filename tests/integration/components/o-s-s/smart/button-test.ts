@@ -21,8 +21,8 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
   });
 
   test('it renders the iconUrl when present', async function (assert) {
-    await render(hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" />`);
-    assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+    await render(hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />`);
+    assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
   });
 
   test('it renders the icon and label when present', async function (assert) {
@@ -33,15 +33,15 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
   });
 
   test('it renders the iconUrl and label when present', async function (assert) {
-    await render(hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" @label="Label" />`);
+    await render(hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />`);
 
-    assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+    assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
     assert.dom('.upf-smart-btn span').hasText('Label');
   });
 
   test('when icon and iconUrl are present, it only renders the icon', async function (assert) {
     await render(
-      hbs`<OSS::Smart::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/heart.svg" />`
+      hbs`<OSS::Smart::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />`
     );
 
     assert.dom('.upf-smart-btn i').hasClass('fa-facebook');
@@ -139,10 +139,10 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
 
     test('if both the iconUrl and label are present, it renders only the iconUrl', async function (assert) {
       await render(
-        hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" @label="Label" />`
+        hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />`
       );
 
-      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
       assert.dom('.upf-smart-btn span').hasText('Label');
     });
   });

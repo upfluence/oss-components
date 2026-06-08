@@ -147,7 +147,7 @@ WithIcon.args = {
 export const WithImage = Template.bind({});
 WithImage.args = {
   ...defaultArgs,
-  ...{ image: '/@upfluence/oss-components/assets/heart.svg' }
+  ...{ image: '/@upfluence/oss-components/assets/images/no-image.svg' }
 };
 
 export const WithFlag = Template.bind({});

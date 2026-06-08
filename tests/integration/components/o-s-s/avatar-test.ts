@@ -10,13 +10,13 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
   module('Default behavior', function () {
     test('it displays the image when it is provided', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg" />`);
+      await render(hbs`<OSS::Avatar @image="/assets/images/brand-icon.svg" />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
       assert
         .dom('.upf-avatar img')
-        .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        .hasAttribute('src', '/assets/images/brand-icon.svg');
     });
 
     test('it displays the initials when they are provided', async function (assert) {
@@ -37,14 +37,14 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
     test('it displays the image when image and initials are provided', async function (assert) {
       await render(
-        hbs`<OSS::Avatar @image="/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg" @initials="TS" />`
+        hbs`<OSS::Avatar @image="/assets/images/brand-icon.svg" @initials="TS" />`
       );
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
       assert
         .dom('.upf-avatar img')
-        .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        .hasAttribute('src', '/assets/images/brand-icon.svg');
     });
 
     test('it updates the image when a new @image is provided', async function (assert) {
@@ -55,11 +55,11 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').doesNotExist();
       assert.dom('.upf-avatar span').hasText('TS');
-      this.set('updatedImage', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+      this.set('updatedImage', '/assets/images/brand-icon.svg');
       assert.dom('.upf-avatar span').doesNotExist();
       assert
         .dom('.upf-avatar img')
-        .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        .hasAttribute('src', '/assets/images/brand-icon.svg');
     });
   });
 

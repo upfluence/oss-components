@@ -7,6 +7,6 @@ export default Component.extend({
 
   didInsertElement() {
     this._super();
-    this.element.style.backgroundImage = `url("${this.src}"), url("assets/images/no-image.svg")`;
+    this.element.style.backgroundImage = `url("${this.src}"), url("/@upfluence/oss-components/assets/images/no-image.svg")`;
   }
 });
