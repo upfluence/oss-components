@@ -85,13 +85,20 @@
         </OSS::Alert>
       </div>
       <div class="fx-row fx-gap-px-12">
-        <OSS::Alert @title="TitleTest" @subtitle="SubtitleTest" @plain={{false}} @closable={{true}} />
-        <OSS::Alert @title="Title" @subtitle="Subtitle" />
-        <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
+        <OSS::Alert @title="Title" @subtitle="Subtitle" @closable={{true}} />
+        <OSS::Alert @skin="info" @title="Title" @subtitle="Subtitle" @plain={{false}} />
+        <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" @closable={{true}} />
+        <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" @plain={{false}} />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Alert @skin="success" @title="Title" @subtitle="Subtitle" />
+        <OSS::Alert @skin="success" @title="Title" @subtitle="Subtitle" @plain={{false}} @closable={{true}} />
+        <OSS::Alert @skin="warning" @title="Title" @subtitle="Subtitle" />
+        <OSS::Alert @skin="warning" @title="Title" @subtitle="Subtitle" @plain={{false}} @closable={{true}} />
       </div>
       <div class="fx-row fx-gap-px-12">
         <OSS::Alert @skin="success" @title="Title" />
-        <OSS::Alert @skin="warning" @subtitle="Subtitle" />
+        <OSS::Alert @skin="warning" @subtitle="Subtitle" @closable={{true}} />
       </div>
     </div>
   </div>

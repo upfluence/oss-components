@@ -39,7 +39,8 @@ export default {
       control: { type: 'text' }
     },
     plain: {
-      description: 'When plain is true, a gray background color is displayed, otherwise a white one',
+      description:
+        'When plain is true (or undefined), a colored background is displayed; when false, the background is gray',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' }
@@ -93,7 +94,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}} 
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}}
                   @closable={{this.closable}} />
   `,
   context: args
@@ -101,7 +102,7 @@ const Template = (args) => ({
 
 const ExtraContentTemplate = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}} 
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}}
                   @closable={{this.closable}}>
         <:extra-content>
           <div class="fx-row fx-gap-px-12">
