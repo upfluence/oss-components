@@ -95,7 +95,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
       <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}}
-                  @closable={{this.closable}} />
+                  @closable={{this.closable}} @onClose={{this.onClose}} />
   `,
   context: args
 });
@@ -103,7 +103,7 @@ const Template = (args) => ({
 const ExtraContentTemplate = (args) => ({
   template: hbs`
       <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}}
-                  @closable={{this.closable}}>
+                  @closable={{this.closable}} @onClose={{this.onClose}}>
         <:extra-content>
           <div class="fx-row fx-gap-px-12">
             <OSS::Link @label="Link1" />

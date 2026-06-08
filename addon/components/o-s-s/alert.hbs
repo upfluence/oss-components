@@ -1,8 +1,4 @@
-<div
-  class={{concat "upf-alert " this.skinClass (if this.plain " upf-alert--plain")}}
-  {{did-insert this.initSelf}}
-  ...attributes
->
+<div class={{concat "upf-alert " this.skinClass}} {{did-insert this.initSelf}} ...attributes>
   <span class="icon">
     <OSS::Icon @icon={{this.iconClass}} />
   </span>
@@ -19,7 +15,7 @@
   </div>
   {{#if @closable}}
     <div class="fx-col">
-      <i role="button" class="far fa-times" {{on "click" this.removeSelf}}></i>
+      <OSS::Button @size="sm" @icon="fa-times" @square={{true}} {{on "click" this.removeSelf}} />
     </div>
   {{/if}}
 </div>

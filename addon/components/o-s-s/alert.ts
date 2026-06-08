@@ -17,12 +17,14 @@ interface OSSAlertArgs {
 export default class OSSAlert extends Component<OSSAlertArgs> {
   private declare _DOMElement: HTMLElement;
 
-  get skinClass(): string {
-    return `upf-alert--${this.args.skin || DEFAULT_SKIN}`;
-  }
-
   get plain(): boolean {
     return this.args.plain ?? true;
+  }
+
+  get skinClass(): string {
+    let skinClass = `upf-alert--${this.args.skin || DEFAULT_SKIN}`;
+    this.plain ? (skinClass += ' upf-alert--plain') : null;
+    return skinClass;
   }
 
   get iconClass(): string {
