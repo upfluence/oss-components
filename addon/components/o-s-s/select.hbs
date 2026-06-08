@@ -22,7 +22,9 @@
         <span
           class={{concat "upf-input--placeholder" (if @placeholderEllipsis " text-ellipsis")}}
           {{enable-tooltip title=this.placeholder placement="top" displayOnlyOnOverflow=true}}
-        >{{this.placeholder}}</span>
+        >
+          {{this.placeholder}}
+        </span>
       {{/if}}
       <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" class="margin-left-px-6" />
     </div>
