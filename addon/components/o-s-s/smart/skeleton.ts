@@ -2,6 +2,7 @@ import { helper } from '@ember/component/helper';
 import type { OSSSkeletonArgs } from '../skeleton';
 import OSSSkeleton from '../skeleton';
 import { assert } from '@ember/debug';
+import { htmlSafe } from '@ember/template';
 
 interface OSSSmartSkeletonArgs extends OSSSkeletonArgs {}
 
@@ -38,14 +39,14 @@ export default class OSSSmartSkeleton extends OSSSkeleton<OSSSmartSkeletonArgs> 
     return Math.round(maxDegree - scale * (maxDegree - minDegree));
   }
 
-  get backgroundImage(): string {
-    return `background-image: linear-gradient(
+  get backgroundImage(): ReturnType<typeof htmlSafe> {
+    return htmlSafe(`background-image: linear-gradient(
       ${this.rotationDegrees}deg,
       rgba(255, 255, 255, 0.15) 8.2%,
       rgba(247, 213, 250, 0.15) 23.6%,
       rgba(83, 94, 252, 0.15) 38.3%,
       rgba(237, 33, 255, 0.15) 53.2%,
       rgba(255, 255, 255, 0.15) 91.7%
-    );`;
+    );`);
   }
 }

@@ -6,6 +6,7 @@ import { assert } from '@ember/debug';
 import { scheduleOnce } from '@ember/runloop';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { helper } from '@ember/component/helper';
+import { htmlSafe } from '@ember/template';
 
 export type SmartImmersiveSelectItem = {
   value: any;
@@ -51,12 +52,14 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
     return classes.join(' ');
   }
 
-  get computedSmartItemStyle(): string {
+  get computedSmartItemStyle(): ReturnType<typeof htmlSafe> {
     const style: string[] = [];
+
     if (this.args.maxItemWidth) {
       style.push(`max-width: ${this.args.maxItemWidth}px;`);
     }
-    return style.join(' ');
+
+    return htmlSafe(style.join(' '));
   }
 
   get dropdownAddressableClass(): string {

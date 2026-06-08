@@ -11,6 +11,7 @@ import {
   type UploadRequest
 } from '@upfluence/oss-components/types/uploader';
 import { humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';
+import { htmlSafe } from '@ember/template';
 
 interface OSSUploadItemArgs {
   uploader: Uploader;
@@ -73,12 +74,12 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
     return this.args.file.size ? humanizeFilesize(this.args.file.size) : null;
   }
 
-  get loaderStyle(): string {
+  get loaderStyle(): ReturnType<typeof htmlSafe> {
     const angle = (this.uploadProgress / 100) * 360;
 
-    return `
+    return htmlSafe(`
         background-image: conic-gradient(var(--color-primary-500) ${angle}deg, transparent ${angle + 0.5}deg 100%),
-                          conic-gradient(var(--color-border-default) 360deg 100%);`;
+                          conic-gradient(var(--color-border-default) 360deg 100%);`);
   }
 
   get displayPreview(): boolean {

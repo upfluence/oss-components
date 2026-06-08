@@ -22,8 +22,7 @@
 
     <div class="fx-row fx-gap-px-6 fx-xalign-center">
       {{#if this.uploading}}
-        {{! template-lint-disable no-triple-curlies}}
-        <div class="oss-upload-item__loader" style={{{this.loaderStyle}}}>
+        <div class="oss-upload-item__loader" style={{this.loaderStyle}}>
           <div class="value">
             {{this.uploadProgress}}
           </div>

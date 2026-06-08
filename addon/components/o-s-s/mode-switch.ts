@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import { scheduleOnce } from '@ember/runloop';
+import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
 
@@ -76,15 +77,19 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
     return classes.join(' ');
   }
 
-  get computedStyles(): string {
+  get computedStyles(): ReturnType<typeof htmlSafe> {
     this.moveBackgroundElement();
 
     const colorPath = this.getColorPath();
-    if (!this.containerStyles) return '';
-    return [
-      `--mode-switch__selected-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-500`)}`,
-      `--mode-switch__selected-background-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-50`)}`
-    ].join(';');
+
+    if (!this.containerStyles) return htmlSafe('');
+
+    return htmlSafe(
+      [
+        `--mode-switch__selected-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-500`)}`,
+        `--mode-switch__selected-background-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-50`)}`
+      ].join(';')
+    );
   }
 
   private moveBackgroundElement(): void {
