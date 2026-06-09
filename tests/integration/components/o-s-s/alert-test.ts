@@ -38,6 +38,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
       assert.dom('.upf-alert .icon i').hasClass(`${ICONS[skin]}`);
       assert.dom('.upf-alert .title').hasText(`Title ${skin}`);
       assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
+      assert.dom('.upf-alert').hasClass(`upf-alert--${skin}`);
     });
   });
 
@@ -62,37 +63,39 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   });
 
   module('@closable parameter', function () {
-    test('if true, display the cross icon which delete alert when you click on it', async function (assert) {
+    test('if true, displays the close button which removes the alert when you click on it', async function (assert) {
       await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
 
       assert.dom('.upf-alert').exists();
-      assert.dom('.upf-alert .fx-col i').exists();
-      assert.dom('.upf-alert .fx-col i').hasClass('fa-times');
+      assert.dom('.upf-alert .upf-alert-close-button').exists();
+      assert.dom('.upf-alert .upf-alert-close-button i').hasClass('fa-times');
 
-      await click('.upf-alert .fx-col i');
+      await click('.upf-alert .upf-alert-close-button');
 
       assert.dom('.upf-alert').doesNotExist();
     });
 
-    test('if false, the cross icon is not displayed', async function (assert) {
+    test('if false, the close button is not displayed', async function (assert) {
       await render(hbs`<OSS::Alert @closable={{false}} />`);
 
       assert.dom('.upf-alert').exists();
-      assert.dom('.upf-alert .fx-col i').doesNotExist();
+      assert.dom('.upf-alert .upf-alert-close-button').doesNotExist();
     });
 
-    test('if undefined, the cross icon is not displayed', async function (assert) {
+    test('if undefined, the close button is not displayed', async function (assert) {
       await render(hbs`<OSS::Alert />`);
 
       assert.dom('.upf-alert').exists();
-      assert.dom('.upf-alert .fx-col i').doesNotExist();
+      assert.dom('.upf-alert .upf-alert-close-button').doesNotExist();
     });
 
-    test('clicking the cross icon also calls the onClose argument provided', async function (assert) {
+    test('clicking the close button also calls the onClose argument provided', async function (assert) {
       this.onClose = sinon.stub();
       await render(hbs`<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
 
-      await click('.upf-alert .fx-col i');
+      assert.ok(this.onClose.notCalled);
+
+      await click('.upf-alert .upf-alert-close-button');
 
       assert.ok(this.onClose.calledOnce);
       assert.dom('.upf-alert').doesNotExist();
