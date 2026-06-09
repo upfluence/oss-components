@@ -27,6 +27,8 @@
 /testem.js
 /tests/
 /pnpm-lock.yaml
+/**/*.stories.*
+/stories/*
 .gitkeep
 
 # ember-try
