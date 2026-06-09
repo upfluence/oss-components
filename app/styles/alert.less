@@ -8,6 +8,7 @@
   padding: var(--spacing-px-9);
   gap: var(--spacing-px-6);
   background-color: var(--color-gray-50);
+  height: fit-content;
 
   .text-container {
     display: flex;
@@ -24,6 +25,13 @@
       a {
         color: var(--color-blue-600);
       }
+    }
+  }
+
+  &:has(.upf-alert-close-button) {
+    > .icon:has(+ .text-container > :only-child),
+    > .text-container:has(> :only-child) {
+      align-self: center;
     }
   }
 

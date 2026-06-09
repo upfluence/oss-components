@@ -14,15 +14,13 @@
     {{/if}}
   </div>
   {{#if @closable}}
-    <div class="fx-col">
-      <OSS::Button
-        class="upf-alert-close-button"
-        @size="sm"
-        @icon="fa-times"
-        @square={{true}}
-        {{on "click" this.removeSelf}}
-        data-control-name="upf-alert-close-button"
-      />
-    </div>
+    <OSS::Button
+      class="upf-alert-close-button"
+      @size="sm"
+      @icon="fa-times"
+      @square={{true}}
+      {{on "click" this.removeSelf}}
+      data-control-name="upf-alert-close-button"
+    />
   {{/if}}
 </div>
