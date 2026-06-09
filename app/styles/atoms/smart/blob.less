@@ -1,0 +1,151 @@
+.smart-blob-container {
+  position: relative;
+  width: var(--spacing-px-30);
+  height: var(--spacing-px-30);
+  border-radius: 100%;
+  transition: all 1s ease-in-out;
+
+  &--sm {
+    height: 22px;
+    width: 22px;
+
+    .smart-blob {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &--xl {
+    height: 64px;
+    width: 64px;
+
+    .smart-blob {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    z-index: 0;
+    border: 0.5px solid #ec21ff;
+    animation: none;
+    transition: all 1s ease-in-out;
+    border-width: 0;
+    box-shadow: none;
+    background: none;
+    opacity: 0;
+  }
+
+  .smart-blob {
+    background: transparent;
+    border-radius: 50%;
+    transition: all 1s ease-in-out;
+    box-shadow: none;
+    animation: none;
+  }
+}
+
+.smart-blob-container--active {
+  &::after,
+  &::before {
+    border: 2px solid #ec21ff;
+    animation: smart-blob-ripple-border 3s ease-in-out infinite;
+    transition: all 1s ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 1;
+  }
+
+  &::before {
+    animation-delay: 1s;
+  }
+
+  .smart-blob {
+    border-radius: 50%;
+    transition: all 1s ease-in-out;
+    box-shadow:
+      2.29px 2.29px 4.58px 0px #ffffff inset,
+      0px 0px 10px 0px rgba(83, 94, 252, 0.6);
+  }
+}
+
+.smart-blob {
+  position: relative;
+  width: var(--spacing-px-30);
+  height: var(--spacing-px-30);
+  overflow: hidden;
+  border-radius: 50%;
+  z-index: 1;
+  transition: all 1s ease-in-out;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%;
+    height: 110%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    object-position: center;
+    transition: all 1s ease-in-out;
+
+    &.fade-in {
+      opacity: 1;
+    }
+
+    &.fade-out {
+      opacity: 0;
+    }
+  }
+}
+
+.smart-blob-container.fade-out {
+  transform: scale(0.9);
+  box-shadow: none;
+
+  &::after,
+  &::before {
+    border-width: 0;
+    animation: none;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  .smart-blob {
+    box-shadow: none;
+    background: transparent;
+    border-width: 0;
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes smart-blob-ripple-border {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    border-width: 1px;
+    opacity: 0;
+  }
+
+  40% {
+    transform: translate(-50%, -50%) scale(1);
+    border-width: 1px;
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    border-width: 0;
+    opacity: 0;
+  }
+}
