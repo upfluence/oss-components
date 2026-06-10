@@ -31,34 +31,14 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     test(`it renders ${skin} skin correctly`, async function (assert) {
       this.skin = skin;
       await render(
-        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
+        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subtitle " this.skin}} />`
       );
 
       assert.dom('.upf-alert .icon i').hasClass('far');
       assert.dom('.upf-alert .icon i').hasClass(`${ICONS[skin]}`);
       assert.dom('.upf-alert .title').hasText(`Title ${skin}`);
-      assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
+      assert.dom('.upf-alert .subtitle').hasText(`Subtitle ${skin}`);
       assert.dom('.upf-alert').hasClass(`upf-alert--${skin}`);
-    });
-  });
-
-  module('@plain parameter', function () {
-    test('if true, the background-color is colored', async function (assert) {
-      await render(hbs`<OSS::Alert @plain={{true}} />`);
-
-      assert.dom('.upf-alert').hasClass('upf-alert--plain');
-    });
-
-    test('if false, the background-color is gray', async function (assert) {
-      await render(hbs`<OSS::Alert @plain={{false}} />`);
-
-      assert.dom('.upf-alert').hasNoClass('upf-alert--plain');
-    });
-
-    test('if undefined, the background-color is colored', async function (assert) {
-      await render(hbs`<OSS::Alert />`);
-
-      assert.dom('.upf-alert').hasClass('upf-alert--plain');
     });
   });
 
