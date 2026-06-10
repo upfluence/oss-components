@@ -44,7 +44,7 @@ export default class TextCarouselModifier extends Modifier<TextCarouselArgs> {
   }
 
   private clearInterval(): void {
-    if (!this.intervalId) return;
+    if (this.intervalId === undefined) return;
 
     window.clearInterval(this.intervalId);
     this.intervalId = undefined;
