@@ -15,8 +15,8 @@ module('Integration | Component | o-s-s/button', function (hooks) {
   });
 
   test('it renders the iconUrl when present', async function (assert) {
-    await render(hbs`<OSS::Button @iconUrl="/@upfluence/oss-components/assets/heart.svg" />`);
-    assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/heart.svg');
+    await render(hbs`<OSS::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />`);
+    assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
   });
 
   test('it renders the icon and label when present', async function (assert) {
@@ -28,15 +28,15 @@ module('Integration | Component | o-s-s/button', function (hooks) {
   });
 
   test('it renders the iconUrl and label when present', async function (assert) {
-    await render(hbs`<OSS::Button @iconUrl="/@upfluence/oss-components/assets/heart.svg" @label="Label" />`);
+    await render(hbs`<OSS::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />`);
 
-    assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/heart.svg');
+    assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
     assert.dom('.upf-btn span').hasClass('margin-left-px-6');
     assert.dom('.upf-btn span').hasText('Label');
   });
 
   test('when icon and iconUrl are present, it only renders the icon', async function (assert) {
-    await render(hbs`<OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/heart.svg" />`);
+    await render(hbs`<OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />`);
 
     assert.dom('.upf-btn i').hasClass('fa-facebook');
     assert.dom('.upf-btn img').doesNotExist();

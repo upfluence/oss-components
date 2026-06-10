@@ -5,7 +5,7 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const TITLE = 'Welcome to OSS';
 const SUBTITLE = 'Get started by following the steps below.';
-const IMAGE_URL = '/@upfluence/oss-components/assets/images/upfluence-full-blue-logo.svg';
+const IMAGE_URL = '/assets/images/upfluence-full-blue-logo.svg';
 
 module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
   setupRenderingTest(hooks);

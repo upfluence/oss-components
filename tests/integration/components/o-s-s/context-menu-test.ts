@@ -80,7 +80,7 @@ module('Integration | Component | o-s-s/context-menu', function (hooks) {
     });
 
     test('it accepts iconUrl argument', async function (assert) {
-      this.iconUrl = '/@upfluence/oss-components/assets/heart.svg';
+      this.iconUrl = '/@upfluence/oss-components/assets/images/no-image.svg';
       await render(
         hbs`<OSS::ContextMenu @label={{this.label}} @iconUrl={{this.iconUrl}} data-control-name="context-menu"/>`
       );
