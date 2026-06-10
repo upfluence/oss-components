@@ -20,7 +20,7 @@ export default class TextCarouselModifier extends Modifier<TextCarouselArgs> {
     element: HTMLElement,
     [labels]: TextCarouselArgs['positional'],
     { intervalMs = 3000 }: TextCarouselArgs['named']
-  ) {
+): void {
     this.clearInterval();
 
     if (!labels?.length) {
