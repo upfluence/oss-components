@@ -17480,6 +17480,68 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         assert.dom('.upf-input').hasText('Selected value: foo');
       });
     });
+    (0, _qunit.module)('@placeholderEllipsis argument', function () {
+      (0, _qunit.test)('when @placeholderEllipsis is not passed, the placeholder does not have the text-ellipsis class', async function (assert) {
+        this.value = null;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "E+Q/Zhdx",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@placeholder\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],\"my placeholder\"]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-input--placeholder').doesNotHaveClass('text-ellipsis');
+      });
+      (0, _qunit.test)('when @placeholderEllipsis={{true}}, the placeholder has the text-ellipsis class', async function (assert) {
+        this.value = null;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @placeholderEllipsis={{true}}>
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "z2juq9w+",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@placeholder\",\"@placeholderEllipsis\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],\"my placeholder\",true]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-input--placeholder').hasClass('text-ellipsis');
+      });
+      (0, _qunit.test)('when @placeholderEllipsis={{false}}, the placeholder does not have the text-ellipsis class', async function (assert) {
+        this.value = null;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @placeholderEllipsis={{false}}>
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "+m1g9enw",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@placeholder\",\"@placeholderEllipsis\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],\"my placeholder\",false]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-input--placeholder').doesNotHaveClass('text-ellipsis');
+      });
+    });
     (0, _qunit.module)('disabled state', function () {
       (0, _qunit.test)('the dropdown does not open when the select is clicked', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -17659,6 +17721,106 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         await (0, _testHelpers.click)('.upf-input div');
         assert.dom('.upf-infinite-select').exists();
         assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+      });
+    });
+    (0, _qunit.module)('with @dropdownPlacementOptions', () => {
+      (0, _qunit.test)('the dropdown placement options are used when passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select
+                    @onChange={{this.onChange}}
+                    @items={{this.items}}
+                    @value={{this.value}}
+                    @dropdownPlacementOptions={{hash maxHeight=123}}
+                  >
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "Dyh1g0yg",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@dropdownPlacementOptions\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],[28,[37,1],null,[[\"maxHeight\"],[123]]]]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-input div');
+        const dropdown = document.querySelector('.upf-infinite-select');
+        assert.strictEqual(dropdown.style.maxHeight, '123px');
+        assert.strictEqual(dropdown.style.getPropertyValue('--floating-max-height'), '123px');
+      });
+      (0, _qunit.test)('if the dropdown placement options are not passed, the dropdown is displayed with the default placement options', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select
+                    @onChange={{this.onChange}}
+                    @items={{this.items}}
+                    @value={{this.value}}
+                  >
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "PT32Z2Yu",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-input div');
+        const dropdown = document.querySelector('.upf-infinite-select');
+        assert.strictEqual(dropdown.style.maxHeight, '300px');
+        assert.strictEqual(dropdown.style.getPropertyValue('--floating-max-height'), '300px');
+      });
+    });
+    (0, _qunit.module)('@dropdownWidth argument', function () {
+      (0, _qunit.test)('the dropdown width is applied when @dropdownWidth is passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @dropdownWidth=400>
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "adEGyRsa",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@dropdownWidth\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],\"400\"]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-input div');
+        const dropdown = document.querySelector('.upf-infinite-select');
+        assert.strictEqual(dropdown.style.width, '400px');
+      });
+      (0, _qunit.test)('the dropdown width defaults to the reference element width when @dropdownWidth is not passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "PT32Z2Yu",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-input div');
+        const dropdown = document.querySelector('.upf-infinite-select');
+        const reference = document.querySelector('.upf-input');
+        assert.strictEqual(dropdown?.style.width, `${reference?.offsetWidth}px`);
       });
     });
     (0, _qunit.module)('Action argument', function (hooks) {
