@@ -4,7 +4,8 @@ import { registerDestructor } from '@ember/destroyable';
 interface TextCarouselArgs {
   positional: [labels?: string[]];
   named: {
-    intervalMs?: number;
+    interval?: number;
+    loop?: boolean;
   };
 }
 
@@ -19,13 +20,12 @@ export default class TextCarouselModifier extends Modifier<TextCarouselArgs> {
   modify(
     element: HTMLElement,
     [labels]: TextCarouselArgs['positional'],
-    { intervalMs = 3000 }: TextCarouselArgs['named']
-): void {
+    { interval = 3000, loop = false }: TextCarouselArgs['named']
+  ): void {
     this.clearInterval();
 
     if (!labels?.length) {
-      element.textContent = '';
-      return;
+      throw new Error('TextCarouselModifier requires a non-empty labels array');
     }
 
     let index = 0;
@@ -34,13 +34,13 @@ export default class TextCarouselModifier extends Modifier<TextCarouselArgs> {
     if (labels.length === 1) return;
 
     this.intervalId = window.setInterval(() => {
-      index++;
+      index = loop ? (index + 1) % labels.length : index + 1;
       element.textContent = labels[index] ?? '';
 
-      if (index >= labels.length - 1) {
+      if (!loop && index >= labels.length - 1) {
         this.clearInterval();
       }
-    }, intervalMs);
+    }, interval);
   }
 
   private clearInterval(): void {

@@ -27,3 +27,4 @@ According to Ember JS:
 | on-click-outside       | Triggers the passed callback function when a user clicks outside the element               | `<div {{on-click-outside callbackFunction}}>Floating Div</div>` |                             |
 | on-bottom-reached      | Triggers the passed callback function when a user reaches the bottom of the target element | `<div {{on-bottom-reached callbackFunction}}>Div</div>`         |                             |
 | scroll-shadow          | Add bottom shadow for scrollable element                                                   | `<div {{scroll-shadow color="field"}}>`                         | color: "default" (white)    |
+| text-carousel          | Displays each provided label over time and keeps the last one visible by default            | `<div {{text-carousel this.labels intervalMs=3000 loop=true}}></div>` | intervalMs: 3000, loop: false |
