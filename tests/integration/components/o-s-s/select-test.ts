@@ -171,6 +171,53 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
   });
 
+  module('@placeholderEllipsis argument', function () {
+    test('when @placeholderEllipsis is not passed, the placeholder does not have the text-ellipsis class', async function (assert) {
+      this.value = null;
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input--placeholder').doesNotHaveClass('text-ellipsis');
+    });
+
+    test('when @placeholderEllipsis={{true}}, the placeholder has the text-ellipsis class', async function (assert) {
+      this.value = null;
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @placeholderEllipsis={{true}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input--placeholder').hasClass('text-ellipsis');
+    });
+
+    test('when @placeholderEllipsis={{false}}, the placeholder does not have the text-ellipsis class', async function (assert) {
+      this.value = null;
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @placeholderEllipsis={{false}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input--placeholder').doesNotHaveClass('text-ellipsis');
+    });
+  });
+
   module('disabled state', function () {
     test('the dropdown does not open when the select is clicked', async function (assert) {
       await render(
@@ -314,6 +361,86 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       await click('.upf-input div');
       assert.dom('.upf-infinite-select').exists();
       assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+    });
+  });
+
+  module('with @dropdownPlacementOptions', () => {
+    test('the dropdown placement options are used when passed', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select
+            @onChange={{this.onChange}}
+            @items={{this.items}}
+            @value={{this.value}}
+            @dropdownPlacementOptions={{hash maxHeight=123}}
+          >
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      const dropdown = document.querySelector('.upf-infinite-select') as HTMLElement;
+      assert.strictEqual(dropdown.style.maxHeight, '123px');
+      assert.strictEqual(dropdown.style.getPropertyValue('--floating-max-height'), '123px');
+    });
+
+    test('if the dropdown placement options are not passed, the dropdown is displayed with the default placement options', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select
+            @onChange={{this.onChange}}
+            @items={{this.items}}
+            @value={{this.value}}
+          >
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      const dropdown = document.querySelector('.upf-infinite-select') as HTMLElement;
+      assert.strictEqual(dropdown.style.maxHeight, '300px');
+      assert.strictEqual(dropdown.style.getPropertyValue('--floating-max-height'), '300px');
+    });
+  });
+
+  module('@dropdownWidth argument', function () {
+    test('the dropdown width is applied when @dropdownWidth is passed', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @dropdownWidth=400>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      const dropdown = document.querySelector('.upf-infinite-select') as HTMLElement;
+      assert.strictEqual(dropdown.style.width, '400px');
+    });
+
+    test('the dropdown width defaults to the reference element width when @dropdownWidth is not passed', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      const dropdown = document.querySelector('.upf-infinite-select') as HTMLElement | null;
+      const reference = document.querySelector('.upf-input') as HTMLElement | null;
+      assert.strictEqual(dropdown?.style.width, `${reference?.offsetWidth}px`);
     });
   });
 

@@ -19,7 +19,12 @@
           <span class="text-ellipsis">{{get @value this.targetValue}}</span>
         {{/if}}
       {{else}}
-        <span class="upf-input--placeholder">{{this.placeholder}}</span>
+        <span
+          class={{concat "upf-input--placeholder" (if @placeholderEllipsis " text-ellipsis")}}
+          {{enable-tooltip title=this.placeholder placement="top" displayOnlyOnOverflow=true}}
+        >
+          {{this.placeholder}}
+        </span>
       {{/if}}
       <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" class="margin-left-px-6" />
     </div>
