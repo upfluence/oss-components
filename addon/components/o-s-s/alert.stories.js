@@ -38,17 +38,6 @@ export default {
       },
       control: { type: 'text' }
     },
-    plain: {
-      description:
-        'When plain is true (or undefined), a colored background is displayed; when false, the background is gray',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
     closable: {
       description: 'When enabled, the alert can be closed by clicking on the cross icon',
       table: {
@@ -87,14 +76,13 @@ const defaultArgs = {
   skin: 'info',
   title: 'Title',
   subtitle: 'I am a subtitle in the alert',
-  plain: true,
   closable: false,
   onClose: action('onClose')
 };
 
 const Template = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}}
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}
                   @closable={{this.closable}} @onClose={{this.onClose}} />
   `,
   context: args
@@ -102,7 +90,7 @@ const Template = (args) => ({
 
 const ExtraContentTemplate = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}}
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}
                   @closable={{this.closable}} @onClose={{this.onClose}}>
         <:extra-content>
           <div class="fx-row fx-gap-px-12">
