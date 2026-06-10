@@ -62,9 +62,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       - name: Ember Build
         run: pnpm ember build --silent
-      - name: Webpack assets workaround fix
-        run: |
-          cp -R public/assets/fonts app/styles/core
       - name: Storybook Build
         run: pnpm build-storybook --quiet
       - name: Deploy website
