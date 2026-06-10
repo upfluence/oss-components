@@ -89399,6 +89399,60 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "onRangeChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRangeChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onNumberInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onNumberInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "showTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "showTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initializeSliderInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initializeSliderInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initializeTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initializeTooltip"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, SliderComponent);
 });
+;define("@upfluence/oss-components/components/o-s-s/smart/blob", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClass}} ...attributes>
+    <div class="smart-blob">
+      <img
+        src="/@upfluence/oss-components/assets/images/smart-blob-loading.gif"
+        alt="smart-blob-loading"
+        class={{this.loadingClass}}
+      />
+      <img
+        src="/@upfluence/oss-components/assets/images/smart-blob-inactive.gif"
+        alt="smart-blob-inactive"
+        class={{this.inactiveClass}}
+      />
+    </div>
+  </div>
+  
+  */
+  {
+    "id": "PLIwru4f",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"smart-blob\"],[12],[1,\"\\n    \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/smart-blob-loading.gif\"],[14,\"alt\",\"smart-blob-loading\"],[15,0,[30,0,[\"loadingClass\"]]],[12],[13],[1,\"\\n    \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/smart-blob-inactive.gif\"],[14,\"alt\",\"smart-blob-inactive\"],[15,0,[30,0,[\"inactiveClass\"]]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\"],false,[]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/blob.hbs",
+    "isStrictMode": false
+  });
+  class SmartBlob extends _component2.default {
+    get size() {
+      return this.args.size ?? 'md';
+    }
+    get loadingClass() {
+      return this.args.loading ? 'fade-in' : 'fade-out';
+    }
+    get inactiveClass() {
+      return this.args.loading ? 'fade-out' : 'fade-in';
+    }
+    get computedClass() {
+      const classes = ['smart-blob-container'];
+      if (this.args.loading) {
+        classes.push('smart-blob-container--active');
+      }
+      classes.push(`smart-blob-container--${this.size}`);
+      return classes.join(' ');
+    }
+  }
+  _exports.default = SmartBlob;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, SmartBlob);
+});
 ;define("@upfluence/oss-components/components/o-s-s/smart/button", ["exports", "@ember/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/button", "@ember/template-factory"], function (_exports, _component, _debug, _button, _templateFactory) {
   "use strict";
 

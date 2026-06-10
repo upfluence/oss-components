@@ -18899,6 +18899,92 @@ define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/smart/blob-test", ["@ember/test-helpers", "ember-qunit", "qunit", "@ember/template-factory"], function (_testHelpers, _emberQunit, _qunit, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-qunit",0,"qunit"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/blob', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      this.loading = false;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Blob @loading={{this.loading}} />
+      */
+      {
+        "id": "4ZPPrkP+",
+        "block": "[[[8,[39,0],null,[[\"@loading\"],[[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/blob\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/blob-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-blob').exists();
+    });
+    (0, _qunit.test)('the inactive GIF has class fade-in when loading is false', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Blob @loading={{this.loading}} />
+      */
+      {
+        "id": "4ZPPrkP+",
+        "block": "[[[8,[39,0],null,[[\"@loading\"],[[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/blob\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/blob-test.ts",
+        "isStrictMode": false
+      }));
+      const images = this.element.querySelectorAll('img');
+      const inactiveImg = Array.from(images).find(img => img.getAttribute('src')?.includes('smart-blob-inactive.gif'));
+      assert.ok(inactiveImg, 'Found the inactive GIF');
+      assert.ok(inactiveImg?.classList.contains('fade-in'));
+    });
+    (0, _qunit.test)('the active GIF has class fade-in when loading is true', async function (assert) {
+      this.loading = true;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Blob @loading={{this.loading}} />
+      */
+      {
+        "id": "4ZPPrkP+",
+        "block": "[[[8,[39,0],null,[[\"@loading\"],[[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/blob\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/blob-test.ts",
+        "isStrictMode": false
+      }));
+      const images = this.element.querySelectorAll('img');
+      const active = Array.from(images).find(img => img.getAttribute('src')?.includes('smart-blob-loading.gif'));
+      assert.ok(active, 'Found the active GIF');
+      assert.ok(active?.classList.contains('fade-in'));
+    });
+    (0, _qunit.module)('@size', function () {
+      ['sm', 'xl', 'md'].forEach(size => {
+        (0, _qunit.test)(`it applies the correct size class for @size='${size}'`, async function (assert) {
+          this.set('size', size);
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Blob @size={{this.size}} />
+          */
+          {
+            "id": "6Bt7cbJQ",
+            "block": "[[[8,[39,0],null,[[\"@size\"],[[30,0,[\"size\"]]]],null]],[],false,[\"o-s-s/smart/blob\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/blob-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.smart-blob-container').hasClass(`smart-blob-container--${size}`);
+        });
+      });
+      (0, _qunit.test)('it defaults to md size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Blob />
+        */
+        {
+          "id": "Q1kztiZE",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/blob\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/blob-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-blob-container').hasClass('smart-blob-container--md');
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 
