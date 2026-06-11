@@ -4,7 +4,7 @@ import { run } from '@ember/runloop';
 import { installScrollReachedModifier, type State } from './install-scroll-reached-modifier';
 
 /**
- * Used to trigger an action a user reaches the bottom of the modified element.
+ * Used to trigger an action a user reaches the top of the modified element.
  * This is useful especially for infinite scrolls.
  */
 export default setModifierManager(
@@ -20,7 +20,7 @@ export default setModifierManager(
 
     installModifier(state: State, element: Element, { positional, named }: any) {
       installScrollReachedModifier(state, element, positional, named, (targetElement, offset) => {
-        return Math.ceil(targetElement.scrollTop) + targetElement.clientHeight >= targetElement.scrollHeight - offset;
+        return Math.ceil(targetElement.scrollTop) <= offset;
       });
     },
 
@@ -30,5 +30,5 @@ export default setModifierManager(
       });
     }
   }),
-  class OnClickOutsideModifierManager {}
+  class OnTopReachedModifierManager {}
 );
