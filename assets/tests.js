@@ -302,16 +302,14 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
     });
   });
 });
-define("dummy/tests/integration/components/modifiers/on-bottom-reached-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/modifiers/on-bottom-reached-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | modifiers/on-bottom-reached', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it triggers the callback when the bottom of the div is reached', async function (assert) {
-      this.bottomReached = () => {
-        assert.ok(true, 'Entered the bottom reached callback');
-      };
+      this.bottomReached = _sinon.default.stub();
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         
@@ -328,6 +326,179 @@ define("dummy/tests/integration/components/modifiers/on-bottom-reached-test", ["
         "isStrictMode": false
       }));
       await (0, _testHelpers.scrollTo)('.scrollable', 0, document.querySelector('.scrollable').scrollHeight - document.querySelector('.scrollable').clientHeight);
+      assert.ok(this.bottomReached.called, 'Entered the bottom reached callback');
+    });
+    (0, _qunit.test)('it does not trigger the callback when scrolling down but the bottom of the div is not reached', async function (assert) {
+      this.bottomReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-bottom-reached this.bottomReached}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "4QGZlHIh",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"bottomReached\"]]],null],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-bottom-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-bottom-reached-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 20);
+      assert.true(this.bottomReached.notCalled, 'Did not enter the bottom reached callback');
+    });
+    (0, _qunit.test)('it triggers only when reaching the default 20px bottom threshold', async function (assert) {
+      this.bottomReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-bottom-reached this.bottomReached}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "4QGZlHIh",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"bottomReached\"]]],null],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-bottom-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-bottom-reached-test.ts",
+        "isStrictMode": false
+      }));
+      const scrollableElement = document.querySelector('.scrollable');
+      const maxScrollTop = scrollableElement.scrollHeight - scrollableElement.clientHeight;
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop - 21);
+      assert.true(this.bottomReached.notCalled, 'Did not enter the bottom reached callback before threshold');
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop - 20);
+      assert.ok(this.bottomReached.called, 'Entered the bottom reached callback at threshold');
+    });
+    (0, _qunit.test)('it triggers when reaching a custom bottom threshold', async function (assert) {
+      this.bottomReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-bottom-reached this.bottomReached offset=50}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "49JD5jb2",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"bottomReached\"]]],[[\"offset\"],[50]]],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-bottom-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-bottom-reached-test.ts",
+        "isStrictMode": false
+      }));
+      const scrollableElement = document.querySelector('.scrollable');
+      const maxScrollTop = scrollableElement.scrollHeight - scrollableElement.clientHeight;
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop - 51);
+      assert.true(this.bottomReached.notCalled, 'Did not enter the bottom reached callback before custom threshold');
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop - 50);
+      assert.ok(this.bottomReached.called, 'Entered the bottom reached callback at custom threshold');
+    });
+  });
+});
+define("dummy/tests/integration/components/modifiers/on-top-reached-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | modifiers/on-top-reached', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it triggers the callback when the top of the div is reached', async function (assert) {
+      this.topReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-top-reached this.topReached}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "BP2qt5Ny",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"topReached\"]]],null],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-top-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-top-reached-test.ts",
+        "isStrictMode": false
+      }));
+      const scrollableElement = document.querySelector('.scrollable');
+      const maxScrollTop = scrollableElement.scrollHeight - scrollableElement.clientHeight;
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop);
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 0);
+      assert.ok(this.topReached.called, 'Entered the top reached callback');
+    });
+    (0, _qunit.test)('it does not trigger the callback when scrolling up but the top of the div is not reached', async function (assert) {
+      this.topReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-top-reached this.topReached}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "BP2qt5Ny",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"topReached\"]]],null],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-top-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-top-reached-test.ts",
+        "isStrictMode": false
+      }));
+      const scrollableElement = document.querySelector('.scrollable');
+      const maxScrollTop = scrollableElement.scrollHeight - scrollableElement.clientHeight;
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop);
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 40);
+      assert.true(this.topReached.notCalled, 'Did not enter the top reached callback');
+    });
+    (0, _qunit.test)('it triggers only when reaching the default 20px top threshold', async function (assert) {
+      this.topReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-top-reached this.topReached}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "BP2qt5Ny",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"topReached\"]]],null],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-top-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-top-reached-test.ts",
+        "isStrictMode": false
+      }));
+      const scrollableElement = document.querySelector('.scrollable');
+      const maxScrollTop = scrollableElement.scrollHeight - scrollableElement.clientHeight;
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop);
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 21);
+      assert.true(this.topReached.notCalled, 'Did not enter the top reached callback before threshold');
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 20);
+      assert.ok(this.topReached.called, 'Entered the top reached callback at threshold');
+    });
+    (0, _qunit.test)('it triggers when reaching a custom top threshold when specified', async function (assert) {
+      this.topReached = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
+                 {{on-top-reached this.topReached offset=50}}>
+              <div style="height: 250px">hello</div>
+            </div>
+          
+      */
+      {
+        "id": "NiQtTHHQ",
+        "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"scrollable\"],[24,5,\"background: red; height: 100px; overflow: scroll\"],[4,[38,0],[[30,0,[\"topReached\"]]],[[\"offset\"],[50]]],[12],[1,\"\\n        \"],[10,0],[14,5,\"height: 250px\"],[12],[1,\"hello\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"on-top-reached\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/on-top-reached-test.ts",
+        "isStrictMode": false
+      }));
+      const scrollableElement = document.querySelector('.scrollable');
+      const maxScrollTop = scrollableElement.scrollHeight - scrollableElement.clientHeight;
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, maxScrollTop);
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 51);
+      assert.true(this.topReached.notCalled, 'Did not enter the top reached callback before custom threshold');
+      await (0, _testHelpers.scrollTo)('.scrollable', 0, 50);
+      assert.ok(this.topReached.called, 'Entered the top reached callback at custom threshold');
     });
   });
 });
@@ -2310,7 +2481,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
       this.avatars = [{
-        image: '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg',
+        image: '/assets/images/brand-icon.svg',
         initials: 'TS'
       }, {
         image: '/@upfluence/oss-components/assets/images/avatar-placeholder.svg',
@@ -2331,7 +2502,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       assert.dom('.upf-avatar').exists({
         count: 2
       });
-      assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+      assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/assets/images/brand-icon.svg');
       assert.dom('.upf-avatar:last-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/avatar-placeholder.svg');
     });
     (0, _qunit.test)('if no @size arg is provided, it should default to "md"', async function (assert) {
@@ -2376,7 +2547,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       assert.dom('.upf-avatar').exists({
         count: 2
       });
-      assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+      assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/assets/images/brand-icon.svg');
       assert.dom('.upf-avatar:last-child img').doesNotExist();
       assert.dom('.upf-avatar:last-child').hasText('+1');
     });
@@ -2426,17 +2597,17 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       (0, _qunit.test)('it displays the image when it is provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Avatar @image="/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg" />
+          <OSS::Avatar @image="/assets/images/brand-icon.svg" />
         */
         {
-          "id": "lg38wWoe",
-          "block": "[[[8,[39,0],null,[[\"@image\"],[\"/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "id": "204kKsfn",
+          "block": "[[[8,[39,0],null,[[\"@image\"],[\"/assets/images/brand-icon.svg\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').exists();
-        assert.dom('.upf-avatar img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
       });
       (0, _qunit.test)('it displays the initials when they are provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -2471,17 +2642,17 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       (0, _qunit.test)('it displays the image when image and initials are provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Avatar @image="/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg" @initials="TS" />
+          <OSS::Avatar @image="/assets/images/brand-icon.svg" @initials="TS" />
         */
         {
-          "id": "CntmSaZu",
-          "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[\"/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg\",\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "id": "ZSc+2Rld",
+          "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[\"/assets/images/brand-icon.svg\",\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').exists();
-        assert.dom('.upf-avatar img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
       });
       (0, _qunit.test)('it updates the image when a new @image is provided', async function (assert) {
         this.updatedImage = null;
@@ -2499,9 +2670,9 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').doesNotExist();
         assert.dom('.upf-avatar span').hasText('TS');
-        this.set('updatedImage', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        this.set('updatedImage', '/assets/images/brand-icon.svg');
         assert.dom('.upf-avatar span').doesNotExist();
-        assert.dom('.upf-avatar img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+        assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
       });
     });
     (0, _qunit.module)('Sizes', function () {
@@ -3580,15 +3751,15 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     (0, _qunit.test)('it renders the iconUrl when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Button @iconUrl="/@upfluence/oss-components/assets/heart.svg" />
+        <OSS::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />
       */
       {
-        "id": "/bMzZ80a",
-        "block": "[[[8,[39,0],null,[[\"@iconUrl\"],[\"/@upfluence/oss-components/assets/heart.svg\"]],null]],[],false,[\"o-s-s/button\"]]",
+        "id": "rf3m9gHb",
+        "block": "[[[8,[39,0],null,[[\"@iconUrl\"],[\"/@upfluence/oss-components/assets/images/no-image.svg\"]],null]],[],false,[\"o-s-s/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/heart.svg');
+      assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
     });
     (0, _qunit.test)('it renders the icon and label when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -3608,26 +3779,26 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     (0, _qunit.test)('it renders the iconUrl and label when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Button @iconUrl="/@upfluence/oss-components/assets/heart.svg" @label="Label" />
+        <OSS::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />
       */
       {
-        "id": "uGQkkwXa",
-        "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/heart.svg\",\"Label\"]],null]],[],false,[\"o-s-s/button\"]]",
+        "id": "Et+Sybf0",
+        "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/images/no-image.svg\",\"Label\"]],null]],[],false,[\"o-s-s/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/heart.svg');
+      assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
       assert.dom('.upf-btn span').hasClass('margin-left-px-6');
       assert.dom('.upf-btn span').hasText('Label');
     });
     (0, _qunit.test)('when icon and iconUrl are present, it only renders the icon', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/heart.svg" />
+        <OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />
       */
       {
-        "id": "beJiBNm5",
-        "block": "[[[8,[39,0],null,[[\"@icon\",\"@iconUrl\"],[\"fab fa-facebook\",\"/@upfluence/oss-components/assets/heart.svg\"]],null]],[],false,[\"o-s-s/button\"]]",
+        "id": "+UFJhQ3U",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@iconUrl\"],[\"fab fa-facebook\",\"/@upfluence/oss-components/assets/images/no-image.svg\"]],null]],[],false,[\"o-s-s/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
         "isStrictMode": false
       }));
@@ -5456,7 +5627,7 @@ define("dummy/tests/integration/components/o-s-s/context-menu-test", ["qunit", "
         assert.dom('button i').hasClass('fa-plus');
       });
       (0, _qunit.test)('it accepts iconUrl argument', async function (assert) {
-        this.iconUrl = '/@upfluence/oss-components/assets/heart.svg';
+        this.iconUrl = '/@upfluence/oss-components/assets/images/no-image.svg';
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::ContextMenu @label={{this.label}} @iconUrl={{this.iconUrl}} data-control-name="context-menu"/>
@@ -12513,7 +12684,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"dummy/tests/integration/utils"eaimeta@70e063a35619d71f
-  const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg';
+  const ILLUSTRATION_SRC = '/assets/images/brand-icon.svg';
   (0, _qunit.module)('Integration | Component | o-s-s/marketing/banner', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
@@ -14029,7 +14200,7 @@ define("dummy/tests/integration/components/o-s-s/onboarding-state-test", ["qunit
   0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const TITLE = 'Welcome to OSS';
   const SUBTITLE = 'Get started by following the steps below.';
-  const IMAGE_URL = '/@upfluence/oss-components/assets/images/upfluence-full-blue-logo.svg';
+  const IMAGE_URL = '/assets/images/upfluence-full-blue-logo.svg';
   (0, _qunit.module)('Integration | Component | o-s-s/onboarding-state', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -19182,15 +19353,15 @@ define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "
     (0, _qunit.test)('it renders the iconUrl when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" />
+        <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />
       */
       {
-        "id": "cWq9RgNP",
-        "block": "[[[8,[39,0],null,[[\"@iconUrl\"],[\"/@upfluence/oss-components/assets/star-icon.svg\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "id": "szMLil7H",
+        "block": "[[[8,[39,0],null,[[\"@iconUrl\"],[\"/@upfluence/oss-components/assets/images/no-image.svg\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
     });
     (0, _qunit.test)('it renders the icon and label when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -19209,25 +19380,25 @@ define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "
     (0, _qunit.test)('it renders the iconUrl and label when present', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" @label="Label" />
+        <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />
       */
       {
-        "id": "hT2lzFO5",
-        "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/star-icon.svg\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "id": "MCvSJ1fp",
+        "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/images/no-image.svg\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
       assert.dom('.upf-smart-btn span').hasText('Label');
     });
     (0, _qunit.test)('when icon and iconUrl are present, it only renders the icon', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::Smart::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/heart.svg" />
+        <OSS::Smart::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />
       */
       {
-        "id": "Dh0nLT02",
-        "block": "[[[8,[39,0],null,[[\"@icon\",\"@iconUrl\"],[\"fab fa-facebook\",\"/@upfluence/oss-components/assets/heart.svg\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "id": "2lUyRFrq",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@iconUrl\"],[\"fab fa-facebook\",\"/@upfluence/oss-components/assets/images/no-image.svg\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
         "isStrictMode": false
       }));
@@ -19412,15 +19583,15 @@ define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "
       (0, _qunit.test)('if both the iconUrl and label are present, it renders only the iconUrl', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" @label="Label" />
+          <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />
         */
         {
-          "id": "hT2lzFO5",
-          "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/star-icon.svg\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "id": "MCvSJ1fp",
+          "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/images/no-image.svg\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+        assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
         assert.dom('.upf-smart-btn span').hasText('Label');
       });
     });
@@ -20376,7 +20547,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/logo-test", ["q
         "isStrictMode": false
       }));
       assert.dom('.smart-logo-image').exists('Fallback image container is rendered');
-      assert.dom('.smart-logo-image').hasAttribute('src', '/assets/images/picture-frame.svg');
+      assert.dom('.smart-logo-image').hasAttribute('src', '/@upfluence/oss-components/assets/images/picture-frame.svg');
     });
     (0, _qunit.module)('@size', () => {
       (0, _qunit.test)('By default, it applies the size "md" class', async function (assert) {
@@ -26943,6 +27114,102 @@ define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/te
         "isStrictMode": false
       }));
     }
+  });
+});
+define("dummy/tests/integration/modifiers/text-carousel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Modifier | text-carousel', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.labels = ['Thinking...', 'Analyzing your request...', 'Putting it together...'];
+      this.clock = _sinon.default.useFakeTimers();
+    });
+    hooks.afterEach(function () {
+      this.clock.restore();
+    });
+    (0, _qunit.test)('it displays the first label immediately', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <div data-control-name="carousel" {{text-carousel this.labels interval=30}}></div>
+      */
+      {
+        "id": "EmYGyNJy",
+        "block": "[[[11,0],[24,\"data-control-name\",\"carousel\"],[4,[38,0],[[30,0,[\"labels\"]]],[[\"interval\"],[30]]],[12],[13]],[],false,[\"text-carousel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/text-carousel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dcn('carousel').hasText('Thinking...');
+    });
+    (0, _qunit.test)('it displays each label according to the interval and holds the final label', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <div data-control-name="carousel" {{text-carousel this.labels interval=30}}></div>
+      */
+      {
+        "id": "EmYGyNJy",
+        "block": "[[[11,0],[24,\"data-control-name\",\"carousel\"],[4,[38,0],[[30,0,[\"labels\"]]],[[\"interval\"],[30]]],[12],[13]],[],false,[\"text-carousel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/text-carousel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dcn('carousel').hasText('Thinking...');
+      this.clock.tick(30);
+      assert.dcn('carousel').hasText('Analyzing your request...');
+      this.clock.tick(30);
+      assert.dcn('carousel').hasText('Putting it together...');
+      this.clock.tick(6_000);
+      assert.dcn('carousel').hasText('Putting it together...');
+    });
+    (0, _qunit.test)('it updates when labels change', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <div data-control-name="carousel" {{text-carousel this.labels interval=30}}></div>
+      */
+      {
+        "id": "EmYGyNJy",
+        "block": "[[[11,0],[24,\"data-control-name\",\"carousel\"],[4,[38,0],[[30,0,[\"labels\"]]],[[\"interval\"],[30]]],[12],[13]],[],false,[\"text-carousel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/text-carousel-test.ts",
+        "isStrictMode": false
+      }));
+      this.set('labels', ['Loading', 'Done']);
+      assert.dcn('carousel').hasText('Loading');
+    });
+    (0, _qunit.test)('it loops when loop=true', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <div data-control-name="carousel" {{text-carousel this.labels interval=30 loop=true}}></div>
+      */
+      {
+        "id": "d1qEDlnV",
+        "block": "[[[11,0],[24,\"data-control-name\",\"carousel\"],[4,[38,0],[[30,0,[\"labels\"]]],[[\"interval\",\"loop\"],[30,true]]],[12],[13]],[],false,[\"text-carousel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/text-carousel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dcn('carousel').hasText('Thinking...');
+      this.clock.tick(30);
+      assert.dcn('carousel').hasText('Analyzing your request...');
+      this.clock.tick(30);
+      assert.dcn('carousel').hasText('Putting it together...');
+      this.clock.tick(30);
+      assert.dcn('carousel').hasText('Thinking...');
+    });
+    (0, _qunit.test)('it throws when no labels are provided', async function (assert) {
+      this.set('labels', []);
+      (0, _testHelpers.setupOnerror)(error => {
+        assert.equal(error.message, '[modifier][text-carousel] Requires a non-empty labels array');
+      });
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <div data-control-name="carousel" {{text-carousel this.labels interval=30}}>Previous text</div>
+      */
+      {
+        "id": "BBpxHBXK",
+        "block": "[[[11,0],[24,\"data-control-name\",\"carousel\"],[4,[38,0],[[30,0,[\"labels\"]]],[[\"interval\"],[30]]],[12],[1,\"Previous text\"],[13]],[],false,[\"text-carousel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/text-carousel-test.ts",
+        "isStrictMode": false
+      }));
+    });
   });
 });
 define("dummy/tests/integration/utils", ["exports"], function (_exports) {

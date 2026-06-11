@@ -82538,7 +82538,7 @@ require('@ember/-internals/bootstrap')
     md: 'upf-avatar--md',
     lg: 'upf-avatar--lg'
   };
-  const DEFAULT_IMAGE_URL = _exports.DEFAULT_IMAGE_URL = '/assets/images/avatar-placeholder.svg';
+  const DEFAULT_IMAGE_URL = _exports.DEFAULT_IMAGE_URL = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';
   let OSSAvatar = _exports.default = (_class = class OSSAvatar extends _component2.default {
     constructor(...args) {
       super(...args);
@@ -86835,7 +86835,7 @@ require('@ember/-internals/bootstrap')
   })), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSModalDialog);
 });
-;define("@upfluence/oss-components/components/o-s-s/mode-switch", ["exports", "@ember/component", "@ember/object", "@ember/object/internals", "@ember/runloop", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _internals, _runloop, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/mode-switch", ["exports", "@ember/component", "@ember/object", "@ember/object/internals", "@ember/runloop", "@ember/template", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _internals, _runloop, _template, _component2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -86843,7 +86843,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/object/internals",0,"@ember/runloop",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/object/internals",0,"@ember/runloop",0,"@ember/template",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -86930,8 +86930,8 @@ require('@ember/-internals/bootstrap')
     get computedStyles() {
       this.moveBackgroundElement();
       const colorPath = this.getColorPath();
-      if (!this.containerStyles) return '';
-      return [`--mode-switch__selected-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-500`)}`, `--mode-switch__selected-background-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-50`)}`].join(';');
+      if (!this.containerStyles) return (0, _template.htmlSafe)('');
+      return (0, _template.htmlSafe)([`--mode-switch__selected-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-500`)}`, `--mode-switch__selected-background-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-50`)}`].join(';'));
     }
     moveBackgroundElement() {
       const destinationLabelDivRect = document.querySelector(`label[for='${this.guid}-${this.selectedOptionKey}']`)?.getBoundingClientRect();
@@ -89900,7 +89900,7 @@ require('@ember/-internals/bootstrap')
     "moduleName": "@upfluence/oss-components/components/o-s-s/smart/immersive/logo.hbs",
     "isStrictMode": false
   });
-  const FALLBACK_SVG_URL = '/assets/images/picture-frame.svg';
+  const FALLBACK_SVG_URL = '/@upfluence/oss-components/assets/images/picture-frame.svg';
   const BASE_COMPONENT_CLASS = 'oss-smart__immersive-icon-container';
   let OSSSmartImmersiveLogoComponent = _exports.default = (_class = class OSSSmartImmersiveLogoComponent extends _component2.default {
     constructor(owner, args) {
@@ -89958,7 +89958,7 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "handleLoadingUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleLoadingUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onError", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onError"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartImmersiveLogoComponent);
 });
-;define("@upfluence/oss-components/components/o-s-s/smart/immersive/select", ["exports", "@ember/component", "@ember/object", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/debug", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@ember/component/helper", "@ember/template-factory"], function (_exports, _component, _object, _baseDropdown, _runSmartGradientAnimation, _utils, _debug, _runloop, _attachDropdown, _helper, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/select", ["exports", "@ember/component", "@ember/object", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/debug", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@ember/component/helper", "@ember/template", "@ember/template-factory"], function (_exports, _component, _object, _baseDropdown, _runSmartGradientAnimation, _utils, _debug, _runloop, _attachDropdown, _helper, _template, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -89966,7 +89966,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/debug",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component/helper",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/debug",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component/helper",0,"@ember/template",0,"@ember/component"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -90076,7 +90076,7 @@ require('@ember/-internals/bootstrap')
       if (this.args.maxItemWidth) {
         style.push(`max-width: ${this.args.maxItemWidth}px;`);
       }
-      return style.join(' ');
+      return (0, _template.htmlSafe)(style.join(' '));
     }
     get dropdownAddressableClass() {
       return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
@@ -90418,14 +90418,14 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartPill);
 });
-;define("@upfluence/oss-components/components/o-s-s/smart/skeleton", ["exports", "@ember/component", "@ember/component/helper", "@upfluence/oss-components/components/o-s-s/skeleton", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _helper, _skeleton, _debug, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/smart/skeleton", ["exports", "@ember/component", "@ember/component/helper", "@upfluence/oss-components/components/o-s-s/skeleton", "@ember/debug", "@ember/template", "@ember/template-factory"], function (_exports, _component, _helper, _skeleton, _debug, _template, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/component/helper",0,"@upfluence/oss-components/components/o-s-s/skeleton",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/component/helper",0,"@upfluence/oss-components/components/o-s-s/skeleton",0,"@ember/debug",0,"@ember/template",0,"@ember/component"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -90476,14 +90476,14 @@ require('@ember/-internals/bootstrap')
       return Math.round(maxDegree - scale * (maxDegree - minDegree));
     }
     get backgroundImage() {
-      return `background-image: linear-gradient(
+      return (0, _template.htmlSafe)(`background-image: linear-gradient(
       ${this.rotationDegrees}deg,
       rgba(255, 255, 255, 0.15) 8.2%,
       rgba(247, 213, 250, 0.15) 23.6%,
       rgba(83, 94, 252, 0.15) 38.3%,
       rgba(237, 33, 255, 0.15) 53.2%,
       rgba(255, 255, 255, 0.15) 91.7%
-    );`;
+    );`);
     }
   }
   _exports.default = OSSSmartSkeleton;
@@ -91884,7 +91884,7 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "assignFileInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "assignFileInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerFileBrowser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerFileBrowser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileSelected"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileEdition", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileEdition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_allowDropEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_allowDropEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDrop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDrop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileDeletion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileDeletion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSUploadArea);
 });
-;define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@upfluence/oss-components/utils/filesize-parser", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _filesizeParser, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@upfluence/oss-components/utils/filesize-parser", "@ember/template", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _filesizeParser, _template, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91892,7 +91892,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@upfluence/oss-components/utils/filesize-parser",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@upfluence/oss-components/utils/filesize-parser",0,"@ember/template",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -91925,8 +91925,7 @@ require('@ember/-internals/bootstrap')
   
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
         {{#if this.uploading}}
-          {{! template-lint-disable no-triple-curlies}}
-          <div class="oss-upload-item__loader" style={{{this.loaderStyle}}}>
+          <div class="oss-upload-item__loader" style={{this.loaderStyle}}>
             <div class="value">
               {{this.uploadProgress}}
             </div>
@@ -91972,8 +91971,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "vpSxBY6U",
-    "block": "[[[10,0],[15,0,[29,[\"oss-upload-item \",[52,[30,0,[\"error\"]],\"oss-upload-item--errored\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"shouldDisplayPreview\"]],[[[1,\"    \"],[10,0],[14,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"],[15,5,[30,0,[\"dynamicBackgroundImage\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-900 text-ellipsis padding-right-px-12\"],[14,\"data-control-name\",\"upload-item-filename\"],[12],[1,\"\\n        \"],[1,[30,0,[\"filename\"]]],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[28,[35,2],[\"oss-components.upload-area.errors.server\"],null]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"filesize\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-gray-500\"],[14,\"data-control-name\",\"upload-item-filesize\"],[12],[1,\"\\n          \"],[1,[30,0,[\"filesize\"]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,0,[\"uploading\"]],[[[1,\"        \"],[10,0],[14,0,\"oss-upload-item__loader\"],[22,5,[30,0,[\"loaderStyle\"]]],[12],[1,\"\\n          \"],[10,0],[14,0,\"value\"],[12],[1,\"\\n            \"],[1,[30,0,[\"uploadProgress\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"error\"]],[[[1,\"          \"],[11,1],[24,0,\"fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"upload-item-try-again-button\"],[4,[38,3],[\"click\",[30,0,[\"performUpload\"]]],null],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@icon\"],[\"fa-redo\"]],null],[1,\"\\n            \"],[1,[28,[35,2],[\"oss-components.upload-area.errors.try_again\"],null]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-edit-button\"],[4,[38,3],[\"click\",[30,1]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.edit\"],null],\"top\"]]]],[[\"@icon\",\"@square\"],[\"far fa-pen\",true]],null],[1,\"\\n          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-view-button\"],[4,[38,3],[\"click\",[28,[37,7],null,[[\"url\",\"target\"],[[30,0,[\"fileUrl\"]],\"_blank\"]]]],null],[4,[38,6],null,[[\"title\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.view\"],null]]]]],[[\"@icon\",\"@square\"],[\"far fa-eye\",true]],null],[1,\"\\n\"]],[]]],[1,\"\\n        \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-remove-button\"],[4,[38,3],[\"click\",[30,2]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.delete\"],null],\"top\"]]]],[[\"@icon\",\"@square\"],[\"far fa-trash\",true]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@onEdition\",\"@onDeletion\"],false,[\"if\",\"o-s-s/badge\",\"t\",\"on\",\"o-s-s/icon\",\"o-s-s/button\",\"enable-tooltip\",\"redirect-to\"]]",
+    "id": "nXuVBxQJ",
+    "block": "[[[10,0],[15,0,[29,[\"oss-upload-item \",[52,[30,0,[\"error\"]],\"oss-upload-item--errored\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"shouldDisplayPreview\"]],[[[1,\"    \"],[10,0],[14,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"],[15,5,[30,0,[\"dynamicBackgroundImage\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-900 text-ellipsis padding-right-px-12\"],[14,\"data-control-name\",\"upload-item-filename\"],[12],[1,\"\\n        \"],[1,[30,0,[\"filename\"]]],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[28,[35,2],[\"oss-components.upload-area.errors.server\"],null]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"filesize\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-gray-500\"],[14,\"data-control-name\",\"upload-item-filesize\"],[12],[1,\"\\n          \"],[1,[30,0,[\"filesize\"]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,0,[\"uploading\"]],[[[1,\"        \"],[10,0],[14,0,\"oss-upload-item__loader\"],[15,5,[30,0,[\"loaderStyle\"]]],[12],[1,\"\\n          \"],[10,0],[14,0,\"value\"],[12],[1,\"\\n            \"],[1,[30,0,[\"uploadProgress\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"error\"]],[[[1,\"          \"],[11,1],[24,0,\"fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"upload-item-try-again-button\"],[4,[38,3],[\"click\",[30,0,[\"performUpload\"]]],null],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@icon\"],[\"fa-redo\"]],null],[1,\"\\n            \"],[1,[28,[35,2],[\"oss-components.upload-area.errors.try_again\"],null]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-edit-button\"],[4,[38,3],[\"click\",[30,1]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.edit\"],null],\"top\"]]]],[[\"@icon\",\"@square\"],[\"far fa-pen\",true]],null],[1,\"\\n          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-view-button\"],[4,[38,3],[\"click\",[28,[37,7],null,[[\"url\",\"target\"],[[30,0,[\"fileUrl\"]],\"_blank\"]]]],null],[4,[38,6],null,[[\"title\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.view\"],null]]]]],[[\"@icon\",\"@square\"],[\"far fa-eye\",true]],null],[1,\"\\n\"]],[]]],[1,\"\\n        \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-remove-button\"],[4,[38,3],[\"click\",[30,2]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[28,[37,2],[\"oss-components.upload-area.tooltips.delete\"],null],\"top\"]]]],[[\"@icon\",\"@square\"],[\"far fa-trash\",true]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@onEdition\",\"@onDeletion\"],false,[\"if\",\"o-s-s/badge\",\"t\",\"on\",\"o-s-s/icon\",\"o-s-s/button\",\"enable-tooltip\",\"redirect-to\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/upload-item.hbs",
     "isStrictMode": false
   });
@@ -92017,9 +92016,9 @@ require('@ember/-internals/bootstrap')
     }
     get loaderStyle() {
       const angle = this.uploadProgress / 100 * 360;
-      return `
+      return (0, _template.htmlSafe)(`
         background-image: conic-gradient(var(--color-primary-500) ${angle}deg, transparent ${angle + 0.5}deg 100%),
-                          conic-gradient(var(--color-border-default) 360deg 100%);`;
+                          conic-gradient(var(--color-border-default) 360deg 100%);`);
     }
     get displayPreview() {
       return this.args.displayPreview || false;
@@ -92160,7 +92159,7 @@ require('@ember/-internals/bootstrap')
     classNames: ['upf-image'],
     didInsertElement() {
       this._super();
-      this.element.style.backgroundImage = `url("${this.src}"), url("assets/images/no-image.svg")`;
+      this.element.style.backgroundImage = `url("${this.src}"), url("/@upfluence/oss-components/assets/images/no-image.svg")`;
     }
   });
 });
@@ -93029,17 +93028,40 @@ require('@ember/-internals/bootstrap')
     }
   }), class EnableTooltipModifierNewManager {});
 });
-;define("@upfluence/oss-components/modifiers/on-bottom-reached", ["exports", "@ember/modifier", "@ember/runloop"], function (_exports, _modifier, _runloop) {
+;define("@upfluence/oss-components/modifiers/install-scroll-reached-modifier", ["exports", "@ember/runloop"], function (_exports, _runloop) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.installScrollReachedModifier = installScrollReachedModifier;
+  0; //eaimeta@70e063a35619d71f0,"@ember/runloop"eaimeta@70e063a35619d71f
+  const TRIGGER_OFFSET = 20;
+  function installScrollReachedModifier(state, element, positional, named, shouldTrigger) {
+    const [callback] = positional;
+    const {
+      offset = TRIGGER_OFFSET
+    } = named;
+    state.element = element;
+    state.handler = event => {
+      if (shouldTrigger(state.element, offset)) {
+        callback(state.element, event);
+      }
+    };
+    (0, _runloop.run)(() => {
+      state.element.addEventListener('scroll', state.handler, false);
+    });
+  }
+});
+;define("@upfluence/oss-components/modifiers/on-bottom-reached", ["exports", "@ember/modifier", "@ember/runloop", "@upfluence/oss-components/modifiers/install-scroll-reached-modifier"], function (_exports, _modifier, _runloop, _installScrollReachedModifier) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@ember/runloop"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@ember/runloop",0,"@upfluence/oss-components/modifiers/install-scroll-reached-modifier"eaimeta@70e063a35619d71f
   // @ts-ignore
-  const TRIGGER_OFFSET = 20;
-
   /**
    * Used to trigger an action a user reaches the bottom of the modified element.
    * This is useful especially for infinite scrolls.
@@ -93053,17 +93075,11 @@ require('@ember/-internals/bootstrap')
       };
     },
     installModifier(state, element, {
-      positional
+      positional,
+      named
     }) {
-      const [callback] = positional;
-      state.element = element;
-      state.handler = _ => {
-        if (Math.ceil(state.element.scrollTop) + state.element.clientHeight >= state.element.scrollHeight - TRIGGER_OFFSET) {
-          callback(state.element, event);
-        }
-      };
-      (0, _runloop.run)(() => {
-        state.element.addEventListener('scroll', state.handler, false);
+      (0, _installScrollReachedModifier.installScrollReachedModifier)(state, element, positional, named, (targetElement, offset) => {
+        return Math.ceil(targetElement.scrollTop) + targetElement.clientHeight >= targetElement.scrollHeight - offset;
       });
     },
     destroyModifier(state) {
@@ -93117,6 +93133,42 @@ require('@ember/-internals/bootstrap')
       });
     }
   }), class OnClickOutsideModifierManager {});
+});
+;define("@upfluence/oss-components/modifiers/on-top-reached", ["exports", "@ember/modifier", "@ember/runloop", "@upfluence/oss-components/modifiers/install-scroll-reached-modifier"], function (_exports, _modifier, _runloop, _installScrollReachedModifier) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@ember/runloop",0,"@upfluence/oss-components/modifiers/install-scroll-reached-modifier"eaimeta@70e063a35619d71f
+  // @ts-ignore
+  /**
+   * Used to trigger an action a user reaches the top of the modified element.
+   * This is useful especially for infinite scrolls.
+   */
+  var _default = _exports.default = (0, _modifier.setModifierManager)(() => ({
+    capabilities: (0, _modifier.capabilities)('3.22'),
+    createModifier() {
+      return {
+        element: null,
+        handler: null
+      };
+    },
+    installModifier(state, element, {
+      positional,
+      named
+    }) {
+      (0, _installScrollReachedModifier.installScrollReachedModifier)(state, element, positional, named, (targetElement, offset) => {
+        return Math.ceil(targetElement.scrollTop) <= offset;
+      });
+    },
+    destroyModifier(state) {
+      (0, _runloop.run)(() => {
+        state.element.removeEventListener('scroll', state.handler, false);
+      });
+    }
+  }), class OnTopReachedModifierManager {});
 });
 ;define("@upfluence/oss-components/modifiers/register-form-field", ["exports", "@ember/debug", "@ember/destroyable", "@ember/service", "ember-modifier"], function (_exports, _debug, _destroyable, _service, _emberModifier) {
   "use strict";
@@ -93255,6 +93307,50 @@ require('@ember/-internals/bootstrap')
       state.resizeObserver.unobserve(state.element);
     }
   }), class scrollShadow {});
+});
+;define("@upfluence/oss-components/modifiers/text-carousel", ["exports", "ember-modifier", "@ember/destroyable"], function (_exports, _emberModifier, _destroyable) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-modifier",0,"@ember/destroyable"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  class TextCarouselModifier extends _emberModifier.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _defineProperty(this, "intervalId", void 0);
+      (0, _destroyable.registerDestructor)(this, () => this.clearInterval());
+    }
+    modify(element, [labels], {
+      interval = 3000,
+      loop = false
+    }) {
+      this.clearInterval();
+      if (!labels?.length) {
+        throw new Error('[modifier][text-carousel] Requires a non-empty labels array');
+      }
+      let index = 0;
+      element.textContent = labels[index] ?? '';
+      if (labels.length === 1) return;
+      this.intervalId = window.setInterval(() => {
+        index = loop ? (index + 1) % labels.length : index + 1;
+        element.textContent = labels[index] ?? '';
+        if (!loop && index >= labels.length - 1) {
+          this.clearInterval();
+        }
+      }, interval);
+    }
+    clearInterval() {
+      if (this.intervalId === undefined) return;
+      window.clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
+  }
+  _exports.default = TextCarouselModifier;
 });
 ;define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/service", "@ember/utils", "@upfluence/oss-components/utils/uploader-validators"], function (_exports, _service, _utils, _uploaderValidators) {
   "use strict";

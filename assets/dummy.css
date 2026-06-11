@@ -6527,66 +6527,6 @@ body {
   position: absolute;
   left: 15%;
 }
-.upf-icon * {
-  stroke-width: 0.5;
-  stroke: #1b1e21;
-}
-.upf-icon--orange * {
-  stroke: var(--color-error-500);
-}
-.upf-icon--bright-purple * {
-  stroke: var(--color-primary-500);
-}
-.upf-icon--dark-purple * {
-  stroke: var(--color-primary-900);
-}
-.upf-icon--rock-blue * {
-  stroke: #8a95a0;
-}
-.upf-icon--feedback-error * {
-  stroke: var(--color-error-500);
-}
-.upf-icon--feedback-success * {
-  stroke: var(--color-success-500);
-}
-.upf-icon--feedback-alert * {
-  stroke: var(--color-warning-500);
-}
-.upf-icon--gray * {
-  stroke: #c9c9c9;
-}
-.upf-icon--gray-light * {
-  stroke: #f9f9f9;
-}
-.upf-icon--gray-dark * {
-  stroke: #969696;
-}
-.upf-icon--stroke-thick * {
-  stroke-width: 1;
-}
-.upf-icon--stroke-thicker * {
-  stroke-width: 1.5;
-}
-.upf-icon-group {
-  font-size: 1.5em;
-}
-.upf-icon-group__superior {
-  color: var(--color-success-500);
-  font: normal normal normal 14px/1 var(--font-family-fa);
-  position: absolute;
-}
-.upf-icon-group__superior--edit:after {
-  color: var(--color-success-500);
-  font: normal normal normal 14px/1 var(--font-family-fa);
-  position: absolute;
-  content: '\f044';
-}
-.upf-icon-group__superior--visibility:after {
-  color: var(--color-success-500);
-  font: normal normal normal 14px/1 var(--font-family-fa);
-  position: absolute;
-  content: '\f06e';
-}
 /*
  * Images
  * All image styles.
