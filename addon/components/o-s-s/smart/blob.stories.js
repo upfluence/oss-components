@@ -31,6 +31,10 @@ export default {
       description: {
         component: 'A smart animated blob used to show inactive and loading states.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/i92PsCj4g8zHhZ5OsrFAcV/1.0-Tokens-%F0%9F%8C%88?node-id=3174-12755&p=f&t=J4JIimAFGHND0egW-0'
     }
   }
 };
