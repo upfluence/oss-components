@@ -17,13 +17,13 @@ module('Integration | Modifier | text-carousel', function (hooks) {
   });
 
   test('it displays the first label immediately', async function (assert) {
-    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels intervalMs=30}}></div>`);
+    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels interval=30}}></div>`);
 
     assert.dcn('carousel').hasText('Thinking...');
   });
 
   test('it displays each label according to the interval and holds the final label', async function (assert) {
-    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels intervalMs=30}}></div>`);
+    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels interval=30}}></div>`);
 
     assert.dcn('carousel').hasText('Thinking...');
 
@@ -38,14 +38,14 @@ module('Integration | Modifier | text-carousel', function (hooks) {
   });
 
   test('it updates when labels change', async function (assert) {
-    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels intervalMs=30}}></div>`);
+    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels interval=30}}></div>`);
     this.set('labels', ['Loading', 'Done']);
 
     assert.dcn('carousel').hasText('Loading');
   });
 
   test('it loops when loop=true', async function (assert) {
-    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels intervalMs=30 loop=true}}></div>`);
+    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels interval=30 loop=true}}></div>`);
 
     assert.dcn('carousel').hasText('Thinking...');
 
@@ -66,8 +66,6 @@ module('Integration | Modifier | text-carousel', function (hooks) {
       assert.equal(error.message, 'TextCarouselModifier requires a non-empty labels array');
     });
 
-    await render(
-      hbs`<div data-control-name="carousel" {{text-carousel this.labels intervalMs=30}}>Previous text</div>`
-    );
+    await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels interval=30}}>Previous text</div>`);
   });
 });

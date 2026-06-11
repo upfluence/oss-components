@@ -19,12 +19,12 @@ According to Ember JS:
   <figcaption>— Ember JS</figcaption>
 </figure>
 
-| Modifier               | Description                                                                                | Usage                                                           | Default                     |
-| ---------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | --------------------------- |
-| enable-popover         | Adds a Bootstrap's Popover to the element                                                  | `<button {{enable-popover [trigger]}}>Popover</button>`         | Default Trigger : **hover** |
-| enable-input-autofocus | Adds an autofocus on the selected input or the first non-disabled input child.             | `<input type="text" {{enable-input-autofocus}}/>`               |                             |
-| enable-dropdown        | Toggles Bootstrap's dropdown on an element                                                 | `<a {{enable-dropdown}}>Dropdown Trigger link/button</a>`       |                             |
-| on-click-outside       | Triggers the passed callback function when a user clicks outside the element               | `<div {{on-click-outside callbackFunction}}>Floating Div</div>` |                             |
-| on-bottom-reached      | Triggers the passed callback function when a user reaches the bottom of the target element | `<div {{on-bottom-reached callbackFunction}}>Div</div>`         |                             |
-| scroll-shadow          | Add bottom shadow for scrollable element                                                   | `<div {{scroll-shadow color="field"}}>`                         | color: "default" (white)    |
-| text-carousel          | Displays each provided label over time and keeps the last one visible by default            | `<div {{text-carousel this.labels intervalMs=3000 loop=true}}></div>` | intervalMs: 3000, loop: false |
+| Modifier               | Description                                                                                | Usage                                                               | Default                     |
+| ---------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | --------------------------- |
+| enable-popover         | Adds a Bootstrap's Popover to the element                                                  | `<button {{enable-popover [trigger]}}>Popover</button>`             | Default Trigger : **hover** |
+| enable-input-autofocus | Adds an autofocus on the selected input or the first non-disabled input child.             | `<input type="text" {{enable-input-autofocus}}/>`                   |                             |
+| enable-dropdown        | Toggles Bootstrap's dropdown on an element                                                 | `<a {{enable-dropdown}}>Dropdown Trigger link/button</a>`           |                             |
+| on-click-outside       | Triggers the passed callback function when a user clicks outside the element               | `<div {{on-click-outside callbackFunction}}>Floating Div</div>`     |                             |
+| on-bottom-reached      | Triggers the passed callback function when a user reaches the bottom of the target element | `<div {{on-bottom-reached callbackFunction}}>Div</div>`             |                             |
+| scroll-shadow          | Add bottom shadow for scrollable element                                                   | `<div {{scroll-shadow color="field"}}>`                             | color: "default" (white)    |
+| text-carousel          | Displays each provided label over time and keeps the last one visible by default           | `<div {{text-carousel this.labels interval=3000 loop=true}}></div>` | interval: 3000, loop: false |
