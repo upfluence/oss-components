@@ -25,7 +25,7 @@ export default class TextCarouselModifier extends Modifier<TextCarouselArgs> {
     this.clearInterval();
 
     if (!labels?.length) {
-      throw new Error('TextCarouselModifier requires a non-empty labels array');
+      throw new Error('[modifier][text-carousel] Requires a non-empty labels array');
     }
 
     let index = 0;
