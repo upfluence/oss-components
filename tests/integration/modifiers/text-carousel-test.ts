@@ -63,7 +63,7 @@ module('Integration | Modifier | text-carousel', function (hooks) {
     this.set('labels', []);
 
     setupOnerror((error: Error) => {
-      assert.equal(error.message, 'TextCarouselModifier requires a non-empty labels array');
+      assert.equal(error.message, '[modifier][text-carousel] Requires a non-empty labels array');
     });
 
     await render(hbs`<div data-control-name="carousel" {{text-carousel this.labels interval=30}}>Previous text</div>`);
