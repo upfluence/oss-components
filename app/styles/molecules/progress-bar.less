@@ -1,3 +1,15 @@
+.generate-progress-bar-variant(@variant, @shade: 500) {
+  .oss-progress-bar__inner {
+    background-color: var(~'--color-@{variant}-@{shade}');
+  }
+
+  &.oss-progress-bar--colored-background {
+    .oss-progress-bar__outer {
+      background-color: var(~'--color-@{variant}-100');
+    }
+  }
+}
+
 .oss-progress-bar {
   display: flex;
   width: 100%;
@@ -34,40 +46,20 @@
     }
   }
 
-  &--warning {
-    .oss-progress-bar__inner {
-      background-color: var(--color-warning-500);
-    }
+  &--attention {
+    .generate-progress-bar-variant(yellow, 400);
+  }
 
-    &.oss-progress-bar--colored-background {
-      .oss-progress-bar__outer {
-        background-color: var(--color-warning-100);
-      }
-    }
+  &--warning {
+    .generate-progress-bar-variant(warning);
   }
 
   &--success {
-    .oss-progress-bar__inner {
-      background-color: var(--color-success-500);
-    }
-
-    &.oss-progress-bar--colored-background {
-      .oss-progress-bar__outer {
-        background-color: var(--color-success-100);
-      }
-    }
+    .generate-progress-bar-variant(success);
   }
 
   &--danger {
-    .oss-progress-bar__inner {
-      background-color: var(--color-error-500);
-    }
-
-    &.oss-progress-bar--colored-background {
-      .oss-progress-bar__outer {
-        background-color: var(--color-error-100);
-      }
-    }
+    .generate-progress-bar-variant(error);
   }
 
   &__label {

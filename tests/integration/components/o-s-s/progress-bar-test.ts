@@ -111,6 +111,12 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   });
 
   module('@skin arg behaviour', function () {
+    test('if the value is "attention", the progress bar has the correct class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="attention" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--attention');
+    });
+
     test('if the value is "warning", the progress bar has the correct class', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="warning" />`);
 
