@@ -3,7 +3,8 @@ import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
 import { helper } from '@ember/component/helper';
 
-export type ProgressBarSkins = 'pending' | 'attention' | 'warning' | 'success' | 'danger';
+export const PROGRESS_BAR_SKINS = ['pending', 'attention', 'warning', 'success', 'danger'] as const;
+export type ProgressBarSkins = (typeof PROGRESS_BAR_SKINS)[number];
 
 type ProgressBarSizes = 'xs' | 'sm';
 

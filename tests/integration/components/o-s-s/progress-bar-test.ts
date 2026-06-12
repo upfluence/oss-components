@@ -2,6 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
+import { PROGRESS_BAR_SKINS } from '@upfluence/oss-components/components/o-s-s/progress-bar';
 
 module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   setupRenderingTest(hooks);
@@ -111,28 +112,13 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   });
 
   module('@skin arg behaviour', function () {
-    test('if the value is "attention", the progress bar has the correct class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="attention" />`);
+    PROGRESS_BAR_SKINS.forEach((skin) => {
+      test(`if the value is "${skin}", the progress bar has the correct class`, async function (assert) {
+        this.skin = skin;
+        await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin={{this.skin}} />`);
 
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--attention');
-    });
-
-    test('if the value is "warning", the progress bar has the correct class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="warning" />`);
-
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--warning');
-    });
-
-    test('if the value is "success", the progress bar has the correct class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="success" />`);
-
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--success');
-    });
-
-    test('if the value is "danger", the progress bar has the correct class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="danger" />`);
-
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--danger');
+        assert.dom('.oss-progress-bar').hasClass(`oss-progress-bar--${skin}`);
+      });
     });
 
     test('if the value is unspecified, the progress bar has the correct class', async function (assert) {
@@ -163,22 +149,13 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   });
 
   module('@secondarySkin arg behaviour', function () {
-    test('if the value is "warning", the progress bar has the correct secondary class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="warning" />`);
+    PROGRESS_BAR_SKINS.forEach((skin) => {
+      test(`if the value is "${skin}", the progress bar has the correct secondary class`, async function (assert) {
+        this.skin = skin;
+        await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin={{this.skin}} />`);
 
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--warning');
-    });
-
-    test('if the value is "success", the progress bar has the correct secondary class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="success" />`);
-
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--success');
-    });
-
-    test('if the value is "danger", the progress bar has the correct secondary class', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="danger" />`);
-
-      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--danger');
+        assert.dom('.oss-progress-bar').hasClass(`oss-progress-bar--secondary-skin--${skin}`);
+      });
     });
 
     test('if the value is unspecified, the progress bar does not have a secondary class', async function (assert) {
