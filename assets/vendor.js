@@ -88172,7 +88172,7 @@ require('@ember/-internals/bootstrap')
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
+  _exports.default = _exports.PROGRESS_BAR_SKINS = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/template",0,"@ember/component/helper",0,"@ember/component"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -88223,6 +88223,7 @@ require('@ember/-internals/bootstrap')
     "moduleName": "@upfluence/oss-components/components/o-s-s/progress-bar.hbs",
     "isStrictMode": false
   });
+  const PROGRESS_BAR_SKINS = _exports.PROGRESS_BAR_SKINS = ['pending', 'attention', 'warning', 'success', 'danger'];
   class OSSProgressBar extends _component2.default {
     constructor(owner, args) {
       super(owner, args);

@@ -16264,10 +16264,10 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/progress-bar", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _progressBar, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@upfluence/oss-components/components/o-s-s/progress-bar"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/progress-bar', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -16463,44 +16463,21 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       });
     });
     (0, _qunit.module)('@skin arg behaviour', function () {
-      (0, _qunit.test)('if the value is "warning", the progress bar has the correct class', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skin="warning" />
-        */
-        {
-          "id": "YdHWrJsS",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],\"warning\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--warning');
-      });
-      (0, _qunit.test)('if the value is "success", the progress bar has the correct class', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skin="success" />
-        */
-        {
-          "id": "TK64izJq",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],\"success\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--success');
-      });
-      (0, _qunit.test)('if the value is "danger", the progress bar has the correct class', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @skin="danger" />
-        */
-        {
-          "id": "wXRB769H",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],\"danger\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--danger');
+      _progressBar.PROGRESS_BAR_SKINS.forEach(skin => {
+        (0, _qunit.test)(`if the value is "${skin}", the progress bar has the correct class`, async function (assert) {
+          this.skin = skin;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ProgressBar @value={{this.checkedValue}} @skin={{this.skin}} />
+          */
+          {
+            "id": "Iqdv8aCz",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skin\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-progress-bar').hasClass(`oss-progress-bar--${skin}`);
+        });
       });
       (0, _qunit.test)('if the value is unspecified, the progress bar has the correct class', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -16558,44 +16535,21 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       });
     });
     (0, _qunit.module)('@secondarySkin arg behaviour', function () {
-      (0, _qunit.test)('if the value is "warning", the progress bar has the correct secondary class', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="warning" />
-        */
-        {
-          "id": "GiQsSnk/",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],\"warning\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--warning');
-      });
-      (0, _qunit.test)('if the value is "success", the progress bar has the correct secondary class', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="success" />
-        */
-        {
-          "id": "rqpZDcnI",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],\"success\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--success');
-      });
-      (0, _qunit.test)('if the value is "danger", the progress bar has the correct secondary class', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="danger" />
-        */
-        {
-          "id": "KvQxghcj",
-          "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],\"danger\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--danger');
+      _progressBar.PROGRESS_BAR_SKINS.forEach(skin => {
+        (0, _qunit.test)(`if the value is "${skin}", the progress bar has the correct secondary class`, async function (assert) {
+          this.skin = skin;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin={{this.skin}} />
+          */
+          {
+            "id": "sNV6GNSx",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skin\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-progress-bar').hasClass(`oss-progress-bar--secondary-skin--${skin}`);
+        });
       });
       (0, _qunit.test)('if the value is unspecified, the progress bar does not have a secondary class', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
