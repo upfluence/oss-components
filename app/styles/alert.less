@@ -5,81 +5,99 @@
   overflow: hidden;
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-md);
-
-  .main-container {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    padding: var(--spacing-px-9);
-    gap: var(--spacing-px-12);
-    background-color: var(--color-white);
-
-    &--plain {
-      background-color: var(--color-gray-50);
-    }
-  }
+  padding: var(--spacing-px-9);
+  gap: var(--spacing-px-6);
+  height: fit-content;
 
   .text-container {
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 3px;
-    .text-size-5;
+    font-size: var(--font-size-sm);
 
     .title {
       .text-style-semibold;
     }
 
     .subtitle {
-      color: var(--color-gray-500);
-
       a {
         color: var(--color-blue-600);
       }
     }
   }
 
-  .indicator {
-    width: 3px;
+  &:has(.upf-alert-close-button) {
+    > .icon:has(+ .text-container > :only-child),
+    > .text-container:has(> :only-child) {
+      align-self: center;
+    }
+  }
+
+  .icon {
+    i {
+      width: 19px;
+    }
+  }
+
+  .upf-alert-close-button {
+    background-color: transparent;
+    border: none;
   }
 
   &--success {
+    background-color: var(--color-success-50);
+    border-color: var(--color-success-100);
+
     .icon {
       color: var(--color-success-500);
     }
 
-    .indicator {
-      background-color: var(--color-success-500);
+    .title,
+    .subtitle {
+      color: var(--color-success-900);
     }
   }
 
   &--error {
+    background-color: var(--color-error-50);
+    border-color: var(--color-error-100);
+
     .icon {
       color: var(--color-error-500);
     }
 
-    .indicator {
-      background-color: var(--color-error-500);
+    .title,
+    .subtitle {
+      color: var(--color-error-900);
     }
   }
 
   &--warning {
+    background-color: var(--color-warning-50);
+    border-color: var(--color-warning-100);
+
     .icon {
       color: var(--color-warning-500);
     }
 
-    .indicator {
-      background-color: var(--color-warning-500);
+    .title,
+    .subtitle {
+      color: var(--color-warning-900);
     }
   }
 
   &--info {
+    background-color: var(--color-blue-50);
+    border-color: var(--color-blue-100);
+
     .icon {
-      color: var(--color-primary-500);
+      color: var(--color-blue-500);
     }
 
-    .indicator {
-      background-color: var(--color-primary-500);
+    .title,
+    .subtitle {
+      color: var(--color-blue-900);
     }
   }
 }

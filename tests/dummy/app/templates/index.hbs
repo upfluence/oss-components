@@ -85,13 +85,22 @@
         </OSS::Alert>
       </div>
       <div class="fx-row fx-gap-px-12">
-        <OSS::Alert @title="TitleTest" @subtitle="SubtitleTest" @plain={{false}} @closable={{true}} />
-        <OSS::Alert @title="Title" @subtitle="Subtitle" />
-        <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
+        <OSS::Alert @title="Title" @subtitle="Subtitle" @closable={{true}} />
+        <OSS::Alert @skin="success" @title="Title" @subtitle="Subtitle" @plain={{false}} />
+        <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" @closable={{true}} />
+        <OSS::Alert @skin="warning" @title="Title" @subtitle="Subtitle" @plain={{false}} />
       </div>
       <div class="fx-row fx-gap-px-12">
         <OSS::Alert @skin="success" @title="Title" />
-        <OSS::Alert @skin="warning" @subtitle="Subtitle" />
+        <OSS::Alert @skin="warning" @subtitle="Subtitle" @closable={{true}} />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Alert
+          @skin="error"
+          @title="Title"
+          @subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. At cum ex corrupti dignissimos voluptate incidunt provident adipisci! Enim, perferendis. Odit, cupiditate. Architecto dignissimos numquam animi quam. Sed commodi ipsam eos. Soluta incidunt assumenda porro velit natus eveniet dolorem sed esse error dolores explicabo aspernatur dignissimos eum ut, autem ex iste modi neque eius ratione recusandae quo unde? Quis, ducimus eaque."
+          @closable={{true}}
+        />
       </div>
     </div>
   </div>

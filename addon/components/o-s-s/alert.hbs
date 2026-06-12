@@ -1,24 +1,26 @@
 <div class={{concat "upf-alert " this.skinClass}} {{did-insert this.initSelf}} ...attributes>
-  <div class="indicator"></div>
-  <div class="main-container {{if this.plain 'main-container--plain'}}">
-    <span class="icon">
-      <OSS::Icon @icon={{this.iconClass}} />
-    </span>
-    <div class="text-container">
-      {{#if @title}}
-        <span class="title">{{@title}}</span>
-      {{/if}}
-      {{#if @subtitle}}
-        <span class="subtitle">{{@subtitle}}</span>
-      {{/if}}
-      {{#if (has-block "extra-content")}}
-        {{yield to="extra-content"}}
-      {{/if}}
-    </div>
-    {{#if @closable}}
-      <div class="fx-col">
-        <i role="button" class="far fa-times" {{on "click" this.removeSelf}}></i>
-      </div>
+  <span class="icon">
+    <OSS::Icon @icon={{this.iconClass}} />
+  </span>
+  <div class="text-container">
+    {{#if @title}}
+      <span class="title">{{@title}}</span>
+    {{/if}}
+    {{#if @subtitle}}
+      <span class="subtitle">{{@subtitle}}</span>
+    {{/if}}
+    {{#if (has-block "extra-content")}}
+      {{yield to="extra-content"}}
     {{/if}}
   </div>
+  {{#if @closable}}
+    <OSS::Button
+      class="upf-alert-close-button"
+      @size="sm"
+      @icon="fa-times"
+      @square={{true}}
+      {{on "click" this.removeSelf}}
+      data-control-name="upf-alert-close-button"
+    />
+  {{/if}}
 </div>

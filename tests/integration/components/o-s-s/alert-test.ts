@@ -31,67 +31,52 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     test(`it renders ${skin} skin correctly`, async function (assert) {
       this.skin = skin;
       await render(
-        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
+        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subtitle " this.skin}} />`
       );
 
       assert.dom('.upf-alert .icon i').hasClass('far');
       assert.dom('.upf-alert .icon i').hasClass(`${ICONS[skin]}`);
       assert.dom('.upf-alert .title').hasText(`Title ${skin}`);
-      assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
-    });
-  });
-
-  module('@plain parameter', function () {
-    test('if true, the background-color is grey', async function (assert) {
-      await render(hbs`<OSS::Alert @plain={{true}} />`);
-
-      assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
-    });
-
-    test('if false, the background-color is white', async function (assert) {
-      await render(hbs`<OSS::Alert @plain={{false}} />`);
-
-      assert.dom('.upf-alert .main-container').hasNoClass('main-container--plain');
-    });
-
-    test('if undefined, the background-color is grey', async function (assert) {
-      await render(hbs`<OSS::Alert />`);
-
-      assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
+      assert.dom('.upf-alert .subtitle').hasText(`Subtitle ${skin}`);
+      assert.dom('.upf-alert').hasClass(`upf-alert--${skin}`);
     });
   });
 
   module('@closable parameter', function () {
-    test('if true, display the cross icon which delete alert when you click on it', async function (assert) {
+    test('if true, displays the close button which removes the alert when you click on it', async function (assert) {
       await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
 
       assert.dom('.upf-alert').exists();
-      assert.dom('.upf-alert .main-container .fx-col i').exists();
-      assert.dom('.upf-alert .main-container .fx-col i').hasClass('fa-times');
+      assert.dom('.upf-alert .upf-alert-close-button').exists();
+      assert.dom('.upf-alert .upf-alert-close-button i').hasClass('fa-times');
 
-      await click('.upf-alert .main-container .fx-col i');
+      await click('.upf-alert .upf-alert-close-button');
 
       assert.dom('.upf-alert').doesNotExist();
     });
 
-    test('if false, the cross icon is not displayed', async function (assert) {
+    test('if false, the close button is not displayed', async function (assert) {
       await render(hbs`<OSS::Alert @closable={{false}} />`);
 
       assert.dom('.upf-alert').exists();
-      assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+      assert.dom('.upf-alert .upf-alert-close-button').doesNotExist();
     });
 
-    test('if undefined, the cross icon is not displayed', async function (assert) {
+    test('if undefined, the close button is not displayed', async function (assert) {
       await render(hbs`<OSS::Alert />`);
 
       assert.dom('.upf-alert').exists();
-      assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+      assert.dom('.upf-alert .upf-alert-close-button').doesNotExist();
     });
 
-    test('clicking the cross icon also calls the onClose argument provided', async function (assert) {
+    test('clicking the close button also calls the onClose argument provided', async function (assert) {
       this.onClose = sinon.stub();
       await render(hbs`<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
-      await click('.upf-alert .main-container .fx-col i');
+
+      assert.ok(this.onClose.notCalled);
+
+      await click('.upf-alert .upf-alert-close-button');
+
       assert.ok(this.onClose.calledOnce);
       assert.dom('.upf-alert').doesNotExist();
     });

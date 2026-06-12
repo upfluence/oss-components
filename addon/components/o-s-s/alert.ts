@@ -9,7 +9,6 @@ interface OSSAlertArgs {
   skin?: skinType;
   title?: string;
   subtitle?: string;
-  plain?: boolean;
   closable?: boolean;
   onClose?(): void;
 }
@@ -19,10 +18,6 @@ export default class OSSAlert extends Component<OSSAlertArgs> {
 
   get skinClass(): string {
     return `upf-alert--${this.args.skin || DEFAULT_SKIN}`;
-  }
-
-  get plain(): boolean {
-    return this.args.plain ?? true;
   }
 
   get iconClass(): string {
