@@ -9725,60 +9725,77 @@ For complete information visit: www.freakflagsprite.com
   overflow: hidden;
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-md);
-}
-.upf-alert .main-container {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
   padding: var(--spacing-px-9);
-  gap: var(--spacing-px-12);
-  background-color: var(--color-white);
-}
-.upf-alert .main-container--plain {
-  background-color: var(--color-gray-50);
+  gap: var(--spacing-px-6);
+  height: fit-content;
 }
 .upf-alert .text-container {
   display: flex;
   flex-direction: column;
   flex: 1;
   gap: 3px;
-  font-size: 1.33333333rem;
+  font-size: var(--font-size-sm);
 }
 .upf-alert .text-container .title {
   font-weight: var(--font-weight-semibold);
 }
-.upf-alert .text-container .subtitle {
-  color: var(--color-gray-500);
-}
 .upf-alert .text-container .subtitle a {
   color: var(--color-blue-600);
 }
-.upf-alert .indicator {
-  width: 3px;
+.upf-alert:has(.upf-alert-close-button) > .icon:has(+ .text-container > :only-child),
+.upf-alert:has(.upf-alert-close-button) > .text-container:has(> :only-child) {
+  align-self: center;
+}
+.upf-alert .icon i {
+  width: 19px;
+}
+.upf-alert .upf-alert-close-button {
+  background-color: transparent;
+  border: none;
+}
+.upf-alert--success {
+  background-color: var(--color-success-50);
+  border-color: var(--color-success-100);
 }
 .upf-alert--success .icon {
   color: var(--color-success-500);
 }
-.upf-alert--success .indicator {
-  background-color: var(--color-success-500);
+.upf-alert--success .title,
+.upf-alert--success .subtitle {
+  color: var(--color-success-900);
+}
+.upf-alert--error {
+  background-color: var(--color-error-50);
+  border-color: var(--color-error-100);
 }
 .upf-alert--error .icon {
   color: var(--color-error-500);
 }
-.upf-alert--error .indicator {
-  background-color: var(--color-error-500);
+.upf-alert--error .title,
+.upf-alert--error .subtitle {
+  color: var(--color-error-900);
+}
+.upf-alert--warning {
+  background-color: var(--color-warning-50);
+  border-color: var(--color-warning-100);
 }
 .upf-alert--warning .icon {
   color: var(--color-warning-500);
 }
-.upf-alert--warning .indicator {
-  background-color: var(--color-warning-500);
+.upf-alert--warning .title,
+.upf-alert--warning .subtitle {
+  color: var(--color-warning-900);
+}
+.upf-alert--info {
+  background-color: var(--color-blue-50);
+  border-color: var(--color-blue-100);
 }
 .upf-alert--info .icon {
-  color: var(--color-primary-500);
+  color: var(--color-blue-500);
 }
-.upf-alert--info .indicator {
-  background-color: var(--color-primary-500);
+.upf-alert--info .title,
+.upf-alert--info .subtitle {
+  color: var(--color-blue-900);
 }
 .country-selector-container {
   position: relative;

@@ -889,63 +889,23 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
         this.skin = skin;
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />
+          <OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subtitle " this.skin}} />
         */
         {
-          "id": "aqkzmJ0E",
-          "block": "[[[8,[39,0],null,[[\"@skin\",\"@title\",\"@subtitle\"],[[30,0,[\"skin\"]],[28,[37,1],[\"Title \",[30,0,[\"skin\"]]],null],[28,[37,1],[\"Subitle \",[30,0,[\"skin\"]]],null]]],null]],[],false,[\"o-s-s/alert\",\"concat\"]]",
+          "id": "IbwGd1MG",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@title\",\"@subtitle\"],[[30,0,[\"skin\"]],[28,[37,1],[\"Title \",[30,0,[\"skin\"]]],null],[28,[37,1],[\"Subtitle \",[30,0,[\"skin\"]]],null]]],null]],[],false,[\"o-s-s/alert\",\"concat\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/alert-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-alert .icon i').hasClass('far');
         assert.dom('.upf-alert .icon i').hasClass(`${ICONS[skin]}`);
         assert.dom('.upf-alert .title').hasText(`Title ${skin}`);
-        assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
-      });
-    });
-    (0, _qunit.module)('@plain parameter', function () {
-      (0, _qunit.test)('if true, the background-color is grey', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::Alert @plain={{true}} />
-        */
-        {
-          "id": "9PBBh83r",
-          "block": "[[[8,[39,0],null,[[\"@plain\"],[true]],null]],[],false,[\"o-s-s/alert\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/alert-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
-      });
-      (0, _qunit.test)('if false, the background-color is white', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::Alert @plain={{false}} />
-        */
-        {
-          "id": "m6er04rU",
-          "block": "[[[8,[39,0],null,[[\"@plain\"],[false]],null]],[],false,[\"o-s-s/alert\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/alert-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.upf-alert .main-container').hasNoClass('main-container--plain');
-      });
-      (0, _qunit.test)('if undefined, the background-color is grey', async function (assert) {
-        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-        /*
-          <OSS::Alert />
-        */
-        {
-          "id": "5PmDt1XJ",
-          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/alert\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/alert-test.ts",
-          "isStrictMode": false
-        }));
-        assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
+        assert.dom('.upf-alert .subtitle').hasText(`Subtitle ${skin}`);
+        assert.dom('.upf-alert').hasClass(`upf-alert--${skin}`);
       });
     });
     (0, _qunit.module)('@closable parameter', function () {
-      (0, _qunit.test)('if true, display the cross icon which delete alert when you click on it', async function (assert) {
+      (0, _qunit.test)('if true, displays the close button which removes the alert when you click on it', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <div><OSS::Alert @closable={{true}} /></div>
@@ -957,12 +917,12 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
           "isStrictMode": false
         }));
         assert.dom('.upf-alert').exists();
-        assert.dom('.upf-alert .main-container .fx-col i').exists();
-        assert.dom('.upf-alert .main-container .fx-col i').hasClass('fa-times');
-        await (0, _testHelpers.click)('.upf-alert .main-container .fx-col i');
+        assert.dom('.upf-alert .upf-alert-close-button').exists();
+        assert.dom('.upf-alert .upf-alert-close-button i').hasClass('fa-times');
+        await (0, _testHelpers.click)('.upf-alert .upf-alert-close-button');
         assert.dom('.upf-alert').doesNotExist();
       });
-      (0, _qunit.test)('if false, the cross icon is not displayed', async function (assert) {
+      (0, _qunit.test)('if false, the close button is not displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Alert @closable={{false}} />
@@ -974,9 +934,9 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
           "isStrictMode": false
         }));
         assert.dom('.upf-alert').exists();
-        assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+        assert.dom('.upf-alert .upf-alert-close-button').doesNotExist();
       });
-      (0, _qunit.test)('if undefined, the cross icon is not displayed', async function (assert) {
+      (0, _qunit.test)('if undefined, the close button is not displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Alert />
@@ -988,9 +948,9 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
           "isStrictMode": false
         }));
         assert.dom('.upf-alert').exists();
-        assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+        assert.dom('.upf-alert .upf-alert-close-button').doesNotExist();
       });
-      (0, _qunit.test)('clicking the cross icon also calls the onClose argument provided', async function (assert) {
+      (0, _qunit.test)('clicking the close button also calls the onClose argument provided', async function (assert) {
         this.onClose = _sinon.default.stub();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -1002,7 +962,8 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/alert-test.ts",
           "isStrictMode": false
         }));
-        await (0, _testHelpers.click)('.upf-alert .main-container .fx-col i');
+        assert.ok(this.onClose.notCalled);
+        await (0, _testHelpers.click)('.upf-alert .upf-alert-close-button');
         assert.ok(this.onClose.calledOnce);
         assert.dom('.upf-alert').doesNotExist();
       });

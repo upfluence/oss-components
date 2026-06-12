@@ -81654,34 +81654,35 @@ require('@ember/-internals/bootstrap')
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class={{concat "upf-alert " this.skinClass}} {{did-insert this.initSelf}} ...attributes>
-    <div class="indicator"></div>
-    <div class="main-container {{if this.plain 'main-container--plain'}}">
-      <span class="icon">
-        <OSS::Icon @icon={{this.iconClass}} />
-      </span>
-      <div class="text-container">
-        {{#if @title}}
-          <span class="title">{{@title}}</span>
-        {{/if}}
-        {{#if @subtitle}}
-          <span class="subtitle">{{@subtitle}}</span>
-        {{/if}}
-        {{#if (has-block "extra-content")}}
-          {{yield to="extra-content"}}
-        {{/if}}
-      </div>
-      {{#if @closable}}
-        <div class="fx-col">
-          <i role="button" class="far fa-times" {{on "click" this.removeSelf}}></i>
-        </div>
+    <span class="icon">
+      <OSS::Icon @icon={{this.iconClass}} />
+    </span>
+    <div class="text-container">
+      {{#if @title}}
+        <span class="title">{{@title}}</span>
+      {{/if}}
+      {{#if @subtitle}}
+        <span class="subtitle">{{@subtitle}}</span>
+      {{/if}}
+      {{#if (has-block "extra-content")}}
+        {{yield to="extra-content"}}
       {{/if}}
     </div>
+    {{#if @closable}}
+      <OSS::Button
+        class="upf-alert-close-button"
+        @size="sm"
+        @icon="fa-times"
+        @square={{true}}
+        {{on "click" this.removeSelf}}
+        data-control-name="upf-alert-close-button"
+      />
+    {{/if}}
   </div>
-  
   */
   {
-    "id": "YLqPr81b",
-    "block": "[[[11,0],[16,0,[28,[37,0],[\"upf-alert \",[30,0,[\"skinClass\"]]],null]],[17,1],[4,[38,1],[[30,0,[\"initSelf\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"indicator\"],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"main-container \",[52,[30,0,[\"plain\"]],\"main-container--plain\"]]]],[12],[1,\"\\n    \"],[10,1],[14,0,\"icon\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[30,0,[\"iconClass\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"text-container\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[11,\"i\"],[24,\"role\",\"button\"],[24,0,\"far fa-times\"],[4,[38,6],[\"click\",[30,0,[\"removeSelf\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@title\",\"@subtitle\",\"@closable\",\"&extra-content\"],false,[\"concat\",\"did-insert\",\"if\",\"o-s-s/icon\",\"has-block\",\"yield\",\"on\"]]",
+    "id": "vQOK60o3",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"upf-alert \",[30,0,[\"skinClass\"]]],null]],[17,1],[4,[38,1],[[30,0,[\"initSelf\"]]],null],[12],[1,\"\\n  \"],[10,1],[14,0,\"icon\"],[12],[1,\"\\n    \"],[8,[39,2],null,[[\"@icon\"],[[30,0,[\"iconClass\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"text-container\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[41,[30,3],[[[1,\"      \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,5]],[[[1,\"      \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[8,[39,6],[[24,0,\"upf-alert-close-button\"],[24,\"data-control-name\",\"upf-alert-close-button\"],[4,[38,7],[\"click\",[30,0,[\"removeSelf\"]]],null]],[[\"@size\",\"@icon\",\"@square\"],[\"sm\",\"fa-times\",true]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@title\",\"@subtitle\",\"@closable\",\"&extra-content\"],false,[\"concat\",\"did-insert\",\"o-s-s/icon\",\"if\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/alert.hbs",
     "isStrictMode": false
   });
@@ -81689,9 +81690,6 @@ require('@ember/-internals/bootstrap')
   let OSSAlert = _exports.default = (_class = class OSSAlert extends _component2.default {
     get skinClass() {
       return `upf-alert--${this.args.skin || DEFAULT_SKIN}`;
-    }
-    get plain() {
-      return this.args.plain ?? true;
     }
     get iconClass() {
       switch (this.args.skin) {
