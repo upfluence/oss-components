@@ -3,7 +3,9 @@ import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
 import { helper } from '@ember/component/helper';
 
-export type ProgressBarSkins = 'pending' | 'warning' | 'success' | 'danger';
+export const PROGRESS_BAR_SKINS = ['pending', 'attention', 'warning', 'success', 'danger'] as const;
+export type ProgressBarSkins = (typeof PROGRESS_BAR_SKINS)[number];
+export type ProgressBarSkin = ProgressBarSkins;
 
 type ProgressBarSizes = 'xs' | 'sm';
 
@@ -36,7 +38,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     }
   }
 
-  getSegmentValue = helper((_, { skin }: { skin: ProgressBarSkins }): number => {
+  getSegmentValue = helper((_, { skin }: { skin: ProgressBarSkin }): number => {
     return this.skins[skin] ?? 0;
   });
 
@@ -45,7 +47,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     return htmlSafe(styles.join(';'));
   });
 
-  getSegmentClasses = helper((_, { skin }: { skin: ProgressBarSkins }): string => {
+  getSegmentClasses = helper((_, { skin }: { skin: ProgressBarSkin }): string => {
     const classes = ['oss-progress-bar__inner', `oss-progress-bar__inner--${skin}`, 'oss-progress-bar__inner--initial'];
     return classes.join(' ');
   });
@@ -54,8 +56,8 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     return !!this.args.skins && Object.keys(this.args.skins).length > 0;
   }
 
-  get progressSegments(): ProgressBarSkins[] {
-    return Object.keys(this.skins) as ProgressBarSkins[];
+  get progressSegments(): ProgressBarSkin[] {
+    return Object.keys(this.skins) as ProgressBarSkin[];
   }
 
   get computedStyles(): string {
@@ -84,7 +86,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     return this.hasSkins ? Object.values(this.skins).reduce((sum, v) => sum + v, 0) : this.args.value;
   }
 
-  private get skins(): Partial<Record<ProgressBarSkins, number>> {
+  private get skins(): Partial<Record<ProgressBarSkin, number>> {
     return this.args.skins!;
   }
 }
