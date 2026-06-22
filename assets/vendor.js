@@ -81915,10 +81915,12 @@ require('@ember/-internals/bootstrap')
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/utils",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-attribute"
-       {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
-       {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
-       ...attributes>
+    <div
+    class="oss-attribute"
+    {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
+    {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
+    ...attributes
+  >
     {{#if (has-block "label")}}
       <div class="oss-attribute__label">{{yield to="label"}}</div>
     {{/if}}
@@ -81935,11 +81937,10 @@ require('@ember/-internals/bootstrap')
       </div>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "I976PiNh",
-    "block": "[[[11,0],[24,0,\"oss-attribute\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[18,3,null],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__value\"],[12],[18,4,null],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[41,[30,0,[\"isCopyable\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"oss-attribute__copy \",[52,[30,0,[\"displayCopyBtn\"]],\"oss-attribute__copy--visible\"]]]],[12],[1,\"\\n      \"],[8,[39,6],null,[[\"@value\",\"@inline\"],[[30,2],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"&label\",\"&value\"],false,[\"on\",\"fn\",\"mut\",\"if\",\"has-block\",\"yield\",\"o-s-s/copy\"]]",
+    "id": "97G1oEVh",
+    "block": "[[[11,0],[24,0,\"oss-attribute\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[18,3,null],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__value\"],[12],[18,4,null],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[41,[30,0,[\"isCopyable\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"oss-attribute__copy \",[52,[30,0,[\"displayCopyBtn\"]],\"oss-attribute__copy--visible\"]]]],[12],[1,\"\\n      \"],[8,[39,6],null,[[\"@value\",\"@inline\"],[[30,2],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"&label\",\"&value\"],false,[\"on\",\"fn\",\"mut\",\"if\",\"has-block\",\"yield\",\"o-s-s/copy\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/base.hbs",
     "isStrictMode": false
   });
@@ -81976,11 +81977,10 @@ require('@ember/-internals/bootstrap')
       {{/if}}
     </:label>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "jje53aRc",
-    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-country\"],[17,1]],[[\"@value\"],[[30,0,[\"countryName\"]]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,1],[\"oss-components.attribute.country\"],null]],[13],[1,\"\\n\"],[41,[28,[37,3],[[30,0,[\"countryName\"]],\"-\"],null],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"o-s-s/attribute/base\",\"t\",\"if\",\"not-eq\"]]",
+    "id": "Dp8YQYzL",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-country\"],[17,1]],[[\"@value\"],[[30,0,[\"countryName\"]]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,1],[\"oss-components.attribute.country\"],null]],[13],[1,\"\\n\"],[41,[28,[37,3],[[30,0,[\"countryName\"]],\"-\"],null],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@countryCode\"],false,[\"o-s-s/attribute/base\",\"t\",\"if\",\"not-eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/country.hbs",
     "isStrictMode": false
   });
@@ -82024,11 +82024,10 @@ require('@ember/-internals/bootstrap')
       {{/if}}
     </:label>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "GvBPURbg",
-    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-phone-number\"],[17,1]],[[\"@value\"],[[30,0,[\"formattedPhoneNumber\"]]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,1],[\"oss-components.attribute.phone_number\"],null]],[13],[1,\"\\n\"],[41,[30,0,[\"countryCodeDictionaryMatch\"]],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"o-s-s/attribute/base\",\"t\",\"if\"]]",
+    "id": "6lyWBSWA",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-phone-number\"],[17,1]],[[\"@value\"],[[30,0,[\"formattedPhoneNumber\"]]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,1],[\"oss-components.attribute.phone_number\"],null]],[13],[1,\"\\n\"],[41,[30,0,[\"countryCodeDictionaryMatch\"]],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@countryCode\"],false,[\"o-s-s/attribute/base\",\"t\",\"if\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/phone-number.hbs",
     "isStrictMode": false
   });
@@ -82066,18 +82065,23 @@ require('@ember/-internals/bootstrap')
     </:label>
     <:value>
       {{#if @rating}}
-        <OSS::StarRating @rating={{@rating}} @totalStars={{5}} @activeColor="yellow"
-                         @passiveColor="yellow" @passiveStyle="regular" @disablePointerCursor={{true}} />
+        <OSS::StarRating
+          @rating={{@rating}}
+          @totalStars={{5}}
+          @activeColor="yellow"
+          @passiveColor="yellow"
+          @passiveStyle="regular"
+          @disablePointerCursor={{true}}
+        />
       {{else}}
         -
       {{/if}}
     </:value>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "b3mC633N",
-    "block": "[[[8,[39,0],[[24,0,\"oss-attribute--no-hover-effect\"],[24,\"data-control-name\",\"attribute-rating\"],[17,1]],null,[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,2],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@passiveStyle\",\"@disablePointerCursor\"],[[30,3],5,\"yellow\",\"yellow\",\"regular\",true]],null],[1,\"\\n\"]],[]],[[[1,\"      -\\n\"]],[]]],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@label\",\"@rating\"],false,[\"o-s-s/attribute/base\",\"if\",\"o-s-s/star-rating\"]]",
+    "id": "6yymjkx7",
+    "block": "[[[8,[39,0],[[24,0,\"oss-attribute--no-hover-effect\"],[24,\"data-control-name\",\"attribute-rating\"],[17,1]],null,[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,2],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@passiveStyle\",\"@disablePointerCursor\"],[[30,3],5,\"yellow\",\"yellow\",\"regular\",true]],null],[1,\"\\n\"]],[]],[[[1,\"      -\\n\"]],[]]],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@label\",\"@rating\"],false,[\"o-s-s/attribute/base\",\"if\",\"o-s-s/star-rating\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/rating.hbs",
     "isStrictMode": false
   });
@@ -82107,10 +82111,13 @@ require('@ember/-internals/bootstrap')
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <OSS::Attribute::Base @copyable={{false}} data-control-name="attribute-removable-text"
-                        {{on "mouseenter" (fn (mut this.displayRemoveIcon) true)}}
-                        {{on "mouseleave" (fn (mut this.displayRemoveIcon) false)}}
-                        ...attributes>
+    <OSS::Attribute::Base
+    @copyable={{false}}
+    data-control-name="attribute-removable-text"
+    {{on "mouseenter" (fn (mut this.displayRemoveIcon) true)}}
+    {{on "mouseleave" (fn (mut this.displayRemoveIcon) false)}}
+    ...attributes
+  >
     <:label>
       <span>{{@label}}</span>
     </:label>
@@ -82120,17 +82127,20 @@ require('@ember/-internals/bootstrap')
         {{#if this.loading}}
           <OSS::Icon @icon="fa-circle-notch fa-spin" />
         {{else if this.displayRemoveIcon}}
-          <OSS::Icon @icon="fa-trash" {{on "click" this.onRemove}} role="button"
-                     {{enable-tooltip title=this.removeTooltip placement="top"}} />
+          <OSS::Icon
+            @icon="fa-trash"
+            {{on "click" this.onRemove}}
+            role="button"
+            {{enable-tooltip title=this.removeTooltip placement="top"}}
+          />
         {{/if}}
       </div>
     </:value>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "vXZ2J/Ku",
-    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-removable-text\"],[17,1],[4,[38,1],[\"mouseenter\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayRemoveIcon\"]]],null],true],null]],null],[4,[38,1],[\"mouseleave\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayRemoveIcon\"]]],null],false],null]],null]],[[\"@copyable\"],[false]],[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-1\"],[12],[1,[30,0,[\"value\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"loading\"]],[[[1,\"        \"],[8,[39,5],null,[[\"@icon\"],[\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,0,[\"displayRemoveIcon\"]],[[[1,\"        \"],[8,[39,5],[[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onRemove\"]]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[30,0,[\"removeTooltip\"]],\"top\"]]]],[[\"@icon\"],[\"fa-trash\"]],null],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@label\"],false,[\"o-s-s/attribute/base\",\"on\",\"fn\",\"mut\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
+    "id": "2UA+hyul",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-removable-text\"],[17,1],[4,[38,1],[\"mouseenter\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayRemoveIcon\"]]],null],true],null]],null],[4,[38,1],[\"mouseleave\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayRemoveIcon\"]]],null],false],null]],null]],[[\"@copyable\"],[false]],[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-1\"],[12],[1,[30,0,[\"value\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"loading\"]],[[[1,\"        \"],[8,[39,5],null,[[\"@icon\"],[\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,0,[\"displayRemoveIcon\"]],[[[1,\"        \"],[8,[39,5],[[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onRemove\"]]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[30,0,[\"removeTooltip\"]],\"top\"]]]],[[\"@icon\"],[\"fa-trash\"]],null],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]]],[\"&attrs\",\"@label\"],false,[\"o-s-s/attribute/base\",\"on\",\"fn\",\"mut\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/removable-text.hbs",
     "isStrictMode": false
   });
@@ -82184,15 +82194,22 @@ require('@ember/-internals/bootstrap')
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <OSS::Attribute::Base @copyable={{false}} data-control-name="attribute-revealable-email"
-                        {{on "mouseenter" (fn (mut this.displayLockIcon) true)}}
-                        {{on "mouseleave" (fn (mut this.displayLockIcon) false)}}
-                        ...attributes>
+    <OSS::Attribute::Base
+    @copyable={{false}}
+    data-control-name="attribute-revealable-email"
+    {{on "mouseenter" (fn (mut this.displayLockIcon) true)}}
+    {{on "mouseleave" (fn (mut this.displayLockIcon) false)}}
+    ...attributes
+  >
     <:label>
       <span>{{t "oss-components.attribute.email.label"}}</span>
       {{#if @tooltip}}
-        <OSS::Icon @icon="far fa-info-circle" class="oss-attribute__info" @inline={{true}}
-                   {{enable-tooltip title=@tooltip placement="top"}} />
+        <OSS::Icon
+          @icon="far fa-info-circle"
+          class="oss-attribute__info"
+          @inline={{true}}
+          {{enable-tooltip title=@tooltip placement="top"}}
+        />
       {{/if}}
     </:label>
     <:value>
@@ -82201,17 +82218,20 @@ require('@ember/-internals/bootstrap')
         {{#if this.loading}}
           <OSS::Icon @icon="fa-circle-notch fa-spin" />
         {{else if this.displayLockIcon}}
-          <OSS::Icon @icon="fa-lock" {{on "click" this.onRevealEmail}} role="button"
-                     {{enable-tooltip title=this.lockTooltip placement="top"}} />
+          <OSS::Icon
+            @icon="fa-lock"
+            {{on "click" this.onRevealEmail}}
+            role="button"
+            {{enable-tooltip title=this.lockTooltip placement="top"}}
+          />
         {{/if}}
       </div>
     </:value>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "lgvqrCdF",
-    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-revealable-email\"],[17,1],[4,[38,1],[\"mouseenter\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayLockIcon\"]]],null],true],null]],null],[4,[38,1],[\"mouseleave\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayLockIcon\"]]],null],false],null]],null]],[[\"@copyable\"],[false]],[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,4],[\"oss-components.attribute.email.label\"],null]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[8,[39,6],[[24,0,\"oss-attribute__info\"],[4,[38,7],null,[[\"title\",\"placement\"],[[30,2],\"top\"]]]],[[\"@icon\",\"@inline\"],[\"far fa-info-circle\",true]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]],[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-1\"],[12],[1,\"•••••@••••.•••\"],[13],[1,\"\\n\"],[41,[30,0,[\"loading\"]],[[[1,\"        \"],[8,[39,6],null,[[\"@icon\"],[\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,0,[\"displayLockIcon\"]],[[[1,\"        \"],[8,[39,6],[[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onRevealEmail\"]]],null],[4,[38,7],null,[[\"title\",\"placement\"],[[30,0,[\"lockTooltip\"]],\"top\"]]]],[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@tooltip\"],false,[\"o-s-s/attribute/base\",\"on\",\"fn\",\"mut\",\"t\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
+    "id": "nAnUR7mZ",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-revealable-email\"],[17,1],[4,[38,1],[\"mouseenter\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayLockIcon\"]]],null],true],null]],null],[4,[38,1],[\"mouseleave\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayLockIcon\"]]],null],false],null]],null]],[[\"@copyable\"],[false]],[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,4],[\"oss-components.attribute.email.label\"],null]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[8,[39,6],[[24,0,\"oss-attribute__info\"],[4,[38,7],null,[[\"title\",\"placement\"],[[30,2],\"top\"]]]],[[\"@icon\",\"@inline\"],[\"far fa-info-circle\",true]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]],[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-1\"],[12],[1,\"•••••@••••.•••\"],[13],[1,\"\\n\"],[41,[30,0,[\"loading\"]],[[[1,\"        \"],[8,[39,6],null,[[\"@icon\"],[\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,0,[\"displayLockIcon\"]],[[[1,\"        \"],[8,[39,6],[[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onRevealEmail\"]]],null],[4,[38,7],null,[[\"title\",\"placement\"],[[30,0,[\"lockTooltip\"]],\"top\"]]]],[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]]],[\"&attrs\",\"@tooltip\"],false,[\"o-s-s/attribute/base\",\"on\",\"fn\",\"mut\",\"t\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/revealable-email.hbs",
     "isStrictMode": false
   });
@@ -82254,8 +82274,11 @@ require('@ember/-internals/bootstrap')
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <OSS::Attribute::Base class="oss-attribute--auto-height oss-attribute--no-hover-effect"
-                        data-control-name="attribute-tag-array" ...attributes>
+    <OSS::Attribute::Base
+    class="oss-attribute--auto-height oss-attribute--no-hover-effect"
+    data-control-name="attribute-tag-array"
+    ...attributes
+  >
     <:label>
       <span>{{@label}}</span>
     </:label>
@@ -82271,11 +82294,10 @@ require('@ember/-internals/bootstrap')
       {{/if}}
     </:value>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "VLh9K/Sv",
-    "block": "[[[8,[39,0],[[24,0,\"oss-attribute--auto-height oss-attribute--no-hover-effect\"],[24,\"data-control-name\",\"attribute-tag-array\"],[17,1]],null,[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,0,[\"displayTags\"]],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-wrap fx-gap-px-3\"],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@skin\"],[[30,4],\"secondary\"]],null],[1,\"\\n\"]],[4]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,1],[12],[1,\"-\"],[13],[1,\"\\n\"]],[]]],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@label\",\"@tags\",\"tagLabel\"],false,[\"o-s-s/attribute/base\",\"if\",\"each\",\"-track-array\",\"o-s-s/tag\"]]",
+    "id": "I3zoV9j/",
+    "block": "[[[8,[39,0],[[24,0,\"oss-attribute--auto-height oss-attribute--no-hover-effect\"],[24,\"data-control-name\",\"attribute-tag-array\"],[17,1]],null,[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,0,[\"displayTags\"]],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-wrap fx-gap-px-3\"],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@skin\"],[[30,4],\"secondary\"]],null],[1,\"\\n\"]],[4]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,1],[12],[1,\"-\"],[13],[1,\"\\n\"]],[]]],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@label\",\"@tags\",\"tagLabel\"],false,[\"o-s-s/attribute/base\",\"if\",\"each\",\"-track-array\",\"o-s-s/tag\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/tag-array.hbs",
     "isStrictMode": false
   });
@@ -82305,16 +82327,18 @@ require('@ember/-internals/bootstrap')
     <:label>
       <span>{{@label}}</span>
       {{#if @tooltip}}
-        <OSS::Icon @icon="far fa-info-circle" class="oss-attribute__info"
-                   {{enable-tooltip title=@tooltip placement="top"}} />
+        <OSS::Icon
+          @icon="far fa-info-circle"
+          class="oss-attribute__info"
+          {{enable-tooltip title=@tooltip placement="top"}}
+        />
       {{/if}}
     </:label>
   </OSS::Attribute::Base>
-  
   */
   {
-    "id": "vs8AJN4c",
-    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-text\"],[17,1]],[[\"@value\",\"@copyable\"],[[30,0,[\"value\"]],[30,2]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[8,[39,2],[[24,0,\"oss-attribute__info\"],[4,[38,3],null,[[\"title\",\"placement\"],[[30,4],\"top\"]]]],[[\"@icon\"],[\"far fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@copyable\",\"@label\",\"@tooltip\"],false,[\"o-s-s/attribute/base\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
+    "id": "amtxemwT",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-text\"],[17,1]],[[\"@value\",\"@copyable\"],[[30,0,[\"value\"]],[30,2]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[8,[39,2],[[24,0,\"oss-attribute__info\"],[4,[38,3],null,[[\"title\",\"placement\"],[[30,4],\"top\"]]]],[[\"@icon\"],[\"far fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@copyable\",\"@label\",\"@tooltip\"],false,[\"o-s-s/attribute/base\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/text.hbs",
     "isStrictMode": false
   });
@@ -82362,8 +82386,13 @@ require('@ember/-internals/bootstrap')
           {{#if (has-block "contextual-action")}}
             {{yield to="contextual-action"}}
           {{/if}}
-          <OSS::Button @icon={{this.editIcon}} @square={{true}} @size="sm" {{on "click" this.onEdit}}
-                       data-control-name="attributes-panel-mode-switch-button" />
+          <OSS::Button
+            @icon={{this.editIcon}}
+            @square={{true}}
+            @size="sm"
+            {{on "click" this.onEdit}}
+            data-control-name="attributes-panel-mode-switch-button"
+          />
         </div>
       {{/if}}
     </div>
@@ -82378,21 +82407,29 @@ require('@ember/-internals/bootstrap')
           <div class="fx-col fx-gap-px-18">
             {{yield to="edition-mode"}}
             <div class="fx-row fx-gap-px-18 fx-malign-end">
-              <OSS::Button @label={{t "oss-components.attributes_panel.cancel"}} {{on "click" this.onCancel}}
-                           data-control-name="attributes-panel-cancel-button" />
-              <OSS::Button @skin="primary" @label={{t "oss-components.attributes_panel.save"}} @loading={{this.isLoading}}
-                           disabled={{@isSaveDisabled}} {{on "click" this.onSave}} data-control-name="attributes-panel-save-button" />
+              <OSS::Button
+                @label={{t "oss-components.attributes_panel.cancel"}}
+                {{on "click" this.onCancel}}
+                data-control-name="attributes-panel-cancel-button"
+              />
+              <OSS::Button
+                @skin="primary"
+                @label={{t "oss-components.attributes_panel.save"}}
+                @loading={{this.isLoading}}
+                disabled={{@isSaveDisabled}}
+                {{on "click" this.onSave}}
+                data-control-name="attributes-panel-save-button"
+              />
             </div>
           </div>
         {{/if}}
       {{/if}}
     </div>
   </div>
-  
   */
   {
-    "id": "Ez1DSS4W",
-    "block": "[[[11,0],[24,0,\"attributes-panel\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        \"],[1,[30,3]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-mode-switch-button\"],[4,[38,6],[\"click\",[30,0,[\"onEdit\"]]],null]],[[\"@icon\",\"@square\",\"@size\"],[[30,0,[\"editIcon\"]],true,\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[15,0,[28,[37,7],[\"attributes-panel__container attributes-panel__container--\",[30,0,[\"modeSelected\"]]],null]],[12],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null]],[]],[[[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-18 fx-malign-end\"],[12],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-cancel-button\"],[4,[38,6],[\"click\",[30,0,[\"onCancel\"]]],null]],[[\"@label\"],[[28,[37,8],[\"oss-components.attributes_panel.cancel\"],null]]],null],[1,\"\\n            \"],[8,[39,5],[[16,\"disabled\",[30,4]],[24,\"data-control-name\",\"attributes-panel-save-button\"],[4,[38,6],[\"click\",[30,0,[\"onSave\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",[28,[37,8],[\"oss-components.attributes_panel.save\"],null],[30,0,[\"isLoading\"]]]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@title\",\"@isSaveDisabled\",\"&contextual-action\",\"&view-mode\",\"&edition-mode\"],false,[\"if\",\"o-s-s/icon\",\"eq\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\",\"concat\",\"t\"]]",
+    "id": "FDjjcCan",
+    "block": "[[[11,0],[24,0,\"attributes-panel\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        \"],[1,[30,3]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-mode-switch-button\"],[4,[38,6],[\"click\",[30,0,[\"onEdit\"]]],null]],[[\"@icon\",\"@square\",\"@size\"],[[30,0,[\"editIcon\"]],true,\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[15,0,[28,[37,7],[\"attributes-panel__container attributes-panel__container--\",[30,0,[\"modeSelected\"]]],null]],[12],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null]],[]],[[[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-18 fx-malign-end\"],[12],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-cancel-button\"],[4,[38,6],[\"click\",[30,0,[\"onCancel\"]]],null]],[[\"@label\"],[[28,[37,8],[\"oss-components.attributes_panel.cancel\"],null]]],null],[1,\"\\n            \"],[8,[39,5],[[16,\"disabled\",[30,4]],[24,\"data-control-name\",\"attributes-panel-save-button\"],[4,[38,6],[\"click\",[30,0,[\"onSave\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",[28,[37,8],[\"oss-components.attributes_panel.save\"],null],[30,0,[\"isLoading\"]]]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@icon\",\"@title\",\"@isSaveDisabled\",\"&contextual-action\",\"&view-mode\",\"&edition-mode\"],false,[\"if\",\"o-s-s/icon\",\"eq\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\",\"concat\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attributes-panel.hbs",
     "isStrictMode": false
   });
@@ -82593,11 +82630,10 @@ require('@ember/-internals/bootstrap')
       <span class="upf-badge__text">{{@text}}</span>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "qLRLoFew",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,3]],[15,\"alt\",[28,[37,4],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,4]],[13],[1,\"\\n  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@text\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
+    "id": "r5ISQ6Ai",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,3]],[15,\"alt\",[28,[37,4],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,4]],[13],[1,\"\\n  \"]],[]]]],[]]],[13]],[\"&attrs\",\"@icon\",\"@image\",\"@text\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/badge.hbs",
     "isStrictMode": false
   });
@@ -83444,34 +83480,46 @@ require('@ember/-internals/bootstrap')
     <div class="code-container {{if @scrollable 'scrollable' 'scroll-shadow scroll-shadow--default'}}">
       <pre class="code">
       {{#each this.codeLineArray as |codeline|}}
-        <code>{{codeline}}</code>
-      {{/each}}
+          <code>{{codeline}}</code>
+        {{/each}}
       </pre>
     </div>
     {{#if @copyable}}
       <div class="floating-copy-btn">
-        <OSS::Button @skin="default" @size="sm"
-                     @label={{t "oss-components.code-block.copy"}}
-                     {{on "click" this.copyToClipboard}} />
+        <OSS::Button
+          @skin="default"
+          @size="sm"
+          @label={{t "oss-components.code-block.copy"}}
+          {{on "click" this.copyToClipboard}}
+        />
       </div>
     {{/if}}
     {{#if this.collapsable}}
       {{#if this.collapsed}}
-        <OSS::Button class="floating-collapse-btn" @skin="default" @size="xs"
-                     @label={{t "oss-components.code-block.uncollapse"}}
-                     @icon="fas fa-angle-down" {{on "click" this.uncollapse}} />
+        <OSS::Button
+          class="floating-collapse-btn"
+          @skin="default"
+          @size="xs"
+          @label={{t "oss-components.code-block.uncollapse"}}
+          @icon="fas fa-angle-down"
+          {{on "click" this.uncollapse}}
+        />
       {{else}}
-        <OSS::Button class="floating-collapse-btn" @skin="default" @size="xs"
-                     @label={{t "oss-components.code-block.collapse"}}
-                     @icon="fas fa-angle-up" {{on "click" this.collapse}} />
+        <OSS::Button
+          class="floating-collapse-btn"
+          @skin="default"
+          @size="xs"
+          @label={{t "oss-components.code-block.collapse"}}
+          @icon="fas fa-angle-up"
+          {{on "click" this.collapse}}
+        />
       {{/if}}
     {{/if}}
   </div>
-  
   */
   {
-    "id": "xxGy/ao4",
-    "block": "[[[11,0],[24,0,\"code-block\"],[23,5,[30,0,[\"heightStyle\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"code-container \",[52,[30,2],\"scrollable\",\"scroll-shadow scroll-shadow--default\"]]]],[12],[1,\"\\n    \"],[10,\"pre\"],[14,0,\"code\"],[12],[1,\"\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"codeLineArray\"]]],null]],null],null,[[[1,\"      \"],[10,\"code\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[3]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"floating-copy-btn\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,5],[\"click\",[30,0,[\"copyToClipboard\"]]],null]],[[\"@skin\",\"@size\",\"@label\"],[\"default\",\"sm\",[28,[37,4],[\"oss-components.code-block.copy\"],null]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"collapsable\"]],[[[41,[30,0,[\"collapsed\"]],[[[1,\"      \"],[8,[39,3],[[24,0,\"floating-collapse-btn\"],[4,[38,5],[\"click\",[30,0,[\"uncollapse\"]]],null]],[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"default\",\"xs\",[28,[37,4],[\"oss-components.code-block.uncollapse\"],null],\"fas fa-angle-down\"]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[24,0,\"floating-collapse-btn\"],[4,[38,5],[\"click\",[30,0,[\"collapse\"]]],null]],[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"default\",\"xs\",[28,[37,4],[\"oss-components.code-block.collapse\"],null],\"fas fa-angle-up\"]],null],[1,\"\\n\"]],[]]]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@scrollable\",\"codeline\",\"@copyable\"],false,[\"if\",\"each\",\"-track-array\",\"o-s-s/button\",\"t\",\"on\"]]",
+    "id": "h3OjM4pq",
+    "block": "[[[11,0],[24,0,\"code-block\"],[23,5,[30,0,[\"heightStyle\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"code-container \",[52,[30,2],\"scrollable\",\"scroll-shadow scroll-shadow--default\"]]]],[12],[1,\"\\n    \"],[10,\"pre\"],[14,0,\"code\"],[12],[1,\"\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"codeLineArray\"]]],null]],null],null,[[[1,\"        \"],[10,\"code\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[3]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"floating-copy-btn\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,5],[\"click\",[30,0,[\"copyToClipboard\"]]],null]],[[\"@skin\",\"@size\",\"@label\"],[\"default\",\"sm\",[28,[37,4],[\"oss-components.code-block.copy\"],null]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"collapsable\"]],[[[41,[30,0,[\"collapsed\"]],[[[1,\"      \"],[8,[39,3],[[24,0,\"floating-collapse-btn\"],[4,[38,5],[\"click\",[30,0,[\"uncollapse\"]]],null]],[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"default\",\"xs\",[28,[37,4],[\"oss-components.code-block.uncollapse\"],null],\"fas fa-angle-down\"]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[24,0,\"floating-collapse-btn\"],[4,[38,5],[\"click\",[30,0,[\"collapse\"]]],null]],[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"default\",\"xs\",[28,[37,4],[\"oss-components.code-block.collapse\"],null],\"fas fa-angle-up\"]],null],[1,\"\\n\"]],[]]]],[]],null],[13]],[\"&attrs\",\"@scrollable\",\"codeline\",\"@copyable\"],false,[\"if\",\"each\",\"-track-array\",\"o-s-s/button\",\"t\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/code-block.hbs",
     "isStrictMode": false
   });
@@ -83669,11 +83717,10 @@ require('@ember/-internals/bootstrap')
     <div class="oss-content-panel" ...attributes>
     {{yield}}
   </div>
-  
   */
   {
-    "id": "7DYOeyXq",
-    "block": "[[[11,0],[24,0,\"oss-content-panel\"],[17,1],[12],[1,\"\\n  \"],[18,2,null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"&default\"],false,[\"yield\"]]",
+    "id": "VgF8BmWl",
+    "block": "[[[11,0],[24,0,\"oss-content-panel\"],[17,1],[12],[1,\"\\n  \"],[18,2,null],[1,\"\\n\"],[13]],[\"&attrs\",\"&default\"],false,[\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/content-panel.hbs",
     "isStrictMode": false
   });
@@ -84946,7 +84993,7 @@ require('@ember/-internals/bootstrap')
     ...attributes
   >
     {{#if @icon}}
-      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@iconColorClass}}/>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@iconColorClass}} />
     {{else if @image}}
       <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
     {{else if @flag}}
@@ -86177,7 +86224,7 @@ require('@ember/-internals/bootstrap')
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-navbar-item fx-1 {{if @active "oss-navbar-item--active"}}" ...attributes>
+    <div class="oss-navbar-item fx-1 {{if @active 'oss-navbar-item--active'}}" ...attributes>
     <div class="oss-navbar-item--icon-container">
       <OSS::Icon @icon={{@icon}} class="font-color-gray-500" />
     </div>
@@ -86623,11 +86670,10 @@ require('@ember/-internals/bootstrap')
       <span class={{if @icon "margin-left-xxx-sm"}}>{{@label}}</span>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "5XpLMiAI",
-    "block": "[[[11,0],[24,0,\"upf-link\"],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"goTo\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "XXe/YnqP",
+    "block": "[[[11,0],[24,0,\"upf-link\"],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"goTo\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/link.hbs",
     "isStrictMode": false
   });
@@ -87036,20 +87082,37 @@ require('@ember/-internals/bootstrap')
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="number-input fx-row" ...attributes>
-    <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
-                 disabled={{or this.isMinDisabled @disabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
+    <OSS::Button
+      @square={{true}}
+      @size="md"
+      @icon="far fa-minus"
+      {{on "click" this.decreaseValue}}
+      disabled={{or this.isMinDisabled @disabled}}
+      {{enable-tooltip title=this.minTooltipTitle placement="top"}}
+    />
     {{! template-lint-disable no-triple-curlies}}
-    <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} @disabled={{@disabled}} style={{{this.dynamicWidth}}}
-                         {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}}
-                         {{did-insert this.registerInputElement}} />
-    <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
-                 disabled={{or this.isMaxDisabled @disabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
+    <OSS::InputContainer
+      @value={{this.localValue}}
+      @onChange={{this.checkUserInput}}
+      @disabled={{@disabled}}
+      style={{{this.dynamicWidth}}}
+      {{on "keydown" this.keyParser}}
+      {{on "blur" this.checkUserInput}}
+      {{did-insert this.registerInputElement}}
+    />
+    <OSS::Button
+      @square={{true}}
+      @size="md"
+      @icon="far fa-plus"
+      {{on "click" this.increaseValue}}
+      disabled={{or this.isMaxDisabled @disabled}}
+      {{enable-tooltip title=this.maxTooltipTitle placement="top"}}
+    />
   </div>
-  
   */
   {
-    "id": "POZ7QwXl",
-    "block": "[[[11,0],[24,0,\"number-input fx-row\"],[17,1],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"isMinDisabled\"]],[30,2]],null]],[4,[38,2],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,3],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,4],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,2],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,2],[\"blur\",[30,0,[\"checkUserInput\"]]],null],[4,[38,5],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]],[30,2]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"isMaxDisabled\"]],[30,2]],null]],[4,[38,2],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,3],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\"],false,[\"o-s-s/button\",\"or\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\",\"did-insert\"]]",
+    "id": "cAs+FJ3B",
+    "block": "[[[11,0],[24,0,\"number-input fx-row\"],[17,1],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"isMinDisabled\"]],[30,2]],null]],[4,[38,2],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,3],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,4],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,2],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,2],[\"blur\",[30,0,[\"checkUserInput\"]]],null],[4,[38,5],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]],[30,2]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"isMaxDisabled\"]],[30,2]],null]],[4,[38,2],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,3],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13]],[\"&attrs\",\"@disabled\"],false,[\"o-s-s/button\",\"or\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\",\"did-insert\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/number-input.hbs",
     "isStrictMode": false
   });
@@ -88322,14 +88385,16 @@ require('@ember/-internals/bootstrap')
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <button class="oss-radio-btn {{if @selected 'oss-radio-btn--selected'}} {{if @disabled 'oss-radio-btn--disabled'}}"
-          {{on "click" this.onSelection}}
-          type="button" ...attributes />
-  
+    <button
+    class="oss-radio-btn {{if @selected 'oss-radio-btn--selected'}} {{if @disabled 'oss-radio-btn--disabled'}}"
+    {{on "click" this.onSelection}}
+    type="button"
+    ...attributes
+  />
   */
   {
-    "id": "rjSQ0uME",
-    "block": "[[[11,\"button\"],[16,0,[29,[\"oss-radio-btn \",[52,[30,1],\"oss-radio-btn--selected\"],\" \",[52,[30,2],\"oss-radio-btn--disabled\"]]]],[24,4,\"button\"],[17,3],[4,[38,1],[\"click\",[30,0,[\"onSelection\"]]],null],[12],[13],[1,\"\\n\"]],[\"@selected\",\"@disabled\",\"&attrs\"],false,[\"if\",\"on\"]]",
+    "id": "tvjsmUEX",
+    "block": "[[[11,\"button\"],[16,0,[29,[\"oss-radio-btn \",[52,[30,1],\"oss-radio-btn--selected\"],\" \",[52,[30,2],\"oss-radio-btn--disabled\"]]]],[24,4,\"button\"],[17,3],[4,[38,1],[\"click\",[30,0,[\"onSelection\"]]],null],[12],[13]],[\"@selected\",\"@disabled\",\"&attrs\"],false,[\"if\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/radio-button.hbs",
     "isStrictMode": false
   });
@@ -89149,7 +89214,6 @@ require('@ember/-internals/bootstrap')
       <div class="upf-skeleton-effect" style={{row}} ...attributes></div>
     {{/each}}
   {{/if}}
-  
   */
   {
     "id": "ZaSX7bCK",
@@ -91120,19 +91184,20 @@ require('@ember/-internals/bootstrap')
   /*
     <div class="star-rating fx-row">
     {{#each this.stars as |star index|}}
-      <OSS::Icon class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
-                 @style={{star.type}}
-                 @icon="fa-star"
-                 {{on "click" (fn this.setRating index)}}
-                 {{on "mouseenter" (fn this.onMouseEnter index)}}
-                 {{on "mouseleave" this.onMouseLeave}} />
+      <OSS::Icon
+        class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
+        @style={{star.type}}
+        @icon="fa-star"
+        {{on "click" (fn this.setRating index)}}
+        {{on "mouseenter" (fn this.onMouseEnter index)}}
+        {{on "mouseleave" this.onMouseLeave}}
+      />
     {{/each}}
   </div>
-  
   */
   {
-    "id": "zaguwIf2",
-    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"onMouseLeave\"]]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13],[1,\"\\n\"]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
+    "id": "wcqTbuv3",
+    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"onMouseLeave\"]]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/star-rating.hbs",
     "isStrictMode": false
   });
@@ -91404,8 +91469,14 @@ require('@ember/-internals/bootstrap')
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="togglable-section fx-1 fx-col border fx-xalign-center" ...attributes>
-    <div class="header-block fx-row {{this.paddingClass}} fx-gap-px-12 fx-xalign-center width-pc-100 inner-header
-                {{if @toggled "background-color-gray-50"}}" {{on "click" this.onHeaderClick}} role="button">
+    <div
+      class="header-block fx-row
+        {{this.paddingClass}}
+        fx-gap-px-12 fx-xalign-center width-pc-100 inner-header
+        {{if @toggled 'background-color-gray-50'}}"
+      {{on "click" this.onHeaderClick}}
+      role="button"
+    >
       {{#if @iconUrl}}
         <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@iconUrl}} alt={{@title}} />
       {{else if @icon}}
@@ -91431,8 +91502,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "tB4a4vsl",
-    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row \",[30,0,[\"paddingClass\"]],\" fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n              \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,9]]],null],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[8,[39,9],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,10]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&header-actions\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"and\",\"has-block\",\"yield\",\"o-s-s/toggle-switch\"]]",
+    "id": "Ea6tBkx3",
+    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row\\n      \",[30,0,[\"paddingClass\"]],\"\\n      fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n      \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,9]]],null],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[8,[39,9],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,10]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&header-actions\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"and\",\"has-block\",\"yield\",\"o-s-s/toggle-switch\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/togglable-section.hbs",
     "isStrictMode": false
   });
@@ -92103,14 +92174,20 @@ require('@ember/-internals/bootstrap')
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <OSS::InputGroup @value={{@value}} @prefix={{@prefix}} @suffix={{@suffix}}
-                   @placeholder={{@placeholder}} @errorMessage={{this.errorLabel}}
-                   @onChange={{this.onInputChanged}} @disabled={{@disabled}} ...attributes />
-  
+    <OSS::InputGroup
+    @value={{@value}}
+    @prefix={{@prefix}}
+    @suffix={{@suffix}}
+    @placeholder={{@placeholder}}
+    @errorMessage={{this.errorLabel}}
+    @onChange={{this.onInputChanged}}
+    @disabled={{@disabled}}
+    ...attributes
+  />
   */
   {
-    "id": "QKFrJt92",
-    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@prefix\",\"@suffix\",\"@placeholder\",\"@errorMessage\",\"@onChange\",\"@disabled\"],[[30,2],[30,3],[30,4],[30,5],[30,0,[\"errorLabel\"]],[30,0,[\"onInputChanged\"]],[30,6]]],null],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@prefix\",\"@suffix\",\"@placeholder\",\"@disabled\"],false,[\"o-s-s/input-group\"]]",
+    "id": "m4eommfd",
+    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@prefix\",\"@suffix\",\"@placeholder\",\"@errorMessage\",\"@onChange\",\"@disabled\"],[[30,2],[30,3],[30,4],[30,5],[30,0,[\"errorLabel\"]],[30,0,[\"onInputChanged\"]],[30,6]]],null]],[\"&attrs\",\"@value\",\"@prefix\",\"@suffix\",\"@placeholder\",\"@disabled\"],false,[\"o-s-s/input-group\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/url-input.hbs",
     "isStrictMode": false
   });

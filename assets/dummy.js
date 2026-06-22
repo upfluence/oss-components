@@ -5123,18 +5123,17 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class='upf-align--center'>
-    <div class='spinner'>
-      <div class='bounce1'></div>
-      <div class='bounce2'></div>
-      <div class='bounce3'></div>
+    <div class="upf-align--center">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
     </div>
   </div>
-  
   */
   {
-    "id": "yEyBgX6k",
-    "block": "[[[10,0],[14,0,\"upf-align--center\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"spinner\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"bounce1\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"bounce2\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"bounce3\"],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[]]",
+    "id": "+kVFDpCJ",
+    "block": "[[[10,0],[14,0,\"upf-align--center\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"spinner\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"bounce1\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"bounce2\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"bounce3\"],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[]]",
     "moduleName": "dummy/templates/components/loading-state.hbs",
     "isStrictMode": false
   });
