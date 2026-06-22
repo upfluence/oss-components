@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import Wizard from './assets/images/wizard.png';
-import page from "./page.css";
+import page from './page.css';
 import JavascriptBundlers from './assets/images/javascript-bundlers.jpg';
 
 <Meta
@@ -12,15 +12,18 @@ import JavascriptBundlers from './assets/images/javascript-bundlers.jpg';
 />
 
 # Wizard
+
 <img src={Wizard} class="wizard-img" />
 <br />
 <br />
 <br />
 
 ## Introduction
+
 A wizard is a user interface pattern designed to guide users through a multi-step process by presenting a sequence of screens or dialogs, each of which collects specific input or performs a discrete task. Wizards are commonly used to simplify complex workflows by dividing them into manageable steps, typically accompanied by navigation controls such as “Next”, “Back”, and “Finish”.
 
 ## WizardManager & typings
+
 The WizardManager is the core of the step management system. Its usage is as simple as calling the initialize method with a proper Configuration object.
 It takes a WizardConfiguration object typed as follows:
 
@@ -39,7 +42,7 @@ export type WizardConfiguration = {
       validateStep?: () => Promise<boolean>;
     }[];
   }[];
-}
+};
 ```
 
 Each section requires a key to be defined, which could, for instance, be the base of an intl key to display in a menu.
@@ -56,6 +59,7 @@ Finally, each step has the ability to store extra attributes of any type. This c
 The service also has dedicated typings and getters to facilitate the implementation of components around it. They are publicly exposed in the service.
 
 ## Configuration options
+
 There are also more configuration options available:
 
 The centerStepsInContainer is a simple optional boolean.
@@ -67,11 +71,13 @@ This will be helpful for customizing the styles of the active steps along with t
 The containerClass allows overriding the class of the `Wizard::Container` if we want to customize the layout.
 
 ## Abstract BaseClass
+
 Each step we will create should extend the `BaseClass` abstract class.
 This will give access to the step argument and will force each step component to define methods required by the step-management system.
 It also automatically registers the `validateStep` which is called by the WizardManager service everytime a user tries to go to the next step.
 
 Extending the `BaseClass` also gives access to some step lifecycle hooks:
+
 - `onStepSubmission`: as mentioned above, used by the WizardManager service to check whether the target step is valid or not
 - `onFirstInsertion`: triggered the first time a step becomes active and has never yet been visited
 - `onRevisit`: triggered every time the step becomes active after already having been visited
@@ -81,6 +87,7 @@ Note: the lifecycle hooks are triggered from a `did-update` listener directly se
 If we ever need an alternative step-wrapper, we will need to make sure that the same triggers are called upon properly.
 
 ## Wizard::Container
+
 This component is the one that iterates over the available steps and renders them inside `Wizard::Wrapper` components.
 It's currently directly linked to the `Wizard::Container` component which iterates over the available steps and displays them properly.
 It waits for the service to be properly initialized before displaying the available steps.
@@ -89,12 +96,14 @@ Each step is wrapped in a `Wizard::Wrapper` component - explained below.
 While this container component currently works nicely with the Wizard::Manager, in the future, nothing prevents us from defining custom container components that match other styles (maybe we'll want a horizontal scrolling version for instance, or another that has a complete other design & animations).
 
 ## Wizard::Wrapper
+
 This component wraps every step in it. It is automatically used by the `Wizard::Container`, so users typically do not need to use it directly.
 This wrapper injects the componentClass component that was specified in the Configuration file. Note that each componentClass component is also being passed the current @step parameter.
 
 The wrapper component also features a bunch of logic to smoothly handle user scrolling. Reminder: users should be able to scroll within the step, but when reaching the top or bottom, they should also be able to move to the previous or next step. Attempting to move to the next step in the wizard creation will also trigger the `validateStep` and wait for a valid response before moving to the next step.
 
 ## Examples & demo
+
 As we have decided to make the wizard as generic as possible, we have also added some "example" components directly in the dummy app.
 There are a couple of "Step" components defined as well as a very basic menu & set of controls.
 

@@ -73,8 +73,8 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
     return this.selectedCountry
       ? this.selectedCountry.name
       : this.isCountry
-      ? this.intl.t('oss-components.country-selector.placeholder.country')
-      : this.intl.t('oss-components.country-selector.placeholder.province');
+        ? this.intl.t('oss-components.country-selector.placeholder.country')
+        : this.intl.t('oss-components.country-selector.placeholder.province');
   }
 
   get selectedCountry(): Item | null {

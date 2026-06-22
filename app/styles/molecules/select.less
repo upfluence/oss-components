@@ -21,7 +21,8 @@
     .input-state-disabled;
   }
 
-  &:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful) .upf-input {
+  &:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful)
+    .upf-input {
     &:hover {
       .input-state-hover;
     }
@@ -65,7 +66,9 @@
     &.active {
       .input-state-active;
       border-color: var(--color-success-500);
-      box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+      box-shadow:
+        0px 0px 0px 2px var(--color-success-100),
+        var(--box-shadow-xs);
     }
 
     &:focus {
@@ -98,7 +101,9 @@
     overflow: hidden;
 
     .upf-infinite-select__items-container {
-      --input-height-and-button-height-and-padding-and-gap: calc(var(--spacing-px-36) + var(--spacing-px-24) + var(--spacing-px-12) + var(--spacing-px-12) + var(--spacing-px-12));
+      --input-height-and-button-height-and-padding-and-gap: calc(
+        var(--spacing-px-36) + var(--spacing-px-24) + var(--spacing-px-12) + var(--spacing-px-12) + var(--spacing-px-12)
+      );
       max-height: calc(var(--floating-max-height) - var(--input-height-and-button-height-and-padding-and-gap));
     }
   }

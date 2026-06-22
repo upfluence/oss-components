@@ -48,7 +48,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @service declare intl: IntlService;
   @service declare toast: ToastService;
 
-  private declare _DOMElement: HTMLElement;
+  declare private _DOMElement: HTMLElement;
   fileInput?: HTMLInputElement;
   editingFileIndex?: number;
 

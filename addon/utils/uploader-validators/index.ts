@@ -1,4 +1,9 @@
-import { type UploadRequest, type FileValidator, type FileSizeRule, type FileTypeRule } from '@upfluence/oss-components/types/uploader';
+import {
+  type UploadRequest,
+  type FileValidator,
+  type FileSizeRule,
+  type FileTypeRule
+} from '@upfluence/oss-components/types/uploader';
 import parseFilesize from '@upfluence/oss-components/utils/filesize-parser';
 
 export interface Validator {

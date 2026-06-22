@@ -25,15 +25,18 @@ This assertion is automatically registered when you call `registerAssertions(ass
 ## API Reference
 
 ### Element Existence
+
 - `.exists(message?: string)` - Assert option exists
 - `.doesNotExist(message?: string)` - Assert option doesn't exist
 
 ### Content
+
 - `.hasTitle(title: string, message?: string)` - Assert title text
 - `.hasSubtitle(subtitle: string, message?: string)` - Assert subtitle text
 - `.doesNotHaveSubtitle(message?: string)` - Assert no subtitle
 
 ### State
+
 - `.isSelected(message?: string)` - Assert selected state
 - `.isNotSelected(message?: string)` - Assert not selected
 - `.isDisabled(message?: string)` - Assert disabled state
@@ -41,6 +44,7 @@ This assertion is automatically registered when you call `registerAssertions(ass
 - `.hasSelectionType(type: 'single' | 'multiple', message?: string)` - Assert selection type
 
 ### Prefix Elements
+
 - `.hasPrefixAvatar(message?: string)` - Assert has prefix avatar
 - `.doesNotHavePrefixAvatar(message?: string)` - Assert no prefix avatar
 - `.hasPrefixBadge(message?: string)` - Assert has prefix badge
@@ -51,10 +55,12 @@ This assertion is automatically registered when you call `registerAssertions(ass
 - `.doesNotHavePrefixCountry(message?: string)` - Assert no country flag
 
 ### Main Icon
+
 - `.hasIcon(message?: string)` - Assert has main icon
 - `.doesNotHaveIcon(message?: string)` - Assert no main icon
 
 ### Suffix Elements
+
 - `.hasSuffixHint(hint: string, message?: string)` - Assert suffix hint text
 - `.doesNotHaveSuffixHint(message?: string)` - Assert no suffix hint
 - `.hasSuffixTag(message?: string)` - Assert has suffix tag
@@ -109,6 +115,7 @@ module('Integration | Component | my-component', function (hooks) {
 ## Migrating Existing Tests
 
 ### Before (using assert.dom)
+
 ```typescript
 test('it renders the option', async function (assert) {
   await render(hbs`<OSS::InfiniteSelect::Option @title="Test" @onSelect={{this.onSelect}} />`);
@@ -121,6 +128,7 @@ test('it renders the option', async function (assert) {
 ```
 
 ### After (using custom assertion)
+
 ```typescript
 test('it renders the option', async function (assert) {
   await render(hbs`<OSS::InfiniteSelect::Option @title="Test" @onSelect={{this.onSelect}} />`);
@@ -131,4 +139,3 @@ test('it renders the option', async function (assert) {
   assert.infiniteSelectOption('.oss-infinite-select-option').isNotDisabled();
 });
 ```
-

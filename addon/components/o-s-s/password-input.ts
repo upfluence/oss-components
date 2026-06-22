@@ -85,7 +85,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   }
 
   get errorMessage(): string | null {
-    return this.args.validates ? null : this.args.errorMessage ?? this.regexError;
+    return this.args.validates ? null : (this.args.errorMessage ?? this.regexError);
   }
 
   get validationIcons(): { state: ValidationState; icon: ValidationStateIcon }[] {

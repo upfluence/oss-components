@@ -579,7 +579,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     });
   });
 
-  async function renderGrouped(): Promise<void> {
+  async function renderGrouped() {
     await render(
       hbs`<OSS::InfiniteSelect
             @items={{this.items}}

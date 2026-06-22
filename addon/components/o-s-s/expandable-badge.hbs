@@ -7,7 +7,7 @@
   ...attributes
 >
   {{#if @icon}}
-    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@iconColorClass}}/>
+    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@iconColorClass}} />
   {{else if @image}}
     <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
   {{else if @flag}}

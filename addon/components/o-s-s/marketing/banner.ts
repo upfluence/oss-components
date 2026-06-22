@@ -39,7 +39,7 @@ export default class OSSMarketingBannerComponent extends Component<OSSMarketingB
   }
 
   get displayBackgroundGrid(): string {
-    return this.args.options?.backgroundGridDisplayed ?? true ? 'flex' : 'none';
+    return (this.args.options?.backgroundGridDisplayed ?? true) ? 'flex' : 'none';
   }
 
   get displayIllustration(): string {

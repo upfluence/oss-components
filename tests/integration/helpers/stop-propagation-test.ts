@@ -21,7 +21,7 @@ module('Integration | Helper | stop-propagation', function (hooks) {
 
     this.onClick = (arg: string, event: Event) => {
       assert.equal(arg, 'foo');
-      assert.ok(event instanceof MouseEvent)
+      assert.ok(event instanceof MouseEvent);
     };
 
     await render(hbs`<button {{on "click" (stop-propagation (fn this.onClick "foo"))}}>stop propagation</button>`);
