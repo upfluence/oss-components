@@ -1,7 +1,7 @@
 import { buildConfiguration } from '@upfluence/w-conf/prettier';
 
 export default buildConfiguration({
-  sortImports: {
+  sortImport: {
     packages: ['@upfluence/oss-components']
   }
 });
