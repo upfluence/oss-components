@@ -4577,20 +4577,6 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   });
   0; //eaimeta@70e063a35619d71f0,"@ember/render-modifiers/modifiers/did-update"eaimeta@70e063a35619d71f
 });
-;define("dummy/modifiers/enable-dropdown", ["exports", "@upfluence/oss-components/modifiers/enable-dropdown"], function (_exports, _enableDropdown) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _enableDropdown.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/modifiers/enable-dropdown"eaimeta@70e063a35619d71f
-});
 ;define("dummy/modifiers/enable-input-autofocus", ["exports", "@upfluence/oss-components/modifiers/enable-input-autofocus"], function (_exports, _enableInputAutofocus) {
   "use strict";
 
@@ -4604,20 +4590,6 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     }
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/modifiers/enable-input-autofocus"eaimeta@70e063a35619d71f
-});
-;define("dummy/modifiers/enable-popover", ["exports", "@upfluence/oss-components/modifiers/enable-popover"], function (_exports, _enablePopover) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _enablePopover.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/modifiers/enable-popover"eaimeta@70e063a35619d71f
 });
 ;define("dummy/modifiers/enable-tooltip", ["exports", "@upfluence/oss-components/modifiers/enable-tooltip"], function (_exports, _enableTooltip) {
   "use strict";

@@ -92806,30 +92806,6 @@ require('@ember/-internals/bootstrap')
     }
   }), class AttachElementModifierNewManager {});
 });
-;define("@upfluence/oss-components/modifiers/enable-dropdown", ["exports", "@ember/modifier", "jquery"], function (_exports, _modifier, _jquery) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"jquery"eaimeta@70e063a35619d71f
-  var _default = _exports.default = (0, _modifier.setModifierManager)(() => ({
-    capabilities: (0, _modifier.capabilities)('3.22'),
-    createModifier() {
-      return {
-        element: null
-      };
-    },
-    installModifier(state, element) {
-      (0, _jquery.default)(element).dropdown();
-    },
-    destroyModifier() {
-      // We don't need to do anything here, but a function
-      // still has to be here so we'll leave it blank.
-    }
-  }), class EnableDropdownModifierManager {});
-});
 ;define("@upfluence/oss-components/modifiers/enable-input-autofocus", ["exports", "@ember/modifier"], function (_exports, _modifier) {
   "use strict";
 
@@ -92863,37 +92839,6 @@ require('@ember/-internals/bootstrap')
     },
     destroyModifier() {} // keep even if empty
   }), class EnableInputAutofocusModifierManager {});
-});
-;define("@upfluence/oss-components/modifiers/enable-popover", ["exports", "@ember/modifier", "jquery"], function (_exports, _modifier, _jquery) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"jquery"eaimeta@70e063a35619d71f
-  var _default = _exports.default = (0, _modifier.setModifierManager)(() => ({
-    capabilities: (0, _modifier.capabilities)('3.22'),
-    createModifier() {
-      return {
-        element: null,
-        handler: null
-      };
-    },
-    installModifier(state, element, {
-      positional: [trigger]
-    }) {
-      state.element = element;
-      trigger ??= 'hover';
-      (0, _jquery.default)(element).popover({
-        trigger
-      });
-    },
-    destroyModifier() {
-      // We don't need to do anything here, but a function
-      // still has to be here so we'll leave it blank.
-    }
-  }), class EnablePopoverModifierManager {});
 });
 ;define("@upfluence/oss-components/modifiers/enable-tooltip", ["exports", "@ember/modifier", "@upfluence/oss-components/utils/dope", "@ember/runloop", "@upfluence/oss-components/utils/animation-manager", "@upfluence/oss-components/utils/element", "@ember/utils", "@embroider/macros/runtime"], function (_exports, _modifier, _dope, _runloop, _animationManager, _element, _utils, _runtime) {
   "use strict";
