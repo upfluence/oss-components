@@ -8,6 +8,7 @@ interface OSSScrollablePanelComponentSignature {
   horizontal?: boolean;
   hideScrollbar?: boolean;
   offset?: number;
+  displayScrollArrows?: boolean;
   onBottomReached?: () => void;
 }
 
@@ -19,6 +20,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   @tracked shadowRightVisible: boolean = false;
 
   resizeObserver = new ResizeObserver(this.resizeObserverCallback.bind(this));
+  mutationObserver = new MutationObserver(this.resizeObserverCallback.bind(this));
 
   get offset(): number {
     return this.args.offset ?? 0;
@@ -39,6 +41,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   @action
   initResizeObserver(element: HTMLElement): void {
     this.resizeObserver.observe(element);
+    this.mutationObserver.observe(element, { childList: true, subtree: true });
   }
 
   @action
@@ -56,6 +59,22 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   onBottomReached(): void {
     if (this.args.horizontal) return;
     this.args.onBottomReached?.();
+  }
+
+  @action
+  scrollToStart(): void {
+    this.parentElement.scrollTo({
+      left: this.parentElement.scrollLeft - this.parentElement.clientWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  @action
+  scrollToEnd(): void {
+    this.parentElement.scrollTo({
+      left: this.parentElement.scrollLeft + this.parentElement.clientWidth,
+      behavior: 'smooth'
+    });
   }
 
   private scrollListener(): void {
@@ -98,7 +117,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
     }
   }
 
-  private resizeObserverCallback(_: ResizeObserverEntry[]): void {
+  private resizeObserverCallback(_: (ResizeObserverEntry | MutationRecord)[]): void {
     if (this.args.horizontal) {
       this.horizontalScrollListener();
     } else {
