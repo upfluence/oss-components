@@ -52,6 +52,10 @@ export default {
       description: {
         component: 'A smart tag input component for entering keywords, @mentions, and #hashtags.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=8613-473117&p=f&t=pVIlyZlo6oyvIQxs-0'
     }
   }
 };

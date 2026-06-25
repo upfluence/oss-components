@@ -58,6 +58,10 @@ export default {
       description: {
         component: 'Displays a card with title, description and illustration. It includes color and shadow variants.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=11260-16590&p=f&t=MXQv8vcSqK6Jaxfy-0'
     }
   }
 };

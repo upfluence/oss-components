@@ -24,6 +24,10 @@ export default {
         component:
           'Wrapper that lays out 1 to 3 OSS::FeatureCard components with angles and overlap. Card color/shadow values are passed through from each card object, with defaults when variants are omitted. See [OSS::FeatureCard](?path=/story/components-oss-featurecard--default) for individual card details.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=11260-16590&p=f&t=MXQv8vcSqK6Jaxfy-0'
     }
   }
 };
