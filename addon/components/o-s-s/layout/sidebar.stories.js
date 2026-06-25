@@ -63,7 +63,7 @@ const Template = (args) => ({
     <div style="height:100vh; padding:5px;">
       <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} @alwaysExpanded={{this.alwaysExpanded}} style="height:95vh; overflow: visible">
         <:content as |sidebar|>
-          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" class="active" @homeAction={{this.homeAction}} />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" @active={{true}} @homeAction={{this.homeAction}} />
           <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />
           <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-envelope" @label="Inbox" @hasNotifications={{true}} />
           <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-credit-card" @label="Payment" @locked={{true}} />

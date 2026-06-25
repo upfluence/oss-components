@@ -14,7 +14,7 @@ interface OSSLayoutSidebarItemArgs {
   tag?: SidebarItemTag;
   expanded?: boolean;
   label?: string;
-  disableAutoActive?: boolean;
+  active?: boolean;
   lockedAction?(): void;
   action?(): void;
 }
@@ -33,6 +33,10 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
 
     if (this.args.expanded) {
       classes.push('oss-sidebar-item--expanded');
+    }
+
+    if (this.args.active) {
+      classes.push('active');
     }
 
     return classes.join(' ');
