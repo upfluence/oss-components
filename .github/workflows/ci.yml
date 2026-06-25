@@ -14,8 +14,8 @@ env:
   FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
-  test:
-    name: Lint & Test
+  lint:
+    name: Lint
     runs-on: ubuntu-24.04
     if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
     timeout-minutes: 10
@@ -37,11 +37,40 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       - name: Lint
         run: pnpm lint:js
-      - name: Test
-        run: pnpm test:ember
+  tests:
+    name: Tests
+    runs-on: ubuntu-24.04
+    if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: current
+            command: pnpm test:ember
+          - name: next
+            command: pnpm ember try:one ember-4.12
+    steps:
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '${{ vars.PNPM_VERSION }}'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '${{ env.NODE_VERSION }}'
+          cache: 'pnpm'
+      - name: Install Dependencies
+        run: pnpm install
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - name: Run ${{ matrix.name }} scenario
+        run: ${{ matrix.command }}
   build:
     runs-on: ubuntu-24.04
-    needs: test
+    needs: [lint, tests]
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
     steps:
@@ -73,7 +102,7 @@ jobs:
   release:
     name: Release Package
     runs-on: ubuntu-24.04
-    needs: test
+    needs: [lint, tests]
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
     steps:
