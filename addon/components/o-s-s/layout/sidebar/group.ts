@@ -12,7 +12,6 @@ export type GroupItem = {
   routePrefix?: string;
   active: boolean;
   dataControlName?: string;
-  disableAutoActive?: boolean;
   lockedAction?(): unknown;
   action?(): void;
 };
