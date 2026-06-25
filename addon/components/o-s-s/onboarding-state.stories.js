@@ -41,6 +41,10 @@ export default {
         component:
           'The OSS::OnboardingState component is used to display an onboarding state with a customizable title, subtitle, and illustration. The buttons should to be defined in the actions named-block.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=9926-25556&t=MXQv8vcSqK6Jaxfy-4'
     }
   }
 };
