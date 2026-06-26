@@ -92885,6 +92885,9 @@ require('@ember/-internals/bootstrap')
     setElementContent(subtitleSpan, subtitle, html);
     container.append(subtitleSpan);
   }
+  function noopEvent(event) {
+    event.stopPropagation();
+  }
   function generateHTMLStructure(state) {
     const {
       title,
@@ -92902,6 +92905,7 @@ require('@ember/-internals/bootstrap')
     generateTitle(titleContainer, title, html);
     state.tooltipElement.append(titleContainer);
     generateSubTitle(state.tooltipElement, subtitle, html);
+    state.tooltipElement.addEventListener('click', noopEvent);
     if ((0, _runtime.isTesting)()) {
       document.querySelector('#ember-testing')?.append(state.tooltipElement);
     } else {
@@ -92961,6 +92965,7 @@ require('@ember/-internals/bootstrap')
     state.animation.reverse();
     state.animation.finished.then(() => {
       (0, _runloop.run)(() => {
+        state.tooltipElement?.removeEventListener('click', noopEvent);
         state.tooltipElement?.remove();
         state.isRendered = false;
         state.tooltipElement = null;
