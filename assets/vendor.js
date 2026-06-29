@@ -101245,6 +101245,7 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
       },
       "forms": {
         "errors": {
+          "invalid_format": "Invalid format. Make sure the value is correct.",
           "required": "This field is required.",
           "toast": {
             "format": {
