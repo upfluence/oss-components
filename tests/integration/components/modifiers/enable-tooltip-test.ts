@@ -105,6 +105,68 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
 
       await assert.tooltip('.test-container').exists();
     });
+
+    module('vertical direction', () => {
+      test('When content has no vertical overflow, it does not display tooltip on hover', async function (assert) {
+        await render(hbs`
+          <div class="test-container"
+            style="width: 200px; max-height: 40px; line-height: 20px; overflow: hidden"
+            {{enable-tooltip title=this.title
+                             displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                             overflowDirection="vertical" }}>
+            short text
+          </div>
+        `);
+
+        await assert.tooltip('.test-container').doesNotExist();
+      });
+
+      test('When content has vertical overflow, it displays tooltip on hover', async function (assert) {
+        await render(hbs`
+          <div class="test-container"
+            style="width: 200px; max-height: 40px; line-height: 20px; overflow: hidden"
+            {{enable-tooltip title=this.title
+                             displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                             overflowDirection="vertical" }}>
+            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+          </div>
+        `);
+
+        await assert.tooltip('.test-container').exists();
+      });
+
+      test('When clamped content has no vertical overflow, it does not display tooltip on hover', async function (assert) {
+        await render(hbs`
+        <div class="test-container"
+          style="width: 200px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden"
+          {{enable-tooltip title=this.title
+                           displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                           overflowDirection="vertical" }}>
+          short text
+        </div>
+      `);
+
+        await assert.tooltip('.test-container').doesNotExist();
+      });
+
+      test('When clamped content has vertical overflow, it displays tooltip on hover', async function (assert) {
+        await render(hbs`
+        <div class="test-container"
+          style="width: 200px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden"
+          {{enable-tooltip title=this.title
+                           displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                           overflowDirection="vertical" }}>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+        </div>
+      `);
+
+        await assert.tooltip('.test-container').exists();
+      });
+    });
   });
 
   module('trigger attribute', () => {
