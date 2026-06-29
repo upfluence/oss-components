@@ -83,6 +83,7 @@ oss-components:
   forms:
     errors:
       required: This field is required.
+      invalid_format: Invalid format. Make sure the value is correct.
       toast:
         format:
           title: Some values are in the wrong format
