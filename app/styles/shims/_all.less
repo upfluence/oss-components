@@ -113,28 +113,17 @@
 // Text Size Utility classes
 // --------------------------------------------------
 
-@min_font_size: 8;
-@breaking_size: 18; // size after what the step is 6px
-
 .text-size(@id, @size) {
   .text-size-@{id} {
     font-size: @size / @rem;
   }
 }
 
-.text-size-loop(@counter, @size, @max) when (@counter < @max) {
-  & when (@size >= @breaking_size) {
-    .text-size-loop(@counter+1, @size+6, @max);
-  }
+@text-sizes: 8, 10, 12, 14, 16, 18, 24, 30, 36, 42;
 
-  & when (@size < @breaking_size) {
-    .text-size-loop(@counter+1, @size+2, @max);
-  }
-
-  .text-size(@counter+1, @size);
-}
-
-.text-size-loop(0, @min_font_size, 10);
+.for(@text-sizes, {
+  .text-size(@i, @value);
+});
 .text-size(normal, @font-size-body);
 
 @default-radius: 4px;
