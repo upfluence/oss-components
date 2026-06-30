@@ -113,18 +113,45 @@
 // Text Size Utility classes
 // --------------------------------------------------
 
-.text-size(@id, @size) {
-  .text-size-@{id} {
-    font-size: @size / @rem;
-  }
+.text-size-1 {
+  font-size: 8 / @rem;
 }
 
-@text-sizes: 8, 10, 12, 14, 16, 18, 24, 30, 36, 42;
+.text-size-2 {
+  font-size: 10 / @rem;
+}
 
-.for(@text-sizes, {
-  .text-size(@i, @value);
-});
-.text-size(normal, @font-size-body);
+.text-size-3 {
+  font-size: 12 / @rem;
+}
+
+.text-size-4 {
+  font-size: 14 / @rem;
+}
+
+.text-size-5 {
+  font-size: 16 / @rem;
+}
+
+.text-size-6 {
+  font-size: 18 / @rem;
+}
+
+.text-size-7 {
+  font-size: 24 / @rem;
+}
+
+.text-size-8 {
+  font-size: 30 / @rem;
+}
+
+.text-size-9 {
+  font-size: 36 / @rem;
+}
+
+.text-size-10 {
+  font-size: 42 / @rem;
+}
 
 @default-radius: 4px;
 @input-size-default: 36px;
