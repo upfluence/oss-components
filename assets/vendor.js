@@ -89497,11 +89497,10 @@ require('@ember/-internals/bootstrap')
       />
     </div>
   </div>
-  
   */
   {
-    "id": "PLIwru4f",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"smart-blob\"],[12],[1,\"\\n    \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/smart-blob-loading.gif\"],[14,\"alt\",\"smart-blob-loading\"],[15,0,[30,0,[\"loadingClass\"]]],[12],[13],[1,\"\\n    \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/smart-blob-inactive.gif\"],[14,\"alt\",\"smart-blob-inactive\"],[15,0,[30,0,[\"inactiveClass\"]]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\"],false,[]]",
+    "id": "rgzGzdI+",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"smart-blob\"],[12],[1,\"\\n    \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/smart-blob-loading.gif\"],[14,\"alt\",\"smart-blob-loading\"],[15,0,[30,0,[\"loadingClass\"]]],[12],[13],[1,\"\\n    \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/smart-blob-inactive.gif\"],[14,\"alt\",\"smart-blob-inactive\"],[15,0,[30,0,[\"inactiveClass\"]]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\"],false,[]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/smart/blob.hbs",
     "isStrictMode": false
   });

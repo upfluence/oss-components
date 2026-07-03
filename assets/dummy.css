@@ -12465,6 +12465,14 @@ a.upf-btn--sm {
   border-radius: 100%;
   transition: all 1s ease-in-out;
 }
+.smart-blob-container--xs {
+  height: 18px;
+  width: 18px;
+}
+.smart-blob-container--xs .smart-blob {
+  width: 18px;
+  height: 18px;
+}
 .smart-blob-container--sm {
   height: 22px;
   width: 22px;

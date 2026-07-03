@@ -19201,7 +19201,7 @@ define("dummy/tests/integration/components/o-s-s/smart/blob-test", ["@ember/test
       assert.ok(active?.classList.contains('fade-in'));
     });
     (0, _qunit.module)('@size', function () {
-      ['sm', 'xl', 'md'].forEach(size => {
+      ['xs', 'sm', 'md', 'xl'].forEach(size => {
         (0, _qunit.test)(`it applies the correct size class for @size='${size}'`, async function (assert) {
           this.set('size', size);
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
