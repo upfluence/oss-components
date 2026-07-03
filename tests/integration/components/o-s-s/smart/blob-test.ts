@@ -40,7 +40,7 @@ module('Integration | Component | o-s-s/smart/blob', function (hooks) {
   });
 
   module('@size', function () {
-    ['sm', 'xl', 'md'].forEach((size) => {
+    ['xs', 'sm', 'md', 'xl'].forEach((size) => {
       test(`it applies the correct size class for @size='${size}'`, async function (assert) {
         this.set('size', size);
         await render(hbs`<OSS::Smart::Blob @size={{this.size}} />`);

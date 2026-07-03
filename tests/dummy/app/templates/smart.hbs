@@ -13,9 +13,11 @@
       Smart blob
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
-      <OSS::Smart::Blob @loading={{false}} @size="sm" />
+      <OSS::Smart::Blob @loading={{this.loading}} @size="xs" />
+      <OSS::Smart::Blob @loading={{this.loading}} @size="sm" />
       <OSS::Smart::Blob @loading={{this.loading}} />
-      <OSS::Smart::Blob @loading={{true}} @size="xl" />
+      <OSS::Smart::Blob @loading={{this.loading}} @size="xl" />
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-type Size = 'sm' | 'md' | 'xl';
+type Size = 'xs' | 'sm' | 'md' | 'xl';
 
 interface SmartBlobArgs {
   loading?: boolean;

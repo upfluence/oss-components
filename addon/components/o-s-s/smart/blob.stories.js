@@ -17,13 +17,13 @@ export default {
     size: {
       description: 'Sets the blob size',
       table: {
-        type: { summary: 'sm | md | xl' },
+        type: { summary: 'xs | sm | md | xl' },
         defaultValue: { summary: 'md' }
       },
       control: {
         type: 'select'
       },
-      options: ['sm', 'md', 'xl']
+      options: ['xs', 'sm', 'md', 'xl']
     }
   },
   parameters: {
