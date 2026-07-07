@@ -4241,38 +4241,35 @@ button.close {
  * Additionally to those, it also sets some colors that are used accross the
  * the apps to provide feedbacks such as Errors, Success, or Alerts.
  */
-.text-size-10 {
-  font-size: 3.5rem;
-}
-.text-size-9 {
-  font-size: 3rem;
-}
-.text-size-8 {
-  font-size: 2.5rem;
-}
-.text-size-7 {
-  font-size: 2rem;
-}
-.text-size-6 {
-  font-size: 1.5rem;
-}
-.text-size-5 {
-  font-size: 1.33333333rem;
-}
-.text-size-4 {
-  font-size: 1.16666667rem;
-}
-.text-size-3 {
-  font-size: 1rem;
+.text-size-1 {
+  font-size: 0.66666667rem;
 }
 .text-size-2 {
   font-size: 0.83333333rem;
 }
-.text-size-1 {
-  font-size: 0.66666667rem;
-}
-.text-size-normal {
+.text-size-3 {
   font-size: 1rem;
+}
+.text-size-4 {
+  font-size: 1.16666667rem;
+}
+.text-size-5 {
+  font-size: 1.33333333rem;
+}
+.text-size-6 {
+  font-size: 1.5rem;
+}
+.text-size-7 {
+  font-size: 2rem;
+}
+.text-size-8 {
+  font-size: 2.5rem;
+}
+.text-size-9 {
+  font-size: 3rem;
+}
+.text-size-10 {
+  font-size: 3.5rem;
 }
 :root {
   --color-primary-50: #f1f3ff;
