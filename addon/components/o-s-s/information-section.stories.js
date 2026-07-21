@@ -62,6 +62,10 @@ export default {
         component:
           'A component that renders a banner with a header and content section for displaying data. The header can include a badge, title, subtitle, and optional action buttons.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=9149-53222&t=MXQv8vcSqK6Jaxfy-0'
     }
   }
 };
