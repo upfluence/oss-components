@@ -47,4 +47,21 @@ module('Integration | Helper | required-input', function (hooks) {
     assert.dom('label span.existing.font-color-error-500').doesNotExist();
     assert.dom('label span.font-color-error-500').exists();
   });
+
+  test('it keeps one asterisk when the modifier is removed and re-added in the same render cycle', async function (assert) {
+    this.isRequired = true;
+
+    await render(hbs`
+      <label {{(if this.isRequired (modifier "required-input"))}}>Conditionally required</label>
+    `);
+    assert.dom('label span.font-color-error-500').exists({ count: 1 });
+
+    this.set('isRequired', false);
+    await settled();
+    assert.dom('label span.font-color-error-500').doesNotExist();
+
+    this.set('isRequired', true);
+    await settled();
+    assert.dom('label span.font-color-error-500').exists({ count: 1 });
+  });
 });
