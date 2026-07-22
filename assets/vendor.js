@@ -93268,21 +93268,35 @@ require('@ember/-internals/bootstrap')
     initializer: null
   })), _class);
 });
-;define("@upfluence/oss-components/modifiers/required-input", ["exports", "ember-modifier"], function (_exports, _emberModifier) {
+;define("@upfluence/oss-components/modifiers/required-input", ["exports", "ember-modifier", "@ember/destroyable"], function (_exports, _emberModifier, _destroyable) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-modifier"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-modifier",0,"@ember/destroyable"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   class RegisterFormField extends _emberModifier.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _defineProperty(this, "markerElement", void 0);
+      (0, _destroyable.registerDestructor)(this, () => this.cleanup());
+    }
     modify(element) {
       this.targetElement = element;
+      this.cleanup();
       const span = document.createElement('span');
       span.classList.add('font-color-error-500');
       span.textContent = '*';
+      this.markerElement = span;
       element.appendChild(span);
+    }
+    cleanup() {
+      this.markerElement?.remove();
+      this.markerElement = undefined;
     }
   }
   _exports.default = RegisterFormField;

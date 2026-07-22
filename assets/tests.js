@@ -26749,6 +26749,32 @@ define("dummy/tests/integration/helpers/required-input-test", ["qunit", "ember-q
       assert.dom('label span.existing.font-color-error-500').doesNotExist();
       assert.dom('label span.font-color-error-500').exists();
     });
+    (0, _qunit.test)('it keeps one asterisk when the modifier is removed and re-added in the same render cycle', async function (assert) {
+      this.isRequired = true;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <label {{(if this.isRequired (modifier "required-input"))}}>Conditionally required</label>
+          
+      */
+      {
+        "id": "JjVqG1Wx",
+        "block": "[[[1,\"\\n      \"],[11,\"label\"],[4,[52,[30,0,[\"isRequired\"]],[50,[28,[37,2],[\"modifier:required-input\"],null],2,null,null]],null,null],[12],[1,\"Conditionally required\"],[13],[1,\"\\n    \"]],[],false,[\"if\",\"modifier\",\"-resolve\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/required-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('label span.font-color-error-500').exists({
+        count: 1
+      });
+      this.set('isRequired', false);
+      await (0, _testHelpers.settled)();
+      assert.dom('label span.font-color-error-500').doesNotExist();
+      this.set('isRequired', true);
+      await (0, _testHelpers.settled)();
+      assert.dom('label span.font-color-error-500').exists({
+        count: 1
+      });
+    });
   });
 });
 define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
