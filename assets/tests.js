@@ -204,6 +204,96 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         }));
         await assert.tooltip('.test-container').exists();
       });
+      (0, _qunit.module)('vertical direction', () => {
+        (0, _qunit.test)('When content has no vertical overflow, it does not display tooltip on hover', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <div class="test-container"
+                      style="width: 200px; max-height: 40px; line-height: 20px; overflow: hidden"
+                      {{enable-tooltip title=this.title
+                                       displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                                       overflowDirection="vertical" }}>
+                      short text
+                    </div>
+                  
+          */
+          {
+            "id": "9sk23Mff",
+            "block": "[[[1,\"\\n          \"],[11,0],[24,0,\"test-container\"],[24,5,\"width: 200px; max-height: 40px; line-height: 20px; overflow: hidden\"],[4,[38,0],null,[[\"title\",\"displayOnlyOnOverflow\",\"overflowDirection\"],[[30,0,[\"title\"]],[30,0,[\"displayOnlyOnOverflow\"]],\"vertical\"]]],[12],[1,\"\\n            short text\\n          \"],[13],[1,\"\\n        \"]],[],false,[\"enable-tooltip\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('.test-container').doesNotExist();
+        });
+        (0, _qunit.test)('When content has vertical overflow, it displays tooltip on hover', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <div class="test-container"
+                      style="width: 200px; max-height: 40px; line-height: 20px; overflow: hidden"
+                      {{enable-tooltip title=this.title
+                                       displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                                       overflowDirection="vertical" }}>
+                      Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud
+                      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                    </div>
+                  
+          */
+          {
+            "id": "goEuYKZb",
+            "block": "[[[1,\"\\n          \"],[11,0],[24,0,\"test-container\"],[24,5,\"width: 200px; max-height: 40px; line-height: 20px; overflow: hidden\"],[4,[38,0],null,[[\"title\",\"displayOnlyOnOverflow\",\"overflowDirection\"],[[30,0,[\"title\"]],[30,0,[\"displayOnlyOnOverflow\"]],\"vertical\"]]],[12],[1,\"\\n            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor\\n            incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud\\n            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat\\n          \"],[13],[1,\"\\n        \"]],[],false,[\"enable-tooltip\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('.test-container').exists();
+        });
+        (0, _qunit.test)('When clamped content has no vertical overflow, it does not display tooltip on hover', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <div class="test-container"
+                    style="width: 200px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden"
+                    {{enable-tooltip title=this.title
+                                     displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                                     overflowDirection="vertical" }}>
+                    short text
+                  </div>
+                
+          */
+          {
+            "id": "Mv2vzLCq",
+            "block": "[[[1,\"\\n        \"],[11,0],[24,0,\"test-container\"],[24,5,\"width: 200px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden\"],[4,[38,0],null,[[\"title\",\"displayOnlyOnOverflow\",\"overflowDirection\"],[[30,0,[\"title\"]],[30,0,[\"displayOnlyOnOverflow\"]],\"vertical\"]]],[12],[1,\"\\n          short text\\n        \"],[13],[1,\"\\n      \"]],[],false,[\"enable-tooltip\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('.test-container').doesNotExist();
+        });
+        (0, _qunit.test)('When clamped content has vertical overflow, it displays tooltip on hover', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                  <div class="test-container"
+                    style="width: 200px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden"
+                    {{enable-tooltip title=this.title
+                                     displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                                     overflowDirection="vertical" }}>
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                  </div>
+                
+          */
+          {
+            "id": "2d3aUo+Q",
+            "block": "[[[1,\"\\n        \"],[11,0],[24,0,\"test-container\"],[24,5,\"width: 200px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden\"],[4,[38,0],null,[[\"title\",\"displayOnlyOnOverflow\",\"overflowDirection\"],[[30,0,[\"title\"]],[30,0,[\"displayOnlyOnOverflow\"]],\"vertical\"]]],[12],[1,\"\\n          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor\\n          incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud\\n          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat\\n        \"],[13],[1,\"\\n      \"]],[],false,[\"enable-tooltip\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+            "isStrictMode": false
+          }));
+          await assert.tooltip('.test-container').exists();
+        });
+      });
     });
     (0, _qunit.module)('trigger attribute', () => {
       (0, _qunit.test)('it renders when hovering and focusing the element with undefined trigger', async function (assert) {

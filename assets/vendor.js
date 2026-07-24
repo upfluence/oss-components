@@ -92912,7 +92912,7 @@ require('@ember/-internals/bootstrap')
     }
   }
   function delayedRender(state) {
-    if (state.tooltipConfig.displayOnlyOnOverflow && !(0, _element.hasOverflow)(state.originElement)) {
+    if (state.tooltipConfig.displayOnlyOnOverflow && !(0, _element.hasOverflow)(state.originElement, state.tooltipConfig.overflowDirection)) {
       return;
     }
     if ((0, _utils.isEmpty)(state.tooltipConfig.title) || state.isRendered || state.setTimeoutId) return;
@@ -99307,12 +99307,12 @@ require('@ember/-internals/bootstrap')
   });
   _exports.hasOverflow = hasOverflow;
   0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
-  function hasOverflow(element) {
+  function hasOverflow(element, direction = 'horizontal') {
     if (!Array.from(element.children).length) {
-      return element.offsetWidth < element.scrollWidth;
+      return direction === 'horizontal' ? element.offsetWidth < element.scrollWidth : element.offsetHeight < element.scrollHeight;
     }
     return Array.from(element.children).some(child => {
-      return hasOverflow(child);
+      return hasOverflow(child, direction);
     });
   }
 });
