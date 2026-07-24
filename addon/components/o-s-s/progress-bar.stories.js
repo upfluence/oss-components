@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-const ProgressBarSkins = ['attention', 'warning', 'success', 'danger'];
+const ProgressBarSkins = ['pending', 'attention', 'warning', 'success', 'danger'];
 const ProgressBarSizes = ['xs', 'sm'];
 
 export default {

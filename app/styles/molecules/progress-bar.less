@@ -29,6 +29,11 @@
   }
 
   &--secondary-skin {
+    &--pending {
+      .oss-progress-bar__outer {
+        background-color: var(--color-primary-500);
+      }
+    }
     &--warning {
       .oss-progress-bar__outer {
         background-color: var(--color-warning-500);
@@ -42,6 +47,18 @@
     &--danger {
       .oss-progress-bar__outer {
         background-color: var(--color-error-500);
+      }
+    }
+  }
+
+  &--pending {
+    .oss-progress-bar__inner {
+      background-color: var(--color-primary-500);
+    }
+
+    &.oss-progress-bar--colored-background {
+      .oss-progress-bar__outer {
+        background-color: var(--color-primary-100);
       }
     }
   }
@@ -95,6 +112,11 @@
 
     &.oss-progress-bar__inner--initial {
       animation: oss-progress-bar-animation 1s ease;
+    }
+
+    &--pending {
+      background-color: var(--color-primary-500);
+      border-radius: 0;
     }
 
     &--warning {
