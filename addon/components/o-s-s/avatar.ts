@@ -12,11 +12,25 @@ export const SizeDefinition: SizeDefType = {
   lg: 'upf-avatar--lg'
 };
 
+export const AvatarSkins = [
+  'danger',
+  'xtd-orange',
+  'xtd-violet-light',
+  'xtd-violet',
+  'xtd-lime',
+  'primary',
+  'primary-light',
+  'xtd-cyan'
+] as const;
+
+export type SkinType = (typeof AvatarSkins)[number];
+
 export interface OSSAvatarArgs {
   image?: string;
   initials?: string;
   size?: SizeType;
   loading?: boolean;
+  skin?: SkinType;
 }
 
 export const DEFAULT_IMAGE_URL: string = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';
@@ -42,6 +56,14 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
 
     if (this.args.loading) {
       classes = classes.concat('upf-avatar--loading ');
+    }
+
+    if (this.args.skin) {
+      assert(
+        `[component][OSS::Avatar] Unknown skin. Available skins are: ${AvatarSkins.join(', ')}`,
+        AvatarSkins.includes(this.args.skin as SkinType)
+      );
+      classes = classes.concat(`upf-avatar--skin upf-avatar--skin-${this.args.skin} `);
     }
 
     assert(
