@@ -11169,6 +11169,34 @@ a.upf-btn--sm {
   line-height: 1;
   border-radius: var(--border-radius-round);
 }
+.upf-avatar--skin {
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+}
+.upf-avatar--skin-danger {
+  background-color: var(--color-error-400);
+}
+.upf-avatar--skin-xtd-orange {
+  background-color: var(--color-orange-400);
+}
+.upf-avatar--skin-xtd-violet-light {
+  background-color: var(--color-violet-400);
+}
+.upf-avatar--skin-xtd-violet {
+  background-color: var(--color-violet-500);
+}
+.upf-avatar--skin-xtd-lime {
+  background-color: var(--color-lime-500);
+}
+.upf-avatar--skin-primary {
+  background-color: var(--color-primary-400);
+}
+.upf-avatar--skin-primary-light {
+  background-color: var(--color-primary-300);
+}
+.upf-avatar--skin-xtd-cyan {
+  background-color: var(--color-cyan-500);
+}
 .oss-copy--inline {
   border: 0;
   background-color: transparent;

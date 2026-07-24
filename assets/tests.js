@@ -2726,6 +2726,38 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
       });
     });
+    (0, _qunit.module)('Skins', function () {
+      (0, _qunit.test)('it sets no skin class when skin is not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Avatar />
+        */
+        {
+          "id": "OJr8BjyG",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/avatar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-avatar').exists();
+        assert.dom('.upf-avatar').hasNoClass(`upf-avatar--skin`);
+      });
+      _avatar.AvatarSkins.forEach(skin => {
+        (0, _qunit.test)(`it sets the right class when using a supported skin: ${skin}`, async function (assert) {
+          this.skin = skin;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Avatar @skin={{this.skin}} />
+          */
+          {
+            "id": "+2itl62p",
+            "block": "[[[8,[39,0],null,[[\"@skin\"],[[30,0,[\"skin\"]]]],null]],[],false,[\"o-s-s/avatar\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-avatar').hasClass(`upf-avatar--skin`).hasClass(`upf-avatar--skin-${skin}`);
+        });
+      });
+    });
     (0, _qunit.module)('Sizes', function () {
       (0, _qunit.test)('it sets the right default class when size is not provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -2784,6 +2816,21 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         {
           "id": "ru2UzlWn",
           "block": "[[[8,[39,0],null,[[\"@size\"],[\"test\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if the wrong skin argument is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, `Assertion Failed: [component][OSS::Avatar] Unknown skin. Available skins are: ${_avatar.AvatarSkins.join(', ')}`);
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Avatar @skin="test" />
+        */
+        {
+          "id": "D73J0lgi",
+          "block": "[[[8,[39,0],null,[[\"@skin\"],[\"test\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));

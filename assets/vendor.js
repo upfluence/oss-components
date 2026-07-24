@@ -82540,7 +82540,7 @@ require('@ember/-internals/bootstrap')
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.SizeDefinition = _exports.DEFAULT_IMAGE_URL = void 0;
+  _exports.default = _exports.SizeDefinition = _exports.DEFAULT_IMAGE_URL = _exports.AvatarSkins = void 0;
   var _class, _descriptor;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -82573,6 +82573,7 @@ require('@ember/-internals/bootstrap')
     md: 'upf-avatar--md',
     lg: 'upf-avatar--lg'
   };
+  const AvatarSkins = _exports.AvatarSkins = ['danger', 'xtd-orange', 'xtd-violet-light', 'xtd-violet', 'xtd-lime', 'primary', 'primary-light', 'xtd-cyan'];
   const DEFAULT_IMAGE_URL = _exports.DEFAULT_IMAGE_URL = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';
   let OSSAvatar = _exports.default = (_class = class OSSAvatar extends _component2.default {
     constructor(...args) {
@@ -82589,13 +82590,18 @@ require('@ember/-internals/bootstrap')
       return this.image === DEFAULT_IMAGE_URL || this.hasError ? 'default-img-placeholder' : '';
     }
     get computedClass() {
-      let classes = 'upf-avatar ';
+      const classes = ['upf-avatar'];
       const size = this.args.size || 'md';
       if (this.args.loading) {
-        classes = classes.concat('upf-avatar--loading ');
+        classes.push('upf-avatar--loading');
+      }
+      if (this.args.skin) {
+        (true && !(AvatarSkins.includes(this.args.skin)) && (0, _debug.assert)(`[component][OSS::Avatar] Unknown skin. Available skins are: ${AvatarSkins.join(', ')}`, AvatarSkins.includes(this.args.skin)));
+        classes.push('upf-avatar--skin', `upf-avatar--skin-${this.args.skin}`);
       }
       (true && !(Object.keys(SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::Avatar] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`, Object.keys(SizeDefinition).includes(size)));
-      return classes.concat(SizeDefinition[size]);
+      classes.push(SizeDefinition[size]);
+      return classes.join(' ');
     }
     imageLoadError(event) {
       event.target.src = DEFAULT_IMAGE_URL;
