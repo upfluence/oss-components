@@ -282,7 +282,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
       this.onSearch = () => {};
     });
 
-    module('If keyboard is disabled', function () {
+    module('If keyboard is disabled', function (hooks) {
       hooks.beforeEach(function () {
         this.enableKeyboard = false;
       });
