@@ -1,4 +1,4 @@
-import DOMPurify from 'dompurify';
+import DOMPurify, { type Config } from 'dompurify';
 
 /**
  * Configure DOMPurify hooks.
@@ -21,7 +21,7 @@ DOMPurify.addHook('afterSanitizeAttributes', (node: Element) => {
 /**
  * Strict configuration allowing Rich Text and Inline SVGs (No <use> tags).
  */
-export const RICH_TEXT_SVG_CONFIG: DOMPurify.Config = {
+export const RICH_TEXT_SVG_CONFIG: Config = {
   ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms):|[^a-z]|[a-z+.\-]+(?:[^a-z+.-:]|$))/i,
   USE_PROFILES: { html: true, svg: false, mathMl: false },
   ADD_ATTR: ['target']
