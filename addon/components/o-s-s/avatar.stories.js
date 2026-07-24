@@ -1,7 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
-const SkinType = ['danger', 'xtd-orange', 'xtd-violet-light', 'xtd-violet', 'xtd-lime', 'primary', 'primary-light', 'xtd-cyan'];
+const SkinType = [
+  'danger',
+  'xtd-orange',
+  'xtd-violet-light',
+  'xtd-violet',
+  'xtd-lime',
+  'primary',
+  'primary-light',
+  'xtd-cyan'
+];
 
 export default {
   title: 'Components/OSS::Avatar',
