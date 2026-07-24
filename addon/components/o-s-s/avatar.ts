@@ -51,11 +51,11 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
   }
 
   get computedClass(): string {
-    let classes = 'upf-avatar ';
+    const classes = ['upf-avatar'];
     const size: SizeType = this.args.size || 'md';
 
     if (this.args.loading) {
-      classes = classes.concat('upf-avatar--loading ');
+      classes.push('upf-avatar--loading');
     }
 
     if (this.args.skin) {
@@ -63,7 +63,7 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
         `[component][OSS::Avatar] Unknown skin. Available skins are: ${AvatarSkins.join(', ')}`,
         AvatarSkins.includes(this.args.skin as SkinType)
       );
-      classes = classes.concat(`upf-avatar--skin upf-avatar--skin-${this.args.skin} `);
+      classes.push('upf-avatar--skin', `upf-avatar--skin-${this.args.skin}`);
     }
 
     assert(
@@ -71,7 +71,8 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
       Object.keys(SizeDefinition).includes(size as SizeType)
     );
 
-    return classes.concat(SizeDefinition[size as SizeType]);
+    classes.push(SizeDefinition[size as SizeType])
+    return classes.join(' ')
   }
 
   @action

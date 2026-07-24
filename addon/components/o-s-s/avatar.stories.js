@@ -55,7 +55,7 @@ export default {
       description: 'Adjust the skin of the avatar component',
       table: {
         type: {
-          summary: SkinType.join('|')
+          summary: SkinType.join(' | ')
         },
         defaultValue: { summary: undefined }
       },

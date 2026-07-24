@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { find, render, setupOnerror, waitFor, waitUntil } from '@ember/test-helpers';
 
-import { SizeDefinition, AvatarSkins,  DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
+import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
 
 module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);
