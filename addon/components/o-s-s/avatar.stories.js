@@ -1,6 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
+const SkinType = [
+  'danger',
+  'xtd-orange',
+  'xtd-violet-light',
+  'xtd-violet',
+  'xtd-lime',
+  'primary',
+  'primary-light',
+  'xtd-cyan'
+];
 
 export default {
   title: 'Components/OSS::Avatar',
@@ -41,6 +51,17 @@ export default {
         type: 'text'
       }
     },
+    skin: {
+      description: 'Adjust the skin of the avatar component',
+      table: {
+        type: {
+          summary: SkinType.join(' | ')
+        },
+        defaultValue: { summary: undefined }
+      },
+      options: [undefined, ...SkinType],
+      control: { type: 'select' }
+    },
     loading: {
       description: 'Display loading state',
       table: {
@@ -70,12 +91,13 @@ const defaultArgs = {
   size: 'md',
   image: undefined,
   initials: undefined,
-  loading: false
+  loading: false,
+  skin: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} />
+    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} @skin={{this.skin}}/>
   `,
   context: args
 });

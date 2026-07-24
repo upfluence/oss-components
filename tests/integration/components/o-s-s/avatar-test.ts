@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { find, render, setupOnerror, waitFor, waitUntil } from '@ember/test-helpers';
 
-import { SizeDefinition, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
+import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
 
 module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);
@@ -63,6 +63,25 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
   });
 
+  module('Skins', function () {
+    test('it sets no skin class when skin is not provided', async function (assert) {
+      await render(hbs`<OSS::Avatar />`);
+
+      assert.dom('.upf-avatar').exists();
+      assert.dom('.upf-avatar').hasNoClass(`upf-avatar--skin`);
+    });
+
+    AvatarSkins.forEach((skin) => {
+      test(`it sets the right class when using a supported skin: ${skin}`, async function (assert) {
+        this.skin = skin;
+        await render(hbs`<OSS::Avatar @skin={{this.skin}} />`);
+
+        assert.dom('.upf-avatar').hasClass(`upf-avatar--skin`).hasClass(`upf-avatar--skin-${skin}`);
+      })
+    })
+
+  })
+
   module('Sizes', function () {
     test('it sets the right default class when size is not provided', async function (assert) {
       await render(hbs`<OSS::Avatar />`);
@@ -99,6 +118,17 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       });
 
       await render(hbs`<OSS::Avatar @size="test" />`);
+    });
+
+    test('it throws an error if the wrong skin argument is passed', async function (assert: Assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(
+          err.message,
+          `Assertion Failed: [component][OSS::Avatar] Unknown skin. Available skins are: ${AvatarSkins.join(', ')}`
+        );
+      });
+
+      await render(hbs`<OSS::Avatar @skin="test" />`);
     });
 
     test('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {
