@@ -315,11 +315,9 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
 
     test('the search is displayed if the @onSearch arg is provided', async function (assert) {
-      assert.expect(4);
-
       this.value = this.items[0];
       this.onSearch = (keyword: string) => {
-        assert.equal(keyword, 'F');
+        assert.strictEqual(keyword, 'F');
         this.set(
           'items',
           this.items.filter(
@@ -570,7 +568,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
   module('Error management', function () {
     test('it throws an error if no @onChange arg is passed', async function (assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Select] The parameter @onChange of type function is mandatory'
         );
@@ -581,7 +579,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
 
     test('it throws an error if the component is invoked with no option named blocked', async function (assert) {
       setupOnerror((err: Error) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
       });
 
       await render(hbs`<OSS::Select @onChange={{this.onChange}} />`);

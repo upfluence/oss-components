@@ -52,17 +52,17 @@ export default class OSSSkeleton<T extends OSSSkeletonArgs> extends Component<T>
   }
 
   get computedClass(): string {
-    let style: string[] = [`fx-gap-px-${this.gap}`];
+    const style: string[] = [`fx-gap-px-${this.gap}`];
 
-    this.direction === 'row' ? style.push('fx-row') : style.push('fx-col');
+    style.push(this.direction === 'row' ? 'fx-row' : 'fx-col');
 
     return style.join(' ');
   }
 
   get rows(): ReturnType<typeof htmlSafe>[] {
     const randomizeInRange: number = this.width * (RANGE_PERCENTAGE / 100);
-    let rows: ReturnType<typeof htmlSafe>[] = [];
-    let multiple = this.args.multiple || 1;
+    const rows: ReturnType<typeof htmlSafe>[] = [];
+    const multiple = this.args.multiple || 1;
 
     for (let i = 0; i < multiple; ++i) {
       let width = this.width;

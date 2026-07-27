@@ -75,9 +75,9 @@ module('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
     test('Default has one skeleton effect', async function (assert) {
       await render(hbs`<OSS::Smart::Skeleton/>`);
 
-      let items = findAll('.upf-smart-skeleton-effect');
+      const items = findAll('.upf-smart-skeleton-effect');
 
-      assert.ok(items.length === 1);
+      assert.strictEqual(items.length, 1);
     });
 
     test('The content has multiple skeleton effect', async function (assert) {
@@ -85,9 +85,9 @@ module('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
 
       await render(hbs`<OSS::Smart::Skeleton @multiple={{this.multiple}}/>`);
 
-      let items = findAll('.upf-smart-skeleton-effect');
+      const items = findAll('.upf-smart-skeleton-effect');
 
-      assert.ok(items.length === 4);
+      assert.strictEqual(items.length, 4);
     });
   });
 
@@ -100,17 +100,18 @@ module('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
     test('Default randomize is falsy', async function (assert) {
       await render(hbs`<OSS::Smart::Skeleton @width={{this.width}}/>`);
 
-      let item = find('.upf-smart-skeleton-effect') as HTMLElement;
+      const item = find('.upf-smart-skeleton-effect') as HTMLElement;
 
-      assert.ok(this.width == item?.offsetWidth);
+      assert.strictEqual(this.width, item?.offsetWidth);
     });
 
     test('Randomize width is within a 15% range', async function (assert) {
       await render(hbs`<OSS::Smart::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>`);
 
-      let item = find('.upf-smart-skeleton-effect') as HTMLElement;
+      const item = find('.upf-smart-skeleton-effect') as HTMLElement;
 
-      assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
+      assert.ok(item.offsetWidth <= 230);
+      assert.ok(item.offsetWidth >= 170);
     });
   });
 
@@ -136,15 +137,15 @@ module('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
 
     test('Passing a data-control-name applies it to the component', async function (assert) {
       await render(hbs`<OSS::Smart::Skeleton data-control-name="layout-sidebar" />`);
-      let inputWrapper: Element | null = find('.upf-smart-skeleton-effect');
-      assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+      const inputWrapper: Element | null = find('.upf-smart-skeleton-effect');
+      assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
     });
   });
 
   module('Error management', () => {
     test('It throws an error if @direction is provided and does not match required values', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::Skeleton] The @direction argument should be a value of row,column,col'
         );

@@ -123,7 +123,7 @@ export default class Extra extends Controller {
   }
 
   @action
-  onSelectionNavTab(selectedTab: {}): void {
+  onSelectionNavTab(selectedTab: object): void {
     console.log('onSelectionNavTab : ', selectedTab);
     this.tabArrayNavTab.forEach((element) => {
       if (element === selectedTab) {

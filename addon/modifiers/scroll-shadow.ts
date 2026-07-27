@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error setModifierManager is not exposed by the Ember typings
 import { setModifierManager, capabilities } from '@ember/modifier';
 
 const SCROLL_SHADOW_CLASS = 'scroll-shadow';

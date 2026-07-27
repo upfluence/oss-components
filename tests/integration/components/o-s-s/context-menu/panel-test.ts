@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, settled, triggerEvent, waitUntil } from '@ember/test-helpers';
-import { hbs, type TemplateFactory } from 'ember-cli-htmlbars';
+import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import sinon from 'sinon';
 import { setComponentTemplate } from '@ember/component';
@@ -53,17 +53,17 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     this.set('isInitialized', true);
     await settled();
     const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
-    assert.equal(panelRef.style.top, '36px');
+    assert.strictEqual(panelRef.style.top, '36px');
     await waitUntil(() => panelRef.style.left === '63.5px', { timeout: 300 });
-    assert.equal(panelRef.style.left, '63.5px');
+    assert.strictEqual(panelRef.style.left, '63.5px');
     buttonRef.style.marginLeft = '50px';
     await settled();
-    assert.equal(panelRef.style.top, '36px');
+    assert.strictEqual(panelRef.style.top, '36px');
     await waitUntil(() => panelRef.style.left === '113.5px', { timeout: 300 });
-    assert.equal(panelRef.style.left, '113.5px');
+    assert.strictEqual(panelRef.style.left, '113.5px');
   });
 
-  module('placement', function (hooks) {
+  module('placement', function () {
     test('When placement is set to right-start, it positions the panel accordingly', async function (assert) {
       await render(hbs`
       {{#if this.isInitialized}}
@@ -85,8 +85,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       const expectedLeftPosition =
         Number(((leftPosition + buttonRef.getBoundingClientRect().width) * 2).toFixed(4)) + 'px';
       const expectedTopPosition = 0 + 'px';
-      assert.equal(expectedLeftPosition, panelRef.style.left);
-      assert.equal(expectedTopPosition, panelRef.style.top);
+      assert.strictEqual(expectedLeftPosition, panelRef.style.left);
+      assert.strictEqual(expectedTopPosition, panelRef.style.top);
     });
 
     test('When placement is set to bottom-start, it positions the panel accordingly', async function (assert) {
@@ -110,8 +110,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       const expectedLeftPosition = 0 + 'px';
       const expectedTopPosition =
         Number(((topPosition + buttonRef.getBoundingClientRect().height) * 2).toFixed(4)) + 'px';
-      assert.equal(expectedLeftPosition, panelRef.style.left);
-      assert.equal(expectedTopPosition, panelRef.style.top);
+      assert.strictEqual(expectedLeftPosition, panelRef.style.left);
+      assert.strictEqual(expectedTopPosition, panelRef.style.top);
     });
   });
 
@@ -134,7 +134,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       this.set('isInitialized', true);
       const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
       await settled();
-      assert.equal(panelRef.style.top, '36px');
+      assert.strictEqual(panelRef.style.top, '36px');
     });
 
     test('When offset is defined, panel is is moved by that many pixels than defined to his reference target', async function (assert) {
@@ -155,7 +155,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       this.set('isInitialized', true);
       const panelRef = document.querySelector('.context-menu-panel__scrollable-container') as HTMLElement;
       await settled();
-      assert.equal(panelRef.style.top, '56px');
+      assert.strictEqual(panelRef.style.top, '56px');
     });
   });
 
@@ -184,8 +184,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
         const triggerPosition = (
           panels[0]?.querySelector('div.context-menu-panel__dropdown li:nth-of-type(1)') as HTMLElement
         ).getBoundingClientRect();
-        assert.equal(triggerPosition.x + triggerPosition.width, panels[1]?.getBoundingClientRect().x);
-        assert.equal(triggerPosition.y + SUBPANEL_OFFSET / 2, panels[1]?.getBoundingClientRect().y);
+        assert.strictEqual(triggerPosition.x + triggerPosition.width, panels[1]?.getBoundingClientRect().x);
+        assert.strictEqual(triggerPosition.y + SUBPANEL_OFFSET / 2, panels[1]?.getBoundingClientRect().y);
       });
 
       test('Submenu items are properly displayed', async function (assert) {
@@ -195,16 +195,16 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
         await click('div.context-menu-panel__dropdown li:nth-of-type(1) .oss-infinite-select-option');
         assert.dom('div.context-menu-panel__dropdown').exists({ count: 2 });
         const panels = document.querySelectorAll('div.context-menu-panel__dropdown');
-        assert.equal(panels[1]?.querySelectorAll('li').length, 3);
-        assert.equal(
+        assert.strictEqual(panels[1]?.querySelectorAll('li').length, 3);
+        assert.strictEqual(
           (panels[1]?.querySelector('li:nth-of-type(1)') as HTMLElement).textContent?.trim(),
           'Sub Item 1.1'
         );
-        assert.equal(
+        assert.strictEqual(
           (panels[1]?.querySelector('li:nth-of-type(2)') as HTMLElement).textContent?.trim(),
           'Sub Item 1.2'
         );
-        assert.equal(
+        assert.strictEqual(
           (panels[1]?.querySelector('li:nth-of-type(3)') as HTMLElement).textContent?.trim(),
           'Sub Item 1.3'
         );
@@ -212,9 +212,11 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     });
 
     test('If item has custom component it render the component instead of default one', async function (assert) {
+      // The backing class only exists to receive the template below.
+      // eslint-disable-next-line ember/no-empty-glimmer-component-classes
       class TestComponent extends Component {}
       setComponentTemplate(hbs`<div data-control-name="custom-row">{{@item.title}}</div>` as any, TestComponent);
-      const component = this.owner.register('component:test-component', TestComponent);
+      this.owner.register('component:test-component', TestComponent);
 
       this.items = [{ title: 'custom', action: () => console.log('Item 1 clicked'), rowRenderer: TestComponent }];
       await render(hbs`<OSS::ContextMenu::Panel @items={{this.items}} />`);

@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error setModifierManager is not exposed by the Ember typings
 import { setModifierManager, capabilities } from '@ember/modifier';
 import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';

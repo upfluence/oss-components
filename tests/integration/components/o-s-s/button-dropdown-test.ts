@@ -212,7 +212,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
   module('Error management', function () {
     test('it throws an error if no icon or label args is provided', async function (assert) {
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.'
         );
@@ -225,7 +225,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('it throws an error if mainAction exists and is not a function', async function (assert) {
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ButtonDropdown] The parameter @mainAction should be a function.'
         );

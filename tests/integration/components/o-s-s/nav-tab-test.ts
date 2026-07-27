@@ -115,7 +115,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
   module('Error management', function () {
     test('It throws an error if @onSelection is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::NavTab] The parameter @onSelection of type function is mandatory'
         );
@@ -125,12 +125,18 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
 
     test('It throws an error if @tabArray is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory'
+        );
       });
       await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} />`);
 
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory'
+        );
       });
       await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} @tabArray=[] />`);
     });
@@ -138,7 +144,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     test('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
       this.tabArray.push({ label: '', key: 'foo', icon: '' });
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::NavTab] The @label or @icon parameter is mandatory for each element in @tabArray'
         );

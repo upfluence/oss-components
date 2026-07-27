@@ -87,9 +87,7 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
     if (this.args.expanded) return;
 
     this.clearTimeouts();
-    scheduleOnce('afterRender', this, () => {
-      this.triggerHovered = this.displayGroupList = true;
-    });
+    scheduleOnce('afterRender', this, this.showGroupList);
 
     document.querySelectorAll('.oss-sidebar-group__items-container--visible').forEach((el) => {
       if (!this.triggerElement.contains(el)) {
@@ -127,6 +125,10 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   @action
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
+  }
+
+  private showGroupList(): void {
+    this.triggerHovered = this.displayGroupList = true;
   }
 
   private hideGroupList(immediate: boolean = false): void {

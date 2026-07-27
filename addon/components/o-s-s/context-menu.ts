@@ -15,8 +15,8 @@ export type ContextMenuItem = {
 interface OSSContextMenuArgs extends OSSButtonArgs {
   items: ContextMenuItem[];
   closeOnMouseLeave?: boolean;
-  onMenuOpened?: () => {};
-  onMenuClosed?: () => {};
+  onMenuOpened?: () => void;
+  onMenuClosed?: () => void;
 }
 
 export default class OSSContextMenuComponent extends Component<OSSContextMenuArgs> {
@@ -34,7 +34,12 @@ export default class OSSContextMenuComponent extends Component<OSSContextMenuArg
     event.stopPropagation();
     if (this.args.loading) return;
     this.displayContextMenuPanel = !this.displayContextMenuPanel;
-    this.displayContextMenuPanel ? this.args.onMenuOpened?.() : this.args.onMenuClosed?.();
+
+    if (this.displayContextMenuPanel) {
+      this.args.onMenuOpened?.();
+    } else {
+      this.args.onMenuClosed?.();
+    }
   }
 
   @action

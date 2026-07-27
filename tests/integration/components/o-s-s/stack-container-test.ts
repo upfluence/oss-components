@@ -74,11 +74,8 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
 
       const subElements = document.querySelectorAll('.oss-stack-container > *');
       subElements.forEach((child, index) => {
-        if (index < subElements.length - 1) {
-          assert.strictEqual((child as HTMLElement).style.marginRight, '-10px');
-        } else {
-          assert.strictEqual((child as HTMLElement).style.marginRight, '');
-        }
+        const expectedMargin = index < subElements.length - 1 ? '-10px' : '';
+        assert.strictEqual((child as HTMLElement).style.marginRight, expectedMargin);
       });
     });
 
@@ -87,11 +84,12 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
 
       const subElements = document.querySelectorAll('.oss-stack-container > *');
       subElements.forEach((child, index) => {
-        if (index < subElements.length - 1) {
-          assert.strictEqual((child as HTMLElement).style.marginRight, '-6px', 'Default margin is applied');
-        } else {
-          assert.strictEqual((child as HTMLElement).style.marginRight, '', 'No margin for the last child');
-        }
+        const isLastChild = index === subElements.length - 1;
+        assert.strictEqual(
+          (child as HTMLElement).style.marginRight,
+          isLastChild ? '' : '-6px',
+          isLastChild ? 'No margin for the last child' : 'Default margin is applied'
+        );
       });
     });
 
@@ -102,11 +100,12 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
 
       const subElements = document.querySelectorAll('.oss-stack-container > *');
       subElements.forEach((child, index) => {
-        if (index < subElements.length - 1) {
-          assert.strictEqual((child as HTMLElement).style.marginRight, '-20px', 'Margin is negative');
-        } else {
-          assert.strictEqual((child as HTMLElement).style.marginRight, '', 'No margin for the last child');
-        }
+        const isLastChild = index === subElements.length - 1;
+        assert.strictEqual(
+          (child as HTMLElement).style.marginRight,
+          isLastChild ? '' : '-20px',
+          isLastChild ? 'No margin for the last child' : 'Margin is negative'
+        );
       });
     });
   });

@@ -79,10 +79,12 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
 
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this.currencies;
-  @tracked localValue: number = this.args.value;
+  @tracked localValue: number;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
+
+    this.localValue = this.args.value;
 
     if (preventDefaultAssertions) return;
 

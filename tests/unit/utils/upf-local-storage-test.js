@@ -29,13 +29,13 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     test('Saving content without specifying a prefix will use the default ".upf_" prefix', function (assert) {
       let upfStorage = new UPFLocalStorage();
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);
-      assert.equal(TEST_VALUE, localStorage.getItem(DEFAULT_PREFIX + TEST_KEY));
+      assert.strictEqual(TEST_VALUE, localStorage.getItem(DEFAULT_PREFIX + TEST_KEY));
     });
 
     test('Setting a custom prefix on the Ctor will save content with the set prefix', function (assert) {
       let upfStorage = new UPFLocalStorage(CUSTOM_PREFIX);
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);
-      assert.equal(TEST_VALUE, localStorage.getItem(CUSTOM_PREFIX + TEST_KEY));
+      assert.strictEqual(TEST_VALUE, localStorage.getItem(CUSTOM_PREFIX + TEST_KEY));
     });
   });
 
@@ -179,13 +179,13 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
   module('Method: getItem', function () {
     test('getItem() returns null if no key is found', function (assert) {
       let upfStorage = new UPFLocalStorage();
-      assert.equal(null, upfStorage.getItem(TEST_KEY));
+      assert.strictEqual(upfStorage.getItem(TEST_KEY), null);
     });
 
     test('getItem() returns the proper value if the key is found', function (assert) {
       let upfStorage = new UPFLocalStorage();
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);
-      assert.equal(TEST_VALUE, upfStorage.getItem(TEST_KEY));
+      assert.strictEqual(TEST_VALUE, upfStorage.getItem(TEST_KEY));
     });
   });
 
@@ -195,7 +195,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);
       assert.deepEqual(TEST_VALUE, localStorage.getItem(DEFAULT_PREFIX + TEST_KEY));
       upfStorage.delete(TEST_KEY);
-      assert.equal(null, upfStorage.getItem(TEST_KEY));
+      assert.strictEqual(upfStorage.getItem(TEST_KEY), null);
     });
 
     test('delete() uses the custom prefix when removing a key', function (assert) {
@@ -203,7 +203,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);
       assert.deepEqual(TEST_VALUE, localStorage.getItem(CUSTOM_PREFIX + TEST_KEY));
       upfStorage.delete(TEST_KEY);
-      assert.equal(null, upfStorage.getItem(TEST_KEY));
+      assert.strictEqual(upfStorage.getItem(TEST_KEY), null);
     });
   });
 });

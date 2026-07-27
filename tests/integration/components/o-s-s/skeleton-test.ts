@@ -75,9 +75,9 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('Default has one skeleton effect', async function (assert) {
       await render(hbs`<OSS::Skeleton/>`);
 
-      let items = findAll('.upf-skeleton-effect');
+      const items = findAll('.upf-skeleton-effect');
 
-      assert.ok(items.length === 1);
+      assert.strictEqual(items.length, 1);
     });
 
     test('The content has multiple skeleton effect', async function (assert) {
@@ -85,9 +85,9 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
 
       await render(hbs`<OSS::Skeleton @multiple={{this.multiple}}/>`);
 
-      let items = findAll('.upf-skeleton-effect');
+      const items = findAll('.upf-skeleton-effect');
 
-      assert.ok(items.length === 4);
+      assert.strictEqual(items.length, 4);
     });
   });
 
@@ -100,17 +100,18 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('Default randomize is false', async function (assert) {
       await render(hbs`<OSS::Skeleton @width={{this.width}}/>`);
 
-      let item = find('.upf-skeleton-effect') as HTMLElement;
+      const item = find('.upf-skeleton-effect') as HTMLElement;
 
-      assert.ok(this.width == item?.offsetWidth);
+      assert.strictEqual(this.width, item?.offsetWidth);
     });
 
     test('Randomize width is within a 15% range', async function (assert) {
       await render(hbs`<OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>`);
 
-      let item = find('.upf-skeleton-effect') as HTMLElement;
+      const item = find('.upf-skeleton-effect') as HTMLElement;
 
-      assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
+      assert.ok(item.offsetWidth <= 230);
+      assert.ok(item.offsetWidth >= 170);
     });
   });
 
@@ -134,15 +135,15 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::Skeleton data-control-name="layout-sidebar" />`);
-      let inputWrapper: Element | null = find('.upf-skeleton-effect');
-      assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+      const inputWrapper: Element | null = find('.upf-skeleton-effect');
+      assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
     });
   });
 
   module('Error management', () => {
     test('it throws an error if @direct is provided and does not match required values', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col'
         );

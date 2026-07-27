@@ -147,12 +147,12 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
       await click('[data-control-name="sidebar-expanded-state-toggle"]');
 
       assert.dom('.oss-sidebar-container').doesNotHaveClass('oss-sidebar-container--expanded');
-      assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
+      assert.strictEqual(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
 
       await click('[data-control-name="sidebar-expanded-state-toggle"]');
 
       assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
-      assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
+      assert.strictEqual(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
     });
   });
 

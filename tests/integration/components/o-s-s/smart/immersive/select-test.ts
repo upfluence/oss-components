@@ -29,7 +29,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
   module('It renders', () => {
     test('When missing selected-item name block, it throws an error', async function (assert) {
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass selected-item named block'
         );
@@ -50,7 +50,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
 
     test('With missing option-item name block, it throws an error', async function (assert) {
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass option-item named block'
         );

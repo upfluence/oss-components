@@ -1,6 +1,5 @@
 'use strict';
 
-// eslint-disable-next-line no-undef
 module.exports = {
   arrowParens: 'always',
   bracketSpacing: true,

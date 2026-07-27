@@ -6,9 +6,7 @@ import { action } from '@ember/object';
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
 import type { Section } from '@upfluence/oss-components/services/wizard-manager';
 
-interface WizardExampleMenuSignature {}
-
-export default class WizardExampleMenu extends Component<WizardExampleMenuSignature> {
+export default class WizardExampleMenu extends Component {
   @service declare wizardManager: WizardManager;
 
   isSectionExpanded = helper((_, { sectionId }: { sectionId: string }): boolean => {

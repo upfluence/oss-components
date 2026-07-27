@@ -195,7 +195,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
 
   test('it throws an error if @title is missing', async function (assert) {
     setupOnerror((error: Error) => {
-      assert.equal(
+      assert.strictEqual(
         error.message,
         'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory'
       );
@@ -205,7 +205,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
 
   test('it throws an error if @onSave is missing', async function (assert) {
     setupOnerror((error: Error) => {
-      assert.equal(
+      assert.strictEqual(
         error.message,
         'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory'
       );

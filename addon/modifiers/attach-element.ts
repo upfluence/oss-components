@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error setModifierManager is not exposed by the Ember typings
 import { setModifierManager, capabilities } from '@ember/modifier';
 import { scheduleOnce } from '@ember/runloop';
 
@@ -14,6 +14,10 @@ type AttachElementState = {
   referenceTarget: HTMLElement | null;
   attachedElement: HTMLElement | null;
 };
+
+function attachElementToTarget(this: AttachElementState, attachmentOptions: AttachmentOptions): void {
+  this.cleanupDrodpownAutoplacement = attachDropdown(this.referenceTarget!, this.attachedElement!, attachmentOptions);
+}
 
 const setupModifier = (state: AttachElementState, element: HTMLElement, args: AttachElementArgs) => {
   state.referenceTarget = args.named.to instanceof HTMLElement ? args.named.to : document.querySelector(args.named.to);
@@ -32,13 +36,7 @@ const setupModifier = (state: AttachElementState, element: HTMLElement, args: At
     return acc;
   }, {});
 
-  scheduleOnce('afterRender', this, () => {
-    state.cleanupDrodpownAutoplacement = attachDropdown(
-      state.referenceTarget!,
-      state.attachedElement!,
-      attachmentOptions
-    );
-  });
+  scheduleOnce('afterRender', state, attachElementToTarget, attachmentOptions);
 };
 
 export default setModifierManager(

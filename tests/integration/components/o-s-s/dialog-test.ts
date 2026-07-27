@@ -165,7 +165,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
   module('Error management', function () {
     test('The component throws an error if the @title parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
       });
 
       await render(hbs`<OSS::Dialog @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`);
@@ -173,7 +173,10 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
 
     test('The component throws an error if the @mainAction parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The mainAction parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::Dialog] The mainAction parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::Dialog @title={{this.title}} @secondaryAction={{this.secondaryAction}} />`);
@@ -181,7 +184,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
 
     test('The component throws an error if the @secondaryAction parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Dialog] The secondaryAction parameter is mandatory'
         );

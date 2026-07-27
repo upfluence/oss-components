@@ -106,7 +106,7 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
 
   test('it fails if @label and @icon are missing', async function (assert) {
     setupOnerror((err: { message: string }) => {
-      assert.equal(
+      assert.strictEqual(
         err.message,
         'Assertion Failed: [component][OSS::Tag] You must pass either a @label or an @icon argument.'
       );

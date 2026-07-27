@@ -1,8 +1,8 @@
 import Helper from '@ember/component/helper';
 
 export function formatNumericHelper(params: any[]) {
-  let [number] = params;
-  let formatter = Intl.NumberFormat(['en-EN', 'fr-FR'], {
+  const [number] = params;
+  const formatter = Intl.NumberFormat(['en-EN', 'fr-FR'], {
     style: 'decimal',
     minimumFractionDigits: 0
   });

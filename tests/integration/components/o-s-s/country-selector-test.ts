@@ -107,7 +107,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
       await click('[data-control-name="country-selector-input"]');
       const rows = findAll('.upf-infinite-select__item');
-      assert.equal(rows.length, this.countries.length);
+      assert.strictEqual(rows.length, this.countries.length);
     });
 
     test('if @sourceList contain ids, then country icons are displayed', async function (assert) {
@@ -244,7 +244,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
   module('error management', () => {
     test('it throws an error if @sourceList is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory'
         );
@@ -255,7 +255,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
 
     test('it throws an error if @onChange is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory'
         );
@@ -270,7 +270,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       this.feedbackMessage = { type: 'error', value: 'This is an error message' };
     });
 
-    module('when @feedbackMessage is provided', () => {
+    module('when @feedbackMessage is not provided', () => {
       test('no error message is displayed', async function (assert) {
         await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
         assert.dom('[data-control-name="country-selector-feedback-message"]').doesNotExist();

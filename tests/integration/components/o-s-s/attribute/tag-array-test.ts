@@ -25,7 +25,7 @@ module('Integration | Component | o-s-s/attribute/tag-array', function (hooks) {
 
     assert.dom('.oss-attribute__value .fx-row.fx-wrap').exists();
     const allUpfTags = findAll('.upf-tag');
-    assert.equal(allUpfTags.length, this.tags.length);
+    assert.strictEqual(allUpfTags.length, this.tags.length);
   });
 
   test('If @tags are not passed to the component, a dash is displayed', async function (assert) {

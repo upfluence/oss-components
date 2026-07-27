@@ -4,7 +4,7 @@ import OSSSkeleton from '../skeleton';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
 
-interface OSSSmartSkeletonArgs extends OSSSkeletonArgs {}
+type OSSSmartSkeletonArgs = OSSSkeletonArgs;
 
 const MIN_HEIGHT = 10;
 

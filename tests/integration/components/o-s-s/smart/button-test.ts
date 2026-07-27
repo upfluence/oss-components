@@ -1,9 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, setupOnerror, waitUntil } from '@ember/test-helpers';
-
-import sinon from 'sinon';
+import { render, setupOnerror } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/smart/button', function (hooks) {
   setupRenderingTest(hooks);
@@ -33,7 +31,9 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
   });
 
   test('it renders the iconUrl and label when present', async function (assert) {
-    await render(hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />`);
+    await render(
+      hbs`<OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" @label="Label" />`
+    );
 
     assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
     assert.dom('.upf-smart-btn span').hasText('Label');
@@ -150,7 +150,7 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
   module('Error management', function () {
     test('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::Button] You must pass either a @label, an @icon or an @iconUrl argument.'
         );

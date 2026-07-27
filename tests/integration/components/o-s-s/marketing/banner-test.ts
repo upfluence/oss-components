@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, setupOnerror } from '@ember/test-helpers';
+import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 
@@ -102,13 +102,13 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
         test('it renders it', async function (assert) {
           await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
-          assert.equal(getComputedStyle(element, ':before').display, 'flex');
+          assert.strictEqual(getComputedStyle(element, ':before').display, 'flex');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
           await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
           const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
-          assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
+          assert.strictEqual(element.style.getPropertyValue('--background-grid-display'), 'flex');
         });
       });
 
@@ -121,7 +121,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
             hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
-          assert.equal(getComputedStyle(element, ':before').display, 'none');
+          assert.strictEqual(getComputedStyle(element, ':before').display, 'none');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
@@ -132,7 +132,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
             hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
-          assert.equal(element.style.getPropertyValue('--background-grid-display'), 'none');
+          assert.strictEqual(element.style.getPropertyValue('--background-grid-display'), 'none');
         });
       });
 
@@ -145,7 +145,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
             hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
-          assert.equal(getComputedStyle(element, ':before').display, 'flex');
+          assert.strictEqual(getComputedStyle(element, ':before').display, 'flex');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
@@ -156,7 +156,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
             hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
-          assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
+          assert.strictEqual(element.style.getPropertyValue('--background-grid-display'), 'flex');
         });
       });
     });
@@ -174,7 +174,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
         );
         const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
 
-        assert.equal(element.style.getPropertyValue('--illustration-display'), 'flex');
+        assert.strictEqual(element.style.getPropertyValue('--illustration-display'), 'flex');
         assert.dom('.upf-marketing-banner__illustration').hasStyle({ display: 'flex' });
         assert.dom('.upf-marketing-banner__illustration img').hasAttribute('src', ILLUSTRATION_SRC);
       });
@@ -206,7 +206,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
       );
       const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
 
-      assert.equal(element.style.getPropertyValue('--illustration-display'), 'none');
+      assert.strictEqual(element.style.getPropertyValue('--illustration-display'), 'none');
       assert.dom('.upf-marketing-banner__illustration').hasStyle({ display: 'none' });
     });
   });
@@ -229,14 +229,14 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
   module('Error management', function () {
     test('It throws an error if @title is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
       });
       await render(hbs`<OSS::Marketing::Banner @subtitle={{this.subtitle}} />`);
     });
 
     test('It throws an error if @subtitle is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
       });
       await render(hbs`<OSS::Marketing::Banner @title={{this.title}} />`);
     });

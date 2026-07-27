@@ -70,13 +70,13 @@ module('Integration | Component | o-s-s/smart/input', function (hooks) {
 
     test('Sets @placeholder correctly', async function (assert) {
       await renderComponentWithParams();
-      let input = find('.upf-input');
+      const input = find('.upf-input');
       assert.strictEqual(input?.getAttribute('placeholder'), 'Type here');
     });
 
     test('Calls @onChange on input', async function (assert) {
       await renderComponentWithParams();
-      let input = find('.upf-input');
+      const input = find('.upf-input');
       assert.ok(input, 'Input element should exist');
       await typeIn(input as Element, 'X');
       assert.ok(onValueChange.called);

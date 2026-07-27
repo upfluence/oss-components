@@ -26,7 +26,7 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
   }
 
   get computedClasses(): string {
-    let arr: string[] = ['array-input-container'];
+    const arr: string[] = ['array-input-container'];
 
     if (this.args.disabled) {
       arr.push('array-input-container--disabled');
@@ -44,9 +44,7 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
   }
 
   private _triggerComponentRedraw(): void {
-    // Since this.items is not properly tracked upon updating the values,
-    // re-assigning this way triggers the component redraw.
-    this.items = this.items;
+    this.items = [...this.items];
   }
 
   private _addEntry() {

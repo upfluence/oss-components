@@ -26,7 +26,7 @@ const ICON_CLASSES = {
  * @param {Function} onclick - A function to be called when the toast is clicked.
  */
 export type ToastOptions = {
-  onclick?: Function;
+  onclick?: (event: Event) => void;
   timeout?: number | 'none';
   badge?: {
     icon?: string;
@@ -111,7 +111,7 @@ export default class Toast extends Service {
       fill: 'forwards'
     });
 
-    let counterAnimation = new Animation(counterDownKeyframes, document.timeline);
+    const counterAnimation = new Animation(counterDownKeyframes, document.timeline);
     counterAnimation.id = 'counter';
     return counterAnimation;
   }
@@ -129,7 +129,7 @@ export default class Toast extends Service {
       }
     );
 
-    let destroyAnimation = new Animation(destroyDownKeyframes, document.timeline);
+    const destroyAnimation = new Animation(destroyDownKeyframes, document.timeline);
     destroyAnimation.id = 'destroy';
     return destroyAnimation;
   }

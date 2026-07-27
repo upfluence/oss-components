@@ -25,13 +25,12 @@ const _formatMoney = function (
 };
 
 export function formatMoneyHelper(params: any[]) {
-  let [amount, currency, format = 'raw', compact = false] = params;
-  if (
+  const [amount, currency, format = 'raw', compact = false] = params;
+  const preventsCompactNotation =
     (amount < PREVENT_COMPACT_NOTATION_ON_RAW_BELOW && format === 'raw') ||
-    (amount < PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW && format === 'cents')
-  )
-    compact = false;
-  return _formatMoney(amount, currency, format, compact);
+    (amount < PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW && format === 'cents');
+
+  return _formatMoney(amount, currency, format, preventsCompactNotation ? false : compact);
 }
 
 export default Helper.helper(formatMoneyHelper);

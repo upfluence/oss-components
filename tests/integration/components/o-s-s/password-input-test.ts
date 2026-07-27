@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
   test('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
     this.value = '1Aaaaaa';
     this.validates = (x: boolean) => {
-      assert.equal(x, true);
+      assert.true(x);
     };
     await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
@@ -62,7 +62,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
   test('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
     this.value = '1A';
     this.validates = (x: boolean) => {
-      assert.equal(x, false);
+      assert.false(x);
     };
     await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
@@ -212,7 +212,10 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
   test('it throws an error when the @value parameter is missing', async function (assert) {
     setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
+      assert.strictEqual(
+        err.message,
+        'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory'
+      );
     });
 
     await render(hbs`<OSS::PasswordInput />`);

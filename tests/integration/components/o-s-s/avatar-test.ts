@@ -14,9 +14,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
-      assert
-        .dom('.upf-avatar img')
-        .hasAttribute('src', '/assets/images/brand-icon.svg');
+      assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
     });
 
     test('it displays the initials when they are provided', async function (assert) {
@@ -36,30 +34,24 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the image when image and initials are provided', async function (assert) {
-      await render(
-        hbs`<OSS::Avatar @image="/assets/images/brand-icon.svg" @initials="TS" />`
-      );
+      await render(hbs`<OSS::Avatar @image="/assets/images/brand-icon.svg" @initials="TS" />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
-      assert
-        .dom('.upf-avatar img')
-        .hasAttribute('src', '/assets/images/brand-icon.svg');
+      assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
     });
 
     test('it updates the image when a new @image is provided', async function (assert) {
       this.updatedImage = null;
       await render(hbs`<OSS::Avatar @image={{this.updatedImage}} @initials="TS" />`);
 
-      assert.ok(this.updatedImage === null);
+      assert.strictEqual(this.updatedImage, null);
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').doesNotExist();
       assert.dom('.upf-avatar span').hasText('TS');
       this.set('updatedImage', '/assets/images/brand-icon.svg');
       assert.dom('.upf-avatar span').doesNotExist();
-      assert
-        .dom('.upf-avatar img')
-        .hasAttribute('src', '/assets/images/brand-icon.svg');
+      assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
     });
   });
 
@@ -77,10 +69,9 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
         await render(hbs`<OSS::Avatar @skin={{this.skin}} />`);
 
         assert.dom('.upf-avatar').hasClass(`upf-avatar--skin`).hasClass(`upf-avatar--skin-${skin}`);
-      })
-    })
-
-  })
+      });
+    });
+  });
 
   module('Sizes', function () {
     test('it sets the right default class when size is not provided', async function (assert) {
@@ -109,7 +100,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
   module('Error behavior', function () {
     test('it throws an error if the wrong size argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           `Assertion Failed: [component][OSS::Avatar] Unknown size. Available sizes are: ${Object.keys(
             SizeDefinition
@@ -122,7 +113,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
     test('it throws an error if the wrong skin argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           `Assertion Failed: [component][OSS::Avatar] Unknown skin. Available skins are: ${AvatarSkins.join(', ')}`
         );

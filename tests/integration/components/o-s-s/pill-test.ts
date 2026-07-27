@@ -39,7 +39,7 @@ module('Integration | Component | o-s-s/pill', function (hooks) {
   module('Error management', function () {
     test('it fails if @label is missing', async function (assert) {
       setupOnerror((err: { message: string }) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Pill] You must pass a @label argument.');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Pill] You must pass a @label argument.');
       });
 
       await render(hbs`<OSS::Pill />`);

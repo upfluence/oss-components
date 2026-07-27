@@ -121,7 +121,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
   module('Error management', () => {
     test('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
       });
 
       await render(hbs`<OSS::OnboardingState />`);
@@ -129,7 +129,10 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
 
     test('for subtitle, the component throws an error if the parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::OnboardingState @title={{this.title}} />`);
@@ -137,7 +140,10 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
 
     test('for imageUrl, the component throws an error if the parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}}  />`);

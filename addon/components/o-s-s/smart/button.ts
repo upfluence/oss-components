@@ -42,7 +42,7 @@ export default class OSSSmartButton extends OSSButton<OSSSmartButtonArgs> {
   }
 
   get computedSmartClasses(): string {
-    let classes = [this.isCircle ? SMART_SQUARE_CLASS : SMART_BASE_CLASS, `upf-smart-btn--${this.smartSkin}`];
+    const classes = [this.isCircle ? SMART_SQUARE_CLASS : SMART_BASE_CLASS, `upf-smart-btn--${this.smartSkin}`];
 
     if (this.size) {
       classes.push(this.isCircle ? `upf-smart-square-btn--${this.size}` : `upf-smart-btn--${this.size}`);

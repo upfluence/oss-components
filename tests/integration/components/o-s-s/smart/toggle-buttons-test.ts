@@ -116,7 +116,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
   module('Error management', () => {
     test('it throws an error if @toggles is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory'
         );
@@ -129,7 +129,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
 
     test('it throws an error if @onSelection is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory'
         );
@@ -140,7 +140,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
 
     test('it throws an error if @selectedToggle is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory'
         );
@@ -153,7 +153,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
       this.selectedToggle = 'toto';
 
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles'
         );

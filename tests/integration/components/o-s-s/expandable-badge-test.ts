@@ -177,7 +177,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
   module('Error management', function () {
     test('it throws an error when an unsupported skin is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ExpandableBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart'
         );
@@ -188,7 +188,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
 
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ExpandableBadge] Unknown size. Available sizes are: sm, md, lg'
         );
@@ -199,7 +199,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
 
     test('it throws an error if no @expandableLabel argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.'
         );
@@ -210,7 +210,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
 
     test('it throws an error if no argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 0 arguments'
         );
@@ -221,7 +221,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
 
     test('it throws an error if more than one content argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 2 arguments'
         );

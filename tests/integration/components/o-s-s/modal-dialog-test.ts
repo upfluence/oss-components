@@ -240,7 +240,10 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
   module('Error management', function () {
     test('The component throws an error if the title parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>`);
@@ -248,7 +251,10 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
 
     test('The component throws an error if the close parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory'
+        );
       });
 
       await render(hbs`<OSS::ModalDialog @title="Test"></OSS::ModalDialog>`);

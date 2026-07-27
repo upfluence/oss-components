@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { WizardBaseStep, type WizardBaseStepSignature } from '@upfluence/oss-components/components/wizard/base-step';
 
-interface WizardExampleStepWithScrollSignature extends WizardBaseStepSignature {}
+type WizardExampleStepWithScrollSignature = WizardBaseStepSignature;
 
 export default class WizardExampleStepWithScroll extends WizardBaseStep<WizardExampleStepWithScrollSignature> {
   constructor(owner: unknown, args: WizardExampleStepWithScrollSignature) {
@@ -16,7 +16,7 @@ export default class WizardExampleStepWithScroll extends WizardBaseStep<WizardEx
       // Implement the logic for step submission here
       // For example, this can be bound to the submit button of an OSS::Form component
       // we would then validate the inputs and resolve true or false based on the validations
-      resolve(true || false);
+      resolve(true);
     });
   }
 

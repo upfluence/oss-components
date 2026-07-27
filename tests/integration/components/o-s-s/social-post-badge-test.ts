@@ -122,7 +122,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
   module('error management', () => {
     test('it throws an error if @selectedToggle is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory'
         );
@@ -136,7 +136,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
       this.postType = 'toto';
 
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter should be a value of SocialPostType'
         );

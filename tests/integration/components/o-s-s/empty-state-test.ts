@@ -66,7 +66,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
     assert.dom('button').hasText('Retry');
   });
 
-  module('component size', function (hooks) {
+  module('component size', function () {
     test('it applies md sizes by default', async function (assert) {
       await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" />`);
       assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
@@ -92,10 +92,13 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
     });
   });
 
-  module('error management', function (hooks) {
+  module('error management', function () {
     test('it throws an error if the @title parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::EmptyState] The title parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::EmptyState] The title parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::EmptyState @subtitle="Try again later" />`);
@@ -103,7 +106,10 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
 
     test('it throws an error if the @subtitle parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::EmptyState] The subtitle parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::EmptyState] The subtitle parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::EmptyState @title="No Data" />`);

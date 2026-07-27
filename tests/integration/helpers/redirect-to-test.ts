@@ -30,7 +30,7 @@ module('Integration | Helper | redirect-to', function (hooks) {
   module('Error management', function () {
     test('it throws an error if the url argument is missing', async function (assert) {
       setupOnerror((err: Error) => {
-        assert.equal(err.message, 'Assertion Failed: [helper][OSS::redirect-to] url argument is mandatory.');
+        assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::redirect-to] url argument is mandatory.');
       });
 
       await render(hbs`<div {{on "click" (redirect-to)}}>link</div>`);
@@ -38,7 +38,7 @@ module('Integration | Helper | redirect-to', function (hooks) {
 
     test('it throws an error if the target is not a valid one', async function (assert) {
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [helper][OSS::redirect-to] the target argument must be a valid one: https://www.w3schools.com/tags/att_a_target.asp.'
         );

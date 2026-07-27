@@ -111,7 +111,7 @@ export default class FormManager extends Service {
   }
 
   private refreshFormFeedbacks(): void {
-    this.formFeedbacks = this.formFeedbacks;
+    this.formFeedbacks = { ...this.formFeedbacks };
   }
 }
 

@@ -21,7 +21,7 @@ module('Integration | Modifiers | modifiers/attach-element', function (hooks) {
 
     const attachedElement = find('.attached-element') as HTMLElement;
     expectedEmptyAttributes.forEach((attr) => {
-      assert.equal(attachedElement.style.getPropertyValue(attr), '');
+      assert.strictEqual(attachedElement.style.getPropertyValue(attr), '');
     });
   });
 

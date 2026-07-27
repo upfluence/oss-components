@@ -108,7 +108,7 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
         </div>
       `);
 
-      let container: HTMLElement | null = document.querySelector('.items-container');
+      const container: HTMLElement | null = document.querySelector('.items-container');
       container!.style.maxHeight = '80px';
       container!.style.overflow = 'auto';
 

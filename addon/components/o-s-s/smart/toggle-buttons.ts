@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
 import OSSToggleButtons, { type OSSToggleButtonsArgs } from '../toggle-buttons';
 
-interface OSSSmartToggleButtonsArgs extends OSSToggleButtonsArgs {}
+type OSSSmartToggleButtonsArgs = OSSToggleButtonsArgs;
 
 export default class OSSSmartToggleButtons extends OSSToggleButtons<OSSSmartToggleButtonsArgs> {
   constructor(owner: unknown, args: OSSSmartToggleButtonsArgs) {

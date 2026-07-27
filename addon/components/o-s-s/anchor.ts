@@ -43,7 +43,7 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
     const route = this.args.routePrefix ? this.args.routePrefix + '.' + this.args.link : this.args.link;
     try {
       return Boolean(this.router.urlFor(route));
-    } catch (error) {
+    } catch {
       return false;
     }
   }

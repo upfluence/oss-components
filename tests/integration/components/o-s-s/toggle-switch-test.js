@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
   setupRenderingTest(hooks);
@@ -22,21 +23,24 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
   });
 
   test('it triggers the onChange action when clicking the button', async function (assert) {
-    this.onChange = (v) => {
-      assert.equal(v, false);
-    };
+    const onChangeSpy = sinon.spy();
+    this.onChange = onChangeSpy;
 
     await render(hbs`<OSS::ToggleSwitch @value={{true}} @onChange={{this.onChange}} />`);
 
     await click('.upf-toggle');
 
-    assert.expect(1);
+    assert.ok(onChangeSpy.calledOnce);
+    assert.false(onChangeSpy.firstCall.args[0]);
   });
 
   module('Error management', function () {
     test('it throws an error if no onChange action is passed', async function (assert) {
       setupOnerror((err) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide an onChange action');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::ToggleSwitch] Please provide an onChange action'
+        );
       });
 
       await render(hbs`<OSS::ToggleSwitch />`);
@@ -46,7 +50,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
       this.onChange = () => {};
 
       setupOnerror((err) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is undefined'
         );
@@ -59,7 +63,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
       this.onChange = () => {};
 
       setupOnerror((err) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is string'
         );

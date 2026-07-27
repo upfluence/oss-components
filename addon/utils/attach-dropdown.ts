@@ -86,7 +86,7 @@ export default function attachDropdown(
     );
   }
 
-  let arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
+  const arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
 
   if (mergedOptions.enableArrow) {
     if (!arrowEl) {

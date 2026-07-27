@@ -47,7 +47,7 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
 
   test('it throws an error if icon argument is missing', async function (assert) {
     setupOnerror((error: Error) => {
-      assert.equal(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
+      assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
     });
 
     await render(hbs`<OSS::Icon />`);

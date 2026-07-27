@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, typeIn, find } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -157,7 +157,7 @@ module('Integration | Component | o-s-s/smart/number-input', function (hooks) {
     });
   });
 
-  module('State Priority', (hooks) => {
+  module('State Priority', () => {
     test('error state takes priority over filled state', async function (assert) {
       await render(hbs`
         <OSS::Smart::NumberInput

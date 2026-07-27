@@ -62,7 +62,7 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     test('Up arrow increases the value by the step', async function (assert) {
       await render(hbs`<OSS::NumberInput />`);
       assert.dom('.number-input input').hasValue('0');
-      // @ts-ignore
+      // @ts-expect-error the modifiers argument is missing from the helper typings
       await triggerKeyEvent('.number-input input', 'keydown', 'ArrowUp', { code: 'ArrowUp' });
       assert.dom('.number-input input').hasValue('1');
     });
@@ -70,7 +70,7 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     test('Right arrow increases the value by the step', async function (assert) {
       await render(hbs`<OSS::NumberInput />`);
       assert.dom('.number-input input').hasValue('0');
-      // @ts-ignore
+      // @ts-expect-error the modifiers argument is missing from the helper typings
       await triggerKeyEvent('.number-input input', 'keydown', 'ArrowRight', { code: 'ArrowRight' });
       assert.dom('.number-input input').hasValue('1');
     });
@@ -100,7 +100,7 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     test('Down arrow increases the value by the step', async function (assert) {
       await render(hbs`<OSS::NumberInput />`);
       assert.dom('.number-input input').hasValue('0');
-      // @ts-ignore
+      // @ts-expect-error the modifiers argument is missing from the helper typings
       await triggerKeyEvent('.number-input input', 'keydown', 'ArrowDown', { code: 'ArrowDown' });
       assert.dom('.number-input input').hasValue('-1');
     });
@@ -108,7 +108,7 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     test('Left arrow increases the value by the step', async function (assert) {
       await render(hbs`<OSS::NumberInput />`);
       assert.dom('.number-input input').hasValue('0');
-      // @ts-ignore
+      // @ts-expect-error the modifiers argument is missing from the helper typings
       await triggerKeyEvent('.number-input input', 'keydown', 'ArrowLeft', { code: 'ArrowLeft' });
       assert.dom('.number-input input').hasValue('-1');
     });
