@@ -1,4 +1,9 @@
-<div class={{this.computedClass}} ...attributes {{on "click" this.stopPropagation}}>
+<div
+  {{! template-lint-disable no-invalid-interactive }}
+  class={{this.computedClass}}
+  ...attributes
+  {{on "click" this.stopPropagation}}
+>
   {{#if (has-block "prefix")}}
     {{yield to="prefix"}}
   {{/if}}

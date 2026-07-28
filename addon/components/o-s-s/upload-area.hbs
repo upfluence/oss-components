@@ -2,6 +2,8 @@
   {{#if this.displayUploadArea}}
     <div
       class={{this.computedClass}}
+      role="button"
+      tabindex="0"
       {{on "dragover" this._allowDropEvent}}
       {{on "dragenter" this._onDragEnter}}
       {{on "dragleave" this._onDragLeave}}
