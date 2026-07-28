@@ -14,6 +14,7 @@ interface OSSPhoneNumberInputArgs extends BaseDropdownArgs {
   prefix: string;
   number: string;
   placeholder?: string;
+  ariaLabel?: string;
   errorMessage?: string;
   hasError?: boolean;
   onChange(prefix: string, number: string): void;

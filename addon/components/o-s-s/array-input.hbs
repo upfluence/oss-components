@@ -6,6 +6,7 @@
     <Input
       @value={{this.currentValue}}
       placeholder={{@placeholder}}
+      aria-label={{@ariaLabel}}
       autocomplete="off"
       disabled={{@disabled}}
       {{on "keydown" this.keyListener}}

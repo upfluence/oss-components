@@ -22,6 +22,7 @@
         class="fx-1"
         name="telephone"
         placeholder={{this.placeholder}}
+        aria-label={{@ariaLabel}}
         {{on "keydown" this.onlyNumeric}}
         {{on "paste" this.handlePaste}}
         {{on "blur" this.onlyNumeric}}

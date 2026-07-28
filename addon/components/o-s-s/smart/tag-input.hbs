@@ -17,6 +17,7 @@
           class="displayed-input"
           @value={{this.inputValue}}
           @type="text"
+          aria-label={{@ariaLabel}}
           data-control-name="tag-input"
           {{on "keydown" this.onKeydown}}
           {{on "focusin" this.onFocusin}}

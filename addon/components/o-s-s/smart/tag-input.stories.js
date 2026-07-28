@@ -36,6 +36,16 @@ export default {
         type: { summary: '(keyword: { value: string, type: "keyword" | "hashtag" | "mention" }) => void' }
       }
     },
+    ariaLabel: {
+      description: 'Accessible name of the input, used when no visible label is associated with it',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     placeholder: {
       description: 'The placeholder to show when the input is empty',
       table: {

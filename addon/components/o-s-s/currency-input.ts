@@ -18,6 +18,7 @@ export interface OSSCurrencyInputArgs {
   allowCurrencyUpdate?: boolean;
   onlyCurrency?: boolean;
   placeholder?: string;
+  ariaLabel?: string;
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   allowedCurrencies?: Currency[];

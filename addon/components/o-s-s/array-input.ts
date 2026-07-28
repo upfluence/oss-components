@@ -10,6 +10,7 @@ interface OSSArrayInputArgs {
   validator?: (value: string) => boolean;
   onChange?: (values: string[]) => void;
   placeholder?: string;
+  ariaLabel?: string;
 }
 
 const DEFAULT_KEYBOARD_TRIGGERS = ['Enter'];

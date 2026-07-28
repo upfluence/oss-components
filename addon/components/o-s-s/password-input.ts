@@ -17,6 +17,7 @@ export const INPUT_VALIDATORS: ValidatorSet = {
 interface OSSPasswordInputArgs {
   value: string | null;
   placeholder?: string;
+  ariaLabel?: string;
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   disabled?: boolean;

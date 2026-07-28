@@ -39,6 +39,7 @@
           min="0"
           autocomplete="off"
           placeholder={{this.placeholder}}
+          aria-label={{@ariaLabel}}
           disabled={{@disabled}}
           {{on "keydown" this.onlyNumeric}}
           {{on "keyup" (fn this.onChange @currency @value)}}

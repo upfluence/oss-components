@@ -7,6 +7,7 @@ import { isEmpty } from '@ember/utils';
 interface SmartInputArgs {
   value?: string;
   placeholder?: string;
+  ariaLabel?: string;
   loading: boolean;
   onChange?: (value: string) => void;
 }
