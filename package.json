@@ -100,7 +100,6 @@
     "@types/qunit": "^2.19.9",
     "@types/rsvp": "^4.0.8",
     "@types/sinon": "^10.0.2",
-    "@typescript-eslint/parser": "^5.0.0",
     "@upfluence/w-conf": "^0.3.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.2.7",
