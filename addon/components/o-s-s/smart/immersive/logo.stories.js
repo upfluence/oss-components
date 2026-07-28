@@ -85,6 +85,10 @@ export default {
       description: {
         component: 'Smart immersive logo component which supports icon or image display and editable overlay.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=12107-30401&t=YjH2opXU05NndeSa-0'
     }
   }
 };
@@ -94,7 +98,6 @@ const Template = ({ iconName, iconColor, ...rest }) => {
 
   return {
     template: hbs`
-      <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
         <OSS::Smart::Immersive::Logo
           @icon={{this.icon}}
           @url={{this.url}}
@@ -104,7 +107,6 @@ const Template = ({ iconName, iconColor, ...rest }) => {
           @hasError={{this.hasError}}
           @onEdit={{this.onEdit}}
         />
-      </div>
     `,
     context: {
       ...rest,

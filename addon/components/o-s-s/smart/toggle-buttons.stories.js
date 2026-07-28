@@ -53,6 +53,10 @@ export default {
         component: 'The smart version of the toggle-buttons item component'
       },
       iframeHeight: 200
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=8613-473117&p=f&t=pVIlyZlo6oyvIQxs-0'
     }
   }
 };

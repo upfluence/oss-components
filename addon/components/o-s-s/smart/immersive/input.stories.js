@@ -81,6 +81,10 @@ export default {
       description: {
         component: 'The smart & immersive version of the input component. Configurable.'
       }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=12107-30401&t=YjH2opXU05NndeSa-0'
     }
   }
 };

@@ -126,6 +126,10 @@ export default {
         component: 'A Country Selector that displays a Country list with a search function.'
       },
       iframeHeight: 200
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=8602-10065&t=MXQv8vcSqK6Jaxfy-0'
     }
   }
 };
