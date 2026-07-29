@@ -54,9 +54,9 @@
     </div>
   {{else if this.feedbackMessage}}
     <span class={{this.feedbackMessageComputedClasses}}>
-      {{#unless (eq this.feedbackMessage.type "error")}}
+      {{#if (not-eq this.feedbackMessage.type "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
-      {{/unless}}
+      {{/if}}
       <span>{{this.feedbackMessage.value}}</span>
     </span>
   {{/if}}
