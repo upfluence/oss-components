@@ -6,8 +6,7 @@
   </div>
 
   <div
-    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
-    style="max-height: 250px; min-height: 250px"
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12 demo-popover-container"
   >
     <div id="popover-attachment" class="font-size-md font-weight-semibold">
       Popover
@@ -65,7 +64,7 @@
       Scrollable panel
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="height: 300px; width: 500px;">
+      <div class="fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel demo-scrollable-panel--tall">
         <OSS::ScrollablePanel>
           <div class="fx-col fx-gap-px-6">
             {{#each this.loop}}
@@ -74,7 +73,7 @@
           </div>
         </OSS::ScrollablePanel>
       </div>
-      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="height: 300px; width: 500px;">
+      <div class="fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel demo-scrollable-panel--tall">
         <OSS::ScrollablePanel @plain={{true}}>
           <div class="fx-col fx-gap-px-6">
             {{#each this.loop}}
@@ -83,9 +82,9 @@
           </div>
         </OSS::ScrollablePanel>
       </div>
-      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="width: 500px;">
+      <div class="fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel">
         <OSS::ScrollablePanel @plain={{true}} @horizontal={{true}} @hideScrollbar={{true}}>
-          <div class="fx-row fx-gap-px-6" style="width: fit-content;">
+          <div class="fx-row fx-gap-px-6 demo-tag-row">
             {{#each this.loop}}
               <OSS::Tag @label="toto" />
             {{/each}}
