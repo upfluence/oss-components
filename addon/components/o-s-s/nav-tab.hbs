@@ -1,6 +1,7 @@
 <div class="fx-row fx-1 tab-container">
   {{#each @tabArray as |tab|}}
     <button
+      {{! template-lint-disable u-template-lint/no-bare-button}}
       type="button"
       class="fx-col tab {{if tab.selected 'tab--selected'}} {{if tab.disabled 'tab--disabled'}}"
       disabled={{tab.disabled}}

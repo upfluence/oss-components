@@ -1,4 +1,4 @@
 <form id={{this.id}} ...attributes {{on "submit" this.onSubmit}}>
   {{yield to="content"}}
-  <button type="submit" hidden></button>
+  <button {{! template-lint-disable u-template-lint/no-bare-button}} type="submit" hidden></button>
 </form>

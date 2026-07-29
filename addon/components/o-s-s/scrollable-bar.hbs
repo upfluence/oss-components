@@ -2,8 +2,11 @@
   {{#if this.isLeftScrollable}}
     {{#if (eq this.buttonStyle "icon")}}
       <button
+        {{! template-lint-disable u-template-lint/no-bare-button}}
         class="scroll-to-left-icon"
-        data-control-name="scrollable-bar-container-scroll-to-left-icon" type="button" {{on "click" this.scrollToLeft}}
+        data-control-name="scrollable-bar-container-scroll-to-left-icon"
+        type="button"
+        {{on "click" this.scrollToLeft}}
       >
         <OSS::Icon @style={{fa-icon-style "fa-chevron-left"}} @icon={{fa-icon-value "fa-chevron-left"}} />
       </button>
@@ -26,8 +29,11 @@
   {{#if this.isRightScrollable}}
     {{#if (eq this.buttonStyle "icon")}}
       <button
+        {{! template-lint-disable u-template-lint/no-bare-button}}
         class="scroll-to-right-icon"
-        data-control-name="scrollable-bar-container-scroll-to-right-icon" type="button" {{on "click" this.scrollToRight}}
+        data-control-name="scrollable-bar-container-scroll-to-right-icon"
+        type="button"
+        {{on "click" this.scrollToRight}}
       >
         <OSS::Icon @style={{fa-icon-style "fa-chevron-right"}} @icon={{fa-icon-value "fa-chevron-right"}} />
       </button>
