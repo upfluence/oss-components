@@ -7025,7 +7025,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         await (0, _settled.default)();
       });
     });
-    (0, _qunit.module)('@feedbackMessageMessage argument', () => {
+    (0, _qunit.module)('@feedbackMessageMessage argument', hooks => {
       hooks.beforeEach(function () {
         this.feedbackMessage = {
           type: 'error',
@@ -7964,7 +7964,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         });
         assert.dom('.oss-infinite-select-option--selected').containsText('EUR');
       });
-      (0, _qunit.module)('With @onlyCurrency', () => {
+      (0, _qunit.module)('With @onlyCurrency', hooks => {
         hooks.beforeEach(function () {
           this.options = {
             allowEmpty: true
@@ -9928,7 +9928,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
         this.onSelect = () => {};
         this.onSearch = () => {};
       });
-      (0, _qunit.module)('If keyboard is disabled', function () {
+      (0, _qunit.module)('If keyboard is disabled', function (hooks) {
         hooks.beforeEach(function () {
           this.enableKeyboard = false;
         });

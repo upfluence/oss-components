@@ -83207,7 +83207,7 @@ require('@ember/-internals/bootstrap')
       return this.args.showIndicators ?? true;
     }
     get showControls() {
-      return !!this.args.showControls ?? false;
+      return Boolean(this.args.showControls);
     }
     get loop() {
       return this.args.loop ?? true;
