@@ -100,7 +100,7 @@
     "@types/qunit": "^2.19.9",
     "@types/rsvp": "^4.0.8",
     "@types/sinon": "^10.0.2",
-    "@upfluence/w-conf": "^0.3.0",
+    "@upfluence/w-conf": "^0.3.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.2.7",
     "ember-cli": "~3.28.6",

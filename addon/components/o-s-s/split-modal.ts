@@ -2,7 +2,8 @@ import { assert } from '@ember/debug';
 
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
 
-type OSSSplitModalArgs = BaseModalArgs;
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface OSSSplitModalArgs extends BaseModalArgs {}
 
 export default class OSSSplitModal extends BaseModal<OSSSplitModalArgs> {
   constructor(owner: unknown, args: OSSSplitModalArgs) {

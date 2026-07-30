@@ -190,8 +190,8 @@ importers:
         specifier: ^5.0.0
         version: 5.62.0(eslint@7.32.0)(typescript@5.9.3)
       '@upfluence/w-conf':
-        specifier: ^0.3.0
-        version: 0.3.0(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.3))(@typescript-eslint/parser@8.65.0(eslint@10.8.0)(typescript@5.3.3))(eslint@10.8.0)(prettier@3.8.3)(typescript@5.3.3)
+        specifier: ^0.3.1
+        version: 0.3.1(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.3))(@typescript-eslint/parser@8.65.0(eslint@10.8.0)(typescript@5.3.3))(eslint@10.8.0)(prettier@3.8.3)(typescript@5.3.3)
       babel-loader:
         specifier: ^8.1.0
         version: 8.3.0(@babel/core@7.23.9)(webpack@5.90.1)
@@ -2406,8 +2406,8 @@ packages:
     resolution: {integrity: sha512-8C71BQkGjiMmXtop7pHVJu1l2NNShFdkCyD6a2ezzs5vU/L3LRtb69EtcteFwz0mYMPzIgOw0n6OV4VBUWZd7A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@upfluence/w-conf@0.3.0':
-    resolution: {integrity: sha512-xzncilLlSq/4EHWdaDDggucXw1DGxU+RmddOb3E0628xBvyt328mE1ehYhxFB/c+rvIi0tgTCF5ZYwyAa8qR9g==, tarball: https://npm.pkg.github.com/download/@upfluence/w-conf/0.3.0/bc778f0d2b50ecf3e137f9841f966bae909c795d}
+  '@upfluence/w-conf@0.3.1':
+    resolution: {integrity: sha512-/joHBWuxmFj+V08i6AqFj3AHqa7XaSNHc3rqKnHlXy7EAiG3W1GWWSVFCY4vekHmnIb55u07A4TMnGDKEfHKrw==, tarball: https://npm.pkg.github.com/download/@upfluence/w-conf/0.3.1/5cd00730826dc8478d41a24c0c8ad814e613c11b}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@trivago/prettier-plugin-sort-imports': ^5.2.2
@@ -12245,7 +12245,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.65.0
       debug: 4.4.3
       minimatch: 10.2.5
-      semver: 7.7.3
+      semver: 7.8.5
       tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@5.3.3)
       typescript: 5.3.3
@@ -12268,7 +12268,7 @@ snapshots:
       '@typescript-eslint/types': 8.65.0
       eslint-visitor-keys: 5.0.1
 
-  '@upfluence/w-conf@0.3.0(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.3))(@typescript-eslint/parser@8.65.0(eslint@10.8.0)(typescript@5.3.3))(eslint@10.8.0)(prettier@3.8.3)(typescript@5.3.3)':
+  '@upfluence/w-conf@0.3.1(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.3))(@typescript-eslint/parser@8.65.0(eslint@10.8.0)(typescript@5.3.3))(eslint@10.8.0)(prettier@3.8.3)(typescript@5.3.3)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.8.0)
       '@trivago/prettier-plugin-sort-imports': 6.0.2(prettier@3.8.3)
@@ -15360,7 +15360,7 @@ snapshots:
   eslint-compat-utils@0.5.1(eslint@10.8.0):
     dependencies:
       eslint: 10.8.0
-      semver: 7.7.3
+      semver: 7.8.5
 
   eslint-config-prettier@10.1.8(eslint@10.8.0):
     dependencies:
@@ -15409,7 +15409,7 @@ snapshots:
       globals: 15.15.0
       globrex: 0.1.2
       ignore: 5.3.2
-      semver: 7.7.3
+      semver: 7.8.5
     optionalDependencies:
       typescript: 5.3.3
 
