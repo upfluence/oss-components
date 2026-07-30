@@ -218,9 +218,9 @@
         </div>
 
         <div class="upf-table__content">
-          {{#each this.tableDemo.header as |header index|}}
+          {{#each this.tableDemo.header}}
             <div class="upf-table__row">
-              {{#each this.tableDemo.header as |header index|}}
+              {{#each this.tableDemo.header as |header|}}
                 <div class="upf-table__cell {{header.class}}">
                   {{#if header.title}}
                     <OSS::Tag @skin="primary" @label="Hello" />
@@ -244,7 +244,7 @@
         </div>
 
         <div class="upf-table__content">
-          {{#each this.tableDemo.header as |header index|}}
+          {{#each this.tableDemo.header}}
             <div class="upf-table__row" role="button">
               {{#each this.tableDemo.header as |header index|}}
                 <div class="upf-table__cell {{header.class}}">
