@@ -428,7 +428,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('.oss-infinite-select-option--selected').containsText('EUR');
     });
 
-    module('With @onlyCurrency', () => {
+    module('With @onlyCurrency', (hooks) => {
       hooks.beforeEach(function () {
         this.options = { allowEmpty: true };
       });

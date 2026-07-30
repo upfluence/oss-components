@@ -39,7 +39,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   }
 
   get showControls(): boolean {
-    return !!this.args.showControls ?? false;
+    return Boolean(this.args.showControls);
   }
 
   get loop(): boolean {

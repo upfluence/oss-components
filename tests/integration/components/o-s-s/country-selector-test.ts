@@ -265,7 +265,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     });
   });
 
-  module('@feedbackMessageMessage argument', () => {
+  module('@feedbackMessageMessage argument', (hooks) => {
     hooks.beforeEach(function () {
       this.feedbackMessage = { type: 'error', value: 'This is an error message' };
     });
