@@ -71,8 +71,8 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
       Object.keys(SizeDefinition).includes(size as SizeType)
     );
 
-    classes.push(SizeDefinition[size as SizeType])
-    return classes.join(' ')
+    classes.push(SizeDefinition[size as SizeType]);
+    return classes.join(' ');
   }
 
   @action
