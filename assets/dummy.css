@@ -13826,6 +13826,7 @@ a.upf-btn--sm {
 }
 .oss-button-dropdown .oss-button-dropdown__items .oss-button-dropdown__item.oss-button-dropdown__item--disabled {
   color: var(--color-gray-400);
+  cursor: not-allowed;
 }
 .oss-button-dropdown .oss-button-dropdown__items .oss-button-dropdown__item.oss-button-dropdown__item--disabled:hover {
   background-color: var(--color-white);
