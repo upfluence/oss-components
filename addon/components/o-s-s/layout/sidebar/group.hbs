@@ -5,10 +5,11 @@
         @icon={{@icon}}
         @label={{@label}}
         @expanded={{@expanded}}
+        @active={{this.isActive}}
         @hasNotifications={{and (not @expanded) this.hasNotifications}}
         {{on "mouseenter" this.handleMouseEnter}}
         {{on "mouseleave" this.handleMouseLeave}}
-        class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+        class={{if @expanded "oss-sidebar-item--group-header"}}
       >
         <:icon>
           {{yield (hash expanded=@expanded) to="icon"}}
@@ -19,10 +20,11 @@
         @icon={{@icon}}
         @label={{@label}}
         @expanded={{@expanded}}
+        @active={{this.isActive}}
         @hasNotifications={{and (not @expanded) this.hasNotifications}}
         {{on "mouseenter" this.handleMouseEnter}}
         {{on "mouseleave" this.handleMouseLeave}}
-        class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+        class={{if @expanded "oss-sidebar-item--group-header"}}
       />
     {{/if}}
 
@@ -60,11 +62,10 @@
             @hasNotifications={{item.hasNotifications}}
             @link={{item.link}}
             @routePrefix={{item.routePrefix}}
+            @active={{item.active}}
             @lockedAction={{item.lockedAction}}
             @action={{item.action}}
-            @disableAutoActive={{item.disableAutoActive}}
             data-control-name={{item.dataControlName}}
-            class={{if item.active "active"}}
           />
         {{/each}}
       </div>

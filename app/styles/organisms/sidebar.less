@@ -213,6 +213,12 @@ a.oss-sidebar-item {
     font-weight: var(--font-weight-semibold);
   }
 
+  &.active:focus,
+  &.active:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
   &:not(&--expanded) &__notification {
     position: absolute;
     top: 5px;
