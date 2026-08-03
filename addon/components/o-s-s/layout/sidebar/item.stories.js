@@ -75,6 +75,16 @@ export default {
         type: 'boolean'
       }
     },
+    tag: {
+      description: 'A tag to display next to the label, passed down to OSS::Tag (label, skin, icon, plain)',
+      table: {
+        type: {
+          summary: '{ label?: string; skin?: string; icon?: string; plain?: boolean }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     lockedAction: {
       description: 'Function to be called on click when item is locked',
       table: {
@@ -125,8 +135,8 @@ const Template = (args) => ({
       <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
                                   @hasNotifications={{this.hasNotifications}}
                                   @link={{this.link}} @label={{this.label}}
-                                  @expanded={{this.expanded}}
-                                  @lockedAction={{this.lockedAction}} />
+                                  @expanded={{this.expanded}} @tag={{this.tag}}
+                                  @lockedAction={{this.lockedAction}}
                                   @action={{this.action}} />
     </div>
   `,
@@ -152,3 +162,10 @@ BasicUsage.args = defaultArgs;
 
 export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
 WithNamedBlockIcon.args = defaultArgs;
+
+export const WithTag = Template.bind({});
+WithTag.args = {
+  ...defaultArgs,
+  expanded: true,
+  tag: { label: 'New', skin: 'chat-gpt', plain: true }
+};

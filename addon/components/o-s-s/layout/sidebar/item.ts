@@ -9,7 +9,7 @@ interface OSSLayoutSidebarItemArgs {
   icon?: string;
   locked?: boolean;
   hasNotifications?: boolean;
-  tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
+  tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon' | 'plain'>;
   expanded?: boolean;
   label?: string;
   disableAutoActive?: boolean;

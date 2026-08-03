@@ -3,6 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
+import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
+
 export type GroupItem = {
   icon?: string;
   locked?: boolean;
@@ -13,6 +15,7 @@ export type GroupItem = {
   active: boolean;
   dataControlName?: string;
   disableAutoActive?: boolean;
+  tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon' | 'plain'>;
   lockedAction?(): unknown;
   action?(): void;
 };

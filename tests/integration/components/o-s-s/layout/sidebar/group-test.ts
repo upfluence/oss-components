@@ -219,4 +219,34 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
       assert.dom('.oss-sidebar-group > div .oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-ship');
     });
   });
+
+  module('an item has a tag', function (hooks) {
+    hooks.beforeEach(function () {
+      this.expanded = true;
+      this.items = [
+        {
+          icon: 'far fa-search',
+          link: '/search',
+          active: false,
+          hasNotifications: false,
+          label: 'Search',
+          tag: { label: 'New', skin: 'chat-gpt', plain: true }
+        }
+      ];
+    });
+
+    test('the tag is propagated to the underlying item', async function (assert) {
+      await renderComponent();
+
+      assert
+        .dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag')
+        .hasText('New');
+      assert
+        .dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag')
+        .hasClass('upf-tag--chat-gpt');
+      assert
+        .dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag')
+        .hasClass('upf-tag--plain');
+    });
+  });
 });
