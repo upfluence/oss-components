@@ -151,7 +151,6 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
     }
 
     if (this.args.loading && !this.args.loadingOptions?.showLabel) {
-      // The width must be frozen before the spinner replaces the label, hence the side-effect.
       // eslint-disable-next-line ember/no-side-effects
       this.DOMElement.style.width = `${this.DOMElement?.offsetWidth}px`;
     } else {

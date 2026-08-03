@@ -39,8 +39,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
   test('When referenceTarget is passed, it attaches and moves with the target', async function (assert) {
     await render(hbs`
       {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel @items={{this.items}} 
-                                 @referenceTarget={{this.referenceTarget}} 
+        <OSS::ContextMenu::Panel @items={{this.items}}
+                                 @referenceTarget={{this.referenceTarget}}
                                  @placement="bottom-start" />
       {{/if}}
       <OSS::Button id="first_button" @label="first" />
@@ -67,8 +67,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     test('When placement is set to right-start, it positions the panel accordingly', async function (assert) {
       await render(hbs`
       {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel @items={{this.items}} 
-                                 @referenceTarget={{this.referenceTarget}} 
+        <OSS::ContextMenu::Panel @items={{this.items}}
+                                 @referenceTarget={{this.referenceTarget}}
                                  @placement="right-start" />
       {{/if}}
       <OSS::Button id="trigger" @label="Trigger" />
@@ -92,8 +92,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     test('When placement is set to bottom-start, it positions the panel accordingly', async function (assert) {
       await render(hbs`
       {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel @items={{this.items}} 
-                                 @referenceTarget={{this.referenceTarget}} 
+        <OSS::ContextMenu::Panel @items={{this.items}}
+                                 @referenceTarget={{this.referenceTarget}}
                                  @placement="bottom-start" />
       {{/if}}
       <OSS::Button id="trigger" @label="Trigger" />
@@ -120,8 +120,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       this.offset = 0;
       await render(hbs`
       {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel @items={{this.items}} 
-                                 @referenceTarget={{this.referenceTarget}} 
+        <OSS::ContextMenu::Panel @items={{this.items}}
+                                 @referenceTarget={{this.referenceTarget}}
                                  @placement="bottom-start"
                                  @offset={{this.offset}} />
       {{/if}}
@@ -141,8 +141,8 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       this.offset = 20;
       await render(hbs`
       {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel @items={{this.items}} 
-                                 @referenceTarget={{this.referenceTarget}} 
+        <OSS::ContextMenu::Panel @items={{this.items}}
+                                 @referenceTarget={{this.referenceTarget}}
                                  @placement="bottom-start"
                                  @offset={{this.offset}} />
       {{/if}}
@@ -164,7 +164,7 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
       test('Clicking on item opens a submenu on the right of the trigger element', async function (assert) {
         await render(hbs`
           {{#if this.isInitialized}}
-            <OSS::ContextMenu::Panel @items={{this.items}} 
+            <OSS::ContextMenu::Panel @items={{this.items}}
                                      @referenceTarget={{this.referenceTarget}}
                                      @placement="bottom-start"
                                      @offset={{this.offset}} />
@@ -212,7 +212,6 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     });
 
     test('If item has custom component it render the component instead of default one', async function (assert) {
-      // The backing class only exists to receive the template below.
       // eslint-disable-next-line ember/no-empty-glimmer-component-classes
       class TestComponent extends Component {}
       setComponentTemplate(hbs`<div data-control-name="custom-row">{{@item.title}}</div>` as any, TestComponent);

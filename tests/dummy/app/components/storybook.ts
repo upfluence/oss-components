@@ -22,7 +22,6 @@ export default class StorybookComponent extends Component<StorybookArgs> {
   }
 
   get storyComponent() {
-    // The class is a dynamic backing class filled in below, not a component file.
     // eslint-disable-next-line ember/no-empty-glimmer-component-classes
     class StoryComponent extends Component {}
 
