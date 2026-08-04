@@ -12450,6 +12450,29 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/group-test", ["q
         assert.dom('.oss-sidebar-group > div .oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-ship');
       });
     });
+    (0, _qunit.module)('an item has a tag', function (hooks) {
+      hooks.beforeEach(function () {
+        this.expanded = true;
+        this.items = [{
+          icon: 'far fa-search',
+          link: '/search',
+          active: false,
+          hasNotifications: false,
+          label: 'Search',
+          tag: {
+            label: 'New',
+            skin: 'chat-gpt',
+            plain: true
+          }
+        }];
+      });
+      (0, _qunit.test)('the tag is propagated to the underlying item', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag').hasText('New');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag').hasClass('upf-tag--chat-gpt');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag').hasClass('upf-tag--plain');
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
@@ -12592,6 +12615,46 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           }));
           assert.dom('.oss-sidebar-item__label').exists();
           assert.dom('.oss-sidebar-item__label').hasText('Label');
+        });
+      });
+      (0, _qunit.module)('Tag', () => {
+        (0, _qunit.test)('Default value for tag is undefined', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Layout::Sidebar::Item @icon="far fa-search" @label="Label"/>
+          */
+          {
+            "id": "Xwfjfknm",
+            "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"far fa-search\",\"Label\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-sidebar-item__tag').doesNotExist();
+        });
+        (0, _qunit.test)('When tag is passed, it is rendered as a direct child of the item with all its args', async function (assert) {
+          this.tag = {
+            label: 'New',
+            skin: 'chat-gpt',
+            icon: 'fa-star',
+            plain: true
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Layout::Sidebar::Item @icon="far fa-search" @label="Label" @tag={{this.tag}} />
+          */
+          {
+            "id": "toq84sMM",
+            "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@tag\"],[\"far fa-search\",\"Label\",[30,0,[\"tag\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-sidebar-item > .oss-sidebar-item__tag').exists();
+          assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag');
+          assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag--chat-gpt');
+          assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag--plain');
+          assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag--xs');
+          assert.dom('.oss-sidebar-item__tag i').hasClass('fa-star');
+          assert.dom('.oss-sidebar-item__tag').hasText('New');
         });
       });
     });

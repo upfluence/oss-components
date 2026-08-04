@@ -15115,6 +15115,13 @@ a.oss-sidebar-item {
 .oss-sidebar-item__label--no-icon {
   padding-left: var(--spacing-px-9);
 }
+.oss-sidebar-item__tag {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
 .oss-sidebar-item__notification {
   width: 3px;
   height: 3px;
@@ -15151,6 +15158,9 @@ a.oss-sidebar-item {
 }
 .oss-sidebar-item--expanded .oss-sidebar-item__label {
   width: fit-content;
+  opacity: 1;
+}
+.oss-sidebar-item--expanded .oss-sidebar-item__tag {
   opacity: 1;
 }
 .oss-sidebar-item:focus:not(.oss-sidebar-item.active):not(:hover),
