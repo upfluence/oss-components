@@ -3,6 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
+import type { SidebarItemTag } from '@upfluence/oss-components/components/o-s-s/layout/sidebar/item';
+
 export type GroupItem = {
   icon?: string;
   locked?: boolean;
@@ -13,6 +15,7 @@ export type GroupItem = {
   active: boolean;
   dataControlName?: string;
   disableAutoActive?: boolean;
+  tag?: SidebarItemTag;
   lockedAction?(): unknown;
   action?(): void;
 };

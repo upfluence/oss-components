@@ -67,6 +67,26 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
         assert.dom('.oss-sidebar-item__label').hasText('Label');
       });
     });
+
+    module('Tag', () => {
+      test('Default value for tag is undefined', async function (assert) {
+        await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @label="Label"/>`);
+        assert.dom('.oss-sidebar-item__tag').doesNotExist();
+      });
+
+      test('When tag is passed, it is rendered as a direct child of the item with all its args', async function (assert) {
+        this.tag = { label: 'New', skin: 'chat-gpt', icon: 'fa-star', plain: true };
+        await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @label="Label" @tag={{this.tag}} />`);
+
+        assert.dom('.oss-sidebar-item > .oss-sidebar-item__tag').exists();
+        assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag');
+        assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag--chat-gpt');
+        assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag--plain');
+        assert.dom('.oss-sidebar-item__tag').hasClass('upf-tag--xs');
+        assert.dom('.oss-sidebar-item__tag i').hasClass('fa-star');
+        assert.dom('.oss-sidebar-item__tag').hasText('New');
+      });
+    });
   });
 
   module('Actions', function (hooks) {

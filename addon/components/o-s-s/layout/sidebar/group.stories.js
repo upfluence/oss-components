@@ -92,7 +92,8 @@ const defaultArgs = {
       hasNotifications: true,
       locked: false,
       link: 'http://upfluence.com',
-      lockedAction: action('lockedAction')
+      lockedAction: action('lockedAction'),
+      tag: { label: 'New', skin: 'chat-gpt', plain: true }
     }
   ]
 };

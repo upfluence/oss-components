@@ -28,6 +28,17 @@
     {{@label}}
   </div>
 
+  {{#if @tag}}
+    <OSS::Tag
+      @label={{@tag.label}}
+      @skin={{@tag.skin}}
+      @icon={{@tag.icon}}
+      @plain={{@tag.plain}}
+      @size="xs"
+      class="oss-sidebar-item__tag"
+    />
+  {{/if}}
+
   {{#if this.hasNotifications}}
     <div class="oss-sidebar-item__notification"></div>
   {{/if}}
