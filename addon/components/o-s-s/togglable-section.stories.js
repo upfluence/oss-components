@@ -75,6 +75,16 @@ export default {
         type: 'boolean'
       }
     },
+    switchable: {
+      description: 'Whether the toggle switch is displayed and the section can be toggled from the header',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     size: {
       description: 'Adjust the size of the component. Currently available options are `sm` and `md`. Defaults to `md`.',
       table: {
@@ -119,6 +129,7 @@ const defaultArgs = {
   icon: '',
   size: undefined,
   disabled: undefined,
+  switchable: undefined,
   onChange: action('onChange')
 };
 
@@ -127,7 +138,7 @@ const Template = (args) => ({
     <OSS::TogglableSection
       @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
       @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
-      @disabled={{this.disabled}} @size={{this.size}}>
+      @disabled={{this.disabled}} @size={{this.size}} @switchable={{this.switchable}}>
       <:contents>
         Setting content
       </:contents>
@@ -141,7 +152,7 @@ const WithActionsNamedBlockTemplate = (args) => ({
     <OSS::TogglableSection
       @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
       @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
-      @disabled={{this.disabled}} @size={{this.size}}>
+      @disabled={{this.disabled}} @size={{this.size}} @switchable={{this.switchable}}>
       <:contents>
         Setting content
       </:contents>
@@ -153,8 +164,25 @@ const WithActionsNamedBlockTemplate = (args) => ({
   context: args
 });
 
+const WithoutToggleTemplate = (args) => ({
+  template: hbs`
+    <OSS::TogglableSection
+      @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
+      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
+      @disabled={{this.disabled}} @size={{this.size}} @switchable={{false}}>
+      <:contents>
+        Setting content
+      </:contents>
+    </OSS::TogglableSection>
+  `,
+  context: args
+});
+
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
 export const WithActionsNamedBlock = WithActionsNamedBlockTemplate.bind({});
 WithActionsNamedBlock.args = defaultArgs;
+
+export const WithoutToggle = WithoutToggleTemplate.bind({});
+WithoutToggle.args = defaultArgs;

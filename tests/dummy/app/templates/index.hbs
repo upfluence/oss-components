@@ -337,8 +337,8 @@
     <div class="font-size-md font-weight-semibold">
       Togglable section
     </div>
-    <div class="fx-row fx-gap-px-36 fx-xalign-start">
-      <div class="fx-row fx-gap-px-24 fx-1">
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
         <OSS::TogglableSection
           @title="This is a title"
           @subtitle="This is a subtitle"
@@ -400,7 +400,16 @@
           @size="sm"
         />
       </div>
-
+      <div class="fx-row fx-gap-px-24">
+        <OSS::TogglableSection
+          @title="This is a title"
+          @subtitle="This is a subtitle"
+          @badgeIcon="far fa-hourglass"
+          @toggled={{this.toggled}}
+          @onChange={{this.onToggle}}
+          @switchable={{false}}
+        />
+      </div>
     </div>
   </div>
 
