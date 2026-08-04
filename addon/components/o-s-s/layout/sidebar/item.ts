@@ -3,13 +3,15 @@ import { action } from '@ember/object';
 
 import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
 
+export type SidebarItemTag = Pick<OSSTagArgs, 'label' | 'skin' | 'icon' | 'plain'>;
+
 interface OSSLayoutSidebarItemArgs {
   link: string;
   routePrefix?: string;
   icon?: string;
   locked?: boolean;
   hasNotifications?: boolean;
-  tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon' | 'plain'>;
+  tag?: SidebarItemTag;
   expanded?: boolean;
   label?: string;
   disableAutoActive?: boolean;
