@@ -91508,7 +91508,9 @@ require('@ember/-internals/bootstrap')
       {{#if (and (has-block "header-actions"))}}
         {{yield to="header-actions"}}
       {{/if}}
-      <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
+      {{#if this.isSwitchable}}
+        <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
+      {{/if}}
     </div>
     {{#if (and (has-block "contents") @toggled)}}
       <hr class="margin-px-0 width-pc-100" />
@@ -91519,8 +91521,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "Ea6tBkx3",
-    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row\\n      \",[30,0,[\"paddingClass\"]],\"\\n      fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n      \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,9]]],null],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[8,[39,9],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,10]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&header-actions\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"and\",\"has-block\",\"yield\",\"o-s-s/toggle-switch\"]]",
+    "id": "GRHSnGFU",
+    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row\\n      \",[30,0,[\"paddingClass\"]],\"\\n      fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n      \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,9]]],null],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[41,[30,0,[\"isSwitchable\"]],[[[1,\"      \"],[8,[39,9],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,10]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&header-actions\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"and\",\"has-block\",\"yield\",\"o-s-s/toggle-switch\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/togglable-section.hbs",
     "isStrictMode": false
   });
@@ -91534,8 +91536,11 @@ require('@ember/-internals/bootstrap')
     get paddingClass() {
       return this.args.size === 'sm' ? 'padding-px-12' : 'padding-px-18';
     }
+    get isSwitchable() {
+      return this.args.switchable ?? true;
+    }
     onHeaderClick() {
-      if (this.args.disabled) return;
+      if (this.args.disabled || !this.isSwitchable) return;
       this.args.onChange(!this.args.toggled);
     }
     noop() {}
