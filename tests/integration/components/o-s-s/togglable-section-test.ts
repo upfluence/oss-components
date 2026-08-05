@@ -176,6 +176,34 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     });
   });
 
+  module('@Switchable behaviour', () => {
+    test('If @switchable is not passed, the toggle is rendered', async function (assert) {
+      await render(
+        hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} />`
+      );
+
+      assert.dom('.upf-toggle').exists();
+    });
+
+    test('If @switchable is false, the toggle is not rendered', async function (assert) {
+      await render(
+        hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @switchable={{false}} />`
+      );
+
+      assert.dom('.upf-toggle').doesNotExist();
+    });
+
+    test('If @switchable is false, clicking on the header does not call @onChange', async function (assert) {
+      this.onChange = sinon.stub();
+      await render(
+        hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @switchable={{false}} />`
+      );
+
+      await click('.inner-header');
+      assert.true(this.onChange.notCalled);
+    });
+  });
+
   test('When `header-actions` named block is passed, the content is rendered in the header', async function (assert) {
     await render(
       hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} >

@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 interface CampaignTogglableSectionArgs {
   title: string;
   toggled: boolean;
+  switchable?: boolean;
   iconUrl?: string;
   icon?: string;
   badgeIcon?: string;
@@ -27,9 +28,13 @@ export default class CampaignTogglableSection extends Component<CampaignTogglabl
     return this.args.size === 'sm' ? 'padding-px-12' : 'padding-px-18';
   }
 
+  get isSwitchable(): boolean {
+    return this.args.switchable ?? true;
+  }
+
   @action
   onHeaderClick(): void {
-    if (this.args.disabled) return;
+    if (this.args.disabled || !this.isSwitchable) return;
     this.args.onChange(!this.args.toggled);
   }
 

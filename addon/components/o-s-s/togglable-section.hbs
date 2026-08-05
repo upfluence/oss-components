@@ -21,7 +21,9 @@
     {{#if (and (has-block "header-actions"))}}
       {{yield to="header-actions"}}
     {{/if}}
-    <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
+    {{#if this.isSwitchable}}
+      <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
+    {{/if}}
   </div>
   {{#if (and (has-block "contents") @toggled)}}
     <hr class="margin-px-0 width-pc-100" />
