@@ -29,7 +29,7 @@ export default class CampaignTogglableSection extends Component<CampaignTogglabl
   }
 
   get isSwitchable(): boolean {
-    return this.args.switchable !== false;
+    return this.args.switchable ?? true;
   }
 
   @action
