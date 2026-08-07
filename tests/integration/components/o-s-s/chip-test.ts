@@ -102,6 +102,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
 
   module('Error management', function () {
     test('It throws an error if @onRemove is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -112,6 +113,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     });
 
     test('It throws an error if @label is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
       });

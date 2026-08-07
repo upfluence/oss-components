@@ -99,6 +99,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
   module('Error behavior', function () {
     test('it throws an error if the wrong size argument is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,
@@ -112,6 +113,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it throws an error if the wrong skin argument is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,

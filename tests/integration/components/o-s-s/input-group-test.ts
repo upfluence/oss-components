@@ -50,6 +50,7 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
   });
 
   test('it fails if no prefix or suffix parameters are passed', async function (assert: Assert) {
+    assert.expect(1);
     setupOnerror((err: Error) => {
       assert.strictEqual(
         err.message,

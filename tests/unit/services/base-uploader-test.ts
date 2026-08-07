@@ -143,6 +143,7 @@ module('Unit | Service | base-uploader', function (hooks) {
   });
 
   test('calling the upload method throws a NotImplemented error', function (assert) {
+    assert.expect(1);
     try {
       this.service.upload(
         {

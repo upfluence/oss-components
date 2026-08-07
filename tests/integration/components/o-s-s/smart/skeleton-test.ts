@@ -144,6 +144,7 @@ module('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
 
   module('Error management', () => {
     test('It throws an error if @direction is provided and does not match required values', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

@@ -212,7 +212,6 @@ module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
     });
 
     test('If item has custom component it render the component instead of default one', async function (assert) {
-      // eslint-disable-next-line ember/no-empty-glimmer-component-classes
       class TestComponent extends Component {}
       setComponentTemplate(hbs`<div data-control-name="custom-row">{{@item.title}}</div>` as any, TestComponent);
       this.owner.register('component:test-component', TestComponent);

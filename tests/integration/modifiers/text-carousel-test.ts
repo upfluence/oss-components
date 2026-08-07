@@ -60,6 +60,7 @@ module('Integration | Modifier | text-carousel', function (hooks) {
   });
 
   test('it throws when no labels are provided', async function (assert) {
+    assert.expect(1);
     this.set('labels', []);
 
     setupOnerror((error: Error) => {

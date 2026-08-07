@@ -114,6 +114,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
 
   module('Error management', function () {
     test('It throws an error if @onSelection is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -124,6 +125,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('It throws an error if @tabArray is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -142,6 +144,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
 
     test('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
+      assert.expect(1);
       this.tabArray.push({ label: '', key: 'foo', icon: '' });
       setupOnerror((err: any) => {
         assert.strictEqual(

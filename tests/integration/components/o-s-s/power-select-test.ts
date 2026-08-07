@@ -417,6 +417,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
   module('Error management', () => {
     test('without selected-item named block', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -430,6 +431,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
     });
 
     test('without option-item named block', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

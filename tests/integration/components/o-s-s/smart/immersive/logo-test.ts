@@ -162,6 +162,7 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
   });
 
   test('it throws an error if icon format is invalid', async function (assert) {
+    assert.expect(1);
     this.icon = 'invalidFormat';
 
     setupOnerror((error: Error) => {

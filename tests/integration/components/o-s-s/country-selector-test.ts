@@ -243,6 +243,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
 
   module('error management', () => {
     test('it throws an error if @sourceList is not provided', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -254,6 +255,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     });
 
     test('it throws an error if @onChange is not provided', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

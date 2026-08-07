@@ -127,6 +127,7 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
   module('Error management', () => {
     test('it throws when @cards is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -138,6 +139,7 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
     });
 
     test('it throws when @cards has invalid count', async function (assert) {
+      assert.expect(1);
       this.cards = [];
 
       setupOnerror((err: any) => {

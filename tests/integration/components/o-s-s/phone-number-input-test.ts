@@ -225,6 +225,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
 
   module('Error management', function () {
     test('It throws an error if @prefix is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -237,6 +238,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
     });
 
     test('It throws an error if @number is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -249,6 +251,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
     });
 
     test('It throws an error if @onChange is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

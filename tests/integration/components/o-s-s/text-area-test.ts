@@ -97,6 +97,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
   module('error management', () => {
     test('it throws an error if @resize is not a correct value', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

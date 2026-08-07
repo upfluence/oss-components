@@ -89,6 +89,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
 
   module('Error management', function () {
     test('The component throws an error if the close parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

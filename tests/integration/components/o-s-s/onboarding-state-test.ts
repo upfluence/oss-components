@@ -120,6 +120,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
 
   module('Error management', () => {
     test('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
       });
@@ -128,6 +129,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
     });
 
     test('for subtitle, the component throws an error if the parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -139,6 +141,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
     });
 
     test('for imageUrl, the component throws an error if the parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

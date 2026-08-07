@@ -176,6 +176,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
 
   module('Error management', function () {
     test('it throws an error when an unsupported skin is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,
@@ -187,6 +188,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     });
 
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,
@@ -198,6 +200,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     });
 
     test('it throws an error if no @expandableLabel argument is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,
@@ -209,6 +212,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     });
 
     test('it throws an error if no argument is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,
@@ -220,6 +224,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     });
 
     test('it throws an error if more than one content argument is passed', async function (assert: Assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,

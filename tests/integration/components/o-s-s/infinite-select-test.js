@@ -61,6 +61,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   module('search is enabled', function () {
     module('with onSearch hook', function () {
       test('it calls the onSearch hook with the typed keyword', async function (assert) {
+        assert.expect(2);
         this.onSearch = (keyword) => {
           assert.strictEqual(keyword, 'b', 'Enters the onSearch hook');
         };
@@ -97,6 +98,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   module('item selection', function () {
     module('onSelect is passed', function () {
       test('it calls the onSelect hook with the clicked item', async function (assert) {
+        assert.expect(1);
         this.items = FAKE_DATA;
         this.onSelect = (item) => {
           assert.strictEqual(item.name, 'Batman');
@@ -500,6 +502,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   module('Error management', function () {
     module('On item selection, if onSelect is not passed', function () {
       test('it should throw an error', async function (assert) {
+        assert.expect(1);
         setupOnerror((err) => {
           assert.strictEqual(
             err.message,
@@ -513,6 +516,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
 
     module('When the search is enabled, if no onSearch hook has been passed', function () {
       test('should throw an error', async function (assert) {
+        assert.expect(1);
         setupOnerror((err) => {
           assert.strictEqual(
             err.message,

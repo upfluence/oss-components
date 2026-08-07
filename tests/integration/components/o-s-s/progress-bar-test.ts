@@ -217,6 +217,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
     });
 
     test('if the value is higher than 100, it throws an error', async function (assert) {
+      assert.expect(1);
       setupOnerror((error: Error) => {
         assert.strictEqual(
           error.message,

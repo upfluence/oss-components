@@ -164,6 +164,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
 
   module('Error management', function () {
     test('The component throws an error if the @title parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
       });
@@ -172,6 +173,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     });
 
     test('The component throws an error if the @mainAction parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -183,6 +185,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     });
 
     test('The component throws an error if the @secondaryAction parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

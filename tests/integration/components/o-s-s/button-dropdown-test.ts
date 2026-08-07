@@ -211,6 +211,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
   module('Error management', function () {
     test('it throws an error if no icon or label args is provided', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,
@@ -224,6 +225,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     });
 
     test('it throws an error if mainAction exists and is not a function', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,

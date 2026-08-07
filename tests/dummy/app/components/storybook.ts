@@ -22,7 +22,6 @@ export default class StorybookComponent extends Component<StorybookArgs> {
   }
 
   get storyComponent() {
-    // eslint-disable-next-line ember/no-empty-glimmer-component-classes
     class StoryComponent extends Component {}
 
     Object.keys(this.storyComponentArgs).forEach((key) => {

@@ -26,6 +26,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
   module('#getInstance', function () {
     test('it returns a form instance', function (assert) {
+      assert.expect(5);
       const instance = this.service.getInstance('test');
 
       assert.strictEqual(instance.id, 'test');

@@ -46,6 +46,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
 
   module('Error management', function () {
     test('failing to pass @rating throws an error', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -57,6 +58,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
     });
 
     test('failing to pass @totalStart throws an error', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

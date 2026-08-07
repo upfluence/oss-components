@@ -228,6 +228,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
 
   module('Error management', function () {
     test('It throws an error if @title is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
       });
@@ -235,6 +236,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
     });
 
     test('It throws an error if @subtitle is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
       });

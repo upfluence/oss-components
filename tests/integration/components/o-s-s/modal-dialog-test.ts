@@ -239,6 +239,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
 
   module('Error management', function () {
     test('The component throws an error if the title parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -250,6 +251,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     });
 
     test('The component throws an error if the close parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

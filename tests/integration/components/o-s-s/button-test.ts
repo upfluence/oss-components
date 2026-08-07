@@ -223,6 +223,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
   module('Error management', function () {
     test('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,
@@ -234,6 +235,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
 
     test('it fails if callback missing for @countDown argument', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,

@@ -94,6 +94,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
 
   module('error management', function () {
     test('it throws an error if the @title parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -105,6 +106,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
     });
 
     test('it throws an error if the @subtitle parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

@@ -36,9 +36,9 @@
 
   {{#if this.displayDropdown}}
     <div
-      {{! template-lint-disable no-invalid-interactive }}
       class="oss-button-dropdown__items"
       {{on "click" this.toggleDropdown}}
+      role="button"
       {{did-insert this.setupChildrenClickHandler}}
       {{will-destroy this.teardownChildrenClickHandler}}
       {{on-click-outside this.onClickOutside useCapture=true}}

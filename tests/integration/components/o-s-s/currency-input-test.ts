@@ -253,6 +253,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
   });
 
   test('It throws an error if @onChange is not passed', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
       assert.strictEqual(
         err.message,

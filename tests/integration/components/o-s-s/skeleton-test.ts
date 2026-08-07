@@ -142,6 +142,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
 
   module('Error management', () => {
     test('it throws an error if @direct is provided and does not match required values', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

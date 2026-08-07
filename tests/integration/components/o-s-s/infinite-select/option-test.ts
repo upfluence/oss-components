@@ -523,6 +523,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
 
   module('for errors management', () => {
     test('The component throws an error if the title parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -533,6 +534,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
     });
 
     test('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,

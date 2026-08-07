@@ -34,6 +34,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
 
   module('@style parameter', function () {
     test('when "under" is passed, sub-elements have a raising z-index', async function (assert) {
+      assert.expect(4);
       await render(hbs`<OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>`);
       assert.dom('.oss-stack-container').hasClass('oss-stack-container--style-under');
       const subElements = document.querySelectorAll('.oss-stack-container > *');
@@ -47,6 +48,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
     });
 
     test('when "over" is passed, sub-elements have a lowering z-index', async function (assert) {
+      assert.expect(4);
       await render(hbs`<OSS::StackContainer @style="over"><div></div><div></div><div></div></OSS::StackContainer>`);
       assert.dom('.oss-stack-container').hasClass('oss-stack-container--style-over');
       const subElements = document.querySelectorAll('.oss-stack-container > *');
@@ -68,6 +70,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
 
   module('@pxMargin parameter', function () {
     test('it applies a margin to sub-elements except the last one', async function (assert) {
+      assert.expect(3);
       await render(
         hbs`<OSS::StackContainer @pxMargin="10" @style="under"><div></div><div></div><div></div></OSS::StackContainer>`
       );
@@ -80,6 +83,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
     });
 
     test('the margin defaults to -6px if not specified', async function (assert) {
+      assert.expect(3);
       await render(hbs`<OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>`);
 
       const subElements = document.querySelectorAll('.oss-stack-container > *');
@@ -94,6 +98,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
     });
 
     test('passing a positive margin converts it to a negative margin', async function (assert) {
+      assert.expect(3);
       await render(
         hbs`<OSS::StackContainer @pxMargin="20" @style="under"><div></div><div></div><div></div></OSS::StackContainer>`
       );
@@ -112,6 +117,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
 
   module('@bringToFrontOnHover parameter', function () {
     test('it does not bring elements to front by default', async function (assert) {
+      assert.expect(3);
       await render(hbs`<OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>`);
 
       const subElements = document.querySelectorAll('.oss-stack-container > *');
@@ -125,6 +131,7 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
     });
 
     test('it brings elements to front on hover when specified', async function (assert) {
+      assert.expect(6);
       await render(
         hbs`<OSS::StackContainer @bringToFrontOnHover={{true}} @style="under"><div></div><div></div><div></div></OSS::StackContainer>`
       );

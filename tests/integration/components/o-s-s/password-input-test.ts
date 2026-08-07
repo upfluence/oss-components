@@ -51,6 +51,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
   });
 
   test('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    assert.expect(1);
     this.value = '1Aaaaaa';
     this.validates = (x: boolean) => {
       assert.true(x);
@@ -60,6 +61,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
   });
 
   test('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    assert.expect(1);
     this.value = '1A';
     this.validates = (x: boolean) => {
       assert.false(x);
@@ -211,6 +213,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
   });
 
   test('it throws an error when the @value parameter is missing', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
       assert.strictEqual(
         err.message,

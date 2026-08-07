@@ -52,6 +52,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   });
 
   test('it fails if no label nor icon argument are present', async function (assert: Assert) {
+    assert.expect(1);
     setupOnerror((err: Error) => {
       assert.strictEqual(
         err.message,

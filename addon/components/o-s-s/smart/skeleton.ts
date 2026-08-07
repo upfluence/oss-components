@@ -4,7 +4,6 @@ import OSSSkeleton from '../skeleton';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface OSSSmartSkeletonArgs extends OSSSkeletonArgs {}
 
 const MIN_HEIGHT = 10;

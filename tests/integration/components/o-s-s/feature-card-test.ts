@@ -84,6 +84,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
 
   module('Error management', () => {
     test('it throws when @title is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
       });
@@ -92,6 +93,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     });
 
     test('it throws when @description is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
       });
@@ -100,6 +102,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     });
 
     test('it throws when @image is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -111,6 +114,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     });
 
     test('it throws when @colorVariant is unknown', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -124,6 +128,7 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     });
 
     test('it throws when @shadowVariant is unknown', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
       });

@@ -149,6 +149,7 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
 
   module('Error management', function () {
     test('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,

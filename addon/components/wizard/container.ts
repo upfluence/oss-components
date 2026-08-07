@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface WizardContainerComponentSignature {}
 
 export default class WizardContainerComponent extends Component<WizardContainerComponentSignature> {

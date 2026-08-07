@@ -315,6 +315,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
 
     test('the search is displayed if the @onSearch arg is provided', async function (assert) {
+      assert.expect(4);
       this.value = this.items[0];
       this.onSearch = (keyword: string) => {
         assert.strictEqual(keyword, 'F');
@@ -567,6 +568,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
 
   module('Error management', function () {
     test('it throws an error if no @onChange arg is passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,
@@ -578,6 +580,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
 
     test('it throws an error if the component is invoked with no option named blocked', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
       });

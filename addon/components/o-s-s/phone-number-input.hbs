@@ -10,11 +10,7 @@
       <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-round"></div>
       <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" />
     </div>
-    <div
-      {{! template-lint-disable no-invalid-interactive }}
-      class="fx-1 fx-row upf-input"
-      {{on "click" this.focusInput}}
-    >
+    <div class="fx-1 fx-row upf-input" role="button" {{on "click" this.focusInput}}>
       <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
       <Input
         @value={{@number}}

@@ -38,6 +38,7 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
   });
 
   test('If no pages are yielded to the component, it throws an error', async function (assert) {
+    assert.expect(1);
     setupOnerror((error: Error) => {
       assert.strictEqual(error.message, '[component][OSS::Carousel] No pages found in the carousel');
     });

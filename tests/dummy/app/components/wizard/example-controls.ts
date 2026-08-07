@@ -4,7 +4,6 @@ import { action } from '@ember/object';
 
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface WizardExampleControlsSignature {}
 
 export default class WizardExampleControls extends Component<WizardExampleControlsSignature> {

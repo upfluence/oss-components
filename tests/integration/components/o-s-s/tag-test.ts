@@ -105,6 +105,7 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
   });
 
   test('it fails if @label and @icon are missing', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: { message: string }) => {
       assert.strictEqual(
         err.message,

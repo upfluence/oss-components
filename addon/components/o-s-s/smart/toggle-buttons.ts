@@ -1,7 +1,6 @@
 import { assert } from '@ember/debug';
 import OSSToggleButtons, { type OSSToggleButtonsArgs } from '../toggle-buttons';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface OSSSmartToggleButtonsArgs extends OSSToggleButtonsArgs {}
 
 export default class OSSSmartToggleButtons extends OSSToggleButtons<OSSSmartToggleButtonsArgs> {

@@ -25,7 +25,6 @@ export default class BaseUploader extends Service implements UploaderInterface {
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   upload(_request: UploadRequest, _validationRules?: FileValidator[]): void {
     throw new Error(
       '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.'
@@ -38,7 +37,6 @@ export default class BaseUploader extends Service implements UploaderInterface {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   buildHeaders(_: UploadRequest): { name: string; value: string }[] {
     return [];
   }

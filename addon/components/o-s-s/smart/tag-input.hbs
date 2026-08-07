@@ -1,6 +1,6 @@
 <div
-  {{! template-lint-disable no-invalid-interactive }}
   class="tag-input-container {{if (gt this.inputValue.length 0) 'tag-input-container--active'}}"
+  role="button"
   {{on "click" this.onClickQueryBuilder}}
   {{did-insert this.registerElement}}
   ...attributes

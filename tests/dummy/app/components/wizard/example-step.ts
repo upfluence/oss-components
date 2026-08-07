@@ -1,7 +1,6 @@
 import { action } from '@ember/object';
 import { WizardBaseStep, type WizardBaseStepSignature } from '@upfluence/oss-components/components/wizard/base-step';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface WizardExampleStepSignature extends WizardBaseStepSignature {}
 
 export default class WizardExampleStep extends WizardBaseStep<WizardExampleStepSignature> {

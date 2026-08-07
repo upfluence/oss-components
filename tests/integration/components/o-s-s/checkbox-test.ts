@@ -158,6 +158,7 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
 
   module('Error management', function () {
     test('it throws an error if checked argument is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((error: Error) => {
         assert.strictEqual(
           error.message,
@@ -168,6 +169,7 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
     });
 
     test('it throws an error if the onChange argument is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((error: Error) => {
         assert.strictEqual(
           error.message,

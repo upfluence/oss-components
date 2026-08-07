@@ -115,6 +115,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
 
   module('Error management', () => {
     test('it throws an error if @toggles is not provided', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -128,6 +129,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
     });
 
     test('it throws an error if @onSelection is not provided', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -139,6 +141,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
     });
 
     test('it throws an error if @selectedToggle is not provided', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
@@ -150,6 +153,7 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
     });
 
     test('it throws an error if @selectedToggle is not a value of toggles', async function (assert) {
+      assert.expect(1);
       this.selectedToggle = 'toto';
 
       setupOnerror((err: any) => {

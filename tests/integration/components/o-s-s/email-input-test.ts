@@ -52,6 +52,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
   });
 
   test('If the email regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    assert.expect(1);
     this.value = 'john.doe@example.com';
     this.validates = (x: boolean) => {
       assert.true(x);
@@ -61,6 +62,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
   });
 
   test('If the email regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    assert.expect(1);
     this.value = 'foo@f';
     this.validates = (x: boolean) => {
       assert.false(x);
@@ -70,6 +72,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
   });
 
   test('it throws an error when the @value parameter is missing', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
       assert.strictEqual(
         err.message,

@@ -194,6 +194,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
   });
 
   test('it throws an error if @title is missing', async function (assert) {
+    assert.expect(1);
     setupOnerror((error: Error) => {
       assert.strictEqual(
         error.message,
@@ -204,6 +205,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
   });
 
   test('it throws an error if @onSave is missing', async function (assert) {
+    assert.expect(1);
     setupOnerror((error: Error) => {
       assert.strictEqual(
         error.message,

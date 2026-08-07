@@ -28,6 +28,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
 
   module('It renders', () => {
     test('When missing selected-item name block, it throws an error', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,
@@ -49,6 +50,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
     });
 
     test('With missing option-item name block, it throws an error', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
         assert.strictEqual(
           err.message,

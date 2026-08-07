@@ -29,6 +29,7 @@ module('Integration | Helper | redirect-to', function (hooks) {
 
   module('Error management', function () {
     test('it throws an error if the url argument is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::redirect-to] url argument is mandatory.');
       });
@@ -37,6 +38,7 @@ module('Integration | Helper | redirect-to', function (hooks) {
     });
 
     test('it throws an error if the target is not a valid one', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
         assert.strictEqual(
           err.message,

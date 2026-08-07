@@ -6,7 +6,6 @@ import { action } from '@ember/object';
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
 import type { Section } from '@upfluence/oss-components/services/wizard-manager';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface WizardExampleMenuSignature {}
 
 export default class WizardExampleMenu extends Component<WizardExampleMenuSignature> {
