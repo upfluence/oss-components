@@ -22,9 +22,7 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
   test('it displays the right number of avatars', async function (assert) {
     await render(hbs`<OSS::AvatarGroup @avatars={{this.avatars}} />`);
     assert.dom('.upf-avatar').exists({ count: 2 });
-    assert
-      .dom('.upf-avatar:first-child img')
-      .hasAttribute('src', '/assets/images/brand-icon.svg');
+    assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/assets/images/brand-icon.svg');
     assert
       .dom('.upf-avatar:last-child img')
       .hasAttribute('src', '/@upfluence/oss-components/assets/images/avatar-placeholder.svg');
@@ -45,9 +43,7 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
   test('if a @max arg is provided, we should display maximum that number of avatars and display remaining ones using a placeholder', async function (assert) {
     await render(hbs`<OSS::AvatarGroup @avatars={{this.avatars}} @max={{1}} />`);
     assert.dom('.upf-avatar').exists({ count: 2 });
-    assert
-      .dom('.upf-avatar:first-child img')
-      .hasAttribute('src', '/assets/images/brand-icon.svg');
+    assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/assets/images/brand-icon.svg');
     assert.dom('.upf-avatar:last-child img').doesNotExist();
     assert.dom('.upf-avatar:last-child').hasText('+1');
   });

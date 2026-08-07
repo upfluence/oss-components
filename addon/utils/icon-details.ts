@@ -22,7 +22,7 @@ export function getIconStyle(fontAwesomeIcon: string): IconStyle {
 }
 
 export function getIconValue(fontAwesomeIcon: string): string {
-  let iconValues: string[] = [];
+  const iconValues: string[] = [];
   fontAwesomeIcon.split(' ').forEach((part: string) => {
     if (part.includes(FA_ICON_PREFIX)) iconValues.push(part);
   });

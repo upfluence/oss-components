@@ -29,7 +29,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   });
 
   test('it opens link with href and target', async function (assert: Assert) {
-    let windowOpenStub = sinon.stub(window, 'open');
+    const windowOpenStub = sinon.stub(window, 'open');
 
     await render(hbs`
       <OSS::Link @icon="fab fa-facebook" @label="Facebook"
@@ -43,7 +43,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
 
   test('it transits to the route', async function (assert: Assert) {
     const router = this.owner.lookup('service:router') as RouterService;
-    let transitionToStub = sinon.stub(router, 'transitionTo' as keyof RouterService);
+    const transitionToStub = sinon.stub(router, 'transitionTo' as keyof RouterService);
 
     await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo="workflow.create" />`);
 
@@ -52,8 +52,9 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   });
 
   test('it fails if no label nor icon argument are present', async function (assert: Assert) {
+    assert.expect(1);
     setupOnerror((err: Error) => {
-      assert.equal(
+      assert.strictEqual(
         err.message,
         'Assertion Failed: [component][OSS::Link] You must pass either a @label or an @icon argument.'
       );

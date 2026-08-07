@@ -47,7 +47,7 @@ module('Integration | Component | o-s-s/smart/text-area', function (hooks) {
     test('Default height', async function (assert) {
       await render(hbs`<OSS::Smart::TextArea />`);
 
-      assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
+      assert.strictEqual(document.querySelector(this.textareaSelector).offsetHeight, 52);
     });
 
     test('Row change height', async function (assert) {
@@ -81,16 +81,17 @@ module('Integration | Component | o-s-s/smart/text-area', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::Smart::TextArea data-control-name="description-input" />`);
-      let inputWrapper: Element | null = document.querySelector('.oss-smart-text-area-container');
+      const inputWrapper: Element | null = document.querySelector('.oss-smart-text-area-container');
 
-      assert.equal(inputWrapper?.getAttribute('data-control-name'), 'description-input');
+      assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'description-input');
     });
   });
 
   module('error management', () => {
     test('it throws an error if @resize is not a correct value', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize'
         );

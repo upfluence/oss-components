@@ -2,6 +2,8 @@
   {{#if this.displayUploadArea}}
     <div
       class={{this.computedClass}}
+      role="button"
+      tabindex="0"
       {{on "dragover" this._allowDropEvent}}
       {{on "dragenter" this._onDragEnter}}
       {{on "dragleave" this._onDragLeave}}
@@ -69,7 +71,12 @@
     </div>
   {{/if}}
 
-  <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
+  <input
+    type="file"
+    aria-label={{t "oss-components.upload-area.file_input_label"}}
+    {{on "change" this.onFileSelected}}
+    {{did-insert this.assignFileInput}}
+  />
   {{#if this.feedbackMessage.value}}
     <span class={{concat "fx-row font-color-" this.feedbackMessage.type "-500 padding-top-px-6"}}>
       {{this.feedbackMessage.value}}

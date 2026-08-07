@@ -61,8 +61,9 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   module('search is enabled', function () {
     module('with onSearch hook', function () {
       test('it calls the onSearch hook with the typed keyword', async function (assert) {
+        assert.expect(2);
         this.onSearch = (keyword) => {
-          assert.equal(keyword, 'b', 'Enters the onSearch hook');
+          assert.strictEqual(keyword, 'b', 'Enters the onSearch hook');
         };
 
         this.onSelect = () => {};
@@ -97,9 +98,10 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   module('item selection', function () {
     module('onSelect is passed', function () {
       test('it calls the onSelect hook with the clicked item', async function (assert) {
+        assert.expect(1);
         this.items = FAKE_DATA;
         this.onSelect = (item) => {
-          assert.equal(item.name, 'Batman');
+          assert.strictEqual(item.name, 'Batman');
         };
 
         await render(
@@ -500,8 +502,9 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   module('Error management', function () {
     module('On item selection, if onSelect is not passed', function () {
       test('it should throw an error', async function (assert) {
+        assert.expect(1);
         setupOnerror((err) => {
-          assert.equal(
+          assert.strictEqual(
             err.message,
             'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory'
           );
@@ -513,8 +516,9 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
 
     module('When the search is enabled, if no onSearch hook has been passed', function () {
       test('should throw an error', async function (assert) {
+        assert.expect(1);
         setupOnerror((err) => {
-          assert.equal(
+          assert.strictEqual(
             err.message,
             'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
           );

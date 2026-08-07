@@ -12,6 +12,7 @@ export interface OSSTextAreaArgs {
   errorMessage?: string;
   hasError?: boolean;
   placeholder?: string;
+  ariaLabel?: string;
   onChange?(value: string): void;
 }
 

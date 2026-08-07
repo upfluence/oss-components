@@ -66,7 +66,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       assert.dom('.upf-infinite-select').exists();
       await typeIn('.upf-infinite-select input', 'usd');
       const clickableRows = findAll('.upf-infinite-select__item');
-      assert.equal(clickableRows.length, 1);
+      assert.strictEqual(clickableRows.length, 1);
       assert.dom(clickableRows[0]).hasText('$ USD');
     });
 
@@ -76,7 +76,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       assert.dom('.upf-infinite-select').exists();
       await typeIn('.upf-infinite-select input', '€');
       const clickableRows = findAll('.upf-infinite-select__item');
-      assert.equal(clickableRows.length, 1);
+      assert.strictEqual(clickableRows.length, 1);
       assert.dom(clickableRows[0]).hasText('€ EUR');
     });
 
@@ -99,7 +99,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
                                          @allowedCurrencies={{this.allowedCurrencies}} />`);
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
-      assert.equal(clickableRows.length, 2);
+      assert.strictEqual(clickableRows.length, 2);
     });
 
     module('Selected currency highlighting', () => {
@@ -148,7 +148,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       await render(hbs`<OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />`);
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
-      // @ts-ignore
+      // @ts-expect-error the modifiers argument is missing from the helper typings
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.dom('input').hasValue('8');
     });
@@ -193,7 +193,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
     test('When selection is applied, it replaces the selection', async function (assert) {
       await render(hbs`<OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />`);
       assert.dom('input').hasValue('1234567890');
-      let input = document.querySelector('input.ember-text-field') as HTMLInputElement;
+      const input = document.querySelector('input.ember-text-field') as HTMLInputElement;
       input.setSelectionRange(4, 6);
       await triggerEvent('input', 'paste', {
         clipboardData: {
@@ -232,8 +232,9 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
   });
 
   test('It throws an error if @onChange is not passed', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
-      assert.equal(
+      assert.strictEqual(
         err.message,
         'Assertion Failed: [component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory'
       );

@@ -20,17 +20,18 @@ module('Unit | Service | form-manager', function (hooks) {
 
   module('#generateId', function () {
     test('it generates a unique ID', function (assert) {
-      assert.equal(this.service.generateId(), FAKE_UUID);
+      assert.strictEqual(this.service.generateId(), FAKE_UUID);
     });
   });
 
   module('#getInstance', function () {
     test('it returns a form instance', function (assert) {
+      assert.expect(5);
       const instance = this.service.getInstance('test');
 
-      assert.equal(instance.id, 'test');
+      assert.strictEqual(instance.id, 'test');
       ['validateForm', 'validateField', 'getErrors', 'clearErrors'].forEach((method) => {
-        assert.equal(typeof instance[method], 'function');
+        assert.strictEqual(typeof instance[method], 'function');
       });
     });
   });
@@ -43,7 +44,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
       this.service.registerField(id, field, validator);
 
-      assert.equal(this.service.formValidators[id][field], validator);
+      assert.strictEqual(this.service.formValidators[id][field], validator);
     });
   });
 
@@ -53,7 +54,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
       this.service.unregisterField('test', 'testField');
 
-      assert.equal(this.service.formValidators['test']['testField'], undefined);
+      assert.strictEqual(this.service.formValidators['test']['testField'], undefined);
     });
   });
 
@@ -71,7 +72,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
         this.service.registerField('test', field, validator);
 
-        assert.equal(this.formInstance.validateField(field), false);
+        assert.false(this.formInstance.validateField(field));
         assert.deepEqual(this.service.formFeedbacks['test'][field], {
           kind: 'blank',
           message: { type: 'error', value: 'Error' }
@@ -86,7 +87,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
         this.service.registerField('test', field, validator);
 
-        assert.equal(this.formInstance.validateField(field), true);
+        assert.true(this.formInstance.validateField(field));
         assert.deepEqual(this.service.formFeedbacks['test'][field], {
           kind: 'be_cautious',
           message: { type: 'warning', value: 'warning' }
@@ -99,8 +100,8 @@ module('Unit | Service | form-manager', function (hooks) {
 
         this.service.registerField('test', field, validator);
 
-        assert.equal(this.formInstance.validateField(field), true);
-        assert.equal(this.service.formFeedbacks['test'], undefined);
+        assert.true(this.formInstance.validateField(field));
+        assert.strictEqual(this.service.formFeedbacks['test'], undefined);
       });
     });
 
@@ -113,7 +114,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
         this.service.registerField('test', field, validator);
 
-        assert.equal(this.formInstance.validateForm(), false);
+        assert.false(this.formInstance.validateForm());
         assert.deepEqual(this.service.formFeedbacks['test'][field], {
           kind: 'blank',
           message: { type: 'error', value: 'Error' }
@@ -128,7 +129,7 @@ module('Unit | Service | form-manager', function (hooks) {
 
         this.service.registerField('test', field, validator);
 
-        assert.equal(this.formInstance.validateForm(), true);
+        assert.true(this.formInstance.validateForm());
         assert.deepEqual(this.service.formFeedbacks['test'][field], {
           kind: 'be_cautious',
           message: { type: 'warning', value: 'warning' }
@@ -141,8 +142,8 @@ module('Unit | Service | form-manager', function (hooks) {
 
         this.service.registerField('test', field, validator);
 
-        assert.equal(this.formInstance.validateForm(), true);
-        assert.equal(this.service.formFeedbacks['test'], undefined);
+        assert.true(this.formInstance.validateForm());
+        assert.strictEqual(this.service.formFeedbacks['test'], undefined);
       });
     });
 

@@ -14,6 +14,7 @@ interface OSSPhoneNumberInputArgs extends BaseDropdownArgs {
   prefix: string;
   number: string;
   placeholder?: string;
+  ariaLabel?: string;
   errorMessage?: string;
   hasError?: boolean;
   onChange(prefix: string, number: string): void;
@@ -61,7 +62,7 @@ export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInpu
   }
 
   get interactiveClasses(): string {
-    let classArray: string[] = [];
+    const classArray: string[] = [];
 
     if (this.isOpen) {
       classArray.push('phone-number-input--active');
@@ -127,18 +128,7 @@ export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInpu
     super.toggleDropdown(event);
 
     if (this.isOpen) {
-      scheduleOnce('afterRender', this, () => {
-        const referenceTarget = this.container;
-        const floatingTarget = document.querySelector(`#${this.portalId}`);
-
-        if (referenceTarget && floatingTarget) {
-          this.cleanupDrodpownAutoplacement = attachDropdown(
-            referenceTarget as HTMLElement,
-            floatingTarget as HTMLElement,
-            { placementStrategy: 'auto' }
-          );
-        }
-      });
+      scheduleOnce('afterRender', this, this.attachDropdownToContainer);
     }
   }
 
@@ -155,6 +145,19 @@ export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInpu
   @action
   handleSelectorClose(): void {
     this.hideCountrySelector();
+  }
+
+  private attachDropdownToContainer(): void {
+    const referenceTarget = this.container;
+    const floatingTarget = document.querySelector(`#${this.portalId}`);
+
+    if (referenceTarget && floatingTarget) {
+      this.cleanupDrodpownAutoplacement = attachDropdown(
+        referenceTarget as HTMLElement,
+        floatingTarget as HTMLElement,
+        { placementStrategy: 'auto' }
+      );
+    }
   }
 
   private hideCountrySelector(): void {

@@ -63,8 +63,8 @@ export default class Smart extends Controller {
   @tracked multilinePlaceholder: string = 'Small placeholder\nwith multiple\nlines';
   @tracked numberValue: number = 42;
 
-  constructor() {
-    super(...arguments);
+  constructor(owner: object) {
+    super(owner);
     this.addContentToFeedbackComponent();
   }
 

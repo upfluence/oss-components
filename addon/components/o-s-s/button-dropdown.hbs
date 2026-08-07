@@ -5,10 +5,16 @@
       {{if this.displayDropdown 'oss-button-dropdown__trigger--active'}}
       fx-row fx-xalign-center"
     role={{unless @mainAction "button"}}
+    tabindex={{unless @mainAction "0"}}
     {{on "click" this.onDropdownClick}}
     ...attributes
   >
-    <div class="fx-row fx-xalign-center fx-gap-px-6" role={{if @mainAction "button"}} {{on "click" this.onMainAction}}>
+    <div
+      class="fx-row fx-xalign-center fx-gap-px-6"
+      role={{if @mainAction "button"}}
+      tabindex={{if @mainAction "0"}}
+      {{on "click" this.onMainAction}}
+    >
       {{#if @icon}}
         <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{/if}}
@@ -17,7 +23,12 @@
       {{/if}}
     </div>
     {{#unless @hideArrow}}
-      <div class="fx-row fx-xalign-center" role={{if @mainAction "button"}} {{on "click" this.toggleDropdown}}>
+      <div
+        class="fx-row fx-xalign-center"
+        role={{if @mainAction "button"}}
+        tabindex={{if @mainAction "0"}}
+        {{on "click" this.toggleDropdown}}
+      >
         <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
       </div>
     {{/unless}}
@@ -27,6 +38,7 @@
     <div
       class="oss-button-dropdown__items"
       {{on "click" this.toggleDropdown}}
+      role="button"
       {{did-insert this.setupChildrenClickHandler}}
       {{will-destroy this.teardownChildrenClickHandler}}
       {{on-click-outside this.onClickOutside useCapture=true}}

@@ -66,7 +66,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
   }
 
   get computedClass(): string {
-    let classes = [BASE_CLASS];
+    const classes = [BASE_CLASS];
 
     if (this.skin) {
       classes.push(`upf-tag--${this.skin}`);

@@ -16,7 +16,7 @@ module('Integration | Component | modifiers/enable-input-autofocus', function (h
       </div>
     `);
       const inputElement = document.querySelector('.input');
-      await assert.equal(document.activeElement, inputElement);
+      await assert.strictEqual(document.activeElement, inputElement);
     });
 
     test('it focuses the first enabled input ', async function (assert) {
@@ -29,7 +29,7 @@ module('Integration | Component | modifiers/enable-input-autofocus', function (h
       </div>
     `);
       const inputElements = document.querySelectorAll('.input');
-      await assert.equal(document.activeElement, inputElements[3]);
+      await assert.strictEqual(document.activeElement, inputElements[3]);
     });
   });
 
@@ -40,7 +40,7 @@ module('Integration | Component | modifiers/enable-input-autofocus', function (h
       </div>
     `);
     const inputElement = document.querySelector('.input');
-    await assert.equal(document.activeElement, inputElement);
+    await assert.strictEqual(document.activeElement, inputElement);
   });
 
   test('When adding the modifier to a disabled element, it does nothing', async function (assert) {

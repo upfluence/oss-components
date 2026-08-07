@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export enum IconNames {
   Analytics = 'fa-analytics',
   AngleLeft = 'fa-angle-left',

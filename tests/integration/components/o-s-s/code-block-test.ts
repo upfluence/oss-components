@@ -26,7 +26,7 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
     await render(hbs`<OSS::CodeBlock @content={{this.codeBlock}} />`);
 
     const codeLines = findAll('.code-block code');
-    assert.equal(codeLines.length, 60);
+    assert.strictEqual(codeLines.length, 60);
     assert.dom(codeLines[0]).hasText("import Component from '@glimmer/component';");
     assert.dom(codeLines[1]).hasText(`import { action } from '@ember/object';`);
     assert.dom(codeLines[2]).hasText(`import { inject as service } from '@ember/service';`);

@@ -49,9 +49,12 @@
           @onChange={{this.onSelect}}
           @onSearch={{this.onPowerSelectSearch}}
           @successMessage="It works"
-          @action={{(hash
-            skin="tertiary" label="Add Hero (close on click)" icon="fa-plus" onClick=this.onFooterButtonClick
-          )}}
+          @action={{hash
+            skin="tertiary"
+            label="Add Hero (close on click)"
+            icon="fa-plus"
+            onClick=this.onFooterButtonClick
+          }}
           class="fx-1"
         >
           <:option as |item|>
@@ -87,13 +90,13 @@
           @items={{this.superHeroes}}
           @onChange={{this.onSelect}}
           @successMessage="It works"
-          @action={{(hash
+          @action={{hash
             skin="tertiary"
             label="Add Hero (don't close on click)"
             icon="fa-plus"
             onClick=this.onFooterButtonClick
             closeOnClick=false
-          )}}
+          }}
           class="fx-1"
         >
           <:option as |item|>
@@ -166,8 +169,8 @@
         @onSearch={{this.onInfiniteSelectSearch}}
         @searchPlaceholder="Enter a keyword"
         @onSelect={{this.onInfiniteSelectChange}}
-        @action={{(hash skin="tertiary" label="Add Hero" icon="fa-plus" onClick=this.onFooterButtonClick)}}
-        style="position: relative; margin: 0"
+        @action={{hash skin="tertiary" label="Add Hero" icon="fa-plus" onClick=this.onFooterButtonClick}}
+        class="demo-infinite-select"
       />
       <OSS::InfiniteSelect
         @items={{this.superHeroes}}
@@ -175,7 +178,7 @@
         @onSearch={{this.onInfiniteSelectSearch}}
         @searchPlaceholder="Enter a keyword"
         @onSelect={{this.onInfiniteSelectChange}}
-        style="position: relative; margin: 0"
+        class="demo-infinite-select"
       >
         <:option as |item|>
           {{item}}
@@ -187,8 +190,8 @@
         @onSearch={{this.onInfiniteSelectSearch}}
         @searchPlaceholder="Enter a keyword"
         @onSelect={{this.onInfiniteSelectChange}}
-        @action={{(hash skin="tertiary" label="Add Hero" icon="fa-plus" onClick=this.onFooterButtonClick)}}
-        style="position: relative; margin: 0"
+        @action={{hash skin="tertiary" label="Add Hero" icon="fa-plus" onClick=this.onFooterButtonClick}}
+        class="demo-infinite-select"
       >
         <:option as |item|>
           {{item}}
@@ -205,7 +208,7 @@
     </div>
     <div class="fx-col fx-gap-px-12">
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Single with custom prefix and suffix
         </div>
         <OSS::InfiniteSelect::Option
@@ -230,7 +233,7 @@
         </OSS::InfiniteSelect::Option>
       </div>
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Multiple
         </div>
         <OSS::InfiniteSelect::Option
@@ -249,7 +252,7 @@
         />
       </div>
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Mutliple selected
         </div>
         <OSS::InfiniteSelect::Option
@@ -269,7 +272,7 @@
         />
       </div>
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Single selected
         </div>
         <OSS::InfiniteSelect::Option
@@ -289,7 +292,7 @@
         />
       </div>
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Single disabled
         </div>
         <OSS::InfiniteSelect::Option
@@ -309,7 +312,7 @@
         />
       </div>
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Multiple disabled
         </div>
         <OSS::InfiniteSelect::Option
@@ -329,7 +332,7 @@
         />
       </div>
       <div class="fx-row fx-gap-px-6 fx-xalign-center">
-        <div class="font-weight-semibold" style="width: 210px;">
+        <div class="font-weight-semibold demo-label-column">
           Multiple selected disabled
         </div>
         <OSS::InfiniteSelect::Option
@@ -532,8 +535,19 @@
       Input group
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" @autocomplete="off" />
-      <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
+      <OSS::InputGroup
+        {{! template-lint-disable no-potential-path-strings}}
+        @value={{this.inputValue}}
+        @prefix="@"
+        @placeholder="Username"
+        @autocomplete="off"
+      />
+      <OSS::InputGroup
+        {{! template-lint-disable no-potential-path-strings}}
+        @value={{this.inputValue}}
+        @suffix="@example.com"
+        @placeholder="john.doe"
+      />
       <OSS::InputGroup
         @value={{this.inputValue}}
         @prefix="This"

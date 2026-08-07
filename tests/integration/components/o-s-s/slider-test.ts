@@ -1,11 +1,13 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/slider', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.value = 10;
@@ -133,7 +135,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       assert.ok(this.onChange.calledWith(20));
     });
 
-    test("when the min is defined, the user can't set value under the minimum", async function (assert) {
+    test("when the max is defined, the user can't set value above the maximum", async function (assert) {
       this.inputOptions = { max: 20 };
       await render(
         hbs`<OSS::Slider @value={{this.value}} @inputOptions={{this.inputOptions}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
@@ -224,7 +226,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
       await fillIn('.oss-slider__number-input input', '30');
 
-      assert.equal(this.min, this.value);
+      assert.strictEqual(Number(this.value), this.min);
       const element = this.element.querySelector('.oss-slider__range');
       assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '0%');
     });

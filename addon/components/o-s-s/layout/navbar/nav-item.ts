@@ -6,5 +6,4 @@ interface OSSLayoutNavbarNavItemArgs {
   active?: boolean;
 }
 
-// eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class OSSLayoutNavbarNavItem extends Component<OSSLayoutNavbarNavItemArgs> {}

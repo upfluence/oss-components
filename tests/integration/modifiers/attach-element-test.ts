@@ -7,6 +7,7 @@ module('Integration | Modifiers | modifiers/attach-element', function (hooks) {
   setupRenderingTest(hooks);
 
   test('the attached element has no floating-related style when not using the modifier', async function (assert) {
+    assert.expect(6);
     await render(hbs`
       <div class="reference-element">
         I am the reference!
@@ -21,11 +22,12 @@ module('Integration | Modifiers | modifiers/attach-element', function (hooks) {
 
     const attachedElement = find('.attached-element') as HTMLElement;
     expectedEmptyAttributes.forEach((attr) => {
-      assert.equal(attachedElement.style.getPropertyValue(attr), '');
+      assert.strictEqual(attachedElement.style.getPropertyValue(attr), '');
     });
   });
 
   test('attached element is properly rendered w/ the right floating-ui positioning style', async function (assert) {
+    assert.expect(6);
     await render(hbs`
       <div class="reference-element">
         I am the reference!

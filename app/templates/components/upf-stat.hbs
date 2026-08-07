@@ -31,6 +31,7 @@
 
   {{#if this.label}}
     <span class={{if this.tooltip "upf-stat__label--with-tooltip" "upf-stat__label"}}>
+      {{! template-lint-disable no-triple-curlies}}
       {{{this.label}}}
       {{#if this.tooltip}}
         <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=this.tooltip}} />

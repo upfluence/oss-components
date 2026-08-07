@@ -43,8 +43,8 @@ export interface TooltipAssertions {
 const assertion = (selector: string): TooltipAssertions => {
   return {
     exists: async (trigger?: string, message?: string): Promise<void> => {
-      let result: boolean = true;
-      let actual: Element | null = null;
+      const result: boolean = true;
+      const actual: Element | null = null;
 
       await triggerEventOnElement(selector, trigger);
 
@@ -131,12 +131,9 @@ const assertion = (selector: string): TooltipAssertions => {
     doesNotHaveSubtitle: async (message?: string): Promise<void> => {
       await triggerEventOnElement(selector);
 
-      let result = false;
-      let actual = undefined;
       const subtitleContainer = document.querySelector('.upf-tooltip .subtitle');
-
-      actual = (<HTMLElement>subtitleContainer)?.innerText;
-      result = isEmpty(actual);
+      const actual = (<HTMLElement>subtitleContainer)?.innerText;
+      const result = isEmpty(actual);
 
       QUnit.assert.pushResult({
         result,
@@ -170,8 +167,8 @@ const assertion = (selector: string): TooltipAssertions => {
       await triggerEventOnElement(selector);
 
       const iconI = document.querySelector('.upf-tooltip .title-container i');
-      let actual = iconI?.className;
-      let result = isEmpty(actual);
+      const actual = iconI?.className;
+      const result = isEmpty(actual);
 
       QUnit.assert.pushResult({
         result,
@@ -205,8 +202,8 @@ const assertion = (selector: string): TooltipAssertions => {
       await triggerEventOnElement(selector);
 
       const titleContainer = document.querySelector('.upf-tooltip .title-container .title');
-      let actual = (<HTMLElement>titleContainer)?.dataset.htmlSafe;
-      let result = actual === 'true';
+      const actual = (<HTMLElement>titleContainer)?.dataset.htmlSafe;
+      const result = actual === 'true';
 
       QUnit.assert.pushResult({
         result,
@@ -220,8 +217,8 @@ const assertion = (selector: string): TooltipAssertions => {
       await triggerEventOnElement(selector);
 
       const titleContainer = document.querySelector('.upf-tooltip .title-container .title');
-      let actual = (<HTMLElement>titleContainer)?.dataset.htmlSafe;
-      let result = actual === undefined;
+      const actual = (<HTMLElement>titleContainer)?.dataset.htmlSafe;
+      const result = actual === undefined;
 
       QUnit.assert.pushResult({
         result,

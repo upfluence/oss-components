@@ -7,7 +7,7 @@ export const extractCSSVars = (): string[] => {
     .filter((styleSheet) => {
       try {
         return styleSheet.cssRules;
-      } catch (e) {
+      } catch {
         return false;
       }
     })

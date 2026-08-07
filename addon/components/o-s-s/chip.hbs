@@ -1,4 +1,4 @@
-<div class={{this.computedClass}} ...attributes {{on "click" this.stopPropagation}}>
+<div class={{this.computedClass}} role="button" ...attributes {{on "click" this.stopPropagation}}>
   {{#if (has-block "prefix")}}
     {{yield to="prefix"}}
   {{/if}}

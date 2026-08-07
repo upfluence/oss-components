@@ -1,5 +1,6 @@
 <div class="fx-1" ...attributes>
   {{#if this.preloaded}}
+    {{! template-lint-disable no-triple-curlies}}
     {{{this.svgDocument}}}
   {{else}}
     <OSS::Skeleton @width="100%" />

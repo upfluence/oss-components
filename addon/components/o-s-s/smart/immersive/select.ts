@@ -71,8 +71,7 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
   }
 
   get values(): SmartImmersiveSelectItem[] {
-    let values: SmartImmersiveSelectItem[] = [];
-    values = [
+    let values: SmartImmersiveSelectItem[] = [
       ...(this.args.values?.filter((el) => {
         return !isBlank(el) && el !== undefined;
       }) ?? [])

@@ -52,26 +52,32 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
   });
 
   test('If the email regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    assert.expect(1);
     this.value = 'john.doe@example.com';
     this.validates = (x: boolean) => {
-      assert.equal(x, true);
+      assert.true(x);
     };
     await render(hbs`<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
   test('If the email regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    assert.expect(1);
     this.value = 'foo@f';
     this.validates = (x: boolean) => {
-      assert.equal(x, false);
+      assert.false(x);
     };
     await render(hbs`<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
   test('it throws an error when the @value parameter is missing', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory');
+      assert.strictEqual(
+        err.message,
+        'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory'
+      );
     });
 
     await render(hbs`<OSS::EmailInput />`);

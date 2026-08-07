@@ -25,6 +25,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    ariaLabel: {
+      description: 'Accessible name of the input, used when no visible label is associated with it',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     placeholder: {
       description: 'Value of the placeholder',
       table: {

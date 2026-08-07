@@ -36,7 +36,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
   });
 
   test('when icon and iconUrl are present, it only renders the icon', async function (assert) {
-    await render(hbs`<OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />`);
+    await render(
+      hbs`<OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/images/no-image.svg" />`
+    );
 
     assert.dom('.upf-btn i').hasClass('fa-facebook');
     assert.dom('.upf-btn img').doesNotExist();
@@ -221,8 +223,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
   module('Error management', function () {
     test('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.'
         );
@@ -232,8 +235,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
 
     test('it fails if callback missing for @countDown argument', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: { message: string }) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           "Assertion Failed: [component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument."
         );

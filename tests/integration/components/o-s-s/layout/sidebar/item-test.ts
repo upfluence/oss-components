@@ -102,9 +102,9 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
         hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}}/>`
       );
 
-      assert.equal(router.currentRouteName, null);
+      assert.strictEqual(router.currentRouteName, null);
       await click('.oss-sidebar-item');
-      assert.equal(router.currentRouteName, 'index');
+      assert.strictEqual(router.currentRouteName, 'index');
     });
 
     test('When locked is true lockedAction is triggered', async function (assert) {
@@ -136,8 +136,8 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" data-control-name="layout-sidebar"/>`);
-      let inputWrapper: Element | null = find('.oss-sidebar-item');
-      assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+      const inputWrapper: Element | null = find('.oss-sidebar-item');
+      assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
     });
   });
 });

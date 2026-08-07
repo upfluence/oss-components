@@ -19,6 +19,7 @@
         @value={{@value}}
         @type={{this.type}}
         placeholder={{@placeholder}}
+        aria-label={{@ariaLabel}}
         disabled={{@disabled}}
         autocomplete={{this.autocomplete}}
         class="upf-input"
@@ -35,9 +36,9 @@
     <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
   {{else if this.feedbackMessage.value}}
     <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
-      {{#unless (eq this.feedbackMessage.type "error")}}
+      {{#if (not-eq this.feedbackMessage.type "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
-      {{/unless}}
+      {{/if}}
       <span>{{this.feedbackMessage.value}}</span>
     </span>
   {{/if}}

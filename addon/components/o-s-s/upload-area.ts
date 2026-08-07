@@ -93,7 +93,6 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
     if (this.dragging || this.hover) {
       classes.push(`oss-upload-area__illustration--dragging-start`);
-      this.alreadyTriggerAnimation = true;
     } else if (this.alreadyTriggerAnimation) {
       classes.push(`oss-upload-area__illustration--dragging-end`);
     }
@@ -172,6 +171,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   _onDragEnter(): void {
     if (this.args.disabled) return;
     this.dragging = true;
+    this.alreadyTriggerAnimation = true;
   }
 
   @action
@@ -201,6 +201,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   _mouseEnter(): void {
     if (this.args.disabled) return;
     this.hover = true;
+    this.alreadyTriggerAnimation = true;
   }
 
   @action

@@ -31,17 +31,17 @@ module('Unit | Service | wizard-manager', function (hooks) {
     test('Sections are properly initialized', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
-      assert.equal(this.service.sections.length, 1);
-      assert.equal(this.service.sections[0].key, 'section-1');
+      assert.strictEqual(this.service.sections.length, 1);
+      assert.strictEqual(this.service.sections[0].key, 'section-1');
     });
 
     test('Steps are properly initialized', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
-      assert.equal(this.service.allSteps.length, 3);
-      assert.equal(this.service.allSteps[0].key, 'step-1');
-      assert.equal(this.service.allSteps[1].key, 'step-2');
-      assert.equal(this.service.allSteps[2].key, 'step-3');
+      assert.strictEqual(this.service.allSteps.length, 3);
+      assert.strictEqual(this.service.allSteps[0].key, 'step-1');
+      assert.strictEqual(this.service.allSteps[1].key, 'step-2');
+      assert.strictEqual(this.service.allSteps[2].key, 'step-3');
     });
 
     test('Extra step properties are preserved', function (assert) {
@@ -54,8 +54,8 @@ module('Unit | Service | wizard-manager', function (hooks) {
       this.service.initialize(this.config as WizardConfiguration);
       const step1 = this.service.allSteps[0];
       const section1 = this.service.sections[0];
-      assert.equal(section1.customProp, 'customValue', 'Extra properties are preserved in sections');
-      assert.equal(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
+      assert.strictEqual(section1.customProp, 'customValue', 'Extra properties are preserved in sections');
+      assert.strictEqual(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
     });
 
     test('Setting a visited attribute on steps overwrites the default', function (assert) {
@@ -72,15 +72,15 @@ module('Unit | Service | wizard-manager', function (hooks) {
     test('Focused step is set to first step', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
-      assert.equal(this.service.focusedStepId, this.service.allSteps[0].id);
+      assert.strictEqual(this.service.focusedStepId, this.service.allSteps[0].id);
     });
 
     test('Setting centerStepsInContainer option to true adds empty steps to the start and end', function (assert) {
       this.config.options = { centerStepsInContainer: true };
       this.service.initialize(this.config as WizardConfiguration);
       const steps = this.service.sections[0].steps;
-      assert.equal(steps[0].displayState, 'empty');
-      assert.equal(steps[steps.length - 1].displayState, 'empty');
+      assert.strictEqual(steps[0].displayState, 'empty');
+      assert.strictEqual(steps[steps.length - 1].displayState, 'empty');
     });
 
     test('Not setting centerStepsInContainer does not add empty steps', function (assert) {
@@ -112,7 +112,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
       this.service.selectStep(step2Id);
 
       await settled();
-      assert.equal(this.service.focusedStepId, step2Id);
+      assert.strictEqual(this.service.focusedStepId, step2Id);
     });
 
     test('calling selectStep with a bypassValidations flag focuses the step without validation', async function (assert) {
@@ -128,11 +128,11 @@ module('Unit | Service | wizard-manager', function (hooks) {
       const step2Id = this.service.allSteps[1].id;
       this.validateStub = sinon.stub(this.service.allSteps[0], 'validateStep').resolves(true);
 
-      assert.equal(this.service.focusedStepId, step1Id);
+      assert.strictEqual(this.service.focusedStepId, step1Id);
 
       this.service.selectStep(step2Id, true);
       await settled();
-      assert.equal(this.service.focusedStepId, step2Id);
+      assert.strictEqual(this.service.focusedStepId, step2Id);
       assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
     });
 
@@ -175,7 +175,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
       this.service.selectStep(step3.id);
 
       await settled();
-      assert.equal(this.service.focusedStepId, step3.id, 'Focused on step 3 after validation');
+      assert.strictEqual(this.service.focusedStepId, step3.id, 'Focused on step 3 after validation');
       assert.true(stub1.calledOnce);
       assert.true(stub2.calledOnce);
     });
@@ -195,7 +195,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
       this.service.selectStep(step3.id);
 
       await settled();
-      assert.equal(this.service.focusedStepId, step2.id);
+      assert.strictEqual(this.service.focusedStepId, step2.id);
     });
   });
 
@@ -336,14 +336,14 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.strictEqual(this.service.sections.length, 0);
     assert.strictEqual(this.service.allSteps.length, 0);
     assert.strictEqual(this.service.focusedStepId, '');
-    assert.strictEqual(this.service.initialized, false);
+    assert.false(this.service.initialized);
   });
 
   test('markStepAsCompleted marks a step as completed', async function (assert) {
     this.service.initialize(this.config as WizardConfiguration);
     await settled();
     const step1 = this.service.allSteps[0];
-    assert.equal(step1.completed, undefined);
+    assert.strictEqual(step1.completed, undefined);
     this.service.markStepAsCompleted(step1.id);
     assert.true(step1.completed);
   });
@@ -366,11 +366,11 @@ module('Unit | Service | wizard-manager', function (hooks) {
       this.service.initialize(this.config as WizardConfiguration);
       await settled();
       const step1 = this.service.allSteps[0];
-      assert.equal(step1.hidden, undefined);
+      assert.strictEqual(step1.hidden, undefined);
       this.service.toggleStepVisibility(step1.id, true);
-      assert.equal(step1.hidden, true);
+      assert.true(step1.hidden);
       this.service.toggleStepVisibility(step1.id, false);
-      assert.equal(step1.hidden, false);
+      assert.false(step1.hidden);
     });
 
     test('It rerenders the display states when triggered', async function (assert) {

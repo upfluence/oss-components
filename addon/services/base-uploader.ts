@@ -49,7 +49,7 @@ export default class BaseUploader extends Service implements UploaderInterface {
       .map((rule: FileValidator) => {
         const validator = AVAILABLE_VALIDATORS.find((validator) => validator.key === rule.type)!;
 
-        // @ts-ignore
+        // @ts-expect-error the validator union type is not constructible as is
         return new validator(rule);
       });
   }

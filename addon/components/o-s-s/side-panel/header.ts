@@ -6,5 +6,4 @@ interface OssSidePanelHeaderArgs {
   title: string;
 }
 
-// eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class OssSidePanelHeader extends Component<OssSidePanelHeaderArgs> {}

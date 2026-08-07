@@ -47,7 +47,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
 
       assert.dom('.oss-progress-bar').exists();
       const innerBar = this.element.querySelector('.oss-progress-bar__inner') as Element;
-      assert.equal(innerBar.clientHeight, 1, 'Element has the correct height');
+      assert.strictEqual(innerBar.clientHeight, 1, 'Element has the correct height');
     });
 
     test('if the value is "sm", the progress bar height is the proper height', async function (assert) {
@@ -55,7 +55,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
 
       assert.dom('.oss-progress-bar').exists();
       const innerBar = this.element.querySelector('.oss-progress-bar__inner') as Element;
-      assert.equal(innerBar.clientHeight, 4, 'Element has the correct height');
+      assert.strictEqual(innerBar.clientHeight, 4, 'Element has the correct height');
     });
 
     test('if the value is "lg", the progress bar height is the proper height', async function (assert) {
@@ -63,7 +63,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
 
       assert.dom('.oss-progress-bar').exists();
       const innerBar = this.element.querySelector('.oss-progress-bar__inner') as Element;
-      assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+      assert.strictEqual(innerBar.clientHeight, 10, 'Element has the correct height');
     });
 
     test('if the value is unspecified, the progress bar height is the proper height', async function (assert) {
@@ -71,7 +71,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
 
       assert.dom('.oss-progress-bar').exists();
       const innerBar = this.element.querySelector('.oss-progress-bar__inner') as Element;
-      assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+      assert.strictEqual(innerBar.clientHeight, 10, 'Element has the correct height');
     });
   });
 
@@ -217,8 +217,9 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
     });
 
     test('if the value is higher than 100, it throws an error', async function (assert) {
+      assert.expect(1);
       setupOnerror((error: Error) => {
-        assert.equal(
+        assert.strictEqual(
           error.message,
           'Assertion Failed: [component][OSS::ProgressBar] The sum of all skins values must be between 0 and 100'
         );

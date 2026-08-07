@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/mode-switch', function (hooks) {
     assert.dom('[data-control-name="option2-input"]').isNotChecked();
   });
 
-  module('selected option parameter', function (hooks) {
+  module('selected option parameter', function () {
     test('it renders with option 1 as selected parameter', async function (assert) {
       await render(hbs`<OSS::ModeSwitch @options={{this.options}} @selected='option1' @onSelect={{this.onSelect}} />`);
 

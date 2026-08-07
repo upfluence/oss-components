@@ -17,6 +17,7 @@ interface OSSSmartTagInputArgs {
   loading?: boolean;
   hasError?: boolean;
   placeholder?: string;
+  ariaLabel?: string;
 }
 
 export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {

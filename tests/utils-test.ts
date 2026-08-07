@@ -15,9 +15,9 @@ module('Tests | Utils', function (hooks) {
     const rgbColor = CSSVariableToRGB('--test-rgb-color');
     const rgbaColor = CSSVariableToRGB('--test-rgba-color');
 
-    assert.equal(hexColor, 'rgb(255, 87, 51)', 'Hex color converted to RGB correctly');
-    assert.equal(rgbaColor, 'rgb(139, 65, 9)', 'RGBA color converted to RGB correctly');
-    assert.equal(rgbColor, 'rgb(34, 139, 34)', 'RGB color converted to RGB correctly');
+    assert.strictEqual(hexColor, 'rgb(255, 87, 51)', 'Hex color converted to RGB correctly');
+    assert.strictEqual(rgbaColor, 'rgb(139, 65, 9)', 'RGBA color converted to RGB correctly');
+    assert.strictEqual(rgbColor, 'rgb(34, 139, 34)', 'RGB color converted to RGB correctly');
   });
 
   test('hexToRGB converts hex color to RGB', function (assert) {
@@ -27,7 +27,7 @@ module('Tests | Utils', function (hooks) {
     const shortHexRGB = hexToRGB(shortHex);
     const longHexRGB = hexToRGB(longHex);
 
-    assert.equal(shortHexRGB, 'rgb(0, 255, 0)', 'Short hex color converted to RGB correctly');
-    assert.equal(longHexRGB, 'rgb(0, 255, 0)', 'Long hex color converted to RGB correctly');
+    assert.strictEqual(shortHexRGB, 'rgb(0, 255, 0)', 'Short hex color converted to RGB correctly');
+    assert.strictEqual(longHexRGB, 'rgb(0, 255, 0)', 'Long hex color converted to RGB correctly');
   });
 });
