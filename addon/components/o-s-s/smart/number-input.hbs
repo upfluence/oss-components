@@ -37,9 +37,9 @@
     <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
   {{else if @feedbackMessage}}
     <span class={{concat "margin-top-px-6 font-color-" @feedbackMessage.type "-500"}}>
-      {{#unless (eq @feedbackMessage.type "error")}}
+      {{#if (not-eq @feedbackMessage.type "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
-      {{/unless}}
+      {{/if}}
       <span>{{@feedbackMessage.value}}</span>
     </span>
   {{/if}}

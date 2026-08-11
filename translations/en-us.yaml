@@ -35,11 +35,15 @@ oss-components:
   select:
     search: Search
     placeholder: Select
+  slider:
+    range_label: Value slider
+    input_label: Value
   upload-area:
     drop_file:
       default: Drop your file here, or
       disabled: Drop your file here, or browse
     browse: browse
+    file_input_label: Choose a file to upload
     errors:
       server: Upload failed, please try again
       try_again: Try again

@@ -1,4 +1,10 @@
-<div class={{this.computedClasses}} {{on "click" (fn this.onSelect (not this.selected))}} ...attributes>
+<div
+  class={{this.computedClasses}}
+  role="button"
+  tabindex="0"
+  {{on "click" (fn this.onSelect (not this.selected))}}
+  ...attributes
+>
   <div class="oss-infinite-select-option__container">
     {{#if this.isSelectionMultiple}}
       <OSS::Checkbox @checked={{this.selected}} @disabled={{@disabled}} @onChange={{this.onSelect}} />

@@ -67,7 +67,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
   test('it sets validateStep if not present', async function (assert) {
     await render(hbs`<TestStep @step={{this.step}} />`);
 
-    assert.ok(typeof this.step.validateStep === 'function');
+    assert.strictEqual(typeof this.step.validateStep, 'function');
   });
 
   test("It doesn't set validateStep if already present", async function (assert) {

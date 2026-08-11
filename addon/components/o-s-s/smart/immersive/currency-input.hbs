@@ -9,6 +9,7 @@
     <div
       class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
       role={{if this.allowCurrencyUpdate "button" "img"}}
+      tabindex={{if this.allowCurrencyUpdate "0"}}
       {{on "click" this.toggleCurrencySelector}}
     >
       <div class="fx-col">
@@ -38,6 +39,7 @@
           min="0"
           autocomplete="off"
           placeholder={{this.placeholder}}
+          aria-label={{@ariaLabel}}
           disabled={{@disabled}}
           {{on "keydown" this.onlyNumeric}}
           {{on "keyup" (fn this.onChange @currency @value)}}

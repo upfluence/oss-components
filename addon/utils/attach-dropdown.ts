@@ -86,14 +86,14 @@ export default function attachDropdown(
     );
   }
 
-  let arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
+  const arrowElement = floatingTarget.querySelector('[data-floating-arrow]');
 
   if (mergedOptions.enableArrow) {
-    if (!arrowEl) {
+    if (!arrowElement) {
       throw new Error('Arrow support is enabled but no [data-floating-arrow] element was found.');
     }
 
-    middlewares.push(arrow({ element: arrowEl }));
+    middlewares.push(arrow({ element: arrowElement }));
   }
 
   const updatePosition = () => {
@@ -116,7 +116,7 @@ export default function attachDropdown(
         const { x: arrowX, y: arrowY } = middlewareData.arrow;
         const staticSide = RELATIVE_ARROW_PLACEMENT[placement.split('-')![0]! as Side];
 
-        Object.assign((arrowEl as HTMLElement).style, {
+        Object.assign((arrowElement as HTMLElement).style, {
           left: arrowX != null ? `${arrowX}px` : '',
           top: arrowY != null ? `${arrowY}px` : '',
           right: '',

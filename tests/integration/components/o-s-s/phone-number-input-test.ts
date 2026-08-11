@@ -64,7 +64,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
       assert.dom('.upf-infinite-select').exists();
       await typeIn('.upf-infinite-select input', 'fran');
       const clickableRows = findAll('.upf-infinite-select__item');
-      assert.equal(clickableRows.length, 1);
+      assert.strictEqual(clickableRows.length, 1);
       assert.dom(clickableRows[0]).hasText('France (+33)');
     });
 
@@ -75,7 +75,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
       assert.dom('.upf-infinite-select').exists();
       await typeIn('.upf-infinite-select input', '33');
       const clickableRows = findAll('.upf-infinite-select__item');
-      assert.equal(clickableRows.length, 2);
+      assert.strictEqual(clickableRows.length, 2);
       assert.dom(clickableRows[0]).hasText('France (+33)');
     });
 
@@ -118,7 +118,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
       );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
-      // @ts-ignore
+      // @ts-expect-error the modifiers argument is missing from the helper typings
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.ok(this.onValidation.calledWithExactly(true));
       assert.dom('input').hasValue('8');
@@ -179,7 +179,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
         hbs`<OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
       assert.dom('input').hasValue('1234567890');
-      let input = document.querySelector('input.ember-text-field') as HTMLInputElement;
+      const input = document.querySelector('input.ember-text-field') as HTMLInputElement;
       input.setSelectionRange(4, 6);
       await triggerEvent('input', 'paste', {
         clipboardData: {
@@ -225,8 +225,9 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
 
   module('Error management', function () {
     test('It throws an error if @prefix is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory'
         );
@@ -237,8 +238,9 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
     });
 
     test('It throws an error if @number is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory'
         );
@@ -249,8 +251,9 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
     });
 
     test('It throws an error if @onChange is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory'
         );

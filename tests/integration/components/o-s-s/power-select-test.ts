@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { render, setupOnerror, findAll, click, typeIn, scrollTo, type TestContext } from '@ember/test-helpers';
+import { render, setupOnerror, findAll, click, typeIn, scrollTo } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/power-select', function (hooks) {
@@ -417,8 +417,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
   module('Error management', () => {
     test('without selected-item named block', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block'
         );
@@ -430,8 +431,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
     });
 
     test('without option-item named block', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block'
         );

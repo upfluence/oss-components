@@ -18,6 +18,7 @@ export interface OSSCurrencyInputArgs {
   allowCurrencyUpdate?: boolean;
   onlyCurrency?: boolean;
   placeholder?: string;
+  ariaLabel?: string;
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   allowedCurrencies?: Currency[];
@@ -79,10 +80,12 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
 
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this.currencies;
-  @tracked localValue: number = this.args.value;
+  @tracked localValue: number;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
+
+    this.localValue = this.args.value;
 
     if (preventDefaultAssertions) return;
 

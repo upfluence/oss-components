@@ -89,16 +89,16 @@ module('Integration | Component | o-s-s/smart/immersive/input', function (hooks)
       await renderComponent();
 
       const element = document.querySelector('.smart-immersive-input-container') as HTMLElement;
-      assert.equal(element.offsetWidth, 52);
+      assert.strictEqual(element.offsetWidth, 52);
     });
 
     test('When input has value or placeholder, the size is based on input content', async function (assert) {
       await renderComponent();
 
       const element = document.querySelector('.smart-immersive-input-container') as HTMLElement;
-      assert.equal(element.offsetWidth, 104);
+      assert.strictEqual(element.offsetWidth, 104);
       await typeIn('.smart-immersive-input-container input', 'more text');
-      assert.equal(element.offsetWidth, 158);
+      assert.strictEqual(element.offsetWidth, 158);
     });
   });
 

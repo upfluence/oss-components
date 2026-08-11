@@ -98,7 +98,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
     }
   }
 
-  private resizeObserverCallback(_: ResizeObserverEntry[]): void {
+  private resizeObserverCallback(): void {
     if (this.args.horizontal) {
       this.horizontalScrollListener();
     } else {

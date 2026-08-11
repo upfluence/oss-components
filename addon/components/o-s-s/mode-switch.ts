@@ -35,9 +35,7 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
   constructor(owner: unknown, args: ModeSwitchComponentArgs) {
     super(owner, args);
 
-    scheduleOnce('afterRender', this, () => {
-      this.initComponent();
-    });
+    scheduleOnce('afterRender', this, this.initComponent);
   }
 
   get selectedOptionKey(): string {

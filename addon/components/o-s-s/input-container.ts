@@ -14,6 +14,7 @@ export interface OSSInputContainerArgs {
   errorMessage?: string;
   hasError?: boolean;
   placeholder?: string;
+  ariaLabel?: string;
   type?: string;
   autocomplete?: 'on' | 'off';
   onChange?(value: string): void;

@@ -4,14 +4,12 @@ import Component from '@glimmer/component';
 
 import type { IntlService } from 'ember-intl';
 
-interface Globals {}
-
 interface StorybookArgs {
   story: {
     template: any;
     context: Record<string, unknown>;
   };
-  globals: Globals;
+  globals: Record<string, unknown>;
 }
 
 export default class StorybookComponent extends Component<StorybookArgs> {

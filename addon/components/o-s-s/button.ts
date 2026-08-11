@@ -82,7 +82,7 @@ export interface OSSButtonArgs {
   theme?: string;
   square?: boolean;
   countDown?: {
-    callback: () => {};
+    callback: () => void;
     time?: number;
     step?: number;
   };
@@ -132,7 +132,7 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
   }
 
   get computedClass() {
-    let classes = [this.args.square ? SQUARE_CLASS : BASE_CLASS, `upf-btn--${this.skin}`];
+    const classes = [this.args.square ? SQUARE_CLASS : BASE_CLASS, `upf-btn--${this.skin}`];
 
     if (this.size) {
       classes.push(this.args.square ? `upf-square-btn--${this.size}` : `upf-btn--${this.size}`);
@@ -151,6 +151,7 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
     }
 
     if (this.args.loading && !this.args.loadingOptions?.showLabel) {
+      // eslint-disable-next-line ember/no-side-effects
       this.DOMElement.style.width = `${this.DOMElement?.offsetWidth}px`;
     } else {
       this.DOMElement.style.removeProperty('width');

@@ -7,6 +7,7 @@
     <div
       class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
       role={{if this.allowCurrencyUpdate "button" "img"}}
+      tabindex={{if this.allowCurrencyUpdate "0"}}
       {{on "click" this.toggleCurrencySelector}}
     >
       <div class="fx-col">
@@ -37,6 +38,7 @@
         min="0"
         autocomplete="off"
         placeholder={{this.placeholder}}
+        aria-label={{@ariaLabel}}
         disabled={{this.disabled}}
         class="fx-1"
         {{on "keydown" this.onlyNumeric}}
@@ -52,9 +54,9 @@
     </div>
   {{else if this.feedbackMessage}}
     <span class={{this.feedbackMessageComputedClasses}}>
-      {{#unless (eq this.feedbackMessage.type "error")}}
+      {{#if (not-eq this.feedbackMessage.type "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
-      {{/unless}}
+      {{/if}}
       <span>{{this.feedbackMessage.value}}</span>
     </span>
   {{/if}}

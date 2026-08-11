@@ -28,13 +28,15 @@ interface OSSCountrySelectorArgs extends BaseDropdownArgs {
 export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorArgs> {
   @service declare intl: IntlService;
 
-  @tracked filteredItems: Item[] = this.args.sourceList;
+  @tracked filteredItems: Item[];
 
   cleanupDrodpownAutoplacement?: () => void;
   handleSelectorClose = this.closeDropdown;
 
   constructor(owner: unknown, args: OSSCountrySelectorArgs) {
     super(owner, args);
+
+    this.filteredItems = this.args.sourceList;
 
     assert(
       '[component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory',
@@ -96,18 +98,7 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
     this.filteredItems = this.args.sourceList;
 
     if (this.isOpen) {
-      scheduleOnce('afterRender', this, () => {
-        const referenceTarget = this.container.querySelector('.upf-input') as HTMLElement;
-        const floatingTarget = document.querySelector(`#${this.portalId}`);
-
-        if (referenceTarget && floatingTarget) {
-          this.cleanupDrodpownAutoplacement = attachDropdown(
-            referenceTarget as HTMLElement,
-            floatingTarget as HTMLElement,
-            { placementStrategy: 'auto' }
-          );
-        }
-      });
+      scheduleOnce('afterRender', this, this.attachDropdownToInput);
     }
   }
 
@@ -132,6 +123,19 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
   onItemSelected(value: Item, preventFocus: boolean = false): void {
     this.closeDropdown(preventFocus);
     this.args.onChange(value);
+  }
+
+  private attachDropdownToInput(): void {
+    const referenceTarget = this.container.querySelector('.upf-input') as HTMLElement;
+    const floatingTarget = document.querySelector(`#${this.portalId}`);
+
+    if (referenceTarget && floatingTarget) {
+      this.cleanupDrodpownAutoplacement = attachDropdown(
+        referenceTarget as HTMLElement,
+        floatingTarget as HTMLElement,
+        { placementStrategy: 'auto' }
+      );
+    }
   }
 
   private matchValueWithSourceList(): void {

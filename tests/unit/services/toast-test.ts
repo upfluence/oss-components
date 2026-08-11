@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { click } from '@ember/test-helpers';
 import ToastService from '@upfluence/oss-components/services/toast';
+import sinon from 'sinon';
 
 const TOAST_TYPES = ['info', 'success', 'warning', 'error'];
 
@@ -16,10 +17,10 @@ module('Unit | Service | toast', function (hooks) {
     assert.ok(this.service);
     assert.ok(this.service instanceof ToastService);
 
-    assert.ok(typeof this.service.info === 'function');
-    assert.ok(typeof this.service.success === 'function');
-    assert.ok(typeof this.service.warning === 'function');
-    assert.ok(typeof this.service.error === 'function');
+    assert.strictEqual(typeof this.service.info, 'function');
+    assert.strictEqual(typeof this.service.success, 'function');
+    assert.strictEqual(typeof this.service.warning, 'function');
+    assert.strictEqual(typeof this.service.error, 'function');
   });
 
   module('public methods', function () {
@@ -45,19 +46,17 @@ module('Unit | Service | toast', function (hooks) {
 
     const animation = toast.getAnimations().filter((animation: Animation) => animation.id === 'destroy')[0];
     await animation.finished;
-    assert.true(toast.parentElement === null);
+    assert.strictEqual(toast.parentElement, null);
   });
 
   test('the onclick function is called when the toast is clicked', async function (assert: Assert) {
-    const toast = this.service.error('Message', 'Title', {
-      timeout: 100,
-      onclick: (event: MouseEvent) => {
-        assert.equal(event.type, 'click');
-      }
-    });
+    const onclickSpy = sinon.spy();
+    const toast = this.service.error('Message', 'Title', { timeout: 100, onclick: onclickSpy });
 
     await click(toast);
-    assert.expect(1);
+
+    assert.ok(onclickSpy.calledOnce);
+    assert.strictEqual(onclickSpy.firstCall.args[0].type, 'click');
   });
 
   module('badge options', function () {

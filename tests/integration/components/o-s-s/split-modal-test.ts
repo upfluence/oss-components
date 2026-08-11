@@ -89,8 +89,12 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
 
   module('Error management', function () {
     test('The component throws an error if the close parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::SplitModal] The close function is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::SplitModal] The close function is mandatory'
+        );
       });
 
       await render(hbs`<OSS::SplitModal />`);

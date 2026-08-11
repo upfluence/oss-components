@@ -238,9 +238,7 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
     test('the tag is propagated to the underlying item', async function (assert) {
       await renderComponent();
 
-      assert
-        .dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag')
-        .hasText('New');
+      assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag').hasText('New');
       assert
         .dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag')
         .hasClass('upf-tag--chat-gpt');

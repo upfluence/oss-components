@@ -3,6 +3,7 @@
     <input
       class="oss-slider__range"
       type="range"
+      aria-label={{t "oss-components.slider.range_label"}}
       min={{this.sliderOptions.min}}
       max={{this.sliderOptions.max}}
       value={{this.currentRangeValue}}
@@ -50,6 +51,7 @@
           min={{this.sliderOptions.min}}
           max={{this.sliderOptions.max}}
           placeholder={{this.currentRangeValue}}
+          aria-label={{t "oss-components.slider.input_label"}}
           disabled={{@disabled}}
           autocomplete={{this.sliderOptions.autocomplete}}
           class="upf-input"

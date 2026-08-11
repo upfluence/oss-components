@@ -127,18 +127,23 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
 
   module('Error management', () => {
     test('it throws when @cards is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] The @cards parameter is mandatory');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [OSS::FeatureCardsContainer] The @cards parameter is mandatory'
+        );
       });
 
       await render(hbs`<OSS::FeatureCardsContainer />`);
     });
 
     test('it throws when @cards has invalid count', async function (assert) {
+      assert.expect(1);
       this.cards = [];
 
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards'
         );

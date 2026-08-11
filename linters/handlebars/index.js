@@ -1,3 +1,4 @@
+/* global require module */
 const { NoBareHTMLButton, RequireDataControlName } = require('./rules');
 
 module.exports = {

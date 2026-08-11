@@ -51,9 +51,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   registerPanel(element: HTMLElement): void {
     this.currentPanel = element;
     this.args.registerPanel?.(this.currentPanel);
-    scheduleOnce('afterRender', this, () => {
-      this.initializeDropdown();
-    });
+    scheduleOnce('afterRender', this, this.initializeDropdown);
 
     this.currentPanel.querySelector('.oss-scrollable-panel-content')?.addEventListener('scroll', this.onScrollbound);
   }

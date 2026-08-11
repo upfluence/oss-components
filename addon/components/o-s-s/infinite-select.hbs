@@ -19,6 +19,7 @@
   {{/if}}
   <div class="upf-infinite-select__container">
     <ul
+      {{! template-lint-disable no-invalid-interactive }}
       class="upf-infinite-select__items-container
         {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
       {{on-bottom-reached this.onBottomReached}}

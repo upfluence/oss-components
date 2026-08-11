@@ -29,7 +29,7 @@
         @title="Get started with your first setup"
         @subtitle="Complete the initial configuration to unlock all features and get the most out of your experience."
         @imageUrl="/assets/images/upfluence-full-blue-logo.svg"
-        style="max-width:539px;"
+        class="demo-onboarding-state--lg"
       >
         <:actions>
           <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" @size="md" />
@@ -40,7 +40,7 @@
         @title="Get started with your first setup"
         @subtitle="Complete the initial configuration to unlock all features and get the most out of your experience."
         @imageUrl="/assets/images/upfluence-full-blue-logo.svg"
-        style="max-width:339px;"
+        class="demo-onboarding-state--sm"
       >
         <:actions>
           <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" @size="md" />
@@ -154,7 +154,7 @@
           @subtitle="Get notified when the perfect match comes along. The more socials you link, the better the chances of finding the right fit for your audience and style!"
         >
           <:illustration>
-            <img width="100" height="100" src="/assets/images/brand-icon.svg" />
+            <img width="100" height="100" src="/assets/images/brand-icon.svg" role="presentation" alt="" />
           </:illustration>
         </OSS::Marketing::Banner>
         <OSS::Marketing::Banner
@@ -163,11 +163,8 @@
           @options={{hash primaryGradiantColor="--color-cyan-100" secondaryGradiantColor="--color-lime-100"}}
         >
           <:illustration>
-            <div style="position:relative;height:100px;width:100px;">
-              <img
-                style="position:absolute;height:200px;width:200px;bottom:0;right:0;"
-                src="/assets/images/brand-icon.svg"
-              />
+            <div class="demo-illustration">
+              <img class="demo-illustration__image" src="/assets/images/brand-icon.svg" role="presentation" alt="" />
             </div>
           </:illustration>
         </OSS::Marketing::Banner>
@@ -182,7 +179,7 @@
               @subtitle="Get notified when the perfect match comes along. The more socials you link, the better the chances of finding the right fit for your audience and style!"
             >
               <:illustration>
-                <img width="100" height="100" src="/assets/images/brand-icon.svg" />
+                <img width="100" height="100" src="/assets/images/brand-icon.svg" role="presentation" alt="" />
               </:illustration>
               <:actions>
                 <OSS::Button @skin="primary" @label="Connect" @size="md" />
@@ -193,12 +190,12 @@
         <div class="fx-col fx-malign-center fx-1">
           <div class="fx-row fx-malign-center">
             <OSS::Marketing::Banner
-              style="max-width:335px;"
+              class="demo-banner"
               @title="Connect Your Socials, We’ll Find the Perfect Fit within 3,500+ opportunities! 🎯"
               @subtitle="Get notified when the perfect match comes along. The more socials you link, the better the chances of finding the right fit for your audience and style!"
             >
               <:illustration>
-                <img width="100" height="100" src="/assets/images/brand-icon.svg" />
+                <img width="100" height="100" src="/assets/images/brand-icon.svg" role="presentation" alt="" />
               </:illustration>
               <:actions>
                 <OSS::Button class="fx-1" @skin="primary" @label="Connect" @size="md" />
@@ -207,7 +204,7 @@
           </div>
         </div>
         <OSS::Marketing::Banner
-          style="max-width:335px;"
+          class="demo-banner"
           @title="Connect Your Socials, We’ll Find the Perfect Fit within 3,500+ opportunities! 🎯"
           @subtitle="Get notified when the perfect match comes along. The more socials you link, the better the chances of finding the right fit for your audience and style!"
           @options={{hash
@@ -217,11 +214,8 @@
           }}
         >
           <:illustration>
-            <div style="position:relative;height:100px;width:100px;">
-              <img
-                style="position:absolute;height:200px;width:200px;bottom:0;right:0;"
-                src="/assets/images/brand-icon.svg"
-              />
+            <div class="demo-illustration">
+              <img class="demo-illustration__image" src="/assets/images/brand-icon.svg" role="presentation" alt="" />
             </div>
           </:illustration>
           <:actions>
@@ -478,16 +472,19 @@
           <div class="page">
             <img
               src="https://assets.enterprisestorageforum.com/uploads/2023/07/Flash-Memory-vs.-HDD-Can-Flash-Replace-Hard-Drives-768x513.jpeg"
+              alt="Flash memory chip next to a hard disk drive"
             />
           </div>
           <div class="page">
             <img
               src="https://assets.enterprisestorageforum.com/uploads/2023/07/Flash-Memory-vs.-HDD-Can-Flash-Replace-Hard-Drives-768x513.jpeg"
+              alt="Flash memory chip next to a hard disk drive"
             />
           </div>
           <div class="page">
             <img
               src="https://assets.enterprisestorageforum.com/uploads/2023/07/Flash-Memory-vs.-HDD-Can-Flash-Replace-Hard-Drives-768x513.jpeg"
+              alt="Flash memory chip next to a hard disk drive"
             />
           </div>
         </:pages>

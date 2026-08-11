@@ -16,7 +16,7 @@ export default class WizardExampleStep extends WizardBaseStep<WizardExampleStepS
       // Implement the logic for step submission here
       // For example, this can be bound to the submit button of an OSS::Form component
       // we would then validate the inputs and resolve true or false based on the validations
-      resolve(true || false);
+      resolve(true);
     });
   }
 

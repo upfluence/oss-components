@@ -26,8 +26,9 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
   });
 
   test('It throws an error if the @title param is not passed', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
+      assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
     });
     await render(hbs`<OSS::TogglableSection @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
@@ -35,8 +36,9 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
   });
 
   test('It throws an error if the @toggled param is not passed', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
+      assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
     });
     await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}}
@@ -44,8 +46,9 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
   });
 
   test('It throws an error if the @onChange function is not passed', async function (assert) {
+    assert.expect(1);
     setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
+      assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
     });
     await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}} />`);

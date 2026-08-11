@@ -84,24 +84,27 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
 
   module('Error management', () => {
     test('it throws when @title is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
       });
 
       await render(hbs`<OSS::FeatureCard @description={{this.description}} @image={{this.image}} />`);
     });
 
     test('it throws when @description is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
       });
 
       await render(hbs`<OSS::FeatureCard @title={{this.title}} @image={{this.image}} />`);
     });
 
     test('it throws when @image is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [OSS::FeatureCard] The @image parameter is mandatory and must contain a src key'
         );
@@ -111,8 +114,9 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     });
 
     test('it throws when @colorVariant is unknown', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [OSS::FeatureCard] @colorVariant must be one of: blue, violet, yellow'
         );
@@ -124,8 +128,9 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
     });
 
     test('it throws when @shadowVariant is unknown', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
       });
 
       await render(

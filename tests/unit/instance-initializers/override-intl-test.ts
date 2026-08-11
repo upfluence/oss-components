@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error the dummy app module has no type declaration
 import { initialize } from 'dummy/instance-initializers/override-intl';
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';

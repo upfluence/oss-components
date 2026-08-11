@@ -107,11 +107,11 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
       this.loadedValues = ['value1', 'value2'];
       await render(hbs`<OSS::ArrayInput @values={{this.loadedValues}} />`);
       let domTags = findAll('.upf-chip');
-      assert.equal(domTags.length, 2);
+      assert.strictEqual(domTags.length, 2);
       assert.dom(domTags[1]).hasText('value2');
       await triggerKeyEvent('.array-input-container input', 'keydown', 'Backspace', { code: 'Backspace' });
       domTags = findAll('.upf-chip');
-      assert.equal(domTags.length, 1);
+      assert.strictEqual(domTags.length, 1);
       assert.dom('.array-input-container input').hasValue('value2');
     });
   });
@@ -133,10 +133,10 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
     this.loadedValues = ['value1', 'value2'];
     await render(hbs`<OSS::ArrayInput @values={{this.loadedValues}} />`);
     let domTagsRemove = findAll('.upf-chip');
-    assert.equal(domTagsRemove.length, 2);
+    assert.strictEqual(domTagsRemove.length, 2);
     await click('.upf-chip i');
     domTagsRemove = findAll('.upf-chip');
-    assert.equal(domTagsRemove.length, 1);
+    assert.strictEqual(domTagsRemove.length, 1);
     assert.dom('.upf-chip').hasText('value2');
   });
 });

@@ -523,15 +523,20 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
 
   module('for errors management', () => {
     test('The component throws an error if the title parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required');
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required'
+        );
       });
       await render(hbs`<OSS::InfiniteSelect::Option />`);
     });
 
     test('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: any) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory'
         );

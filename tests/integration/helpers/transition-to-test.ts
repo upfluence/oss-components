@@ -51,16 +51,18 @@ module('Integration | Helper | transition-to', function (hooks) {
 
   module('Error management', function () {
     test('it throws an error if the route argument is missing', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
-        assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
       });
 
       await render(hbs`<a {{on "click" (transition-to)}}>link</a>`);
     });
 
     test('it throws an error if both models and model arguments are passed', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [helper][OSS::transition-to] only one of model or models argument must be provided'
         );
@@ -70,8 +72,9 @@ module('Integration | Helper | transition-to', function (hooks) {
     });
 
     test('it throws an error if queryParams argument is passed but is not an object', async function (assert) {
+      assert.expect(1);
       setupOnerror((err: Error) => {
-        assert.equal(
+        assert.strictEqual(
           err.message,
           'Assertion Failed: [helper][OSS::transition-to] queryParams argument must be an object'
         );

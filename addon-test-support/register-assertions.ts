@@ -6,7 +6,7 @@ const ASSERTIONS = [tooltipAssertions, infiniteSelectOptionAssertions, dcnAssert
 
 export default function registerAssertions(assert: Assert) {
   ASSERTIONS.forEach((assertion) => {
-    // @ts-ignore
+    // @ts-expect-error custom assertions are dynamically registered on Assert
     assert[assertion.__name__] = assertion;
   });
 }
