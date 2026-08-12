@@ -24,7 +24,7 @@ define("dummy/tests/integration/components/modifiers/enable-input-autofocus-test
           "isStrictMode": false
         }));
         const inputElement = document.querySelector('.input');
-        await assert.equal(document.activeElement, inputElement);
+        await assert.strictEqual(document.activeElement, inputElement);
       });
       (0, _qunit.test)('it focuses the first enabled input ', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -45,7 +45,7 @@ define("dummy/tests/integration/components/modifiers/enable-input-autofocus-test
           "isStrictMode": false
         }));
         const inputElements = document.querySelectorAll('.input');
-        await assert.equal(document.activeElement, inputElements[3]);
+        await assert.strictEqual(document.activeElement, inputElements[3]);
       });
     });
     (0, _qunit.test)('When adding the modifier to an input it focuses the selected input ', async function (assert) {
@@ -64,7 +64,7 @@ define("dummy/tests/integration/components/modifiers/enable-input-autofocus-test
         "isStrictMode": false
       }));
       const inputElement = document.querySelector('.input');
-      await assert.equal(document.activeElement, inputElement);
+      await assert.strictEqual(document.activeElement, inputElement);
     });
     (0, _qunit.test)('When adding the modifier to a disabled element, it does nothing', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -735,7 +735,7 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["quni
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/scroll-shadow-test.ts",
           "isStrictMode": false
         }));
-        let container = document.querySelector('.items-container');
+        const container = document.querySelector('.items-container');
         container.style.maxHeight = '80px';
         container.style.overflow = 'auto';
         assert.ok(resizeObserverStub.calledOnce);
@@ -1367,13 +1367,13 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
           "isStrictMode": false
         }));
         let domTags = (0, _testHelpers.findAll)('.upf-chip');
-        assert.equal(domTags.length, 2);
+        assert.strictEqual(domTags.length, 2);
         assert.dom(domTags[1]).hasText('value2');
         await (0, _testHelpers.triggerKeyEvent)('.array-input-container input', 'keydown', 'Backspace', {
           code: 'Backspace'
         });
         domTags = (0, _testHelpers.findAll)('.upf-chip');
-        assert.equal(domTags.length, 1);
+        assert.strictEqual(domTags.length, 1);
         assert.dom('.array-input-container input').hasValue('value2');
       });
     });
@@ -1409,10 +1409,10 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         "isStrictMode": false
       }));
       let domTagsRemove = (0, _testHelpers.findAll)('.upf-chip');
-      assert.equal(domTagsRemove.length, 2);
+      assert.strictEqual(domTagsRemove.length, 2);
       await (0, _testHelpers.click)('.upf-chip i');
       domTagsRemove = (0, _testHelpers.findAll)('.upf-chip');
-      assert.equal(domTagsRemove.length, 1);
+      assert.strictEqual(domTagsRemove.length, 1);
       assert.dom('.upf-chip').hasText('value2');
     });
   });
@@ -2077,7 +2077,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/tag-array-test", ["qu
       }));
       assert.dom('.oss-attribute__value .fx-row.fx-wrap').exists();
       const allUpfTags = (0, _findAll.default)('.upf-tag');
-      assert.equal(allUpfTags.length, this.tags.length);
+      assert.strictEqual(allUpfTags.length, this.tags.length);
     });
     (0, _qunit.test)('If @tags are not passed to the component, a dash is displayed', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -2480,8 +2480,9 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       }
     });
     (0, _qunit.test)('it throws an error if @title is missing', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(error => {
-        assert.equal(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory');
+        assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -2495,8 +2496,9 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       }));
     });
     (0, _qunit.test)('it throws an error if @onSave is missing', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(error => {
-        assert.equal(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory');
+        assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -2717,7 +2719,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
-        assert.ok(this.updatedImage === null);
+        assert.strictEqual(this.updatedImage, null);
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').doesNotExist();
         assert.dom('.upf-avatar span').hasText('TS');
@@ -2806,8 +2808,9 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Error behavior', function () {
       (0, _qunit.test)('it throws an error if the wrong size argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, `Assertion Failed: [component][OSS::Avatar] Unknown size. Available sizes are: ${Object.keys(_avatar.SizeDefinition).join(', ')}`);
+          assert.strictEqual(err.message, `Assertion Failed: [component][OSS::Avatar] Unknown size. Available sizes are: ${Object.keys(_avatar.SizeDefinition).join(', ')}`);
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -2821,8 +2824,9 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         }));
       });
       (0, _qunit.test)('it throws an error if the wrong skin argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, `Assertion Failed: [component][OSS::Avatar] Unknown skin. Available skins are: ${_avatar.AvatarSkins.join(', ')}`);
+          assert.strictEqual(err.message, `Assertion Failed: [component][OSS::Avatar] Unknown skin. Available skins are: ${_avatar.AvatarSkins.join(', ')}`);
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -2989,8 +2993,9 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error when an unsupported skin is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3004,8 +3009,9 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         }));
       });
       (0, _qunit.test)('it throws an error when an unsupported size is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Badge] Unknown size. Available sizes are: sm, md, lg');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Badge] Unknown size. Available sizes are: sm, md, lg');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3019,8 +3025,9 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         }));
       });
       (0, _qunit.test)('it throws an error if no argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3034,8 +3041,9 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         }));
       });
       (0, _qunit.test)('it throws an error if more than one content argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3795,8 +3803,9 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no icon or label args is provided', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3810,8 +3819,9 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         }));
       });
       (0, _qunit.test)('it throws an error if mainAction exists and is not a function', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] The parameter @mainAction should be a function.');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] The parameter @mainAction should be a function.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4244,8 +4254,9 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4259,8 +4270,9 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         }));
       });
       (0, _qunit.test)('it fails if callback missing for @countDown argument', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, "Assertion Failed: [component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.");
+          assert.strictEqual(err.message, "Assertion Failed: [component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.");
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4319,8 +4331,9 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
       assert.dom('.oss-carousel').exists();
     });
     (0, _qunit.test)('If no pages are yielded to the component, it throws an error', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(error => {
-        assert.equal(error.message, '[component][OSS::Carousel] No pages found in the carousel');
+        assert.strictEqual(error.message, '[component][OSS::Carousel] No pages found in the carousel');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -4548,10 +4561,9 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
       assert.ok(onChangeSpy.neverCalledWith());
     });
     (0, _qunit.test)('the onChange hooks is called with the new value', async function (assert) {
+      const onChangeSpy = _sinon.default.spy();
       this.checked = false;
-      this.onChange = value => {
-        assert.equal(value, true);
-      };
+      this.onChange = onChangeSpy;
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Checkbox @checked={{this.checked}} @onChange={{this.onChange}} />
@@ -4563,7 +4575,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
         "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.upf-checkbox');
-      assert.expect(1);
+      assert.ok(onChangeSpy.calledOnceWithExactly(true));
     });
     (0, _qunit.module)('@partial argument', () => {
       (0, _qunit.test)('it is correctly updated when the partial argument changes', async function (assert) {
@@ -4735,8 +4747,9 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if checked argument is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(error => {
-          assert.equal(error.message, 'Assertion Failed: [component][OSS::Checkbox] Boolean @checked argument is mandatory.');
+          assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::Checkbox] Boolean @checked argument is mandatory.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4749,9 +4762,10 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
           "isStrictMode": false
         }));
       });
-      (0, _qunit.test)('it throws an error if checked argument is missing', async function (assert) {
+      (0, _qunit.test)('it throws an error if the onChange argument is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(error => {
-          assert.equal(error.message, 'Assertion Failed: [component][OSS::Checkbox] @onChange argument is mandatory.');
+          assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::Checkbox] @onChange argument is mandatory.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4936,8 +4950,9 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @onRemove is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4951,8 +4966,9 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         }));
       });
       (0, _qunit.test)('It throws an error if @label is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -5004,7 +5020,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
         "isStrictMode": false
       }));
       const codeLines = (0, _testHelpers.findAll)('.code-block code');
-      assert.equal(codeLines.length, 60);
+      assert.strictEqual(codeLines.length, 60);
       assert.dom(codeLines[0]).hasText("import Component from '@glimmer/component';");
       assert.dom(codeLines[1]).hasText(`import { action } from '@ember/object';`);
       assert.dom(codeLines[2]).hasText(`import { inject as service } from '@ember/service';`);
@@ -5494,8 +5510,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error when an unsupported skin is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -5509,8 +5526,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error when an unsupported size is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] Unknown size. Available sizes are: sm, md, lg');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] Unknown size. Available sizes are: sm, md, lg');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -5524,8 +5542,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error if no argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -5539,8 +5558,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error if more than one content argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -6040,8 +6060,8 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
       /*
         
             {{#if this.isInitialized}}
-              <OSS::ContextMenu::Panel @items={{this.items}} 
-                                       @referenceTarget={{this.referenceTarget}} 
+              <OSS::ContextMenu::Panel @items={{this.items}}
+                                       @referenceTarget={{this.referenceTarget}}
                                        @placement="bottom-start" />
             {{/if}}
             <OSS::Button id="first_button" @label="first" />
@@ -6059,27 +6079,27 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
       this.set('isInitialized', true);
       await (0, _testHelpers.settled)();
       const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
-      assert.equal(panelRef.style.top, '36px');
+      assert.strictEqual(panelRef.style.top, '36px');
       await (0, _testHelpers.waitUntil)(() => panelRef.style.left === '63.5px', {
         timeout: 300
       });
-      assert.equal(panelRef.style.left, '63.5px');
+      assert.strictEqual(panelRef.style.left, '63.5px');
       buttonRef.style.marginLeft = '50px';
       await (0, _testHelpers.settled)();
-      assert.equal(panelRef.style.top, '36px');
+      assert.strictEqual(panelRef.style.top, '36px');
       await (0, _testHelpers.waitUntil)(() => panelRef.style.left === '113.5px', {
         timeout: 300
       });
-      assert.equal(panelRef.style.left, '113.5px');
+      assert.strictEqual(panelRef.style.left, '113.5px');
     });
-    (0, _qunit.module)('placement', function (hooks) {
+    (0, _qunit.module)('placement', function () {
       (0, _qunit.test)('When placement is set to right-start, it positions the panel accordingly', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           
               {{#if this.isInitialized}}
-                <OSS::ContextMenu::Panel @items={{this.items}} 
-                                         @referenceTarget={{this.referenceTarget}} 
+                <OSS::ContextMenu::Panel @items={{this.items}}
+                                         @referenceTarget={{this.referenceTarget}}
                                          @placement="right-start" />
               {{/if}}
               <OSS::Button id="trigger" @label="Trigger" />
@@ -6100,16 +6120,16 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
         await (0, _testHelpers.settled)();
         const expectedLeftPosition = Number(((leftPosition + buttonRef.getBoundingClientRect().width) * 2).toFixed(4)) + 'px';
         const expectedTopPosition = 0 + 'px';
-        assert.equal(expectedLeftPosition, panelRef.style.left);
-        assert.equal(expectedTopPosition, panelRef.style.top);
+        assert.strictEqual(expectedLeftPosition, panelRef.style.left);
+        assert.strictEqual(expectedTopPosition, panelRef.style.top);
       });
       (0, _qunit.test)('When placement is set to bottom-start, it positions the panel accordingly', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           
               {{#if this.isInitialized}}
-                <OSS::ContextMenu::Panel @items={{this.items}} 
-                                         @referenceTarget={{this.referenceTarget}} 
+                <OSS::ContextMenu::Panel @items={{this.items}}
+                                         @referenceTarget={{this.referenceTarget}}
                                          @placement="bottom-start" />
               {{/if}}
               <OSS::Button id="trigger" @label="Trigger" />
@@ -6130,8 +6150,8 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
         await (0, _testHelpers.settled)();
         const expectedLeftPosition = 0 + 'px';
         const expectedTopPosition = Number(((topPosition + buttonRef.getBoundingClientRect().height) * 2).toFixed(4)) + 'px';
-        assert.equal(expectedLeftPosition, panelRef.style.left);
-        assert.equal(expectedTopPosition, panelRef.style.top);
+        assert.strictEqual(expectedLeftPosition, panelRef.style.left);
+        assert.strictEqual(expectedTopPosition, panelRef.style.top);
       });
     });
     (0, _qunit.module)('Offset', function () {
@@ -6141,8 +6161,8 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
         /*
           
               {{#if this.isInitialized}}
-                <OSS::ContextMenu::Panel @items={{this.items}} 
-                                         @referenceTarget={{this.referenceTarget}} 
+                <OSS::ContextMenu::Panel @items={{this.items}}
+                                         @referenceTarget={{this.referenceTarget}}
                                          @placement="bottom-start"
                                          @offset={{this.offset}} />
               {{/if}}
@@ -6160,7 +6180,7 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
         this.set('isInitialized', true);
         const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
         await (0, _testHelpers.settled)();
-        assert.equal(panelRef.style.top, '36px');
+        assert.strictEqual(panelRef.style.top, '36px');
       });
       (0, _qunit.test)('When offset is defined, panel is is moved by that many pixels than defined to his reference target', async function (assert) {
         this.offset = 20;
@@ -6168,8 +6188,8 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
         /*
           
               {{#if this.isInitialized}}
-                <OSS::ContextMenu::Panel @items={{this.items}} 
-                                         @referenceTarget={{this.referenceTarget}} 
+                <OSS::ContextMenu::Panel @items={{this.items}}
+                                         @referenceTarget={{this.referenceTarget}}
                                          @placement="bottom-start"
                                          @offset={{this.offset}} />
               {{/if}}
@@ -6187,7 +6207,7 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
         this.set('isInitialized', true);
         const panelRef = document.querySelector('.context-menu-panel__scrollable-container');
         await (0, _testHelpers.settled)();
-        assert.equal(panelRef.style.top, '56px');
+        assert.strictEqual(panelRef.style.top, '56px');
       });
     });
     (0, _qunit.module)('When items are passed', function () {
@@ -6197,7 +6217,7 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
           /*
             
                     {{#if this.isInitialized}}
-                      <OSS::ContextMenu::Panel @items={{this.items}} 
+                      <OSS::ContextMenu::Panel @items={{this.items}}
                                                @referenceTarget={{this.referenceTarget}}
                                                @placement="bottom-start"
                                                @offset={{this.offset}} />
@@ -6223,8 +6243,8 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
           });
           const panels = document.querySelectorAll('div.context-menu-panel__scrollable-container');
           const triggerPosition = (panels[0]?.querySelector('div.context-menu-panel__dropdown li:nth-of-type(1)')).getBoundingClientRect();
-          assert.equal(triggerPosition.x + triggerPosition.width, panels[1]?.getBoundingClientRect().x);
-          assert.equal(triggerPosition.y + _panel.SUBPANEL_OFFSET / 2, panels[1]?.getBoundingClientRect().y);
+          assert.strictEqual(triggerPosition.x + triggerPosition.width, panels[1]?.getBoundingClientRect().x);
+          assert.strictEqual(triggerPosition.y + _panel.SUBPANEL_OFFSET / 2, panels[1]?.getBoundingClientRect().y);
         });
         (0, _qunit.test)('Submenu items are properly displayed', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -6245,10 +6265,10 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
             count: 2
           });
           const panels = document.querySelectorAll('div.context-menu-panel__dropdown');
-          assert.equal(panels[1]?.querySelectorAll('li').length, 3);
-          assert.equal((panels[1]?.querySelector('li:nth-of-type(1)')).textContent?.trim(), 'Sub Item 1.1');
-          assert.equal((panels[1]?.querySelector('li:nth-of-type(2)')).textContent?.trim(), 'Sub Item 1.2');
-          assert.equal((panels[1]?.querySelector('li:nth-of-type(3)')).textContent?.trim(), 'Sub Item 1.3');
+          assert.strictEqual(panels[1]?.querySelectorAll('li').length, 3);
+          assert.strictEqual((panels[1]?.querySelector('li:nth-of-type(1)')).textContent?.trim(), 'Sub Item 1.1');
+          assert.strictEqual((panels[1]?.querySelector('li:nth-of-type(2)')).textContent?.trim(), 'Sub Item 1.2');
+          assert.strictEqual((panels[1]?.querySelector('li:nth-of-type(3)')).textContent?.trim(), 'Sub Item 1.3');
         });
       });
       (0, _qunit.test)('If item has custom component it render the component instead of default one', async function (assert) {
@@ -6263,7 +6283,7 @@ define("dummy/tests/integration/components/o-s-s/context-menu/panel-test", ["qun
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/context-menu/panel-test.ts",
           "isStrictMode": false
         }), TestComponent);
-        const component = this.owner.register('component:test-component', TestComponent);
+        this.owner.register('component:test-component', TestComponent);
         this.items = [{
           title: 'custom',
           action: () => console.log('Item 1 clicked'),
@@ -6769,7 +6789,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         }));
         await (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
         const rows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(rows.length, this.countries.length);
+        assert.strictEqual(rows.length, this.countries.length);
       });
       (0, _qunit.test)('if @sourceList contain ids, then country icons are displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -6993,8 +7013,9 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
     });
     (0, _qunit.module)('error management', () => {
       (0, _qunit.test)('it throws an error if @sourceList is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -7009,8 +7030,9 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @onChange is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -7032,7 +7054,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
           value: 'This is an error message'
         };
       });
-      (0, _qunit.module)('when @feedbackMessage is provided', () => {
+      (0, _qunit.module)('when @feedbackMessage is not provided', () => {
         (0, _qunit.test)('no error message is displayed', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
@@ -7373,7 +7395,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         assert.dom('.upf-infinite-select').exists();
         await (0, _testHelpers.typeIn)('.upf-infinite-select input', 'usd');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 1);
+        assert.strictEqual(clickableRows.length, 1);
         assert.dom(clickableRows[0]).hasText('$ USD');
       });
       (0, _qunit.test)('Searching by currency symbol works', async function (assert) {
@@ -7391,7 +7413,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         assert.dom('.upf-infinite-select').exists();
         await (0, _testHelpers.typeIn)('.upf-infinite-select input', '€');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 1);
+        assert.strictEqual(clickableRows.length, 1);
         assert.dom(clickableRows[0]).hasText('€ EUR');
       });
       (0, _qunit.test)('The passed @currency parameter changes are properly tracked in the input', async function (assert) {
@@ -7447,7 +7469,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         }));
         await (0, _testHelpers.click)('.currency-selector');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 2);
+        assert.strictEqual(clickableRows.length, 2);
       });
       (0, _qunit.module)('Selected currency highlighting', () => {
         (0, _qunit.test)('Selected currency has the selected class', async function (assert) {
@@ -7530,7 +7552,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         }));
         await (0, _testHelpers.typeIn)('input', '8');
         assert.ok(this.onChange.calledOnce);
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _testHelpers.triggerKeyEvent)('input', 'keydown', 'A', {
           code: 'a'
         });
@@ -7663,7 +7685,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
           "isStrictMode": false
         }));
         assert.dom('input').hasValue('1234567890');
-        let input = document.querySelector('input.ember-text-field');
+        const input = document.querySelector('input.ember-text-field');
         input.setSelectionRange(4, 6);
         await (0, _testHelpers.triggerEvent)('input', 'paste', {
           clipboardData: {
@@ -7674,8 +7696,9 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       });
     });
     (0, _qunit.test)('It throws an error if @onChange is not passed', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -7721,7 +7744,6 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
             assert.dom('.currency-input-container > span').hasText(`This is an ${type} message`);
           });
           (0, _qunit.test)("It doesn't display an icon below the component", async function (assert) {
-            assert.expect(1);
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
               <OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />
@@ -7732,7 +7754,11 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
               "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
               "isStrictMode": false
             }));
-            icon ? assert.dom('.currency-input-container > span i').hasClass(icon) : assert.dom('.currency-input-container > span i').doesNotExist();
+            if (icon) {
+              assert.dom('.currency-input-container > span i').hasClass(icon);
+            } else {
+              assert.dom('.currency-input-container > span i').doesNotExist();
+            }
           });
           (0, _qunit.test)('It displays a red border around the component', async function (assert) {
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -8268,8 +8294,9 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the @title parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8283,8 +8310,9 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         }));
       });
       (0, _qunit.test)('The component throws an error if the @mainAction parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The mainAction parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Dialog] The mainAction parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8298,8 +8326,9 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         }));
       });
       (0, _qunit.test)('The component throws an error if the @secondaryAction parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The secondaryAction parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Dialog] The secondaryAction parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8416,9 +8445,10 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       assert.dom('.text-color-error').hasText('Please enter a valid email address.');
     });
     (0, _qunit.test)('If the email regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+      assert.expect(1);
       this.value = 'john.doe@example.com';
       this.validates = x => {
-        assert.equal(x, true);
+        assert.true(x);
       };
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -8433,9 +8463,10 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       await (0, _testHelpers.typeIn)('input', 'a');
     });
     (0, _qunit.test)('If the email regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+      assert.expect(1);
       this.value = 'foo@f';
       this.validates = x => {
-        assert.equal(x, false);
+        assert.false(x);
       };
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -8450,8 +8481,9 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       await (0, _testHelpers.typeIn)('input', 'a');
     });
     (0, _qunit.test)('it throws an error when the @value parameter is missing', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -8618,7 +8650,7 @@ define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "e
       assert.dom('div.font-color-gray-500').hasText('Try again later');
       assert.dom('button').hasText('Retry');
     });
-    (0, _qunit.module)('component size', function (hooks) {
+    (0, _qunit.module)('component size', function () {
       (0, _qunit.test)('it applies md sizes by default', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8676,10 +8708,11 @@ define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "e
         assert.dom('div.font-color-gray-500').hasClass('font-size-sm');
       });
     });
-    (0, _qunit.module)('error management', function (hooks) {
+    (0, _qunit.module)('error management', function () {
       (0, _qunit.test)('it throws an error if the @title parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::EmptyState] The title parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::EmptyState] The title parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8693,8 +8726,9 @@ define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "e
         }));
       });
       (0, _qunit.test)('it throws an error if the @subtitle parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::EmptyState] The subtitle parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::EmptyState] The subtitle parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8958,8 +8992,9 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error when an unsupported skin is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8973,8 +9008,9 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error when an unsupported size is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] Unknown size. Available sizes are: sm, md, lg');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] Unknown size. Available sizes are: sm, md, lg');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8988,8 +9024,9 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error if no @expandableLabel argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9003,8 +9040,9 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error if no argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 0 arguments');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 0 arguments');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9018,8 +9056,9 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
         }));
       });
       (0, _qunit.test)('it throws an error if more than one content argument is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 2 arguments');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 2 arguments');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9146,8 +9185,9 @@ define("dummy/tests/integration/components/o-s-s/feature-card-test", ["qunit", "
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('it throws when @title is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9161,8 +9201,9 @@ define("dummy/tests/integration/components/o-s-s/feature-card-test", ["qunit", "
         }));
       });
       (0, _qunit.test)('it throws when @description is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9176,8 +9217,9 @@ define("dummy/tests/integration/components/o-s-s/feature-card-test", ["qunit", "
         }));
       });
       (0, _qunit.test)('it throws when @image is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] The @image parameter is mandatory and must contain a src key');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @image parameter is mandatory and must contain a src key');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9191,8 +9233,9 @@ define("dummy/tests/integration/components/o-s-s/feature-card-test", ["qunit", "
         }));
       });
       (0, _qunit.test)('it throws when @colorVariant is unknown', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] @colorVariant must be one of: blue, violet, yellow');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] @colorVariant must be one of: blue, violet, yellow');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9206,8 +9249,9 @@ define("dummy/tests/integration/components/o-s-s/feature-card-test", ["qunit", "
         }));
       });
       (0, _qunit.test)('it throws when @shadowVariant is unknown', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9345,8 +9389,9 @@ define("dummy/tests/integration/components/o-s-s/feature-cards-container-test", 
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('it throws when @cards is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] The @cards parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] The @cards parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9360,9 +9405,10 @@ define("dummy/tests/integration/components/o-s-s/feature-cards-container-test", 
         }));
       });
       (0, _qunit.test)('it throws when @cards has invalid count', async function (assert) {
+        assert.expect(1);
         this.cards = [];
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCardsContainer] @cards must contain between 1 and 3 cards');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -9521,8 +9567,9 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
       });
     }
     (0, _qunit.test)('it throws an error if icon argument is missing', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(error => {
-        assert.equal(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
+        assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -9662,8 +9709,9 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('search is enabled', function () {
       (0, _qunit.module)('with onSearch hook', function () {
         (0, _qunit.test)('it calls the onSearch hook with the typed keyword', async function (assert) {
+          assert.expect(2);
           this.onSearch = keyword => {
-            assert.equal(keyword, 'b', 'Enters the onSearch hook');
+            assert.strictEqual(keyword, 'b', 'Enters the onSearch hook');
           };
           this.onSelect = () => {};
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -9705,9 +9753,10 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('item selection', function () {
       (0, _qunit.module)('onSelect is passed', function () {
         (0, _qunit.test)('it calls the onSelect hook with the clicked item', async function (assert) {
+          assert.expect(1);
           this.items = FAKE_DATA;
           this.onSelect = item => {
-            assert.equal(item.name, 'Batman');
+            assert.strictEqual(item.name, 'Batman');
           };
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
@@ -10202,8 +10251,9 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.module)('On item selection, if onSelect is not passed', function () {
         (0, _qunit.test)('it should throw an error', async function (assert) {
+          assert.expect(1);
           (0, _testHelpers.setupOnerror)(err => {
-            assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory');
+            assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory');
           });
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
@@ -10219,8 +10269,9 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('When the search is enabled, if no onSearch hook has been passed', function () {
         (0, _qunit.test)('should throw an error', async function (assert) {
+          assert.expect(1);
           (0, _testHelpers.setupOnerror)(err => {
-            assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed');
+            assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed');
           });
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
@@ -11228,8 +11279,9 @@ define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", [
     });
     (0, _qunit.module)('for errors management', () => {
       (0, _qunit.test)('The component throws an error if the title parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -11243,8 +11295,9 @@ define("dummy/tests/integration/components/o-s-s/infinite-select/option-test", [
         }));
       });
       (0, _qunit.test)('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -11786,7 +11839,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       }));
       assert.dom('.oss-input-group-row-suffix').hasText('@domain.com');
     });
-    (0, _qunit.test)('Passing the @suffix parameter displays the input suffix', async function (assert) {
+    (0, _qunit.test)('Passing both the @prefix and @suffix parameters displays them', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::InputGroup @prefix="email" @suffix="@domain.com" />
@@ -11857,8 +11910,9 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       });
     });
     (0, _qunit.test)('it fails if no prefix or suffix parameters are passed', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -12215,10 +12269,10 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
         assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
         await (0, _testHelpers.click)('[data-control-name="sidebar-expanded-state-toggle"]');
         assert.dom('.oss-sidebar-container').doesNotHaveClass('oss-sidebar-container--expanded');
-        assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
+        assert.strictEqual(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
         await (0, _testHelpers.click)('[data-control-name="sidebar-expanded-state-toggle"]');
         assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
-        assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
+        assert.strictEqual(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
       });
     });
     (0, _qunit.module)('AlwaysExpanded behavior', hooks => {
@@ -12676,9 +12730,9 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
           "isStrictMode": false
         }));
-        assert.equal(router.currentRouteName, null);
+        assert.strictEqual(router.currentRouteName, null);
         await (0, _testHelpers.click)('.oss-sidebar-item');
-        assert.equal(router.currentRouteName, 'index');
+        assert.strictEqual(router.currentRouteName, 'index');
       });
       (0, _qunit.test)('When locked is true lockedAction is triggered', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12736,8 +12790,8 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = (0, _testHelpers.find)('.oss-sidebar-item');
-        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+        const inputWrapper = (0, _testHelpers.find)('.oss-sidebar-item');
+        assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
       });
     });
   });
@@ -12790,7 +12844,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       assert.dom('.upf-link span').hasText('Facebook');
     });
     (0, _qunit.test)('it opens link with href and target', async function (assert) {
-      let windowOpenStub = _sinon.default.stub(window, 'open');
+      const windowOpenStub = _sinon.default.stub(window, 'open');
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         
@@ -12810,7 +12864,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
     });
     (0, _qunit.test)('it transits to the route', async function (assert) {
       const router = this.owner.lookup('service:router');
-      let transitionToStub = _sinon.default.stub(router, 'transitionTo');
+      const transitionToStub = _sinon.default.stub(router, 'transitionTo');
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo="workflow.create" />
@@ -12825,8 +12879,9 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       assert.true(transitionToStub.calledOnceWithExactly('workflow.create'));
     });
     (0, _qunit.test)('it fails if no label nor icon argument are present', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Link] You must pass either a @label or an @icon argument.');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Link] You must pass either a @label or an @icon argument.');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -13013,7 +13068,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
-            assert.equal(getComputedStyle(element, ':before').display, 'flex');
+            assert.strictEqual(getComputedStyle(element, ':before').display, 'flex');
           });
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -13027,7 +13082,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner');
-            assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
+            assert.strictEqual(element.style.getPropertyValue('--background-grid-display'), 'flex');
           });
         });
         (0, _qunit.module)('when the value is false', () => {
@@ -13046,7 +13101,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
-            assert.equal(getComputedStyle(element, ':before').display, 'none');
+            assert.strictEqual(getComputedStyle(element, ':before').display, 'none');
           });
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             this.options = {
@@ -13063,7 +13118,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner');
-            assert.equal(element.style.getPropertyValue('--background-grid-display'), 'none');
+            assert.strictEqual(element.style.getPropertyValue('--background-grid-display'), 'none');
           });
         });
         (0, _qunit.module)('when the value is true', () => {
@@ -13082,7 +13137,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
-            assert.equal(getComputedStyle(element, ':before').display, 'flex');
+            assert.strictEqual(getComputedStyle(element, ':before').display, 'flex');
           });
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             this.options = {
@@ -13099,7 +13154,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner');
-            assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
+            assert.strictEqual(element.style.getPropertyValue('--background-grid-display'), 'flex');
           });
         });
       });
@@ -13124,7 +13179,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
             "isStrictMode": false
           }));
           const element = document.querySelector('.upf-marketing-banner');
-          assert.equal(element.style.getPropertyValue('--illustration-display'), 'flex');
+          assert.strictEqual(element.style.getPropertyValue('--illustration-display'), 'flex');
           assert.dom('.upf-marketing-banner__illustration').hasStyle({
             display: 'flex'
           });
@@ -13171,7 +13226,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
           "isStrictMode": false
         }));
         const element = document.querySelector('.upf-marketing-banner');
-        assert.equal(element.style.getPropertyValue('--illustration-display'), 'none');
+        assert.strictEqual(element.style.getPropertyValue('--illustration-display'), 'none');
         assert.dom('.upf-marketing-banner__illustration').hasStyle({
           display: 'none'
         });
@@ -13200,8 +13255,9 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @title is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13215,8 +13271,9 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
         }));
       });
       (0, _qunit.test)('It throws an error if @subtitle is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13555,8 +13612,9 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the title parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13570,8 +13628,9 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
         }));
       });
       (0, _qunit.test)('The component throws an error if the close parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13633,7 +13692,7 @@ define("dummy/tests/integration/components/o-s-s/mode-switch-test", ["qunit", "e
       assert.dom('[data-control-name="option1-input"]').isChecked();
       assert.dom('[data-control-name="option2-input"]').isNotChecked();
     });
-    (0, _qunit.module)('selected option parameter', function (hooks) {
+    (0, _qunit.module)('selected option parameter', function () {
       (0, _qunit.test)('it renders with option 1 as selected parameter', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13970,8 +14029,9 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @onSelection is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @onSelection of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @onSelection of type function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13985,8 +14045,9 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         }));
       });
       (0, _qunit.test)('It throws an error if @tabArray is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -13999,7 +14060,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
           "isStrictMode": false
         }));
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -14013,13 +14074,14 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         }));
       });
       (0, _qunit.test)('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
+        assert.expect(1);
         this.tabArray.push({
           label: '',
           key: 'foo',
           icon: ''
         });
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::NavTab] The @label or @icon parameter is mandatory for each element in @tabArray');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::NavTab] The @label or @icon parameter is mandatory for each element in @tabArray');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -14157,7 +14219,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
           "isStrictMode": false
         }));
         assert.dom('.number-input input').hasValue('0');
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowUp', {
           code: 'ArrowUp'
         });
@@ -14175,7 +14237,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
           "isStrictMode": false
         }));
         assert.dom('.number-input input').hasValue('0');
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowRight', {
           code: 'ArrowRight'
         });
@@ -14239,7 +14301,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
           "isStrictMode": false
         }));
         assert.dom('.number-input input').hasValue('0');
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowDown', {
           code: 'ArrowDown'
         });
@@ -14257,7 +14319,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
           "isStrictMode": false
         }));
         assert.dom('.number-input input').hasValue('0');
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowLeft', {
           code: 'ArrowLeft'
         });
@@ -14537,8 +14599,9 @@ define("dummy/tests/integration/components/o-s-s/onboarding-state-test", ["qunit
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -14552,8 +14615,9 @@ define("dummy/tests/integration/components/o-s-s/onboarding-state-test", ["qunit
         }));
       });
       (0, _qunit.test)('for subtitle, the component throws an error if the parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -14567,8 +14631,9 @@ define("dummy/tests/integration/components/o-s-s/onboarding-state-test", ["qunit
         }));
       });
       (0, _qunit.test)('for imageUrl, the component throws an error if the parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -14889,9 +14954,10 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       assert.dom('input').hasAttribute('type', 'password');
     });
     (0, _qunit.test)('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+      assert.expect(1);
       this.value = '1Aaaaaa';
       this.validates = x => {
-        assert.equal(x, true);
+        assert.true(x);
       };
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -14906,9 +14972,10 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       await (0, _testHelpers.typeIn)('input', 'a');
     });
     (0, _qunit.test)('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+      assert.expect(1);
       this.value = '1A';
       this.validates = x => {
-        assert.equal(x, false);
+        assert.false(x);
       };
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -15211,8 +15278,9 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       });
     });
     (0, _qunit.test)('it throws an error when the @value parameter is missing', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -15335,7 +15403,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom('.upf-infinite-select').exists();
         await (0, _typeIn.default)('.upf-infinite-select input', 'fran');
         const clickableRows = (0, _findAll.default)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 1);
+        assert.strictEqual(clickableRows.length, 1);
         assert.dom(clickableRows[0]).hasText('France (+33)');
       });
       (0, _qunit.test)('Searching by Country Code Prefix works', async function (assert) {
@@ -15353,7 +15421,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom('.upf-infinite-select').exists();
         await (0, _typeIn.default)('.upf-infinite-select input', '33');
         const clickableRows = (0, _findAll.default)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 2);
+        assert.strictEqual(clickableRows.length, 2);
         assert.dom(clickableRows[0]).hasText('France (+33)');
       });
       (0, _qunit.module)('Selected country highlighting', () => {
@@ -15425,7 +15493,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         }));
         await (0, _typeIn.default)('input', '8');
         assert.ok(this.onChange.calledOnce);
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _testHelpers.triggerKeyEvent)('input', 'keydown', 'A', {
           code: 'a'
         });
@@ -15507,7 +15575,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
           "isStrictMode": false
         }));
         assert.dom('input').hasValue('1234567890');
-        let input = document.querySelector('input.ember-text-field');
+        const input = document.querySelector('input.ember-text-field');
         input.setSelectionRange(4, 6);
         await (0, _testHelpers.triggerEvent)('input', 'paste', {
           clipboardData: {
@@ -15591,8 +15659,9 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @prefix is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory');
         });
         this.onChange = () => {};
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -15608,8 +15677,9 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         await (0, _settled.default)();
       });
       (0, _qunit.test)('It throws an error if @number is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory');
         });
         this.onChange = () => {};
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -15625,8 +15695,9 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         await (0, _settled.default)();
       });
       (0, _qunit.test)('It throws an error if @onChange is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory');
         });
         this.onChange = () => {};
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -15717,8 +15788,9 @@ define("dummy/tests/integration/components/o-s-s/pill-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it fails if @label is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Pill] You must pass a @label argument.');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Pill] You must pass a @label argument.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -16424,8 +16496,9 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('without selected-item named block', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -16441,8 +16514,9 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         }));
       });
       (0, _qunit.test)('without option-item named block', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -16543,7 +16617,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         }));
         assert.dom('.oss-progress-bar').exists();
         const innerBar = this.element.querySelector('.oss-progress-bar__inner');
-        assert.equal(innerBar.clientHeight, 1, 'Element has the correct height');
+        assert.strictEqual(innerBar.clientHeight, 1, 'Element has the correct height');
       });
       (0, _qunit.test)('if the value is "sm", the progress bar height is the proper height', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -16558,7 +16632,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         }));
         assert.dom('.oss-progress-bar').exists();
         const innerBar = this.element.querySelector('.oss-progress-bar__inner');
-        assert.equal(innerBar.clientHeight, 4, 'Element has the correct height');
+        assert.strictEqual(innerBar.clientHeight, 4, 'Element has the correct height');
       });
       (0, _qunit.test)('if the value is "lg", the progress bar height is the proper height', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -16573,7 +16647,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         }));
         assert.dom('.oss-progress-bar').exists();
         const innerBar = this.element.querySelector('.oss-progress-bar__inner');
-        assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+        assert.strictEqual(innerBar.clientHeight, 10, 'Element has the correct height');
       });
       (0, _qunit.test)('if the value is unspecified, the progress bar height is the proper height', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -16588,7 +16662,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         }));
         assert.dom('.oss-progress-bar').exists();
         const innerBar = this.element.querySelector('.oss-progress-bar__inner');
-        assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+        assert.strictEqual(innerBar.clientHeight, 10, 'Element has the correct height');
       });
     });
     (0, _qunit.module)('@label arg behaviour', function () {
@@ -16869,8 +16943,9 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '15');
       });
       (0, _qunit.test)('if the value is higher than 100, it throws an error', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(error => {
-          assert.equal(error.message, 'Assertion Failed: [component][OSS::ProgressBar] The sum of all skins values must be between 0 and 100');
+          assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::ProgressBar] The sum of all skins values must be between 0 and 100');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -17958,7 +18033,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         assert.expect(4);
         this.value = this.items[0];
         this.onSearch = keyword => {
-          assert.equal(keyword, 'F');
+          assert.strictEqual(keyword, 'F');
           this.set('items', this.items.filter(item => item.name.toLowerCase().indexOf(keyword.toLowerCase()) >= 0));
         };
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -18245,8 +18320,9 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no @onChange arg is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] The parameter @onChange of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Select] The parameter @onChange of type function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -18260,8 +18336,9 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         }));
       });
       (0, _qunit.test)('it throws an error if the component is invoked with no option named blocked', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -18835,8 +18912,8 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let items = (0, _testHelpers.findAll)('.upf-skeleton-effect');
-        assert.ok(items.length === 1);
+        const items = (0, _testHelpers.findAll)('.upf-skeleton-effect');
+        assert.strictEqual(items.length, 1);
       });
       (0, _qunit.test)('The content has multiple skeleton effect', async function (assert) {
         this.multiple = 4;
@@ -18850,8 +18927,8 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let items = (0, _testHelpers.findAll)('.upf-skeleton-effect');
-        assert.ok(items.length === 4);
+        const items = (0, _testHelpers.findAll)('.upf-skeleton-effect');
+        assert.strictEqual(items.length, 4);
       });
     });
     (0, _qunit.module)('@randomize parameters', hooks => {
@@ -18870,8 +18947,8 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let item = (0, _testHelpers.find)('.upf-skeleton-effect');
-        assert.ok(this.width == item?.offsetWidth);
+        const item = (0, _testHelpers.find)('.upf-skeleton-effect');
+        assert.strictEqual(this.width, item?.offsetWidth);
       });
       (0, _qunit.test)('Randomize width is within a 15% range', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -18884,8 +18961,9 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let item = (0, _testHelpers.find)('.upf-skeleton-effect');
-        assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
+        const item = (0, _testHelpers.find)('.upf-skeleton-effect');
+        assert.ok(item.offsetWidth <= 230);
+        assert.ok(item.offsetWidth >= 170);
       });
     });
     (0, _qunit.test)('@direction default value is row', async function (assert) {
@@ -18939,14 +19017,15 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = (0, _testHelpers.find)('.upf-skeleton-effect');
-        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+        const inputWrapper = (0, _testHelpers.find)('.upf-skeleton-effect');
+        assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
       });
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('it throws an error if @direct is provided and does not match required values', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -18962,12 +19041,13 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/slider', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
     hooks.beforeEach(function () {
       this.value = 10;
       this.min = 0;
@@ -19164,7 +19244,7 @@ define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-
         await (0, _testHelpers.fillIn)('.oss-slider__number-input input', '10');
         assert.ok(this.onChange.calledWith(20));
       });
-      (0, _qunit.test)("when the min is defined, the user can't set value under the minimum", async function (assert) {
+      (0, _qunit.test)("when the max is defined, the user can't set value above the maximum", async function (assert) {
         this.inputOptions = {
           max: 20
         };
@@ -19324,7 +19404,7 @@ define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-
           "isStrictMode": false
         }));
         await (0, _testHelpers.fillIn)('.oss-slider__number-input input', '30');
-        assert.equal(this.min, this.value);
+        assert.strictEqual(Number(this.value), this.min);
         const element = this.element.querySelector('.oss-slider__range');
         assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '0%');
       });
@@ -19712,8 +19792,9 @@ define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Button] You must pass either a @label, an @icon or an @iconUrl argument.');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::Button] You must pass either a @label, an @icon or an @iconUrl argument.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -19949,7 +20030,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         assert.dom('.upf-infinite-select').exists();
         await (0, _testHelpers.typeIn)('.upf-infinite-select input', 'usd');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 1);
+        assert.strictEqual(clickableRows.length, 1);
         assert.dom(clickableRows[0]).hasText('$ USD');
       });
       (0, _qunit.test)('Searching by currency symbol works', async function (assert) {
@@ -19967,7 +20048,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         assert.dom('.upf-infinite-select').exists();
         await (0, _testHelpers.typeIn)('.upf-infinite-select input', '€');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 1);
+        assert.strictEqual(clickableRows.length, 1);
         assert.dom(clickableRows[0]).hasText('€ EUR');
       });
       (0, _qunit.test)('The passed @currency parameter changes are properly tracked in the input', async function (assert) {
@@ -20007,7 +20088,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         }));
         await (0, _testHelpers.click)('.currency-selector');
         const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-        assert.equal(clickableRows.length, 2);
+        assert.strictEqual(clickableRows.length, 2);
       });
       (0, _qunit.module)('Selected currency highlighting', () => {
         (0, _qunit.test)('The selected currency has the selected class', async function (assert) {
@@ -20089,7 +20170,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         }));
         await (0, _testHelpers.typeIn)('input', '8');
         assert.ok(this.onChange.calledOnce);
-        // @ts-ignore
+        // @ts-expect-error the modifiers argument is missing from the helper typings
         await (0, _testHelpers.triggerKeyEvent)('input', 'keydown', 'A', {
           code: 'a'
         });
@@ -20163,7 +20244,7 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
           "isStrictMode": false
         }));
         assert.dom('input').hasValue('1234567890');
-        let input = document.querySelector('input.ember-text-field');
+        const input = document.querySelector('input.ember-text-field');
         input.setSelectionRange(4, 6);
         await (0, _testHelpers.triggerEvent)('input', 'paste', {
           clipboardData: {
@@ -20210,8 +20291,9 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
       });
     });
     (0, _qunit.test)('It throws an error if @onChange is not passed', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -20296,14 +20378,14 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/input-test", ["
         this.placeholder = '';
         await renderComponent();
         const element = document.querySelector('.smart-immersive-input-container');
-        assert.equal(element.offsetWidth, 52);
+        assert.strictEqual(element.offsetWidth, 52);
       });
       (0, _qunit.test)('When input has value or placeholder, the size is based on input content', async function (assert) {
         await renderComponent();
         const element = document.querySelector('.smart-immersive-input-container');
-        assert.equal(element.offsetWidth, 104);
+        assert.strictEqual(element.offsetWidth, 104);
         await (0, _testHelpers.typeIn)('.smart-immersive-input-container input', 'more text');
-        assert.equal(element.offsetWidth, 158);
+        assert.strictEqual(element.offsetWidth, 158);
       });
     });
     (0, _qunit.module)('Prefix name block', () => {
@@ -20628,9 +20710,10 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/logo-test", ["q
       assert.dom('.smart-rotating-gradient').exists();
     });
     (0, _qunit.test)('it throws an error if icon format is invalid', async function (assert) {
+      assert.expect(1);
       this.icon = 'invalidFormat';
       (0, _testHelpers.setupOnerror)(error => {
-        assert.equal(error.message, `Assertion Failed: Invalid icon format "${this.icon}". Expected format is "iconName:colorName".`);
+        assert.strictEqual(error.message, `Assertion Failed: Invalid icon format "${this.icon}". Expected format is "iconName:colorName".`);
       });
       (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -20747,8 +20830,9 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/select-test", [
     });
     (0, _qunit.module)('It renders', () => {
       (0, _qunit.test)('When missing selected-item name block, it throws an error', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass selected-item named block');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass selected-item named block');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -20770,8 +20854,9 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/select-test", [
         }));
       });
       (0, _qunit.test)('With missing option-item name block, it throws an error', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass option-item named block');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass option-item named block');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -21084,12 +21169,12 @@ define("dummy/tests/integration/components/o-s-s/smart/input-test", ["qunit", "e
       });
       (0, _qunit.test)('Sets @placeholder correctly', async function (assert) {
         await renderComponentWithParams();
-        let input = (0, _testHelpers.find)('.upf-input');
+        const input = (0, _testHelpers.find)('.upf-input');
         assert.strictEqual(input?.getAttribute('placeholder'), 'Type here');
       });
       (0, _qunit.test)('Calls @onChange on input', async function (assert) {
         await renderComponentWithParams();
-        let input = (0, _testHelpers.find)('.upf-input');
+        const input = (0, _testHelpers.find)('.upf-input');
         assert.ok(input, 'Input element should exist');
         await (0, _testHelpers.typeIn)(input, 'X');
         assert.ok(onValueChange.called);
@@ -21429,7 +21514,7 @@ define("dummy/tests/integration/components/o-s-s/smart/number-input-test", ["qun
         assert.dom('.smart-number-input').doesNotHaveClass('smart-number-input--filled');
       });
     });
-    (0, _qunit.module)('State Priority', hooks => {
+    (0, _qunit.module)('State Priority', () => {
       (0, _qunit.test)('error state takes priority over filled state', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -21805,8 +21890,8 @@ define("dummy/tests/integration/components/o-s-s/smart/skeleton-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let items = (0, _testHelpers.findAll)('.upf-smart-skeleton-effect');
-        assert.ok(items.length === 1);
+        const items = (0, _testHelpers.findAll)('.upf-smart-skeleton-effect');
+        assert.strictEqual(items.length, 1);
       });
       (0, _qunit.test)('The content has multiple skeleton effect', async function (assert) {
         this.multiple = 4;
@@ -21820,8 +21905,8 @@ define("dummy/tests/integration/components/o-s-s/smart/skeleton-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let items = (0, _testHelpers.findAll)('.upf-smart-skeleton-effect');
-        assert.ok(items.length === 4);
+        const items = (0, _testHelpers.findAll)('.upf-smart-skeleton-effect');
+        assert.strictEqual(items.length, 4);
       });
     });
     (0, _qunit.module)('@randomize parameters', hooks => {
@@ -21840,8 +21925,8 @@ define("dummy/tests/integration/components/o-s-s/smart/skeleton-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let item = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
-        assert.ok(this.width == item?.offsetWidth);
+        const item = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
+        assert.strictEqual(this.width, item?.offsetWidth);
       });
       (0, _qunit.test)('Randomize width is within a 15% range', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -21854,8 +21939,9 @@ define("dummy/tests/integration/components/o-s-s/smart/skeleton-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let item = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
-        assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
+        const item = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
+        assert.ok(item.offsetWidth <= 230);
+        assert.ok(item.offsetWidth >= 170);
       });
     });
     (0, _qunit.module)('@direction parameters', () => {
@@ -21911,14 +21997,15 @@ define("dummy/tests/integration/components/o-s-s/smart/skeleton-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
-        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+        const inputWrapper = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
+        assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
       });
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('It throws an error if @direction is provided and does not match required values', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Skeleton] The @direction argument should be a value of row,column,col');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::Skeleton] The @direction argument should be a value of row,column,col');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22254,7 +22341,7 @@ define("dummy/tests/integration/components/o-s-s/smart/text-area-test", ["qunit"
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
           "isStrictMode": false
         }));
-        assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
+        assert.strictEqual(document.querySelector(this.textareaSelector).offsetHeight, 52);
       });
       (0, _qunit.test)('Row change height', async function (assert) {
         this.rows = 2;
@@ -22315,14 +22402,15 @@ define("dummy/tests/integration/components/o-s-s/smart/text-area-test", ["qunit"
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = document.querySelector('.oss-smart-text-area-container');
-        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'description-input');
+        const inputWrapper = document.querySelector('.oss-smart-text-area-container');
+        assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'description-input');
       });
     });
     (0, _qunit.module)('error management', () => {
       (0, _qunit.test)('it throws an error if @resize is not a correct value', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize');
         });
         this.resize = 'NotACorrectValue';
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -22548,8 +22636,9 @@ define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["q
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('it throws an error if @toggles is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22564,8 +22653,9 @@ define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["q
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @onSelection is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22580,8 +22670,9 @@ define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["q
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @selectedToggle is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22596,9 +22687,10 @@ define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["q
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @selectedToggle is not a value of toggles', async function (assert) {
+        assert.expect(1);
         this.selectedToggle = 'toto';
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22768,8 +22860,9 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
     });
     (0, _qunit.module)('error management', () => {
       (0, _qunit.test)('it throws an error if @selectedToggle is not provided', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22783,9 +22876,10 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
         }));
       });
       (0, _qunit.test)('it throws an error if @postType is not a value of SocialPostType', async function (assert) {
+        assert.expect(1);
         this.postType = 'toto';
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter should be a value of SocialPostType');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter should be a value of SocialPostType');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -22940,8 +23034,9 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the close parameter is not passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::SplitModal] The close function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::SplitModal] The close function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -23019,6 +23114,7 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
     });
     (0, _qunit.module)('@style parameter', function () {
       (0, _qunit.test)('when "under" is passed, sub-elements have a raising z-index', async function (assert) {
+        assert.expect(4);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23036,6 +23132,7 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
         });
       });
       (0, _qunit.test)('when "over" is passed, sub-elements have a lowering z-index', async function (assert) {
+        assert.expect(4);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @style="over"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23068,6 +23165,7 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
     });
     (0, _qunit.module)('@pxMargin parameter', function () {
       (0, _qunit.test)('it applies a margin to sub-elements except the last one', async function (assert) {
+        assert.expect(3);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @pxMargin="10" @style="under"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23080,14 +23178,12 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
         }));
         const subElements = document.querySelectorAll('.oss-stack-container > *');
         subElements.forEach((child, index) => {
-          if (index < subElements.length - 1) {
-            assert.strictEqual(child.style.marginRight, '-10px');
-          } else {
-            assert.strictEqual(child.style.marginRight, '');
-          }
+          const expectedMargin = index < subElements.length - 1 ? '-10px' : '';
+          assert.strictEqual(child.style.marginRight, expectedMargin);
         });
       });
       (0, _qunit.test)('the margin defaults to -6px if not specified', async function (assert) {
+        assert.expect(3);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23100,14 +23196,12 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
         }));
         const subElements = document.querySelectorAll('.oss-stack-container > *');
         subElements.forEach((child, index) => {
-          if (index < subElements.length - 1) {
-            assert.strictEqual(child.style.marginRight, '-6px', 'Default margin is applied');
-          } else {
-            assert.strictEqual(child.style.marginRight, '', 'No margin for the last child');
-          }
+          const isLastChild = index === subElements.length - 1;
+          assert.strictEqual(child.style.marginRight, isLastChild ? '' : '-6px', isLastChild ? 'No margin for the last child' : 'Default margin is applied');
         });
       });
       (0, _qunit.test)('passing a positive margin converts it to a negative margin', async function (assert) {
+        assert.expect(3);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @pxMargin="20" @style="under"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23120,16 +23214,14 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
         }));
         const subElements = document.querySelectorAll('.oss-stack-container > *');
         subElements.forEach((child, index) => {
-          if (index < subElements.length - 1) {
-            assert.strictEqual(child.style.marginRight, '-20px', 'Margin is negative');
-          } else {
-            assert.strictEqual(child.style.marginRight, '', 'No margin for the last child');
-          }
+          const isLastChild = index === subElements.length - 1;
+          assert.strictEqual(child.style.marginRight, isLastChild ? '' : '-20px', isLastChild ? 'No margin for the last child' : 'Margin is negative');
         });
       });
     });
     (0, _qunit.module)('@bringToFrontOnHover parameter', function () {
       (0, _qunit.test)('it does not bring elements to front by default', async function (assert) {
+        assert.expect(3);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23146,6 +23238,7 @@ define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit"
         });
       });
       (0, _qunit.test)('it brings elements to front on hover when specified', async function (assert) {
+        assert.expect(6);
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::StackContainer @bringToFrontOnHover={{true}} @style="under"><div></div><div></div><div></div></OSS::StackContainer>
@@ -23262,8 +23355,9 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('failing to pass @rating throws an error', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::StarRating] @rating argument is mandatory and must be a number');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::StarRating] @rating argument is mandatory and must be a number');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -23277,8 +23371,9 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
         }));
       });
       (0, _qunit.test)('failing to pass @totalStart throws an error', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::StarRating] @totalStars argument is mandatory and must be a number');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::StarRating] @totalStars argument is mandatory and must be a number');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -23497,8 +23592,9 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
       assert.dom('.upf-tag').hasClass('upf-tag--xs');
     });
     (0, _qunit.test)('it fails if @label and @icon are missing', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Tag] You must pass either a @label or an @icon argument.');
+        assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Tag] You must pass either a @label or an @icon argument.');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -23613,7 +23709,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
           "isStrictMode": false
         }));
-        assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
+        assert.strictEqual(document.querySelector(this.textareaSelector).offsetHeight, 52);
       });
       (0, _qunit.test)('Row change height', async function (assert) {
         this.rows = 2;
@@ -23674,14 +23770,15 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = document.querySelector('.oss-textarea-container');
-        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'description-input');
+        const inputWrapper = document.querySelector('.oss-textarea-container');
+        assert.strictEqual(inputWrapper?.getAttribute('data-control-name'), 'description-input');
       });
     });
     (0, _qunit.module)('error management', () => {
       (0, _qunit.test)('it throws an error if @resize is not a correct value', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize');
         });
         this.resize = 'NotACorrectValue';
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -23993,8 +24090,9 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       assert.dom('.togglable-section').exists();
     });
     (0, _qunit.test)('It throws an error if the @title param is not passed', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -24010,8 +24108,9 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       }));
     });
     (0, _qunit.test)('It throws an error if the @toggled param is not passed', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -24027,8 +24126,9 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       }));
     });
     (0, _qunit.test)('It throws an error if the @onChange function is not passed', async function (assert) {
+      assert.expect(1);
       (0, _testHelpers.setupOnerror)(err => {
-        assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
+        assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -24438,8 +24538,9 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
     });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('it throws an error if @toggles is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -24454,8 +24555,9 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @onSelection is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -24470,8 +24572,9 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @selectedToggle is not provided', async function (assert) {
+        assert.expect(1);
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -24486,9 +24589,10 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         await (0, _settled.default)();
       });
       (0, _qunit.test)('it throws an error if @selectedToggle is not a value of toggles', async function (assert) {
+        assert.expect(1);
         this.selectedToggle = 'toto';
         (0, _setupOnerror.default)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -24505,10 +24609,10 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/toggle-switch', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it applies the right class on the toggle switch depending on the value', async function (assert) {
@@ -24531,9 +24635,8 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
       assert.dom('.upf-toggle').hasClass('upf-toggle--toggled');
     });
     (0, _qunit.test)('it triggers the onChange action when clicking the button', async function (assert) {
-      this.onChange = v => {
-        assert.equal(v, false);
-      };
+      const onChangeSpy = _sinon.default.spy();
+      this.onChange = onChangeSpy;
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::ToggleSwitch @value={{true}} @onChange={{this.onChange}} />
@@ -24545,12 +24648,14 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
         "isStrictMode": false
       }));
       await (0, _testHelpers.click)('.upf-toggle');
-      assert.expect(1);
+      assert.ok(onChangeSpy.calledOnce);
+      assert.false(onChangeSpy.firstCall.args[0]);
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no onChange action is passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide an onChange action');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide an onChange action');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -24564,9 +24669,10 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
         }));
       });
       (0, _qunit.test)('it throws an error if no value is passed', async function (assert) {
+        assert.expect(1);
         this.onChange = () => {};
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is undefined');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is undefined');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -24580,9 +24686,10 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
         }));
       });
       (0, _qunit.test)('it throws an error if passed value is not a boolean', async function (assert) {
+        assert.expect(1);
         this.onChange = () => {};
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is string');
+          assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is string');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -26023,6 +26130,87 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
     });
   });
 });
+define("dummy/tests/integration/components/upf-stat-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "@ember/template", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _template, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@ember/template"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | upf-stat', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks, {
+      'upf-stat-test': {
+        label: 'Total <b>revenue</b>'
+      }
+    });
+    (0, _qunit.test)('it renders the label', async function (assert) {
+      this.label = 'Total revenue';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <UpfStat @data="42" @label={{this.label}} />
+      */
+      {
+        "id": "AWaUk9qd",
+        "block": "[[[8,[39,0],null,[[\"@data\",\"@label\"],[\"42\",[30,0,[\"label\"]]]],null]],[],false,[\"upf-stat\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/upf-stat-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-stat__label').hasText('Total revenue');
+    });
+    (0, _qunit.test)('it renders the markup of a plain string label', async function (assert) {
+      this.label = 'Total <b>revenue</b>';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <UpfStat @data="42" @label={{this.label}} />
+      */
+      {
+        "id": "AWaUk9qd",
+        "block": "[[[8,[39,0],null,[[\"@data\",\"@label\"],[\"42\",[30,0,[\"label\"]]]],null]],[],false,[\"upf-stat\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/upf-stat-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-stat__label b').hasText('revenue');
+    });
+    (0, _qunit.test)('it renders the markup of a translated label', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <UpfStat @data="42" @label={{t "upf-stat-test.label"}} />
+      */
+      {
+        "id": "ssiC6UmI",
+        "block": "[[[8,[39,0],null,[[\"@data\",\"@label\"],[\"42\",[28,[37,1],[\"upf-stat-test.label\"],null]]],null]],[],false,[\"upf-stat\",\"t\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/upf-stat-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-stat__label b').hasText('revenue');
+    });
+    (0, _qunit.test)('it renders the markup of an already html safe label', async function (assert) {
+      this.label = (0, _template.htmlSafe)('Total <b>revenue</b>');
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <UpfStat @data="42" @label={{this.label}} />
+      */
+      {
+        "id": "AWaUk9qd",
+        "block": "[[[8,[39,0],null,[[\"@data\",\"@label\"],[\"42\",[30,0,[\"label\"]]]],null]],[],false,[\"upf-stat\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/upf-stat-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-stat__label b').hasText('revenue');
+    });
+    (0, _qunit.test)('it does not render the label container when no label is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <UpfStat @data="42" />
+      */
+      {
+        "id": "s57nJlX1",
+        "block": "[[[8,[39,0],null,[[\"@data\"],[\"42\"]],null]],[],false,[\"upf-stat\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/upf-stat-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-stat__label').doesNotExist();
+    });
+  });
+});
 define("dummy/tests/integration/components/wizard/base-step-test", ["qunit", "ember-qunit", "@upfluence/oss-components/components/wizard/base-step", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _baseStep, _testHelpers, _templateFactory) {
   "use strict";
 
@@ -26082,7 +26270,7 @@ define("dummy/tests/integration/components/wizard/base-step-test", ["qunit", "em
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
         "isStrictMode": false
       }));
-      assert.ok(typeof this.step.validateStep === 'function');
+      assert.strictEqual(typeof this.step.validateStep, 'function');
     });
     (0, _qunit.test)("It doesn't set validateStep if already present", async function (assert) {
       this.step.validateStep = () => Promise.resolve(true);
@@ -26873,8 +27061,9 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if the url argument is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [helper][OSS::redirect-to] url argument is mandatory.');
+          assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::redirect-to] url argument is mandatory.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -26888,8 +27077,9 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
         }));
       });
       (0, _qunit.test)('it throws an error if the target is not a valid one', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [helper][OSS::redirect-to] the target argument must be a valid one: https://www.w3schools.com/tags/att_a_target.asp.');
+          assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::redirect-to] the target argument must be a valid one: https://www.w3schools.com/tags/att_a_target.asp.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -27020,10 +27210,10 @@ define("dummy/tests/integration/helpers/required-input-test", ["qunit", "ember-q
     });
   });
 });
-define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Helper | stop-propagation', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -27033,13 +27223,10 @@ define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember
       Event.prototype.stopPropagation = this.nativeStopPropagation;
     });
     (0, _qunit.test)('it renders', async function (assert) {
-      Event.prototype.stopPropagation = () => {
-        assert.ok(true);
-      };
-      this.onClick = (arg, event) => {
-        assert.equal(arg, 'foo');
-        assert.ok(event instanceof MouseEvent);
-      };
+      const stopPropagationSpy = _sinon.default.spy();
+      const onClickSpy = _sinon.default.spy();
+      Event.prototype.stopPropagation = stopPropagationSpy;
+      this.onClick = onClickSpy;
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <button {{on "click" (stop-propagation (fn this.onClick "foo"))}}>stop propagation</button>
@@ -27051,7 +27238,10 @@ define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember
         "isStrictMode": false
       }));
       await (0, _testHelpers.click)('button');
-      assert.expect(3);
+      assert.ok(stopPropagationSpy.called);
+      assert.ok(onClickSpy.calledOnce);
+      assert.strictEqual(onClickSpy.firstCall.args[0], 'foo');
+      assert.ok(onClickSpy.firstCall.args[1] instanceof MouseEvent);
     });
   });
 });
@@ -27141,8 +27331,9 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if the route argument is missing', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
+          assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -27156,8 +27347,9 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
         }));
       });
       (0, _qunit.test)('it throws an error if both models and model arguments are passed', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] only one of model or models argument must be provided');
+          assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::transition-to] only one of model or models argument must be provided');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -27171,8 +27363,9 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
         }));
       });
       (0, _qunit.test)('it throws an error if queryParams argument is passed but is not an object', async function (assert) {
+        assert.expect(1);
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] queryParams argument must be an object');
+          assert.strictEqual(err.message, 'Assertion Failed: [helper][OSS::transition-to] queryParams argument must be an object');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -27195,6 +27388,7 @@ define("dummy/tests/integration/modifiers/attach-element-test", ["qunit", "ember
   (0, _qunit.module)('Integration | Modifiers | modifiers/attach-element', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('the attached element has no floating-related style when not using the modifier', async function (assert) {
+      assert.expect(6);
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         
@@ -27216,10 +27410,11 @@ define("dummy/tests/integration/modifiers/attach-element-test", ["qunit", "ember
       const expectedEmptyAttributes = ['max-width', 'min-width', 'width', 'left', 'top', 'visibility'];
       const attachedElement = (0, _testHelpers.find)('.attached-element');
       expectedEmptyAttributes.forEach(attr => {
-        assert.equal(attachedElement.style.getPropertyValue(attr), '');
+        assert.strictEqual(attachedElement.style.getPropertyValue(attr), '');
       });
     });
     (0, _qunit.test)('attached element is properly rendered w/ the right floating-ui positioning style', async function (assert) {
+      assert.expect(6);
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         
@@ -27379,9 +27574,10 @@ define("dummy/tests/integration/modifiers/text-carousel-test", ["qunit", "ember-
       assert.dcn('carousel').hasText('Thinking...');
     });
     (0, _qunit.test)('it throws when no labels are provided', async function (assert) {
+      assert.expect(1);
       this.set('labels', []);
       (0, _testHelpers.setupOnerror)(error => {
-        assert.equal(error.message, '[modifier][text-carousel] Requires a non-empty labels array');
+        assert.strictEqual(error.message, '[modifier][text-carousel] Requires a non-empty labels array');
       });
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -27433,7 +27629,6 @@ define("dummy/tests/test-helper", ["dummy/app", "dummy/config/environment", "@em
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"dummy/app",0,"dummy/config/environment",0,"@ember/test-helpers",0,"qunit",0,"qunit-dom",0,"ember-qunit",0,"qunit-dom",0,"@upfluence/oss-components/test-support/register-assertions",0,"ember-cli-code-coverage/test-support"eaimeta@70e063a35619d71f
-  // @ts-nocheck
   (0, _registerAssertions.default)(QUnit.assert);
   (0, _qunitDom.setup)(QUnit.assert);
   QUnit.done(async () => {
@@ -28063,7 +28258,7 @@ define("dummy/tests/unit/instance-initializers/override-intl-test", ["dummy/inst
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"dummy/instance-initializers/override-intl",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/template"eaimeta@70e063a35619d71f
-  // @ts-ignore
+  // @ts-expect-error the dummy app module has no type declaration
   (0, _qunit.module)('Unit | Instance Initializer | override-intl', function (hooks) {
     (0, _emberQunit.setupTest)(hooks);
     (0, _testSupport.setupIntl)(hooks, 'en-us');
@@ -28419,14 +28614,10 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
       });
     });
     (0, _qunit.test)('calling the `url` getter throws throws a NotImplemented error', function (assert) {
-      try {
-        this.service.url;
-      } catch (err) {
-        assert.equal(err.message, '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.');
-      }
-      assert.expect(1);
+      assert.throws(() => this.service.url, err => err.message === '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.');
     });
     (0, _qunit.test)('calling the upload method throws a NotImplemented error', function (assert) {
+      assert.expect(1);
       try {
         this.service.upload({
           file: new File([new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])], '1px.png', {
@@ -28436,7 +28627,7 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
           scope: 'anonymous'
         }, []);
       } catch (err) {
-        assert.equal(err.message, '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.');
+        assert.strictEqual(err.message, '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.');
       }
     });
   });
@@ -28457,15 +28648,16 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
     });
     (0, _qunit.module)('#generateId', function () {
       (0, _qunit.test)('it generates a unique ID', function (assert) {
-        assert.equal(this.service.generateId(), FAKE_UUID);
+        assert.strictEqual(this.service.generateId(), FAKE_UUID);
       });
     });
     (0, _qunit.module)('#getInstance', function () {
       (0, _qunit.test)('it returns a form instance', function (assert) {
+        assert.expect(5);
         const instance = this.service.getInstance('test');
-        assert.equal(instance.id, 'test');
+        assert.strictEqual(instance.id, 'test');
         ['validateForm', 'validateField', 'getErrors', 'clearErrors'].forEach(method => {
-          assert.equal(typeof instance[method], 'function');
+          assert.strictEqual(typeof instance[method], 'function');
         });
       });
     });
@@ -28475,14 +28667,14 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
         const field = 'testField';
         const validator = _sinon.default.stub();
         this.service.registerField(id, field, validator);
-        assert.equal(this.service.formValidators[id][field], validator);
+        assert.strictEqual(this.service.formValidators[id][field], validator);
       });
     });
     (0, _qunit.module)('#unregisterField', function () {
       (0, _qunit.test)('it properly unregisters a field', function (assert) {
         this.service.registerField('test', 'testField', _sinon.default.stub());
         this.service.unregisterField('test', 'testField');
-        assert.equal(this.service.formValidators['test']['testField'], undefined);
+        assert.strictEqual(this.service.formValidators['test']['testField'], undefined);
       });
     });
     (0, _qunit.module)('Form instance methods', function (hooks) {
@@ -28500,7 +28692,7 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
             }
           });
           this.service.registerField('test', field, validator);
-          assert.equal(this.formInstance.validateField(field), false);
+          assert.false(this.formInstance.validateField(field));
           assert.deepEqual(this.service.formFeedbacks['test'][field], {
             kind: 'blank',
             message: {
@@ -28519,7 +28711,7 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
             }
           });
           this.service.registerField('test', field, validator);
-          assert.equal(this.formInstance.validateField(field), true);
+          assert.true(this.formInstance.validateField(field));
           assert.deepEqual(this.service.formFeedbacks['test'][field], {
             kind: 'be_cautious',
             message: {
@@ -28532,8 +28724,8 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
           const field = 'testField';
           const validator = _sinon.default.stub().returns(undefined);
           this.service.registerField('test', field, validator);
-          assert.equal(this.formInstance.validateField(field), true);
-          assert.equal(this.service.formFeedbacks['test'], undefined);
+          assert.true(this.formInstance.validateField(field));
+          assert.strictEqual(this.service.formFeedbacks['test'], undefined);
         });
       });
       (0, _qunit.module)('#validateForm', function () {
@@ -28547,7 +28739,7 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
             }
           });
           this.service.registerField('test', field, validator);
-          assert.equal(this.formInstance.validateForm(), false);
+          assert.false(this.formInstance.validateForm());
           assert.deepEqual(this.service.formFeedbacks['test'][field], {
             kind: 'blank',
             message: {
@@ -28566,7 +28758,7 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
             }
           });
           this.service.registerField('test', field, validator);
-          assert.equal(this.formInstance.validateForm(), true);
+          assert.true(this.formInstance.validateForm());
           assert.deepEqual(this.service.formFeedbacks['test'][field], {
             kind: 'be_cautious',
             message: {
@@ -28579,8 +28771,8 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
           const field = 'testField';
           const validator = _sinon.default.stub().returns(undefined);
           this.service.registerField('test', field, validator);
-          assert.equal(this.formInstance.validateForm(), true);
-          assert.equal(this.service.formFeedbacks['test'], undefined);
+          assert.true(this.formInstance.validateForm());
+          assert.strictEqual(this.service.formFeedbacks['test'], undefined);
         });
       });
       (0, _qunit.module)('#getErrors', function () {
@@ -28653,10 +28845,10 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
     });
   });
 });
-define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/services/toast"], function (_qunit, _emberQunit, _testHelpers, _toast) {
+define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/services/toast", "sinon"], function (_qunit, _emberQunit, _testHelpers, _toast, _sinon) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@upfluence/oss-components/services/toast"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@upfluence/oss-components/services/toast",0,"sinon"eaimeta@70e063a35619d71f
   const TOAST_TYPES = ['info', 'success', 'warning', 'error'];
   (0, _qunit.module)('Unit | Service | toast', function (hooks) {
     (0, _emberQunit.setupTest)(hooks);
@@ -28666,10 +28858,10 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
     (0, _qunit.test)('it exists', function (assert) {
       assert.ok(this.service);
       assert.ok(this.service instanceof _toast.default);
-      assert.ok(typeof this.service.info === 'function');
-      assert.ok(typeof this.service.success === 'function');
-      assert.ok(typeof this.service.warning === 'function');
-      assert.ok(typeof this.service.error === 'function');
+      assert.strictEqual(typeof this.service.info, 'function');
+      assert.strictEqual(typeof this.service.success, 'function');
+      assert.strictEqual(typeof this.service.warning, 'function');
+      assert.strictEqual(typeof this.service.error, 'function');
     });
     (0, _qunit.module)('public methods', function () {
       TOAST_TYPES.forEach(type => {
@@ -28696,17 +28888,17 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
       await (0, _testHelpers.click)(buttonElement);
       const animation = toast.getAnimations().filter(animation => animation.id === 'destroy')[0];
       await animation.finished;
-      assert.true(toast.parentElement === null);
+      assert.strictEqual(toast.parentElement, null);
     });
     (0, _qunit.test)('the onclick function is called when the toast is clicked', async function (assert) {
+      const onclickSpy = _sinon.default.spy();
       const toast = this.service.error('Message', 'Title', {
         timeout: 100,
-        onclick: event => {
-          assert.equal(event.type, 'click');
-        }
+        onclick: onclickSpy
       });
       await (0, _testHelpers.click)(toast);
-      assert.expect(1);
+      assert.ok(onclickSpy.calledOnce);
+      assert.strictEqual(onclickSpy.firstCall.args[0].type, 'click');
     });
     (0, _qunit.module)('badge options', function () {
       (0, _qunit.test)('it should display icon', async function (assert) {
@@ -28776,15 +28968,15 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
     (0, _qunit.module)('Configuration & Initialization', function () {
       (0, _qunit.test)('Sections are properly initialized', function (assert) {
         this.service.initialize(this.config);
-        assert.equal(this.service.sections.length, 1);
-        assert.equal(this.service.sections[0].key, 'section-1');
+        assert.strictEqual(this.service.sections.length, 1);
+        assert.strictEqual(this.service.sections[0].key, 'section-1');
       });
       (0, _qunit.test)('Steps are properly initialized', function (assert) {
         this.service.initialize(this.config);
-        assert.equal(this.service.allSteps.length, 3);
-        assert.equal(this.service.allSteps[0].key, 'step-1');
-        assert.equal(this.service.allSteps[1].key, 'step-2');
-        assert.equal(this.service.allSteps[2].key, 'step-3');
+        assert.strictEqual(this.service.allSteps.length, 3);
+        assert.strictEqual(this.service.allSteps[0].key, 'step-1');
+        assert.strictEqual(this.service.allSteps[1].key, 'step-2');
+        assert.strictEqual(this.service.allSteps[2].key, 'step-3');
       });
       (0, _qunit.test)('Extra step properties are preserved', function (assert) {
         const extraProperty = {
@@ -28796,8 +28988,8 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         this.service.initialize(this.config);
         const step1 = this.service.allSteps[0];
         const section1 = this.service.sections[0];
-        assert.equal(section1.customProp, 'customValue', 'Extra properties are preserved in sections');
-        assert.equal(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
+        assert.strictEqual(section1.customProp, 'customValue', 'Extra properties are preserved in sections');
+        assert.strictEqual(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
       });
       (0, _qunit.test)('Setting a visited attribute on steps overwrites the default', function (assert) {
         this.config = {
@@ -28813,7 +29005,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
       (0, _qunit.test)('Focused step is set to first step', function (assert) {
         this.service.initialize(this.config);
-        assert.equal(this.service.focusedStepId, this.service.allSteps[0].id);
+        assert.strictEqual(this.service.focusedStepId, this.service.allSteps[0].id);
       });
       (0, _qunit.test)('Setting centerStepsInContainer option to true adds empty steps to the start and end', function (assert) {
         this.config.options = {
@@ -28821,8 +29013,8 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         };
         this.service.initialize(this.config);
         const steps = this.service.sections[0].steps;
-        assert.equal(steps[0].displayState, 'empty');
-        assert.equal(steps[steps.length - 1].displayState, 'empty');
+        assert.strictEqual(steps[0].displayState, 'empty');
+        assert.strictEqual(steps[steps.length - 1].displayState, 'empty');
       });
       (0, _qunit.test)('Not setting centerStepsInContainer does not add empty steps', function (assert) {
         this.service.initialize(this.config);
@@ -28849,7 +29041,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         const step2Id = this.service.allSteps[1].id;
         this.service.selectStep(step2Id);
         await (0, _testHelpers.settled)();
-        assert.equal(this.service.focusedStepId, step2Id);
+        assert.strictEqual(this.service.focusedStepId, step2Id);
       });
       (0, _qunit.test)('calling selectStep with a bypassValidations flag focuses the step without validation', async function (assert) {
         const step1 = createStep('step-1', {
@@ -28866,10 +29058,10 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         const step1Id = this.service.allSteps[0].id;
         const step2Id = this.service.allSteps[1].id;
         this.validateStub = _sinon.default.stub(this.service.allSteps[0], 'validateStep').resolves(true);
-        assert.equal(this.service.focusedStepId, step1Id);
+        assert.strictEqual(this.service.focusedStepId, step1Id);
         this.service.selectStep(step2Id, true);
         await (0, _testHelpers.settled)();
-        assert.equal(this.service.focusedStepId, step2Id);
+        assert.strictEqual(this.service.focusedStepId, step2Id);
         assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
       });
       (0, _qunit.test)("selectStep runs the current step's validateStep if provided", async function (assert) {
@@ -28903,7 +29095,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         step2.validateStep = stub2;
         this.service.selectStep(step3.id);
         await (0, _testHelpers.settled)();
-        assert.equal(this.service.focusedStepId, step3.id, 'Focused on step 3 after validation');
+        assert.strictEqual(this.service.focusedStepId, step3.id, 'Focused on step 3 after validation');
         assert.true(stub1.calledOnce);
         assert.true(stub2.calledOnce);
       });
@@ -28919,7 +29111,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         step2.validateStep = stub2;
         this.service.selectStep(step3.id);
         await (0, _testHelpers.settled)();
-        assert.equal(this.service.focusedStepId, step2.id);
+        assert.strictEqual(this.service.focusedStepId, step2.id);
       });
     });
     (0, _qunit.module)('Service getters', function () {
@@ -29036,13 +29228,13 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       assert.strictEqual(this.service.sections.length, 0);
       assert.strictEqual(this.service.allSteps.length, 0);
       assert.strictEqual(this.service.focusedStepId, '');
-      assert.strictEqual(this.service.initialized, false);
+      assert.false(this.service.initialized);
     });
     (0, _qunit.test)('markStepAsCompleted marks a step as completed', async function (assert) {
       this.service.initialize(this.config);
       await (0, _testHelpers.settled)();
       const step1 = this.service.allSteps[0];
-      assert.equal(step1.completed, undefined);
+      assert.strictEqual(step1.completed, undefined);
       this.service.markStepAsCompleted(step1.id);
       assert.true(step1.completed);
     });
@@ -29062,11 +29254,11 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         this.service.initialize(this.config);
         await (0, _testHelpers.settled)();
         const step1 = this.service.allSteps[0];
-        assert.equal(step1.hidden, undefined);
+        assert.strictEqual(step1.hidden, undefined);
         this.service.toggleStepVisibility(step1.id, true);
-        assert.equal(step1.hidden, true);
+        assert.true(step1.hidden);
         this.service.toggleStepVisibility(step1.id, false);
-        assert.equal(step1.hidden, false);
+        assert.false(step1.hidden);
       });
       (0, _qunit.test)('It rerenders the display states when triggered', async function (assert) {
         this.service.initialize(this.config);
@@ -29130,12 +29322,12 @@ define("dummy/tests/unit/utils/upf-local-storage-test", ["dummy/utils/upf-local-
       (0, _qunit.test)('Saving content without specifying a prefix will use the default ".upf_" prefix', function (assert) {
         let upfStorage = new _upfLocalStorage.default();
         upfStorage.saveItem(TEST_KEY, TEST_VALUE);
-        assert.equal(TEST_VALUE, localStorage.getItem(DEFAULT_PREFIX + TEST_KEY));
+        assert.strictEqual(TEST_VALUE, localStorage.getItem(DEFAULT_PREFIX + TEST_KEY));
       });
       (0, _qunit.test)('Setting a custom prefix on the Ctor will save content with the set prefix', function (assert) {
         let upfStorage = new _upfLocalStorage.default(CUSTOM_PREFIX);
         upfStorage.saveItem(TEST_KEY, TEST_VALUE);
-        assert.equal(TEST_VALUE, localStorage.getItem(CUSTOM_PREFIX + TEST_KEY));
+        assert.strictEqual(TEST_VALUE, localStorage.getItem(CUSTOM_PREFIX + TEST_KEY));
       });
     });
     (0, _qunit.module)('Method: saveObject', function () {
@@ -29262,12 +29454,12 @@ define("dummy/tests/unit/utils/upf-local-storage-test", ["dummy/utils/upf-local-
     (0, _qunit.module)('Method: getItem', function () {
       (0, _qunit.test)('getItem() returns null if no key is found', function (assert) {
         let upfStorage = new _upfLocalStorage.default();
-        assert.equal(null, upfStorage.getItem(TEST_KEY));
+        assert.strictEqual(upfStorage.getItem(TEST_KEY), null);
       });
       (0, _qunit.test)('getItem() returns the proper value if the key is found', function (assert) {
         let upfStorage = new _upfLocalStorage.default();
         upfStorage.saveItem(TEST_KEY, TEST_VALUE);
-        assert.equal(TEST_VALUE, upfStorage.getItem(TEST_KEY));
+        assert.strictEqual(TEST_VALUE, upfStorage.getItem(TEST_KEY));
       });
     });
     (0, _qunit.module)('Method: delete', function () {
@@ -29276,14 +29468,14 @@ define("dummy/tests/unit/utils/upf-local-storage-test", ["dummy/utils/upf-local-
         upfStorage.saveItem(TEST_KEY, TEST_VALUE);
         assert.deepEqual(TEST_VALUE, localStorage.getItem(DEFAULT_PREFIX + TEST_KEY));
         upfStorage.delete(TEST_KEY);
-        assert.equal(null, upfStorage.getItem(TEST_KEY));
+        assert.strictEqual(upfStorage.getItem(TEST_KEY), null);
       });
       (0, _qunit.test)('delete() uses the custom prefix when removing a key', function (assert) {
         let upfStorage = new _upfLocalStorage.default(CUSTOM_PREFIX);
         upfStorage.saveItem(TEST_KEY, TEST_VALUE);
         assert.deepEqual(TEST_VALUE, localStorage.getItem(CUSTOM_PREFIX + TEST_KEY));
         upfStorage.delete(TEST_KEY);
-        assert.equal(null, upfStorage.getItem(TEST_KEY));
+        assert.strictEqual(upfStorage.getItem(TEST_KEY), null);
       });
     });
   });
@@ -29302,17 +29494,17 @@ define("dummy/tests/utils-test", ["qunit", "ember-qunit", "dummy/tests/integrati
       const hexColor = (0, _utils.CSSVariableToRGB)('--test-hex-color');
       const rgbColor = (0, _utils.CSSVariableToRGB)('--test-rgb-color');
       const rgbaColor = (0, _utils.CSSVariableToRGB)('--test-rgba-color');
-      assert.equal(hexColor, 'rgb(255, 87, 51)', 'Hex color converted to RGB correctly');
-      assert.equal(rgbaColor, 'rgb(139, 65, 9)', 'RGBA color converted to RGB correctly');
-      assert.equal(rgbColor, 'rgb(34, 139, 34)', 'RGB color converted to RGB correctly');
+      assert.strictEqual(hexColor, 'rgb(255, 87, 51)', 'Hex color converted to RGB correctly');
+      assert.strictEqual(rgbaColor, 'rgb(139, 65, 9)', 'RGBA color converted to RGB correctly');
+      assert.strictEqual(rgbColor, 'rgb(34, 139, 34)', 'RGB color converted to RGB correctly');
     });
     (0, _qunit.test)('hexToRGB converts hex color to RGB', function (assert) {
       const shortHex = '#0f0';
       const longHex = '#00ff00';
       const shortHexRGB = (0, _utils.hexToRGB)(shortHex);
       const longHexRGB = (0, _utils.hexToRGB)(longHex);
-      assert.equal(shortHexRGB, 'rgb(0, 255, 0)', 'Short hex color converted to RGB correctly');
-      assert.equal(longHexRGB, 'rgb(0, 255, 0)', 'Long hex color converted to RGB correctly');
+      assert.strictEqual(shortHexRGB, 'rgb(0, 255, 0)', 'Short hex color converted to RGB correctly');
+      assert.strictEqual(longHexRGB, 'rgb(0, 255, 0)', 'Long hex color converted to RGB correctly');
     });
   });
 });

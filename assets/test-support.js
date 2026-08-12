@@ -23991,8 +23991,8 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
   const assertion = selector => {
     return {
       exists: async (trigger, message) => {
-        let result = true;
-        let actual = null;
+        const result = true;
+        const actual = null;
         await triggerEventOnElement(selector, trigger);
         QUnit.assert.pushResult({
           result,
@@ -24064,11 +24064,9 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
       },
       doesNotHaveSubtitle: async message => {
         await triggerEventOnElement(selector);
-        let result = false;
-        let actual = undefined;
         const subtitleContainer = document.querySelector('.upf-tooltip .subtitle');
-        actual = subtitleContainer?.innerText;
-        result = (0, _utils.isEmpty)(actual);
+        const actual = subtitleContainer?.innerText;
+        const result = (0, _utils.isEmpty)(actual);
         QUnit.assert.pushResult({
           result,
           actual,
@@ -24095,8 +24093,8 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
       doesNotHaveIcon: async message => {
         await triggerEventOnElement(selector);
         const iconI = document.querySelector('.upf-tooltip .title-container i');
-        let actual = iconI?.className;
-        let result = (0, _utils.isEmpty)(actual);
+        const actual = iconI?.className;
+        const result = (0, _utils.isEmpty)(actual);
         QUnit.assert.pushResult({
           result,
           actual,
@@ -24123,8 +24121,8 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
       isHtmlSafe: async message => {
         await triggerEventOnElement(selector);
         const titleContainer = document.querySelector('.upf-tooltip .title-container .title');
-        let actual = titleContainer?.dataset.htmlSafe;
-        let result = actual === 'true';
+        const actual = titleContainer?.dataset.htmlSafe;
+        const result = actual === 'true';
         QUnit.assert.pushResult({
           result,
           actual,
@@ -24135,8 +24133,8 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
       isNotHtmlSafe: async message => {
         await triggerEventOnElement(selector);
         const titleContainer = document.querySelector('.upf-tooltip .title-container .title');
-        let actual = titleContainer?.dataset.htmlSafe;
-        let result = actual === undefined;
+        const actual = titleContainer?.dataset.htmlSafe;
+        const result = actual === undefined;
         QUnit.assert.pushResult({
           result,
           actual,
@@ -24180,7 +24178,7 @@ define("@upfluence/oss-components/test-support/register-assertions", ["exports",
   const ASSERTIONS = [_tooltip.default, _infiniteSelectOption.default, _dcn.default];
   function registerAssertions(assert) {
     ASSERTIONS.forEach(assertion => {
-      // @ts-ignore
+      // @ts-expect-error custom assertions are dynamically registered on Assert
       assert[assertion.__name__] = assertion;
     });
   }
