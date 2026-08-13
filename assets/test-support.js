@@ -24178,7 +24178,6 @@ define("@upfluence/oss-components/test-support/register-assertions", ["exports",
   const ASSERTIONS = [_tooltip.default, _infiniteSelectOption.default, _dcn.default];
   function registerAssertions(assert) {
     ASSERTIONS.forEach(assertion => {
-      // @ts-expect-error custom assertions are dynamically registered on Assert
       assert[assertion.__name__] = assertion;
     });
   }
