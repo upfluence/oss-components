@@ -1,0 +1,110 @@
+.oss-stats-banner {
+  container-type: inline-size;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-px-12);
+  padding: var(--spacing-px-12);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-white);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-12);
+  }
+
+  &__badge {
+    display: flex;
+    align-items: flex-start;
+    padding-top: var(--spacing-px-3);
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-px-12);
+  }
+
+  &__card {
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-gray-50);
+    padding: var(--spacing-px-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-px-3);
+    min-height: 84px;
+  }
+
+  &__card--highlighted {
+    border-color: var(--color-violet-500);
+    background-color: var(--color-violet-50);
+  }
+
+  &__card-label {
+    color: var(--color-gray-500);
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+  }
+
+  &__card-value {
+    color: var(--color-gray-900);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+  }
+
+  &__card-meta {
+    color: var(--color-gray-400);
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+  }
+
+  &__skeleton--badge,
+  &__skeleton--extra-badge {
+    border-radius: 9999px;
+  }
+
+  &__skeleton--title {
+    max-width: 100%;
+  }
+
+  &__skeleton--cta {
+    border-radius: var(--border-radius-xl);
+  }
+}
+
+@container (width <= 900px) {
+  .oss-stats-banner {
+    &__header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    &__stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@container (width <= 540px) {
+  .oss-stats-banner {
+    &__stats {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<div class="oss-stats-banner fx-col fx-gap-px-12" ...attributes>
+  <div class="oss-stats-banner__header fx-row fx-gap-px-12 fx-malign-space-between">
+    <div class="oss-stats-banner__header_content fx-row fx-gap-px-12 fx-malign-center fx-xalign-center">
+      {{#if (and this.loading this.hasBadgeContent)}}
+        <OSS::Skeleton @height={{36}} @width={{36}} class="oss-stats-banner__skeleton--badge" />
+      {{else if this.hasBadgeContent}}
+        <OSS::Badge
+          @icon={{@badgeIcon}}
+          @image={{@badgeImage}}
+          @text={{@badgeText}}
+          @skin={{@badgeSkin}}
+          @size={{@badgeSize}}
+          @plain={{@badgePlain}}
+        />
+      {{/if}}
+      <div class="oss-stats-banner__content">
+        {{#if (has-block "content")}}
+          {{yield to="content"}}
+        {{else if (and this.loading @title)}}
+          <OSS::Skeleton @height={{18}} @width={{420}} class="oss-stats-banner__skeleton--title" />
+        {{else}}
+          <div class="header-section fx-row fx-gap-px-8 fx-malign-space-between">
+            <span class="font-color-gray-600">{{@title}}</span>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div>
+      {{#if (and this.loading (has-block "extra-badges"))}}
+        <div class="fx-row fx-gap-px-6">
+          <OSS::Skeleton @height={{28}} @width={{28}} class="oss-stats-banner__skeleton--extra-badge" />
+          <OSS::Skeleton @height={{28}} @width={{28}} class="oss-stats-banner__skeleton--extra-badge" />
+        </div>
+      {{else if (has-block "extra-badges")}}
+        {{yield to="extra-badges"}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="oss-stats-banner__bottom_content fx-row fx-gap-px-12 fx-malign-space-between">
+    <div class="oss-stats-banner__stat fx-row fx-gap-px-4">
+      {{#if (and this.loading @statValue)}}
+        <OSS::Skeleton @height={{18}} @width={{90}} class="oss-stats-banner__skeleton--stat-value" />
+      {{else}}
+        <span class="font-color-gray-600">{{@statValue}}</span>
+
+      {{/if}}
+
+      {{#if (and this.loading @statExtraInfo)}}
+        <OSS::Skeleton @height={{16}} @width={{120}} class="oss-stats-banner__skeleton--stat-extra" />
+      {{else if @statExtraInfo}}
+        <span class="font-color-gray-400">{{@statExtraInfo}}</span>
+      {{/if}}
+    </div>
+    {{#if (and this.loading (has-block "cta"))}}
+      <OSS::Skeleton @height={{32}} @width={{120}} class="oss-stats-banner__skeleton--cta" />
+    {{else if (has-block "cta")}}
+      <div class="oss-stats-banner__cta">
+        {{yield to="cta"}}
+      </div>
+    {{/if}}
+  </div>
+</div>
