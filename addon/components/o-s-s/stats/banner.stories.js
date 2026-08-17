@@ -13,33 +13,13 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
-    },
-    badgeIcon: {
-      description: 'Font Awesome icon forwarded to OSS::Badge (@icon)',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: { summary: 'fa-check' }
-      },
-      control: { type: 'text' }
-    },
-    badgeSkin: {
-      description: 'Badge skin forwarded to OSS::Badge (@skin)',
-      table: {
-        type: {
-          summary: 'primary|success|alert|error|xtd-cyan|xtd-orange|xtd-yellow|xtd-lime|xtd-blue|xtd-violet|xtd-smart'
-        },
-        defaultValue: { summary: 'success' }
-      },
-      control: { type: 'text' }
     }
   },
   parameters: {
     docs: {
       description: {
         component:
-          'A block-first stats banner. Badge props are forwarded to OSS::Badge, while content and CTA remain named blocks; provide stat cards in the default block.'
+          'A block-first stats banner. Badges, content and CTA are all provided through named blocks; provide stat cards in the default block.'
       },
       iframeHeight: 260
     }
@@ -48,15 +28,17 @@ export default {
 
 const defaultArgs = {
   title:
-    'Use statistics to surface a key KPI or summary at-a-glance. Apply locale-aware number formatting, keep significant digits reasonable, and always show units and currency.',
-  badgeIcon: 'fa-check',
-  badgeSkin: 'success'
+    'Use statistics to surface a key KPI or summary at-a-glance. Apply locale-aware number formatting, keep significant digits reasonable, and always show units and currency.'
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badgeIcon={{this.badgeIcon}} @badgeSkin={{this.badgeSkin}}>
+      <OSS::Stats::Banner @title={{this.title}}>
+
+        <:badges>
+          <OSS::Badge @icon="fa-check" @skin="success" />
+        </:badges>
 
         <:content>
           <span class="font-color-gray-600">{{this.title}}</span>
@@ -102,7 +84,11 @@ const Template = (args) => ({
 const WithCTA = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badgeIcon={{this.badgeIcon}} @badgeSkin={{this.badgeSkin}}>
+      <OSS::Stats::Banner @title={{this.title}}>
+        <:badges>
+          <OSS::Badge @icon="fa-check" @skin="success" />
+        </:badges>
+
         <:content>
           <span class="font-color-gray-600">{{this.title}}</span>
         </:content>

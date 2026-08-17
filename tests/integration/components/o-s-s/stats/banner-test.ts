@@ -29,7 +29,6 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     this.title = 'Stats title';
     this.statValue = '$5,920';
     this.statExtraInfo = 'supplementary info';
-    this.badgeText = 'TXT';
 
     await render(hbs`
       <OSS::Stats::Banner
@@ -37,8 +36,11 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
         @title={{this.title}}
         @statValue={{this.statValue}}
         @statExtraInfo={{this.statExtraInfo}}
-        @badgeText={{this.badgeText}}
       >
+        <:badges>
+          <OSS::Badge @text="TXT" @skin="primary" @size="sm" />
+        </:badges>
+
         <:extra-badges>
           <div class="test-extra-badges">Extra badges</div>
         </:extra-badges>
@@ -60,12 +62,14 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.test-cta').doesNotExist();
   });
 
-  test('when @loading is false and badge args are defined, it renders OSS::Badge instead of badge skeleton', async function (assert) {
-    this.badgeText = 'TXT';
-
-    await render(
-      hbs`<OSS::Stats::Banner @loading={{false}} @badgeText={{this.badgeText}} @badgeSkin="primary" @badgeSize="sm" />`
-    );
+  test('when @loading is false and badges block is defined, it renders block content instead of badge skeleton', async function (assert) {
+    await render(hbs`
+      <OSS::Stats::Banner @loading={{false}}>
+        <:badges>
+          <OSS::Badge @text="TXT" @skin="primary" @size="sm" />
+        </:badges>
+      </OSS::Stats::Banner>
+    `);
 
     assert.dom('.oss-stats-banner .upf-badge').exists();
     assert.dom('.oss-stats-banner .upf-badge .upf-badge__text').hasText('TXT');
@@ -118,6 +122,10 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
   test('it renders content, cta and extra-badges named blocks and hides related skeletons when @loading is false', async function (assert) {
     await render(hbs`
       <OSS::Stats::Banner @loading={{false}}>
+        <:badges>
+          <OSS::Badge @text="TXT" @skin="primary" @size="sm" />
+        </:badges>
+
         <:content>
           <div class="test-content">Content</div>
         </:content>
@@ -135,7 +143,9 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.test-content').exists();
     assert.dom('.test-extra-badges').exists();
     assert.dom('.test-cta').exists();
+    assert.dom('.oss-stats-banner .upf-badge').exists();
     assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
+    assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
     assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
     assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
   });

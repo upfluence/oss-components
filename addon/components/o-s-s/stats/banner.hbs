@@ -1,17 +1,10 @@
 <div class="oss-stats-banner fx-col fx-gap-px-12" ...attributes>
   <div class="oss-stats-banner__header fx-row fx-gap-px-12 fx-malign-space-between">
     <div class="oss-stats-banner__header_content fx-row fx-gap-px-12 fx-malign-center fx-xalign-center">
-      {{#if (and this.loading this.hasBadgeContent)}}
+      {{#if (and this.loading (has-block "badges"))}}
         <OSS::Skeleton @height={{36}} @width={{36}} class="oss-stats-banner__skeleton--badge" />
-      {{else if this.hasBadgeContent}}
-        <OSS::Badge
-          @icon={{@badgeIcon}}
-          @image={{@badgeImage}}
-          @text={{@badgeText}}
-          @skin={{@badgeSkin}}
-          @size={{@badgeSize}}
-          @plain={{@badgePlain}}
-        />
+      {{else if (has-block "badges")}}
+        {{yield to="badges"}}
       {{/if}}
       <div class="oss-stats-banner__content">
         {{#if (has-block "content")}}
