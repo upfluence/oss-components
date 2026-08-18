@@ -12535,7 +12535,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
   0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', async function (assert) {
+    (0, _qunit.test)('when the component is rendered, it displays the sidebar item container', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
@@ -12548,7 +12548,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       }));
       assert.dom('.oss-sidebar-item').exists();
     });
-    (0, _qunit.test)('it renders the icon when present', async function (assert) {
+    (0, _qunit.test)('when an icon is provided, it renders the icon', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Layout::Sidebar::Item @icon="fal fa-search"/>
@@ -12561,7 +12561,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       }));
       assert.dom('.oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-search');
     });
-    (0, _qunit.test)('it does not render the icon div when no icon is provided', async function (assert) {
+    (0, _qunit.test)('when no icon is provided, it does not render the icon container', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Layout::Sidebar::Item />
@@ -12575,7 +12575,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       assert.dom('.oss-sidebar-item .oss-sidebar-item__icon').doesNotExist();
       assert.dom('.oss-sidebar-item__label--no-icon').exists();
     });
-    (0, _qunit.test)('it renders the icon named block instead of the icon argument when present', async function (assert) {
+    (0, _qunit.test)('when an icon named block is provided, it renders it instead of the icon argument', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Layout::Sidebar::Item @icon="fal fa-search"><:icon><OSS::Icon @icon="fa-ship" class="custom-icon" /></:icon></OSS::Layout::Sidebar::Item>
@@ -12590,7 +12590,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       assert.dom('.oss-sidebar-item .custom-icon').hasClass('fa-ship');
     });
     (0, _qunit.module)('Arguments', () => {
-      (0, _qunit.test)('Default value for locked is false', async function (assert) {
+      (0, _qunit.test)('when locked is not provided, it defaults to unlocked', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
@@ -12603,7 +12603,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         }));
         assert.dom('.oss-sidebar-item__lock').doesNotExist();
       });
-      (0, _qunit.test)('When locked is true', async function (assert) {
+      (0, _qunit.test)('when locked is true, it displays the lock icon', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}}/>
@@ -12616,7 +12616,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         }));
         assert.dom('.oss-sidebar-item__lock').exists();
       });
-      (0, _qunit.test)('Default value for hasNotification is false', async function (assert) {
+      (0, _qunit.test)('when hasNotifications is not provided, it does not display a notification dot', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
@@ -12629,7 +12629,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         }));
         assert.dom('.oss-sidebar-item__notification').doesNotExist();
       });
-      (0, _qunit.test)('When hasNotification is true', async function (assert) {
+      (0, _qunit.test)('when hasNotifications is true, it displays a notification dot', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search" @hasNotifications={{true}}/>
@@ -12642,8 +12642,34 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         }));
         assert.dom('.oss-sidebar-item__notification').exists();
       });
+      (0, _qunit.test)('when active is not provided, it does not apply the active class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
+        */
+        {
+          "id": "zRXo9p88",
+          "block": "[[[8,[39,0],null,[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-item').doesNotHaveClass('active');
+      });
+      (0, _qunit.test)('when active is true, it applies the active class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @active={{true}}/>
+        */
+        {
+          "id": "RbYrRa9W",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@active\"],[\"far fa-search\",true]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-item').hasClass('active');
+      });
       (0, _qunit.module)('Expanded state', () => {
-        (0, _qunit.test)('the wrapper container is applied', async function (assert) {
+        (0, _qunit.test)('when expanded is true, it applies the expanded class on the wrapper', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
             <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label"/>
@@ -12656,7 +12682,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           }));
           assert.dom('.oss-sidebar-item').hasClass('oss-sidebar-item--expanded');
         });
-        (0, _qunit.test)('the label is displayed', async function (assert) {
+        (0, _qunit.test)('when expanded is true, it displays the label', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
             <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label"/>
@@ -12718,7 +12744,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         this.lockedAction = _sinon.default.spy();
         this.action = _sinon.default.spy();
       });
-      (0, _qunit.test)('on click, it redirect to the @link attribute', async function (assert) {
+      (0, _qunit.test)('when the item is clicked with a link, it redirects to the linked route', async function (assert) {
         const router = this.owner.lookup('service:router');
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -12734,7 +12760,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         await (0, _testHelpers.click)('.oss-sidebar-item');
         assert.strictEqual(router.currentRouteName, 'index');
       });
-      (0, _qunit.test)('When locked is true lockedAction is triggered', async function (assert) {
+      (0, _qunit.test)('when locked is true and the item is clicked, it triggers lockedAction', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
@@ -12749,7 +12775,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         assert.ok(this.defaultAction.notCalled);
         assert.ok(this.lockedAction.calledOnce);
       });
-      (0, _qunit.test)('on click, when item is not locked, the action is called ', async function (assert) {
+      (0, _qunit.test)('when the item is not locked and clicked, it triggers action', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{false}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} @action={{this.action}}/>
@@ -12766,7 +12792,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       });
     });
     (0, _qunit.module)('Extra attributes', () => {
-      (0, _qunit.test)('passing an extra class is applied to the component', async function (assert) {
+      (0, _qunit.test)('when an extra class is passed, it applies it to the component', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search" class="my-extra-class"/>
@@ -12779,7 +12805,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         }));
         assert.dom('.my-extra-class').exists();
       });
-      (0, _qunit.test)('passing data-control-name works', async function (assert) {
+      (0, _qunit.test)('when data-control-name is passed, it forwards the attribute to the root element', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Layout::Sidebar::Item @icon="far fa-search" data-control-name="layout-sidebar"/>

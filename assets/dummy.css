@@ -15196,6 +15196,11 @@ a.oss-sidebar-item {
   color: var(--sidebar-item-active-font-color);
   font-weight: var(--font-weight-semibold);
 }
+.oss-sidebar-item.active:focus,
+.oss-sidebar-item.active:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 .oss-sidebar-item:not(.oss-sidebar-item--expanded) .oss-sidebar-item__notification {
   position: absolute;
   top: 5px;
