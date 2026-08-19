@@ -6,20 +6,32 @@ export default {
   argTypes: {
     title: {
       description: 'Header text displayed in the banner',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: { summary: 'undefined' }
-      },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
       control: { type: 'text' }
+    },
+    titleInfo: {
+      description: 'When provided, displays an info-circle icon next to the title with this text as tooltip',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
+      control: { type: 'text' }
+    },
+    badge: {
+      description: 'Badge config passed down to OSS::Badge (icon, image, text, skin, plain, size)',
+      table: { type: { summary: 'StatsBannerBadge' }, defaultValue: { summary: 'undefined' } }
+    },
+    extraIcon: {
+      description: 'Icon displayed to the left of the badge. Accepts { icon, color }',
+      table: { type: { summary: 'StatsBannerExtraIcon' }, defaultValue: { summary: 'undefined' } }
+    },
+    extraInfoTag: {
+      description: 'Tag displayed next to the stat value. Accepts OSS::Tag config (label, skin, icon, plain)',
+      table: { type: { summary: 'StatsBannerExtraInfoTag' }, defaultValue: { summary: 'undefined' } }
     }
   },
   parameters: {
     docs: {
       description: {
         component:
-          'A block-first stats banner. Badges, content and CTA are all provided through named blocks; provide stat cards in the default block.'
+          'A stats banner supporting badge, extra icon, title with tooltip, inline tag, and named blocks for content, extra-badges, dropdown and CTA.'
       },
       iframeHeight: 260
     }
@@ -34,12 +46,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}}>
-
-        <:badges>
-          <OSS::Badge @icon="fa-check" @skin="success" />
-        </:badges>
-
+      <OSS::Stats::Banner @title={{this.title}} @badge={{hash icon="fa-check" skin="success"}}>
         <:content>
           <span class="font-color-gray-600">{{this.title}}</span>
         </:content>
@@ -84,11 +91,7 @@ const Template = (args) => ({
 const WithCTA = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}}>
-        <:badges>
-          <OSS::Badge @icon="fa-check" @skin="success" />
-        </:badges>
-
+      <OSS::Stats::Banner @title={{this.title}} @badge={{hash icon="fa-check" skin="success"}}>
         <:content>
           <span class="font-color-gray-600">{{this.title}}</span>
         </:content>
@@ -113,3 +116,44 @@ Default.args = defaultArgs;
 
 export const UsageWithHeaderCTA = WithCTA.bind({});
 UsageWithHeaderCTA.args = defaultArgs;
+
+const WithExtraIconAndTitleInfo = (args) => ({
+  template: hbs`
+    <div style="max-width: 1200px;">
+      <OSS::Stats::Banner
+        @title={{this.title}}
+        @titleInfo="This KPI represents total paid amounts across all campaigns"
+        @badge={{hash icon="fa-check" skin="success"}}
+        @extraIcon={{hash icon="fa-star" color="#f59e0b"}}
+        @statValue="$12,493"
+        @statExtraInfo="supplementary info"
+        @extraInfoTag={{hash label="New" skin="success" icon="fa-sparkles"}}
+      />
+    </div>
+  `,
+  context: args
+});
+
+export const WithExtraFeaturesAndTitleInfo = WithExtraIconAndTitleInfo.bind({});
+WithExtraFeaturesAndTitleInfo.args = defaultArgs;
+
+const WithDropdown = (args) => ({
+  template: hbs`
+    <div style="max-width: 1200px;">
+      <OSS::Stats::Banner @title={{this.title}} @badge={{hash icon="fa-check" skin="success"}} @statValue="$12,493">
+        <:dropdown>
+          <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
+            <:items>
+              <div class="oss-button-dropdown__item">Option A</div>
+              <div class="oss-button-dropdown__item">Option B</div>
+            </:items>
+          </OSS::ButtonDropdown>
+        </:dropdown>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
+export const UsageWithDropdown = WithDropdown.bind({});
+UsageWithDropdown.args = defaultArgs;

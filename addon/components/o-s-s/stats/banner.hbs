@@ -1,10 +1,17 @@
 <div class="oss-stats-banner fx-col fx-gap-px-12" ...attributes>
   <div class="oss-stats-banner__header fx-row fx-gap-px-12 fx-malign-space-between">
-    <div class="oss-stats-banner__header_content fx-row fx-gap-px-12 fx-malign-center fx-xalign-center">
-      {{#if (and this.loading (has-block "badges"))}}
-        <OSS::Skeleton @height={{36}} @width={{36}} class="oss-stats-banner__skeleton--badge" />
-      {{else if (has-block "badges")}}
-        {{yield to="badges"}}
+    <div class="oss-stats-banner__header_content fx-row fx-gap-px-9 fx-malign-center fx-xalign-center">
+      {{#if @badge}}
+        {{#if @extraIcon}}
+          <OSS::Icon @icon={{@extraIcon.icon}} style={{if @extraIcon.color (concat "color:" @extraIcon.color)}} />
+        {{/if}}
+        <OSS::Badge
+          @icon={{@badge.icon}}
+          @image={{@badge.image}}
+          @text={{@badge.text}}
+          @skin={{@badge.skin}}
+          @size="sm"
+        />
       {{/if}}
       <div class="oss-stats-banner__content">
         {{#if (has-block "content")}}
@@ -12,8 +19,16 @@
         {{else if (and this.loading @title)}}
           <OSS::Skeleton @height={{18}} @width={{420}} class="oss-stats-banner__skeleton--title" />
         {{else}}
-          <div class="header-section fx-row fx-gap-px-8 fx-malign-space-between">
-            <span class="font-color-gray-600">{{@title}}</span>
+          <div class="header-section fx-row fx-gap-px-8 fx-malign-space-between fx-xalign-center">
+            <span class="font-color-gray-600 font-weight-semibold">{{@title}}</span>
+            {{#if @titleInfo}}
+              <span {{enable-tooltip title=@titleInfo placement="top"}}>
+                <OSS::Icon @icon="fa-circle-info" />
+              </span>
+            {{/if}}
+            {{#if (has-block "dropdown")}}
+              {{yield to="dropdown"}}
+            {{/if}}
           </div>
         {{/if}}
       </div>
@@ -31,18 +46,25 @@
     </div>
   </div>
   <div class="oss-stats-banner__bottom_content fx-row fx-gap-px-12 fx-malign-space-between">
-    <div class="oss-stats-banner__stat fx-row fx-gap-px-4">
+    <div class="oss-stats-banner__stat fx-row fx-gap-px-6 fx-xalign-center">
       {{#if (and this.loading @statValue)}}
         <OSS::Skeleton @height={{18}} @width={{90}} class="oss-stats-banner__skeleton--stat-value" />
       {{else}}
-        <span class="font-color-gray-600">{{@statValue}}</span>
-
+        <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue}}</span>
       {{/if}}
-
       {{#if (and this.loading @statExtraInfo)}}
         <OSS::Skeleton @height={{16}} @width={{120}} class="oss-stats-banner__skeleton--stat-extra" />
       {{else if @statExtraInfo}}
-        <span class="font-color-gray-400">{{@statExtraInfo}}</span>
+        <span class="font-color-gray-500">{{@statExtraInfo}}</span>
+      {{/if}}
+
+      {{#if @extraInfoTag}}
+        <OSS::Tag
+          @label={{@extraInfoTag.label}}
+          @skin={{@extraInfoTag.skin}}
+          @icon={{@extraInfoTag.icon}}
+          @plain={{@extraInfoTag.plain}}
+        />
       {{/if}}
     </div>
     {{#if (and this.loading (has-block "cta"))}}

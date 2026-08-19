@@ -235,12 +235,22 @@
     <div class="fx-col fx-gap-px-24">
       <OSS::Stats::Banner
         class="demo-stats-banner"
-        @badgeIcon="fa-check"
-        @badgeSkin="success"
+        @badge={{hash icon="fa-check" skin="success"}}
+        @extraIcon={{hash icon="fa-star"}}
         @title="Title"
+        @titleInfo="This is a helpful description of the stat"
         @statValue="123,456"
         @statExtraInfo="Extra info"
+        @extraInfoTag={{hash label="New" skin="success" icon="fa-sparkles"}}
       >
+        <:dropdown>
+          <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
+            <:items>
+              <div class="oss-button-dropdown__item" role="button" {{on "click" this.noop}}>Option A</div>
+              <div class="oss-button-dropdown__item" role="button" {{on "click" this.noop}}>Option B</div>
+            </:items>
+          </OSS::ButtonDropdown>
+        </:dropdown>
         <:extra-badges>
           <OSS::Badge @text="2x" @size="lg" />
         </:extra-badges>
@@ -249,7 +259,14 @@
         </:cta>
       </OSS::Stats::Banner>
 
-      <OSS::Stats::Banner class="demo-stats-banner" @loading={{true}} />
+      <OSS::Stats::Banner
+        class="demo-stats-banner"
+        @badge={{hash icon="fa-check" skin="success"}}
+        @loading={{true}}
+        @title="Title"
+        @statValue="123,456"
+        @statInfo="Potatoes"
+      />
     </div>
   </div>
 
