@@ -2,7 +2,6 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: var(--spacing-px-12);
   padding: var(--spacing-px-12) var(--spacing-px-18);
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-md);
@@ -12,6 +11,13 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-px-12);
+    min-width: 0;
+  }
+
+  &__header_content {
+    display: flex;
+    flex: 1;
+    min-width: 0;
   }
 
   &__badge {
@@ -24,6 +30,23 @@
     display: flex;
     flex: 1;
     line-height: 1.4;
+    min-width: 0;
+  }
+
+  &__title-row {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  &__title-actions,
+  &__extra-badges {
+    flex-shrink: 0;
   }
 
   &__cta {

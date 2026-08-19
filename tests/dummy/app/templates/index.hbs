@@ -235,13 +235,13 @@
     <div class="fx-col fx-gap-px-24">
       <OSS::Stats::Banner
         class="demo-stats-banner"
-        @badge={{hash icon="fa-check" skin="success"}}
-        @extraIcon={{hash icon="fa-star"}}
-        @title="Title"
-        @titleInfo="This is a helpful description of the stat"
+        @badgeConfig={{hash icon="fa-check" skin="success"}}
+        @extraIconConfig={{hash icon="fa-star"}}
+        @title="Very long stats banner title that should truncate with ellipsis when the available width becomes too small"
+        @titleInfoCircle="This is a helpful description of the stat"
         @statValue="123,456"
         @statExtraInfo="Extra info"
-        @extraInfoTag={{hash label="New" skin="success" icon="fa-sparkles"}}
+        @extraInfoTagConfig={{hash label="New" skin="success" icon="fa-sparkles"}}
       >
         <:dropdown>
           <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
@@ -261,12 +261,29 @@
 
       <OSS::Stats::Banner
         class="demo-stats-banner"
-        @badge={{hash icon="fa-check" skin="success"}}
-        @loading={{true}}
-        @title="Title"
+        @badgeConfig={{hash icon="fa-check" skin="success"}}
+        @title="Another intentionally long stats banner title to validate truncation next to the info-circle icon"
+        @titleInfoCircle="This stat title also has helpful context"
         @statValue="123,456"
-        @statInfo="Potatoes"
+        @statExtraInfo="Potatoes"
       />
+
+      <OSS::Stats::Banner
+        class="demo-stats-banner"
+        @loading={{true}}
+        @badgeConfig={{hash icon="fa-check" skin="success"}}
+        @title="Loading stats banner title"
+        @titleInfoCircle="Helpful title information"
+        @statValue="123,456"
+        @statExtraInfo="Potatoes"
+      >
+        <:extra-badges>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:extra-badges>
+        <:cta>
+          <OSS::Button @skin="primary" @label="CTA" @icon="fas fa-box-open" @size="md" />
+        </:cta>
+      </OSS::Stats::Banner>
     </div>
   </div>
 

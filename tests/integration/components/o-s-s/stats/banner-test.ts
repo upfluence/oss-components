@@ -56,9 +56,9 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.test-cta').doesNotExist();
   });
 
-  test('when @badge is defined and @loading is false, it renders the badge and no skeleton', async function (assert) {
+  test('when @badgeConfig is defined and @loading is false, it renders the badge and no skeleton', async function (assert) {
     await render(hbs`
-      <OSS::Stats::Banner @loading={{false}} @badge={{hash text="TXT" skin="primary" size="sm"}} />
+      <OSS::Stats::Banner @loading={{false}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}} />
     `);
 
     assert.dom('.oss-stats-banner .upf-badge').exists();
@@ -67,36 +67,36 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
   });
 
-  test('when @badge is defined and @loading is true, it still renders the badge', async function (assert) {
+  test('when @badgeConfig is defined and @loading is true, it still renders the badge', async function (assert) {
     await render(hbs`
-      <OSS::Stats::Banner @loading={{true}} @badge={{hash text="TXT" skin="primary" size="sm"}} />
+      <OSS::Stats::Banner @loading={{true}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}} />
     `);
 
     assert.dom('.oss-stats-banner .upf-badge').exists();
   });
 
-  test('when @extraIcon is defined, it renders the icon next to the badge', async function (assert) {
+  test('when @extraIconConfig is defined, it renders the icon next to the badge', async function (assert) {
     await render(hbs`
-      <OSS::Stats::Banner @badge={{hash icon="fa-check" skin="success"}} @extraIcon={{hash icon="fa-star"}} />
+      <OSS::Stats::Banner @badgeConfig={{hash icon="fa-check" skin="success"}} @extraIconConfig={{hash icon="fa-star"}} />
     `);
 
     assert.dom('.oss-stats-banner .fa-star').exists();
   });
 
-  test('when @extraIcon has a color, it applies the color as inline style', async function (assert) {
+  test('when @extraIconConfig has a color, it applies the color as inline style', async function (assert) {
     await render(hbs`
-      <OSS::Stats::Banner @badge={{hash icon="fa-check" skin="success"}} @extraIcon={{hash icon="fa-star" color="red"}} />
+      <OSS::Stats::Banner @badgeConfig={{hash icon="fa-check" skin="success"}} @extraIconConfig={{hash icon="fa-star" color="red"}} />
     `);
 
     assert.dom('.oss-stats-banner .fa-star').hasAttribute('style', 'color:red');
   });
 
-  test('when @titleInfo is defined, it renders an info-circle icon next to the title', async function (assert) {
+  test('when @titleInfoCircle is defined, it renders an info-circle icon next to the title', async function (assert) {
     await render(hbs`
-      <OSS::Stats::Banner @title="My stat" @titleInfo="Helpful description" />
+      <OSS::Stats::Banner @title="My stat" @titleInfoCircle="Helpful description" />
     `);
 
-    assert.dom('.oss-stats-banner .fa-circle-info').exists();
+    assert.dom('.oss-stats-banner .fa-info-circle').exists();
   });
 
   test('when the dropdown block is defined, it renders its content in the title row', async function (assert) {
@@ -154,7 +154,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
 
   test('it renders content, cta and extra-badges named blocks and hides related skeletons when @loading is false', async function (assert) {
     await render(hbs`
-      <OSS::Stats::Banner @loading={{false}} @badge={{hash text="TXT" skin="primary" size="sm"}}>
+      <OSS::Stats::Banner @loading={{false}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}}>
         <:content>
           <div class="test-content">Content</div>
         </:content>

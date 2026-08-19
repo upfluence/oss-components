@@ -9,22 +9,22 @@ export default {
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
       control: { type: 'text' }
     },
-    titleInfo: {
+    titleInfoCircle: {
       description: 'When provided, displays an info-circle icon next to the title with this text as tooltip',
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
       control: { type: 'text' }
     },
-    badge: {
+    badgeConfig: {
       description: 'Badge config passed down to OSS::Badge (icon, image, text, skin, plain, size)',
-      table: { type: { summary: 'StatsBannerBadge' }, defaultValue: { summary: 'undefined' } }
+      table: { type: { summary: 'StatsBannerBadgeConfig' }, defaultValue: { summary: 'undefined' } }
     },
-    extraIcon: {
+    extraIconConfig: {
       description: 'Icon displayed to the left of the badge. Accepts { icon, color }',
-      table: { type: { summary: 'StatsBannerExtraIcon' }, defaultValue: { summary: 'undefined' } }
+      table: { type: { summary: 'StatsBannerExtraIconConfig' }, defaultValue: { summary: 'undefined' } }
     },
-    extraInfoTag: {
+    extraInfoTagConfig: {
       description: 'Tag displayed next to the stat value. Accepts OSS::Tag config (label, skin, icon, plain)',
-      table: { type: { summary: 'StatsBannerExtraInfoTag' }, defaultValue: { summary: 'undefined' } }
+      table: { type: { summary: 'StatsBannerExtraInfoTagConfig' }, defaultValue: { summary: 'undefined' } }
     }
   },
   parameters: {
@@ -46,7 +46,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badge={{hash icon="fa-check" skin="success"}}>
+      <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}}>
         <:content>
           <span class="font-color-gray-600">{{this.title}}</span>
         </:content>
@@ -91,7 +91,7 @@ const Template = (args) => ({
 const WithCTA = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badge={{hash icon="fa-check" skin="success"}}>
+      <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}}>
         <:content>
           <span class="font-color-gray-600">{{this.title}}</span>
         </:content>
@@ -117,30 +117,30 @@ Default.args = defaultArgs;
 export const UsageWithHeaderCTA = WithCTA.bind({});
 UsageWithHeaderCTA.args = defaultArgs;
 
-const WithExtraIconAndTitleInfo = (args) => ({
+const WithExtraIconAndTitleInfoCircle = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
       <OSS::Stats::Banner
         @title={{this.title}}
-        @titleInfo="This KPI represents total paid amounts across all campaigns"
-        @badge={{hash icon="fa-check" skin="success"}}
-        @extraIcon={{hash icon="fa-star" color="#f59e0b"}}
+        @titleInfoCircle="This KPI represents total paid amounts across all campaigns"
+        @badgeConfig={{hash icon="fa-check" skin="success"}}
+        @extraIconConfig={{hash icon="fa-star" color="#f59e0b"}}
         @statValue="$12,493"
         @statExtraInfo="supplementary info"
-        @extraInfoTag={{hash label="New" skin="success" icon="fa-sparkles"}}
+        @extraInfoTagConfig={{hash label="New" skin="success" icon="fa-sparkles"}}
       />
     </div>
   `,
   context: args
 });
 
-export const WithExtraFeaturesAndTitleInfo = WithExtraIconAndTitleInfo.bind({});
-WithExtraFeaturesAndTitleInfo.args = defaultArgs;
+export const WithExtraFeaturesAndTitleInfoCircle = WithExtraIconAndTitleInfoCircle.bind({});
+WithExtraFeaturesAndTitleInfoCircle.args = defaultArgs;
 
 const WithDropdown = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badge={{hash icon="fa-check" skin="success"}} @statValue="$12,493">
+      <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}} @statValue="$12,493">
         <:dropdown>
           <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
             <:items>
