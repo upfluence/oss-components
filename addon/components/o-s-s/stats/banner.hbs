@@ -18,7 +18,7 @@
       {{/if}}
       <div class="oss-stats-banner__content">
         {{#if @loading}}
-          <OSS::Skeleton @height={{18}} @width="100%" class="oss-stats-banner__skeleton--title" />
+          <OSS::Skeleton @height={{12}} @width={{150}} class="oss-stats-banner__skeleton--title" />
         {{else}}
           <div class="oss-stats-banner__title-row fx-row fx-gap-px-8 fx-xalign-center">
             <span
@@ -49,7 +49,7 @@
   <div class="oss-stats-banner__bottom_content fx-row fx-gap-px-12 fx-malign-space-between">
     <div class="oss-stats-banner__stat fx-row fx-gap-px-6 fx-xalign-center">
       {{#if @loading}}
-        <OSS::Skeleton @height={{18}} @width={{210}} class="oss-stats-banner__skeleton--stat-value" />
+        <OSS::Skeleton @height={{30}} @width={{150}} class="oss-stats-banner__skeleton--stat-value" />
       {{else}}
         <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue}}</span>
         {{#if @statExtraInfo}}
