@@ -14,13 +14,13 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.oss-stats-banner__bottom_content').exists();
   });
 
-  test('when @loading is true and no related args or blocks are defined, it does not render skeletons', async function (assert) {
+  test('when @loading is true and no related args or blocks are defined, it renders title/stat skeletons', async function (assert) {
     await render(hbs`<OSS::Stats::Banner @loading={{true}} />`);
 
     assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
-    assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
+    assert.dom('.oss-stats-banner__skeleton--title').exists();
     assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
-    assert.dom('.oss-stats-banner__skeleton--stat-value').doesNotExist();
+    assert.dom('.oss-stats-banner__skeleton--stat-value').exists();
     assert.dom('.oss-stats-banner__skeleton--stat-extra').doesNotExist();
     assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
   });
