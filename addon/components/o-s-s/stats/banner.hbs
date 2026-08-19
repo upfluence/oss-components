@@ -17,9 +17,7 @@
         />
       {{/if}}
       <div class="oss-stats-banner__content">
-        {{#if (has-block "content")}}
-          {{yield to="content"}}
-        {{else if (and @loading @title)}}
+        {{#if (and @loading @title)}}
           <OSS::Skeleton @height={{18}} @width="100%" class="oss-stats-banner__skeleton--title" />
         {{else}}
           <div class="oss-stats-banner__title-row fx-row fx-gap-px-8 fx-xalign-center">

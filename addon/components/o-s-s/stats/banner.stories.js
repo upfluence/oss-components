@@ -31,7 +31,7 @@ export default {
     docs: {
       description: {
         component:
-          'A stats banner supporting badge, extra icon, title with tooltip, inline tag, and named blocks for content, extra-badges, dropdown and CTA.'
+          'A stats banner supporting badge, extra icon, title with tooltip, inline tag, and named blocks for extra-badges, dropdown and CTA.'
       },
       iframeHeight: 260
     }
@@ -47,10 +47,6 @@ const Template = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
       <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}}>
-        <:content>
-          <span class="font-color-gray-600">{{this.title}}</span>
-        </:content>
-
         <div class="oss-stats-banner__card">
           <div class="oss-stats-banner__card-label">Total paid amount</div>
           <div class="oss-stats-banner__card-value">$12,493,343.22</div>
@@ -92,10 +88,6 @@ const WithCTA = (args) => ({
   template: hbs`
     <div style="max-width: 1200px;">
       <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}}>
-        <:content>
-          <span class="font-color-gray-600">{{this.title}}</span>
-        </:content>
-
         <:cta>
           <OSS::Button @label="Export" @icon="fa-download" @size="sm" @skin="secondary" />
         </:cta>

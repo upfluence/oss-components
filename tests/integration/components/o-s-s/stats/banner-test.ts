@@ -139,26 +139,9 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
   });
 
-  test('when @loading is true and only a content block is defined, it does not render a title skeleton', async function (assert) {
-    await render(hbs`
-      <OSS::Stats::Banner @loading={{true}}>
-        <:content>
-          <div class="test-content">Content</div>
-        </:content>
-      </OSS::Stats::Banner>
-    `);
-
-    assert.dom('.test-content').exists();
-    assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
-  });
-
-  test('it renders content, cta and extra-badges named blocks and hides related skeletons when @loading is false', async function (assert) {
+  test('it renders cta and extra-badges named blocks and hides related skeletons when @loading is false', async function (assert) {
     await render(hbs`
       <OSS::Stats::Banner @loading={{false}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}}>
-        <:content>
-          <div class="test-content">Content</div>
-        </:content>
-
         <:extra-badges>
           <div class="test-extra-badges">Extra badges</div>
         </:extra-badges>
@@ -169,7 +152,6 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       </OSS::Stats::Banner>
     `);
 
-    assert.dom('.test-content').exists();
     assert.dom('.test-extra-badges').exists();
     assert.dom('.test-cta').exists();
     assert.dom('.oss-stats-banner .upf-badge').exists();
