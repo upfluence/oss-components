@@ -25,7 +25,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
   });
 
-  test('when @loading is true, it renders skeletons only for defined args and named blocks', async function (assert) {
+  test('when @loading is true, it renders title/stat skeletons and hides named block content', async function (assert) {
     this.title = 'Stats title';
     this.statValue = '$5,920';
     this.statExtraInfo = 'supplementary info';
@@ -48,10 +48,10 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     `);
 
     assert.dom('.oss-stats-banner__skeleton--title').exists();
-    assert.dom('.oss-stats-banner__skeleton--extra-badge').exists({ count: 2 });
     assert.dom('.oss-stats-banner__skeleton--stat-value').exists();
-    assert.dom('.oss-stats-banner__skeleton--stat-extra').exists();
-    assert.dom('.oss-stats-banner__skeleton--cta').exists();
+    assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
+    assert.dom('.oss-stats-banner__skeleton--stat-extra').doesNotExist();
+    assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
     assert.dom('.test-extra-badges').doesNotExist();
     assert.dom('.test-cta').doesNotExist();
   });
