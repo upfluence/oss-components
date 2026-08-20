@@ -9,11 +9,11 @@ export default {
       table: { type: { summary: 'StatsBannerTitle' }, defaultValue: { summary: 'undefined' } }
     },
     badge: {
-      description: 'Badge object passed to OSS::Badge, supports extraIcon: { icon, color }',
-      table: { type: { summary: 'StatsBannerBadge' }, defaultValue: { summary: 'undefined' } }
+      description: 'Badge object passed to OSS::Badge, with optional extraIcon: StatsBannerExtraIconArgs',
+      table: { type: { summary: 'StatsBannerBadge = StatsBannerBadgeArgs & { extraIcon?: StatsBannerExtraIconArgs }' }, defaultValue: { summary: 'undefined' } }
     },
     statValue: {
-      description: 'Stat object: { label, suffix?, tags? }',
+      description: 'Stat object: { label, suffix?, tags?: StatsBannerTag[] }',
       control: 'object',
       table: { type: { summary: 'StatsBannerStatValue' }, defaultValue: { summary: 'undefined' } }
     },
