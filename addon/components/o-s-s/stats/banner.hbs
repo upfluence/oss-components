@@ -2,22 +2,24 @@
   <div class="oss-stats-banner__header" data-control-name="stats-banner-header">
     <div class="oss-stats-banner__header_content" data-control-name="stats-banner-header-content">
       {{#if @badge}}
-        {{#if @badge.extraIcon}}
-          <OSS::Icon
-            @icon={{@badge.extraIcon.icon}}
-            style={{if @badge.extraIcon.color (concat "color:" @badge.extraIcon.color)}}
+        <div class="oss-stats-banner__badge" data-control-name="stats-banner-badge">
+          {{#if @badge.extraIcon}}
+            <OSS::Icon
+              @icon={{@badge.extraIcon.icon}}
+              style={{if @badge.extraIcon.color (concat "color:" @badge.extraIcon.color)}}
+            />
+          {{/if}}
+          <OSS::Badge
+            @icon={{@badge.icon}}
+            @image={{@badge.image}}
+            @text={{@badge.text}}
+            @skin={{@badge.skin}}
+            @size="sm"
           />
-        {{/if}}
-        <OSS::Badge
-          @icon={{@badge.icon}}
-          @image={{@badge.image}}
-          @text={{@badge.text}}
-          @skin={{@badge.skin}}
-          @size="sm"
-        />
+        </div>
       {{/if}}
 
-      <div class="oss-stats-banner__content">
+      <div class="oss-stats-banner__content" data-control-name="stats-banner-content">
         {{#if @loading}}
           <OSS::Skeleton @height={{12}} @width={{150}} class="oss-stats-banner__skeleton--title" />
         {{else}}
@@ -61,20 +63,19 @@
         <OSS::Skeleton @height={{30}} @width={{150}} class="oss-stats-banner__skeleton--stat-value" />
       {{else}}
         <div class="oss-stats-banner__stat-main" data-control-name="stats-banner-stat-main">
-          <div class="oss-stats-banner__stat-main-content">
-            <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue}}</span>
+          <div class="oss-stats-banner__stat-main-content" data-control-name="stats-banner-stat-main-content">
+            {{#if @statValue}}
+              <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue.label}}</span>
 
-            {{#if @statExtraInfo}}
-              <span class="oss-stats-banner__stat-extra font-color-gray-500">{{@statExtraInfo}}</span>
-            {{/if}}
+              {{#if @statValue.suffix}}
+                <span class="oss-stats-banner__stat-extra font-color-gray-500">{{@statValue.suffix}}</span>
+              {{/if}}
 
-            {{#if @extraInfoTagConfig}}
-              <OSS::Tag
-                @label={{@extraInfoTagConfig.label}}
-                @skin={{@extraInfoTagConfig.skin}}
-                @icon={{@extraInfoTagConfig.icon}}
-                @plain={{@extraInfoTagConfig.plain}}
-              />
+              {{#if @statValue.tags}}
+                {{#each @statValue.tags as |tag|}}
+                  <OSS::Tag @label={{tag.label}} @skin={{tag.skin}} @icon={{tag.icon}} @plain={{tag.plain}} />
+                {{/each}}
+              {{/if}}
             {{/if}}
           </div>
 
@@ -87,4 +88,5 @@
       {{/if}}
     </div>
   </div>
+
 </div>

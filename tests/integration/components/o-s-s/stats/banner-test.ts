@@ -27,15 +27,13 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
 
     test('when @loading is true, it renders title/stat skeletons and hides named block content', async function (assert) {
       this.title = 'Stats title';
-      this.statValue = '$5,920';
-      this.statExtraInfo = 'supplementary info';
+      this.statValue = { label: '$5,920', suffix: 'supplementary info' };
 
       await render(hbs`
         <OSS::Stats::Banner
           @loading={{true}}
           @titleConfig={{hash text=this.title}}
           @statValue={{this.statValue}}
-          @statExtraInfo={{this.statExtraInfo}}
         >
           <:extra-badges>
             <div class="test-extra-badges">Extra badges</div>
@@ -53,11 +51,10 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
 
     test('when @loading is false and title/stat values are defined, it renders text instead of skeletons', async function (assert) {
       this.title = 'Stats title';
-      this.statValue = '$5,920';
-      this.statExtraInfo = 'supplementary info';
+      this.statValue = { label: '$5,920', suffix: 'supplementary info' };
 
       await render(
-        hbs`<OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text=this.title}} @statValue={{this.statValue}} @statExtraInfo={{this.statExtraInfo}} />`
+        hbs`<OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text=this.title}} @statValue={{this.statValue}} />`
       );
 
       assert.dom('.oss-stats-banner__content').hasText('Stats title');
@@ -173,7 +170,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
 
     test('when cta named block is defined, it renders multiple actions', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @statValue="$12,493">
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @statValue={{hash label="$12,493"}}>
           <:cta>
             <button type="button" class="test-cta-primary">Primary</button>
             <button type="button" class="test-cta-secondary">Secondary</button>
@@ -185,24 +182,41 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       assert.dom('[data-control-name="stats-banner-cta"] .test-cta-secondary').exists();
     });
 
-    test('when default block content is defined and @loading is false, it renders default content in stats area', async function (assert) {
+    test('when default block content is defined and @loading is false, it does not render default content', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} @statValue="$12,493">
+        <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} @statValue={{hash label="$12,493"}}>
           <div class="test-default-content">Default content</div>
         </OSS::Stats::Banner>
       `);
 
-      assert.dom('.oss-stats-banner__stats .test-default-content').exists();
+      assert.dom('.test-default-content').doesNotExist();
     });
 
-    test('when default block content is defined and @loading is true, it hides default content', async function (assert) {
+    test('when default block content is defined and @loading is true, it does not render default content', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} @statValue="$12,493">
+        <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} @statValue={{hash label="$12,493"}}>
           <div class="test-default-content">Default content</div>
         </OSS::Stats::Banner>
       `);
 
-      assert.dom('.oss-stats-banner__stats .test-default-content').doesNotExist();
+      assert.dom('.test-default-content').doesNotExist();
+    });
+
+    test('when @statValue.tags contains multiple tags, it renders all tags', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner
+          @titleConfig={{hash text="My stat"}}
+          @statValue={{hash
+            label="$12,493"
+            suffix="supplementary info"
+            tags=(array (hash label="Hot" skin="warning") (hash label="New" skin="success" icon="fa-sparkles"))
+          }}
+        />
+      `);
+
+      assert.dom('.oss-stats-banner .upf-tag').exists({ count: 2 });
+      assert.dom('.oss-stats-banner__stat-main-content').includesText('Hot');
+      assert.dom('.oss-stats-banner__stat-main-content').includesText('New');
     });
   });
 });

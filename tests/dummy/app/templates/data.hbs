@@ -277,9 +277,11 @@
           text="Very long stats banner title that should truncate with ellipsis when the available width becomes too small"
           infoCircle="This is a helpful description of the stat"
         }}
-        @statValue="123,456"
-        @statExtraInfo="Extra info"
-        @extraInfoTagConfig={{hash label="New" skin="success" icon="fa-sparkles"}}
+        @statValue={{hash
+          label="123,456"
+          suffix="Extra info"
+          tags=(array (hash label="New" skin="success" icon="fa-sparkles"))
+        }}
       >
         <:title-suffix>
           <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
@@ -307,8 +309,7 @@
           text="Another intentionally long stats banner title to validate truncation next to the info-circle icon"
           infoCircle="This stat title also has helpful context"
         }}
-        @statValue="123,456"
-        @statExtraInfo="Potatoes"
+        @statValue={{hash label="123,456" suffix="Potatoes"}}
       />
 
       <div class="demo-stats-banner-row fx-row fx-gap-px-12">
@@ -316,8 +317,7 @@
           class="demo-stats-banner demo-stats-banner--sm"
           @badge={{hash icon="fa-check" skin="success"}}
           @titleConfig={{hash text="Revenue"}}
-          @statValue="$12,493"
-          @statExtraInfo="vs last month"
+          @statValue={{hash label="$12,493" suffix="vs last month"}}
         >
           <:cta>
             <OSS::Button @skin="secondary" @label="Details" @size="sm" />
@@ -328,8 +328,7 @@
           class="demo-stats-banner demo-stats-banner--sm"
           @badge={{hash icon="fa-star" skin="primary"}}
           @titleConfig={{hash text="Commissions"}}
-          @statValue="$5,920"
-          @statExtraInfo="to authorize"
+          @statValue={{hash label="$5,920" suffix="to authorize"}}
         >
           <:cta>
             <OSS::Button @skin="primary" @label="Pay" @size="sm" />
@@ -340,8 +339,7 @@
           class="demo-stats-banner demo-stats-banner--sm"
           @badge={{hash icon="fa-star" skin="primary"}}
           @titleConfig={{hash text="Commissions"}}
-          @statValue="$5,920"
-          @statExtraInfo="to authorize"
+          @statValue={{hash label="$5,920" suffix="to authorize"}}
         >
           <:cta>
             <OSS::Button @skin="primary" @label="Pay" @size="sm" />
@@ -354,8 +352,7 @@
         @loading={{true}}
         @badge={{hash icon="fa-check" skin="success"}}
         @titleConfig={{hash text="Loading stats banner title" infoCircle="Helpful title information"}}
-        @statValue="123,456"
-        @statExtraInfo="Potatoes"
+        @statValue={{hash label="123,456" suffix="Potatoes"}}
       >
         <:extra-badges>
           <OSS::Badge @text="2x" @size="lg" />

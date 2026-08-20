@@ -13,18 +13,9 @@ export default {
       table: { type: { summary: 'StatsBannerBadge' }, defaultValue: { summary: 'undefined' } }
     },
     statValue: {
-      description: 'Main KPI value displayed in the stat row',
-      control: 'text',
-      table: { type: { summary: 'string | number' }, defaultValue: { summary: 'undefined' } }
-    },
-    statExtraInfo: {
-      description: 'Secondary information shown next to the main KPI value',
-      control: 'text',
-      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } }
-    },
-    extraInfoTagConfig: {
-      description: 'Tag displayed next to the stat value. Accepts OSS::Tag config (label, skin, icon, plain)',
-      table: { type: { summary: 'StatsBannerExtraInfoTagConfig' }, defaultValue: { summary: 'undefined' } }
+      description: 'Stat object: { label, suffix?, tags? }',
+      control: 'object',
+      table: { type: { summary: 'StatsBannerStatValue' }, defaultValue: { summary: 'undefined' } }
     },
     loading: {
       description: 'Displays skeletons in place of title and KPI values',
@@ -67,13 +58,17 @@ const defaultArgs = {
       color: '#f59e0b'
     }
   },
-  statValue: '123,456',
-  statExtraInfo: 'Extra info',
-  extraInfoTagConfig: {
-    label: 'New',
-    skin: 'success',
-    icon: 'fa-sparkles',
-    plain: false
+  statValue: {
+    label: '123,456',
+    suffix: 'Extra info',
+    tags: [
+      {
+        label: 'New',
+        skin: 'success',
+        icon: 'fa-sparkles',
+        plain: false
+      }
+    ]
   },
   loading: false,
   ctaPrimaryLabel: 'CTA',
@@ -87,8 +82,6 @@ const PlaygroundTemplate = (args) => ({
         @titleConfig={{this.titleConfig}}
         @badge={{this.badge}}
         @statValue={{this.statValue}}
-        @statExtraInfo={{this.statExtraInfo}}
-        @extraInfoTagConfig={{this.extraInfoTagConfig}}
         @loading={{this.loading}}
       >
         <:title-suffix>
@@ -125,7 +118,6 @@ const ThreeUpTemplate = (args) => ({
           @badge={{this.badge}}
           @titleConfig={{this.titleConfig}}
           @statValue={{this.statValue}}
-          @statExtraInfo={{this.statExtraInfo}}
         >
           <:cta>
             <OSS::Button @skin="secondary" @label={{this.ctaSecondaryLabel}} @size="sm" />
@@ -136,8 +128,7 @@ const ThreeUpTemplate = (args) => ({
           class="fx-1"
           @badge={{hash icon="fa-star" skin="primary"}}
           @titleConfig={{hash text="Commissions"}}
-          @statValue="$5,920"
-          @statExtraInfo="to authorize"
+          @statValue={{hash label="$5,920" suffix="to authorize"}}
         >
           <:cta>
             <OSS::Button @skin="primary" @label="Pay" @size="sm" />
@@ -146,10 +137,9 @@ const ThreeUpTemplate = (args) => ({
 
         <OSS::Stats::Banner
           class="fx-1"
-                @badge={{hash icon="fa-bolt" skin="alert"}}
+                  @badge={{hash icon="fa-bolt" skin="alert"}}
           @titleConfig={{hash text="Pending"}}
-          @statValue="$594,032"
-          @statExtraInfo="across campaigns"
+                  @statValue={{hash label="$594,032" suffix="across campaigns"}}
         >
           <:cta>
             <OSS::Button @skin="secondary" @label="Open" @size="sm" />
@@ -168,8 +158,6 @@ const DefaultTemplate = (args) => ({
         @titleConfig={{this.titleConfig}}
         @badge={{this.badge}}
         @statValue={{this.statValue}}
-        @statExtraInfo={{this.statExtraInfo}}
-        @extraInfoTagConfig={{this.extraInfoTagConfig}}
       >
 
         <:cta>
@@ -192,7 +180,6 @@ const LoadingTemplate = (args) => ({
         @titleConfig={{this.titleConfig}}
         @badge={{this.badge}}
         @statValue={{this.statValue}}
-        @statExtraInfo={{this.statExtraInfo}}
       >
         <:extra-badges>
           <OSS::Badge @text="2x" @size="lg" />
@@ -210,7 +197,6 @@ const MinimalTemplate = (args) => ({
         @titleConfig={{this.titleConfig}}
         @badge={{this.badge}}
         @statValue={{this.statValue}}
-        @statExtraInfo={{this.statExtraInfo}}
       />
     </div>
   `,
@@ -224,7 +210,6 @@ const TitleSuffixOnlyTemplate = (args) => ({
         @titleConfig={{this.titleConfig}}
         @badge={{this.badge}}
         @statValue={{this.statValue}}
-        @statExtraInfo={{this.statExtraInfo}}
       >
         <:title-suffix>
           <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
@@ -255,8 +240,10 @@ ThreeUpCompact.args = {
     icon: 'fa-check',
     skin: 'success'
   },
-  statValue: '$12,493',
-  statExtraInfo: 'vs last month',
+  statValue: {
+    label: '$12,493',
+    suffix: 'vs last month'
+  },
   ctaSecondaryLabel: 'Details'
 };
 
@@ -275,13 +262,17 @@ WithDefaultCards.args = {
       color: '#fb923c'
     }
   },
-  statValue: '$5,920',
-  statExtraInfo: 'to authorize',
-  extraInfoTagConfig: {
-    label: 'Urgent',
-    skin: 'warning',
-    icon: 'fa-triangle-exclamation',
-    plain: false
+  statValue: {
+    label: '$5,920',
+    suffix: 'to authorize',
+    tags: [
+      {
+        label: 'Urgent',
+        skin: 'warning',
+        icon: 'fa-triangle-exclamation',
+        plain: false
+      }
+    ]
   },
   ctaPrimaryLabel: 'Pay',
   ctaSecondaryLabel: 'Export CSV'
@@ -298,8 +289,10 @@ Loading.args = {
     icon: 'fa-hourglass-half',
     skin: 'alert'
   },
-  statValue: '999,999',
-  statExtraInfo: 'Fetching latest data',
+  statValue: {
+    label: '999,999',
+    suffix: 'Fetching latest data'
+  },
   loading: true
 };
 
@@ -311,9 +304,10 @@ Minimal.args = {
     infoCircle: undefined
   },
   badge: undefined,
-  statValue: '42',
-  statExtraInfo: 'currently running',
-  extraInfoTagConfig: undefined
+  statValue: {
+    label: '42',
+    suffix: 'currently running'
+  }
 };
 
 export const WithTitleSuffixOnly = TitleSuffixOnlyTemplate.bind({});
@@ -327,12 +321,16 @@ WithTitleSuffixOnly.args = {
     icon: 'fa-chart-line',
     skin: 'primary'
   },
-  statValue: '$87,240',
-  statExtraInfo: 'last 30 days',
-  extraInfoTagConfig: {
-    label: '+12%',
-    skin: 'success',
-    icon: 'fa-arrow-up',
-    plain: false
+  statValue: {
+    label: '$87,240',
+    suffix: 'last 30 days',
+    tags: [
+      {
+        label: '+12%',
+        skin: 'success',
+        icon: 'fa-arrow-up',
+        plain: false
+      }
+    ]
   }
 };
