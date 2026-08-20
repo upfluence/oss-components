@@ -24,7 +24,9 @@
             <span
               class="oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold"
               {{enable-tooltip title=@title placement="top" displayOnlyOnOverflow=true}}
-            >{{@title}}</span>
+            >
+              {{@title}}
+            </span>
             <div class="oss-stats-banner__title-actions fx-row fx-gap-px-8 fx-xalign-center">
               {{#if @titleInfoCircle}}
                 <span {{enable-tooltip title=@titleInfoCircle placement="top"}}>
