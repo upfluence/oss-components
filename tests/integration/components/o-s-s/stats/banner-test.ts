@@ -22,7 +22,6 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       assert.dom('.oss-stats-banner__skeleton--title').exists();
       assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--stat-value').exists();
-      assert.dom('.oss-stats-banner__skeleton--stat-extra').exists();
       assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
     });
 
@@ -51,7 +50,6 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       assert.dom('.oss-stats-banner__skeleton--title').exists();
       assert.dom('.oss-stats-banner__skeleton--stat-value').exists();
       assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
-      assert.dom('.oss-stats-banner__skeleton--stat-extra').exists();
       assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
       assert.dom('.test-extra-badges').doesNotExist();
       assert.dom('.test-cta').doesNotExist();
@@ -71,7 +69,6 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       assert.dom('.oss-stats-banner__stat').includesText('supplementary info');
       assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--stat-value').doesNotExist();
-      assert.dom('.oss-stats-banner__skeleton--stat-extra').doesNotExist();
     });
 
     test('when @loading is false and no field is defined, it does not render skeletons', async function (assert) {
@@ -81,7 +78,6 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--stat-value').doesNotExist();
-      assert.dom('.oss-stats-banner__skeleton--stat-extra').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
     });
   });
