@@ -1,7 +1,9 @@
 .oss-stats-banner {
+  container-type: inline-size;
   display: flex;
   flex: 1;
   flex-direction: column;
+  gap: var(--spacing-px-12);
   padding: var(--spacing-px-12) var(--spacing-px-18);
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-md);
@@ -9,6 +11,7 @@
 
   &__header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: var(--spacing-px-12);
     min-width: 0;
@@ -16,6 +19,8 @@
 
   &__header_content {
     display: flex;
+    align-items: center;
+    gap: var(--spacing-px-9);
     flex: 1;
     min-width: 0;
   }
@@ -35,6 +40,10 @@
 
   &__title-row {
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: var(--spacing-px-6);
     flex: 1;
     min-width: 0;
   }
@@ -49,9 +58,64 @@
     flex-shrink: 0;
   }
 
-  &__cta {
+  &__title-actions {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--spacing-px-6);
+  }
+
+  &__extra-badges {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-3);
+  }
+
+  &__cta {
+    display: flex;
+    align-items: flex-end;
+    align-self: end;
+    justify-self: end;
+  }
+
+  &__bottom_content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-px-12);
+    align-items: flex-start;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  &__stat-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    gap: var(--spacing-px-12);
+  }
+
+  &__stat-main-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-6);
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  &__stat-extra {
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
   &__stats {
@@ -128,6 +192,25 @@
 
 @container (width <= 540px) {
   .oss-stats-banner {
+    &__stat-main {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      height: 100%;
+    }
+
+    &__cta {
+      align-self: end;
+      justify-self: end;
+      margin-left: auto;
+    }
+
+    &__stat-main-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-px-9);
+      flex-wrap: nowrap;
+    }
+
     &__stats {
       grid-template-columns: minmax(0, 1fr);
     }

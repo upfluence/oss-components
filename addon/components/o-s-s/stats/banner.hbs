@@ -1,40 +1,46 @@
-<div class="oss-stats-banner fx-gap-px-12" ...attributes>
-  <div class="oss-stats-banner__header fx-malign-space-between">
-    <div class="oss-stats-banner__header_content fx-row fx-gap-px-9 fx-malign-center fx-xalign-center">
-      {{#if @badgeConfig}}
-        {{#if @extraIconConfig}}
+<div class="oss-stats-banner" data-control-name="oss-stats-banner" ...attributes>
+  <div class="oss-stats-banner__header" data-control-name="stats-banner-header">
+    <div class="oss-stats-banner__header_content" data-control-name="stats-banner-header-content">
+      {{#if @badge}}
+        {{#if @badge.extraIcon}}
           <OSS::Icon
-            @icon={{@extraIconConfig.icon}}
-            style={{if @extraIconConfig.color (concat "color:" @extraIconConfig.color)}}
+            @icon={{@badge.extraIcon.icon}}
+            style={{if @badge.extraIcon.color (concat "color:" @badge.extraIcon.color)}}
           />
         {{/if}}
         <OSS::Badge
-          @icon={{@badgeConfig.icon}}
-          @image={{@badgeConfig.image}}
-          @text={{@badgeConfig.text}}
-          @skin={{@badgeConfig.skin}}
+          @icon={{@badge.icon}}
+          @image={{@badge.image}}
+          @text={{@badge.text}}
+          @skin={{@badge.skin}}
           @size="sm"
         />
       {{/if}}
+
       <div class="oss-stats-banner__content">
         {{#if @loading}}
           <OSS::Skeleton @height={{12}} @width={{150}} class="oss-stats-banner__skeleton--title" />
         {{else}}
-          <div class="oss-stats-banner__title-row fx-row fx-gap-px-8 fx-xalign-center">
+          <div class="oss-stats-banner__title-row" data-control-name="stats-banner-title-row">
             <span
               class="oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold"
-              {{enable-tooltip title=@title placement="top" displayOnlyOnOverflow=true}}
+              {{enable-tooltip title=@titleConfig.text placement="top" displayOnlyOnOverflow=true}}
             >
-              {{@title}}
+              {{@titleConfig.text}}
             </span>
-            <div class="oss-stats-banner__title-actions fx-row fx-gap-px-8 fx-xalign-center">
-              {{#if @titleInfoCircle}}
-                <span {{enable-tooltip title=@titleInfoCircle placement="top"}}>
+
+            <div class="oss-stats-banner__title-actions" data-control-name="stats-banner-title-actions">
+              {{#if @titleConfig.infoCircle}}
+                <span
+                  data-control-name="stats-banner-title-info-circle"
+                  {{enable-tooltip title=@titleConfig.infoCircle placement="top"}}
+                >
                   <OSS::Icon @icon="fa-info-circle" class="font-color-gray-400" />
                 </span>
               {{/if}}
-              {{#if (has-block "dropdown")}}
-                {{yield to="dropdown"}}
+
+              {{#if (has-block "title-suffix")}}
+                {{yield to="title-suffix"}}
               {{/if}}
             </div>
           </div>
@@ -43,35 +49,42 @@
     </div>
 
     {{#if (and (has-block "extra-badges") (not @loading))}}
-      <div class="oss-stats-banner__extra-badges fx-row fx-gap-px-3 fx-xalign-center">
+      <div class="oss-stats-banner__extra-badges" data-control-name="stats-banner-extra-badges">
         {{yield to="extra-badges"}}
       </div>
     {{/if}}
   </div>
-  <div class="oss-stats-banner__bottom_content fx-row fx-gap-px-12 fx-malign-space-between">
-    <div class="oss-stats-banner__stat fx-row fx-gap-px-6 fx-xalign-center">
+
+  <div class="oss-stats-banner__bottom_content" data-control-name="stats-banner-bottom-content">
+    <div class="oss-stats-banner__stat" data-control-name="stats-banner-stat">
       {{#if @loading}}
         <OSS::Skeleton @height={{30}} @width={{150}} class="oss-stats-banner__skeleton--stat-value" />
       {{else}}
-        <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue}}</span>
-        {{#if @statExtraInfo}}
-          <span class="font-color-gray-500">{{@statExtraInfo}}</span>
-        {{/if}}
+        <div class="oss-stats-banner__stat-main" data-control-name="stats-banner-stat-main">
+          <div class="oss-stats-banner__stat-main-content">
+            <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue}}</span>
 
-        {{#if @extraInfoTagConfig}}
-          <OSS::Tag
-            @label={{@extraInfoTagConfig.label}}
-            @skin={{@extraInfoTagConfig.skin}}
-            @icon={{@extraInfoTagConfig.icon}}
-            @plain={{@extraInfoTagConfig.plain}}
-          />
-        {{/if}}
+            {{#if @statExtraInfo}}
+              <span class="oss-stats-banner__stat-extra font-color-gray-500">{{@statExtraInfo}}</span>
+            {{/if}}
+
+            {{#if @extraInfoTagConfig}}
+              <OSS::Tag
+                @label={{@extraInfoTagConfig.label}}
+                @skin={{@extraInfoTagConfig.skin}}
+                @icon={{@extraInfoTagConfig.icon}}
+                @plain={{@extraInfoTagConfig.plain}}
+              />
+            {{/if}}
+          </div>
+
+          {{#if (has-block "cta")}}
+            <div class="oss-stats-banner__cta" data-control-name="stats-banner-cta">
+              {{yield to="cta"}}
+            </div>
+          {{/if}}
+        </div>
       {{/if}}
     </div>
-    {{#if (and (has-block "cta") (not @loading))}}
-      <div class="oss-stats-banner__cta">
-        {{yield to="cta"}}
-      </div>
-    {{/if}}
   </div>
 </div>

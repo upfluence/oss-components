@@ -4,34 +4,50 @@ export default {
   title: 'Components/OSS::Stats::Banner',
   component: 'stats-banner',
   argTypes: {
-    title: {
-      description: 'Header text displayed in the banner',
-      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
-      control: { type: 'text' }
+    titleConfig: {
+      description: 'Header object: { text, infoCircle }',
+      table: { type: { summary: 'StatsBannerTitle' }, defaultValue: { summary: 'undefined' } }
     },
-    titleInfoCircle: {
-      description: 'When provided, displays an info-circle icon next to the title with this text as tooltip',
-      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
-      control: { type: 'text' }
+    badge: {
+      description: 'Badge object passed to OSS::Badge, supports extraIcon: { icon, color }',
+      table: { type: { summary: 'StatsBannerBadge' }, defaultValue: { summary: 'undefined' } }
     },
-    badgeConfig: {
-      description: 'Badge config passed down to OSS::Badge (icon, image, text, skin, plain, size)',
-      table: { type: { summary: 'StatsBannerBadgeConfig' }, defaultValue: { summary: 'undefined' } }
+    statValue: {
+      description: 'Main KPI value displayed in the stat row',
+      control: 'text',
+      table: { type: { summary: 'string | number' }, defaultValue: { summary: 'undefined' } }
     },
-    extraIconConfig: {
-      description: 'Icon displayed to the left of the badge. Accepts { icon, color }',
-      table: { type: { summary: 'StatsBannerExtraIconConfig' }, defaultValue: { summary: 'undefined' } }
+    statExtraInfo: {
+      description: 'Secondary information shown next to the main KPI value',
+      control: 'text',
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } }
     },
     extraInfoTagConfig: {
       description: 'Tag displayed next to the stat value. Accepts OSS::Tag config (label, skin, icon, plain)',
       table: { type: { summary: 'StatsBannerExtraInfoTagConfig' }, defaultValue: { summary: 'undefined' } }
+    },
+    loading: {
+      description: 'Displays skeletons in place of title and KPI values',
+      control: 'boolean',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } }
+    },
+    ctaPrimaryLabel: {
+      description: 'Primary CTA label used by stories that render a CTA block',
+      control: 'text',
+      table: { category: 'Story controls' }
+    },
+    ctaSecondaryLabel: {
+      description: 'Secondary CTA label used by stories that render multiple CTA actions',
+      control: 'text',
+      table: { category: 'Story controls' }
     }
   },
   parameters: {
+    layout: 'padded',
     docs: {
       description: {
         component:
-          'A stats banner supporting badge, extra icon, title with tooltip, inline tag, and named blocks for extra-badges, dropdown and CTA.'
+          'A stats banner supporting title and badge objects, inline KPI info, and named blocks for extra-badges, title-suffix, and CTA actions.'
       },
       iframeHeight: 260
     }
@@ -39,113 +55,284 @@ export default {
 };
 
 const defaultArgs = {
-  title:
-    'Use statistics to surface a key KPI or summary at-a-glance. Apply locale-aware number formatting, keep significant digits reasonable, and always show units and currency.'
+  titleConfig: {
+    text: 'Very long stats banner title that should truncate with ellipsis when the available width becomes too small',
+    infoCircle: 'This is a helpful description of the stat'
+  },
+  badge: {
+    icon: 'fa-check',
+    skin: 'success',
+    extraIcon: {
+      icon: 'fa-star',
+      color: '#f59e0b'
+    }
+  },
+  statValue: '123,456',
+  statExtraInfo: 'Extra info',
+  extraInfoTagConfig: {
+    label: 'New',
+    skin: 'success',
+    icon: 'fa-sparkles',
+    plain: false
+  },
+  loading: false,
+  ctaPrimaryLabel: 'CTA',
+  ctaSecondaryLabel: 'Export'
 };
 
-const Template = (args) => ({
+const PlaygroundTemplate = (args) => ({
   template: hbs`
-    <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}}>
-        <div class="oss-stats-banner__card">
-          <div class="oss-stats-banner__card-label">Total paid amount</div>
-          <div class="oss-stats-banner__card-value">$12,493,343.22</div>
-          <div class="oss-stats-banner__card-meta">supplementary info</div>
-        </div>
-
-        <div class="oss-stats-banner__card">
-          <div class="oss-stats-banner__card-label">Commission to authorize</div>
-          <div class="oss-stats-banner__card-value">$5,920</div>
-          <div class="oss-stats-banner__card-meta">supplementary info</div>
-        </div>
-
-        <div class="oss-stats-banner__card">
-          <div class="oss-stats-banner__card-label">Pending amount</div>
-          <div class="oss-stats-banner__card-value">$594,032</div>
-          <div class="oss-stats-banner__card-meta">supplementary info</div>
-        </div>
-
-        <div class="oss-stats-banner__card oss-stats-banner__card--highlighted">
-          <div class="fx-row fx-malign-space-between fx-xalign-center fx-gap-px-6">
-            <OSS::Tag @label="Ready-to-pay commission" @icon="fa-circle-check" @skin="secondary" @size="xs" />
-
-            <OSS::Button @label="Pay" @size="xs" @icon="fa-money-bill" />
-          </div>
-          <div class="oss-stats-banner__card-value">$5,920</div>
-          <div class="oss-stats-banner__card-meta">supplementary info</div>
-
-          <div class="margin-top-px-6">
-            <OSS::Tag @label="5 payments" @skin="secondary" @size="xs" />
-          </div>
-        </div>
-      </OSS::Stats::Banner>
-    </div>
-  `,
-  context: args
-});
-
-const WithCTA = (args) => ({
-  template: hbs`
-    <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}}>
-        <:cta>
-          <OSS::Button @label="Export" @icon="fa-download" @size="sm" @skin="secondary" />
-        </:cta>
-
-        <div class="oss-stats-banner__card">
-          <div class="oss-stats-banner__card-label">Total paid amount</div>
-          <div class="oss-stats-banner__card-value">$12,493,343.22</div>
-          <div class="oss-stats-banner__card-meta">supplementary info</div>
-        </div>
-      </OSS::Stats::Banner>
-    </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
-
-export const UsageWithHeaderCTA = WithCTA.bind({});
-UsageWithHeaderCTA.args = defaultArgs;
-
-const WithExtraIconAndTitleInfoCircle = (args) => ({
-  template: hbs`
-    <div style="max-width: 1200px;">
+    <div style="width: 1200px; max-width: 100%;">
       <OSS::Stats::Banner
-        @title={{this.title}}
-        @titleInfoCircle="This KPI represents total paid amounts across all campaigns"
-        @badgeConfig={{hash icon="fa-check" skin="success"}}
-        @extraIconConfig={{hash icon="fa-star" color="#f59e0b"}}
-        @statValue="$12,493"
-        @statExtraInfo="supplementary info"
-        @extraInfoTagConfig={{hash label="New" skin="success" icon="fa-sparkles"}}
-      />
-    </div>
-  `,
-  context: args
-});
-
-export const WithExtraFeaturesAndTitleInfoCircle = WithExtraIconAndTitleInfoCircle.bind({});
-WithExtraFeaturesAndTitleInfoCircle.args = defaultArgs;
-
-const WithDropdown = (args) => ({
-  template: hbs`
-    <div style="max-width: 1200px;">
-      <OSS::Stats::Banner @title={{this.title}} @badgeConfig={{hash icon="fa-check" skin="success"}} @statValue="$12,493">
-        <:dropdown>
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+        @statExtraInfo={{this.statExtraInfo}}
+        @extraInfoTagConfig={{this.extraInfoTagConfig}}
+        @loading={{this.loading}}
+      >
+        <:title-suffix>
           <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
             <:items>
               <div class="oss-button-dropdown__item">Option A</div>
               <div class="oss-button-dropdown__item">Option B</div>
             </:items>
           </OSS::ButtonDropdown>
-        </:dropdown>
+        </:title-suffix>
+
+        <:extra-badges>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:extra-badges>
+
+        <:cta>
+          <div class="fx-row fx-gap-px-6">
+            <OSS::Button @skin="primary" @label={{this.ctaPrimaryLabel}} @icon="fas fa-box-open" @size="md" />
+            <OSS::Button @skin="secondary" @label={{this.ctaSecondaryLabel}} @icon="fa-download" @size="md" />
+          </div>
+        </:cta>
       </OSS::Stats::Banner>
     </div>
   `,
   context: args
 });
 
-export const UsageWithDropdown = WithDropdown.bind({});
-UsageWithDropdown.args = defaultArgs;
+const ThreeUpTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <div class="fx-row fx-gap-px-12" style="flex-wrap: wrap;">
+        <OSS::Stats::Banner
+          class="fx-1"
+          @badge={{this.badge}}
+          @titleConfig={{this.titleConfig}}
+          @statValue={{this.statValue}}
+          @statExtraInfo={{this.statExtraInfo}}
+        >
+          <:cta>
+            <OSS::Button @skin="secondary" @label={{this.ctaSecondaryLabel}} @size="sm" />
+          </:cta>
+        </OSS::Stats::Banner>
+
+        <OSS::Stats::Banner
+          class="fx-1"
+          @badge={{hash icon="fa-star" skin="primary"}}
+          @titleConfig={{hash text="Commissions"}}
+          @statValue="$5,920"
+          @statExtraInfo="to authorize"
+        >
+          <:cta>
+            <OSS::Button @skin="primary" @label="Pay" @size="sm" />
+          </:cta>
+        </OSS::Stats::Banner>
+
+        <OSS::Stats::Banner
+          class="fx-1"
+                @badge={{hash icon="fa-bolt" skin="alert"}}
+          @titleConfig={{hash text="Pending"}}
+          @statValue="$594,032"
+          @statExtraInfo="across campaigns"
+        >
+          <:cta>
+            <OSS::Button @skin="secondary" @label="Open" @size="sm" />
+          </:cta>
+        </OSS::Stats::Banner>
+      </div>
+    </div>
+  `,
+  context: args
+});
+
+const DefaultTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+        @statExtraInfo={{this.statExtraInfo}}
+        @extraInfoTagConfig={{this.extraInfoTagConfig}}
+      >
+
+        <:cta>
+          <div class="fx-row fx-gap-px-6">
+            <OSS::Button @label={{this.ctaSecondaryLabel}} @icon="fa-download" @size="sm" @skin="secondary" />
+            <OSS::Button @label={{this.ctaPrimaryLabel}} @icon="fa-money-bill" @size="sm" @skin="primary" />
+          </div>
+        </:cta>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
+const LoadingTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner
+        @loading={{true}}
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+        @statExtraInfo={{this.statExtraInfo}}
+      >
+        <:extra-badges>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:extra-badges>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
+const MinimalTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+        @statExtraInfo={{this.statExtraInfo}}
+      />
+    </div>
+  `,
+  context: args
+});
+
+const TitleSuffixOnlyTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+        @statExtraInfo={{this.statExtraInfo}}
+      >
+        <:title-suffix>
+          <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
+            <:items>
+              <div class="oss-button-dropdown__item">Last 7 days</div>
+              <div class="oss-button-dropdown__item">Last 30 days</div>
+              <div class="oss-button-dropdown__item">Last quarter</div>
+            </:items>
+          </OSS::ButtonDropdown>
+        </:title-suffix>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
+export const Default = PlaygroundTemplate.bind({});
+Default.args = defaultArgs;
+
+export const ThreeUpCompact = ThreeUpTemplate.bind({});
+ThreeUpCompact.args = {
+  ...defaultArgs,
+  titleConfig: {
+    text: 'Revenue',
+    infoCircle: 'Revenue generated during the selected period'
+  },
+  badge: {
+    icon: 'fa-check',
+    skin: 'success'
+  },
+  statValue: '$12,493',
+  statExtraInfo: 'vs last month',
+  ctaSecondaryLabel: 'Details'
+};
+
+export const WithDefaultCards = DefaultTemplate.bind({});
+WithDefaultCards.args = {
+  ...defaultArgs,
+  titleConfig: {
+    text: 'Commissions overview',
+    infoCircle: 'Summary of pending and approved commissions'
+  },
+  badge: {
+    icon: 'fa-star',
+    skin: 'primary',
+    extraIcon: {
+      icon: 'fa-bolt',
+      color: '#fb923c'
+    }
+  },
+  statValue: '$5,920',
+  statExtraInfo: 'to authorize',
+  extraInfoTagConfig: {
+    label: 'Urgent',
+    skin: 'warning',
+    icon: 'fa-triangle-exclamation',
+    plain: false
+  },
+  ctaPrimaryLabel: 'Pay',
+  ctaSecondaryLabel: 'Export CSV'
+};
+
+export const Loading = LoadingTemplate.bind({});
+Loading.args = {
+  ...defaultArgs,
+  titleConfig: {
+    text: 'Loading stats banner title',
+    infoCircle: 'Helpful title information'
+  },
+  badge: {
+    icon: 'fa-hourglass-half',
+    skin: 'alert'
+  },
+  statValue: '999,999',
+  statExtraInfo: 'Fetching latest data',
+  loading: true
+};
+
+export const Minimal = MinimalTemplate.bind({});
+Minimal.args = {
+  ...defaultArgs,
+  titleConfig: {
+    text: 'Active campaigns',
+    infoCircle: undefined
+  },
+  badge: undefined,
+  statValue: '42',
+  statExtraInfo: 'currently running',
+  extraInfoTagConfig: undefined
+};
+
+export const WithTitleSuffixOnly = TitleSuffixOnlyTemplate.bind({});
+WithTitleSuffixOnly.args = {
+  ...defaultArgs,
+  titleConfig: {
+    text: 'Paid amount',
+    infoCircle: 'Compare period-over-period in the dropdown'
+  },
+  badge: {
+    icon: 'fa-chart-line',
+    skin: 'primary'
+  },
+  statValue: '$87,240',
+  statExtraInfo: 'last 30 days',
+  extraInfoTagConfig: {
+    label: '+12%',
+    skin: 'success',
+    icon: 'fa-arrow-up',
+    plain: false
+  }
+};

@@ -7,7 +7,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Stats::Banner />`);
+    await render(hbs`<OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />`);
 
     assert.dom('.oss-stats-banner').exists();
     assert.dom('.oss-stats-banner__header').exists();
@@ -16,7 +16,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
 
   module('Loading state handling', function () {
     test('when @loading is true and no related args or blocks are defined, it renders title/stat skeletons', async function (assert) {
-      await render(hbs`<OSS::Stats::Banner @loading={{true}} />`);
+      await render(hbs`<OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} />`);
 
       assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--title').exists();
@@ -33,17 +33,13 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       await render(hbs`
         <OSS::Stats::Banner
           @loading={{true}}
-          @title={{this.title}}
+          @titleConfig={{hash text=this.title}}
           @statValue={{this.statValue}}
           @statExtraInfo={{this.statExtraInfo}}
         >
           <:extra-badges>
             <div class="test-extra-badges">Extra badges</div>
           </:extra-badges>
-
-          <:cta>
-            <button type="button" class="test-cta">CTA</button>
-          </:cta>
         </OSS::Stats::Banner>
       `);
 
@@ -61,7 +57,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       this.statExtraInfo = 'supplementary info';
 
       await render(
-        hbs`<OSS::Stats::Banner @loading={{false}} @title={{this.title}} @statValue={{this.statValue}} @statExtraInfo={{this.statExtraInfo}} />`
+        hbs`<OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text=this.title}} @statValue={{this.statValue}} @statExtraInfo={{this.statExtraInfo}} />`
       );
 
       assert.dom('.oss-stats-banner__content').hasText('Stats title');
@@ -72,7 +68,7 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     });
 
     test('when @loading is false and no field is defined, it does not render skeletons', async function (assert) {
-      await render(hbs`<OSS::Stats::Banner @loading={{false}} />`);
+      await render(hbs`<OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} />`);
 
       assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
@@ -83,9 +79,9 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
   });
 
   module('Badge and icon handling', function () {
-    test('when @badgeConfig is defined and @loading is false, it renders the badge and no skeleton', async function (assert) {
+    test('when @badge is defined and @loading is false, it renders the badge and no skeleton', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @loading={{false}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}} />
+        <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} @badge={{hash text="TXT" skin="primary" size="sm"}} />
       `);
 
       assert.dom('.oss-stats-banner .upf-badge').exists();
@@ -94,25 +90,25 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
     });
 
-    test('when @badgeConfig is defined and @loading is true, it still renders the badge', async function (assert) {
+    test('when @badge is defined and @loading is true, it still renders the badge', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @loading={{true}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}} />
+        <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} @badge={{hash text="TXT" skin="primary" size="sm"}} />
       `);
 
       assert.dom('.oss-stats-banner .upf-badge').exists();
     });
 
-    test('when @extraIconConfig is defined, it renders the icon next to the badge', async function (assert) {
+    test('when @badge.extraIcon is defined, it renders the icon next to the badge', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @badgeConfig={{hash icon="fa-check" skin="success"}} @extraIconConfig={{hash icon="fa-star"}} />
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @badge={{hash icon="fa-check" skin="success" extraIcon=(hash icon="fa-star")}} />
       `);
 
       assert.dom('.oss-stats-banner .fa-star').exists();
     });
 
-    test('when @extraIconConfig has a color, it applies the color as inline style', async function (assert) {
+    test('when @badge.extraIcon has a color, it applies the color as inline style', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @badgeConfig={{hash icon="fa-check" skin="success"}} @extraIconConfig={{hash icon="fa-star" color="red"}} />
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @badge={{hash icon="fa-check" skin="success" extraIcon=(hash icon="fa-star" color="red")}} />
       `);
 
       assert.dom('.oss-stats-banner .fa-star').hasAttribute('style', 'color:red');
@@ -120,60 +116,93 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
   });
 
   module('Title actions handling', function () {
-    test('when @titleInfoCircle is defined, it renders an info-circle icon next to the title', async function (assert) {
+    test('when @titleConfig.infoCircle is defined, it renders an info-circle icon next to the title', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @title="My stat" @titleInfoCircle="Helpful description" />
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat" infoCircle="Helpful description"}} />
       `);
 
       assert.dom('.oss-stats-banner .fa-info-circle').exists();
     });
 
-    test('when @titleInfoCircle is not defined, it does not render an info-circle icon', async function (assert) {
-      await render(hbs`<OSS::Stats::Banner @title="My stat" />`);
+    test('when @titleConfig.infoCircle is not defined, it does not render an info-circle icon', async function (assert) {
+      await render(hbs`<OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />`);
 
       assert.dom('.oss-stats-banner .fa-info-circle').doesNotExist();
     });
 
-    test('when the dropdown block is defined, it renders its content in the title row', async function (assert) {
+    test('when the title-suffix block is defined, it renders its content in the title row', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @title="My stat">
-          <:dropdown>
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}}>
+          <:title-suffix>
             <div class="test-dropdown">Dropdown</div>
-          </:dropdown>
+          </:title-suffix>
         </OSS::Stats::Banner>
       `);
 
       assert.dom('.oss-stats-banner .test-dropdown').exists();
     });
 
-    test('when the dropdown block is not defined, it does not render dropdown content', async function (assert) {
-      await render(hbs`<OSS::Stats::Banner @title="My stat" />`);
+    test('when no title suffix block is defined, it does not render dropdown content', async function (assert) {
+      await render(hbs`<OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />`);
 
       assert.dom('.oss-stats-banner .test-dropdown').doesNotExist();
     });
   });
 
   module('Named blocks handling', function () {
-    test('when @loading is false, it renders cta and extra-badges named blocks', async function (assert) {
+    test('when @loading is false, it renders extra-badges named block', async function (assert) {
       await render(hbs`
-        <OSS::Stats::Banner @loading={{false}} @badgeConfig={{hash text="TXT" skin="primary" size="sm"}}>
+        <OSS::Stats::Banner
+          @loading={{false}}
+          @titleConfig={{hash text="My stat"}}
+          @badge={{hash text="TXT" skin="primary" size="sm"}}
+        >
           <:extra-badges>
             <div class="test-extra-badges">Extra badges</div>
           </:extra-badges>
-
-          <:cta>
-            <button type="button" class="test-cta">CTA</button>
-          </:cta>
         </OSS::Stats::Banner>
       `);
 
       assert.dom('.test-extra-badges').exists();
-      assert.dom('.test-cta').exists();
       assert.dom('.oss-stats-banner .upf-badge').exists();
       assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
       assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
+    });
+
+    test('when cta named block is defined, it renders multiple actions', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @statValue="$12,493">
+          <:cta>
+            <button type="button" class="test-cta-primary">Primary</button>
+            <button type="button" class="test-cta-secondary">Secondary</button>
+          </:cta>
+        </OSS::Stats::Banner>
+      `);
+
+      assert.dom('[data-control-name="stats-banner-cta"] .test-cta-primary').exists();
+      assert.dom('[data-control-name="stats-banner-cta"] .test-cta-secondary').exists();
+    });
+
+    test('when default block content is defined and @loading is false, it renders default content in stats area', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} @statValue="$12,493">
+          <div class="test-default-content">Default content</div>
+        </OSS::Stats::Banner>
+      `);
+
+      assert.dom('.oss-stats-banner__stats .test-default-content').exists();
+    });
+
+    test('when default block content is defined and @loading is true, it hides default content', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} @statValue="$12,493">
+          <div class="test-default-content">Default content</div>
+        </OSS::Stats::Banner>
+      `);
+
+      assert.dom('.oss-stats-banner__stats .test-default-content').doesNotExist();
     });
   });
 });
