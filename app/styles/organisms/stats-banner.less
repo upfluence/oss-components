@@ -1,0 +1,218 @@
+.oss-stats-banner {
+  container-type: inline-size;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-px-12);
+  padding: var(--spacing-px-12) var(--spacing-px-18);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-white);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-px-12);
+    min-width: 0;
+  }
+
+  &__header_content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-9);
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-6);
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    line-height: 1.4;
+    min-width: 0;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: var(--spacing-px-6);
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  &__title-actions,
+  &__extra-badges {
+    flex-shrink: 0;
+  }
+
+  &__title-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--spacing-px-6);
+  }
+
+  &__extra-badges {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-3);
+  }
+
+  &__cta {
+    display: flex;
+    align-items: flex-end;
+    align-self: end;
+    justify-self: end;
+  }
+
+  &__bottom_content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-px-12);
+    align-items: flex-start;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  &__stat-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    gap: var(--spacing-px-12);
+  }
+
+  &__stat-main-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-6);
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  &__stat-extra {
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-px-12);
+  }
+
+  &__card {
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-gray-50);
+    padding: var(--spacing-px-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-px-3);
+    min-height: 84px;
+  }
+
+  &__card--highlighted {
+    border-color: var(--color-violet-500);
+    background-color: var(--color-violet-50);
+  }
+
+  &__card-label {
+    color: var(--color-gray-500);
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+  }
+
+  &__card-value {
+    color: var(--color-gray-900);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+  }
+
+  &__card-meta {
+    color: var(--color-gray-400);
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+  }
+
+  &__skeleton--badge,
+  &__skeleton--extra-badge {
+    border-radius: 9999px;
+  }
+
+  &__skeleton--title {
+    max-width: 100%;
+  }
+
+  &__skeleton--stat-value,
+  &__skeleton--stat-extra {
+    max-width: 100%;
+  }
+
+  &__skeleton--cta {
+    border-radius: var(--border-radius-xl);
+  }
+}
+
+@container (width <= 900px) {
+  .oss-stats-banner {
+    &__header {
+      align-items: flex-start;
+    }
+
+    &__stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@container (width <= 320px) {
+  .oss-stats-banner {
+    &__stat-main {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      height: 100%;
+    }
+
+    &__cta {
+      align-self: end;
+      justify-self: end;
+      margin-left: auto;
+    }
+
+    &__stat-main-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-px-9);
+      flex-wrap: nowrap;
+    }
+
+    &__stats {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}

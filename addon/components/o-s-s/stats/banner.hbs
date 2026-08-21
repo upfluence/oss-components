@@ -1,0 +1,92 @@
+<div class="oss-stats-banner" data-control-name="oss-stats-banner" ...attributes>
+  <div class="oss-stats-banner__header" data-control-name="stats-banner-header">
+    <div class="oss-stats-banner__header_content" data-control-name="stats-banner-header-content">
+      {{#if @badge}}
+        <div class="oss-stats-banner__badge" data-control-name="stats-banner-badge">
+          {{#if @badge.extraIcon}}
+            <OSS::Icon
+              @icon={{@badge.extraIcon.icon}}
+              style={{if @badge.extraIcon.color (concat "color:" @badge.extraIcon.color)}}
+            />
+          {{/if}}
+          <OSS::Badge
+            @icon={{@badge.icon}}
+            @image={{@badge.image}}
+            @text={{@badge.text}}
+            @skin={{@badge.skin}}
+            @size="sm"
+          />
+        </div>
+      {{/if}}
+
+      <div class="oss-stats-banner__content" data-control-name="stats-banner-content">
+        {{#if @loading}}
+          <OSS::Skeleton @height={{12}} @width={{150}} class="oss-stats-banner__skeleton--title" />
+        {{else}}
+          <div class="oss-stats-banner__title-row" data-control-name="stats-banner-title-row">
+            <span
+              class="oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold"
+              {{enable-tooltip title=@titleConfig.text placement="top" displayOnlyOnOverflow=true}}
+            >
+              {{@titleConfig.text}}
+            </span>
+
+            <div class="oss-stats-banner__title-actions" data-control-name="stats-banner-title-actions">
+              {{#if @titleConfig.infoCircle}}
+                <span
+                  data-control-name="stats-banner-title-info-circle"
+                  {{enable-tooltip title=@titleConfig.infoCircle placement="top"}}
+                >
+                  <OSS::Icon @icon="fa-info-circle" class="font-color-gray-400" />
+                </span>
+              {{/if}}
+
+              {{#if (has-block "title-suffix")}}
+                {{yield to="title-suffix"}}
+              {{/if}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    {{#if (and (has-block "extra-badges") (not @loading))}}
+      <div class="oss-stats-banner__extra-badges" data-control-name="stats-banner-extra-badges">
+        {{yield to="extra-badges"}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="oss-stats-banner__bottom_content" data-control-name="stats-banner-bottom-content">
+    <div class="oss-stats-banner__stat" data-control-name="stats-banner-stat">
+      {{#if @loading}}
+        <OSS::Skeleton @height={{30}} @width={{150}} class="oss-stats-banner__skeleton--stat-value" />
+      {{else}}
+        <div class="oss-stats-banner__stat-main" data-control-name="stats-banner-stat-main">
+          <div class="oss-stats-banner__stat-main-content" data-control-name="stats-banner-stat-main-content">
+            {{#if @statValue}}
+              <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue.label}}</span>
+
+              {{#if @statValue.suffix}}
+                <span class="oss-stats-banner__stat-extra font-color-gray-500">{{@statValue.suffix}}</span>
+              {{/if}}
+
+              {{#if @statValue.tags}}
+                {{#each @statValue.tags as |tag|}}
+                  <OSS::Tag @label={{tag.label}} @skin={{tag.skin}} @icon={{tag.icon}} @plain={{tag.plain}} />
+                {{/each}}
+              {{/if}}
+            {{/if}}
+          </div>
+
+          {{#if (has-block "cta")}}
+            <div class="oss-stats-banner__cta" data-control-name="stats-banner-cta">
+              {{yield to="cta"}}
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+</div>
