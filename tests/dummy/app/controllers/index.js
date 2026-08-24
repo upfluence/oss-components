@@ -20,6 +20,9 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  noop() {}
+
+  @action
   triggerToast(type) {
     this.toast[type](`I am the ${type} subtitle`, 'Title');
   }

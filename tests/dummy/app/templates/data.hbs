@@ -263,4 +263,102 @@
     </div>
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Stats banner
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <OSS::Stats::Banner
+        class="demo-stats-banner"
+        @badge={{hash icon="fa-check" skin="success" extraIcon=(hash icon="fa-star")}}
+        @titleConfig={{hash
+          text="Very long stats banner title that should truncate with ellipsis when the available width becomes too small"
+          infoCircle="This is a helpful description of the stat"
+        }}
+        @statValue={{hash
+          label="123,456"
+          suffix="Extra info"
+          tags=(array (hash label="New" skin="success" icon="fa-sparkles"))
+        }}
+      >
+        <:title-suffix>
+          <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
+            <:items>
+              <div class="oss-button-dropdown__item">Option A</div>
+              <div class="oss-button-dropdown__item">Option B</div>
+            </:items>
+          </OSS::ButtonDropdown>
+        </:title-suffix>
+        <:extra-badges>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:extra-badges>
+        <:cta>
+          <div class="fx-row fx-gap-px-6">
+            <OSS::Button @skin="primary" @label="CTA" @icon="fas fa-box-open" @size="md" />
+            <OSS::Button @skin="secondary" @label="Export" @icon="fa-download" @size="md" />
+          </div>
+        </:cta>
+      </OSS::Stats::Banner>
+
+      <OSS::Stats::Banner
+        class="demo-stats-banner"
+        @badge={{hash icon="fa-check" skin="success"}}
+        @titleConfig={{hash
+          text="Another intentionally long stats banner title to validate truncation next to the info-circle icon"
+          infoCircle="This stat title also has helpful context"
+        }}
+        @statValue={{hash label="123,456" suffix="Potatoes"}}
+      />
+
+      <div class="demo-stats-banner-row fx-row fx-gap-px-12">
+        <OSS::Stats::Banner
+          class="demo-stats-banner demo-stats-banner--sm"
+          @badge={{hash icon="fa-check" skin="success"}}
+          @titleConfig={{hash text="Revenue"}}
+          @statValue={{hash label="$12,493" suffix="vs last month"}}
+        >
+          <:cta>
+            <OSS::Button @skin="secondary" @label="Details" @size="sm" />
+          </:cta>
+        </OSS::Stats::Banner>
+
+        <OSS::Stats::Banner
+          class="demo-stats-banner demo-stats-banner--sm"
+          @badge={{hash icon="fa-star" skin="primary"}}
+          @titleConfig={{hash text="Commissions"}}
+          @statValue={{hash label="$5,920" suffix="to authorize"}}
+        >
+          <:cta>
+            <OSS::Button @skin="primary" @label="Pay" @size="sm" />
+          </:cta>
+        </OSS::Stats::Banner>
+
+        <OSS::Stats::Banner
+          class="demo-stats-banner demo-stats-banner--sm"
+          @badge={{hash icon="fa-star" skin="primary"}}
+          @titleConfig={{hash text="Commissions"}}
+          @statValue={{hash label="$5,920" suffix="to authorize"}}
+        >
+          <:cta>
+            <OSS::Button @skin="primary" @label="Pay" @size="sm" />
+          </:cta>
+        </OSS::Stats::Banner>
+      </div>
+
+      <OSS::Stats::Banner
+        class="demo-stats-banner"
+        @loading={{true}}
+        @badge={{hash icon="fa-check" skin="success"}}
+        @titleConfig={{hash text="Loading stats banner title" infoCircle="Helpful title information"}}
+        @statValue={{hash label="123,456" suffix="Potatoes"}}
+      >
+        <:extra-badges>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:extra-badges>
+      </OSS::Stats::Banner>
+    </div>
+  </div>
+
 </div>
