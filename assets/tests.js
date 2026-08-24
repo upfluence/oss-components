@@ -1081,8 +1081,8 @@ define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   class RoutingMock extends _service.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _defineProperty(this, "currentState", 'index');
       _defineProperty(this, "generateURL", _sinon.default.stub().returns('/'));
       _defineProperty(this, "isActiveForRoute", _sinon.default.stub());
@@ -1186,7 +1186,8 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
     (0, _emberQunit.setupRenderingTest)(hooks);
     const onChange = _sinon.default.stub();
     const validator = _sinon.default.stub();
-    async function fillInputAndValidate(keyword = 'keyword') {
+    async function fillInputAndValidate() {
+      let keyword = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'keyword';
       await (0, _testHelpers.fillIn)('.array-input-container input', keyword);
       let input = (0, _testHelpers.find)('.array-input-container input');
       await (0, _testHelpers.triggerKeyEvent)(input, 'keydown', 'Enter', {
@@ -7721,10 +7722,11 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       }, {
         type: 'success',
         icon: 'fa-check-circle'
-      }].forEach(({
-        type,
-        icon
-      }) => {
+      }].forEach(_ref => {
+        let {
+          type,
+          icon
+        } = _ref;
         (0, _qunit.module)(`For ${type} message`, hooks => {
           hooks.beforeEach(function () {
             this.type = type;
@@ -23415,6 +23417,358 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/stats/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/stats/banner', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />
+      */
+      {
+        "id": "3bL2Ncuu",
+        "block": "[[[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-stats-banner').exists();
+      assert.dom('.oss-stats-banner__header').exists();
+      assert.dom('.oss-stats-banner__bottom_content').exists();
+    });
+    (0, _qunit.module)('Loading state handling', function () {
+      (0, _qunit.test)('when @loading is true and no related args or blocks are defined, it renders title/stat skeletons', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} />
+        */
+        {
+          "id": "TEWSxUrE",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@titleConfig\"],[true,[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--title').exists();
+        assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--stat-value').exists();
+        assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
+      });
+      (0, _qunit.test)('when @loading is true, it renders title/stat skeletons and hides named block content', async function (assert) {
+        this.title = 'Stats title';
+        this.statValue = {
+          label: '$5,920',
+          suffix: 'supplementary info'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner
+                  @loading={{true}}
+                  @titleConfig={{hash text=this.title}}
+                  @statValue={{this.statValue}}
+                >
+                  <:extra-badges>
+                    <div class="test-extra-badges">Extra badges</div>
+                  </:extra-badges>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "0zusjtIg",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@statValue\"],[true,[28,[37,1],null,[[\"text\"],[[30,0,[\"title\"]]]]],[30,0,[\"statValue\"]]]],[[\"extra-badges\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"test-extra-badges\"],[12],[1,\"Extra badges\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner__skeleton--title').exists();
+        assert.dom('.oss-stats-banner__skeleton--stat-value').exists();
+        assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
+        assert.dom('.test-extra-badges').doesNotExist();
+        assert.dom('.test-cta').doesNotExist();
+      });
+      (0, _qunit.test)('when @loading is false and title/stat values are defined, it renders text instead of skeletons', async function (assert) {
+        this.title = 'Stats title';
+        this.statValue = {
+          label: '$5,920',
+          suffix: 'supplementary info'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text=this.title}} @statValue={{this.statValue}} />
+        */
+        {
+          "id": "ODVQNBOi",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@statValue\"],[false,[28,[37,1],null,[[\"text\"],[[30,0,[\"title\"]]]]],[30,0,[\"statValue\"]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner__content').hasText('Stats title');
+        assert.dom('.oss-stats-banner__stat').includesText('$5,920');
+        assert.dom('.oss-stats-banner__stat').includesText('supplementary info');
+        assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--stat-value').doesNotExist();
+      });
+      (0, _qunit.test)('when @loading is false and no field is defined, it does not render skeletons', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} />
+        */
+        {
+          "id": "tmlo5dEq",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@titleConfig\"],[false,[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--stat-value').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('Badge and icon handling', function () {
+      (0, _qunit.test)('when @badge is defined and @loading is false, it renders the badge and no skeleton', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} @badge={{hash text="TXT" skin="primary" size="sm"}} />
+              
+        */
+        {
+          "id": "DsZu5dF1",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@badge\"],[false,[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"text\",\"skin\",\"size\"],[\"TXT\",\"primary\",\"sm\"]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .upf-badge').exists();
+        assert.dom('.oss-stats-banner .upf-badge .upf-badge__text').hasText('TXT');
+        assert.dom('.oss-stats-banner .upf-badge').hasClass('upf-badge--primary');
+        assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
+      });
+      (0, _qunit.test)('when @badge is defined and @loading is true, it still renders the badge', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} @badge={{hash text="TXT" skin="primary" size="sm"}} />
+              
+        */
+        {
+          "id": "1KAAgRxl",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@badge\"],[true,[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"text\",\"skin\",\"size\"],[\"TXT\",\"primary\",\"sm\"]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .upf-badge').exists();
+      });
+      (0, _qunit.test)('when @badge.extraIcon is defined, it renders the icon next to the badge', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @badge={{hash icon="fa-check" skin="success" extraIcon=(hash icon="fa-star")}} />
+              
+        */
+        {
+          "id": "2lxsuXjK",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\",\"@badge\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"icon\",\"skin\",\"extraIcon\"],[\"fa-check\",\"success\",[28,[37,1],null,[[\"icon\"],[\"fa-star\"]]]]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .fa-star').exists();
+      });
+      (0, _qunit.test)('when @badge.extraIcon has a color, it applies the color as inline style', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @badge={{hash icon="fa-check" skin="success" extraIcon=(hash icon="fa-star" color="red")}} />
+              
+        */
+        {
+          "id": "wZO3PO3g",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\",\"@badge\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"icon\",\"skin\",\"extraIcon\"],[\"fa-check\",\"success\",[28,[37,1],null,[[\"icon\",\"color\"],[\"fa-star\",\"red\"]]]]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .fa-star').hasAttribute('style', 'color:red');
+      });
+    });
+    (0, _qunit.module)('Title actions handling', function () {
+      (0, _qunit.test)('when @titleConfig.infoCircle is defined, it renders an info-circle icon next to the title', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat" infoCircle="Helpful description"}} />
+              
+        */
+        {
+          "id": "tyOJb2B1",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\",\"infoCircle\"],[\"My stat\",\"Helpful description\"]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .fa-info-circle').exists();
+      });
+      (0, _qunit.test)('when @titleConfig.infoCircle is not defined, it does not render an info-circle icon', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />
+        */
+        {
+          "id": "3bL2Ncuu",
+          "block": "[[[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .fa-info-circle').doesNotExist();
+      });
+      (0, _qunit.test)('when the title-suffix block is defined, it renders its content in the title row', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat"}}>
+                  <:title-suffix>
+                    <div class="test-dropdown">Dropdown</div>
+                  </:title-suffix>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "aRecQWhy",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],[[\"title-suffix\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"test-dropdown\"],[12],[1,\"Dropdown\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .test-dropdown').exists();
+      });
+      (0, _qunit.test)('when no title suffix block is defined, it does not render dropdown content', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />
+        */
+        {
+          "id": "3bL2Ncuu",
+          "block": "[[[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .test-dropdown').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('Named blocks handling', function () {
+      (0, _qunit.test)('when @loading is false, it renders extra-badges named block', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner
+                  @loading={{false}}
+                  @titleConfig={{hash text="My stat"}}
+                  @badge={{hash text="TXT" skin="primary" size="sm"}}
+                >
+                  <:extra-badges>
+                    <div class="test-extra-badges">Extra badges</div>
+                  </:extra-badges>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "6vW9/c1A",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@badge\"],[false,[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"text\",\"skin\",\"size\"],[\"TXT\",\"primary\",\"sm\"]]]]],[[\"extra-badges\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"test-extra-badges\"],[12],[1,\"Extra badges\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.test-extra-badges').exists();
+        assert.dom('.oss-stats-banner .upf-badge').exists();
+        assert.dom('.oss-stats-banner__skeleton--badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--title').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--extra-badge').doesNotExist();
+        assert.dom('.oss-stats-banner__skeleton--cta').doesNotExist();
+      });
+      (0, _qunit.test)('when cta named block is defined, it renders multiple actions', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} @statValue={{hash label="$12,493"}}>
+                  <:cta>
+                    <button type="button" class="test-cta-primary">Primary</button>
+                    <button type="button" class="test-cta-secondary">Secondary</button>
+                  </:cta>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "ICx+uFW5",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\",\"@statValue\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"label\"],[\"$12,493\"]]]]],[[\"cta\"],[[[[1,\"\\n            \"],[10,\"button\"],[14,0,\"test-cta-primary\"],[14,4,\"button\"],[12],[1,\"Primary\"],[13],[1,\"\\n            \"],[10,\"button\"],[14,0,\"test-cta-secondary\"],[14,4,\"button\"],[12],[1,\"Secondary\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="stats-banner-cta"] .test-cta-primary').exists();
+        assert.dom('[data-control-name="stats-banner-cta"] .test-cta-secondary').exists();
+      });
+      (0, _qunit.test)('when default block content is defined and @loading is false, it does not render default content', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @loading={{false}} @titleConfig={{hash text="My stat"}} @statValue={{hash label="$12,493"}}>
+                  <div class="test-default-content">Default content</div>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "txB8s5Jo",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@statValue\"],[false,[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"label\"],[\"$12,493\"]]]]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"test-default-content\"],[12],[1,\"Default content\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.test-default-content').doesNotExist();
+      });
+      (0, _qunit.test)('when default block content is defined and @loading is true, it does not render default content', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @loading={{true}} @titleConfig={{hash text="My stat"}} @statValue={{hash label="$12,493"}}>
+                  <div class="test-default-content">Default content</div>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "Bp+ZBxBw",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@titleConfig\",\"@statValue\"],[true,[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"label\"],[\"$12,493\"]]]]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"test-default-content\"],[12],[1,\"Default content\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.test-default-content').doesNotExist();
+      });
+      (0, _qunit.test)('when @statValue.tags contains multiple tags, it renders all tags', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner
+                  @titleConfig={{hash text="My stat"}}
+                  @statValue={{hash
+                    label="$12,493"
+                    suffix="supplementary info"
+                    tags=(array (hash label="Hot" skin="warning") (hash label="New" skin="success" icon="fa-sparkles"))
+                  }}
+                />
+              
+        */
+        {
+          "id": "1PjvsbtL",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\",\"@statValue\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]],[28,[37,1],null,[[\"label\",\"suffix\",\"tags\"],[\"$12,493\",\"supplementary info\",[28,[37,2],[[28,[37,1],null,[[\"label\",\"skin\"],[\"Hot\",\"warning\"]]],[28,[37,1],null,[[\"label\",\"skin\",\"icon\"],[\"New\",\"success\",\"fa-sparkles\"]]]],null]]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\",\"array\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .upf-tag').exists({
+          count: 2
+        });
+        assert.dom('.oss-stats-banner__stat-main-content').includesText('Hot');
+        assert.dom('.oss-stats-banner__stat-main-content').includesText('New');
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/tag", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _tag, _templateFactory) {
   "use strict";
 
@@ -25653,7 +26007,9 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"@upfluence/oss-components/test-support/services/uploader",0,"@upfluence/oss-components/types/uploader"eaimeta@70e063a35619d71f
-  const buildFile = (name = '1px.png', type = 'image/png') => {
+  const buildFile = function () {
+    let name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '1px.png';
+    let type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'image/png';
     return new File([new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])], name, {
       type
     });
@@ -28966,14 +29322,16 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"sinon",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
-  function createStep(key, opts = {}) {
+  function createStep(key) {
+    let opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     return {
       key,
       componentClass: {},
       ...opts
     };
   }
-  function createSection(key, steps, opts = {}) {
+  function createSection(key, steps) {
+    let opts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     return {
       key,
       steps,

@@ -15912,6 +15912,189 @@ a.oss-sidebar-item {
     display: var(--illustration-display);
   }
 }
+.oss-stats-banner {
+  container-type: inline-size;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-px-12);
+  padding: var(--spacing-px-12) var(--spacing-px-18);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-white);
+}
+.oss-stats-banner__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-px-12);
+  min-width: 0;
+}
+.oss-stats-banner__header_content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-9);
+  flex: 1;
+  min-width: 0;
+}
+.oss-stats-banner__badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-6);
+}
+.oss-stats-banner__content {
+  display: flex;
+  flex: 1;
+  line-height: 1.4;
+  min-width: 0;
+}
+.oss-stats-banner__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: var(--spacing-px-6);
+  flex: 1;
+  min-width: 0;
+}
+.oss-stats-banner__title {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.oss-stats-banner__title-actions,
+.oss-stats-banner__extra-badges {
+  flex-shrink: 0;
+}
+.oss-stats-banner__title-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--spacing-px-6);
+}
+.oss-stats-banner__extra-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-3);
+}
+.oss-stats-banner__cta {
+  display: flex;
+  align-items: flex-end;
+  align-self: end;
+  justify-self: end;
+}
+.oss-stats-banner__bottom_content {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-px-12);
+  align-items: flex-start;
+  flex: 1;
+  min-height: 0;
+}
+.oss-stats-banner__stat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+.oss-stats-banner__stat-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  gap: var(--spacing-px-12);
+}
+.oss-stats-banner__stat-main-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-6);
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.oss-stats-banner__stat-extra {
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.oss-stats-banner__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-px-12);
+}
+.oss-stats-banner__card {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-px-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-px-3);
+  min-height: 84px;
+}
+.oss-stats-banner__card--highlighted {
+  border-color: var(--color-violet-500);
+  background-color: var(--color-violet-50);
+}
+.oss-stats-banner__card-label {
+  color: var(--color-gray-500);
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+}
+.oss-stats-banner__card-value {
+  color: var(--color-gray-900);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+.oss-stats-banner__card-meta {
+  color: var(--color-gray-400);
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+}
+.oss-stats-banner__skeleton--badge,
+.oss-stats-banner__skeleton--extra-badge {
+  border-radius: 9999px;
+}
+.oss-stats-banner__skeleton--title {
+  max-width: 100%;
+}
+.oss-stats-banner__skeleton--stat-value,
+.oss-stats-banner__skeleton--stat-extra {
+  max-width: 100%;
+}
+.oss-stats-banner__skeleton--cta {
+  border-radius: var(--border-radius-xl);
+}
+@container (width <= 900px) {
+  .oss-stats-banner__header {
+    align-items: flex-start;
+  }
+  .oss-stats-banner__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@container (width <= 320px) {
+  .oss-stats-banner__stat-main {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    height: 100%;
+  }
+  .oss-stats-banner__cta {
+    align-self: end;
+    justify-self: end;
+    margin-left: auto;
+  }
+  .oss-stats-banner__stat-main-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-px-9);
+    flex-wrap: nowrap;
+  }
+  .oss-stats-banner__stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .context-menu-panel__scrollable-container {
   height: fit-content;
   position: absolute;
@@ -16263,6 +16446,9 @@ a.oss-sidebar-item {
 }
 .demo-banner {
   max-width: 335px;
+}
+.demo-stats-banner {
+  max-width: 1200px;
 }
 .demo-modal-content {
   height: 200px;

@@ -14,8 +14,8 @@
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   class App extends _application.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _defineProperty(this, "modulePrefix", _environment.default.modulePrefix);
       _defineProperty(this, "podModulePrefix", _environment.default.podModulePrefix);
       _defineProperty(this, "Resolver", _emberResolver.default);
@@ -1461,6 +1461,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/star-rating"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/stats/banner", ["exports", "@upfluence/oss-components/components/o-s-s/stats/banner"], function (_exports, _banner) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _banner.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/stats/banner"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/tag", ["exports", "@upfluence/oss-components/components/o-s-s/tag"], function (_exports, _tag) {
   "use strict";
 
@@ -1763,8 +1777,8 @@
     "isStrictMode": false
   });
   let WizardExampleControls = _exports.default = (_class = class WizardExampleControls extends _component2.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "wizardManager", _descriptor, this);
     }
     selectNextStep() {
@@ -1823,12 +1837,13 @@
     "isStrictMode": false
   });
   let WizardExampleMenu = _exports.default = (_class = class WizardExampleMenu extends _component2.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "wizardManager", _descriptor, this);
-      _defineProperty(this, "isSectionExpanded", (0, _helper.helper)((_, {
-        sectionId
-      }) => {
+      _defineProperty(this, "isSectionExpanded", (0, _helper.helper)((_, _ref) => {
+        let {
+          sectionId
+        } = _ref;
         return this.wizardManager.sections.some(section => {
           return section.id === sectionId && section.steps.some(step => step.id === this.wizardManager.focusedStepId);
         });
@@ -2036,8 +2051,8 @@
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let ApplicationController = _exports.default = (_class = class ApplicationController extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "toast", _descriptor, this);
       _initializerDefineProperty(this, "router", _descriptor2, this);
     }
@@ -2075,8 +2090,8 @@
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let Data = _exports.default = (_class = class Data extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "toast", _descriptor, this);
       _initializerDefineProperty(this, "shopUrl", _descriptor2, this);
       _initializerDefineProperty(this, "shopifyDomain", _descriptor3, this);
@@ -2213,11 +2228,12 @@
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   class MockUploader extends _baseUploader.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _defineProperty(this, "mode", 'success');
     }
-    upload(request, validationRules = []) {
+    upload(request) {
+      let validationRules = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
       console.log(request);
       const validations = this.validate(request, validationRules || []);
       if (!validations.passes) {
@@ -2257,8 +2273,8 @@
   }
   _exports.MockUploader = MockUploader;
   let Extra = _exports.default = (_class = class Extra extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "uploader", _descriptor, this);
       _initializerDefineProperty(this, "file", _descriptor2, this);
       _initializerDefineProperty(this, "tabArrayNavTab", _descriptor3, this);
@@ -2397,8 +2413,8 @@
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let ApplicationController = _exports.default = (_class = class ApplicationController extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "toast", _descriptor, this);
       _initializerDefineProperty(this, "selectedItems", _descriptor2, this);
       _initializerDefineProperty(this, "loading", _descriptor3, this);
@@ -2410,6 +2426,7 @@
     onToggle(value) {
       this.toggled = value;
     }
+    noop() {}
     triggerToast(type) {
       this.toast[type](`I am the ${type} subtitle`, 'Title');
     }
@@ -2456,7 +2473,7 @@
     initializer: function () {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onToggle", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onToggle"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerToast", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerToast"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCheck", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCheck"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onToggle", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onToggle"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerToast", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerToast"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCheck", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCheck"), _class.prototype)), _class);
   const testScript = `import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
@@ -2510,8 +2527,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let Input = _exports.default = (_class = class Input extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "shopUrl", _descriptor, this);
       _initializerDefineProperty(this, "inputValue", _descriptor2, this);
       _initializerDefineProperty(this, "searchFieldValue", _descriptor3, this);
@@ -2936,8 +2953,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let Overlay = _exports.default = (_class = class Overlay extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "showPopover", _descriptor, this);
       _initializerDefineProperty(this, "showDialog", _descriptor2, this);
       _initializerDefineProperty(this, "showModalDialog", _descriptor3, this);
@@ -3172,20 +3189,22 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     toggleTagAnimation() {
       this.tagLoading = !this.tagLoading;
     }
-    handleTagInput({
-      value,
-      type
-    }) {
+    handleTagInput(_ref) {
+      let {
+        value,
+        type
+      } = _ref;
       this.tags = [...this.tags, {
         value,
         type
       }];
       return '';
     }
-    handleSmartTagInput({
-      value,
-      type
-    }) {
+    handleSmartTagInput(_ref2) {
+      let {
+        value,
+        type
+      } = _ref2;
       this.smartTags = [...this.smartTags, {
         value,
         type
@@ -3474,7 +3493,9 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let Visual = _exports.default = (_class = class Visual extends _controller.default {
     constructor() {
+      var _this;
       super();
+      _this = this;
       _initializerDefineProperty(this, "toggleValue", _descriptor, this);
       _initializerDefineProperty(this, "disabled", _descriptor2, this);
       _initializerDefineProperty(this, "selectedToggle", _descriptor3, this);
@@ -3552,22 +3573,24 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
       _initializerDefineProperty(this, "progressBarSuccess2", _descriptor24, this);
       _initializerDefineProperty(this, "progressBarWarning2", _descriptor25, this);
       _initializerDefineProperty(this, "progressBarDanger2", _descriptor26, this);
-      _defineProperty(this, "liveProgressBar", (negative = false) => {
+      _defineProperty(this, "liveProgressBar", function () {
+        let negative = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
         const value = negative ? -1 : 1;
         setTimeout(() => {
-          this.progressBarSuccess += 20 * value;
-          this.progressBarWarning += 5 * value;
-          this.progressBarDanger += 5 * value;
-          this.liveProgressBar(!negative);
+          _this.progressBarSuccess += 20 * value;
+          _this.progressBarWarning += 5 * value;
+          _this.progressBarDanger += 5 * value;
+          _this.liveProgressBar(!negative);
         }, 2000);
       });
-      _defineProperty(this, "liveProgressBarZero", (negative = false) => {
+      _defineProperty(this, "liveProgressBarZero", function () {
+        let negative = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
         const value = negative ? -1 : 1;
         setTimeout(() => {
-          this.progressBarSuccess2 = value === 1 ? 0 : 20;
-          this.progressBarWarning2 = value === 1 ? 0 : 10;
-          this.progressBarDanger2 = value === 1 ? 0 : 5;
-          this.liveProgressBarZero(!negative);
+          _this.progressBarSuccess2 = value === 1 ? 0 : 20;
+          _this.progressBarWarning2 = value === 1 ? 0 : 10;
+          _this.progressBarDanger2 = value === 1 ? 0 : 5;
+          _this.liveProgressBarZero(!negative);
         }, 2000);
       });
       this.liveProgressBar();
@@ -3926,8 +3949,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     }]
   };
   let Wizard = _exports.default = (_class = class Wizard extends _controller.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "wizardManager", _descriptor, this);
     }
     initWizard() {
@@ -4726,8 +4749,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   class Router extends _router.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _defineProperty(this, "location", _environment.default.locationType);
       _defineProperty(this, "rootURL", _environment.default.rootURL);
     }
@@ -4759,8 +4782,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   let Application = _exports.default = (_class = class Application extends _route.default {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super(...arguments);
       _initializerDefineProperty(this, "intl", _descriptor, this);
     }
     beforeModel() {
@@ -5441,11 +5464,109 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
       </div>
     </div>
   
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Stats banner
+      </div>
+      <div class="fx-col fx-gap-px-24">
+        <OSS::Stats::Banner
+          class="demo-stats-banner"
+          @badge={{hash icon="fa-check" skin="success" extraIcon=(hash icon="fa-star")}}
+          @titleConfig={{hash
+            text="Very long stats banner title that should truncate with ellipsis when the available width becomes too small"
+            infoCircle="This is a helpful description of the stat"
+          }}
+          @statValue={{hash
+            label="123,456"
+            suffix="Extra info"
+            tags=(array (hash label="New" skin="success" icon="fa-sparkles"))
+          }}
+        >
+          <:title-suffix>
+            <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
+              <:items>
+                <div class="oss-button-dropdown__item">Option A</div>
+                <div class="oss-button-dropdown__item">Option B</div>
+              </:items>
+            </OSS::ButtonDropdown>
+          </:title-suffix>
+          <:extra-badges>
+            <OSS::Badge @text="2x" @size="lg" />
+          </:extra-badges>
+          <:cta>
+            <div class="fx-row fx-gap-px-6">
+              <OSS::Button @skin="primary" @label="CTA" @icon="fas fa-box-open" @size="md" />
+              <OSS::Button @skin="secondary" @label="Export" @icon="fa-download" @size="md" />
+            </div>
+          </:cta>
+        </OSS::Stats::Banner>
+  
+        <OSS::Stats::Banner
+          class="demo-stats-banner"
+          @badge={{hash icon="fa-check" skin="success"}}
+          @titleConfig={{hash
+            text="Another intentionally long stats banner title to validate truncation next to the info-circle icon"
+            infoCircle="This stat title also has helpful context"
+          }}
+          @statValue={{hash label="123,456" suffix="Potatoes"}}
+        />
+  
+        <div class="demo-stats-banner-row fx-row fx-gap-px-12">
+          <OSS::Stats::Banner
+            class="demo-stats-banner demo-stats-banner--sm"
+            @badge={{hash icon="fa-check" skin="success"}}
+            @titleConfig={{hash text="Revenue"}}
+            @statValue={{hash label="$12,493" suffix="vs last month"}}
+          >
+            <:cta>
+              <OSS::Button @skin="secondary" @label="Details" @size="sm" />
+            </:cta>
+          </OSS::Stats::Banner>
+  
+          <OSS::Stats::Banner
+            class="demo-stats-banner demo-stats-banner--sm"
+            @badge={{hash icon="fa-star" skin="primary"}}
+            @titleConfig={{hash text="Commissions"}}
+            @statValue={{hash label="$5,920" suffix="to authorize"}}
+          >
+            <:cta>
+              <OSS::Button @skin="primary" @label="Pay" @size="sm" />
+            </:cta>
+          </OSS::Stats::Banner>
+  
+          <OSS::Stats::Banner
+            class="demo-stats-banner demo-stats-banner--sm"
+            @badge={{hash icon="fa-star" skin="primary"}}
+            @titleConfig={{hash text="Commissions"}}
+            @statValue={{hash label="$5,920" suffix="to authorize"}}
+          >
+            <:cta>
+              <OSS::Button @skin="primary" @label="Pay" @size="sm" />
+            </:cta>
+          </OSS::Stats::Banner>
+        </div>
+  
+        <OSS::Stats::Banner
+          class="demo-stats-banner"
+          @loading={{true}}
+          @badge={{hash icon="fa-check" skin="success"}}
+          @titleConfig={{hash text="Loading stats banner title" infoCircle="Helpful title information"}}
+          @statValue={{hash label="123,456" suffix="Potatoes"}}
+        >
+          <:extra-badges>
+            <OSS::Badge @text="2x" @size="lg" />
+          </:extra-badges>
+        </OSS::Stats::Banner>
+      </div>
+    </div>
+  
   </div>
   */
   {
-    "id": "YFNKL5IG",
-    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Data\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Components used to display data in clear ways\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(or stalk people, probably)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12 demo-popover-container\"],[12],[1,\"\\n    \"],[10,0],[14,1,\"popover-attachment\"],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Popover\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,0],[[4,[38,1],null,[[\"to\",\"placement\",\"width\"],[\"#popover-attachment\",\"bottom-start\",\"400px\"]]]],[[\"@arrowPlacement\",\"@title\",\"@subtitle\",\"@size\"],[\"bottom\",\"Popover title\",\"Subtitle\",\"md\"]],[[\"illustration\",\"contextual-actions\",\"content\"],[[[[1,\"\\n          \"],[8,[39,2],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          Contextual Actions\\n        \"]],[]],[[[1,\"\\n          Write to your content\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[\"/assets/images/upfluence-white-logo.svg\"]],[[\"header\",\"content\",\"footer\"],[[[[1,\"\\n          \"],[8,[39,4],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"First Label\",\"fa-search\"]],null],[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"Second Label\",\"fa-cog\"]],null],[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"Third Label\",\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"Logout\",\"fa-sign-out\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Scrollable panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel demo-scrollable-panel--tall\"],[12],[1,\"\\n        \"],[8,[39,6],null,null,[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"              \"],[8,[39,9],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel demo-scrollable-panel--tall\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@plain\"],[true]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"              \"],[8,[39,9],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@plain\",\"@horizontal\",\"@hideScrollbar\"],[true,true,true]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 demo-tag-row\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"              \"],[8,[39,10],null,[[\"@label\"],[\"toto\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Content panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,11],[[24,0,\"fx-col fx-1\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[10,1],[14,0,\"text-style-semibold\"],[12],[1,\"Title\"],[13],[1,\"\\n        \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Subtitle\"],[13],[1,\"\\n        \"],[10,\"hr\"],[14,0,\"width-pc-100\"],[12],[13],[1,\"\\n        \"],[10,1],[12],[1,\"Content\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n      \"],[8,[39,11],[[24,0,\"fx-row fx-1 fx-gap-px-10\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[8,[39,12],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopifyDomain\"]],\"https://\",\"shopname\",\".myshopify.com\",\"Not a valid shopify domain\",[30,0,[\"subdomainRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@prefix\",\"@placeholder\",\"@onChange\",\"@value\"],[\"https://\",\"No regex specified\",[30,0,[\"onUrlInputChange\"]],[30,0,[\"shopifyDomain\"]]]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Attributes panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\"],[\"Title\",\"fa-laptop-code\",[30,0,[\"onAttributePanelSave\"]],[30,0,[\"onAttributePanelCancel\"]],[30,0,[\"onAttributePanelEdit\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n          \"],[8,[39,14],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-9\"],[12],[1,\"\\n            \"],[8,[39,15],null,[[\"@label\",\"@onRemove\",\"@removeTooltip\"],[\"city\",[30,0,[\"onRemove\"]],\"Click to delete\"]],null],[1,\"\\n            \"],[8,[39,15],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Paris\",[30,0,[\"onRemove\"]]]],null],[1,\"\\n            \"],[8,[39,16],null,[[\"@label\",\"@tags\"],[\"Pies\",[28,[37,17],[\"Apple pie\",\"Pecan pie\",\"Pumpkin pie\",\"Raspberry PI\"],null]]],null],[1,\"\\n            \"],[8,[39,16],null,[[\"@label\",\"@tags\"],[\"Fruits\",[28,[37,17],[\"apple\",\"banana\",\"pitaya\",\"jackfruit\",\"mango\",\"orange\",\"blueberry\",\"papaya\",\"pineapple\",\"watermelon\",\"vodkamelon\"],null]]],null],[1,\"\\n            \"],[8,[39,16],null,[[\"@label\"],[\"Fruits\"]],null],[1,\"\\n            \"],[8,[39,18],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\"],[41,[30,0,[\"revealed\"]],[[[1,\"              \"],[8,[39,20],null,[[\"@label\",\"@value\"],[\"Email address\",\"john.doe@gmail.com\"]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,18],null,[[\"@tooltip\",\"@onRevealEmail\"],[\"Click on lock to reveal\",[30,0,[\"onRevealEmailSuccess\"]]]],null],[1,\"\\n\"]],[]]],[1,\"            \"],[8,[39,21],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n            \"],[8,[39,21],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n            \"],[8,[39,20],null,[[\"@label\",\"@value\",\"@tooltip\"],[\"Label with tooltip copyable\",\"Hello World\",\"Hello World\"]],null],[1,\"\\n            \"],[8,[39,20],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Label not copyable\",\"Hello World\",false]],null],[1,\"\\n            \"],[8,[39,22],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[\"FR\",\"+33\",\"642424242\"]],null],[1,\"\\n            \"],[8,[39,22],null,[[\"@countryCode\",\"@number\"],[\"nope\",\"+33642424242\"]],null],[1,\"\\n            \"],[8,[39,22],null,[[\"@prefix\"],[\"+33\"]],null],[1,\"\\n            \"],[8,[39,18],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\\n            \"],[8,[39,21],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n            \"],[8,[39,21],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n            \"],[8,[39,23],null,[[\"@label\",\"@rating\"],[\"Rating\",[30,0,[\"starRatingValue\"]]]],null],[1,\"\\n            \"],[8,[39,23],null,[[\"@label\"],[\"Rating not provided\"]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n          Edition mode\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Table\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n\"],[1,\"      \"],[10,0],[14,0,\"upf-table-v2 margin-md\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,1,[\"class\"]]]]],[12],[1,\"\\n              \"],[1,[30,1,[\"title\"]]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[1]],null],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"upf-table__row\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"                \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,2,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,2,[\"title\"]],[[[1,\"                    \"],[8,[39,10],null,[[\"@skin\",\"@label\"],[\"primary\",\"Hello\"]],null],[1,\"\\n\"]],[]],[[[1,\"                    \"],[8,[39,24],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"                \"],[13],[1,\"\\n\"]],[2]],null],[1,\"            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\"],[1,\"      \"],[10,0],[14,0,\"upf-table-v2 upf-table-v2--clickable margin-md\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,3,[\"class\"]]]]],[12],[1,\"\\n              \"],[1,[30,3,[\"title\"]]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[3]],null],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"upf-table__row\"],[14,\"role\",\"button\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"                \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,4,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,4,[\"title\"]],[[[1,\"                    Content\\n                    \"],[1,[30,5]],[1,\"\\n\"]],[]],[[[1,\"                    \"],[8,[39,24],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"                \"],[13],[1,\"\\n\"]],[4,5]],null],[1,\"            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[13]],[\"header\",\"header\",\"header\",\"header\",\"index\"],false,[\"o-s-s/popover\",\"attach-element\",\"o-s-s/illustration\",\"o-s-s/panel\",\"o-s-s/avatar\",\"o-s-s/panel/row\",\"o-s-s/scrollable-panel\",\"each\",\"-track-array\",\"o-s-s/input-container\",\"o-s-s/tag\",\"o-s-s/content-panel\",\"o-s-s/url-input\",\"o-s-s/attributes-panel\",\"o-s-s/button\",\"o-s-s/attribute/removable-text\",\"o-s-s/attribute/tag-array\",\"array\",\"o-s-s/attribute/revealable-email\",\"if\",\"o-s-s/attribute/text\",\"o-s-s/attribute/country\",\"o-s-s/attribute/phone-number\",\"o-s-s/attribute/rating\",\"o-s-s/icon\"]]",
+    "id": "WaMZ0A28",
+    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Data\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Components used to display data in clear ways\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(or stalk people, probably)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12 demo-popover-container\"],[12],[1,\"\\n    \"],[10,0],[14,1,\"popover-attachment\"],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Popover\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,0],[[4,[38,1],null,[[\"to\",\"placement\",\"width\"],[\"#popover-attachment\",\"bottom-start\",\"400px\"]]]],[[\"@arrowPlacement\",\"@title\",\"@subtitle\",\"@size\"],[\"bottom\",\"Popover title\",\"Subtitle\",\"md\"]],[[\"illustration\",\"contextual-actions\",\"content\"],[[[[1,\"\\n          \"],[8,[39,2],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          Contextual Actions\\n        \"]],[]],[[[1,\"\\n          Write to your content\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[\"/assets/images/upfluence-white-logo.svg\"]],[[\"header\",\"content\",\"footer\"],[[[[1,\"\\n          \"],[8,[39,4],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"First Label\",\"fa-search\"]],null],[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"Second Label\",\"fa-cog\"]],null],[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"Third Label\",\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,5],null,[[\"@label\",\"@icon\"],[\"Logout\",\"fa-sign-out\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Scrollable panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel demo-scrollable-panel--tall\"],[12],[1,\"\\n        \"],[8,[39,6],null,null,[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"              \"],[8,[39,9],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel demo-scrollable-panel--tall\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@plain\"],[true]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"              \"],[8,[39,9],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start demo-scrollable-panel\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@plain\",\"@horizontal\",\"@hideScrollbar\"],[true,true,true]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 demo-tag-row\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"              \"],[8,[39,10],null,[[\"@label\"],[\"toto\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Content panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,11],[[24,0,\"fx-col fx-1\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[10,1],[14,0,\"text-style-semibold\"],[12],[1,\"Title\"],[13],[1,\"\\n        \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Subtitle\"],[13],[1,\"\\n        \"],[10,\"hr\"],[14,0,\"width-pc-100\"],[12],[13],[1,\"\\n        \"],[10,1],[12],[1,\"Content\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n      \"],[8,[39,11],[[24,0,\"fx-row fx-1 fx-gap-px-10\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[8,[39,12],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopifyDomain\"]],\"https://\",\"shopname\",\".myshopify.com\",\"Not a valid shopify domain\",[30,0,[\"subdomainRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@prefix\",\"@placeholder\",\"@onChange\",\"@value\"],[\"https://\",\"No regex specified\",[30,0,[\"onUrlInputChange\"]],[30,0,[\"shopifyDomain\"]]]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Attributes panel\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\"],[\"Title\",\"fa-laptop-code\",[30,0,[\"onAttributePanelSave\"]],[30,0,[\"onAttributePanelCancel\"]],[30,0,[\"onAttributePanelEdit\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n          \"],[8,[39,14],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-9\"],[12],[1,\"\\n            \"],[8,[39,15],null,[[\"@label\",\"@onRemove\",\"@removeTooltip\"],[\"city\",[30,0,[\"onRemove\"]],\"Click to delete\"]],null],[1,\"\\n            \"],[8,[39,15],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Paris\",[30,0,[\"onRemove\"]]]],null],[1,\"\\n            \"],[8,[39,16],null,[[\"@label\",\"@tags\"],[\"Pies\",[28,[37,17],[\"Apple pie\",\"Pecan pie\",\"Pumpkin pie\",\"Raspberry PI\"],null]]],null],[1,\"\\n            \"],[8,[39,16],null,[[\"@label\",\"@tags\"],[\"Fruits\",[28,[37,17],[\"apple\",\"banana\",\"pitaya\",\"jackfruit\",\"mango\",\"orange\",\"blueberry\",\"papaya\",\"pineapple\",\"watermelon\",\"vodkamelon\"],null]]],null],[1,\"\\n            \"],[8,[39,16],null,[[\"@label\"],[\"Fruits\"]],null],[1,\"\\n            \"],[8,[39,18],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\"],[41,[30,0,[\"revealed\"]],[[[1,\"              \"],[8,[39,20],null,[[\"@label\",\"@value\"],[\"Email address\",\"john.doe@gmail.com\"]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,18],null,[[\"@tooltip\",\"@onRevealEmail\"],[\"Click on lock to reveal\",[30,0,[\"onRevealEmailSuccess\"]]]],null],[1,\"\\n\"]],[]]],[1,\"            \"],[8,[39,21],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n            \"],[8,[39,21],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n            \"],[8,[39,20],null,[[\"@label\",\"@value\",\"@tooltip\"],[\"Label with tooltip copyable\",\"Hello World\",\"Hello World\"]],null],[1,\"\\n            \"],[8,[39,20],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Label not copyable\",\"Hello World\",false]],null],[1,\"\\n            \"],[8,[39,22],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[\"FR\",\"+33\",\"642424242\"]],null],[1,\"\\n            \"],[8,[39,22],null,[[\"@countryCode\",\"@number\"],[\"nope\",\"+33642424242\"]],null],[1,\"\\n            \"],[8,[39,22],null,[[\"@prefix\"],[\"+33\"]],null],[1,\"\\n            \"],[8,[39,18],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\\n            \"],[8,[39,21],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n            \"],[8,[39,21],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n            \"],[8,[39,23],null,[[\"@label\",\"@rating\"],[\"Rating\",[30,0,[\"starRatingValue\"]]]],null],[1,\"\\n            \"],[8,[39,23],null,[[\"@label\"],[\"Rating not provided\"]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n          Edition mode\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Table\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n\"],[1,\"      \"],[10,0],[14,0,\"upf-table-v2 margin-md\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,1,[\"class\"]]]]],[12],[1,\"\\n              \"],[1,[30,1,[\"title\"]]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[1]],null],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"upf-table__row\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"                \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,2,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,2,[\"title\"]],[[[1,\"                    \"],[8,[39,10],null,[[\"@skin\",\"@label\"],[\"primary\",\"Hello\"]],null],[1,\"\\n\"]],[]],[[[1,\"                    \"],[8,[39,24],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"                \"],[13],[1,\"\\n\"]],[2]],null],[1,\"            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\"],[1,\"      \"],[10,0],[14,0,\"upf-table-v2 upf-table-v2--clickable margin-md\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,3,[\"class\"]]]]],[12],[1,\"\\n              \"],[1,[30,3,[\"title\"]]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[3]],null],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"upf-table__row\"],[14,\"role\",\"button\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"                \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,4,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,4,[\"title\"]],[[[1,\"                    Content\\n                    \"],[1,[30,5]],[1,\"\\n\"]],[]],[[[1,\"                    \"],[8,[39,24],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"                \"],[13],[1,\"\\n\"]],[4,5]],null],[1,\"            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Stats banner\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24\"],[12],[1,\"\\n      \"],[8,[39,25],[[24,0,\"demo-stats-banner\"]],[[\"@badge\",\"@titleConfig\",\"@statValue\"],[[28,[37,26],null,[[\"icon\",\"skin\",\"extraIcon\"],[\"fa-check\",\"success\",[28,[37,26],null,[[\"icon\"],[\"fa-star\"]]]]]],[28,[37,26],null,[[\"text\",\"infoCircle\"],[\"Very long stats banner title that should truncate with ellipsis when the available width becomes too small\",\"This is a helpful description of the stat\"]]],[28,[37,26],null,[[\"label\",\"suffix\",\"tags\"],[\"123,456\",\"Extra info\",[28,[37,17],[[28,[37,26],null,[[\"label\",\"skin\",\"icon\"],[\"New\",\"success\",\"fa-sparkles\"]]]],null]]]]]],[[\"title-suffix\",\"extra-badges\",\"cta\"],[[[[1,\"\\n          \"],[8,[39,27],null,[[\"@icon\",\"@hideArrow\",\"@square\",\"@size\"],[\"fa-caret-down\",true,true,\"sm\"]],[[\"items\"],[[[[1,\"\\n              \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"Option A\"],[13],[1,\"\\n              \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"Option B\"],[13],[1,\"\\n            \"]],[]]]]],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,28],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n            \"],[8,[39,14],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"primary\",\"CTA\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n            \"],[8,[39,14],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"Export\",\"fa-download\",\"md\"]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n\\n      \"],[8,[39,25],[[24,0,\"demo-stats-banner\"]],[[\"@badge\",\"@titleConfig\",\"@statValue\"],[[28,[37,26],null,[[\"icon\",\"skin\"],[\"fa-check\",\"success\"]]],[28,[37,26],null,[[\"text\",\"infoCircle\"],[\"Another intentionally long stats banner title to validate truncation next to the info-circle icon\",\"This stat title also has helpful context\"]]],[28,[37,26],null,[[\"label\",\"suffix\"],[\"123,456\",\"Potatoes\"]]]]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"demo-stats-banner-row fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,25],[[24,0,\"demo-stats-banner demo-stats-banner--sm\"]],[[\"@badge\",\"@titleConfig\",\"@statValue\"],[[28,[37,26],null,[[\"icon\",\"skin\"],[\"fa-check\",\"success\"]]],[28,[37,26],null,[[\"text\"],[\"Revenue\"]]],[28,[37,26],null,[[\"label\",\"suffix\"],[\"$12,493\",\"vs last month\"]]]]],[[\"cta\"],[[[[1,\"\\n            \"],[8,[39,14],null,[[\"@skin\",\"@label\",\"@size\"],[\"secondary\",\"Details\",\"sm\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\\n        \"],[8,[39,25],[[24,0,\"demo-stats-banner demo-stats-banner--sm\"]],[[\"@badge\",\"@titleConfig\",\"@statValue\"],[[28,[37,26],null,[[\"icon\",\"skin\"],[\"fa-star\",\"primary\"]]],[28,[37,26],null,[[\"text\"],[\"Commissions\"]]],[28,[37,26],null,[[\"label\",\"suffix\"],[\"$5,920\",\"to authorize\"]]]]],[[\"cta\"],[[[[1,\"\\n            \"],[8,[39,14],null,[[\"@skin\",\"@label\",\"@size\"],[\"primary\",\"Pay\",\"sm\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\\n        \"],[8,[39,25],[[24,0,\"demo-stats-banner demo-stats-banner--sm\"]],[[\"@badge\",\"@titleConfig\",\"@statValue\"],[[28,[37,26],null,[[\"icon\",\"skin\"],[\"fa-star\",\"primary\"]]],[28,[37,26],null,[[\"text\"],[\"Commissions\"]]],[28,[37,26],null,[[\"label\",\"suffix\"],[\"$5,920\",\"to authorize\"]]]]],[[\"cta\"],[[[[1,\"\\n            \"],[8,[39,14],null,[[\"@skin\",\"@label\",\"@size\"],[\"primary\",\"Pay\",\"sm\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[8,[39,25],[[24,0,\"demo-stats-banner\"]],[[\"@loading\",\"@badge\",\"@titleConfig\",\"@statValue\"],[true,[28,[37,26],null,[[\"icon\",\"skin\"],[\"fa-check\",\"success\"]]],[28,[37,26],null,[[\"text\",\"infoCircle\"],[\"Loading stats banner title\",\"Helpful title information\"]]],[28,[37,26],null,[[\"label\",\"suffix\"],[\"123,456\",\"Potatoes\"]]]]],[[\"extra-badges\"],[[[[1,\"\\n          \"],[8,[39,28],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[13]],[\"header\",\"header\",\"header\",\"header\",\"index\"],false,[\"o-s-s/popover\",\"attach-element\",\"o-s-s/illustration\",\"o-s-s/panel\",\"o-s-s/avatar\",\"o-s-s/panel/row\",\"o-s-s/scrollable-panel\",\"each\",\"-track-array\",\"o-s-s/input-container\",\"o-s-s/tag\",\"o-s-s/content-panel\",\"o-s-s/url-input\",\"o-s-s/attributes-panel\",\"o-s-s/button\",\"o-s-s/attribute/removable-text\",\"o-s-s/attribute/tag-array\",\"array\",\"o-s-s/attribute/revealable-email\",\"if\",\"o-s-s/attribute/text\",\"o-s-s/attribute/country\",\"o-s-s/attribute/phone-number\",\"o-s-s/attribute/rating\",\"o-s-s/icon\",\"o-s-s/stats/banner\",\"hash\",\"o-s-s/button-dropdown\",\"o-s-s/badge\"]]",
     "moduleName": "dummy/templates/data.hbs",
     "isStrictMode": false
   });
