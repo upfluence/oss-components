@@ -41,6 +41,10 @@ export default {
           'A stats banner supporting title and badge objects, inline KPI info, and named blocks for extra-badges, title-suffix, and CTA actions.'
       },
       iframeHeight: 260
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=10473-33118&t=7S673T1Ca3SwQ2Py-4'
     }
   }
 };
@@ -226,6 +230,30 @@ const TitleSuffixOnlyTemplate = (args) => ({
   context: args
 });
 
+const IntegrationBadgesTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+      >
+        <:extra-badges>
+          <OSS::Badge @icon="fab fa-instagram" @skin="xtd-orange" @size="sm" />
+          <OSS::Badge @icon="fab fa-tiktok" @skin="xtd-smart" @size="sm" />
+          <OSS::Badge @icon="fab fa-youtube" @skin="error" @size="sm" />
+          <OSS::Badge @icon="fab fa-twitch" @skin="xtd-violet" @size="sm" />
+        </:extra-badges>
+
+        <:cta>
+          <OSS::Button @skin="secondary" @label={{this.ctaSecondaryLabel}} @icon="fa-link" @size="sm" />
+        </:cta>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
 export const Default = PlaygroundTemplate.bind({});
 Default.args = defaultArgs;
 
@@ -333,4 +361,22 @@ WithTitleSuffixOnly.args = {
       }
     ]
   }
+};
+
+export const WithIntegrationBadges = IntegrationBadgesTemplate.bind({});
+WithIntegrationBadges.args = {
+  ...defaultArgs,
+  titleConfig: {
+    text: 'Connected integrations',
+    infoCircle: 'Channels currently connected to this stat card'
+  },
+  badge: {
+    icon: 'fa-plug',
+    skin: 'primary'
+  },
+  statValue: {
+    label: '4',
+    suffix: 'active channels'
+  },
+  ctaSecondaryLabel: 'Manage'
 };
