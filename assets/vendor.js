@@ -91523,7 +91523,7 @@ require('@ember/-internals/bootstrap')
   _exports.default = Tip;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, Tip);
 });
-;define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91531,7 +91531,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/object",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
@@ -91576,10 +91576,10 @@ require('@ember/-internals/bootstrap')
     "moduleName": "@upfluence/oss-components/components/o-s-s/togglable-section.hbs",
     "isStrictMode": false
   });
-  let CampaignTogglableSection = _exports.default = (_class = class CampaignTogglableSection extends _component2.default {
+  var _default = _exports.default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, (_class = class extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      (true && !(typeof args.title === 'string') && (0, _debug.assert)('[OSS::TogglableSection] The @title parameter is mandatory', typeof args.title === 'string'));
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[OSS::TogglableSection] The @title parameter is mandatory', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
       (true && !(typeof args.toggled === 'boolean') && (0, _debug.assert)('[OSS::TogglableSection] The @toggled parameter is mandatory', typeof args.toggled === 'boolean'));
       (true && !(args.onChange) && (0, _debug.assert)('[OSS::TogglableSection] The @onChange function is mandatory', args.onChange));
     }
@@ -91594,8 +91594,7 @@ require('@ember/-internals/bootstrap')
       this.args.onChange(!this.args.toggled);
     }
     noop() {}
-  }, (_applyDecoratedDescriptor(_class.prototype, "onHeaderClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHeaderClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype)), _class);
-  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, CampaignTogglableSection);
+  }, (_applyDecoratedDescriptor(_class.prototype, "onHeaderClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHeaderClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype)), _class));
 });
 ;define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _object, _templateFactory) {
   "use strict";
