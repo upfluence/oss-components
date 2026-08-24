@@ -1,9 +1,11 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { htmlSafe } from '@ember/template';
+import { isSafeString } from '@upfluence/oss-components/utils';
 
-interface CampaignTogglableSectionArgs {
-  title: string;
+interface TogglableSectionArgs {
+  title: string | ReturnType<typeof htmlSafe>;
   toggled: boolean;
   switchable?: boolean;
   iconUrl?: string;
@@ -15,11 +17,14 @@ interface CampaignTogglableSectionArgs {
   onChange(value: boolean): void;
 }
 
-export default class CampaignTogglableSection extends Component<CampaignTogglableSectionArgs> {
-  constructor(owner: unknown, args: CampaignTogglableSectionArgs) {
+export default class extends Component<TogglableSectionArgs> {
+  constructor(owner: unknown, args: TogglableSectionArgs) {
     super(owner, args);
 
-    assert('[OSS::TogglableSection] The @title parameter is mandatory', typeof args.title === 'string');
+    assert(
+      '[OSS::TogglableSection] The @title parameter is mandatory',
+      typeof args.title === 'string' || isSafeString(args.title)
+    );
     assert('[OSS::TogglableSection] The @toggled parameter is mandatory', typeof args.toggled === 'boolean');
     assert('[OSS::TogglableSection] The @onChange function is mandatory', args.onChange);
   }
