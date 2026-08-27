@@ -16074,7 +16074,7 @@ a.oss-sidebar-item {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@container (width <= 320px) {
+@container (width <= 200px) {
   .oss-stats-banner__stat-main {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
