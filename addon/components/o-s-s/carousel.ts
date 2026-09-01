@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
+import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { isTesting } from '@embroider/macros';
 
 const DEFAULT_BUTTON_ICON: string = 'fa-circle';
 const ANIMATION_TIME: number = isTesting() ? 5 : 500;

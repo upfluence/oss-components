@@ -1,8 +1,10 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
+
 import { LOGO_COLORS, LOGO_ICONS } from '@upfluence/oss-components/utils/logo-config';
 
 module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) {

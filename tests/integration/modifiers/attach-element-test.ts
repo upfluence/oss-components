@@ -1,7 +1,8 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { find, render } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 module('Integration | Modifiers | modifiers/attach-element', function (hooks) {
   setupRenderingTest(hooks);

@@ -1,9 +1,10 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render, triggerEvent } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
-import sinon from 'sinon';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/context-menu', function (hooks) {
   setupRenderingTest(hooks);

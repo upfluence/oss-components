@@ -1,9 +1,11 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
-import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
+
+import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
 
 module('Integration | Component | o-s-s/star-rating', function (hooks) {
   setupRenderingTest(hooks);

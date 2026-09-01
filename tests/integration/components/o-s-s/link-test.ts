@@ -1,8 +1,9 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, click } from '@ember/test-helpers';
 import type RouterService from '@ember/routing/router-service';
+import { render, setupOnerror, click } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/link', function (hooks) {

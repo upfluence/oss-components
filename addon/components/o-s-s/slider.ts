@@ -1,8 +1,9 @@
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { htmlSafe } from '@ember/template';
 import { isBlank } from '@ember/utils';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
 import { AutocompleteValues } from './input-container';
 
 interface SliderComponentArgs {

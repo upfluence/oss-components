@@ -1,5 +1,6 @@
-import * as QUnit from 'qunit';
 import { isEmpty } from '@ember/utils';
+
+import * as QUnit from 'qunit';
 
 export type SelectionType = 'single' | 'multiple' | undefined;
 export type PrefixType = 'avatar' | 'badge' | 'icon' | 'country';

@@ -1,17 +1,19 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { set } from '@ember/object';
 import { render, setupOnerror } from '@ember/test-helpers';
+
+import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
 import { hbs } from 'ember-cli-htmlbars';
-import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
+import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 import {
   ANIMATION_DURATION,
   BACKGROUND_COLOR,
   PROGRESS_COLOR,
   SUCCESS_COLOR
 } from '@upfluence/oss-components/components/o-s-s/completion-badge';
-import { set } from '@ember/object';
-import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
 
 module('Integration | Component | o-s-s/completion-badge', function (hooks) {
   setupRenderingTest(hooks);

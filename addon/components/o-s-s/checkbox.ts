@@ -1,7 +1,8 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
+import Component from '@glimmer/component';
+
 import type { FeedbackMessage } from './input-container';
 
 export const AVAILABLE_SIZES = ['sm'];

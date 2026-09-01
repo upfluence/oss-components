@@ -1,5 +1,5 @@
-import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
+import { tracked } from '@glimmer/tracking';
 
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
 

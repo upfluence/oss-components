@@ -1,7 +1,9 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { find, render, waitUntil } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
 import { extractCSSVars } from '@upfluence/oss-components/components/o-s-s/illustration';
 
 module('Integration | Component | o-s-s/illustration', function (hooks) {

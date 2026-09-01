@@ -1,7 +1,7 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
 type SizeDefType = { [key in SizeType]: string };
 export type SizeType = 'xs' | 'sm' | 'md' | 'lg';

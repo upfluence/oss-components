@@ -1,8 +1,8 @@
-import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import { isTesting } from '@embroider/macros';
+import { tracked } from '@glimmer/tracking';
 
 import type { OSSBadgeArgs, SizeType, SkinType } from './badge';
 import OSSBadge, { SizeDefinition, SkinDefinition } from './badge';

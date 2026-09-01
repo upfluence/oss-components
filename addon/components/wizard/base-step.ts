@@ -1,5 +1,6 @@
-import Component from '@glimmer/component';
 import { action, set } from '@ember/object';
+import Component from '@glimmer/component';
+
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
 export interface WizardBaseStepSignature {

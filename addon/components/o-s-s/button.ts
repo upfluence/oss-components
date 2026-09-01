@@ -1,7 +1,7 @@
-import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
 export type SkinType =
   | 'default'

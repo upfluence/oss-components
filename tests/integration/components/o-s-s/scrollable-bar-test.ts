@@ -1,7 +1,8 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render, settled, waitUntil, type TestContext } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 module('Integration | Component | o-s-s/scrollable-bar', function (hooks) {
   setupRenderingTest(hooks);

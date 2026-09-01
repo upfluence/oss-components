@@ -1,5 +1,5 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import Component from '@glimmer/component';
 
 interface OSSInputGroupArgs {
   value?: string;

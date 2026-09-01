@@ -1,8 +1,8 @@
 import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import type { GroupItem } from '@upfluence/oss-components/components/o-s-s/layout/sidebar/group';
 
+import type { GroupItem } from '@upfluence/oss-components/components/o-s-s/layout/sidebar/group';
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
 import type Uploader from '@upfluence/oss-components/types/uploader';
 import { type FileArtifact, type UploadRequest } from '@upfluence/oss-components/types/uploader';

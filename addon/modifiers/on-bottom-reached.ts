@@ -1,6 +1,7 @@
 // @ts-expect-error setModifierManager is not exposed by the Ember typings
 import { setModifierManager, capabilities } from '@ember/modifier';
 import { run } from '@ember/runloop';
+
 import { installScrollReachedModifier, type State } from './install-scroll-reached-modifier';
 
 /**

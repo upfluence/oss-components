@@ -1,8 +1,9 @@
-import { tracked } from '@glimmer/tracking';
-import OSSBadge, { SizeDefinition, SkinDefinition, type OSSBadgeArgs, type SizeType, type SkinType } from './badge';
-import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 import { next } from '@ember/runloop';
+import { tracked } from '@glimmer/tracking';
+
+import OSSBadge, { SizeDefinition, SkinDefinition, type OSSBadgeArgs, type SizeType, type SkinType } from './badge';
 
 interface OSSExpandableBadgeComponentSignature extends OSSBadgeArgs {
   expandedLabel: string;

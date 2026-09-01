@@ -1,8 +1,10 @@
-import { module, test } from 'qunit';
-import { setupTest } from 'ember-qunit';
 import { click } from '@ember/test-helpers';
-import ToastService from '@upfluence/oss-components/services/toast';
+
+import { setupTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
+
+import ToastService from '@upfluence/oss-components/services/toast';
 
 const TOAST_TYPES = ['info', 'success', 'warning', 'error'];
 

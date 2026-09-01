@@ -1,13 +1,15 @@
 import { assert } from '@ember/debug';
-import OSSCurrencyInput, { type OSSCurrencyInputArgs } from '../../currency-input';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
-import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
-import { isEmpty } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
-import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { scheduleOnce } from '@ember/runloop';
+import { isEmpty } from '@ember/utils';
 import { isTesting } from '@embroider/macros';
+import { tracked } from '@glimmer/tracking';
+
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
+import OSSCurrencyInput, { type OSSCurrencyInputArgs } from '../../currency-input';
 
 interface OSSSmartImmersiveCurrencyInputArgs extends OSSCurrencyInputArgs {
   loading: boolean;

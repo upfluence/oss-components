@@ -1,11 +1,13 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setComponentTemplate } from '@ember/component';
 import { click, render, settled, triggerEvent, waitUntil } from '@ember/test-helpers';
+import Component from '@glimmer/component';
+
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
-import { setComponentTemplate } from '@ember/component';
-import Component from '@glimmer/component';
+
 import { SUBPANEL_OFFSET } from '@upfluence/oss-components/components/o-s-s/context-menu/panel';
 
 module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {

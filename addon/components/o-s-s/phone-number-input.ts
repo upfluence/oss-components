@@ -1,14 +1,16 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { scheduleOnce } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
-import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
+
 import type IntlService from 'ember-intl/services/intl';
 
-import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
-import { scheduleOnce } from '@ember/runloop';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
+
+import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 
 interface OSSPhoneNumberInputArgs extends BaseDropdownArgs {
   prefix: string;

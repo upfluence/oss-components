@@ -1,5 +1,6 @@
-import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
+import { hbs } from 'ember-cli-htmlbars';
+
 import { LOGO_COLORS, LOGO_ICONS } from '../../../../../app/utils/logo-config';
 
 export default {

@@ -1,9 +1,10 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
 import { action, set } from '@ember/object';
-import type { ModeSwitchOption } from '@upfluence/oss-components/components/o-s-s/mode-switch';
-import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import { tracked } from '@glimmer/tracking';
+
 import type { OSSFeatureCardArgs, OSSFeatureCardImage } from '@upfluence/oss-components/components/o-s-s/feature-card';
+import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import type { ModeSwitchOption } from '@upfluence/oss-components/components/o-s-s/mode-switch';
 
 export default class Visual extends Controller {
   @tracked toggleValue: boolean = false;

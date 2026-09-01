@@ -1,12 +1,12 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-
-import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
-import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
 import { isBlank } from '@ember/utils';
-import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
 import { ensureSafeComponent } from '@embroider/util';
+import { tracked } from '@glimmer/tracking';
+
+import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
+import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
+import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 
 export default class Input extends Controller {
   @tracked shopUrl: string = '';

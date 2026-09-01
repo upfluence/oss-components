@@ -1,7 +1,8 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, find, findAll, setupOnerror } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 module('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
   setupRenderingTest(hooks);

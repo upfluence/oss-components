@@ -1,6 +1,6 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 
 interface ToggleSwitchArgs {
   value: boolean;

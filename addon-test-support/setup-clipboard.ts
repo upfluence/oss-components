@@ -1,4 +1,5 @@
 import type { TestContext } from '@ember/test-helpers';
+
 import sinon from 'sinon';
 
 export default function setupClipboard(hooks: NestedHooks) {
