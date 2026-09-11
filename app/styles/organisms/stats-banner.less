@@ -111,6 +111,13 @@
     gap: var(--spacing-px-6);
     min-width: 0;
     flex-wrap: wrap;
+    max-width: fit-content;
+  }
+
+  &__stat-value {
+    .text-ellipsis;
+    .font-weight-semibold;
+    color: var(--color-gray-900);
   }
 
   &__stat-extra {
@@ -209,6 +216,10 @@
       align-items: flex-start;
       gap: var(--spacing-px-9);
       flex-wrap: nowrap;
+    }
+
+    &__stat-value {
+      width: 100%;
     }
 
     &__stats {

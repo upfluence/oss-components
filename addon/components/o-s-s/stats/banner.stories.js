@@ -5,12 +5,15 @@ export default {
   component: 'stats-banner',
   argTypes: {
     titleConfig: {
-      description: 'Header object: { text, infoCircle }',
+      description: 'Header object: { text, infoCircle }. Optional when a "title" named block is passed instead.',
       table: { type: { summary: 'StatsBannerTitle' }, defaultValue: { summary: 'undefined' } }
     },
     badge: {
       description: 'Badge object passed to OSS::Badge, with optional extraIcon: StatsBannerExtraIconArgs',
-      table: { type: { summary: 'StatsBannerBadge = StatsBannerBadgeArgs & { extraIcon?: StatsBannerExtraIconArgs }' }, defaultValue: { summary: 'undefined' } }
+      table: {
+        type: { summary: 'StatsBannerBadge = StatsBannerBadgeArgs & { extraIcon?: StatsBannerExtraIconArgs }' },
+        defaultValue: { summary: 'undefined' }
+      }
     },
     statValue: {
       description: 'Stat object: { label, suffix?, tags?: StatsBannerTag[] }',
@@ -38,7 +41,7 @@ export default {
     docs: {
       description: {
         component:
-          'A stats banner supporting title and badge objects, inline KPI info, and named blocks for extra-badges, title-suffix, and CTA actions.'
+          'A stats banner supporting title and badge objects, inline KPI info, and named blocks for title, extra-badges, title-suffix, and CTA actions.'
       },
       iframeHeight: 260
     },
@@ -230,6 +233,22 @@ const TitleSuffixOnlyTemplate = (args) => ({
   context: args
 });
 
+const CustomTitleTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner @badge={{this.badge}} @statValue={{this.statValue}}>
+        <:title>
+          <div class="fx-row fx-gap-px-4 fx-yalign-center">
+            <OSS::Icon @icon="fa-crown" class="font-color-gray-600" />
+            <span class="font-weight-semibold font-color-gray-600">Custom title</span>
+          </div>
+        </:title>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
 const IntegrationBadgesTemplate = (args) => ({
   template: hbs`
     <div style="width: 1200px; max-width: 100%;">
@@ -379,4 +398,19 @@ WithIntegrationBadges.args = {
     suffix: 'active channels'
   },
   ctaSecondaryLabel: 'Manage'
+};
+
+export const WithCustomTitleBlock = CustomTitleTemplate.bind({});
+WithCustomTitleBlock.args = {
+  ...defaultArgs,
+  titleConfig: undefined,
+  customTitle: 'Premium members',
+  badge: {
+    icon: 'fa-crown',
+    skin: 'primary'
+  },
+  statValue: {
+    label: '312',
+    suffix: 'active this month'
+  }
 };
