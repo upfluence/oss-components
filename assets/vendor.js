@@ -83226,17 +83226,24 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "setRating", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setRating"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseLeave"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSStarRating);
 });
-;define("@upfluence/oss-components/components/o-s-s/stats/banner", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/stats/banner", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _debug, _object, _component2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-stats-banner" data-control-name="oss-stats-banner" ...attributes>
+    <div
+    class="oss-stats-banner"
+    data-control-name="oss-stats-banner"
+    {{did-insert (fn this.ensureBlockPresence (has-block "title"))}}
+    ...attributes
+  >
     <div class="oss-stats-banner__header" data-control-name="stats-banner-header">
       <div class="oss-stats-banner__header_content" data-control-name="stats-banner-header-content">
         {{#if @badge}}
@@ -83261,29 +83268,33 @@ require('@ember/-internals/bootstrap')
           {{#if @loading}}
             <OSS::Skeleton @height={{12}} @width={{150}} class="oss-stats-banner__skeleton--title" />
           {{else}}
-            <div class="oss-stats-banner__title-row" data-control-name="stats-banner-title-row">
-              <span
-                class="oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold"
-                {{enable-tooltip title=@titleConfig.text placement="top" displayOnlyOnOverflow=true}}
-              >
-                {{@titleConfig.text}}
-              </span>
+            {{#if (has-block "title")}}
+              {{yield to="title"}}
+            {{else}}
+              <div class="oss-stats-banner__title-row" data-control-name="stats-banner-title-row">
+                <span
+                  class="oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold"
+                  {{enable-tooltip title=@titleConfig.text placement="top" displayOnlyOnOverflow=true}}
+                >
+                  {{@titleConfig.text}}
+                </span>
   
-              <div class="oss-stats-banner__title-actions" data-control-name="stats-banner-title-actions">
-                {{#if @titleConfig.infoCircle}}
-                  <span
-                    data-control-name="stats-banner-title-info-circle"
-                    {{enable-tooltip title=@titleConfig.infoCircle placement="top"}}
-                  >
-                    <OSS::Icon @icon="fa-info-circle" class="font-color-gray-400" />
-                  </span>
-                {{/if}}
+                <div class="oss-stats-banner__title-actions" data-control-name="stats-banner-title-actions">
+                  {{#if @titleConfig.infoCircle}}
+                    <span
+                      data-control-name="stats-banner-title-info-circle"
+                      {{enable-tooltip title=@titleConfig.infoCircle placement="top"}}
+                    >
+                      <OSS::Icon @icon="fa-info-circle" class="font-color-gray-400" />
+                    </span>
+                  {{/if}}
   
-                {{#if (has-block "title-suffix")}}
-                  {{yield to="title-suffix"}}
-                {{/if}}
+                  {{#if (has-block "title-suffix")}}
+                    {{yield to="title-suffix"}}
+                  {{/if}}
+                </div>
               </div>
-            </div>
+            {{/if}}
           {{/if}}
         </div>
       </div>
@@ -83303,7 +83314,12 @@ require('@ember/-internals/bootstrap')
           <div class="oss-stats-banner__stat-main" data-control-name="stats-banner-stat-main">
             <div class="oss-stats-banner__stat-main-content" data-control-name="stats-banner-stat-main-content">
               {{#if @statValue}}
-                <span class="font-color-gray-900 font-weight-semibold font-size-h3">{{@statValue.label}}</span>
+                <span
+                  class="oss-stats-banner__stat-value"
+                  {{enable-tooltip title=@statValue.label placement="top" displayOnlyOnOverflow=true}}
+                >
+                  {{@statValue.label}}
+                </span>
   
                 {{#if @statValue.suffix}}
                   <span class="oss-stats-banner__stat-extra font-color-gray-500">{{@statValue.suffix}}</span>
@@ -83330,18 +83346,16 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "XutYnlju",
-    "block": "[[[11,0],[24,0,\"oss-stats-banner\"],[24,\"data-control-name\",\"oss-stats-banner\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-stats-banner__header\"],[14,\"data-control-name\",\"stats-banner-header\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-stats-banner__header_content\"],[14,\"data-control-name\",\"stats-banner-header-content\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,0],[14,0,\"oss-stats-banner__badge\"],[14,\"data-control-name\",\"stats-banner-badge\"],[12],[1,\"\\n\"],[41,[30,2,[\"extraIcon\"]],[[[1,\"            \"],[8,[39,1],[[16,5,[52,[30,2,[\"extraIcon\",\"color\"]],[28,[37,2],[\"color:\",[30,2,[\"extraIcon\",\"color\"]]],null]]]],[[\"@icon\"],[[30,2,[\"extraIcon\",\"icon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[8,[39,3],null,[[\"@icon\",\"@image\",\"@text\",\"@skin\",\"@size\"],[[30,2,[\"icon\"]],[30,2,[\"image\"]],[30,2,[\"text\"]],[30,2,[\"skin\"]],\"sm\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-stats-banner__content\"],[14,\"data-control-name\",\"stats-banner-content\"],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,4],[[24,0,\"oss-stats-banner__skeleton--title\"]],[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,0],[14,0,\"oss-stats-banner__title-row\"],[14,\"data-control-name\",\"stats-banner-title-row\"],[12],[1,\"\\n            \"],[11,1],[24,0,\"oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold\"],[4,[38,5],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[[30,4,[\"text\"]],\"top\",true]]],[12],[1,\"\\n              \"],[1,[30,4,[\"text\"]]],[1,\"\\n            \"],[13],[1,\"\\n\\n            \"],[10,0],[14,0,\"oss-stats-banner__title-actions\"],[14,\"data-control-name\",\"stats-banner-title-actions\"],[12],[1,\"\\n\"],[41,[30,4,[\"infoCircle\"]],[[[1,\"                \"],[11,1],[24,\"data-control-name\",\"stats-banner-title-info-circle\"],[4,[38,5],null,[[\"title\",\"placement\"],[[30,4,[\"infoCircle\"]],\"top\"]]],[12],[1,\"\\n                  \"],[8,[39,1],[[24,0,\"font-color-gray-400\"]],[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"                \"],[18,7,null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[28,[37,8],[[48,[30,8]],[28,[37,9],[[30,3]],null]],null],[[[1,\"      \"],[10,0],[14,0,\"oss-stats-banner__extra-badges\"],[14,\"data-control-name\",\"stats-banner-extra-badges\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"oss-stats-banner__bottom_content\"],[14,\"data-control-name\",\"stats-banner-bottom-content\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-stats-banner__stat\"],[14,\"data-control-name\",\"stats-banner-stat\"],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,4],[[24,0,\"oss-stats-banner__skeleton--stat-value\"]],[[\"@height\",\"@width\"],[30,150]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,0],[14,0,\"oss-stats-banner__stat-main\"],[14,\"data-control-name\",\"stats-banner-stat-main\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"oss-stats-banner__stat-main-content\"],[14,\"data-control-name\",\"stats-banner-stat-main-content\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"              \"],[10,1],[14,0,\"font-color-gray-900 font-weight-semibold font-size-h3\"],[12],[1,[30,5,[\"label\"]]],[13],[1,\"\\n\\n\"],[41,[30,5,[\"suffix\"]],[[[1,\"                \"],[10,1],[14,0,\"oss-stats-banner__stat-extra font-color-gray-500\"],[12],[1,[30,5,[\"suffix\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5,[\"tags\"]],[[[42,[28,[37,11],[[28,[37,11],[[30,5,[\"tags\"]]],null]],null],null,[[[1,\"                  \"],[8,[39,12],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[[30,6,[\"label\"]],[30,6,[\"skin\"]],[30,6,[\"icon\"]],[30,6,[\"plain\"]]]],null],[1,\"\\n\"]],[6]],null]],[]],null]],[]],null],[1,\"          \"],[13],[1,\"\\n\\n\"],[41,[48,[30,9]],[[[1,\"            \"],[10,0],[14,0,\"oss-stats-banner__cta\"],[14,\"data-control-name\",\"stats-banner-cta\"],[12],[1,\"\\n              \"],[18,9,null],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[13]],[\"&attrs\",\"@badge\",\"@loading\",\"@titleConfig\",\"@statValue\",\"tag\",\"&title-suffix\",\"&extra-badges\",\"&cta\"],false,[\"if\",\"o-s-s/icon\",\"concat\",\"o-s-s/badge\",\"o-s-s/skeleton\",\"enable-tooltip\",\"has-block\",\"yield\",\"and\",\"not\",\"each\",\"-track-array\",\"o-s-s/tag\"]]",
+    "id": "wDm18eSW",
+    "block": "[[[11,0],[24,0,\"oss-stats-banner\"],[24,\"data-control-name\",\"oss-stats-banner\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-stats-banner__header\"],[14,\"data-control-name\",\"stats-banner-header\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-stats-banner__header_content\"],[14,\"data-control-name\",\"stats-banner-header-content\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,0],[14,0,\"oss-stats-banner__badge\"],[14,\"data-control-name\",\"stats-banner-badge\"],[12],[1,\"\\n\"],[41,[30,2,[\"extraIcon\"]],[[[1,\"            \"],[8,[39,4],[[16,5,[52,[30,2,[\"extraIcon\",\"color\"]],[28,[37,5],[\"color:\",[30,2,[\"extraIcon\",\"color\"]]],null]]]],[[\"@icon\"],[[30,2,[\"extraIcon\",\"icon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[8,[39,6],null,[[\"@icon\",\"@image\",\"@text\",\"@skin\",\"@size\"],[[30,2,[\"icon\"]],[30,2,[\"image\"]],[30,2,[\"text\"]],[30,2,[\"skin\"]],\"sm\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-stats-banner__content\"],[14,\"data-control-name\",\"stats-banner-content\"],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,7],[[24,0,\"oss-stats-banner__skeleton--title\"]],[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n\"]],[]],[[[41,[48,[30,7]],[[[1,\"            \"],[18,7,null],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,0],[14,0,\"oss-stats-banner__title-row\"],[14,\"data-control-name\",\"stats-banner-title-row\"],[12],[1,\"\\n              \"],[11,1],[24,0,\"oss-stats-banner__title text-ellipsis font-color-gray-600 font-weight-semibold\"],[4,[38,9],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[[30,4,[\"text\"]],\"top\",true]]],[12],[1,\"\\n                \"],[1,[30,4,[\"text\"]]],[1,\"\\n              \"],[13],[1,\"\\n\\n              \"],[10,0],[14,0,\"oss-stats-banner__title-actions\"],[14,\"data-control-name\",\"stats-banner-title-actions\"],[12],[1,\"\\n\"],[41,[30,4,[\"infoCircle\"]],[[[1,\"                  \"],[11,1],[24,\"data-control-name\",\"stats-banner-title-info-circle\"],[4,[38,9],null,[[\"title\",\"placement\"],[[30,4,[\"infoCircle\"]],\"top\"]]],[12],[1,\"\\n                    \"],[8,[39,4],[[24,0,\"font-color-gray-400\"]],[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"                  \"],[18,8,null],[1,\"\\n\"]],[]],null],[1,\"              \"],[13],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]]]],[]]],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[28,[37,10],[[48,[30,9]],[28,[37,11],[[30,3]],null]],null],[[[1,\"      \"],[10,0],[14,0,\"oss-stats-banner__extra-badges\"],[14,\"data-control-name\",\"stats-banner-extra-badges\"],[12],[1,\"\\n        \"],[18,9,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"oss-stats-banner__bottom_content\"],[14,\"data-control-name\",\"stats-banner-bottom-content\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-stats-banner__stat\"],[14,\"data-control-name\",\"stats-banner-stat\"],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,7],[[24,0,\"oss-stats-banner__skeleton--stat-value\"]],[[\"@height\",\"@width\"],[30,150]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,0],[14,0,\"oss-stats-banner__stat-main\"],[14,\"data-control-name\",\"stats-banner-stat-main\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"oss-stats-banner__stat-main-content\"],[14,\"data-control-name\",\"stats-banner-stat-main-content\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"              \"],[11,1],[24,0,\"oss-stats-banner__stat-value\"],[4,[38,9],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[[30,5,[\"label\"]],\"top\",true]]],[12],[1,\"\\n                \"],[1,[30,5,[\"label\"]]],[1,\"\\n              \"],[13],[1,\"\\n\\n\"],[41,[30,5,[\"suffix\"]],[[[1,\"                \"],[10,1],[14,0,\"oss-stats-banner__stat-extra font-color-gray-500\"],[12],[1,[30,5,[\"suffix\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5,[\"tags\"]],[[[42,[28,[37,13],[[28,[37,13],[[30,5,[\"tags\"]]],null]],null],null,[[[1,\"                  \"],[8,[39,14],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[[30,6,[\"label\"]],[30,6,[\"skin\"]],[30,6,[\"icon\"]],[30,6,[\"plain\"]]]],null],[1,\"\\n\"]],[6]],null]],[]],null]],[]],null],[1,\"          \"],[13],[1,\"\\n\\n\"],[41,[48,[30,10]],[[[1,\"            \"],[10,0],[14,0,\"oss-stats-banner__cta\"],[14,\"data-control-name\",\"stats-banner-cta\"],[12],[1,\"\\n              \"],[18,10,null],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[13]],[\"&attrs\",\"@badge\",\"@loading\",\"@titleConfig\",\"@statValue\",\"tag\",\"&title\",\"&title-suffix\",\"&extra-badges\",\"&cta\"],false,[\"did-insert\",\"fn\",\"has-block\",\"if\",\"o-s-s/icon\",\"concat\",\"o-s-s/badge\",\"o-s-s/skeleton\",\"yield\",\"enable-tooltip\",\"and\",\"not\",\"each\",\"-track-array\",\"o-s-s/tag\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/stats/banner.hbs",
     "isStrictMode": false
   });
-  class OSSStatsBanner extends _component2.default {
-    constructor(owner, args) {
-      super(owner, args);
-      (true && !(Boolean(args.titleConfig?.text)) && (0, _debug.assert)('[component][OSS::Stats::Banner] You must pass a title via @titleConfig.text.', Boolean(args.titleConfig?.text)));
+  let OSSStatsBanner = _exports.default = (_class = class OSSStatsBanner extends _component2.default {
+    ensureBlockPresence(hasTitleBlock) {
+      (true && !(hasTitleBlock || Boolean(this.args.titleConfig?.text)) && (0, _debug.assert)('[component][OSS::Stats::Banner] You must pass a title via @titleConfig.text or the "title" named block.', hasTitleBlock || Boolean(this.args.titleConfig?.text)));
     }
-  }
-  _exports.default = OSSStatsBanner;
+  }, (_applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSStatsBanner);
 });
 ;define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _template, _templateFactory) {

@@ -23417,10 +23417,10 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/stats/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/stats/banner-test", ["@ember/test-helpers", "ember-qunit", "qunit", "@ember/template-factory"], function (_testHelpers, _emberQunit, _qunit, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-qunit",0,"qunit"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/stats/banner', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', async function (assert) {
@@ -23437,6 +23437,58 @@ define("dummy/tests/integration/components/o-s-s/stats/banner-test", ["qunit", "
       assert.dom('.oss-stats-banner').exists();
       assert.dom('.oss-stats-banner__header').exists();
       assert.dom('.oss-stats-banner__bottom_content').exists();
+    });
+    (0, _qunit.module)('Assert exceptions', function () {
+      (0, _qunit.module)('Title', function () {
+        (0, _qunit.test)('it throws an assertion error when neither @titleConfig.text nor the title named block is passed', async function (assert) {
+          assert.expect(1);
+          (0, _testHelpers.setupOnerror)(err => {
+            assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Stats::Banner] You must pass a title via @titleConfig.text or the "title" named block.');
+          });
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Stats::Banner />
+          */
+          {
+            "id": "6xhubjp1",
+            "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/stats/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+            "isStrictMode": false
+          }));
+        });
+        (0, _qunit.test)('It does not throw an assertion error when @titleConfig.text is passed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />
+          */
+          {
+            "id": "3bL2Ncuu",
+            "block": "[[[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],null]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-stats-banner').exists();
+        });
+        (0, _qunit.test)('It does not throw an assertion error when the title named block is passed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            
+                    <OSS::Stats::Banner>
+                      <:title>
+                        <div class="test-custom-title">Custom title</div>
+                      </:title>
+                    </OSS::Stats::Banner>
+                  
+          */
+          {
+            "id": "dSz6hcHL",
+            "block": "[[[1,\"\\n          \"],[8,[39,0],null,null,[[\"title\"],[[[[1,\"\\n              \"],[10,0],[14,0,\"test-custom-title\"],[12],[1,\"Custom title\"],[13],[1,\"\\n            \"]],[]]]]],[1,\"\\n        \"]],[],false,[\"o-s-s/stats/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-stats-banner .test-custom-title').exists();
+        });
+      });
     });
     (0, _qunit.module)('Loading state handling', function () {
       (0, _qunit.test)('when @loading is true and no related args or blocks are defined, it renders title/stat skeletons', async function (assert) {
@@ -23654,6 +23706,65 @@ define("dummy/tests/integration/components/o-s-s/stats/banner-test", ["qunit", "
           "isStrictMode": false
         }));
         assert.dom('.oss-stats-banner .test-dropdown').doesNotExist();
+      });
+      (0, _qunit.test)('when the title named block is defined, it renders its content instead of @titleConfig.text', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner>
+                  <:title>
+                    <div class="test-custom-title">Custom title</div>
+                  </:title>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "E3v9TWsU",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,null,[[\"title\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"test-custom-title\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .test-custom-title').exists();
+        assert.dom('.oss-stats-banner__title-row').doesNotExist();
+      });
+      (0, _qunit.test)('when the title named block is defined, @titleConfig.infoCircle is ignored', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat" infoCircle="Helpful description"}}>
+                  <:title>
+                    <div class="test-custom-title">Custom title</div>
+                  </:title>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "VorYHF+s",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\",\"infoCircle\"],[\"My stat\",\"Helpful description\"]]]]],[[\"title\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"test-custom-title\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .fa-info-circle').doesNotExist();
+      });
+      (0, _qunit.test)('when both @titleConfig.text and the title named block are defined, it renders the title block', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Stats::Banner @titleConfig={{hash text="My stat"}}>
+                  <:title>
+                    <div class="test-custom-title">Custom title</div>
+                  </:title>
+                </OSS::Stats::Banner>
+              
+        */
+        {
+          "id": "6z9GEXfg",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@titleConfig\"],[[28,[37,1],null,[[\"text\"],[\"My stat\"]]]]],[[\"title\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"test-custom-title\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/stats/banner\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stats/banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stats-banner .test-custom-title').exists();
+        assert.dom('.oss-stats-banner').doesNotContainText('My stat');
       });
     });
     (0, _qunit.module)('Named blocks handling', function () {

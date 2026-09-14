@@ -16012,6 +16012,15 @@ a.oss-sidebar-item {
   gap: var(--spacing-px-6);
   min-width: 0;
   flex-wrap: wrap;
+  max-width: fit-content;
+}
+.oss-stats-banner__stat-value {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-heading-3);
+  color: var(--color-gray-900);
 }
 .oss-stats-banner__stat-extra {
   line-height: 1.2;
@@ -16090,6 +16099,9 @@ a.oss-sidebar-item {
     align-items: flex-start;
     gap: var(--spacing-px-9);
     flex-wrap: nowrap;
+  }
+  .oss-stats-banner__stat-value {
+    width: 100%;
   }
   .oss-stats-banner__stats {
     grid-template-columns: minmax(0, 1fr);
