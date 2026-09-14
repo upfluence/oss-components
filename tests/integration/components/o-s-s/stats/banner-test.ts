@@ -1,7 +1,8 @@
+import { render, setupOnerror } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { module, test } from 'qunit';
 
 module('Integration | Component | o-s-s/stats/banner', function (hooks) {
   setupRenderingTest(hooks);
@@ -12,6 +13,39 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
     assert.dom('.oss-stats-banner').exists();
     assert.dom('.oss-stats-banner__header').exists();
     assert.dom('.oss-stats-banner__bottom_content').exists();
+  });
+
+  module('Assert exceptions', function () {
+    module('Title', function () {
+      test('it throws an assertion error when neither @titleConfig.text nor the title named block is passed', async function (assert) {
+        assert.expect(1);
+        setupOnerror((err: Error) => {
+          assert.strictEqual(
+            err.message,
+            'Assertion Failed: [component][OSS::Stats::Banner] You must pass a title via @titleConfig.text or the "title" named block.'
+          );
+        });
+
+        await render(hbs`<OSS::Stats::Banner />`);
+      });
+
+      test('It does not throw an assertion error when @titleConfig.text is passed', async function (assert) {
+        await render(hbs`<OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />`);
+        assert.dom('.oss-stats-banner').exists();
+      });
+
+      test('It does not throw an assertion error when the title named block is passed', async function (assert) {
+        await render(hbs`
+          <OSS::Stats::Banner>
+            <:title>
+              <div class="test-custom-title">Custom title</div>
+            </:title>
+          </OSS::Stats::Banner>
+        `);
+
+        assert.dom('.oss-stats-banner .test-custom-title').exists();
+      });
+    });
   });
 
   module('Loading state handling', function () {
@@ -143,6 +177,44 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
       await render(hbs`<OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />`);
 
       assert.dom('.oss-stats-banner .test-dropdown').doesNotExist();
+    });
+
+    test('when the title named block is defined, it renders its content instead of @titleConfig.text', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner>
+          <:title>
+            <div class="test-custom-title">Custom title</div>
+          </:title>
+        </OSS::Stats::Banner>
+      `);
+
+      assert.dom('.oss-stats-banner .test-custom-title').exists();
+      assert.dom('.oss-stats-banner__title-row').doesNotExist();
+    });
+
+    test('when the title named block is defined, @titleConfig.infoCircle is ignored', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat" infoCircle="Helpful description"}}>
+          <:title>
+            <div class="test-custom-title">Custom title</div>
+          </:title>
+        </OSS::Stats::Banner>
+      `);
+
+      assert.dom('.oss-stats-banner .fa-info-circle').doesNotExist();
+    });
+
+    test('when both @titleConfig.text and the title named block are defined, it renders the title block', async function (assert) {
+      await render(hbs`
+        <OSS::Stats::Banner @titleConfig={{hash text="My stat"}}>
+          <:title>
+            <div class="test-custom-title">Custom title</div>
+          </:title>
+        </OSS::Stats::Banner>
+      `);
+
+      assert.dom('.oss-stats-banner .test-custom-title').exists();
+      assert.dom('.oss-stats-banner').doesNotContainText('My stat');
     });
   });
 
