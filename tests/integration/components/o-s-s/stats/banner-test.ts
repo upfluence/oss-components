@@ -29,12 +29,12 @@ module('Integration | Component | o-s-s/stats/banner', function (hooks) {
         await render(hbs`<OSS::Stats::Banner />`);
       });
 
-      test('It does not throws an assertion error when @titleConfig.text is passed', async function (assert) {
+      test('It does not throw an assertion error when @titleConfig.text is passed', async function (assert) {
         await render(hbs`<OSS::Stats::Banner @titleConfig={{hash text="My stat"}} />`);
         assert.dom('.oss-stats-banner').exists();
       });
 
-      test('It does not throws an assertion error when the title named block is passed', async function (assert) {
+      test('It does not throw an assertion error when the title named block is passed', async function (assert) {
         await render(hbs`
           <OSS::Stats::Banner>
             <:title>
