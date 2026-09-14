@@ -65,7 +65,6 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
     super.toggleDropdown(event);
 
     if (!this.isOpen) {
-      this.args.onSearch?.('');
       return;
     }
 
@@ -73,10 +72,16 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   }
 
   @action
+  resetSearch(): void {
+    if (!this.isOpen) {
+      this.args.onSearch?.('');
+    }
+  }
+
+  @action
   onClickOutside(_: HTMLElement, event: MouseEvent): void {
     super.onClickOutside(_, event);
     this.cleanupDrodpownAutoplacement?.();
-    this.args.onSearch?.('');
     document.querySelector(`#${this.portalId}`)?.remove();
   }
 

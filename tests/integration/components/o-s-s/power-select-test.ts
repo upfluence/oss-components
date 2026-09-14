@@ -262,6 +262,26 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.ok(this.onSearch.calledWith('s'));
     });
+
+    test('closing the dropdown resets the search', async function (assert) {
+      await render(hbs`
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                          @onSearch={{this.onSearch}}>
+          <:selected-item as |selectedItem|>
+            {{selectedItem}}
+          </:selected-item>
+          <:option-item as |item|>
+            {{item}}
+          </:option-item>
+        </OSS::PowerSelect>
+      `);
+
+      await click('.upf-power-select__array-container');
+      await typeIn('.upf-infinite-select input', 's');
+      await click('.upf-power-select__array-container');
+
+      assert.ok(this.onSearch.calledWith(''));
+    });
   });
 
   module('with @onBottomReached', (hooks) => {
