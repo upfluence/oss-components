@@ -15976,12 +15976,6 @@ a.oss-sidebar-item {
   align-items: center;
   gap: var(--spacing-px-3);
 }
-.oss-stats-banner__cta {
-  display: flex;
-  align-items: flex-end;
-  align-self: end;
-  justify-self: end;
-}
 .oss-stats-banner__bottom_content {
   display: flex;
   justify-content: space-between;
@@ -15998,13 +15992,15 @@ a.oss-sidebar-item {
   min-height: 0;
 }
 .oss-stats-banner__stat-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   width: 100%;
   height: 100%;
   min-width: 0;
   gap: var(--spacing-px-12);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .oss-stats-banner__stat-main-content {
   display: flex;
@@ -16012,7 +16008,7 @@ a.oss-sidebar-item {
   gap: var(--spacing-px-6);
   min-width: 0;
   flex-wrap: wrap;
-  max-width: fit-content;
+  max-width: 100%;
 }
 .oss-stats-banner__stat-value {
   text-overflow: ellipsis;
@@ -16025,11 +16021,6 @@ a.oss-sidebar-item {
 .oss-stats-banner__stat-extra {
   line-height: 1.2;
   white-space: nowrap;
-}
-.oss-stats-banner__stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--spacing-px-12);
 }
 .oss-stats-banner__card {
   border: 1px solid var(--color-border-default);
@@ -16079,20 +16070,12 @@ a.oss-sidebar-item {
   .oss-stats-banner__header {
     align-items: flex-start;
   }
-  .oss-stats-banner__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 @container (width <= 200px) {
   .oss-stats-banner__stat-main {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     align-items: end;
     height: 100%;
-  }
-  .oss-stats-banner__cta {
-    align-self: end;
-    justify-self: end;
-    margin-left: auto;
   }
   .oss-stats-banner__stat-main-content {
     flex-direction: column;
@@ -16102,9 +16085,6 @@ a.oss-sidebar-item {
   }
   .oss-stats-banner__stat-value {
     width: 100%;
-  }
-  .oss-stats-banner__stats {
-    grid-template-columns: minmax(0, 1fr);
   }
 }
 .context-menu-panel__scrollable-container {
