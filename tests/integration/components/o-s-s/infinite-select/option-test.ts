@@ -1,9 +1,10 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
-import sinon from 'sinon';
 import { setupOnerror } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/infinite-select/option', function (hooks) {
   setupRenderingTest(hooks);

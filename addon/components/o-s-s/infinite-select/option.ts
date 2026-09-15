@@ -1,15 +1,16 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+
 import type { IntlService } from 'ember-intl';
 
-import type { OSSTagArgs } from '../tag';
+import type { OSSIconArgs } from '@upfluence/oss-components/components/o-s-s/icon';
+import { isSafeString } from '@upfluence/oss-components/utils';
+import type { CountryData } from '@upfluence/oss-components/utils/country-codes';
+
 import type { OSSAvatarArgs } from '../avatar';
 import type { OSSBadgeArgs } from '../badge';
-
-import { isSafeString } from '@upfluence/oss-components/utils';
-import type { OSSIconArgs } from '@upfluence/oss-components/components/o-s-s/icon';
-import type { CountryData } from '@upfluence/oss-components/utils/country-codes';
+import type { OSSTagArgs } from '../tag';
 
 type IconSpec = OSSIconArgs & {
   tooltip?: { title: ReturnType<IntlService['t']>; placement?: string };

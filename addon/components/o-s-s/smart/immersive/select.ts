@@ -1,12 +1,14 @@
-import { action } from '@ember/object';
-import BaseDropdown, { type BaseDropdownArgs } from '../../private/base-dropdown';
-import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
-import { isBlank } from '@ember/utils';
-import { assert } from '@ember/debug';
-import { scheduleOnce } from '@ember/runloop';
-import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { helper } from '@ember/component/helper';
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+import { scheduleOnce } from '@ember/runloop';
 import { htmlSafe } from '@ember/template';
+import { isBlank } from '@ember/utils';
+
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
+import BaseDropdown, { type BaseDropdownArgs } from '../../private/base-dropdown';
 
 export type SmartImmersiveSelectItem = {
   value: any;

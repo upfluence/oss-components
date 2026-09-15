@@ -1,8 +1,9 @@
-import Component from '@glimmer/component';
-import type { OSSButtonArgs } from './button';
-import type { ensureSafeComponent } from '@embroider/util';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import type { ensureSafeComponent } from '@embroider/util';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
+import type { OSSButtonArgs } from './button';
 
 export type ContextMenuItem = {
   items?: ContextMenuItem[];

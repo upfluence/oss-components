@@ -1,8 +1,10 @@
-import OSSInputContainer from '../input-container';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 import { isEmpty } from '@ember/utils';
+import { tracked } from '@glimmer/tracking';
+
+import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
+import OSSInputContainer from '../input-container';
 
 interface SmartInputArgs {
   value?: string;

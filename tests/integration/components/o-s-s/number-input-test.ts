@@ -1,10 +1,11 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, waitFor } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
 import typeIn from '@ember/test-helpers/dom/type-in';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/number-input', function (hooks) {

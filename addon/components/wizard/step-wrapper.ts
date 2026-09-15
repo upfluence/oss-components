@@ -1,11 +1,11 @@
-import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
 import { action, computed } from '@ember/object';
-import { ensureSafeComponent } from '@embroider/util';
 import { later } from '@ember/runloop';
+import { inject as service } from '@ember/service';
+import { ensureSafeComponent } from '@embroider/util';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
-import { tracked } from '@glimmer/tracking';
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
 const SCROLL_EVENTS_DELAY = 800;

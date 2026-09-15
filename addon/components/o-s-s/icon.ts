@@ -1,5 +1,6 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import Component from '@glimmer/component';
+
 import { IconNames } from './iconName.enum';
 
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand' | 'flag' | 'duotone-regular';

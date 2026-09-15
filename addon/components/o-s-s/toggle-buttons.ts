@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 
 export type Toggle = {
   value: string;

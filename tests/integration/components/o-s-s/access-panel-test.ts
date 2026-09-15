@@ -1,10 +1,11 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { setupIntl } from 'ember-intl/test-support';
-import { fillIn, render, typeIn } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
-import sinon from 'sinon';
 import { set } from '@ember/object';
+import { fillIn, render, typeIn } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/access-panel', function (hooks) {
   setupRenderingTest(hooks);

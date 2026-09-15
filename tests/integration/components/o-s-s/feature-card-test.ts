@@ -1,9 +1,11 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
-import { COLOR_VARIANTS, SHADOW_VARIANTS } from '@upfluence/oss-components/components/o-s-s/feature-card';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
+import { COLOR_VARIANTS, SHADOW_VARIANTS } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
 module('Integration | Component | o-s-s/feature-card', function (hooks) {
   setupRenderingTest(hooks);

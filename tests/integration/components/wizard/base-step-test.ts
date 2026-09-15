@@ -1,9 +1,11 @@
-import { module, test } from 'qunit';
+import { render } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
 import { WizardBaseStep, type WizardBaseStepSignature } from '@upfluence/oss-components/components/wizard/base-step';
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
-import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 
 interface TestStepSignature extends WizardBaseStepSignature {
   step: Step;

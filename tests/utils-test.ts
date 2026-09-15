@@ -1,7 +1,6 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-
 import { CSSVariableToRGB, hexToRGB } from 'dummy/tests/integration/utils';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 module('Tests | Utils', function (hooks) {
   setupRenderingTest(hooks);

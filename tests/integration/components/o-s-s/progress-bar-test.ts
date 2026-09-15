@@ -1,7 +1,9 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
 import { PROGRESS_BAR_SKINS } from '@upfluence/oss-components/components/o-s-s/progress-bar';
 
 module('Integration | Component | o-s-s/progress-bar', function (hooks) {

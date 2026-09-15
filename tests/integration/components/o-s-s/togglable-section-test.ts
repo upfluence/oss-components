@@ -1,8 +1,9 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { click, render, setupOnerror } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 import { set } from '@ember/object';
+import { click, render, setupOnerror } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/togglable-section', function (hooks) {

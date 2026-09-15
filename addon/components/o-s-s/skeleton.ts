@@ -1,6 +1,6 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
+import Component from '@glimmer/component';
 
 export interface OSSSkeletonArgs {
   width?: number | string;

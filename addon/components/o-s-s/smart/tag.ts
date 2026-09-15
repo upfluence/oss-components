@@ -1,6 +1,7 @@
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 
 export type TagType = 'keyword' | 'hashtag' | 'mention';

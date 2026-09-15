@@ -1,11 +1,12 @@
 // @ts-expect-error setModifierManager is not exposed by the Ember typings
 import { setModifierManager, capabilities } from '@ember/modifier';
-import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';
-import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
-import { hasOverflow, type OverflowDirection } from '@upfluence/oss-components/utils/element';
-import { isTesting } from '@embroider/macros';
 import { isEmpty } from '@ember/utils';
+import { isTesting } from '@embroider/macros';
+
+import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
+import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
+import { hasOverflow, type OverflowDirection } from '@upfluence/oss-components/utils/element';
 
 type TooltipConfig = {
   title?: string;

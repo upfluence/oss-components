@@ -1,10 +1,11 @@
 // @ts-expect-error the dummy app module has no type declaration
-import { initialize } from 'dummy/instance-initializers/override-intl';
-import { module, test } from 'qunit';
-import { setupTest } from 'ember-qunit';
-import { type TestContext } from '@ember/test-helpers';
-import { setupIntl } from 'ember-intl/test-support';
 import { isHTMLSafe, htmlSafe } from '@ember/template';
+import { type TestContext } from '@ember/test-helpers';
+
+import { initialize } from 'dummy/instance-initializers/override-intl';
+import { setupIntl } from 'ember-intl/test-support';
+import { setupTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
 module('Unit | Instance Initializer | override-intl', function (hooks) {
   setupTest(hooks);

@@ -3,6 +3,7 @@ import { guidFor } from '@ember/object/internals';
 import { scheduleOnce } from '@ember/runloop';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
+
 import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
 
 type Skin = 'primary' | 'xtd-blue' | 'xtd-cyan' | 'xtd-lime' | 'xtd-orange' | 'xtd-violet' | 'xtd-yellow';

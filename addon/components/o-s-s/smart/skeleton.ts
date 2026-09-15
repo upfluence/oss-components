@@ -1,8 +1,9 @@
 import { helper } from '@ember/component/helper';
-import type { OSSSkeletonArgs } from '../skeleton';
-import OSSSkeleton from '../skeleton';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
+
+import type { OSSSkeletonArgs } from '../skeleton';
+import OSSSkeleton from '../skeleton';
 
 interface OSSSmartSkeletonArgs extends OSSSkeletonArgs {}
 

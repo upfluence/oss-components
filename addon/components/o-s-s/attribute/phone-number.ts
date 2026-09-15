@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+
 import { type CountryData, countries } from '@upfluence/oss-components/utils/country-codes';
 
 interface OSSAttributePhoneNumberArgs {

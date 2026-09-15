@@ -1,7 +1,9 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
-import { isSafeString } from '@upfluence/oss-components/utils';
+import Component from '@glimmer/component';
+
 import type { IntlService } from 'ember-intl';
+
+import { isSafeString } from '@upfluence/oss-components/utils';
 
 export const COLOR_VARIANTS = ['blue', 'violet', 'yellow'] as const;
 export type OSSFeatureCardColorVariant = (typeof COLOR_VARIANTS)[number];

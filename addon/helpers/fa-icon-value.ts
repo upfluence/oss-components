@@ -1,5 +1,6 @@
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
+
 import { getIconValue } from '../utils/icon-details';
 
 export default class extends Helper {

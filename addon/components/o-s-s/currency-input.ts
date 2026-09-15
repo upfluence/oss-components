@@ -1,8 +1,9 @@
-import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
 import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
 
 export type Currency = {

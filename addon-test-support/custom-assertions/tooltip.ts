@@ -1,7 +1,9 @@
 import { triggerEvent, waitFor } from '@ember/test-helpers';
-import * as QUnit from 'qunit';
 import { isEmpty } from '@ember/utils';
+
+import * as QUnit from 'qunit';
 import sinon from 'sinon';
+
 import { ANIMATION_DURATION, RENDERING_DELAY } from '@upfluence/oss-components/modifiers/enable-tooltip';
 
 export type Placement = 'top' | 'bottom' | 'left' | 'right' | undefined;

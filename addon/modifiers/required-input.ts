@@ -1,5 +1,6 @@
-import Modifier, { type ArgsFor } from 'ember-modifier';
 import { registerDestructor } from '@ember/destroyable';
+
+import Modifier, { type ArgsFor } from 'ember-modifier';
 
 interface RequiredInputSignature {
   Element: HTMLElement;

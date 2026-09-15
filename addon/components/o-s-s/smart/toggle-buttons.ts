@@ -1,4 +1,5 @@
 import { assert } from '@ember/debug';
+
 import OSSToggleButtons, { type OSSToggleButtonsArgs } from '../toggle-buttons';
 
 interface OSSSmartToggleButtonsArgs extends OSSToggleButtonsArgs {}

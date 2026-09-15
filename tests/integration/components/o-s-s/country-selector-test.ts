@@ -1,13 +1,14 @@
-import { hbs } from 'ember-cli-htmlbars';
-import setupOnerror from '@ember/test-helpers/setup-onerror';
-import settled from '@ember/test-helpers/settled';
-import sinon from 'sinon';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { setupIntl } from 'ember-intl/test-support';
-import { click, findAll, render } from '@ember/test-helpers';
 import { set } from '@ember/object';
+import { click, findAll, render } from '@ember/test-helpers';
 import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
+import settled from '@ember/test-helpers/settled';
+import setupOnerror from '@ember/test-helpers/setup-onerror';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
 
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
