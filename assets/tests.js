@@ -16340,6 +16340,32 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         await (0, _testHelpers.typeIn)('.upf-infinite-select input', 's');
         assert.ok(this.onSearch.calledWith('s'));
       });
+      (0, _qunit.test)('closing the dropdown resets the search', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                                  @onSearch={{this.onSearch}}>
+                  <:selected-item as |selectedItem|>
+                    {{selectedItem}}
+                  </:selected-item>
+                  <:option-item as |item|>
+                    {{item}}
+                  </:option-item>
+                </OSS::PowerSelect>
+              
+        */
+        {
+          "id": "6YBI3et/",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n            \"],[1,[30,1]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[1,[30,2]],[1,\"\\n          \"]],[2]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-power-select__array-container');
+        await (0, _testHelpers.typeIn)('.upf-infinite-select input', 's');
+        await (0, _testHelpers.click)('.upf-power-select__array-container');
+        assert.ok(this.onSearch.calledWith(''));
+      });
     });
     (0, _qunit.module)('with @onBottomReached', hooks => {
       hooks.beforeEach(function () {
