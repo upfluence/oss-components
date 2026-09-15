@@ -16,13 +16,13 @@ import {
 const AVAILABLE_VALIDATORS = [FileSizeValidator, FileTypeValidator];
 
 export default class BaseUploader extends Service implements UploaderInterface {
-  validate(request: UploadRequest, rules: FileValidator[]): ValidationResponse {
+  validate(request: UploadRequest, rules: FileValidator[]): Promise<ValidationResponse> {
     const validations = this.buildValidators(rules).map((validator: Validator) => validator.validate(request));
 
-    return {
+    return Promise.resolve({
       passes: validations.every((validation) => validation.passes),
       validations
-    };
+    });
   }
 
   upload(_request: UploadRequest, _validationRules?: FileValidator[]): void {
