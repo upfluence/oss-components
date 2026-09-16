@@ -243,11 +243,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
   }
 
-  private _handleFileUpload(file: File): void {
+  private async _handleFileUpload(file: File): Promise<void> {
     if (this.args.disabled) return;
     this.args.onHandleFileUpload?.();
     this.localFeedbackMessage = undefined;
-    if (this._validateFile(file)) {
+    if (await this._validateFile(file)) {
       if (this.args.onDryRun) {
         this.args.onDryRun(file);
         return;

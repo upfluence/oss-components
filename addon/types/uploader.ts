@@ -39,7 +39,7 @@ export type FileValidator = FileSizeRule | FileTypeRule;
 export default interface Uploader {
   readonly url: string;
 
-  validate(request: UploadRequest, rules: FileValidator[]): ValidationResponse;
+  validate(request: UploadRequest, rules: FileValidator[]): Promise<ValidationResponse>;
   upload(request: UploadRequest, rules?: FileValidator[]): void;
   buildHeaders(request: UploadRequest): { name: string; value: string }[];
 }
