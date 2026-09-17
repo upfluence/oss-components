@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
-import { action, set } from '@ember/object';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 type StarType = 'solid' | 'regular';
@@ -31,11 +31,11 @@ export enum StarColor {
 }
 
 export default class OSSStarRating extends Component<OSSStarRatingArgs> {
-  @tracked stars: Star[] = [];
+  @tracked private optimisticRating: number | null = null;
+  @tracked private hoverIndex: number | null = null;
 
   constructor(owner: unknown, args: OSSStarRatingArgs) {
     super(owner, args);
-    this.stars = this.generateStarsArray();
 
     assert(
       `[component][OSS::StarRating] @rating argument is mandatory and must be a number`,
@@ -55,31 +55,32 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
     return `color-${this.args.passiveColor || 'grey'}`;
   }
 
+  get stars(): Star[] {
+    const activeCount = this.hoverIndex !== null ? this.hoverIndex + 1 : (this.optimisticRating ?? this.args.rating);
+    const result: Star[] = [];
+    for (let i = 0; i < this.args.totalStars; i++) {
+      result.push({ type: i < activeCount ? 'solid' : 'regular' });
+    }
+    return result;
+  }
+
   @action
   setRating(value: number, event: PointerEvent): void {
     event.stopPropagation();
-    this.args.onChange?.(value + 1);
+    const newRating = value + 1;
+    this.optimisticRating = newRating;
+    this.args.onChange?.(newRating);
   }
 
   @action
   onMouseEnter(index: number): void {
-    if (this.args.onChange && index + 1 !== this.args.rating) {
-      this.stars.forEach((star: Star, i: number) => {
-        set(star, 'type', i <= index ? 'solid' : 'regular');
-      });
+    if (this.args.onChange) {
+      this.hoverIndex = index;
     }
   }
 
   @action
   onMouseLeave(): void {
-    this.stars = this.generateStarsArray();
-  }
-
-  private generateStarsArray(): Star[] {
-    const result: Star[] = [];
-    for (let i = 0; i < this.args.totalStars; i++) {
-      result.push({ type: i < this.args.rating ? 'solid' : 'regular' });
-    }
-    return result;
+    this.hoverIndex = null;
   }
 }
