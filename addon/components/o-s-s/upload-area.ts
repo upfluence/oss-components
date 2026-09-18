@@ -1,10 +1,13 @@
-import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { isBlank } from '@ember/utils';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
 import type IntlService from 'ember-intl/services/intl';
 
+import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
 import ToastService from '@upfluence/oss-components/services/toast';
 import {
   type default as Uploader,
@@ -14,8 +17,6 @@ import {
   type FailedUploadResponse,
   FilePrivacy
 } from '@upfluence/oss-components/types/uploader';
-import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
-import { isBlank } from '@ember/utils';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 interface OSSUploadAreaArgs {
@@ -242,11 +243,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
   }
 
-  private _handleFileUpload(file: File): void {
+  private async _handleFileUpload(file: File): Promise<void> {
     if (this.args.disabled) return;
     this.args.onHandleFileUpload?.();
     this.localFeedbackMessage = undefined;
-    if (this._validateFile(file)) {
+    if (await this._validateFile(file)) {
       if (this.args.onDryRun) {
         this.args.onDryRun(file);
         return;
@@ -262,14 +263,14 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
   }
 
-  private _validateFile(file: File): boolean {
+  private async _validateFile(file: File): Promise<boolean> {
     const request: UploadRequest = {
       file,
       privacy: this.filePrivacy,
       scope: this.scope
     };
 
-    const validationResponse = this.args.uploader.validate(request, this.args.rules || []);
+    const validationResponse = await this.args.uploader.validate(request, this.args.rules || []);
 
     if (validationResponse.passes) {
       return true;
