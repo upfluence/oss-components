@@ -162,6 +162,62 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     });
   });
 
+  module('data-control-name', (hooks) => {
+    hooks.beforeEach(function () {
+      this.showControls = true;
+    });
+
+    test('By default, it prefixes the controls with the default control name', async function (assert) {
+      await renderCarousel();
+      assert
+        .dom('.oss-carousel .carousel-control--left')
+        .hasAttribute('data-control-name', 'oss-carousel-control-left');
+      assert
+        .dom('.oss-carousel .carousel-control--right')
+        .hasAttribute('data-control-name', 'oss-carousel-control-right');
+    });
+
+    test('When a data-control-name is passed, the controls are prefixed with it', async function (assert) {
+      await render(hbs`
+        <OSS::Carousel @showControls={{true}} data-control-name="custom-carousel">
+          <:pages>
+            <div class="page">Page 1</div>
+            <div class="page">Page 2</div>
+            <div class="page">Page 3</div>
+          </:pages>
+        </OSS::Carousel>
+      `);
+
+      assert.dom('.oss-carousel').hasAttribute('data-control-name', 'custom-carousel');
+      assert
+        .dom('.oss-carousel .carousel-control--left')
+        .hasAttribute('data-control-name', 'custom-carousel-control-left');
+      assert
+        .dom('.oss-carousel .carousel-control--right')
+        .hasAttribute('data-control-name', 'custom-carousel-control-right');
+    });
+
+    test('When an empty data-control-name is passed, the controls fall back on the default prefix', async function (assert) {
+      await render(hbs`
+        <OSS::Carousel @showControls={{true}} data-control-name="">
+          <:pages>
+            <div class="page">Page 1</div>
+            <div class="page">Page 2</div>
+            <div class="page">Page 3</div>
+          </:pages>
+        </OSS::Carousel>
+      `);
+
+      assert.dom('.oss-carousel').hasAttribute('data-control-name', '');
+      assert
+        .dom('.oss-carousel .carousel-control--left')
+        .hasAttribute('data-control-name', 'oss-carousel-control-left');
+      assert
+        .dom('.oss-carousel .carousel-control--right')
+        .hasAttribute('data-control-name', 'oss-carousel-control-right');
+    });
+  });
+
   module('Indicator button icon', () => {
     test('By default, it renders the default button icon', async function (assert) {
       await renderCarousel();
