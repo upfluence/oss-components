@@ -1,11 +1,12 @@
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { isTesting } from '@embroider/macros';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
+import type { IntlService } from 'ember-intl';
 
 import ToastService from '@upfluence/oss-components/services/toast';
-import type { IntlService } from 'ember-intl';
 
 interface OSSCopyArgs {
   value: string;

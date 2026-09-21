@@ -1,12 +1,13 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, triggerEvent, triggerKeyEvent } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
-import sinon from 'sinon';
 import findAll from '@ember/test-helpers/dom/find-all';
 import typeIn from '@ember/test-helpers/dom/type-in';
 import settled from '@ember/test-helpers/settled';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
   setupRenderingTest(hooks);

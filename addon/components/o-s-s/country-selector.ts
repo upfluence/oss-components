@@ -1,14 +1,15 @@
-import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+import { scheduleOnce } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
-import { scheduleOnce } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
+
 import type { IntlService } from 'ember-intl';
 
+import type { FeedbackMessage } from '@upfluence/oss-components/types';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
-import type { FeedbackMessage } from '@upfluence/oss-components/types';
 
 import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 

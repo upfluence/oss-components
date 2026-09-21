@@ -1,7 +1,7 @@
-import Component from '@glimmer/component';
+import { helper } from '@ember/component/helper';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
-import { helper } from '@ember/component/helper';
+import Component from '@glimmer/component';
 
 export const PROGRESS_BAR_SKINS = ['pending', 'attention', 'warning', 'success', 'danger'] as const;
 export type ProgressBarSkins = (typeof PROGRESS_BAR_SKINS)[number];

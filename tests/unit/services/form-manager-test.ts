@@ -1,6 +1,7 @@
-import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
+
 import type { Feedback } from '@upfluence/oss-components/services/form-manager';
 
 const FAKE_UUID = '1234-5678-9101-1121-3141-';

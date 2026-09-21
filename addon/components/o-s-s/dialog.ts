@@ -1,8 +1,9 @@
-import BaseModal, { type BaseModalArgs } from './private/base-modal';
-import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 
 import { isSafeString } from '@upfluence/oss-components/utils';
+
+import BaseModal, { type BaseModalArgs } from './private/base-modal';
 
 export type Skin = 'alert' | 'primary' | 'error';
 export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean; icon?: string };

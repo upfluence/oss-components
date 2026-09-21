@@ -1,7 +1,7 @@
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
-import { assert } from '@ember/debug';
 
 export type Mode = 'view' | 'edition';
 

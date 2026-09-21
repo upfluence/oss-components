@@ -1,9 +1,11 @@
-import { module, test } from 'qunit';
+import { settled } from '@ember/test-helpers';
+
 import { setupTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
+
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
 import type { WizardConfiguration } from '@upfluence/oss-components/services/wizard-manager';
-import sinon from 'sinon';
-import { settled } from '@ember/test-helpers';
 
 function createStep(key: string, opts: any = {}) {
   return { key, componentClass: {}, ...opts };

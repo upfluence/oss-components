@@ -1,5 +1,5 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import Component from '@glimmer/component';
 
 export type SizeType = 'sm' | 'md' | 'lg';
 export type SizeDefType = { [key in SizeType]: string };

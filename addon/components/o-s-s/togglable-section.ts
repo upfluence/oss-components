@@ -1,7 +1,8 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
+import Component from '@glimmer/component';
+
 import { isSafeString } from '@upfluence/oss-components/utils';
 
 interface TogglableSectionArgs {

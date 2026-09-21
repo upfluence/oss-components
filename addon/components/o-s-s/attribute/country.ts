@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
-import { type CountryData, countries } from '@upfluence/oss-components/utils/country-codes';
 import { tracked } from '@glimmer/tracking';
+
+import { type CountryData, countries } from '@upfluence/oss-components/utils/country-codes';
 
 interface OSSAttributeCountryArgs {
   countryCode?: string;

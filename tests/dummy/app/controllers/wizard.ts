@@ -1,12 +1,14 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
-import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
-import type { WizardConfiguration } from '@upfluence/oss-components/services/wizard-manager';
-import WizardExampleStep from '../components/wizard/example-step';
-import WizardExampleStepWithScroll from '../components/wizard/example-step-with-scroll';
-import OSSInputContainer from '@upfluence/oss-components/components/o-s-s/input-container';
 import { action } from '@ember/object';
 import { next } from '@ember/runloop';
+import { inject as service } from '@ember/service';
+
+import OSSInputContainer from '@upfluence/oss-components/components/o-s-s/input-container';
+import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
+import type { WizardConfiguration } from '@upfluence/oss-components/services/wizard-manager';
+
+import WizardExampleStep from '../components/wizard/example-step';
+import WizardExampleStepWithScroll from '../components/wizard/example-step-with-scroll';
 
 const WIZARD_CONFIG: WizardConfiguration = {
   options: {

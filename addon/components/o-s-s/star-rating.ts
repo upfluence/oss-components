@@ -1,6 +1,6 @@
-import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action, set } from '@ember/object';
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
 type StarType = 'solid' | 'regular';

@@ -1,5 +1,5 @@
-import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
+import { hbs } from 'ember-cli-htmlbars';
 
 const FAKE_DATA = [
   { superhero: 'Batman', characters: 'Bruce Wayne' },

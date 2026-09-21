@@ -1,7 +1,9 @@
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
+
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
 import type { OSSInputContainerArgs } from '../../input-container';
 import OSSInputContainer from '../../input-container';
 

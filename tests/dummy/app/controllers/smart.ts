@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
+
 import type { TagType } from '@upfluence/oss-components/components/o-s-s/smart/tag';
 import type { Keyword } from '@upfluence/oss-components/components/o-s-s/smart/tag-input';
 

@@ -1,7 +1,9 @@
+import { run } from '@ember/runloop';
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
-import { run } from '@ember/runloop';
+
 import type { IntlService } from 'ember-intl';
+
 import { isSafeString } from '@upfluence/oss-components/utils';
 
 enum ToastType {

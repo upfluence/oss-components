@@ -1,9 +1,11 @@
-import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
-import { SkinDefinition, type SkinType } from '@upfluence/oss-components/components/o-s-s/chip';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
+
+import { SkinDefinition, type SkinType } from '@upfluence/oss-components/components/o-s-s/chip';
 
 module('Integration | Component | o-s-s/chip', function (hooks) {
   setupRenderingTest(hooks);

@@ -5,8 +5,8 @@ import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 
 export const DEFAULT_PLACEMENT = 'bottom-start';
 export const DEFAULT_OFFSET = { mainAxis: 0, crossAxis: 0 };

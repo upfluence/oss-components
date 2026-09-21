@@ -1,8 +1,9 @@
-import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import { isTesting } from '@embroider/macros';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
 import type { FeedbackMessage } from '../input-container';
 
 export interface BaseDropdownArgs {

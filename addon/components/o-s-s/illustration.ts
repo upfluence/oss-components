@@ -1,6 +1,6 @@
+import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { isBlank } from '@ember/utils';
 
 export const extractCSSVars = (): string[] => {
   return Array.from(document.styleSheets)

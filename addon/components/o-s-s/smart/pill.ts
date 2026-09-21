@@ -1,7 +1,9 @@
-import { tracked } from '@glimmer/tracking';
-import OSSPill, { type OSSPillArgs } from '../pill';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
+import OSSPill, { type OSSPillArgs } from '../pill';
 
 export interface OSSSmartPillArgs extends OSSPillArgs {
   loading?: boolean;

@@ -1,5 +1,5 @@
-import type { htmlSafe } from '@ember/template';
 import { assert } from '@ember/debug';
+import type { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 
 import { isSafeString } from '@upfluence/oss-components/utils';

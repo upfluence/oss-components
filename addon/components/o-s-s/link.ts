@@ -1,8 +1,8 @@
-import Component from '@glimmer/component';
-import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
-import RouterService from '@ember/routing/router-service';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+import RouterService from '@ember/routing/router-service';
+import { inject as service } from '@ember/service';
+import Component from '@glimmer/component';
 
 export type LinkType = {
   href: string;

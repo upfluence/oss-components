@@ -1,4 +1,5 @@
 import { action } from '@ember/object';
+
 import { WizardBaseStep, type WizardBaseStepSignature } from '@upfluence/oss-components/components/wizard/base-step';
 
 interface WizardExampleStepWithScrollSignature extends WizardBaseStepSignature {}

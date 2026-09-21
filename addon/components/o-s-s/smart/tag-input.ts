@@ -1,9 +1,11 @@
 import { action } from '@ember/object';
-import { isBlank } from '@ember/utils';
 import { inject as service } from '@ember/service';
-import type { IntlService } from 'ember-intl';
+import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+
+import type { IntlService } from 'ember-intl';
+
 import type { TagType } from './tag';
 
 export type Keyword = {

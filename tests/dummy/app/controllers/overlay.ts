@@ -1,8 +1,8 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { htmlSafe } from '@ember/template';
 import type { SafeString } from '@ember/template/-private/handlebars';
+import { tracked } from '@glimmer/tracking';
 
 export default class Overlay extends Controller {
   @tracked showPopover: boolean = false;

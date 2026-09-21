@@ -1,8 +1,10 @@
-import OSSNumberInput, { type OSSNumberInputArgs } from '../number-input';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 import { isEmpty } from '@ember/utils';
+import { tracked } from '@glimmer/tracking';
+
+import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
+import OSSNumberInput, { type OSSNumberInputArgs } from '../number-input';
 
 export interface OSSSmartNumberInputArgs extends OSSNumberInputArgs {
   loading?: boolean;

@@ -1,4 +1,5 @@
 import { assert } from '@ember/debug';
+
 import OSSButton, { type OSSButtonArgs } from '../button';
 
 type SmartSkinType = 'primary' | 'secondary';

@@ -1,7 +1,9 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
 import type { OSSFeatureCardArgs } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
 module('Integration | Component | o-s-s/feature-cards-container', function (hooks) {

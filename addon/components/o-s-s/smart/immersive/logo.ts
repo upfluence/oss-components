@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 
 const FALLBACK_SVG_URL = '/@upfluence/oss-components/assets/images/picture-frame.svg';

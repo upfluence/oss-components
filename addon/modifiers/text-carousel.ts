@@ -1,5 +1,6 @@
-import Modifier from 'ember-modifier';
 import { registerDestructor } from '@ember/destroyable';
+
+import Modifier from 'ember-modifier';
 
 interface TextCarouselArgs {
   positional: [labels?: string[]];

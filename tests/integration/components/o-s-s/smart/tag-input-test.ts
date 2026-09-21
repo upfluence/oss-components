@@ -1,9 +1,10 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { render, triggerKeyEvent, fillIn } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
-import sinon from 'sinon';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/smart/tag-input', function (hooks) {
   setupRenderingTest(hooks);

@@ -1,8 +1,8 @@
-import Service from '@ember/service';
 import { set } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
 import { next } from '@ember/runloop';
+import Service from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 export type Step = {
   id: string;
