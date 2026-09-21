@@ -23,6 +23,7 @@
     {{#if this.showPreviousControl}}
       <div
         class="carousel-control {{concat 'carousel-control--left' (if this.showControlsOutside '-outside')}}"
+        data-control-name={{concat this.controlNamePrefix "-control-left"}}
         {{on "click" this.previousPage}}
         role="button"
       >
@@ -32,6 +33,7 @@
     {{#if this.showNextControl}}
       <div
         class="carousel-control {{concat 'carousel-control--right' (if this.showControlsOutside '-outside')}}"
+        data-control-name={{concat this.controlNamePrefix "-control-right"}}
         {{on "click" this.nextPage}}
         role="button"
       >

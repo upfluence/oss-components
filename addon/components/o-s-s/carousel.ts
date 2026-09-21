@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { isTesting } from '@embroider/macros';
 
 const DEFAULT_BUTTON_ICON: string = 'fa-circle';
+const DEFAULT_CONTROL_NAME_PREFIX: string = 'oss-carousel';
 const ANIMATION_TIME: number = isTesting() ? 5 : 500;
 
 interface OSSCarouselArgs {
@@ -27,6 +28,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   @tracked declare currentPageIndex: number;
   @tracked declare prevPageIndex: number;
   @tracked ongoingAnimation = false;
+  @tracked controlNamePrefix: string = DEFAULT_CONTROL_NAME_PREFIX;
 
   declare private autoPlayInterval: number;
 
@@ -61,6 +63,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   @action
   initialize(element: HTMLElement): void {
     this.element = element;
+    this.controlNamePrefix = element.getAttribute('data-control-name') || DEFAULT_CONTROL_NAME_PREFIX;
     this.pages = Array.from(this.element.querySelectorAll('.page'));
     if (this.pages.length === 0) {
       throw new Error('[component][OSS::Carousel] No pages found in the carousel');

@@ -94,7 +94,7 @@ export default {
     docs: {
       description: {
         component:
-          'An OSS-components implementation of a Carousel component.<br/>The `:page` named-block should be use to yield the pages that will be displayed.<br/>Each page requires a `page` class.'
+          'An OSS-components implementation of a Carousel component.<br/>The `:page` named-block should be use to yield the pages that will be displayed.<br/>Each page requires a `page` class.<br/>The `data-control-name` set on the component is used as the prefix of the controls ones: `{prefix}-control-left` and `{prefix}-control-right`.'
       }
     }
   }
