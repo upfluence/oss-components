@@ -4451,6 +4451,62 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         });
       });
     });
+    (0, _qunit.module)('data-control-name', hooks => {
+      hooks.beforeEach(function () {
+        this.showControls = true;
+      });
+      (0, _qunit.test)('By default, it prefixes the controls with the default control name', async function (assert) {
+        await renderCarousel();
+        assert.dom('.oss-carousel .carousel-control--left').hasAttribute('data-control-name', 'oss-carousel-control-left');
+        assert.dom('.oss-carousel .carousel-control--right').hasAttribute('data-control-name', 'oss-carousel-control-right');
+      });
+      (0, _qunit.test)('When a data-control-name is passed, the controls are prefixed with it', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Carousel @showControls={{true}} data-control-name="custom-carousel">
+                  <:pages>
+                    <div class="page">Page 1</div>
+                    <div class="page">Page 2</div>
+                    <div class="page">Page 3</div>
+                  </:pages>
+                </OSS::Carousel>
+              
+        */
+        {
+          "id": "OJe9jE59",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],[[24,\"data-control-name\",\"custom-carousel\"]],[[\"@showControls\"],[true]],[[\"pages\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n            \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n            \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/carousel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/carousel-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-carousel').hasAttribute('data-control-name', 'custom-carousel');
+        assert.dom('.oss-carousel .carousel-control--left').hasAttribute('data-control-name', 'custom-carousel-control-left');
+        assert.dom('.oss-carousel .carousel-control--right').hasAttribute('data-control-name', 'custom-carousel-control-right');
+      });
+      (0, _qunit.test)('When an empty data-control-name is passed, the controls fall back on the default prefix', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Carousel @showControls={{true}} data-control-name="">
+                  <:pages>
+                    <div class="page">Page 1</div>
+                    <div class="page">Page 2</div>
+                    <div class="page">Page 3</div>
+                  </:pages>
+                </OSS::Carousel>
+              
+        */
+        {
+          "id": "hzK6BMUv",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],[[24,\"data-control-name\",\"\"]],[[\"@showControls\"],[true]],[[\"pages\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n            \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n            \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/carousel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/carousel-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-carousel').hasAttribute('data-control-name', '');
+        assert.dom('.oss-carousel .carousel-control--left').hasAttribute('data-control-name', 'oss-carousel-control-left');
+        assert.dom('.oss-carousel .carousel-control--right').hasAttribute('data-control-name', 'oss-carousel-control-right');
+      });
+    });
     (0, _qunit.module)('Indicator button icon', () => {
       (0, _qunit.test)('By default, it renders the default button icon', async function (assert) {
         await renderCarousel();

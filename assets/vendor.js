@@ -75003,7 +75003,7 @@ require('@ember/-internals/bootstrap')
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -75038,6 +75038,7 @@ require('@ember/-internals/bootstrap')
       {{#if this.showPreviousControl}}
         <div
           class="carousel-control {{concat 'carousel-control--left' (if this.showControlsOutside '-outside')}}"
+          data-control-name={{concat this.controlNamePrefix "-control-left"}}
           {{on "click" this.previousPage}}
           role="button"
         >
@@ -75047,6 +75048,7 @@ require('@ember/-internals/bootstrap')
       {{#if this.showNextControl}}
         <div
           class="carousel-control {{concat 'carousel-control--right' (if this.showControlsOutside '-outside')}}"
+          data-control-name={{concat this.controlNamePrefix "-control-right"}}
           {{on "click" this.nextPage}}
           role="button"
         >
@@ -75057,12 +75059,13 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "pTYtPGMq",
-    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[8,[39,7],[[16,0,[29,[[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]]],[[\"@icon\",\"@style\"],[[30,0,[\"buttonIcon\"]],\"solid\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"page-container\"],[12],[1,\"\\n    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,9],[\"carousel-control--left\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@icon\"],[\"fa-arrow-left\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,9],[\"carousel-control--right\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@icon\"],[\"fa-arrow-right\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"o-s-s/icon\",\"yield\",\"concat\"]]",
+    "id": "4lsMAW3W",
+    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[8,[39,7],[[16,0,[29,[[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]]],[[\"@icon\",\"@style\"],[[30,0,[\"buttonIcon\"]],\"solid\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"page-container\"],[12],[1,\"\\n    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,9],[\"carousel-control--left\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[16,\"data-control-name\",[28,[37,9],[[30,0,[\"controlNamePrefix\"]],\"-control-left\"],null]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@icon\"],[\"fa-arrow-left\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,9],[\"carousel-control--right\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[16,\"data-control-name\",[28,[37,9],[[30,0,[\"controlNamePrefix\"]],\"-control-right\"],null]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@icon\"],[\"fa-arrow-right\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"o-s-s/icon\",\"yield\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/carousel.hbs",
     "isStrictMode": false
   });
   const DEFAULT_BUTTON_ICON = 'fa-circle';
+  const DEFAULT_CONTROL_NAME_PREFIX = 'oss-carousel';
   const ANIMATION_TIME = (0, _runtime.isTesting)() ? 5 : 500;
   let OSSCarousel = _exports.default = (_class = class OSSCarousel extends _component2.default {
     constructor() {
@@ -75072,6 +75075,7 @@ require('@ember/-internals/bootstrap')
       _initializerDefineProperty(this, "currentPageIndex", _descriptor3, this);
       _initializerDefineProperty(this, "prevPageIndex", _descriptor4, this);
       _initializerDefineProperty(this, "ongoingAnimation", _descriptor5, this);
+      _initializerDefineProperty(this, "controlNamePrefix", _descriptor6, this);
       _defineProperty(this, "slideAnimationHandler", (page, executeAfterAnimation) => {
         const classesToCleanup = ['animate--slide-from-left', 'animate--slide-from-right', 'animate--slide-to-left', 'animate--slide-to-right'];
         this.pages.forEach(p => p.classList.remove(...classesToCleanup));
@@ -75118,6 +75122,7 @@ require('@ember/-internals/bootstrap')
     }
     initialize(element) {
       this.element = element;
+      this.controlNamePrefix = element.getAttribute('data-control-name') || DEFAULT_CONTROL_NAME_PREFIX;
       this.pages = Array.from(this.element.querySelectorAll('.page'));
       if (this.pages.length === 0) {
         throw new Error('[component][OSS::Carousel] No pages found in the carousel');
@@ -75201,6 +75206,13 @@ require('@ember/-internals/bootstrap')
     writable: true,
     initializer: function () {
       return false;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "controlNamePrefix", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return DEFAULT_CONTROL_NAME_PREFIX;
     }
   }), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "previousPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "previousPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "nextPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "nextPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "displayPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "displayPage"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCarousel);
