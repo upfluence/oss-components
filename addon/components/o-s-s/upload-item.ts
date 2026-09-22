@@ -13,7 +13,7 @@ import {
 } from '@upfluence/oss-components/types/uploader';
 import { humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';
 
-interface OSSUploadItemArgs {
+export interface OSSUploadItemArgs {
   uploader: Uploader;
   file: File | FileArtifact;
   rules: FileValidator[];
