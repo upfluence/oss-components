@@ -72,16 +72,13 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
     this.optimisticRating = newRating;
     this.hoverIndex = null;
     this.isSubmitting = true;
-    try {
-      await this.args.onChange?.(newRating);
-    } finally {
+    await Promise.resolve(this.args.onChange?.(newRating)).finally(() => {
       this.isSubmitting = false;
-    }
+    });
   }
 
   @action
   onMouseEnter(index: number): void {
-    // Ignore hover previews while a rating change is being persisted, so the clicked value stays displayed.
     if (this.args.onChange && !this.isSubmitting) {
       this.hoverIndex = index;
     }
@@ -89,7 +86,6 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
 
   @action
   onMouseLeave(): void {
-    // Suspend hover updates while a rating change is being persisted, so the clicked value stays displayed.
     if (this.isSubmitting) {
       return;
     }
