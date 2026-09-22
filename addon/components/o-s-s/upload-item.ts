@@ -34,7 +34,7 @@ const FA_ICON_PER_TYPE: { [key: string]: string } = {
 
 const DEFAULT_FA_ICON = 'far fa-file-alt';
 
-export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
+export default class OSSUploadItem<T extends OSSUploadItemArgs> extends Component<T> {
   @tracked fileUrl: string = '';
   @tracked uploading: boolean = false;
   @tracked uploadProgress: number = 0;
