@@ -83151,7 +83151,7 @@ require('@ember/-internals/bootstrap')
     value: true
   });
   _exports.default = _exports.StarColor = void 0;
-  var _class, _descriptor;
+  var _class, _descriptor, _descriptor2, _descriptor3;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -83161,22 +83161,21 @@ require('@ember/-internals/bootstrap')
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="star-rating fx-row">
-    {{#each this.stars as |star index|}}
+    <div class="star-rating fx-row" {{on "mouseleave" this.onMouseLeave}}>
+    {{#each this.stars key="@index" as |star index|}}
       <OSS::Icon
         class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
         @style={{star.type}}
         @icon="fa-star"
         {{on "click" (fn this.setRating index)}}
         {{on "mouseenter" (fn this.onMouseEnter index)}}
-        {{on "mouseleave" this.onMouseLeave}}
       />
     {{/each}}
   </div>
   */
   {
-    "id": "wcqTbuv3",
-    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"onMouseLeave\"]]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
+    "id": "uIBIfbX0",
+    "block": "[[[11,0],[24,0,\"star-rating fx-row\"],[4,[38,0],[\"mouseleave\",[30,0,[\"onMouseLeave\"]]],null],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"stars\"]]],null]],null],\"@index\",[[[1,\"    \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,0],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,0],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"on\",\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/star-rating.hbs",
     "isStrictMode": false
   });
@@ -83198,8 +83197,9 @@ require('@ember/-internals/bootstrap')
   let OSSStarRating = _exports.default = (_class = class OSSStarRating extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      _initializerDefineProperty(this, "stars", _descriptor, this);
-      this.stars = this.generateStarsArray();
+      _initializerDefineProperty(this, "optimisticRating", _descriptor, this);
+      _initializerDefineProperty(this, "hoverIndex", _descriptor2, this);
+      _initializerDefineProperty(this, "isSubmitting", _descriptor3, this);
       (true && !(typeof args.rating === 'number') && (0, _debug.assert)(`[component][OSS::StarRating] @rating argument is mandatory and must be a number`, typeof args.rating === 'number'));
       (true && !(typeof args.totalStars === 'number') && (0, _debug.assert)(`[component][OSS::StarRating] @totalStars argument is mandatory and must be a number`, typeof args.totalStars === 'number'));
     }
@@ -83209,35 +83209,57 @@ require('@ember/-internals/bootstrap')
     get passiveColorClass() {
       return `color-${this.args.passiveColor || 'grey'}`;
     }
-    setRating(value, event) {
-      event.stopPropagation();
-      this.args.onChange?.(value + 1);
-    }
-    onMouseEnter(index) {
-      if (this.args.onChange && index + 1 !== this.args.rating) {
-        this.stars.forEach((star, i) => {
-          (0, _object.set)(star, 'type', i <= index ? 'solid' : 'regular');
-        });
-      }
-    }
-    onMouseLeave() {
-      this.stars = this.generateStarsArray();
-    }
-    generateStarsArray() {
+    get stars() {
+      const activeCount = this.hoverIndex !== null ? this.hoverIndex + 1 : this.optimisticRating ?? this.args.rating;
       const result = [];
       for (let i = 0; i < this.args.totalStars; i++) {
         result.push({
-          type: i < this.args.rating ? 'solid' : 'regular'
+          type: i < activeCount ? 'solid' : 'regular'
         });
       }
       return result;
     }
-  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "stars", [_tracking.tracked], {
+    async setRating(value, event) {
+      event.stopPropagation();
+      const newRating = value + 1;
+      this.optimisticRating = newRating;
+      this.hoverIndex = null;
+      this.isSubmitting = true;
+      await Promise.resolve(this.args.onChange?.(newRating)).finally(() => {
+        this.isSubmitting = false;
+      });
+    }
+    onMouseEnter(index) {
+      if (this.args.onChange && !this.isSubmitting) {
+        this.hoverIndex = index;
+      }
+    }
+    onMouseLeave() {
+      if (this.isSubmitting) {
+        return;
+      }
+      this.hoverIndex = null;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "optimisticRating", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
-      return [];
+      return null;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "hoverIndex", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "isSubmitting", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
     }
   }), _applyDecoratedDescriptor(_class.prototype, "setRating", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setRating"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseLeave"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSStarRating);
