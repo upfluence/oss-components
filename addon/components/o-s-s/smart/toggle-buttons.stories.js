@@ -10,7 +10,7 @@ export default {
       description: 'An array of toggles passed to the component',
       table: {
         type: {
-          summary: '{value: string, label: string}[]'
+          summary: '{value: string, label: string, icon?: string, image?: string}[]'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -81,3 +81,12 @@ const DefaultUsageTemplate = (args) => ({
 
 export const Default = DefaultUsageTemplate.bind({});
 Default.args = defaultArgs;
+
+export const WithImage = DefaultUsageTemplate.bind({});
+WithImage.args = {
+  ...defaultArgs,
+  toggles: [
+    { value: 'categories', label: 'Categories', icon: 'fas fa-tags' },
+    { value: 'products', label: 'Products', image: '/@upfluence/oss-components/assets/images/no-image.svg' }
+  ]
+};

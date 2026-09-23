@@ -6,6 +6,7 @@ export type Toggle = {
   value: string;
   label: string;
   icon?: string;
+  image?: string;
 };
 
 export interface OSSToggleButtonsArgs {

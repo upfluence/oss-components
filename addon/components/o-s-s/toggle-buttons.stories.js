@@ -10,7 +10,7 @@ export default {
       description: 'An array of toggles passed to the component',
       table: {
         type: {
-          summary: '{value: string, label: string}[]'
+          summary: '{value: string, label: string, icon?: string, image?: string}[]'
         },
         defaultValue: { summary: 'undefined' }
       },

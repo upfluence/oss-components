@@ -55,6 +55,52 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
     assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
   });
 
+  test('the toggle image is displayed when provided', async function (assert) {
+    this.toggles = [
+      {
+        value: 'first',
+        label: 'First'
+      },
+      {
+        value: 'second',
+        label: 'Second',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }
+    ];
+
+    await render(
+      hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-smart-toggle-buttons-btn:first-child img').doesNotExist();
+    assert
+      .dom('.oss-smart-toggle-buttons-btn:last-child img')
+      .hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
+  });
+
+  test('the toggle icon takes precedence over the toggle image', async function (assert) {
+    this.toggles = [
+      {
+        value: 'first',
+        label: 'First'
+      },
+      {
+        value: 'second',
+        label: 'Second',
+        icon: 'far fa-2',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }
+    ];
+
+    await render(
+      hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').exists();
+    assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+    assert.dom('.oss-smart-toggle-buttons-btn:last-child img').doesNotExist();
+  });
+
   module('If @selectedToggle is passed', function () {
     test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
       this.selectedToggle = 'second';
