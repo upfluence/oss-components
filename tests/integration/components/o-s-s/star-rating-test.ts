@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, setupOnerror } from '@ember/test-helpers';
+import { click, render, setupOnerror, triggerEvent } from '@ember/test-helpers';
 import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
 import sinon from 'sinon';
 
@@ -42,6 +42,16 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
                                       @onChange={{this.onChange}} />`);
     await click('.fa-star:nth-of-type(4)');
     assert.true(this.onChange.calledOnceWithExactly(4));
+  });
+
+  test('When the mouse leaves right after a click, the clicked rating is kept even if @rating has not updated yet', async function (assert) {
+    this.onChange = sinon.stub();
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @onChange={{this.onChange}} />`);
+
+    await click('.fa-star:nth-of-type(6)');
+    await triggerEvent('.fa-star:nth-of-type(6)', 'mouseleave');
+
+    assert.dom('.fas.fa-star').exists({ count: 6 });
   });
 
   module('Error management', function () {
