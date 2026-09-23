@@ -45,6 +45,16 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
     assert.dom('.oss-smart-toggle-buttons-container').hasClass('oss-smart-toggle-buttons-container--disabled');
   });
 
+  test('the toggle label is displayed when neither an icon nor an image is provided', async function (assert) {
+    await render(
+      hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-smart-toggle-buttons-btn:first-child').hasText('First');
+    assert.dom('.oss-smart-toggle-buttons-btn:first-child i').doesNotExist();
+    assert.dom('.oss-smart-toggle-buttons-btn:first-child img').doesNotExist();
+  });
+
   test('the toggle icon is displayed when provided', async function (assert) {
     await render(
       hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`

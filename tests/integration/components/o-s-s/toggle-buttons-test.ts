@@ -45,6 +45,16 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
     assert.dom('.oss-toggle-buttons-container').hasClass('oss-toggle-buttons-container--disabled');
   });
 
+  test('the toggle label is displayed when neither an icon nor an image is provided', async function (assert) {
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-toggle-buttons-btn:first-child').hasText('First');
+    assert.dom('.oss-toggle-buttons-btn:first-child i').doesNotExist();
+    assert.dom('.oss-toggle-buttons-btn:first-child img').doesNotExist();
+  });
+
   test('the toggle icon is displayed when provided', async function (assert) {
     await render(
       hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
