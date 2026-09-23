@@ -1,6 +1,7 @@
+import { action } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 
 import {
   type default as Uploader,
@@ -11,9 +12,8 @@ import {
   type UploadRequest
 } from '@upfluence/oss-components/types/uploader';
 import { humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';
-import { htmlSafe } from '@ember/template';
 
-interface OSSUploadItemArgs {
+export interface OSSUploadItemArgs {
   uploader: Uploader;
   file: File | FileArtifact;
   rules: FileValidator[];
@@ -34,7 +34,7 @@ const FA_ICON_PER_TYPE: { [key: string]: string } = {
 
 const DEFAULT_FA_ICON = 'far fa-file-alt';
 
-export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
+export default class OSSUploadItem<T extends OSSUploadItemArgs> extends Component<T> {
   @tracked fileUrl: string = '';
   @tracked uploading: boolean = false;
   @tracked uploadProgress: number = 0;
@@ -121,6 +121,11 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
       this.uploading = true;
       this.args.uploader.upload(this.request, this.args.rules);
     }
+  }
+
+  @action
+  viewItem(url: string): void {
+    window.open(url, '_blank');
   }
 
   private _extractFileTypeCategory(): string | null {

@@ -50,7 +50,7 @@
             @icon="far fa-eye"
             @square={{true}}
             data-control-name="upload-item-view-button"
-            {{on "click" (redirect-to url=this.fileUrl target="_blank")}}
+            {{on "click" (fn this.viewItem this.fileUrl)}}
             {{enable-tooltip title=(t "oss-components.upload-area.tooltips.view")}}
           />
         {{/if}}
