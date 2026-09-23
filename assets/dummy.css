@@ -12318,7 +12318,7 @@ a.upf-btn--sm {
 .smart-immersive-currency-input-container .smart-immersive-currency-input .currency-selector {
   gap: var(--spacing-px-6);
   padding: 10px;
-  width: 50px;
+  min-width: 50px;
   height: 100%;
   border-right: none;
   color: var(--color-gray-500);
