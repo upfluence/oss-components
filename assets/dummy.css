@@ -14262,6 +14262,12 @@ a.upf-btn--sm {
   padding: var(--spacing-px-3);
   transition: background-color 300ms ease-in-out;
 }
+.oss-toggle-buttons-container .oss-toggle-buttons-btn img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 14px;
+}
 .oss-toggle-buttons-container .oss-toggle-buttons-btn--selected {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-xs);
@@ -14291,6 +14297,12 @@ a.upf-btn--sm {
   align-items: center;
   padding: var(--spacing-px-6) var(--spacing-px-12);
   transition: background-color 300ms ease-in-out;
+}
+.oss-smart-toggle-buttons-container .oss-smart-toggle-buttons-btn img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 14px;
 }
 .oss-smart-toggle-buttons-container .oss-smart-toggle-buttons-btn--selected {
   background-color: var(--color-primary-400);

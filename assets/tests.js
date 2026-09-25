@@ -22650,6 +22650,21 @@ define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["q
       assert.dom('.oss-smart-toggle-buttons-container').exists();
       assert.dom('.oss-smart-toggle-buttons-container').hasClass('oss-smart-toggle-buttons-container--disabled');
     });
+    (0, _qunit.test)('the toggle label is displayed when neither an icon nor an image is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "cczenmKS",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-toggle-buttons-btn:first-child').hasText('First');
+      assert.dom('.oss-smart-toggle-buttons-btn:first-child i').doesNotExist();
+      assert.dom('.oss-smart-toggle-buttons-btn:first-child img').doesNotExist();
+    });
     (0, _qunit.test)('the toggle icon is displayed when provided', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -22664,6 +22679,52 @@ define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["q
       assert.dom('.oss-smart-toggle-buttons-btn:first-child i.far').doesNotExist();
       assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').exists();
       assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+    });
+    (0, _qunit.test)('the toggle image is displayed when provided', async function (assert) {
+      this.toggles = [{
+        value: 'first',
+        label: 'First'
+      }, {
+        value: 'second',
+        label: 'Second',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "cczenmKS",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-toggle-buttons-btn:first-child img').doesNotExist();
+      assert.dom('.oss-smart-toggle-buttons-btn:last-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
+    });
+    (0, _qunit.test)('the toggle icon takes precedence over the toggle image', async function (assert) {
+      this.toggles = [{
+        value: 'first',
+        label: 'First'
+      }, {
+        value: 'second',
+        label: 'Second',
+        icon: 'far fa-2',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "cczenmKS",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').exists();
+      assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+      assert.dom('.oss-smart-toggle-buttons-btn:last-child img').doesNotExist();
     });
     (0, _qunit.module)('If @selectedToggle is passed', function () {
       (0, _qunit.test)('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
@@ -25033,6 +25094,21 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
       assert.dom('.oss-toggle-buttons-container').exists();
       assert.dom('.oss-toggle-buttons-container').hasClass('oss-toggle-buttons-container--disabled');
     });
+    (0, _qunit.test)('the toggle label is displayed when neither an icon nor an image is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "4zYkewO0",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-toggle-buttons-btn:first-child').hasText('First');
+      assert.dom('.oss-toggle-buttons-btn:first-child i').doesNotExist();
+      assert.dom('.oss-toggle-buttons-btn:first-child img').doesNotExist();
+    });
     (0, _qunit.test)('the toggle icon is displayed when provided', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -25047,6 +25123,52 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
       assert.dom('.oss-toggle-buttons-btn:first-child i.far').doesNotExist();
       assert.dom('.oss-toggle-buttons-btn:last-child i.far').exists();
       assert.dom('.oss-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+    });
+    (0, _qunit.test)('the toggle image is displayed when provided', async function (assert) {
+      this.toggles = [{
+        value: 'first',
+        label: 'First'
+      }, {
+        value: 'second',
+        label: 'Second',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "4zYkewO0",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-toggle-buttons-btn:first-child img').doesNotExist();
+      assert.dom('.oss-toggle-buttons-btn:last-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
+    });
+    (0, _qunit.test)('the toggle icon takes precedence over the toggle image', async function (assert) {
+      this.toggles = [{
+        value: 'first',
+        label: 'First'
+      }, {
+        value: 'second',
+        label: 'Second',
+        icon: 'far fa-2',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "4zYkewO0",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-toggle-buttons-btn:last-child i.far').exists();
+      assert.dom('.oss-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+      assert.dom('.oss-toggle-buttons-btn:last-child img').doesNotExist();
     });
     (0, _qunit.module)('If @selectedToggle is passed', function () {
       (0, _qunit.test)('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {

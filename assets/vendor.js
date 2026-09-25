@@ -82891,6 +82891,8 @@ require('@ember/-internals/bootstrap')
       >
         {{#if toggle.icon}}
           <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />
+        {{else if toggle.image}}
+          <img src={{toggle.image}} role="presentation" alt="" />
         {{/if}}
         {{toggle.label}}
       </div>
@@ -82898,8 +82900,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "IWcgGGdS",
-    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-smart-toggle-buttons-container \",[52,[30,1],\"oss-smart-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-smart-toggle-buttons-btn\\n        \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-smart-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "Ww2TKghF",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-smart-toggle-buttons-container \",[52,[30,1],\"oss-smart-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-smart-toggle-buttons-btn\\n        \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-smart-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,4,[\"image\"]],[[[1,\"        \"],[10,\"img\"],[15,\"src\",[30,4,[\"image\"]]],[14,\"role\",\"presentation\"],[14,\"alt\",\"\"],[12],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/smart/toggle-buttons.hbs",
     "isStrictMode": false
   });
@@ -83688,6 +83690,8 @@ require('@ember/-internals/bootstrap')
       >
         {{#if toggle.icon}}
           <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />
+        {{else if toggle.image}}
+          <img src={{toggle.image}} role="presentation" alt="" />
         {{/if}}
         {{toggle.label}}
       </div>
@@ -83695,8 +83699,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "HK5Z4sBm",
-    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-toggle-buttons-container \",[52,[30,1],\"oss-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[16,\"data-control-name\",[28,[37,0],[\"oss-toggle-button-option-\",[30,4,[\"value\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "uqZ+xmzu",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-toggle-buttons-container \",[52,[30,1],\"oss-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[16,\"data-control-name\",[28,[37,0],[\"oss-toggle-button-option-\",[30,4,[\"value\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,4,[\"image\"]],[[[1,\"        \"],[10,\"img\"],[15,\"src\",[30,4,[\"image\"]]],[14,\"role\",\"presentation\"],[14,\"alt\",\"\"],[12],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/toggle-buttons.hbs",
     "isStrictMode": false
   });
