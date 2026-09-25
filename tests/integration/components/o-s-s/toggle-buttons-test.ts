@@ -45,6 +45,16 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
     assert.dom('.oss-toggle-buttons-container').hasClass('oss-toggle-buttons-container--disabled');
   });
 
+  test('the toggle label is displayed when neither an icon nor an image is provided', async function (assert) {
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-toggle-buttons-btn:first-child').hasText('First');
+    assert.dom('.oss-toggle-buttons-btn:first-child i').doesNotExist();
+    assert.dom('.oss-toggle-buttons-btn:first-child img').doesNotExist();
+  });
+
   test('the toggle icon is displayed when provided', async function (assert) {
     await render(
       hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
@@ -53,6 +63,52 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
     assert.dom('.oss-toggle-buttons-btn:first-child i.far').doesNotExist();
     assert.dom('.oss-toggle-buttons-btn:last-child i.far').exists();
     assert.dom('.oss-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+  });
+
+  test('the toggle image is displayed when provided', async function (assert) {
+    this.toggles = [
+      {
+        value: 'first',
+        label: 'First'
+      },
+      {
+        value: 'second',
+        label: 'Second',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }
+    ];
+
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-toggle-buttons-btn:first-child img').doesNotExist();
+    assert
+      .dom('.oss-toggle-buttons-btn:last-child img')
+      .hasAttribute('src', '/@upfluence/oss-components/assets/images/no-image.svg');
+  });
+
+  test('the toggle icon takes precedence over the toggle image', async function (assert) {
+    this.toggles = [
+      {
+        value: 'first',
+        label: 'First'
+      },
+      {
+        value: 'second',
+        label: 'Second',
+        icon: 'far fa-2',
+        image: '/@upfluence/oss-components/assets/images/no-image.svg'
+      }
+    ];
+
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-toggle-buttons-btn:last-child i.far').exists();
+    assert.dom('.oss-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+    assert.dom('.oss-toggle-buttons-btn:last-child img').doesNotExist();
   });
 
   module('If @selectedToggle is passed', function () {

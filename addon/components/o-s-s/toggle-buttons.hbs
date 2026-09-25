@@ -11,6 +11,8 @@
     >
       {{#if toggle.icon}}
         <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />
+      {{else if toggle.image}}
+        <img src={{toggle.image}} role="presentation" alt="" />
       {{/if}}
       {{toggle.label}}
     </div>
