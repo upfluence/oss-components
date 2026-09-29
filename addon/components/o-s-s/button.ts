@@ -6,7 +6,9 @@ import { action } from '@ember/object';
 export type SkinType =
   | 'default'
   | 'primary'
+  | 'primary-smart'
   | 'secondary'
+  | 'secondary-smart'
   | 'destructive'
   | 'success'
   | 'alert'
@@ -39,7 +41,9 @@ type LoadingOptions = { showLabel?: boolean };
 const SkinDefinition: SkinDefType = {
   default: 'default',
   primary: 'primary',
+  'primary-smart': 'primary-smart',
   secondary: 'secondary',
+  'secondary-smart': 'secondary-smart',
   destructive: 'destructive',
   success: 'success',
   alert: 'alert',
