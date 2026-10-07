@@ -1,8 +1,18 @@
+import {
+  render,
+  setupOnerror,
+  click,
+  findAll,
+  typeIn,
+  fillIn,
+  triggerKeyEvent,
+  triggerEvent
+} from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { render, setupOnerror, click, findAll, typeIn, triggerKeyEvent, triggerEvent } from '@ember/test-helpers';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/smart/immersive/currency-input', function (hooks) {
@@ -58,6 +68,20 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       await click('.currency-selector');
       await click('.upf-infinite-select__item:nth-child(5)');
       assert.true(this.onChange.calledOnceWith('AUD', ''));
+    });
+
+    test('Selecting a new currency in the Currency selector with pending amount change, triggers the onChange method with the correct amount', async function (assert) {
+      this.currency = '';
+      this.value = '';
+      await render(
+        hbs`<OSS::Smart::Immersive::CurrencyInput @currency={{this.currency}} @value={{this.value}} @onChange={{this.onChange}} />`
+      );
+
+      this.set('value', '12345');
+
+      await click('.currency-selector');
+      await click('.upf-infinite-select__item:nth-child(5)');
+      assert.true(this.onChange.calledOnceWith('AUD', '12345'));
     });
 
     test('Typing in the search input filters the results', async function (assert) {

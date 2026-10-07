@@ -1,13 +1,15 @@
 import { assert } from '@ember/debug';
-import OSSCurrencyInput, { type OSSCurrencyInputArgs } from '../../currency-input';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
-import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
-import { isEmpty } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
-import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { scheduleOnce } from '@ember/runloop';
+import { isEmpty } from '@ember/utils';
 import { isTesting } from '@embroider/macros';
+import { tracked } from '@glimmer/tracking';
+
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+
+import OSSCurrencyInput, { type Currency, type OSSCurrencyInputArgs } from '../../currency-input';
 
 interface OSSSmartImmersiveCurrencyInputArgs extends OSSCurrencyInputArgs {
   loading: boolean;
@@ -62,6 +64,13 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
     if (this.element && this.args.loading === false && !isEmpty(this.args.value)) {
       runSmartGradientAnimation(this.element);
     }
+  }
+
+  @action
+  onSelect(value: Currency, _selected: boolean, event?: PointerEvent): void {
+    event?.stopPropagation();
+    this.args.onChange(value.code, this.args.value);
+    this.hideCurrencySelector();
   }
 
   @action
