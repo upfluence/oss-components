@@ -1,13 +1,4 @@
-import {
-  render,
-  setupOnerror,
-  click,
-  findAll,
-  typeIn,
-  fillIn,
-  triggerKeyEvent,
-  triggerEvent
-} from '@ember/test-helpers';
+import { render, setupOnerror, click, findAll, typeIn, triggerKeyEvent, triggerEvent } from '@ember/test-helpers';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
