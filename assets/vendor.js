@@ -6,6 +6,13 @@ window.EmberENV = (function(EmberENV, extra) {
   return EmberENV;
 })(window.EmberENV || {}, {"FEATURES":{},"EXTEND_PROTOTYPES":{"Date":false},"_APPLICATION_TEMPLATE_WRAPPER":false,"_DEFAULT_ASYNC_OBSERVERS":true,"_JQUERY_INTEGRATION":false,"_TEMPLATE_ONLY_GLIMMER_COMPONENTS":true});
 
+// used to determine if the application should be booted immediately when `app-name.js` is evaluated
+// when `runningTests` the `app-name.js` file will **not** import the applications `app/app.js` and
+// call `Application.create(...)` on it. Additionally, applications can opt-out of this behavior by
+// setting `autoRun` to `false` in their `ember-cli-build.js`
+//
+// The default `test-support.js` file will set this to `true` when it runs (so that Application.create()
+// is not ran when running tests).
 var runningTests = false;
 
 
@@ -81623,7 +81630,7 @@ require('@ember/-internals/bootstrap')
   _exports.default = OSSSmartFeedback;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartFeedback);
 });
-;define("@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input", ["exports", "@ember/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/currency-input", "@ember/object", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/object/internals", "@upfluence/oss-components/utils/attach-dropdown", "@ember/runloop", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _debug, _currencyInput, _object, _tracking, _runSmartGradientAnimation, _utils, _internals, _attachDropdown, _runloop, _templateFactory, _runtime) {
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/object/internals", "@ember/runloop", "@ember/utils", "@glimmer/tracking", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@upfluence/oss-components/components/o-s-s/currency-input", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _debug, _object, _internals, _runloop, _utils, _tracking, _attachDropdown, _runSmartGradientAnimation, _currencyInput, _templateFactory, _runtime) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -81631,7 +81638,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@upfluence/oss-components/components/o-s-s/currency-input",0,"@ember/object",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/object/internals",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/runloop",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/object/internals",0,"@ember/runloop",0,"@ember/utils",0,"@embroider/macros",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@upfluence/oss-components/components/o-s-s/currency-input",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -81758,6 +81765,11 @@ require('@ember/-internals/bootstrap')
         (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
       }
     }
+    onSelect(value, _selected, event) {
+      event?.stopPropagation();
+      this.args.onChange(value.code, this.args.value);
+      this.hideCurrencySelector();
+    }
     toggleCurrencySelector(e) {
       super.toggleCurrencySelector(e);
       (0, _runloop.scheduleOnce)('afterRender', this, this.setupDropdownAutoplacement);
@@ -81782,7 +81794,7 @@ require('@ember/-internals/bootstrap')
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartImmersiveCurrencyInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/smart/immersive/input", ["exports", "@ember/component", "@ember/object", "@ember/utils", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_exports, _component, _object, _utils, _tracking, _runSmartGradientAnimation, _inputContainer, _templateFactory) {

@@ -20018,10 +20018,10 @@ define("dummy/tests/integration/components/o-s-s/smart/feedback-test", ["qunit",
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test", ["@ember/test-helpers", "ember-intl/test-support", "ember-qunit", "qunit", "sinon", "@ember/template-factory"], function (_testHelpers, _testSupport, _emberQunit, _qunit, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"sinon"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"ember-qunit",0,"qunit",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/smart/immersive/currency-input', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
@@ -20124,6 +20124,24 @@ define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-
         await (0, _testHelpers.click)('.currency-selector');
         await (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(5)');
         assert.true(this.onChange.calledOnceWith('AUD', ''));
+      });
+      (0, _qunit.test)('Selecting a new currency in the Currency selector with pending amount change, triggers the onChange method with the correct amount', async function (assert) {
+        this.currency = '';
+        this.value = '';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency={{this.currency}} @value={{this.value}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "WymJrcLT",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[[30,0,[\"currency\"]],[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('value', '12345');
+        await (0, _testHelpers.click)('.currency-selector');
+        await (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(5)');
+        assert.true(this.onChange.calledOnceWith('AUD', '12345'));
       });
       (0, _qunit.test)('Typing in the search input filters the results', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
