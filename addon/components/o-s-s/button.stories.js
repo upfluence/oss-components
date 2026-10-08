@@ -3,7 +3,9 @@ import { hbs } from 'ember-cli-htmlbars';
 const SkinTypes = [
   'default',
   'primary',
+  'primary-smart',
   'secondary',
+  'secondary-smart',
   'destructive',
   'alert',
   'success',
