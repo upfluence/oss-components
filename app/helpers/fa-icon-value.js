@@ -1,1 +1,1 @@
-export { default, faIconValue } from '@upfluence/oss-components/helpers/fa-icon-value';
+export { default } from '@upfluence/oss-components/helpers/fa-icon-value';
