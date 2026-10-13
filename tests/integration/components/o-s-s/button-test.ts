@@ -77,10 +77,22 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn').hasClass('upf-btn--primary');
     });
 
+    test('when using primary-smart skin', async function (assert) {
+      await render(hbs`<OSS::Button @skin="primary-smart" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--primary-smart');
+    });
+
     test('when using secondary skin', async function (assert) {
       await render(hbs`<OSS::Button @skin="secondary" @label="Test" />`);
 
       assert.dom('.upf-btn').hasClass('upf-btn--secondary');
+    });
+
+    test('when using secondary-smart skin', async function (assert) {
+      await render(hbs`<OSS::Button @skin="secondary-smart" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--secondary-smart');
     });
 
     test('when using destructive skin', async function (assert) {
