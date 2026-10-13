@@ -3984,6 +3984,19 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         }));
         assert.dom('.upf-btn').hasClass('upf-btn--primary');
       });
+      (0, _qunit.test)('when using primary-smart skin', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Button @skin="primary-smart" @label="Test" />
+        */
+        {
+          "id": "Kp5UL63q",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@label\"],[\"primary-smart\",\"Test\"]],null]],[],false,[\"o-s-s/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-btn').hasClass('upf-btn--primary-smart');
+      });
       (0, _qunit.test)('when using secondary skin', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -3996,6 +4009,19 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
           "isStrictMode": false
         }));
         assert.dom('.upf-btn').hasClass('upf-btn--secondary');
+      });
+      (0, _qunit.test)('when using secondary-smart skin', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Button @skin="secondary-smart" @label="Test" />
+        */
+        {
+          "id": "z+QmzwgG",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@label\"],[\"secondary-smart\",\"Test\"]],null]],[],false,[\"o-s-s/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-btn').hasClass('upf-btn--secondary-smart');
       });
       (0, _qunit.test)('when using destructive skin', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

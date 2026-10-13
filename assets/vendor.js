@@ -74863,7 +74863,9 @@ require('@ember/-internals/bootstrap')
   const SkinDefinition = {
     default: 'default',
     primary: 'primary',
+    'primary-smart': 'primary-smart',
     secondary: 'secondary',
+    'secondary-smart': 'secondary-smart',
     destructive: 'destructive',
     success: 'success',
     alert: 'alert',

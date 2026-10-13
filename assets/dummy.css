@@ -9940,6 +9940,29 @@ a.upf-btn--primary {
 .upf-btn--primary.upf-btn--dark-bg:hover {
   opacity: 0.85;
 }
+.upf-btn--primary-smart {
+  background: var(--color-smart-gradient-500) padding-box, var(--color-smart-gradient-500) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  color: var(--color-white);
+}
+.upf-btn--primary-smart i,
+.upf-btn--primary-smart span {
+  color: var(--color-white);
+}
+a.upf-btn--primary-smart {
+  line-height: 2.4rem;
+}
+.upf-btn--primary-smart:hover,
+.upf-btn--primary-smart:active {
+  box-shadow: 0 0 0 2px var(--color-primary-100), var(--box-shadow-xs);
+}
+.upf-btn--primary-smart:hover {
+  background: var(--color-smart-gradient-600) padding-box, var(--color-smart-gradient-600) border-box;
+}
+.upf-btn--primary-smart:active {
+  background: var(--color-smart-gradient-400) padding-box, var(--color-smart-gradient-400) border-box;
+}
 .upf-btn--primary-gradient {
   background-image: var(--primary-gradient-500);
   color: var(--color-white);
@@ -10039,6 +10062,35 @@ a.upf-btn--secondary {
 }
 .upf-btn--secondary.upf-btn--dark-bg:hover {
   opacity: 0.75;
+}
+.upf-btn--secondary-smart {
+  background: var(--color-smart-gradient-50) padding-box, var(--color-smart-gradient-500) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+}
+.upf-btn--secondary-smart i,
+.upf-btn--secondary-smart span {
+  background: var(--font-color-smart-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.upf-btn--secondary-smart:hover,
+.upf-btn--secondary-smart:active {
+  box-shadow: 0 0 0 2px var(--color-primary-100), var(--box-shadow-xs);
+}
+.upf-btn--secondary-smart:hover i,
+.upf-btn--secondary-smart:active i,
+.upf-btn--secondary-smart:hover span,
+.upf-btn--secondary-smart:active span {
+  background: none;
+  -webkit-text-fill-color: var(--color-white);
+}
+.upf-btn--secondary-smart:hover {
+  background: var(--color-smart-gradient-600) padding-box, var(--color-smart-gradient-600) border-box;
+}
+.upf-btn--secondary-smart:active {
+  background: var(--color-smart-gradient-400) padding-box, var(--color-smart-gradient-400) border-box;
 }
 .upf-btn--destructive {
   background-color: var(--color-error-50);
