@@ -9,8 +9,8 @@ import {
 export default class extends BaseUploader implements UploaderInterface {
   mode: 'success' | 'failure' = 'success';
 
-  upload(request: UploadRequest, validationRules?: FileValidator[]): void {
-    const validations: ValidationResponse = this.validate(request, validationRules || []);
+  async upload(request: UploadRequest, validationRules?: FileValidator[]): Promise<void> {
+    const validations: ValidationResponse = await this.validate(request, validationRules || []);
 
     if (!validations.passes) {
       request.onValidationFailure?.(validations);

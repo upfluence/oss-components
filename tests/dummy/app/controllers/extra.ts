@@ -10,10 +10,10 @@ import { type FileArtifact, type UploadRequest } from '@upfluence/oss-components
 export class MockUploader extends BaseUploader {
   mode = 'success';
 
-  upload(request: UploadRequest, validationRules = []) {
+  async upload(request: UploadRequest, validationRules = []) {
     console.log(request);
 
-    const validations = this.validate(request, validationRules || []);
+    const validations = await this.validate(request, validationRules || []);
 
     if (!validations.passes) {
       request.onValidationFailure?.(validations);
