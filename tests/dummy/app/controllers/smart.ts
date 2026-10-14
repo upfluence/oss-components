@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
+import type { SmartFeedbackSection } from '@upfluence/oss-components/components/o-s-s/smart/feedback';
 import type { TagType } from '@upfluence/oss-components/components/o-s-s/smart/tag';
 import type { Keyword } from '@upfluence/oss-components/components/o-s-s/smart/tag-input';
 
@@ -11,10 +12,10 @@ export default class Smart extends Controller {
   @tracked toggleInputLoadingValue: boolean = false;
   @tracked smartFeedback: boolean = false;
   @tracked smartFeedbackLoading: boolean = false;
-  @tracked contentArray: string[] = [
-    'This is the first content',
-    'This is the second content',
-    'This is the third content'
+  @tracked feedbackContent: SmartFeedbackSection[] = [
+    { text: 'This is the first content' },
+    { text: 'This is the second content' },
+    { text: 'This is the third content' }
   ];
   @tracked logoLoading: boolean = false;
   @tracked toggles: { value: string; label: string }[] = [
@@ -138,7 +139,7 @@ export default class Smart extends Controller {
 
       const wordToAdd = wordsToAdd[index];
       if (typeof wordToAdd === 'string') {
-        this.contentArray = [...this.contentArray, wordToAdd];
+        this.feedbackContent = [...this.feedbackContent, { text: wordToAdd }];
       }
       index++;
     }, 1000);

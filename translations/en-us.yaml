@@ -106,5 +106,7 @@ oss-components:
   sidebar:
     collapse: Collapse
   smart:
+    feedback:
+      retry: Retry
     tag_input:
       placeholder: 'Add keywords, @mentions and #hashtags'
