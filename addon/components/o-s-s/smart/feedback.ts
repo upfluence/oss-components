@@ -69,9 +69,6 @@ export default class OSSSmartFeedback extends Component<OSSSmartFeedbackArgs> {
   setupTruncation(element: HTMLElement): void {
     this.contentElement = element;
     this.measureTruncation();
-
-    this.resizeObserver = new ResizeObserver(() => this.measureTruncation());
-    this.resizeObserver.observe(element);
   }
 
   willDestroy(): void {
@@ -81,9 +78,24 @@ export default class OSSSmartFeedback extends Component<OSSSmartFeedbackArgs> {
 
   @action
   measureTruncation(): void {
+    if (!this.collapsible) {
+      this.resizeObserver?.disconnect();
+      this.resizeObserver = undefined;
+      this.truncated = false;
+      return;
+    }
+
+    if (this.expanded || this.isDestroying || this.isDestroyed) return;
+
     const element = this.contentElement;
     const container = element?.parentElement;
-    if (!element || !container || this.expanded || this.isDestroying || this.isDestroyed) return;
+    if (!element || !container) return;
+
+    if (!this.resizeObserver) {
+      this.resizeObserver = new ResizeObserver(() => this.measureTruncation());
+      this.resizeObserver.observe(element);
+    }
+
     this.truncated = element.scrollHeight > container.clientHeight;
   }
 }

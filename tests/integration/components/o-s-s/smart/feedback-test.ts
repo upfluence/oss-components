@@ -216,6 +216,21 @@ module('Integration | Component | o-s-s/smart/feedback', function (hooks) {
     assert.dom('[data-control-name="oss-smart-feedback-chevron"]').doesNotExist();
   });
 
+  test('it updates truncation when @collapsible changes', async function (assert) {
+    this.collapsible = true;
+    this.content = [{ text: LONG_TEXT }];
+
+    await render(
+      hbs`<OSS::Smart::Feedback @loading={{false}} @collapsible={{this.collapsible}} @content={{this.content}} />`
+    );
+
+    this.set('collapsible', false);
+    assert.dom('[data-control-name="oss-smart-feedback-chevron"]').doesNotExist();
+
+    this.set('collapsible', true);
+    assert.dom('[data-control-name="oss-smart-feedback-chevron"]').exists();
+  });
+
   test('an @error disables the collapse behavior even when @collapsible is true', async function (assert) {
     this.error = { title: 'Summary could not be generated.' };
 

@@ -27,6 +27,7 @@
     font-family: var(--font-family-smart);
 
     &__title {
+      color: var(--color-primary-500);
       font-weight: var(--font-weight-semibold);
     }
 
@@ -40,7 +41,18 @@
 
     &__bullets {
       margin: 0;
-      padding-left: var(--spacing-px-18);
+      padding-left: var(--spacing-px-6);
+      list-style: none;
+
+      li {
+        display: flex;
+        gap: var(--spacing-px-6);
+
+        &::before {
+          content: '•';
+          flex: none;
+        }
+      }
     }
   }
 

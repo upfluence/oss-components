@@ -9,10 +9,10 @@
     <div
       class="oss-smart__feedback__content__inner"
       {{did-insert this.setupTruncation}}
-      {{did-update this.measureTruncation @loading @error @content}}
+      {{did-update this.measureTruncation @loading @error @content @collapsible}}
     >
       {{#if @loading}}
-        <div class="fx-col fx-1 fx-gap-px-10">
+        <div class="fx-col fx-1 fx-gap-px-12">
           <OSS::Smart::Skeleton @width="75%" @height={{10}} />
           <OSS::Smart::Skeleton @width="45%" @height={{10}} />
         </div>
