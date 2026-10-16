@@ -1,23 +1,74 @@
-<div class="oss-smart__feedback {{this.currentStateClass}} fx-row fx-gap-px-18 fx-xalign-center" ...attributes>
-  <div>
-    {{yield to="icon"}}
-  </div>
+<div
+  class="oss-smart__feedback {{this.currentStateClass}}"
+  role={{if this.showChevron "button"}}
+  {{on "click" this.toggle}}
+  ...attributes
+>
+  <OSS::Smart::Blob @loading={{@loading}} />
   <div class="oss-smart__feedback__content">
-    {{#if @loading}}
-      <div class="fx-col fx-1 fx-gap-px-10">
-        <OSS::Smart::Skeleton @width="75%" height="10px" />
-        <OSS::Smart::Skeleton @width="45%" height="10px" />
-      </div>
-    {{else}}
-      {{#if @contentString}}
-        <span class="oss-smart__feedback__content__text">{{@contentString}}</span>
-      {{else if @contentArray}}
-        <span class="oss-smart__feedback__content__text">
-          {{#each @contentArray as |item|}}
-            {{item}}
+    <div
+      class="oss-smart__feedback__content__inner"
+      {{did-insert this.setupTruncation}}
+      {{did-update this.measureTruncation @loading @error @content @collapsible}}
+    >
+      {{#if @loading}}
+        <div class="fx-col fx-1 fx-gap-px-12">
+          <OSS::Smart::Skeleton @width="75%" @height={{10}} />
+          <OSS::Smart::Skeleton @width="45%" @height={{10}} />
+        </div>
+      {{else if @error}}
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <div class="fx-col fx-1 fx-gap-px-3">
+            <span class="oss-smart__feedback__content__title" data-control-name="oss-smart-feedback-error-title">
+              {{@error.title}}
+            </span>
+            {{#if @error.subtitle}}
+              <span
+                class="oss-smart__feedback__content__subtitle"
+                data-control-name="oss-smart-feedback-error-subtitle"
+              >
+                {{@error.subtitle}}
+              </span>
+            {{/if}}
+          </div>
+          {{#if @error.onRetry}}
+            <OSS::Button
+              @label={{t "oss-components.smart.feedback.retry"}}
+              @size="sm"
+              {{on "click" @error.onRetry}}
+              data-control-name="oss-smart-feedback-retry-button"
+            />
+          {{/if}}
+        </div>
+      {{else}}
+        <div class="fx-col fx-gap-px-12">
+          {{#each @content as |section|}}
+            <div class="fx-col fx-gap-px-3" data-control-name="oss-smart-feedback-section">
+              {{#if section.title}}
+                <span class="oss-smart__feedback__content__title">{{section.title}}</span>
+              {{/if}}
+              {{#if section.text}}
+                <span class="oss-smart__feedback__content__text">{{section.text}}</span>
+              {{/if}}
+              {{#if section.bullets}}
+                <ul class="oss-smart__feedback__content__bullets">
+                  {{#each section.bullets as |bullet|}}
+                    <li>{{bullet}}</li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+            </div>
           {{/each}}
-        </span>
+        </div>
       {{/if}}
-    {{/if}}
+    </div>
   </div>
+  {{#if this.showChevron}}
+    <OSS::Icon
+      @style="solid"
+      @icon={{if this.expanded "fa-chevron-up" "fa-chevron-down"}}
+      class="oss-smart__feedback__chevron"
+      data-control-name="oss-smart-feedback-chevron"
+    />
+  {{/if}}
 </div>

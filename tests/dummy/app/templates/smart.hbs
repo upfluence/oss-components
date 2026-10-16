@@ -358,11 +358,7 @@
         <span>Smart feedback : loading {{this.smartFeedbackLoading}}</span>
         <OSS::ToggleSwitch @value={{this.smartFeedbackLoading}} @onChange={{this.toggleSmartFeedbackLoading}} />
       </div>
-      <OSS::Smart::Feedback @loading={{this.smartFeedbackLoading}} @contentArray={{this.contentArray}}>
-        <:icon>
-          <OSS::Avatar @initials={{concat "+" "123"}} @size={{"sm"}} />
-        </:icon>
-      </OSS::Smart::Feedback>
+      <OSS::Smart::Feedback @loading={{this.smartFeedbackLoading}} @content={{this.feedbackContent}} />
     </div>
 
     <div class="fx-row fx-gap-px-12 font-size-md font-weight-semibold">
