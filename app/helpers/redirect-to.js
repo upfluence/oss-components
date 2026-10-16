@@ -1,1 +1,1 @@
-export { default, redirectTo } from '@upfluence/oss-components/helpers/redirect-to';
+export { default } from '@upfluence/oss-components/helpers/redirect-to';
