@@ -14,7 +14,7 @@ export default {
     },
     collapsible: {
       description:
-        'Whether the feedback collapses when its content is taller than 117px. Defaults to true. Automatically disabled when @error is set.',
+        'Whether the feedback collapses when its content is taller than 120px. Defaults to true. Automatically disabled when @error is set.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
