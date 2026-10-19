@@ -29,29 +29,29 @@ module('Unit | Service | base-uploader', function (hooks) {
       };
     });
 
-    test('it passes if no validation is provided', function (assert) {
+    test('it passes if no validation is provided', async function (assert) {
       this.validationRules = [];
-      assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+      assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
         passes: true,
         validations: []
       });
     });
 
-    test('it filters out rules with empty values and passes', function (assert) {
+    test('it filters out rules with empty values and passes', async function (assert) {
       this.validationRules = [
         { type: 'filetype', value: [] },
         { type: 'filesize', value: null }
       ];
-      assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+      assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
         passes: true,
         validations: []
       });
     });
 
     module('FileType validator', function () {
-      test("it does not pass if the file's type is not one of the allowed ones", function (assert) {
+      test("it does not pass if the file's type is not one of the allowed ones", async function (assert) {
         this.validationRules = [{ type: 'filetype', value: ['pdf'] }];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: false,
           validations: [
             {
@@ -65,9 +65,9 @@ module('Unit | Service | base-uploader', function (hooks) {
         });
       });
 
-      test("it passes if the file's type is one of the allowed ones", function (assert) {
+      test("it passes if the file's type is one of the allowed ones", async function (assert) {
         this.validationRules = [{ type: 'filetype', value: ['png'] }];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: true,
           validations: [
             {
@@ -81,9 +81,9 @@ module('Unit | Service | base-uploader', function (hooks) {
         });
       });
 
-      test("it passes if the file's type matches one of a templated filetype", function (assert) {
+      test("it passes if the file's type matches one of a templated filetype", async function (assert) {
         this.validationRules = [{ type: 'filetype', value: ['image'] }];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: true,
           validations: [
             {
@@ -99,9 +99,9 @@ module('Unit | Service | base-uploader', function (hooks) {
     });
 
     module('FileSize validator', function () {
-      test('it does not pass if the file is heavier than the maximum allowed', function (assert) {
+      test('it does not pass if the file is heavier than the maximum allowed', async function (assert) {
         this.validationRules = [{ type: 'filesize', value: '1B' }];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: false,
           validations: [
             {
@@ -115,9 +115,9 @@ module('Unit | Service | base-uploader', function (hooks) {
         });
       });
 
-      test('it passes if the file is heavier than the maximum allowed', function (assert) {
+      test('it passes if the file is heavier than the maximum allowed', async function (assert) {
         this.validationRules = [{ type: 'filesize', value: '10MB' }];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: true,
           validations: [
             {
