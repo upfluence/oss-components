@@ -12,19 +12,28 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    contentString: {
-      description: 'Text content to display when not loading',
+    collapsible: {
+      description:
+        'Whether the feedback collapses when its content is taller than 120px. Defaults to true. Automatically disabled when @error is set.',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '' }
+        type: { summary: 'boolean' },
+        defaultValue: { summary: true }
       },
-      control: { type: 'text' }
+      control: { type: 'boolean' }
     },
-    contentArray: {
-      description: 'Array of text lines to display instead of a single string',
+    content: {
+      description: 'Array of sections (title, text, bullets) to display when not loading and no error',
       table: {
-        type: { summary: 'string[]' },
+        type: { summary: 'SmartFeedbackSection[]' },
         defaultValue: { summary: '[]' }
+      },
+      control: { type: 'object' }
+    },
+    error: {
+      description: 'Error to display instead of @content, with an optional retry button',
+      table: {
+        type: { summary: 'SmartFeedbackError' },
+        defaultValue: { summary: 'null' }
       },
       control: { type: 'object' }
     }
@@ -33,35 +42,33 @@ export default {
     docs: {
       description: {
         component:
-          'Component used to display feedback with optional loading skeletons and dynamic content (string or array).'
+          'Component used to display feedback with optional loading skeletons, structured content, error state and collapse behavior.'
       },
       iframeHeight: 250
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=12107-30401&t=YjH2opXU05NndeSa-0'
+      url: 'https://www.figma.com/design/IuFBmVBSUpaDxFVQFJ3P6y/%F0%9F%94%B2-Define-Jaice-bubble-patterns?node-id=21647-1142'
     }
   }
 };
 
 const defaultArgs = {
   loading: false,
-  contentString: 'This is feedback content.',
-  contentArray: []
+  collapsible: true,
+  content: [{ text: 'This is feedback content.' }],
+  error: null
 };
 
 const Template = (args) => ({
   template: hbs`
     <div class="bg-color-white padding-px-6">
-      <OSS::Smart::Feedback 
-        @loading={{this.loading}} 
-        @contentString={{this.contentString}} 
-        @contentArray={{this.contentArray}} 
-      >
-        <:icon>
-          <div class="w-px-40 h-px-40 bg-color-blue border-radius-px-6"></div>
-        </:icon>
-      </OSS::Smart::Feedback>
+      <OSS::Smart::Feedback
+        @loading={{this.loading}}
+        @collapsible={{this.collapsible}}
+        @content={{this.content}}
+        @error={{this.error}}
+      />
     </div>
   `,
   context: args
@@ -70,16 +77,32 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
-export const WithArrayContent = Template.bind({});
-WithArrayContent.args = {
+export const WithSections = Template.bind({});
+WithSections.args = {
   loading: false,
-  contentArray: ['Line 1', 'Line 2', 'Line 3'],
-  contentString: ''
+  collapsible: true,
+  content: [
+    { title: 'Risk Summary', text: 'This influencer has a low risk profile.' },
+    { title: '💡 Why these filters?', bullets: ['Follower count', 'Engagement rate', 'Content category'] }
+  ],
+  error: null
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
   loading: true,
-  contentString: '',
-  contentArray: []
+  collapsible: true,
+  content: [],
+  error: null
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  loading: false,
+  collapsible: true,
+  content: [],
+  error: {
+    title: 'Summary could not be generated, please, retry.',
+    onRetry: () => {}
+  }
 };
