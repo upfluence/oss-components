@@ -29267,14 +29267,14 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
           scope: 'anonymous'
         };
       });
-      (0, _qunit.test)('it passes if no validation is provided', function (assert) {
+      (0, _qunit.test)('it passes if no validation is provided', async function (assert) {
         this.validationRules = [];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: true,
           validations: []
         });
       });
-      (0, _qunit.test)('it filters out rules with empty values and passes', function (assert) {
+      (0, _qunit.test)('it filters out rules with empty values and passes', async function (assert) {
         this.validationRules = [{
           type: 'filetype',
           value: []
@@ -29282,18 +29282,18 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
           type: 'filesize',
           value: null
         }];
-        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
           passes: true,
           validations: []
         });
       });
       (0, _qunit.module)('FileType validator', function () {
-        (0, _qunit.test)("it does not pass if the file's type is not one of the allowed ones", function (assert) {
+        (0, _qunit.test)("it does not pass if the file's type is not one of the allowed ones", async function (assert) {
           this.validationRules = [{
             type: 'filetype',
             value: ['pdf']
           }];
-          assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
             passes: false,
             validations: [{
               passes: false,
@@ -29304,12 +29304,12 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
             }]
           });
         });
-        (0, _qunit.test)("it passes if the file's type is one of the allowed ones", function (assert) {
+        (0, _qunit.test)("it passes if the file's type is one of the allowed ones", async function (assert) {
           this.validationRules = [{
             type: 'filetype',
             value: ['png']
           }];
-          assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
             passes: true,
             validations: [{
               passes: true,
@@ -29320,12 +29320,12 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
             }]
           });
         });
-        (0, _qunit.test)("it passes if the file's type matches one of a templated filetype", function (assert) {
+        (0, _qunit.test)("it passes if the file's type matches one of a templated filetype", async function (assert) {
           this.validationRules = [{
             type: 'filetype',
             value: ['image']
           }];
-          assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
             passes: true,
             validations: [{
               passes: true,
@@ -29338,12 +29338,12 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
         });
       });
       (0, _qunit.module)('FileSize validator', function () {
-        (0, _qunit.test)('it does not pass if the file is heavier than the maximum allowed', function (assert) {
+        (0, _qunit.test)('it does not pass if the file is heavier than the maximum allowed', async function (assert) {
           this.validationRules = [{
             type: 'filesize',
             value: '1B'
           }];
-          assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
             passes: false,
             validations: [{
               passes: false,
@@ -29354,12 +29354,12 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
             }]
           });
         });
-        (0, _qunit.test)('it passes if the file is heavier than the maximum allowed', function (assert) {
+        (0, _qunit.test)('it passes if the file is heavier than the maximum allowed', async function (assert) {
           this.validationRules = [{
             type: 'filesize',
             value: '10MB'
           }];
-          assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          assert.deepEqual(await this.service.validate(this.request, this.validationRules), {
             passes: true,
             validations: [{
               passes: true,

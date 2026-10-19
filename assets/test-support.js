@@ -24028,8 +24028,8 @@ define("@upfluence/oss-components/test-support/services/uploader", ["exports", "
       super(...arguments);
       _defineProperty(this, "mode", 'success');
     }
-    upload(request, validationRules) {
-      const validations = this.validate(request, validationRules || []);
+    async upload(request, validationRules) {
+      const validations = await this.validate(request, validationRules || []);
       if (!validations.passes) {
         request.onValidationFailure?.(validations);
         return;

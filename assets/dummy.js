@@ -2232,10 +2232,10 @@
       super(...arguments);
       _defineProperty(this, "mode", 'success');
     }
-    upload(request) {
+    async upload(request) {
       let validationRules = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
       console.log(request);
-      const validations = this.validate(request, validationRules || []);
+      const validations = await this.validate(request, validationRules || []);
       if (!validations.passes) {
         request.onValidationFailure?.(validations);
         return;

@@ -83784,7 +83784,7 @@ require('@ember/-internals/bootstrap')
   }, (_applyDecoratedDescriptor(_class.prototype, "switchState", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "switchState"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSToggleSwitchComponent);
 });
-;define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@upfluence/oss-components/types/uploader", "@ember/utils", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _service, _uploader, _utils, _utils2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/types/uploader", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _uploader, _utils2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -83792,7 +83792,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@upfluence/oss-components/types/uploader",0,"@ember/utils",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/types/uploader",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -84033,11 +84033,11 @@ require('@ember/-internals/bootstrap')
         this.args.onUploadFailure?.(error);
       }
     }
-    _handleFileUpload(file) {
+    async _handleFileUpload(file) {
       if (this.args.disabled) return;
       this.args.onHandleFileUpload?.();
       this.localFeedbackMessage = undefined;
-      if (this._validateFile(file)) {
+      if (await this._validateFile(file)) {
         if (this.args.onDryRun) {
           this.args.onDryRun(file);
           return;
@@ -84051,13 +84051,13 @@ require('@ember/-internals/bootstrap')
         }
       }
     }
-    _validateFile(file) {
+    async _validateFile(file) {
       const request = {
         file,
         privacy: this.filePrivacy,
         scope: this.scope
       };
-      const validationResponse = this.args.uploader.validate(request, this.args.rules || []);
+      const validationResponse = await this.args.uploader.validate(request, this.args.rules || []);
       if (validationResponse.passes) {
         return true;
       }
@@ -85585,10 +85585,10 @@ require('@ember/-internals/bootstrap')
   class BaseUploader extends _service.default {
     validate(request, rules) {
       const validations = this.buildValidators(rules).map(validator => validator.validate(request));
-      return {
+      return Promise.resolve({
         passes: validations.every(validation => validation.passes),
         validations
-      };
+      });
     }
     upload(_request, _validationRules) {
       throw new Error('[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.');
@@ -93570,7 +93570,7 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
             "title": "File size too large"
           },
           "filetype": {
-            "description": "The uploaded file format is not allowed",
+            "description": "The uploaded file format is not allowed.",
             "feedback": "Invalid format. Please upload a correctly formatted file.",
             "title": "Unsupported format"
           },
