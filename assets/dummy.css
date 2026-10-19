@@ -11986,8 +11986,11 @@ a.upf-btn--sm {
   padding: 6px 12px;
 }
 .oss-smart__feedback {
+  --oss-smart-feedback-collapsed-height: 120px;
   position: relative;
   display: flex;
+  align-items: center;
+  gap: var(--spacing-px-18);
   width: 100%;
   padding: var(--spacing-px-12) var(--spacing-px-18);
   border-radius: var(--spacing-px-12);
@@ -12005,8 +12008,43 @@ a.upf-btn--sm {
   font-size: var(--font-size-md);
   font-family: var(--font-family-smart);
 }
+.oss-smart__feedback__content__title {
+  color: var(--color-primary-500);
+  font-weight: var(--font-weight-semibold);
+}
+.oss-smart__feedback__content__subtitle {
+  font-weight: 400;
+}
 .oss-smart__feedback__content__text {
   display: inline-block;
+}
+.oss-smart__feedback__content__bullets {
+  margin: 0;
+  padding-left: var(--spacing-px-6);
+  list-style: none;
+}
+.oss-smart__feedback__content__bullets li {
+  display: flex;
+  gap: var(--spacing-px-6);
+}
+.oss-smart__feedback__content__bullets li::before {
+  content: '•';
+  flex: none;
+}
+.oss-smart__feedback--collapsed .oss-smart__feedback__content {
+  max-height: calc(var(--oss-smart-feedback-collapsed-height) - 2 * var(--spacing-px-12) - 2px);
+  overflow: hidden;
+}
+.oss-smart__feedback--collapsed.oss-smart__feedback--truncated .oss-smart__feedback__content {
+  mask-image: linear-gradient(180deg, #000 calc(100% - 51px), transparent 100%);
+}
+.oss-smart__feedback--truncated {
+  align-items: flex-start;
+  cursor: pointer;
+}
+.oss-smart__feedback__chevron {
+  color: var(--color-primary-500);
+  font-size: 12px;
 }
 .smart-immersive-input-container {
   width: fit-content;

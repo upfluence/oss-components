@@ -81582,54 +81582,179 @@ require('@ember/-internals/bootstrap')
   _exports.default = OSSSmartButton;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartButton);
 });
-;define("@upfluence/oss-components/components/o-s-s/smart/feedback", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/smart/feedback", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _object, _component2, _tracking, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-smart__feedback {{this.currentStateClass}} fx-row fx-gap-px-18 fx-xalign-center" ...attributes>
-    <div>
-      {{yield to="icon"}}
-    </div>
+    <div
+    class="oss-smart__feedback {{this.currentStateClass}}"
+    role={{if this.showChevron "button"}}
+    {{on "click" this.toggle}}
+    ...attributes
+  >
+    <OSS::Smart::Blob @loading={{@loading}} />
     <div class="oss-smart__feedback__content">
-      {{#if @loading}}
-        <div class="fx-col fx-1 fx-gap-px-10">
-          <OSS::Smart::Skeleton @width="75%" height="10px" />
-          <OSS::Smart::Skeleton @width="45%" height="10px" />
-        </div>
-      {{else}}
-        {{#if @contentString}}
-          <span class="oss-smart__feedback__content__text">{{@contentString}}</span>
-        {{else if @contentArray}}
-          <span class="oss-smart__feedback__content__text">
-            {{#each @contentArray as |item|}}
-              {{item}}
+      <div
+        class="oss-smart__feedback__content__inner"
+        {{did-insert this.setupTruncation}}
+        {{did-update this.measureTruncation @loading @error @content @collapsible}}
+      >
+        {{#if @loading}}
+          <div class="fx-col fx-1 fx-gap-px-12">
+            <OSS::Smart::Skeleton @width="75%" @height={{10}} />
+            <OSS::Smart::Skeleton @width="45%" @height={{10}} />
+          </div>
+        {{else if @error}}
+          <div class="fx-row fx-xalign-center fx-gap-px-12">
+            <div class="fx-col fx-1 fx-gap-px-3">
+              <span class="oss-smart__feedback__content__title" data-control-name="oss-smart-feedback-error-title">
+                {{@error.title}}
+              </span>
+              {{#if @error.subtitle}}
+                <span
+                  class="oss-smart__feedback__content__subtitle"
+                  data-control-name="oss-smart-feedback-error-subtitle"
+                >
+                  {{@error.subtitle}}
+                </span>
+              {{/if}}
+            </div>
+            {{#if @error.onRetry}}
+              <OSS::Button
+                @label={{t "oss-components.smart.feedback.retry"}}
+                @size="sm"
+                {{on "click" @error.onRetry}}
+                data-control-name="oss-smart-feedback-retry-button"
+              />
+            {{/if}}
+          </div>
+        {{else}}
+          <div class="fx-col fx-gap-px-12">
+            {{#each @content as |section|}}
+              <div class="fx-col fx-gap-px-3" data-control-name="oss-smart-feedback-section">
+                {{#if section.title}}
+                  <span class="oss-smart__feedback__content__title">{{section.title}}</span>
+                {{/if}}
+                {{#if section.text}}
+                  <span class="oss-smart__feedback__content__text">{{section.text}}</span>
+                {{/if}}
+                {{#if section.bullets}}
+                  <ul class="oss-smart__feedback__content__bullets">
+                    {{#each section.bullets as |bullet|}}
+                      <li>{{bullet}}</li>
+                    {{/each}}
+                  </ul>
+                {{/if}}
+              </div>
             {{/each}}
-          </span>
+          </div>
         {{/if}}
-      {{/if}}
+      </div>
     </div>
+    {{#if this.showChevron}}
+      <OSS::Icon
+        @style="solid"
+        @icon={{if this.expanded "fa-chevron-up" "fa-chevron-down"}}
+        class="oss-smart__feedback__chevron"
+        data-control-name="oss-smart-feedback-chevron"
+      />
+    {{/if}}
   </div>
   */
   {
-    "id": "Vgmt6O4j",
-    "block": "[[[11,0],[16,0,[29,[\"oss-smart__feedback \",[30,0,[\"currentStateClass\"]],\" fx-row fx-gap-px-18 fx-xalign-center\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[12],[1,\"\\n    \"],[18,6,null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"oss-smart__feedback__content\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,2],[[24,\"height\",\"10px\"]],[[\"@width\"],[\"75%\"]],null],[1,\"\\n        \"],[8,[39,2],[[24,\"height\",\"10px\"]],[[\"@width\"],[\"45%\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"oss-smart__feedback__content__text\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"        \"],[10,1],[14,0,\"oss-smart__feedback__content__text\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,4]],null]],null],null,[[[1,\"            \"],[1,[30,5]],[1,\"\\n\"]],[5]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[]],null]],[]]]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@contentString\",\"@contentArray\",\"item\",\"&icon\"],false,[\"yield\",\"if\",\"o-s-s/smart/skeleton\",\"each\",\"-track-array\"]]",
+    "id": "bZLFun8w",
+    "block": "[[[11,0],[16,0,[29,[\"oss-smart__feedback \",[30,0,[\"currentStateClass\"]]]]],[16,\"role\",[52,[30,0,[\"showChevron\"]],\"button\"]],[17,1],[4,[38,1],[\"click\",[30,0,[\"toggle\"]]],null],[12],[1,\"\\n  \"],[8,[39,2],null,[[\"@loading\"],[[30,2]]],null],[1,\"\\n  \"],[10,0],[14,0,\"oss-smart__feedback__content\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"oss-smart__feedback__content__inner\"],[4,[38,3],[[30,0,[\"setupTruncation\"]]],null],[4,[38,4],[[30,0,[\"measureTruncation\"]],[30,2],[30,3],[30,4],[30,5]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,5],null,[[\"@width\",\"@height\"],[\"75%\",10]],null],[1,\"\\n          \"],[8,[39,5],null,[[\"@width\",\"@height\"],[\"45%\",10]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"        \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n            \"],[10,1],[14,0,\"oss-smart__feedback__content__title\"],[14,\"data-control-name\",\"oss-smart-feedback-error-title\"],[12],[1,\"\\n              \"],[1,[30,3,[\"title\"]]],[1,\"\\n            \"],[13],[1,\"\\n\"],[41,[30,3,[\"subtitle\"]],[[[1,\"              \"],[10,1],[14,0,\"oss-smart__feedback__content__subtitle\"],[14,\"data-control-name\",\"oss-smart-feedback-error-subtitle\"],[12],[1,\"\\n                \"],[1,[30,3,[\"subtitle\"]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n\"],[41,[30,3,[\"onRetry\"]],[[[1,\"            \"],[8,[39,6],[[24,\"data-control-name\",\"oss-smart-feedback-retry-button\"],[4,[38,1],[\"click\",[30,3,[\"onRetry\"]]],null]],[[\"@label\",\"@size\"],[[28,[37,7],[\"oss-components.smart.feedback.retry\"],null],\"sm\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n\"],[42,[28,[37,9],[[28,[37,9],[[30,4]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"fx-col fx-gap-px-3\"],[14,\"data-control-name\",\"oss-smart-feedback-section\"],[12],[1,\"\\n\"],[41,[30,6,[\"title\"]],[[[1,\"                \"],[10,1],[14,0,\"oss-smart__feedback__content__title\"],[12],[1,[30,6,[\"title\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,6,[\"text\"]],[[[1,\"                \"],[10,1],[14,0,\"oss-smart__feedback__content__text\"],[12],[1,[30,6,[\"text\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,6,[\"bullets\"]],[[[1,\"                \"],[10,\"ul\"],[14,0,\"oss-smart__feedback__content__bullets\"],[12],[1,\"\\n\"],[42,[28,[37,9],[[28,[37,9],[[30,6,[\"bullets\"]]],null]],null],null,[[[1,\"                    \"],[10,\"li\"],[12],[1,[30,7]],[13],[1,\"\\n\"]],[7]],null],[1,\"                \"],[13],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n\"]],[6]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[]]]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"showChevron\"]],[[[1,\"    \"],[8,[39,10],[[24,0,\"oss-smart__feedback__chevron\"],[24,\"data-control-name\",\"oss-smart-feedback-chevron\"]],[[\"@style\",\"@icon\"],[\"solid\",[52,[30,0,[\"expanded\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@error\",\"@content\",\"@collapsible\",\"section\",\"bullet\"],false,[\"if\",\"on\",\"o-s-s/smart/blob\",\"did-insert\",\"did-update\",\"o-s-s/smart/skeleton\",\"o-s-s/button\",\"t\",\"each\",\"-track-array\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/smart/feedback.hbs",
     "isStrictMode": false
   });
-  class OSSSmartFeedback extends _component2.default {
-    get currentStateClass() {
-      if (this.args.loading) return 'oss-smart__feedback__loading';
-      if (this.args.contentString || this.args.contentArray) return 'oss-smart__generated';
-      return null;
+  let OSSSmartFeedback = _exports.default = (_class = class OSSSmartFeedback extends _component2.default {
+    constructor() {
+      super(...arguments);
+      _initializerDefineProperty(this, "expanded", _descriptor, this);
+      _initializerDefineProperty(this, "truncated", _descriptor2, this);
+      _defineProperty(this, "contentElement", void 0);
+      _defineProperty(this, "resizeObserver", void 0);
     }
-  }
-  _exports.default = OSSSmartFeedback;
+    get currentStateClass() {
+      const classes = [];
+      if (this.args.loading) {
+        classes.push('oss-smart__feedback__loading');
+      } else if (!this.args.error && this.args.content) {
+        classes.push('oss-smart__generated');
+      }
+      if (this.collapsed) classes.push('oss-smart__feedback--collapsed');
+      if (this.showChevron) classes.push('oss-smart__feedback--truncated');
+      return classes.join(' ');
+    }
+    get collapsible() {
+      return this.args.collapsible !== false && !this.args.error;
+    }
+    get collapsed() {
+      return this.collapsible && !this.expanded;
+    }
+    get showChevron() {
+      return this.collapsible && this.truncated;
+    }
+    toggle() {
+      if (!this.showChevron) return;
+      this.expanded = !this.expanded;
+      if (!this.expanded) {
+        requestAnimationFrame(() => this.measureTruncation());
+      }
+    }
+    setupTruncation(element) {
+      this.contentElement = element;
+      this.measureTruncation();
+    }
+    willDestroy() {
+      super.willDestroy();
+      this.resizeObserver?.disconnect();
+    }
+    measureTruncation() {
+      if (!this.collapsible) {
+        this.resizeObserver?.disconnect();
+        this.resizeObserver = undefined;
+        this.truncated = false;
+        return;
+      }
+      if (this.expanded || this.isDestroying || this.isDestroyed) return;
+      const element = this.contentElement;
+      const container = element?.parentElement;
+      if (!element || !container) return;
+      if (!this.resizeObserver) {
+        this.resizeObserver = new ResizeObserver(() => this.measureTruncation());
+        this.resizeObserver.observe(element);
+      }
+      this.truncated = element.scrollHeight > container.clientHeight;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "expanded", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "truncated", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "toggle", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggle"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupTruncation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupTruncation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "measureTruncation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "measureTruncation"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartFeedback);
 });
 ;define("@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/object/internals", "@ember/runloop", "@ember/utils", "@glimmer/tracking", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@upfluence/oss-components/components/o-s-s/currency-input", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _debug, _object, _internals, _runloop, _utils, _tracking, _attachDropdown, _runSmartGradientAnimation, _currencyInput, _templateFactory, _runtime) {
@@ -93553,6 +93678,9 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
         "range_label": "Value slider"
       },
       "smart": {
+        "feedback": {
+          "retry": "Retry"
+        },
         "tag_input": {
           "placeholder": "Add keywords, @mentions and #hashtags"
         }

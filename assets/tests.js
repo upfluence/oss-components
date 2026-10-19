@@ -19946,12 +19946,14 @@ define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/smart/feedback-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/smart/feedback-test", ["@ember/test-helpers", "ember-intl/test-support", "ember-qunit", "qunit", "sinon", "@ember/template-factory"], function (_testHelpers, _testSupport, _emberQunit, _qunit, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"ember-qunit",0,"qunit",0,"sinon"eaimeta@70e063a35619d71f
+  const LONG_TEXT = 'This influencer shows a very low brand safety risk profile across all analyzed platforms. '.repeat(20).trim();
   (0, _qunit.module)('Integration | Component | o-s-s/smart/feedback', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.test)('it renders the component container', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -19977,70 +19979,449 @@ define("dummy/tests/integration/components/o-s-s/smart/feedback-test", ["qunit",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
         "isStrictMode": false
       }));
+      assert.dom('.oss-smart__feedback__loading').exists();
       assert.dom('.upf-smart-skeleton-effect').exists({
         count: 2
       });
     });
-    (0, _qunit.test)('it renders content string when @loading is false and @contentString is provided', async function (assert) {
+    (0, _qunit.test)('it renders text when @loading is false and @content is provided', async function (assert) {
       this.loading = false;
-      this.contentString = 'Test feedback message';
+      this.content = [{
+        text: 'Test feedback message'
+      }];
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        
-            <OSS::Smart::Feedback 
-              @loading={{this.loading}} 
-              @contentString={{this.contentString}} 
-            />
-          
+        <OSS::Smart::Feedback @loading={{this.loading}} @content={{this.content}} />
       */
       {
-        "id": "WbXFKejh",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@loading\",\"@contentString\"],[[30,0,[\"loading\"]],[30,0,[\"contentString\"]]]],null],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "id": "UBXwnOZ/",
+        "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[[30,0,[\"loading\"]],[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.oss-smart__generated').exists();
       assert.dom('.oss-smart__feedback__content__text').hasText('Test feedback message');
     });
-    (0, _qunit.test)('it renders content array when @loading is false and @contentArray is provided', async function (assert) {
+    (0, _qunit.test)('it renders multiple sections when @loading is false and @content is provided', async function (assert) {
       this.loading = false;
-      this.contentArray = ['First line', ' Second line'];
+      this.content = [{
+        text: 'First line'
+      }, {
+        text: 'Second line'
+      }];
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        
-            <OSS::Smart::Feedback 
-              @loading={{this.loading}} 
-              @contentArray={{this.contentArray}} 
-            />
-          
+        <OSS::Smart::Feedback @loading={{this.loading}} @content={{this.content}} />
       */
       {
-        "id": "9M7T9By7",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@loading\",\"@contentArray\"],[[30,0,[\"loading\"]],[30,0,[\"contentArray\"]]]],null],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "id": "UBXwnOZ/",
+        "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[[30,0,[\"loading\"]],[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.oss-smart__generated').exists();
-      assert.dom('.oss-smart__feedback__content__text').hasText('First line Second line');
+      assert.dom('[data-control-name="oss-smart-feedback-section"]').exists({
+        count: 2
+      });
+      assert.dom('[data-control-name="oss-smart-feedback-section"]:first-child').hasText('First line');
+      assert.dom('[data-control-name="oss-smart-feedback-section"]:last-child').hasText('Second line');
     });
-    (0, _qunit.test)('it yields the icon named-block content', async function (assert) {
+    (0, _qunit.test)('it renders the Jaice blob', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        
-            <OSS::Smart::Feedback>
-              <:icon>
-                <div class="test-blob">Blob Content</div>
-              </:icon>
-            </OSS::Smart::Feedback>
-          
+        <OSS::Smart::Feedback />
       */
       {
-        "id": "+honiRPN",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"icon\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"test-blob\"],[12],[1,\"Blob Content\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "id": "NuYh+hTt",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/feedback\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.test-blob').hasText('Blob Content');
+      assert.dom('.smart-blob').exists();
+    });
+    (0, _qunit.test)('it renders a section title', async function (assert) {
+      this.content = [{
+        title: 'Risk Summary'
+      }];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+      */
+      {
+        "id": "TV78Ld06",
+        "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart__feedback__content__title').hasText('Risk Summary');
+    });
+    (0, _qunit.test)('it renders section bullets', async function (assert) {
+      this.content = [{
+        bullets: ['Follower count', 'Engagement rate']
+      }];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+      */
+      {
+        "id": "TV78Ld06",
+        "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart__feedback__content__bullets li').exists({
+        count: 2
+      });
+      assert.dom('.oss-smart__feedback__content__bullets li:first-child').hasText('Follower count');
+      assert.dom('.oss-smart__feedback__content__bullets li:last-child').hasText('Engagement rate');
+    });
+    (0, _qunit.module)('error management', function () {
+      (0, _qunit.test)('loading takes priority over error and content', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated.'
+        };
+        this.content = [{
+          text: 'Test feedback message'
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{true}} @error={{this.error}} @content={{this.content}} />
+        */
+        {
+          "id": "BvFoAjbd",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\",\"@content\"],[true,[30,0,[\"error\"]],[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect').exists({
+          count: 2
+        });
+        assert.dom('[data-control-name="oss-smart-feedback-error-title"]').doesNotExist();
+        assert.dom('.oss-smart__feedback__content__text').doesNotExist();
+      });
+      (0, _qunit.test)('error takes priority over content', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated.'
+        };
+        this.content = [{
+          text: 'Test feedback message'
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @error={{this.error}} @content={{this.content}} />
+        */
+        {
+          "id": "TEtYBz4/",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\",\"@content\"],[false,[30,0,[\"error\"]],[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-error-title"]').hasText(this.error.title);
+        assert.dom('.oss-smart__feedback__content__text').doesNotExist();
+      });
+      (0, _qunit.test)('it renders the error title', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated, please, retry.'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @error={{this.error}} />
+        */
+        {
+          "id": "ReXDkolt",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\"],[false,[30,0,[\"error\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-error-title"]').hasText(this.error.title);
+      });
+      (0, _qunit.test)('it renders the error subtitle when provided', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated.',
+          subtitle: 'Try again'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @error={{this.error}} />
+        */
+        {
+          "id": "ReXDkolt",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\"],[false,[30,0,[\"error\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-error-subtitle"]').hasText('Try again');
+      });
+      (0, _qunit.test)('it renders a retry button when @error.onRetry is set', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated.',
+          onRetry: _sinon.default.spy()
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @error={{this.error}} />
+        */
+        {
+          "id": "ReXDkolt",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\"],[false,[30,0,[\"error\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-retry-button"]').exists();
+      });
+      (0, _qunit.test)('it does not render a retry button when @error.onRetry is not set', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated.'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @error={{this.error}} />
+        */
+        {
+          "id": "ReXDkolt",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\"],[false,[30,0,[\"error\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-retry-button"]').doesNotExist();
+      });
+      (0, _qunit.test)('clicking retry calls @error.onRetry', async function (assert) {
+        const onRetry = _sinon.default.spy();
+        this.error = {
+          title: 'Summary could not be generated.',
+          onRetry
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @error={{this.error}} />
+        */
+        {
+          "id": "ReXDkolt",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\"],[false,[30,0,[\"error\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('[data-control-name="oss-smart-feedback-retry-button"]');
+        assert.ok(onRetry.calledOnce);
+      });
+    });
+    (0, _qunit.module)('collapsible behavior', function () {
+      (0, _qunit.test)('short feedback has no chevron', async function (assert) {
+        this.content = [{
+          text: 'Short feedback.'
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').doesNotExist();
+      });
+      (0, _qunit.test)('short feedback is not interactive', async function (assert) {
+        this.content = [{
+          text: 'Short feedback.'
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__feedback').doesNotHaveAttribute('role');
+      });
+      (0, _qunit.test)('clicking short feedback does not expand it', async function (assert) {
+        this.content = [{
+          text: 'Short feedback.'
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart__feedback');
+        assert.dom('.oss-smart__feedback').hasClass('oss-smart__feedback--collapsed');
+      });
+      (0, _qunit.test)('long feedback is collapsed by default', async function (assert) {
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__feedback').hasClass('oss-smart__feedback--collapsed');
+        assert.dom('.oss-smart__feedback').hasClass('oss-smart__feedback--truncated');
+      });
+      (0, _qunit.test)('long feedback shows a down chevron', async function (assert) {
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').hasClass('fa-chevron-down');
+      });
+      (0, _qunit.test)('long feedback is interactive', async function (assert) {
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__feedback').hasAttribute('role', 'button');
+      });
+      (0, _qunit.test)('clicking a truncated feedback expands it and flips the chevron up', async function (assert) {
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart__feedback');
+        assert.dom('.oss-smart__feedback').doesNotHaveClass('oss-smart__feedback--collapsed');
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').hasClass('fa-chevron-up');
+      });
+      (0, _qunit.test)('clicking twice collapses it again', async function (assert) {
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "TV78Ld06",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@content\"],[false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart__feedback');
+        await (0, _testHelpers.click)('.oss-smart__feedback');
+        assert.dom('.oss-smart__feedback').hasClass('oss-smart__feedback--collapsed');
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').hasClass('fa-chevron-down');
+      });
+      (0, _qunit.test)('@collapsible set to false disables the collapse behavior', async function (assert) {
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @collapsible={{false}} @content={{this.content}} />
+        */
+        {
+          "id": "JtLaKf6S",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@collapsible\",\"@content\"],[false,false,[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__feedback').doesNotHaveClass('oss-smart__feedback--collapsed');
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').doesNotExist();
+      });
+      (0, _qunit.test)('it updates truncation when @collapsible changes', async function (assert) {
+        this.collapsible = true;
+        this.content = [{
+          text: LONG_TEXT
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @collapsible={{this.collapsible}} @content={{this.content}} />
+        */
+        {
+          "id": "B4d5ryVv",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@collapsible\",\"@content\"],[false,[30,0,[\"collapsible\"]],[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('collapsible', false);
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').doesNotExist();
+        this.set('collapsible', true);
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').exists();
+      });
+      (0, _qunit.test)('an @error disables the collapse behavior even when @collapsible is true', async function (assert) {
+        this.error = {
+          title: 'Summary could not be generated.'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{false}} @collapsible={{true}} @error={{this.error}} />
+        */
+        {
+          "id": "53aw2wwW",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@collapsible\",\"@error\"],[false,true,[30,0,[\"error\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__feedback').doesNotHaveClass('oss-smart__feedback--collapsed');
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').doesNotExist();
+      });
+      (0, _qunit.test)('it measures overflowing content after an error is cleared', async function (assert) {
+        this.loading = false;
+        this.error = {
+          title: 'Summary could not be generated.'
+        };
+        this.content = [];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Feedback @loading={{this.loading}} @error={{this.error}} @content={{this.content}} />
+        */
+        {
+          "id": "39diMiRp",
+          "block": "[[[8,[39,0],null,[[\"@loading\",\"@error\",\"@content\"],[[30,0,[\"loading\"]],[30,0,[\"error\"]],[30,0,[\"content\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+          "isStrictMode": false
+        }));
+        await this.set('error', null);
+        await this.set('content', [{
+          text: LONG_TEXT
+        }]);
+        await (0, _testHelpers.settled)();
+        assert.dom('[data-control-name="oss-smart-feedback-error-title"]').doesNotExist();
+        assert.dom('[data-control-name="oss-smart-feedback-section"]').exists();
+        assert.dom('.oss-smart__feedback').hasClass('oss-smart__feedback--collapsed');
+        await (0, _testHelpers.waitFor)('.oss-smart__feedback.oss-smart__feedback--truncated');
+        assert.dom('[data-control-name="oss-smart-feedback-chevron"]').exists();
+      });
     });
   });
 });
