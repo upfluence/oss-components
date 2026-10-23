@@ -1,0 +1,6 @@
+node_modules/**
+dist/**
+declarations/**
+coverage/**
+tmp/**
+storybook-static/**

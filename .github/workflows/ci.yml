@@ -17,6 +17,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-24.04
+    env:
+      NODE_VERSION: '24'
     if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
     timeout-minutes: 10
     steps:
@@ -35,16 +37,19 @@ jobs:
         run: pnpm install
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - name: Build Addon
+        run: pnpm build
       - name: Lint
-        run: pnpm lint:js
+        run: pnpm lint
   tests:
     name: Tests
     uses: upfluence/actions/.github/workflows/any-js-ember-test.yml@master
     secrets: inherit
     with:
       node-version: ${{ vars.NODE_VERSION }}
+      ember-try-working-directory: packages/test-app
       test-variants: |
-        [{ "name": "default", "command": "pnpm test:ember" }]
+        [{ "name": "default", "command": "pnpm -w test" }]
   build:
     runs-on: ubuntu-24.04
     needs: [lint, tests]
@@ -67,14 +72,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       - name: Ember Build
-        run: pnpm ember build --silent
+        run: pnpm build:test-app
       - name: Storybook Build
-        run: pnpm build-storybook --quiet
+        run: pnpm build-storybook
       - name: Deploy website
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static/
+          publish_dir: ./packages/test-app/storybook-static/
           cname: storybook.upfluence.co
   release:
     name: Release Package
@@ -99,8 +104,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       - name: Publish
+        working-directory: packages/oss-components
         run: |
           echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> ~/.npmrc
-          npm publish --access public
+          pnpm publish --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
