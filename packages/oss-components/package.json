@@ -56,6 +56,7 @@
     "@glint/template": "^1.5.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@storybook/addon-actions": "6.4.9",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@tsconfig/ember": "^3.0.3",
     "@types/ember__application": "^4.0.11",
@@ -1023,6 +1024,7 @@
     "build",
     "linters",
     "translations",
-    "public"
+    "public",
+    "!**/*.stories.*"
   ]
 }

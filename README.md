@@ -5,7 +5,7 @@ Shared branded Ember components, helpers, modifiers, services, translations, and
 ## Compatibility
 
 - Ember 3.28 and 4.12; classic apps require ember-auto-import 2 and Webpack 5.
-- Node 20, 22, or 24; use Node 24 for workspace linting and pnpm 10 for development. CI runs Ember compatibility tests on Node 20.
+- Node 20, 22, or 24.
 
 ## Installation and styles
 
@@ -38,7 +38,6 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 - Change `@upfluence/oss-components/addon/...` imports to canonical `@upfluence/oss-components/...` imports.
 - Remove TypeScript `paths` mappings to this package's old `addon` and `addon-test-support` directories. Public exports resolve generated declarations directly.
 - Import helpers from `/test-support` or its documented subpaths. Test consumers provide QUnit, qunit-dom, Sinon, and Ember test helpers.
-- Existing component resolver names, including aliases, remain available.
 
 ### Consumer-owned asset maps
 
@@ -47,6 +46,8 @@ Follow [Consumer-owned asset maps](docs/asset-map.md). The consuming app explici
 ## Development
 
 This is a pnpm workspace with the published addon in `packages/oss-components` and its demo, tests, and Storybook in `packages/test-app`.
+
+Component stories stay colocated with their implementations in the addon's `src/components` directory. Storybook discovers them from the test app alongside the general guides in `packages/test-app/stories`; addon imports inside stories use the compiled package's public paths. Stories are excluded from runtime entrypoints, declaration generation, and the published package.
 
 ```sh
 pnpm install
@@ -64,8 +65,6 @@ pnpm test:coverage
 pnpm test:ember-compatibility
 pnpm --filter @upfluence/oss-components build:analyze
 ```
-
-Root `test` builds the addon, runs Node asset-map build tests, then runs browser tests. Root `test:coverage` enables Istanbul for the entire build/test sequence and writes `packages/test-app/coverage/lcov.info`; both CI and `make sonar-report` use that command. It verifies addon source records and normalizes LCOV paths to the repository root for SonarQube. A regular rebuild removes instrumentation before packaging. Templates retain their existing runtime behavior; migrating legacy component signatures to full Glint template checking is separate work.
 
 Git hooks remain opt-in through `make enable_pre_hook`. No install or default Make target installs them.
 

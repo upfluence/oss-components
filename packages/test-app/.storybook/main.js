@@ -3,7 +3,12 @@ const fs = require('node:fs');
 
 module.exports = {
   core: { builder: 'webpack5' },
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../stories/**/*.stories.mdx',
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
+    '../../oss-components/src/**/*.stories.mdx',
+    '../../oss-components/src/**/*.stories.@(js|jsx|ts|tsx)'
+  ],
   previewHead: (head) => {
     const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf8');
     const manifest = html.match(/<meta name="upfluence:asset-map"[^>]*>/)?.[0];

@@ -102,6 +102,9 @@ importers:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
         version: 16.0.3(rollup@4.65.0)
+      '@storybook/addon-actions':
+        specifier: 6.4.9
+        version: 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^5.2.2
         version: 5.2.2(prettier@3.8.3)
