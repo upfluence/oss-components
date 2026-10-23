@@ -14,8 +14,8 @@ env:
   FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
-  lint:
-    name: Lint
+  checks:
+    name: Lint & Typecheck
     runs-on: ubuntu-24.04
     env:
       NODE_VERSION: '24'
@@ -41,8 +41,11 @@ jobs:
         run: pnpm build
       - name: Lint
         run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
   tests:
     name: Tests
+    needs: [checks]
     uses: upfluence/actions/.github/workflows/any-js-ember-test.yml@master
     secrets: inherit
     with:
@@ -52,7 +55,7 @@ jobs:
         [{ "name": "default", "command": "pnpm -w test" }]
   build:
     runs-on: ubuntu-24.04
-    needs: [lint, tests]
+    needs: [checks, tests]
     if: contains(github.ref, 'refs/tags/v') && !contains(github.ref, '-')
     timeout-minutes: 10
     steps:
@@ -84,7 +87,7 @@ jobs:
   release:
     name: Release Package
     runs-on: ubuntu-24.04
-    needs: [lint, tests]
+    needs: [checks, tests]
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
     steps:
