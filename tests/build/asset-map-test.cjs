@@ -7,6 +7,7 @@ const path = require('node:path');
 const { test } = require('node:test');
 const { Builder } = require('broccoli');
 const AssetRev = require('broccoli-asset-rev');
+const mergeTrees = require('broccoli-merge-trees');
 const { injectAssetMap } = require('../../build/classic-asset-map.cjs');
 
 const html = '<meta name="upfluence:asset-map" content="__UPFLUENCE_ASSET_MAP__">';
@@ -131,4 +132,27 @@ test('rebuilds inject the new manifest, not stale data', async (t) => {
   fs.writeFileSync(path.join(input, 'assets/assetMap.json'), manifest('assets/images/after.svg'));
   await builder.build();
   assert.notEqual(manifestAt(builder.outputPath).assets[appAsset], before);
+});
+
+test('preserves symlink-backed cached HTML across non-HTML rebuilds', async (t) => {
+  const source = fixture(t, { 'assets/app.js': 'before' });
+  const input = fixture(t);
+  for (const relative of ['index.html', 'tests/index.html']) {
+    fs.unlinkSync(path.join(input, relative));
+    fs.symlinkSync(path.join(source, relative), path.join(input, relative));
+  }
+  const builder = new Builder(
+    injectAssetMap(mergeTrees([input, source], { overwrite: true }), { fingerprint: { enabled: false } })
+  );
+  t.after(() => builder.cleanup());
+  await builder.build();
+  assert.equal(fs.lstatSync(path.join(builder.outputPath, 'index.html')).isSymbolicLink(), false);
+  assert.equal(fs.lstatSync(path.join(builder.outputPath, 'tests/index.html')).isSymbolicLink(), false);
+  assert.equal(fs.readFileSync(path.join(source, 'index.html'), 'utf8'), html);
+  assert.equal(fs.readFileSync(path.join(source, 'tests/index.html'), 'utf8'), html);
+  fs.writeFileSync(path.join(source, 'assets/app.js'), 'after');
+  await builder.build();
+  assert.equal(manifestAt(builder.outputPath).enabled, false);
+  assert.equal(fs.readFileSync(path.join(source, 'index.html'), 'utf8'), html);
+  assert.equal(fs.readFileSync(path.join(source, 'tests/index.html'), 'utf8'), html);
 });

@@ -86,7 +86,15 @@ class AssetMapInjection extends Plugin {
       if (html.split(PLACEHOLDER).length !== 2) {
         throw new Error(`${PREFIX} Expected exactly one ${PLACEHOLDER} placeholder in ${relative}.`);
       }
-      fs.writeFileSync(file, html.replace(PLACEHOLDER, payload));
+      // Broccoli's cached trees can expose HTML through symlinks. Replace the
+      // output entry atomically rather than writing through a link to the input.
+      const temporaryFile = `${file}.upfluence-asset-map.tmp`;
+      fs.writeFileSync(temporaryFile, html.replace(PLACEHOLDER, payload), { flag: 'wx' });
+      try {
+        fs.renameSync(temporaryFile, file);
+      } finally {
+        fs.rmSync(temporaryFile, { force: true });
+      }
       injected++;
     }
     if (!injected) throw new Error(`${PREFIX} No consumer HTML entry points found.`);
