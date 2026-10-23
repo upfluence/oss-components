@@ -1,0 +1,19 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "strictFunctionTypes": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "types": ["qunit", "qunit-dom", "sinon"],
+    "baseUrl": ".",
+    "paths": {
+      "test-app/tests/*": ["tests/*"],
+      "test-app/*": ["app/*"],
+      "*": ["types/*"]
+    }
+  },
+  "include": ["app/**/*", "tests/**/*", "types/**/*"]
+}

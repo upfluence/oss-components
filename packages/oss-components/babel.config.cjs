@@ -1,0 +1,34 @@
+const emberCliCodeCoverage = require('ember-cli-code-coverage');
+
+module.exports = {
+  generatorOpts: {
+    compact: false
+  },
+  plugins: [
+    [
+      '@babel/plugin-transform-typescript',
+      {
+        allExtensions: true,
+        allowDeclareFields: true,
+        onlyRemoveTypeImports: true
+      }
+    ],
+    '@embroider/addon-dev/template-colocation-plugin',
+    [
+      'babel-plugin-ember-template-compilation',
+      {
+        targetFormat: 'hbs',
+        transforms: []
+      }
+    ],
+    [
+      'module:decorator-transforms',
+      {
+        runtime: {
+          import: 'decorator-transforms/runtime-esm'
+        }
+      }
+    ],
+    ...emberCliCodeCoverage.buildBabelPlugin()
+  ]
+};

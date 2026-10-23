@@ -1,0 +1,68 @@
+import { action } from '@ember/object';
+import { scheduleOnce } from '@ember/runloop';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
+import UPFLocalStorage from '../../../utils/upf-local-storage';
+
+export type HomeParameters = {
+  logo: string;
+  url: string;
+  tooltip?: string;
+};
+
+const SIDEBAR_EXPANDED_STATE = 'oss-layout-sidebar-expanded';
+
+interface OSSLayoutSidebarArgs {
+  homeParameters?: HomeParameters;
+  logo?: string;
+  homeURL?: string;
+  expandable?: boolean;
+  alwaysExpanded?: boolean;
+}
+
+export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
+  @tracked expanded: boolean = true;
+
+  upfLocalStorage = new UPFLocalStorage();
+
+  constructor(owner: unknown, args: OSSLayoutSidebarArgs) {
+    super(owner, args);
+
+    scheduleOnce('afterRender', this, this.initializeSidebarState);
+  }
+
+  get computedClasses(): string {
+    const classes = ['oss-sidebar-container'];
+
+    if (this.expanded) {
+      classes.push('oss-sidebar-container--expanded');
+    }
+
+    return classes.join(' ');
+  }
+
+  get displayExpandedStateToggle(): boolean {
+    return Boolean(this.args.expandable) && !this.args.alwaysExpanded;
+  }
+
+  @action
+  toggleExpandedState(): void {
+    this.expanded = !this.expanded;
+    this.upfLocalStorage.saveItem(SIDEBAR_EXPANDED_STATE, String(this.expanded));
+    document.documentElement.style.setProperty(
+      '--sidebar-width',
+      'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)'
+    );
+  }
+
+  private initializeSidebarState(): void {
+    this.expanded =
+      this.args.alwaysExpanded ||
+      (Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false');
+    document.documentElement.style.setProperty(
+      '--sidebar-width',
+      'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)'
+    );
+  }
+}

@@ -1,0 +1,98 @@
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+import Component from '@glimmer/component';
+
+import type { IntlService } from 'ember-intl';
+
+import { isSafeString } from '../../../utils';
+import type { CountryData } from '../../../utils/country-codes';
+import type { OSSAvatarArgs } from '../avatar';
+import type { OSSBadgeArgs } from '../badge';
+import type { OSSIconArgs } from '../icon';
+import type { OSSTagArgs } from '../tag';
+
+type IconSpec = OSSIconArgs & {
+  tooltip?: { title: ReturnType<IntlService['t']>; placement?: string };
+};
+
+interface OSSInfiniteSelectOptionComponentSignature {
+  Args: {
+    prefixAvatar?: OSSAvatarArgs;
+    prefixBadge?: OSSBadgeArgs;
+    prefixIcon?: IconSpec;
+    prefixCountry?: CountryData['alpha2'];
+
+    title: ReturnType<IntlService['t']>;
+    subtitle?: ReturnType<IntlService['t']>;
+    icon?: IconSpec;
+
+    suffixHint?: ReturnType<IntlService['t']>;
+    suffixTag?: OSSTagArgs;
+    suffixIcon?: IconSpec;
+
+    selectionType?: 'multiple' | 'single';
+    selected?: boolean;
+    disabled?: boolean;
+    onSelect(value: boolean, event?: PointerEvent): void;
+  };
+
+  Blocks: {
+    prefix: [];
+    suffix: [];
+  };
+}
+
+export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfiniteSelectOptionComponentSignature> {
+  constructor(owner: unknown, args: OSSInfiniteSelectOptionComponentSignature['Args']) {
+    super(owner, args);
+    assert(
+      '[component][OSS::InfiniteSelect::Option] @title is required',
+      typeof args.title === 'string' || isSafeString(args.title)
+    );
+    assert(
+      '[component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory',
+      typeof this.args.onSelect === 'function'
+    );
+  }
+
+  get computedClasses(): string {
+    const classes = ['oss-infinite-select-option'];
+    if (this.isSelectionMultiple) {
+      classes.push('oss-infinite-select-option--multiple');
+    }
+    if (this.isSelectionSingle) {
+      classes.push('oss-infinite-select-option--single');
+    }
+    if (this.args.selected) {
+      classes.push('oss-infinite-select-option--selected');
+    }
+    if (this.args.disabled) {
+      classes.push('oss-infinite-select-option--disabled');
+    }
+    return classes.join(' ');
+  }
+
+  get selectionType(): 'multiple' | 'single' {
+    return this.args.selectionType ?? 'single';
+  }
+
+  get isSelectionMultiple(): boolean {
+    return this.selectionType === 'multiple';
+  }
+
+  get isSelectionSingle(): boolean {
+    return this.selectionType === 'single';
+  }
+
+  get selected(): boolean {
+    return this.args.selected ?? false;
+  }
+
+  @action
+  onSelect(value: boolean, event?: PointerEvent): void {
+    event?.stopPropagation();
+
+    if (this.args.disabled) return;
+    this.args.onSelect(value, event);
+  }
+}

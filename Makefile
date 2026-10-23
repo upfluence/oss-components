@@ -18,23 +18,23 @@ echo:
 	@echo Starting OSS-Components
 
 start: ## Starts the dev server
-	pnpm ember serve --port 0
+	pnpm start
 
 clean: ## Cleans ./node_modules && ./dist
 	@echo "Cleaning up ./node_modules & ./dist folders"
 	-rm -r ./node_modules
-	-rm -r ./dist
+	-rm -r ./packages/oss-components/dist ./packages/oss-components/declarations ./packages/test-app/dist
 	@echo ""; echo "-------------------------------"; echo ""
 
 re:	clean install echo start ## Reinstalls dependencies & starts the dev server
 
 tests: ## Runs tests once
 	@echo "Running tests once"
-	pnpm ember test --silent -r dot
+	pnpm test
 
 testserver: ## Runs the test server
 	@echo "Starting Test Server"
-	pnpm ember test -s
+	pnpm --filter test-app exec ember test -s
 
 enable_pre_hook: ## Enables git pre-hook on the project. Will run Linter & Tests before pushing.
 	@echo "Installing git pre-push hook"
@@ -52,13 +52,13 @@ help: clear upfluence ## Displays the help message
 h: help ## Displays the help message
 
 version_patch: ## Creates & pushes a new patch tag
-	./scripts/new-version-tag patch
+	pnpm exec release-it patch
 
 version_minor: ## Creates & pushes a new minor tag
-	./scripts/new-version-tag minor
+	pnpm exec release-it minor
 
 version_major: ## Creates & pushes a new major tag
-	./scripts/new-version-tag major
+	pnpm exec release-it major
 
 upfluence: ## Displays the UPF logo :)
 	@sh ./scripts/upf_logo

@@ -1,0 +1,249 @@
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+import { isEmpty } from '@ember/utils';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+
+import type { FeedbackMessage } from './input-container';
+
+export type Currency = {
+  code: string;
+  symbol: string;
+};
+
+export interface OSSCurrencyInputArgs {
+  currency: string;
+  value: number;
+  onChange(currency: string, value: number): void;
+  disabled?: boolean;
+  allowCurrencyUpdate?: boolean;
+  onlyCurrency?: boolean;
+  placeholder?: string;
+  ariaLabel?: string;
+  errorMessage?: string;
+  feedbackMessage?: FeedbackMessage;
+  allowedCurrencies?: Currency[];
+  allowFloatValues?: boolean;
+  options?: {
+    allowSearch?: boolean;
+    allowEmpty?: boolean;
+  };
+}
+
+const NUMERIC_ONLY = /^\d$/i;
+export const NOT_NUMERIC_FLOAT = /[^\d,.]/g;
+export const PLATFORM_CURRENCIES: Currency[] = [
+  { code: 'USD', symbol: '$' },
+  { code: 'EUR', symbol: '€' },
+  { code: 'JPY', symbol: '¥' },
+  { code: 'GBP', symbol: '£' },
+  { code: 'AUD', symbol: 'A$' },
+  { code: 'CAD', symbol: 'C$' },
+  { code: 'CHF', symbol: 'Fr' },
+  { code: 'CNY', symbol: '¥' },
+  { code: 'SEK', symbol: 'kr' },
+  { code: 'NZD', symbol: 'NZ$' },
+  { code: 'MXN', symbol: '$' },
+  { code: 'SGD', symbol: 'S$' },
+  { code: 'HKD', symbol: 'HK$' },
+  { code: 'NOK', symbol: 'kr' },
+  { code: 'KRW', symbol: '₩' },
+  { code: 'TRY', symbol: '₺' },
+  { code: 'MYR', symbol: 'RM' },
+  { code: 'INR', symbol: '₹' },
+  { code: 'BRL', symbol: 'R$' },
+  { code: 'ZAR', symbol: 'R' },
+  { code: 'IDR', symbol: 'Rp' },
+  { code: 'PHP', symbol: '₱' },
+  { code: 'THB', symbol: '฿' },
+  { code: 'DKK', symbol: 'kr' },
+  { code: 'PLN', symbol: 'zł' },
+  { code: 'CZK', symbol: 'Kč' },
+  { code: 'RON', symbol: 'lei' },
+  { code: 'AED', symbol: 'د.إ' }
+];
+const AUTHORIZED_INPUTS = [
+  'Backspace',
+  'Delete',
+  'ArrowLeft',
+  'ArrowRight',
+  'Tab',
+  'Shift',
+  'Control',
+  '.',
+  ',',
+  'ArrowUp',
+  'ArrowDown'
+];
+
+export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Component<T> {
+  private currencies = this.args.allowedCurrencies ?? PLATFORM_CURRENCIES;
+
+  @tracked currencySelectorShown: boolean = false;
+  @tracked filteredCurrencies: Currency[] = this.currencies;
+  @tracked localValue: number;
+
+  constructor(owner: unknown, args: OSSCurrencyInputArgs, preventDefaultAssertions?: boolean) {
+    super(owner, args);
+
+    this.localValue = this.args.value;
+
+    if (preventDefaultAssertions) return;
+
+    if (!this.args.value && !this.args.placeholder) {
+      this.localValue = 0;
+    }
+
+    assert(
+      '[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory',
+      typeof this.args.onChange === 'function'
+    );
+  }
+
+  get allowCurrencyUpdate(): boolean {
+    return this.args.allowCurrencyUpdate ?? true;
+  }
+
+  get selectedCurrencySymbol(): string {
+    return this.selectedCurrency?.symbol || '—';
+  }
+
+  get selectedCurrencyCode(): string {
+    return this.selectedCurrency?.code || '—';
+  }
+
+  get selectedCurrency(): Currency | undefined {
+    if (isEmpty(this.args.currency)) {
+      if (this.args.options?.allowEmpty) {
+        return undefined;
+      }
+
+      return this.currencies[0]!;
+    }
+    return this.currencies.find((currency: Currency) => currency.code === this.args.currency) ?? this.currencies[0]!;
+  }
+
+  get placeholder(): string {
+    return this.args.placeholder ?? '0';
+  }
+
+  get disabled(): boolean {
+    return this.args.disabled ?? false;
+  }
+
+  get enabledSearch(): boolean {
+    return this.args.options?.allowSearch ?? true;
+  }
+
+  get displayOnlyCurrencyPlaceholder(): boolean {
+    return !this.selectedCurrency && !!this.args.onlyCurrency && !!this.args.placeholder;
+  }
+
+  get computedClasses(): string {
+    const classes = ['currency-input-container'];
+    if (this.disabled) {
+      classes.push('currency-input-container--disabled');
+    }
+    if (this.args.errorMessage) {
+      classes.push('currency-input-container--errored');
+    } else if (this.feedbackMessage) {
+      classes.push(`currency-input-container--${this.feedbackMessage.type}`);
+    }
+    return classes.join(' ');
+  }
+
+  get feedbackMessage(): FeedbackMessage | undefined {
+    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+      return this.args.feedbackMessage;
+    }
+
+    return undefined;
+  }
+
+  get messageIcon(): string | undefined {
+    if (this.args.feedbackMessage?.type === 'success') return 'fa-check-circle';
+    if (this.args.feedbackMessage?.type === 'warning') return 'fa-exclamation-circle';
+    return undefined;
+  }
+
+  get feedbackMessageComputedClasses(): string {
+    const classes = ['fx-row', 'fx-xalign-center', 'fx-gap-px-3', 'margin-top-px-6'];
+    if (this.feedbackMessage?.type) {
+      classes.push(`font-color-${this.feedbackMessage.type}-500`);
+    }
+    return classes.join(' ');
+  }
+
+  get authorizedFloatInputs(): string[] {
+    if (this.args.allowFloatValues === false) {
+      return AUTHORIZED_INPUTS.filter((key: string) => !['.', ','].includes(key));
+    }
+    return AUTHORIZED_INPUTS;
+  }
+
+  @action
+  onlyNumeric(event: KeyboardEvent): void {
+    if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
+      return;
+    }
+
+    if (!NUMERIC_ONLY.test(event.key) && !this.authorizedFloatInputs.find((key: string) => key === event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  @action
+  handlePaste(event: ClipboardEvent): void {
+    event.preventDefault();
+
+    let paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    if (this.args.allowFloatValues === false && (paste.includes('.') || paste.includes(','))) {
+      paste = paste.replace(/[.,].*$/, '');
+    }
+    const target = event.target as HTMLInputElement;
+    const initialSelectionStart = target.selectionStart ?? 0;
+    const finalSelectionPosition = initialSelectionStart + paste.length;
+
+    target.setRangeText(paste, initialSelectionStart, target.selectionEnd ?? initialSelectionStart);
+    target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+
+    this.localValue = target.value as unknown as number;
+    this.notifyChanges();
+  }
+
+  @action
+  notifyChanges(): void {
+    if (!this.selectedCurrency) return;
+    this.args.onChange(this.selectedCurrency.code, this.localValue);
+  }
+
+  @action
+  onSearch(keyword: any): void {
+    this.filteredCurrencies = this.currencies.filter((currency: Currency) => {
+      return (
+        currency.code.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || currency.symbol.indexOf(keyword) !== -1
+      );
+    });
+  }
+
+  @action
+  onSelect(value: Currency, _selected: boolean, event?: PointerEvent): void {
+    event?.stopPropagation();
+    this.args.onChange(value.code, this.localValue);
+    this.hideCurrencySelector();
+  }
+
+  @action
+  toggleCurrencySelector(e: any): void {
+    e.stopPropagation();
+
+    if (!this.allowCurrencyUpdate || this.disabled) return;
+    this.currencySelectorShown = !this.currencySelectorShown;
+  }
+
+  @action
+  hideCurrencySelector(): void {
+    this.currencySelectorShown = false;
+    this.filteredCurrencies = this.currencies;
+  }
+}

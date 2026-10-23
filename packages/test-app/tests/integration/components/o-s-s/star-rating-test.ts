@@ -1,0 +1,84 @@
+import { click, render, setupOnerror, triggerEvent } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+import sinon from 'sinon';
+
+import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
+
+module('Integration | Component | o-s-s/star-rating', function (hooks) {
+  setupRenderingTest(hooks);
+
+  test('it renders', async function (assert) {
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{5}} />`);
+
+    assert.dom('.star-rating').exists();
+  });
+
+  for (const starColor in StarColor) {
+    test('Passing @activeColor, @passiveColor & @activeStyle applies the correct classes to the component', async function (assert) {
+      this.activeColor = starColor;
+      this.passiveColor = starColor;
+      await render(hbs`<OSS::StarRating @rating={{5}} @totalStars={{8}}
+                                        @activeColor={{this.activeColor}}
+                                        @passiveStyle='regular'
+                                        @passiveColor={{this.passiveColor}} />`);
+      assert.dom('.fas').hasClass(`color-${starColor}`);
+      assert.dom('.far').hasClass(`color-${starColor}`);
+    });
+  }
+
+  test('The number of stars displayed is consistent with the provided @rating', async function (assert) {
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @passiveStyle='regular'
+                                      @activeColor={{this.activeColor}}
+                                      @passiveColor={{this.passiveColor}} />`);
+    assert.dom('.fas.fa-star.color-yellow').exists({ count: 3 });
+  });
+
+  test('When @onChange parameter is passed, the method is called when a click is made on a star', async function (assert) {
+    this.onChange = sinon.stub();
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @passiveStyle='regular'
+                                      @activeColor={{this.activeColor}}
+                                      @passiveColor={{this.passiveColor}}
+                                      @onChange={{this.onChange}} />`);
+    await click('.fa-star:nth-of-type(4)');
+    assert.true(this.onChange.calledOnceWithExactly(4));
+  });
+
+  test('When the mouse leaves right after a click, the clicked rating is kept even if @rating has not updated yet', async function (assert) {
+    this.onChange = sinon.stub();
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @onChange={{this.onChange}} />`);
+
+    await click('.fa-star:nth-of-type(6)');
+    await triggerEvent('.fa-star:nth-of-type(6)', 'mouseleave');
+
+    assert.dom('.fas.fa-star').exists({ count: 6 });
+  });
+
+  module('Error management', function () {
+    test('failing to pass @rating throws an error', async function (assert) {
+      assert.expect(1);
+      setupOnerror((err: any) => {
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::StarRating] @rating argument is mandatory and must be a number'
+        );
+      });
+
+      await render(hbs`<OSS::StarRating @totalStars={{5}} />`);
+    });
+
+    test('failing to pass @totalStart throws an error', async function (assert) {
+      assert.expect(1);
+      setupOnerror((err: any) => {
+        assert.strictEqual(
+          err.message,
+          'Assertion Failed: [component][OSS::StarRating] @totalStars argument is mandatory and must be a number'
+        );
+      });
+
+      await render(hbs`<OSS::StarRating @rating={{5}} />`);
+    });
+  });
+});

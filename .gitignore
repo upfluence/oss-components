@@ -1,21 +1,21 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist/
-/tmp/
+**/dist/
+**/tmp/
 
 # dependencies
 /bower_components/
-/node_modules/
+**/node_modules/
 storybook-static
 
 # misc
-/.env*
+**/.env*
 /.pnp*
 /.sass-cache
-/.eslintcache
+**/.eslintcache
 /connect.lock
-/coverage/
+**/coverage/
 /libpeerconnection.log
 npm-debug.log
 testem.log
@@ -27,9 +27,9 @@ ember-modules-codemod.*
 doc
 
 # ember-try
-/.node_modules.ember-try/
-/bower.json.ember-try
-/package.json.ember-try
+**/.node_modules.ember-try/
+**/bower.json.ember-try
+**/package.json.ember-try
 
 # storybook
 preview-head.html
@@ -37,3 +37,12 @@ app/styles/core/fonts/
 
 # VS Code
 .vscode/
+
+**/declarations/
+**/.prettiercache
+**/stats.html
+**/.DS_Store
+packages/oss-components/README.md
+packages/oss-components/LICENSE.md
+
+**/*.ember-try

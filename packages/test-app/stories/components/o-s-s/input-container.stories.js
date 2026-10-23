@@ -1,0 +1,173 @@
+import { action } from '@storybook/addon-actions';
+import { hbs } from 'ember-cli-htmlbars';
+
+const AutocompleteValues = ['on', 'off'];
+
+export default {
+  title: 'Components/OSS::InputContainer',
+  component: 'input-container',
+  argTypes: {
+    value: {
+      description: 'Value of the input',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    type: {
+      description: 'The input type',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'text' }
+      },
+      control: { type: 'text' }
+    },
+    disabled: {
+      description: 'Disable the default input (when not passing an input named block)',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
+    ariaLabel: {
+      description: 'Accessible name of the input, used when no visible label is associated with it',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    placeholder: {
+      description: 'Placeholder of the input',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: '{ type: string, value: string }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
+    errorMessage: {
+      description: 'An error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    hasError: {
+      description:
+        'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
+    },
+    autocomplete: {
+      description: 'The autocomplete attribute of the input',
+      table: {
+        type: {
+          summary: AutocompleteValues.join('|')
+        },
+        defaultValue: { summary: 'on' }
+      },
+      options: AutocompleteValues,
+      control: { type: 'select' }
+    },
+    onChange: {
+      description: 'Method called every time the input is updated',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(value: string): void'
+        }
+      }
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'The OSS version of the input component. Configurable & skinable.'
+      }
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=8613-231391&t=4fMFcsVGXOxOKmLh-4'
+    }
+  }
+};
+
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  type: undefined,
+  placeholder: 'this is the placeholder',
+  feedbackMessage: undefined,
+  errorMessage: undefined,
+  autocomplete: undefined,
+  onChange: action('onChange')
+};
+
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                           @feedbackMessage={{this.feedbackMessage}} @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
+  `,
+  context: args
+});
+
+const AdvancedWithNamedBlocksTemplate = (args) => ({
+  template: hbs`
+      <OSS::InputContainer>
+        <:prefix>
+          {{#if (gt this.lastname.length 0)}}
+            <OSS::Icon @icon="fa-check" class="font-color-success-500" />
+          {{else}}
+            <OSS::Icon @icon="fa-times" class="font-color-error-500" />
+          {{/if}}
+        </:prefix>
+        <:input>
+          <Input @value={{this.lastname}} placeholder="My fancy custom input" />
+        </:input>
+        <:suffix>
+          {{#if (gt this.lastname.length 0)}}
+            <OSS::Icon @icon="fa-check" class="font-color-success-500" />
+          {{else}}
+            <OSS::Icon @icon="fa-times" class="font-color-error-500" />
+          {{/if}}
+        </:suffix>
+      </OSS::InputContainer>
+  `,
+  context: args
+});
+
+export const BasicUsage = DefaultUsageTemplate.bind({});
+BasicUsage.args = defaultArgs;
+
+export const AdvancedWithNamedBlocks = AdvancedWithNamedBlocksTemplate.bind({});
+AdvancedWithNamedBlocks.args = {};

@@ -1,0 +1,28 @@
+import { setApplication } from '@ember/test-helpers';
+
+import { forceModulesToBeLoaded, sendCoverage } from 'ember-cli-code-coverage/test-support';
+import { start } from 'ember-qunit';
+import * as QUnit from 'qunit';
+import { setup } from 'qunit-dom';
+import 'qunit-dom';
+import Application from 'test-app/app';
+import config from 'test-app/config/environment';
+
+import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
+
+registerAssertions(QUnit.assert);
+setup(QUnit.assert);
+QUnit.done(async () => {
+  forceModulesToBeLoaded((_, moduleName) => !moduleName.endsWith('.stories'));
+  await sendCoverage();
+});
+
+setApplication(Application.create(config.APP));
+
+start();
+
+declare module '@ember/test-helpers' {
+  interface TestContext {
+    [key: string]: any;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "strictFunctionTypes": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "types": ["qunit", "qunit-dom", "sinon"],
+    "declaration": true,
+    "declarationDir": "declarations",
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts", "src/**/*.js", "unpublished-development-types/**/*.d.ts"],
+  // Keep the existing TS-only checks while legacy component signatures are migrated.
+  "glint": {
+    "environment": []
+  }
+}

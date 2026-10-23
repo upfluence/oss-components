@@ -1,0 +1,1028 @@
+{
+  "name": "@upfluence/oss-components",
+  "version": "3.99.9",
+  "repository": "https://github.com/upfluence/oss-components",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ember-addon"
+  ],
+  "engines": {
+    "node": "20.* || 22.* || 24.*"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "description": "Shared Upfluence OSS components, helpers, services, and styles.",
+  "scripts": {
+    "lint": "npm-run-all --aggregate-output --continue-on-error lint:format lint:js lint:hbs",
+    "lint:format": "prettier . --check",
+    "lint:js": "eslint .",
+    "lint:hbs": "ember-template-lint .",
+    "lint:fix": "prettier . --write && eslint . --fix && ember-template-lint . --fix",
+    "build": "rollup --config",
+    "build:analyze": "DEBUG=true rollup --config --perf",
+    "typecheck": "glint",
+    "prepack": "rollup --config",
+    "start": "rollup --config --watch",
+    "test:asset-map-build": "node --test tests/build/*-test.cjs"
+  },
+  "dependencies": {
+    "@ember/render-modifiers": "^2.1.0",
+    "@embroider/addon-shim": "^1.10.0",
+    "@embroider/macros": "^1.13.4",
+    "@embroider/util": "^1.9.0",
+    "@floating-ui/dom": "^1.6.3",
+    "@glimmer/component": "^1.0.4",
+    "@glimmer/tracking": "^1.0.4",
+    "broccoli-plugin": "^4.0.7",
+    "decorator-transforms": "^2.3.0",
+    "dompurify": "^3.3.0",
+    "ember-intl": "^6.4.0",
+    "ember-modifier": "^3.2.7",
+    "ember-truth-helpers": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-transform-typescript": "^7.24.0",
+    "@babel/runtime": "^7.24.0",
+    "@ember/test-helpers": "^2.9.4",
+    "@embroider/addon-dev": "7.1.6",
+    "@glint/core": "^1.5.2",
+    "@glint/environment-ember-loose": "^1.5.2",
+    "@glint/template": "^1.5.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@tsconfig/ember": "^3.0.3",
+    "@types/ember__application": "^4.0.11",
+    "@types/ember__component": "^4.0.22",
+    "@types/ember__debug": "^4.0.8",
+    "@types/ember__object": "^4.0.12",
+    "@types/ember__runloop": "^4.0.10",
+    "@types/ember__service": "^4.0.9",
+    "@types/ember__template": "^4.0.7",
+    "@types/ember__utils": "^4.0.7",
+    "@types/qunit": "^2.19.9",
+    "@types/rsvp": "^4.0.8",
+    "@types/sinon": "^10.0.2",
+    "@upfluence/w-conf": "^0.4.0",
+    "babel-plugin-ember-template-compilation": "^2.2.1",
+    "broccoli": "^3.5.2",
+    "broccoli-asset-rev": "^3.0.0",
+    "ember-cli-babel": "^7.26.10",
+    "ember-cli-code-coverage": "^3.1.0",
+    "ember-cli-htmlbars": "^6.3.0",
+    "ember-source": "~3.28.8",
+    "ember-template-lint": "^3.15.0",
+    "eslint": "^10.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.8.1",
+    "qunit": "^2.20.0",
+    "qunit-dom": "^3.3.0",
+    "rollup": "^4.24.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "sinon": "^10.0.1",
+    "typescript": "^5.9.3",
+    "webpack": "5",
+    "@types/ember__routing": "^4.0.21",
+    "@types/ember__destroyable": "^4.0.5"
+  },
+  "peerDependencies": {
+    "ember-source": ">=3.28.0",
+    "@ember/test-helpers": ">=2",
+    "qunit": "^2 || ^3",
+    "sinon": ">=10",
+    "qunit-dom": ">=1",
+    "ember-template-lint": "^3.15.0"
+  },
+  "peerDependenciesMeta": {
+    "@ember/test-helpers": {
+      "optional": true
+    },
+    "qunit": {
+      "optional": true
+    },
+    "sinon": {
+      "optional": true
+    },
+    "qunit-dom": {
+      "optional": true
+    },
+    "ember-template-lint": {
+      "optional": true
+    }
+  },
+  "exports": {
+    "./components/input-wrapper": {
+      "types": "./declarations/components/input-wrapper.d.ts",
+      "default": "./dist/components/input-wrapper.js"
+    },
+    "./components/loading-state": {
+      "types": "./declarations/components/loading-state.d.ts",
+      "default": "./dist/components/loading-state.js"
+    },
+    "./components/o-s-s/access-panel": {
+      "types": "./declarations/components/o-s-s/access-panel.d.ts",
+      "default": "./dist/components/o-s-s/access-panel.js"
+    },
+    "./components/o-s-s/alert": {
+      "types": "./declarations/components/o-s-s/alert.d.ts",
+      "default": "./dist/components/o-s-s/alert.js"
+    },
+    "./components/o-s-s/anchor": {
+      "types": "./declarations/components/o-s-s/anchor.d.ts",
+      "default": "./dist/components/o-s-s/anchor.js"
+    },
+    "./components/o-s-s/array-input": {
+      "types": "./declarations/components/o-s-s/array-input.d.ts",
+      "default": "./dist/components/o-s-s/array-input.js"
+    },
+    "./components/o-s-s/attribute/base": {
+      "types": "./declarations/components/o-s-s/attribute/base.d.ts",
+      "default": "./dist/components/o-s-s/attribute/base.js"
+    },
+    "./components/o-s-s/attribute/country": {
+      "types": "./declarations/components/o-s-s/attribute/country.d.ts",
+      "default": "./dist/components/o-s-s/attribute/country.js"
+    },
+    "./components/o-s-s/attribute/phone-number": {
+      "types": "./declarations/components/o-s-s/attribute/phone-number.d.ts",
+      "default": "./dist/components/o-s-s/attribute/phone-number.js"
+    },
+    "./components/o-s-s/attribute/rating": {
+      "types": "./declarations/components/o-s-s/attribute/rating.d.ts",
+      "default": "./dist/components/o-s-s/attribute/rating.js"
+    },
+    "./components/o-s-s/attribute/removable-text": {
+      "types": "./declarations/components/o-s-s/attribute/removable-text.d.ts",
+      "default": "./dist/components/o-s-s/attribute/removable-text.js"
+    },
+    "./components/o-s-s/attribute/revealable-email": {
+      "types": "./declarations/components/o-s-s/attribute/revealable-email.d.ts",
+      "default": "./dist/components/o-s-s/attribute/revealable-email.js"
+    },
+    "./components/o-s-s/attribute/tag-array": {
+      "types": "./declarations/components/o-s-s/attribute/tag-array.d.ts",
+      "default": "./dist/components/o-s-s/attribute/tag-array.js"
+    },
+    "./components/o-s-s/attribute/tagada": {
+      "types": "./declarations/components/o-s-s/attribute/tagada.d.ts",
+      "default": "./dist/components/o-s-s/attribute/tagada.js"
+    },
+    "./components/o-s-s/attribute/text": {
+      "types": "./declarations/components/o-s-s/attribute/text.d.ts",
+      "default": "./dist/components/o-s-s/attribute/text.js"
+    },
+    "./components/o-s-s/attributes-panel": {
+      "types": "./declarations/components/o-s-s/attributes-panel.d.ts",
+      "default": "./dist/components/o-s-s/attributes-panel.js"
+    },
+    "./components/o-s-s/avatar-group": {
+      "types": "./declarations/components/o-s-s/avatar-group.d.ts",
+      "default": "./dist/components/o-s-s/avatar-group.js"
+    },
+    "./components/o-s-s/avatar": {
+      "types": "./declarations/components/o-s-s/avatar.d.ts",
+      "default": "./dist/components/o-s-s/avatar.js"
+    },
+    "./components/o-s-s/badge": {
+      "types": "./declarations/components/o-s-s/badge.d.ts",
+      "default": "./dist/components/o-s-s/badge.js"
+    },
+    "./components/o-s-s/banner": {
+      "types": "./declarations/components/o-s-s/banner.d.ts",
+      "default": "./dist/components/o-s-s/banner.js"
+    },
+    "./components/o-s-s/benjamin-button": {
+      "types": "./declarations/components/o-s-s/benjamin-button.d.ts",
+      "default": "./dist/components/o-s-s/benjamin-button.js"
+    },
+    "./components/o-s-s/bruce": {
+      "types": "./declarations/components/o-s-s/bruce.d.ts",
+      "default": "./dist/components/o-s-s/bruce.js"
+    },
+    "./components/o-s-s/button-dropdown": {
+      "types": "./declarations/components/o-s-s/button-dropdown.d.ts",
+      "default": "./dist/components/o-s-s/button-dropdown.js"
+    },
+    "./components/o-s-s/button": {
+      "types": "./declarations/components/o-s-s/button.d.ts",
+      "default": "./dist/components/o-s-s/button.js"
+    },
+    "./components/o-s-s/carousel": {
+      "types": "./declarations/components/o-s-s/carousel.d.ts",
+      "default": "./dist/components/o-s-s/carousel.js"
+    },
+    "./components/o-s-s/charger": {
+      "types": "./declarations/components/o-s-s/charger.d.ts",
+      "default": "./dist/components/o-s-s/charger.js"
+    },
+    "./components/o-s-s/checkbox": {
+      "types": "./declarations/components/o-s-s/checkbox.d.ts",
+      "default": "./dist/components/o-s-s/checkbox.js"
+    },
+    "./components/o-s-s/chip-n-fish": {
+      "types": "./declarations/components/o-s-s/chip-n-fish.d.ts",
+      "default": "./dist/components/o-s-s/chip-n-fish.js"
+    },
+    "./components/o-s-s/chip": {
+      "types": "./declarations/components/o-s-s/chip.d.ts",
+      "default": "./dist/components/o-s-s/chip.js"
+    },
+    "./components/o-s-s/code-block": {
+      "types": "./declarations/components/o-s-s/code-block.d.ts",
+      "default": "./dist/components/o-s-s/code-block.js"
+    },
+    "./components/o-s-s/completion-badge": {
+      "types": "./declarations/components/o-s-s/completion-badge.d.ts",
+      "default": "./dist/components/o-s-s/completion-badge.js"
+    },
+    "./components/o-s-s/content-panel": {
+      "types": "./declarations/components/o-s-s/content-panel.d.ts",
+      "default": "./dist/components/o-s-s/content-panel.js"
+    },
+    "./components/o-s-s/context-menu/panel": {
+      "types": "./declarations/components/o-s-s/context-menu/panel.d.ts",
+      "default": "./dist/components/o-s-s/context-menu/panel.js"
+    },
+    "./components/o-s-s/context-menu": {
+      "types": "./declarations/components/o-s-s/context-menu.d.ts",
+      "default": "./dist/components/o-s-s/context-menu.js"
+    },
+    "./components/o-s-s/copy": {
+      "types": "./declarations/components/o-s-s/copy.d.ts",
+      "default": "./dist/components/o-s-s/copy.js"
+    },
+    "./components/o-s-s/country-selector": {
+      "types": "./declarations/components/o-s-s/country-selector.d.ts",
+      "default": "./dist/components/o-s-s/country-selector.js"
+    },
+    "./components/o-s-s/currency-input": {
+      "types": "./declarations/components/o-s-s/currency-input.d.ts",
+      "default": "./dist/components/o-s-s/currency-input.js"
+    },
+    "./components/o-s-s/dialog": {
+      "types": "./declarations/components/o-s-s/dialog.d.ts",
+      "default": "./dist/components/o-s-s/dialog.js"
+    },
+    "./components/o-s-s/email-input": {
+      "types": "./declarations/components/o-s-s/email-input.d.ts",
+      "default": "./dist/components/o-s-s/email-input.js"
+    },
+    "./components/o-s-s/empty-state": {
+      "types": "./declarations/components/o-s-s/empty-state.d.ts",
+      "default": "./dist/components/o-s-s/empty-state.js"
+    },
+    "./components/o-s-s/expandable-badge": {
+      "types": "./declarations/components/o-s-s/expandable-badge.d.ts",
+      "default": "./dist/components/o-s-s/expandable-badge.js"
+    },
+    "./components/o-s-s/feature-card": {
+      "types": "./declarations/components/o-s-s/feature-card.d.ts",
+      "default": "./dist/components/o-s-s/feature-card.js"
+    },
+    "./components/o-s-s/feature-cards-container": {
+      "types": "./declarations/components/o-s-s/feature-cards-container.d.ts",
+      "default": "./dist/components/o-s-s/feature-cards-container.js"
+    },
+    "./components/o-s-s/form": {
+      "types": "./declarations/components/o-s-s/form.d.ts",
+      "default": "./dist/components/o-s-s/form.js"
+    },
+    "./components/o-s-s/icon": {
+      "types": "./declarations/components/o-s-s/icon.d.ts",
+      "default": "./dist/components/o-s-s/icon.js"
+    },
+    "./components/o-s-s/iconName.enum": {
+      "types": "./declarations/components/o-s-s/iconName.enum.d.ts",
+      "default": "./dist/components/o-s-s/iconName.enum.js"
+    },
+    "./components/o-s-s/illustration": {
+      "types": "./declarations/components/o-s-s/illustration.d.ts",
+      "default": "./dist/components/o-s-s/illustration.js"
+    },
+    "./components/o-s-s/infinite-select/option": {
+      "types": "./declarations/components/o-s-s/infinite-select/option.d.ts",
+      "default": "./dist/components/o-s-s/infinite-select/option.js"
+    },
+    "./components/o-s-s/infinite-select": {
+      "types": "./declarations/components/o-s-s/infinite-select.d.ts",
+      "default": "./dist/components/o-s-s/infinite-select.js"
+    },
+    "./components/o-s-s/information-section": {
+      "types": "./declarations/components/o-s-s/information-section.d.ts",
+      "default": "./dist/components/o-s-s/information-section.js"
+    },
+    "./components/o-s-s/input-container": {
+      "types": "./declarations/components/o-s-s/input-container.d.ts",
+      "default": "./dist/components/o-s-s/input-container.js"
+    },
+    "./components/o-s-s/input-group": {
+      "types": "./declarations/components/o-s-s/input-group.d.ts",
+      "default": "./dist/components/o-s-s/input-group.js"
+    },
+    "./components/o-s-s/layout/navbar/nav-item": {
+      "types": "./declarations/components/o-s-s/layout/navbar/nav-item.d.ts",
+      "default": "./dist/components/o-s-s/layout/navbar/nav-item.js"
+    },
+    "./components/o-s-s/layout/sidebar/group": {
+      "types": "./declarations/components/o-s-s/layout/sidebar/group.d.ts",
+      "default": "./dist/components/o-s-s/layout/sidebar/group.js"
+    },
+    "./components/o-s-s/layout/sidebar/item": {
+      "types": "./declarations/components/o-s-s/layout/sidebar/item.d.ts",
+      "default": "./dist/components/o-s-s/layout/sidebar/item.js"
+    },
+    "./components/o-s-s/layout/sidebar": {
+      "types": "./declarations/components/o-s-s/layout/sidebar.d.ts",
+      "default": "./dist/components/o-s-s/layout/sidebar.js"
+    },
+    "./components/o-s-s/link": {
+      "types": "./declarations/components/o-s-s/link.d.ts",
+      "default": "./dist/components/o-s-s/link.js"
+    },
+    "./components/o-s-s/marketing/banner": {
+      "types": "./declarations/components/o-s-s/marketing/banner.d.ts",
+      "default": "./dist/components/o-s-s/marketing/banner.js"
+    },
+    "./components/o-s-s/modal-dialog": {
+      "types": "./declarations/components/o-s-s/modal-dialog.d.ts",
+      "default": "./dist/components/o-s-s/modal-dialog.js"
+    },
+    "./components/o-s-s/mode-switch": {
+      "types": "./declarations/components/o-s-s/mode-switch.d.ts",
+      "default": "./dist/components/o-s-s/mode-switch.js"
+    },
+    "./components/o-s-s/multi-select": {
+      "types": "./declarations/components/o-s-s/multi-select.d.ts",
+      "default": "./dist/components/o-s-s/multi-select.js"
+    },
+    "./components/o-s-s/nav-tab": {
+      "types": "./declarations/components/o-s-s/nav-tab.d.ts",
+      "default": "./dist/components/o-s-s/nav-tab.js"
+    },
+    "./components/o-s-s/number-input": {
+      "types": "./declarations/components/o-s-s/number-input.d.ts",
+      "default": "./dist/components/o-s-s/number-input.js"
+    },
+    "./components/o-s-s/onboarding-state": {
+      "types": "./declarations/components/o-s-s/onboarding-state.d.ts",
+      "default": "./dist/components/o-s-s/onboarding-state.js"
+    },
+    "./components/o-s-s/panel/row": {
+      "types": "./declarations/components/o-s-s/panel/row.d.ts",
+      "default": "./dist/components/o-s-s/panel/row.js"
+    },
+    "./components/o-s-s/panel": {
+      "types": "./declarations/components/o-s-s/panel.d.ts",
+      "default": "./dist/components/o-s-s/panel.js"
+    },
+    "./components/o-s-s/password-input": {
+      "types": "./declarations/components/o-s-s/password-input.d.ts",
+      "default": "./dist/components/o-s-s/password-input.js"
+    },
+    "./components/o-s-s/phone-number-input": {
+      "types": "./declarations/components/o-s-s/phone-number-input.d.ts",
+      "default": "./dist/components/o-s-s/phone-number-input.js"
+    },
+    "./components/o-s-s/pill": {
+      "types": "./declarations/components/o-s-s/pill.d.ts",
+      "default": "./dist/components/o-s-s/pill.js"
+    },
+    "./components/o-s-s/popover": {
+      "types": "./declarations/components/o-s-s/popover.d.ts",
+      "default": "./dist/components/o-s-s/popover.js"
+    },
+    "./components/o-s-s/power-select": {
+      "types": "./declarations/components/o-s-s/power-select.d.ts",
+      "default": "./dist/components/o-s-s/power-select.js"
+    },
+    "./components/o-s-s/private/base-dropdown": {
+      "types": "./declarations/components/o-s-s/private/base-dropdown.d.ts",
+      "default": "./dist/components/o-s-s/private/base-dropdown.js"
+    },
+    "./components/o-s-s/private/base-modal": {
+      "types": "./declarations/components/o-s-s/private/base-modal.d.ts",
+      "default": "./dist/components/o-s-s/private/base-modal.js"
+    },
+    "./components/o-s-s/progress-bar": {
+      "types": "./declarations/components/o-s-s/progress-bar.d.ts",
+      "default": "./dist/components/o-s-s/progress-bar.js"
+    },
+    "./components/o-s-s/province-selector": {
+      "types": "./declarations/components/o-s-s/province-selector.d.ts",
+      "default": "./dist/components/o-s-s/province-selector.js"
+    },
+    "./components/o-s-s/pulsating-dot": {
+      "types": "./declarations/components/o-s-s/pulsating-dot.d.ts",
+      "default": "./dist/components/o-s-s/pulsating-dot.js"
+    },
+    "./components/o-s-s/radio-button": {
+      "types": "./declarations/components/o-s-s/radio-button.d.ts",
+      "default": "./dist/components/o-s-s/radio-button.js"
+    },
+    "./components/o-s-s/scrollable-bar": {
+      "types": "./declarations/components/o-s-s/scrollable-bar.d.ts",
+      "default": "./dist/components/o-s-s/scrollable-bar.js"
+    },
+    "./components/o-s-s/scrollable-panel": {
+      "types": "./declarations/components/o-s-s/scrollable-panel.d.ts",
+      "default": "./dist/components/o-s-s/scrollable-panel.js"
+    },
+    "./components/o-s-s/search-field": {
+      "types": "./declarations/components/o-s-s/search-field.d.ts",
+      "default": "./dist/components/o-s-s/search-field.js"
+    },
+    "./components/o-s-s/select": {
+      "types": "./declarations/components/o-s-s/select.d.ts",
+      "default": "./dist/components/o-s-s/select.js"
+    },
+    "./components/o-s-s/side-panel/header": {
+      "types": "./declarations/components/o-s-s/side-panel/header.d.ts",
+      "default": "./dist/components/o-s-s/side-panel/header.js"
+    },
+    "./components/o-s-s/side-panel": {
+      "types": "./declarations/components/o-s-s/side-panel.d.ts",
+      "default": "./dist/components/o-s-s/side-panel.js"
+    },
+    "./components/o-s-s/skeleton": {
+      "types": "./declarations/components/o-s-s/skeleton.d.ts",
+      "default": "./dist/components/o-s-s/skeleton.js"
+    },
+    "./components/o-s-s/slider": {
+      "types": "./declarations/components/o-s-s/slider.d.ts",
+      "default": "./dist/components/o-s-s/slider.js"
+    },
+    "./components/o-s-s/smart/blob": {
+      "types": "./declarations/components/o-s-s/smart/blob.d.ts",
+      "default": "./dist/components/o-s-s/smart/blob.js"
+    },
+    "./components/o-s-s/smart/button": {
+      "types": "./declarations/components/o-s-s/smart/button.d.ts",
+      "default": "./dist/components/o-s-s/smart/button.js"
+    },
+    "./components/o-s-s/smart/charger": {
+      "types": "./declarations/components/o-s-s/smart/charger.d.ts",
+      "default": "./dist/components/o-s-s/smart/charger.js"
+    },
+    "./components/o-s-s/smart/feedback": {
+      "types": "./declarations/components/o-s-s/smart/feedback.d.ts",
+      "default": "./dist/components/o-s-s/smart/feedback.js"
+    },
+    "./components/o-s-s/smart/immersive/currency-input": {
+      "types": "./declarations/components/o-s-s/smart/immersive/currency-input.d.ts",
+      "default": "./dist/components/o-s-s/smart/immersive/currency-input.js"
+    },
+    "./components/o-s-s/smart/immersive/input": {
+      "types": "./declarations/components/o-s-s/smart/immersive/input.d.ts",
+      "default": "./dist/components/o-s-s/smart/immersive/input.js"
+    },
+    "./components/o-s-s/smart/immersive/logo": {
+      "types": "./declarations/components/o-s-s/smart/immersive/logo.d.ts",
+      "default": "./dist/components/o-s-s/smart/immersive/logo.js"
+    },
+    "./components/o-s-s/smart/immersive/select": {
+      "types": "./declarations/components/o-s-s/smart/immersive/select.d.ts",
+      "default": "./dist/components/o-s-s/smart/immersive/select.js"
+    },
+    "./components/o-s-s/smart/input": {
+      "types": "./declarations/components/o-s-s/smart/input.d.ts",
+      "default": "./dist/components/o-s-s/smart/input.js"
+    },
+    "./components/o-s-s/smart/number-input": {
+      "types": "./declarations/components/o-s-s/smart/number-input.d.ts",
+      "default": "./dist/components/o-s-s/smart/number-input.js"
+    },
+    "./components/o-s-s/smart/pill": {
+      "types": "./declarations/components/o-s-s/smart/pill.d.ts",
+      "default": "./dist/components/o-s-s/smart/pill.js"
+    },
+    "./components/o-s-s/smart/skeleton": {
+      "types": "./declarations/components/o-s-s/smart/skeleton.d.ts",
+      "default": "./dist/components/o-s-s/smart/skeleton.js"
+    },
+    "./components/o-s-s/smart/tag-input": {
+      "types": "./declarations/components/o-s-s/smart/tag-input.d.ts",
+      "default": "./dist/components/o-s-s/smart/tag-input.js"
+    },
+    "./components/o-s-s/smart/tag": {
+      "types": "./declarations/components/o-s-s/smart/tag.d.ts",
+      "default": "./dist/components/o-s-s/smart/tag.js"
+    },
+    "./components/o-s-s/smart/text-area": {
+      "types": "./declarations/components/o-s-s/smart/text-area.d.ts",
+      "default": "./dist/components/o-s-s/smart/text-area.js"
+    },
+    "./components/o-s-s/smart/toggle-buttons": {
+      "types": "./declarations/components/o-s-s/smart/toggle-buttons.d.ts",
+      "default": "./dist/components/o-s-s/smart/toggle-buttons.js"
+    },
+    "./components/o-s-s/social-post-badge": {
+      "types": "./declarations/components/o-s-s/social-post-badge.d.ts",
+      "default": "./dist/components/o-s-s/social-post-badge.js"
+    },
+    "./components/o-s-s/split-modal": {
+      "types": "./declarations/components/o-s-s/split-modal.d.ts",
+      "default": "./dist/components/o-s-s/split-modal.js"
+    },
+    "./components/o-s-s/stack-container": {
+      "types": "./declarations/components/o-s-s/stack-container.d.ts",
+      "default": "./dist/components/o-s-s/stack-container.js"
+    },
+    "./components/o-s-s/star-rating": {
+      "types": "./declarations/components/o-s-s/star-rating.d.ts",
+      "default": "./dist/components/o-s-s/star-rating.js"
+    },
+    "./components/o-s-s/stats/banner": {
+      "types": "./declarations/components/o-s-s/stats/banner.d.ts",
+      "default": "./dist/components/o-s-s/stats/banner.js"
+    },
+    "./components/o-s-s/tag": {
+      "types": "./declarations/components/o-s-s/tag.d.ts",
+      "default": "./dist/components/o-s-s/tag.js"
+    },
+    "./components/o-s-s/text-area": {
+      "types": "./declarations/components/o-s-s/text-area.d.ts",
+      "default": "./dist/components/o-s-s/text-area.js"
+    },
+    "./components/o-s-s/tip": {
+      "types": "./declarations/components/o-s-s/tip.d.ts",
+      "default": "./dist/components/o-s-s/tip.js"
+    },
+    "./components/o-s-s/togglable-section": {
+      "types": "./declarations/components/o-s-s/togglable-section.d.ts",
+      "default": "./dist/components/o-s-s/togglable-section.js"
+    },
+    "./components/o-s-s/toggle-buttons": {
+      "types": "./declarations/components/o-s-s/toggle-buttons.d.ts",
+      "default": "./dist/components/o-s-s/toggle-buttons.js"
+    },
+    "./components/o-s-s/toggle-switch": {
+      "types": "./declarations/components/o-s-s/toggle-switch.d.ts",
+      "default": "./dist/components/o-s-s/toggle-switch.js"
+    },
+    "./components/o-s-s/upload-area": {
+      "types": "./declarations/components/o-s-s/upload-area.d.ts",
+      "default": "./dist/components/o-s-s/upload-area.js"
+    },
+    "./components/o-s-s/upload-item": {
+      "types": "./declarations/components/o-s-s/upload-item.d.ts",
+      "default": "./dist/components/o-s-s/upload-item.js"
+    },
+    "./components/o-s-s/url-input": {
+      "types": "./declarations/components/o-s-s/url-input.d.ts",
+      "default": "./dist/components/o-s-s/url-input.js"
+    },
+    "./components/upf-image": {
+      "types": "./declarations/components/upf-image.d.ts",
+      "default": "./dist/components/upf-image.js"
+    },
+    "./components/upf-stat": {
+      "types": "./declarations/components/upf-stat.d.ts",
+      "default": "./dist/components/upf-stat.js"
+    },
+    "./components/wizard/base-step": {
+      "types": "./declarations/components/wizard/base-step.d.ts",
+      "default": "./dist/components/wizard/base-step.js"
+    },
+    "./components/wizard/container": {
+      "types": "./declarations/components/wizard/container.d.ts",
+      "default": "./dist/components/wizard/container.js"
+    },
+    "./components/wizard/step-wrapper": {
+      "types": "./declarations/components/wizard/step-wrapper.d.ts",
+      "default": "./dist/components/wizard/step-wrapper.js"
+    },
+    "./helpers/asset-map": {
+      "types": "./declarations/helpers/asset-map.d.ts",
+      "default": "./dist/helpers/asset-map.js"
+    },
+    "./helpers/fa-icon-style": {
+      "types": "./declarations/helpers/fa-icon-style.d.ts",
+      "default": "./dist/helpers/fa-icon-style.js"
+    },
+    "./helpers/fa-icon-value": {
+      "types": "./declarations/helpers/fa-icon-value.d.ts",
+      "default": "./dist/helpers/fa-icon-value.js"
+    },
+    "./helpers/form-field-feedback": {
+      "types": "./declarations/helpers/form-field-feedback.d.ts",
+      "default": "./dist/helpers/form-field-feedback.js"
+    },
+    "./helpers/format-money": {
+      "types": "./declarations/helpers/format-money.d.ts",
+      "default": "./dist/helpers/format-money.js"
+    },
+    "./helpers/format-numeric": {
+      "types": "./declarations/helpers/format-numeric.d.ts",
+      "default": "./dist/helpers/format-numeric.js"
+    },
+    "./helpers/redirect-to": {
+      "types": "./declarations/helpers/redirect-to.d.ts",
+      "default": "./dist/helpers/redirect-to.js"
+    },
+    "./helpers/stop-propagation": {
+      "types": "./declarations/helpers/stop-propagation.d.ts",
+      "default": "./dist/helpers/stop-propagation.js"
+    },
+    "./helpers/transition-to": {
+      "types": "./declarations/helpers/transition-to.d.ts",
+      "default": "./dist/helpers/transition-to.js"
+    },
+    "./helpers/truncate": {
+      "types": "./declarations/helpers/truncate.d.ts",
+      "default": "./dist/helpers/truncate.js"
+    },
+    "./instance-initializers/override-intl": {
+      "types": "./declarations/instance-initializers/override-intl.d.ts",
+      "default": "./dist/instance-initializers/override-intl.js"
+    },
+    "./modifiers/attach-element": {
+      "types": "./declarations/modifiers/attach-element.d.ts",
+      "default": "./dist/modifiers/attach-element.js"
+    },
+    "./modifiers/enable-input-autofocus": {
+      "types": "./declarations/modifiers/enable-input-autofocus.d.ts",
+      "default": "./dist/modifiers/enable-input-autofocus.js"
+    },
+    "./modifiers/enable-tooltip": {
+      "types": "./declarations/modifiers/enable-tooltip.d.ts",
+      "default": "./dist/modifiers/enable-tooltip.js"
+    },
+    "./modifiers/install-scroll-reached-modifier": {
+      "types": "./declarations/modifiers/install-scroll-reached-modifier.d.ts",
+      "default": "./dist/modifiers/install-scroll-reached-modifier.js"
+    },
+    "./modifiers/on-bottom-reached": {
+      "types": "./declarations/modifiers/on-bottom-reached.d.ts",
+      "default": "./dist/modifiers/on-bottom-reached.js"
+    },
+    "./modifiers/on-click-outside": {
+      "types": "./declarations/modifiers/on-click-outside.d.ts",
+      "default": "./dist/modifiers/on-click-outside.js"
+    },
+    "./modifiers/on-top-reached": {
+      "types": "./declarations/modifiers/on-top-reached.d.ts",
+      "default": "./dist/modifiers/on-top-reached.js"
+    },
+    "./modifiers/register-form-field": {
+      "types": "./declarations/modifiers/register-form-field.d.ts",
+      "default": "./dist/modifiers/register-form-field.js"
+    },
+    "./modifiers/required-input": {
+      "types": "./declarations/modifiers/required-input.d.ts",
+      "default": "./dist/modifiers/required-input.js"
+    },
+    "./modifiers/scroll-shadow": {
+      "types": "./declarations/modifiers/scroll-shadow.d.ts",
+      "default": "./dist/modifiers/scroll-shadow.js"
+    },
+    "./modifiers/text-carousel": {
+      "types": "./declarations/modifiers/text-carousel.d.ts",
+      "default": "./dist/modifiers/text-carousel.js"
+    },
+    "./services/asset-map": {
+      "types": "./declarations/services/asset-map.d.ts",
+      "default": "./dist/services/asset-map.js"
+    },
+    "./services/base-uploader": {
+      "types": "./declarations/services/base-uploader.d.ts",
+      "default": "./dist/services/base-uploader.js"
+    },
+    "./services/form-manager": {
+      "types": "./declarations/services/form-manager.d.ts",
+      "default": "./dist/services/form-manager.js"
+    },
+    "./services/toast": {
+      "types": "./declarations/services/toast.d.ts",
+      "default": "./dist/services/toast.js"
+    },
+    "./services/wizard-manager": {
+      "types": "./declarations/services/wizard-manager.d.ts",
+      "default": "./dist/services/wizard-manager.js"
+    },
+    "./test-support/custom-assertions/dcn": {
+      "types": "./declarations/test-support/custom-assertions/dcn.d.ts",
+      "default": "./dist/test-support/custom-assertions/dcn.js"
+    },
+    "./test-support/custom-assertions/infinite-select-option": {
+      "types": "./declarations/test-support/custom-assertions/infinite-select-option.d.ts",
+      "default": "./dist/test-support/custom-assertions/infinite-select-option.js"
+    },
+    "./test-support/custom-assertions/tooltip": {
+      "types": "./declarations/test-support/custom-assertions/tooltip.d.ts",
+      "default": "./dist/test-support/custom-assertions/tooltip.js"
+    },
+    "./test-support/index": {
+      "types": "./declarations/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
+    "./test-support/register-assertions": {
+      "types": "./declarations/test-support/register-assertions.d.ts",
+      "default": "./dist/test-support/register-assertions.js"
+    },
+    "./test-support/services/uploader": {
+      "types": "./declarations/test-support/services/uploader.d.ts",
+      "default": "./dist/test-support/services/uploader.js"
+    },
+    "./test-support/setup-clipboard": {
+      "types": "./declarations/test-support/setup-clipboard.d.ts",
+      "default": "./dist/test-support/setup-clipboard.js"
+    },
+    "./test-support/setup-toast": {
+      "types": "./declarations/test-support/setup-toast.d.ts",
+      "default": "./dist/test-support/setup-toast.js"
+    },
+    "./types/uploader": {
+      "types": "./declarations/types/uploader.d.ts",
+      "default": "./dist/types/uploader.js"
+    },
+    "./types": {
+      "types": "./declarations/types.d.ts",
+      "default": "./dist/types.js"
+    },
+    "./utils/animation-manager": {
+      "types": "./declarations/utils/animation-manager.d.ts",
+      "default": "./dist/utils/animation-manager.js"
+    },
+    "./utils/attach-dropdown": {
+      "types": "./declarations/utils/attach-dropdown.d.ts",
+      "default": "./dist/utils/attach-dropdown.js"
+    },
+    "./utils/constants": {
+      "types": "./declarations/utils/constants.d.ts",
+      "default": "./dist/utils/constants.js"
+    },
+    "./utils/country-codes": {
+      "types": "./declarations/utils/country-codes.d.ts",
+      "default": "./dist/utils/country-codes.js"
+    },
+    "./utils/dope": {
+      "types": "./declarations/utils/dope.d.ts",
+      "default": "./dist/utils/dope.js"
+    },
+    "./utils/easter-eggs": {
+      "types": "./declarations/utils/easter-eggs.d.ts",
+      "default": "./dist/utils/easter-eggs.js"
+    },
+    "./utils/element": {
+      "types": "./declarations/utils/element.d.ts",
+      "default": "./dist/utils/element.js"
+    },
+    "./utils/filesize-parser": {
+      "types": "./declarations/utils/filesize-parser.d.ts",
+      "default": "./dist/utils/filesize-parser.js"
+    },
+    "./utils/icon-details": {
+      "types": "./declarations/utils/icon-details.d.ts",
+      "default": "./dist/utils/icon-details.js"
+    },
+    "./utils/index": {
+      "types": "./declarations/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    },
+    "./utils/keyboard": {
+      "types": "./declarations/utils/keyboard.d.ts",
+      "default": "./dist/utils/keyboard.js"
+    },
+    "./utils/logo-config": {
+      "types": "./declarations/utils/logo-config.d.ts",
+      "default": "./dist/utils/logo-config.js"
+    },
+    "./utils/run-smart-gradient-animation": {
+      "types": "./declarations/utils/run-smart-gradient-animation.d.ts",
+      "default": "./dist/utils/run-smart-gradient-animation.js"
+    },
+    "./utils/sanitize-config": {
+      "types": "./declarations/utils/sanitize-config.d.ts",
+      "default": "./dist/utils/sanitize-config.js"
+    },
+    "./utils/upf-local-storage": {
+      "types": "./declarations/utils/upf-local-storage.d.ts",
+      "default": "./dist/utils/upf-local-storage.js"
+    },
+    "./utils/uploader-validators/index": {
+      "types": "./declarations/utils/uploader-validators/index.d.ts",
+      "default": "./dist/utils/uploader-validators/index.js"
+    },
+    "./test-support": {
+      "types": "./declarations/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
+    "./styles/*": "./styles/*",
+    "./build/classic-asset-map.cjs": "./build/classic-asset-map.cjs",
+    "./linters/handlebars": "./linters/handlebars/index.js",
+    "./addon-main.js": "./addon-main.cjs",
+    "./package.json": "./package.json",
+    "./utils": {
+      "types": "./declarations/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "test-support": [
+        "declarations/test-support/index.d.ts"
+      ],
+      "*": [
+        "declarations/*"
+      ],
+      "utils": [
+        "declarations/utils/index.d.ts"
+      ]
+    }
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/input-wrapper.js": "./dist/_app_/components/input-wrapper.js",
+      "./components/loading-state.js": "./dist/_app_/components/loading-state.js",
+      "./components/o-s-s/access-panel.js": "./dist/_app_/components/o-s-s/access-panel.js",
+      "./components/o-s-s/alert.js": "./dist/_app_/components/o-s-s/alert.js",
+      "./components/o-s-s/anchor.js": "./dist/_app_/components/o-s-s/anchor.js",
+      "./components/o-s-s/array-input.js": "./dist/_app_/components/o-s-s/array-input.js",
+      "./components/o-s-s/attribute/base.js": "./dist/_app_/components/o-s-s/attribute/base.js",
+      "./components/o-s-s/attribute/country.js": "./dist/_app_/components/o-s-s/attribute/country.js",
+      "./components/o-s-s/attribute/phone-number.js": "./dist/_app_/components/o-s-s/attribute/phone-number.js",
+      "./components/o-s-s/attribute/rating.js": "./dist/_app_/components/o-s-s/attribute/rating.js",
+      "./components/o-s-s/attribute/removable-text.js": "./dist/_app_/components/o-s-s/attribute/removable-text.js",
+      "./components/o-s-s/attribute/revealable-email.js": "./dist/_app_/components/o-s-s/attribute/revealable-email.js",
+      "./components/o-s-s/attribute/tag-array.js": "./dist/_app_/components/o-s-s/attribute/tag-array.js",
+      "./components/o-s-s/attribute/tagada.js": "./dist/_app_/components/o-s-s/attribute/tagada.js",
+      "./components/o-s-s/attribute/text.js": "./dist/_app_/components/o-s-s/attribute/text.js",
+      "./components/o-s-s/attributes-panel.js": "./dist/_app_/components/o-s-s/attributes-panel.js",
+      "./components/o-s-s/avatar-group.js": "./dist/_app_/components/o-s-s/avatar-group.js",
+      "./components/o-s-s/avatar.js": "./dist/_app_/components/o-s-s/avatar.js",
+      "./components/o-s-s/badge.js": "./dist/_app_/components/o-s-s/badge.js",
+      "./components/o-s-s/banner.js": "./dist/_app_/components/o-s-s/banner.js",
+      "./components/o-s-s/benjamin-button.js": "./dist/_app_/components/o-s-s/benjamin-button.js",
+      "./components/o-s-s/bruce.js": "./dist/_app_/components/o-s-s/bruce.js",
+      "./components/o-s-s/button-dropdown.js": "./dist/_app_/components/o-s-s/button-dropdown.js",
+      "./components/o-s-s/button.js": "./dist/_app_/components/o-s-s/button.js",
+      "./components/o-s-s/carousel.js": "./dist/_app_/components/o-s-s/carousel.js",
+      "./components/o-s-s/charger.js": "./dist/_app_/components/o-s-s/charger.js",
+      "./components/o-s-s/checkbox.js": "./dist/_app_/components/o-s-s/checkbox.js",
+      "./components/o-s-s/chip-n-fish.js": "./dist/_app_/components/o-s-s/chip-n-fish.js",
+      "./components/o-s-s/chip.js": "./dist/_app_/components/o-s-s/chip.js",
+      "./components/o-s-s/code-block.js": "./dist/_app_/components/o-s-s/code-block.js",
+      "./components/o-s-s/completion-badge.js": "./dist/_app_/components/o-s-s/completion-badge.js",
+      "./components/o-s-s/content-panel.js": "./dist/_app_/components/o-s-s/content-panel.js",
+      "./components/o-s-s/context-menu.js": "./dist/_app_/components/o-s-s/context-menu.js",
+      "./components/o-s-s/context-menu/panel.js": "./dist/_app_/components/o-s-s/context-menu/panel.js",
+      "./components/o-s-s/copy.js": "./dist/_app_/components/o-s-s/copy.js",
+      "./components/o-s-s/country-selector.js": "./dist/_app_/components/o-s-s/country-selector.js",
+      "./components/o-s-s/currency-input.js": "./dist/_app_/components/o-s-s/currency-input.js",
+      "./components/o-s-s/dialog.js": "./dist/_app_/components/o-s-s/dialog.js",
+      "./components/o-s-s/email-input.js": "./dist/_app_/components/o-s-s/email-input.js",
+      "./components/o-s-s/empty-state.js": "./dist/_app_/components/o-s-s/empty-state.js",
+      "./components/o-s-s/expandable-badge.js": "./dist/_app_/components/o-s-s/expandable-badge.js",
+      "./components/o-s-s/feature-card.js": "./dist/_app_/components/o-s-s/feature-card.js",
+      "./components/o-s-s/feature-cards-container.js": "./dist/_app_/components/o-s-s/feature-cards-container.js",
+      "./components/o-s-s/form.js": "./dist/_app_/components/o-s-s/form.js",
+      "./components/o-s-s/icon.js": "./dist/_app_/components/o-s-s/icon.js",
+      "./components/o-s-s/illustration.js": "./dist/_app_/components/o-s-s/illustration.js",
+      "./components/o-s-s/infinite-select.js": "./dist/_app_/components/o-s-s/infinite-select.js",
+      "./components/o-s-s/infinite-select/option.js": "./dist/_app_/components/o-s-s/infinite-select/option.js",
+      "./components/o-s-s/information-section.js": "./dist/_app_/components/o-s-s/information-section.js",
+      "./components/o-s-s/input-container.js": "./dist/_app_/components/o-s-s/input-container.js",
+      "./components/o-s-s/input-group.js": "./dist/_app_/components/o-s-s/input-group.js",
+      "./components/o-s-s/layout/navbar/nav-item.js": "./dist/_app_/components/o-s-s/layout/navbar/nav-item.js",
+      "./components/o-s-s/layout/sidebar.js": "./dist/_app_/components/o-s-s/layout/sidebar.js",
+      "./components/o-s-s/layout/sidebar/group.js": "./dist/_app_/components/o-s-s/layout/sidebar/group.js",
+      "./components/o-s-s/layout/sidebar/item.js": "./dist/_app_/components/o-s-s/layout/sidebar/item.js",
+      "./components/o-s-s/link.js": "./dist/_app_/components/o-s-s/link.js",
+      "./components/o-s-s/marketing/banner.js": "./dist/_app_/components/o-s-s/marketing/banner.js",
+      "./components/o-s-s/modal-dialog.js": "./dist/_app_/components/o-s-s/modal-dialog.js",
+      "./components/o-s-s/mode-switch.js": "./dist/_app_/components/o-s-s/mode-switch.js",
+      "./components/o-s-s/multi-select.js": "./dist/_app_/components/o-s-s/multi-select.js",
+      "./components/o-s-s/nav-tab.js": "./dist/_app_/components/o-s-s/nav-tab.js",
+      "./components/o-s-s/number-input.js": "./dist/_app_/components/o-s-s/number-input.js",
+      "./components/o-s-s/onboarding-state.js": "./dist/_app_/components/o-s-s/onboarding-state.js",
+      "./components/o-s-s/panel.js": "./dist/_app_/components/o-s-s/panel.js",
+      "./components/o-s-s/panel/row.js": "./dist/_app_/components/o-s-s/panel/row.js",
+      "./components/o-s-s/password-input.js": "./dist/_app_/components/o-s-s/password-input.js",
+      "./components/o-s-s/phone-number-input.js": "./dist/_app_/components/o-s-s/phone-number-input.js",
+      "./components/o-s-s/pill.js": "./dist/_app_/components/o-s-s/pill.js",
+      "./components/o-s-s/popover.js": "./dist/_app_/components/o-s-s/popover.js",
+      "./components/o-s-s/power-select.js": "./dist/_app_/components/o-s-s/power-select.js",
+      "./components/o-s-s/progress-bar.js": "./dist/_app_/components/o-s-s/progress-bar.js",
+      "./components/o-s-s/province-selector.js": "./dist/_app_/components/o-s-s/province-selector.js",
+      "./components/o-s-s/pulsating-dot.js": "./dist/_app_/components/o-s-s/pulsating-dot.js",
+      "./components/o-s-s/radio-button.js": "./dist/_app_/components/o-s-s/radio-button.js",
+      "./components/o-s-s/scrollable-bar.js": "./dist/_app_/components/o-s-s/scrollable-bar.js",
+      "./components/o-s-s/scrollable-panel.js": "./dist/_app_/components/o-s-s/scrollable-panel.js",
+      "./components/o-s-s/search-field.js": "./dist/_app_/components/o-s-s/search-field.js",
+      "./components/o-s-s/select.js": "./dist/_app_/components/o-s-s/select.js",
+      "./components/o-s-s/side-panel.js": "./dist/_app_/components/o-s-s/side-panel.js",
+      "./components/o-s-s/side-panel/header.js": "./dist/_app_/components/o-s-s/side-panel/header.js",
+      "./components/o-s-s/skeleton.js": "./dist/_app_/components/o-s-s/skeleton.js",
+      "./components/o-s-s/slider.js": "./dist/_app_/components/o-s-s/slider.js",
+      "./components/o-s-s/smart/blob.js": "./dist/_app_/components/o-s-s/smart/blob.js",
+      "./components/o-s-s/smart/button.js": "./dist/_app_/components/o-s-s/smart/button.js",
+      "./components/o-s-s/smart/charger.js": "./dist/_app_/components/o-s-s/smart/charger.js",
+      "./components/o-s-s/smart/feedback.js": "./dist/_app_/components/o-s-s/smart/feedback.js",
+      "./components/o-s-s/smart/immersive/currency-input.js": "./dist/_app_/components/o-s-s/smart/immersive/currency-input.js",
+      "./components/o-s-s/smart/immersive/input.js": "./dist/_app_/components/o-s-s/smart/immersive/input.js",
+      "./components/o-s-s/smart/immersive/logo.js": "./dist/_app_/components/o-s-s/smart/immersive/logo.js",
+      "./components/o-s-s/smart/immersive/select.js": "./dist/_app_/components/o-s-s/smart/immersive/select.js",
+      "./components/o-s-s/smart/input.js": "./dist/_app_/components/o-s-s/smart/input.js",
+      "./components/o-s-s/smart/number-input.js": "./dist/_app_/components/o-s-s/smart/number-input.js",
+      "./components/o-s-s/smart/pill.js": "./dist/_app_/components/o-s-s/smart/pill.js",
+      "./components/o-s-s/smart/skeleton.js": "./dist/_app_/components/o-s-s/smart/skeleton.js",
+      "./components/o-s-s/smart/tag-input.js": "./dist/_app_/components/o-s-s/smart/tag-input.js",
+      "./components/o-s-s/smart/tag.js": "./dist/_app_/components/o-s-s/smart/tag.js",
+      "./components/o-s-s/smart/text-area.js": "./dist/_app_/components/o-s-s/smart/text-area.js",
+      "./components/o-s-s/smart/toggle-buttons.js": "./dist/_app_/components/o-s-s/smart/toggle-buttons.js",
+      "./components/o-s-s/social-post-badge.js": "./dist/_app_/components/o-s-s/social-post-badge.js",
+      "./components/o-s-s/split-modal.js": "./dist/_app_/components/o-s-s/split-modal.js",
+      "./components/o-s-s/stack-container.js": "./dist/_app_/components/o-s-s/stack-container.js",
+      "./components/o-s-s/star-rating.js": "./dist/_app_/components/o-s-s/star-rating.js",
+      "./components/o-s-s/stats/banner.js": "./dist/_app_/components/o-s-s/stats/banner.js",
+      "./components/o-s-s/tag.js": "./dist/_app_/components/o-s-s/tag.js",
+      "./components/o-s-s/text-area.js": "./dist/_app_/components/o-s-s/text-area.js",
+      "./components/o-s-s/tip.js": "./dist/_app_/components/o-s-s/tip.js",
+      "./components/o-s-s/togglable-section.js": "./dist/_app_/components/o-s-s/togglable-section.js",
+      "./components/o-s-s/toggle-buttons.js": "./dist/_app_/components/o-s-s/toggle-buttons.js",
+      "./components/o-s-s/toggle-switch.js": "./dist/_app_/components/o-s-s/toggle-switch.js",
+      "./components/o-s-s/upload-area.js": "./dist/_app_/components/o-s-s/upload-area.js",
+      "./components/o-s-s/upload-item.js": "./dist/_app_/components/o-s-s/upload-item.js",
+      "./components/o-s-s/url-input.js": "./dist/_app_/components/o-s-s/url-input.js",
+      "./components/upf-image.js": "./dist/_app_/components/upf-image.js",
+      "./components/upf-stat.js": "./dist/_app_/components/upf-stat.js",
+      "./components/wizard/base-step.js": "./dist/_app_/components/wizard/base-step.js",
+      "./components/wizard/container.js": "./dist/_app_/components/wizard/container.js",
+      "./components/wizard/step-wrapper.js": "./dist/_app_/components/wizard/step-wrapper.js",
+      "./helpers/asset-map.js": "./dist/_app_/helpers/asset-map.js",
+      "./helpers/fa-icon-style.js": "./dist/_app_/helpers/fa-icon-style.js",
+      "./helpers/fa-icon-value.js": "./dist/_app_/helpers/fa-icon-value.js",
+      "./helpers/form-field-feedback.js": "./dist/_app_/helpers/form-field-feedback.js",
+      "./helpers/format-money.js": "./dist/_app_/helpers/format-money.js",
+      "./helpers/format-numeric.js": "./dist/_app_/helpers/format-numeric.js",
+      "./helpers/redirect-to.js": "./dist/_app_/helpers/redirect-to.js",
+      "./helpers/stop-propagation.js": "./dist/_app_/helpers/stop-propagation.js",
+      "./helpers/transition-to.js": "./dist/_app_/helpers/transition-to.js",
+      "./helpers/truncate.js": "./dist/_app_/helpers/truncate.js",
+      "./instance-initializers/override-intl.js": "./dist/_app_/instance-initializers/override-intl.js",
+      "./modifiers/attach-element.js": "./dist/_app_/modifiers/attach-element.js",
+      "./modifiers/enable-input-autofocus.js": "./dist/_app_/modifiers/enable-input-autofocus.js",
+      "./modifiers/enable-tooltip.js": "./dist/_app_/modifiers/enable-tooltip.js",
+      "./modifiers/on-bottom-reached.js": "./dist/_app_/modifiers/on-bottom-reached.js",
+      "./modifiers/on-click-outside.js": "./dist/_app_/modifiers/on-click-outside.js",
+      "./modifiers/on-top-reached.js": "./dist/_app_/modifiers/on-top-reached.js",
+      "./modifiers/register-form-field.js": "./dist/_app_/modifiers/register-form-field.js",
+      "./modifiers/required-input.js": "./dist/_app_/modifiers/required-input.js",
+      "./modifiers/scroll-shadow.js": "./dist/_app_/modifiers/scroll-shadow.js",
+      "./modifiers/text-carousel.js": "./dist/_app_/modifiers/text-carousel.js",
+      "./services/asset-map.js": "./dist/_app_/services/asset-map.js",
+      "./services/base-uploader.js": "./dist/_app_/services/base-uploader.js",
+      "./services/form-manager.js": "./dist/_app_/services/form-manager.js",
+      "./services/toast.js": "./dist/_app_/services/toast.js",
+      "./services/wizard-manager.js": "./dist/_app_/services/wizard-manager.js",
+      "./utils/attach-dropdown.js": "./dist/_app_/utils/attach-dropdown.js",
+      "./utils/constants.js": "./dist/_app_/utils/constants.js",
+      "./utils/easter-eggs.js": "./dist/_app_/utils/easter-eggs.js",
+      "./utils/filesize-parser.js": "./dist/_app_/utils/filesize-parser.js",
+      "./utils/index.js": "./dist/_app_/utils/index.js",
+      "./utils/keyboard.js": "./dist/_app_/utils/keyboard.js",
+      "./utils/logo-config.js": "./dist/_app_/utils/logo-config.js",
+      "./utils/upf-local-storage.js": "./dist/_app_/utils/upf-local-storage.js"
+    },
+    "public-assets": {
+      "./public/assets/components/marketing-banner/grid.svg": "/@upfluence/oss-components/assets/components/marketing-banner/grid.svg",
+      "./public/assets/fonts/inter-variable.woff2": "/@upfluence/oss-components/assets/fonts/inter-variable.woff2",
+      "./public/assets/fonts/open-sans-variable.woff2": "/@upfluence/oss-components/assets/fonts/open-sans-variable.woff2",
+      "./public/assets/fonts/reddit-sans-variable.woff2": "/@upfluence/oss-components/assets/fonts/reddit-sans-variable.woff2",
+      "./public/assets/fonts/roboto-mono-variable.woff2": "/@upfluence/oss-components/assets/fonts/roboto-mono-variable.woff2",
+      "./public/assets/icons/instagram-reel.svg": "/@upfluence/oss-components/assets/icons/instagram-reel.svg",
+      "./public/assets/icons/youtube-short.svg": "/@upfluence/oss-components/assets/icons/youtube-short.svg",
+      "./public/assets/images/avatar-placeholder.svg": "/@upfluence/oss-components/assets/images/avatar-placeholder.svg",
+      "./public/assets/images/flagSprite42.png": "/@upfluence/oss-components/assets/images/flagSprite42.png",
+      "./public/assets/images/no-image.svg": "/@upfluence/oss-components/assets/images/no-image.svg",
+      "./public/assets/images/no-records.svg": "/@upfluence/oss-components/assets/images/no-records.svg",
+      "./public/assets/images/picture-frame.svg": "/@upfluence/oss-components/assets/images/picture-frame.svg",
+      "./public/assets/images/smart-blob-inactive.gif": "/@upfluence/oss-components/assets/images/smart-blob-inactive.gif",
+      "./public/assets/images/smart-blob-loading.gif": "/@upfluence/oss-components/assets/images/smart-blob-loading.gif",
+      "./public/assets/images/upload-area/default-lg.svg": "/@upfluence/oss-components/assets/images/upload-area/default-lg.svg",
+      "./public/assets/images/upload-area/default-md.svg": "/@upfluence/oss-components/assets/images/upload-area/default-md.svg",
+      "./public/assets/images/upload-area/disabled-lg.svg": "/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg",
+      "./public/assets/images/upload-area/disabled-md.svg": "/@upfluence/oss-components/assets/images/upload-area/disabled-md.svg"
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist",
+    "styles",
+    "build",
+    "linters",
+    "translations",
+    "public"
+  ]
+}
