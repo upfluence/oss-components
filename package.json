@@ -32,6 +32,7 @@
     "storybook": "start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
     "prepack": "ember ts:precompile",
+    "prepare": "ember ts:precompile",
     "install-pre-push-hook": "cp ./scripts/pre-push ./.git/hooks/pre-push",
     "remove-pre-push-hook": "rm -rf ./.git/hooks/pre-push",
     "postpack": "ember ts:clean"
