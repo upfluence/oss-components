@@ -69,7 +69,7 @@ importers:
         version: 3.3.3
       ember-intl:
         specifier: ^6.4.0
-        version: 6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2)
+        version: 6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12))
       ember-modifier:
         specifier: ^3.2.7
         version: 3.2.7(@babel/core@7.29.13)
@@ -176,12 +176,15 @@ importers:
       sinon:
         specifier: ^10.0.1
         version: 10.0.1
+      storybook:
+        specifier: 9.1.21
+        version: 9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
       webpack:
         specifier: ^5.95.0
-        version: 5.112.2
+        version: 5.112.2(esbuild@0.25.12)
 
   packages/test-app:
     devDependencies:
@@ -241,7 +244,7 @@ importers:
         version: 9.1.21(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))
       '@storybook/ember':
         specifier: 9.1.21
-        version: 9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.13)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.13))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.13)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.13))(rsvp@4.8.5))(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(postcss@8.5.32))
       '@storybook/ember-cli-storybook':
         specifier: ^0.6.1
         version: 0.6.1
@@ -271,7 +274,7 @@ importers:
         version: 0.4.0(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.3))(@typescript-eslint/parser@8.66.0(eslint@10.8.0)(typescript@5.9.3))(eslint@10.8.0)(prettier@3.8.3)(typescript@5.9.3)
       babel-loader:
         specifier: ^8.1.0
-        version: 8.3.0(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 8.3.0(@babel/core@7.29.13)(webpack@5.112.2(postcss@8.5.32))
       broccoli:
         specifier: ^3.5.2
         version: 3.5.2
@@ -286,10 +289,10 @@ importers:
         version: 4.2.0
       css-loader:
         specifier: ^5.2.7
-        version: 5.2.7(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 5.2.7(webpack@5.112.2(postcss@8.5.32))
       ember-auto-import:
         specifier: ^2.13.1
-        version: 2.13.1(@glint/template@1.5.2)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 2.13.1(@glint/template@1.5.2)(webpack@5.112.2(postcss@8.5.32))
       ember-cli:
         specifier: ~6.12.0
         version: 6.12.0(@babel/core@7.29.13)(@types/node@20.11.16)(ejs@3.1.10)(handlebars@4.7.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(underscore@1.13.6)
@@ -319,7 +322,7 @@ importers:
         version: 1.1.3
       ember-intl:
         specifier: ^6.4.0
-        version: 6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2(postcss@8.5.32))
       ember-load-initializers:
         specifier: ^2.1.2
         version: 2.1.2(@babel/core@7.29.13)
@@ -358,7 +361,7 @@ importers:
         version: 4.9.1
       less-loader:
         specifier: ^7.1.0
-        version: 7.3.0(less@4.9.1)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 7.3.0(less@4.9.1)(webpack@5.112.2(postcss@8.5.32))
       loader.js:
         specifier: ^4.7.0
         version: 4.7.0
@@ -391,13 +394,13 @@ importers:
         version: 9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3)
       style-loader:
         specifier: ^2.0.0
-        version: 2.0.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 2.0.0(webpack@5.112.2(postcss@8.5.32))
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
       webpack:
         specifier: ^5.95.0
-        version: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+        version: 5.112.2(postcss@8.5.32)
 
 packages:
 
@@ -11537,22 +11540,22 @@ snapshots:
     optionalDependencies:
       react: 18.3.1
 
-  '@storybook/builder-webpack5@9.1.21(esbuild@0.25.12)(postcss@8.5.32)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)':
+  '@storybook/builder-webpack5@9.1.21(postcss@8.5.32)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)':
     dependencies:
       '@storybook/core-webpack': 9.1.21(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))
       case-sensitive-paths-webpack-plugin: 2.4.0
       cjs-module-lexer: 1.4.3
-      css-loader: 6.11.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      css-loader: 6.11.0(webpack@5.112.2(postcss@8.5.32))
       es-module-lexer: 1.7.0
-      fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
-      html-webpack-plugin: 5.6.8(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.9.3)(webpack@5.112.2(postcss@8.5.32))
+      html-webpack-plugin: 5.6.8(webpack@5.112.2(postcss@8.5.32))
       magic-string: 0.30.21
       storybook: 9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3)
-      style-loader: 3.3.4(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
-      terser-webpack-plugin: 5.6.1(esbuild@0.25.12)(postcss@8.5.32)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      style-loader: 3.3.4(webpack@5.112.2(postcss@8.5.32))
+      terser-webpack-plugin: 5.6.1(postcss@8.5.32)(webpack@5.112.2(postcss@8.5.32))
       ts-dedent: 2.2.0
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
-      webpack-dev-middleware: 6.1.3(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      webpack: 5.112.2(postcss@8.5.32)
+      webpack-dev-middleware: 6.1.3(webpack@5.112.2(postcss@8.5.32))
       webpack-hot-middleware: 2.26.1
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
@@ -11599,12 +11602,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/ember@9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.13)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.13))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))':
+  '@storybook/ember@9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.13)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.13))(rsvp@4.8.5))(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(postcss@8.5.32))':
     dependencies:
       '@babel/core': 7.29.13
-      '@storybook/builder-webpack5': 9.1.21(esbuild@0.25.12)(postcss@8.5.32)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)
+      '@storybook/builder-webpack5': 9.1.21(postcss@8.5.32)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)
       '@storybook/global': 5.0.0
-      babel-loader: 9.1.3(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      babel-loader: 9.1.3(@babel/core@7.29.13)(webpack@5.112.2(postcss@8.5.32))
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-htmlbars-inline-precompile: 5.3.1
       ember-source: 6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.13))(rsvp@4.8.5)
@@ -11738,14 +11741,14 @@ snapshots:
       '@types/ember__array': 4.0.10(@babel/core@7.29.13)
       '@types/ember__component': 4.0.22(@babel/core@7.29.13)
       '@types/ember__controller': 4.0.12(@babel/core@7.29.13)
-      '@types/ember__debug': 4.0.8(@babel/core@7.29.13)
-      '@types/ember__engine': 4.0.11(@babel/core@7.29.13)
+      '@types/ember__debug': 4.0.8
+      '@types/ember__engine': 4.0.11
       '@types/ember__error': 4.0.6
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.21(@babel/core@7.29.13)
       '@types/ember__runloop': 4.0.9(@babel/core@7.29.13)
-      '@types/ember__service': 4.0.9(@babel/core@7.29.13)
+      '@types/ember__service': 4.0.9
       '@types/ember__string': 3.0.15
       '@types/ember__template': 4.0.6
       '@types/ember__test': 4.0.6(@babel/core@7.29.13)
@@ -11760,7 +11763,7 @@ snapshots:
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.29.13)
       '@types/ember': 4.0.11(@babel/core@7.29.13)
-      '@types/ember__engine': 4.0.11(@babel/core@7.29.13)
+      '@types/ember__engine': 4.0.11
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
       '@types/ember__owner': 4.0.9
       '@types/ember__routing': 4.0.21(@babel/core@7.29.13)
@@ -11795,22 +11798,16 @@ snapshots:
       - supports-color
     optional: true
 
-  '@types/ember__debug@4.0.8(@babel/core@7.29.13)':
+  '@types/ember__debug@4.0.8':
     dependencies:
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
       '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
     optional: true
 
-  '@types/ember__engine@4.0.11(@babel/core@7.29.13)':
+  '@types/ember__engine@4.0.11':
     dependencies:
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
       '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
     optional: true
 
   '@types/ember__error@4.0.6':
@@ -11836,7 +11833,7 @@ snapshots:
       '@types/ember': 4.0.11(@babel/core@7.29.13)
       '@types/ember__controller': 4.0.12(@babel/core@7.29.13)
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
-      '@types/ember__service': 4.0.9(@babel/core@7.29.13)
+      '@types/ember__service': 4.0.9
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -11850,12 +11847,9 @@ snapshots:
       - supports-color
     optional: true
 
-  '@types/ember__service@4.0.9(@babel/core@7.29.13)':
+  '@types/ember__service@4.0.9':
     dependencies:
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
     optional: true
 
   '@types/ember__string@3.0.15':
@@ -11882,7 +11876,7 @@ snapshots:
 
   '@types/eslint@7.29.0':
     dependencies:
-      '@types/estree': 1.0.9
+      '@types/estree': 1.0.10
       '@types/json-schema': 7.0.15
 
   '@types/esrecurse@4.3.1': {}
@@ -12514,30 +12508,30 @@ snapshots:
 
   babel-import-util@3.0.1: {}
 
-  babel-loader@8.3.0(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  babel-loader@8.3.0(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       '@babel/core': 7.29.13
       find-cache-dir: 3.3.2
       loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(esbuild@0.25.12)
 
-  babel-loader@8.3.0(@babel/core@7.29.13)(webpack@5.112.2):
+  babel-loader@8.3.0(@babel/core@7.29.13)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@babel/core': 7.29.13
       find-cache-dir: 3.3.2
       loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.112.2
+      webpack: 5.112.2(postcss@8.5.32)
 
-  babel-loader@9.1.3(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  babel-loader@9.1.3(@babel/core@7.29.13)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@babel/core': 7.29.13
       find-cache-dir: 4.0.0
-      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      schema-utils: 4.8.1(webpack@5.112.2(postcss@8.5.32))
+      webpack: 5.112.2(postcss@8.5.32)
 
   babel-plugin-debug-macros@0.2.0(@babel/core@7.29.13):
     dependencies:
@@ -13705,7 +13699,7 @@ snapshots:
     dependencies:
       type-fest: 1.4.0
 
-  css-loader@5.2.7(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  css-loader@5.2.7(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.32)
       loader-utils: 2.0.4
@@ -13717,9 +13711,9 @@ snapshots:
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.8.5
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(esbuild@0.25.12)
 
-  css-loader@5.2.7(webpack@5.112.2):
+  css-loader@5.2.7(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.32)
       loader-utils: 2.0.4
@@ -13731,9 +13725,9 @@ snapshots:
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.8.5
-      webpack: 5.112.2
+      webpack: 5.112.2(postcss@8.5.32)
 
-  css-loader@6.11.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  css-loader@6.11.0(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.32)
       postcss: 8.5.32
@@ -13744,7 +13738,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.8.5
     optionalDependencies:
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
 
   css-select@4.3.0:
     dependencies:
@@ -14056,7 +14050,7 @@ snapshots:
 
   electron-to-chromium@1.5.478: {}
 
-  ember-auto-import@2.13.1(@glint/template@1.5.2)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  ember-auto-import@2.13.1(@glint/template@1.5.2)(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       '@babel/core': 7.29.13
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.29.13)
@@ -14067,7 +14061,7 @@ snapshots:
       '@embroider/macros': 1.21.4(@babel/core@7.29.13)(@glint/template@1.5.2)
       '@embroider/reverse-exports': 0.2.0
       '@embroider/shared-internals': 2.9.0
-      babel-loader: 8.3.0(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      babel-loader: 8.3.0(@babel/core@7.29.13)(webpack@5.112.2(esbuild@0.25.12))
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.2.1
       babel-plugin-htmlbars-inline-precompile: 5.3.1
@@ -14077,7 +14071,7 @@ snapshots:
       broccoli-merge-trees: 4.2.0
       broccoli-plugin: 4.0.7
       broccoli-source: 3.0.1
-      css-loader: 5.2.7(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      css-loader: 5.2.7(webpack@5.112.2(esbuild@0.25.12))
       debug: 4.4.3
       fs-extra: 10.1.0
       fs-tree-diff: 2.0.1
@@ -14085,14 +14079,14 @@ snapshots:
       is-subdir: 1.2.0
       js-string-escape: 1.0.1
       lodash: 4.18.1
-      mini-css-extract-plugin: 2.8.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      mini-css-extract-plugin: 2.8.0(webpack@5.112.2(esbuild@0.25.12))
       minimatch: 3.1.2
       parse5: 6.0.1
       pkg-entry-points: 1.1.1
       resolve: 1.22.14
       resolve-package-path: 4.0.3
       semver: 7.8.5
-      style-loader: 2.0.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      style-loader: 2.0.0(webpack@5.112.2(esbuild@0.25.12))
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
     transitivePeerDependencies:
@@ -14100,7 +14094,7 @@ snapshots:
       - supports-color
       - webpack
 
-  ember-auto-import@2.13.1(@glint/template@1.5.2)(webpack@5.112.2):
+  ember-auto-import@2.13.1(@glint/template@1.5.2)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@babel/core': 7.29.13
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.29.13)
@@ -14111,7 +14105,7 @@ snapshots:
       '@embroider/macros': 1.21.4(@babel/core@7.29.13)(@glint/template@1.5.2)
       '@embroider/reverse-exports': 0.2.0
       '@embroider/shared-internals': 2.9.0
-      babel-loader: 8.3.0(@babel/core@7.29.13)(webpack@5.112.2)
+      babel-loader: 8.3.0(@babel/core@7.29.13)(webpack@5.112.2(postcss@8.5.32))
       babel-plugin-ember-modules-api-polyfill: 3.5.0
       babel-plugin-ember-template-compilation: 2.2.1
       babel-plugin-htmlbars-inline-precompile: 5.3.1
@@ -14121,7 +14115,7 @@ snapshots:
       broccoli-merge-trees: 4.2.0
       broccoli-plugin: 4.0.7
       broccoli-source: 3.0.1
-      css-loader: 5.2.7(webpack@5.112.2)
+      css-loader: 5.2.7(webpack@5.112.2(postcss@8.5.32))
       debug: 4.4.3
       fs-extra: 10.1.0
       fs-tree-diff: 2.0.1
@@ -14129,14 +14123,14 @@ snapshots:
       is-subdir: 1.2.0
       js-string-escape: 1.0.1
       lodash: 4.18.1
-      mini-css-extract-plugin: 2.8.0(webpack@5.112.2)
+      mini-css-extract-plugin: 2.8.0(webpack@5.112.2(postcss@8.5.32))
       minimatch: 3.1.2
       parse5: 6.0.1
       pkg-entry-points: 1.1.1
       resolve: 1.22.14
       resolve-package-path: 4.0.3
       semver: 7.8.5
-      style-loader: 2.0.0(webpack@5.112.2)
+      style-loader: 2.0.0(webpack@5.112.2(postcss@8.5.32))
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
     transitivePeerDependencies:
@@ -14606,7 +14600,7 @@ snapshots:
       content-tag: 4.2.0
       oxc-parser: 0.130.0
 
-  ember-intl@6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  ember-intl@6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       '@formatjs/icu-messageformat-parser': 2.7.6
       '@formatjs/intl': 2.10.0(typescript@5.9.3)
@@ -14618,7 +14612,7 @@ snapshots:
       broccoli-stew: 3.0.0
       calculate-cache-key-for-tree: 2.0.0
       cldr-core: 44.1.0
-      ember-auto-import: 2.13.1(@glint/template@1.5.2)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      ember-auto-import: 2.13.1(@glint/template@1.5.2)(webpack@5.112.2(esbuild@0.25.12))
       ember-cli-babel: 8.3.2(@babel/core@7.29.13)
       ember-cli-typescript: 5.3.0
       eventemitter3: 5.0.1
@@ -14636,7 +14630,7 @@ snapshots:
       - supports-color
       - webpack
 
-  ember-intl@6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2):
+  ember-intl@6.4.0(@babel/core@7.29.13)(@glint/template@1.5.2)(typescript@5.9.3)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@formatjs/icu-messageformat-parser': 2.7.6
       '@formatjs/intl': 2.10.0(typescript@5.9.3)
@@ -14648,7 +14642,7 @@ snapshots:
       broccoli-stew: 3.0.0
       calculate-cache-key-for-tree: 2.0.0
       cldr-core: 44.1.0
-      ember-auto-import: 2.13.1(@glint/template@1.5.2)(webpack@5.112.2)
+      ember-auto-import: 2.13.1(@glint/template@1.5.2)(webpack@5.112.2(postcss@8.5.32))
       ember-cli-babel: 8.3.2(@babel/core@7.29.13)
       ember-cli-typescript: 5.3.0
       eventemitter3: 5.0.1
@@ -15273,7 +15267,7 @@ snapshots:
 
   estree-walker@3.0.3:
     dependencies:
-      '@types/estree': 1.0.9
+      '@types/estree': 1.0.10
 
   esutils@2.0.3: {}
 
@@ -15794,7 +15788,7 @@ snapshots:
 
   forever-agent@0.5.2: {}
 
-  fork-ts-checker-webpack-plugin@8.0.0(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  fork-ts-checker-webpack-plugin@8.0.0(typescript@5.9.3)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@babel/code-frame': 7.29.7
       chalk: 4.1.2
@@ -15809,7 +15803,7 @@ snapshots:
       semver: 7.8.5
       tapable: 2.3.3
       typescript: 5.9.3
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
 
   form-data-encoder@2.1.4: {}
 
@@ -16359,7 +16353,7 @@ snapshots:
 
   html-tags@5.1.0: {}
 
-  html-webpack-plugin@5.6.8(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  html-webpack-plugin@5.6.8(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -16367,7 +16361,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
 
   htmlparser2@10.1.0:
     dependencies:
@@ -17125,13 +17119,13 @@ snapshots:
     dependencies:
       invert-kv: 3.0.1
 
-  less-loader@7.3.0(less@4.9.1)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  less-loader@7.3.0(less@4.9.1)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       klona: 2.0.6
       less: 4.9.1
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
 
   less@3.13.1:
     dependencies:
@@ -17811,17 +17805,17 @@ snapshots:
 
   min-indent@1.0.1: {}
 
-  mini-css-extract-plugin@2.8.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  mini-css-extract-plugin@2.8.0(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
-      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12))
       tapable: 2.3.3
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(esbuild@0.25.12)
 
-  mini-css-extract-plugin@2.8.0(webpack@5.112.2):
+  mini-css-extract-plugin@2.8.0(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
-      schema-utils: 4.8.1(webpack@5.112.2)
+      schema-utils: 4.8.1(webpack@5.112.2(postcss@8.5.32))
       tapable: 2.3.3
-      webpack: 5.112.2
+      webpack: 5.112.2(postcss@8.5.32)
 
   minimatch@10.2.5:
     dependencies:
@@ -17850,24 +17844,25 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  minimizer-webpack-plugin@5.13.1(esbuild@0.25.12)(postcss@8.5.32)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  minimizer-webpack-plugin@5.13.1(esbuild@0.25.12)(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
-      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12))
       terser: 5.51.2
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(esbuild@0.25.12)
     optionalDependencies:
       esbuild: 0.25.12
-      postcss: 8.5.32
 
-  minimizer-webpack-plugin@5.13.1(webpack@5.112.2):
+  minimizer-webpack-plugin@5.13.1(postcss@8.5.32)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
-      schema-utils: 4.8.1(webpack@5.112.2)
+      schema-utils: 4.8.1(webpack@5.112.2(postcss@8.5.32))
       terser: 5.51.2
-      webpack: 5.112.2
+      webpack: 5.112.2(postcss@8.5.32)
+    optionalDependencies:
+      postcss: 8.5.32
 
   minipass@7.1.3: {}
 
@@ -19263,23 +19258,23 @@ snapshots:
       ajv: 6.15.0
       ajv-keywords: 3.5.2(ajv@6.15.0)
 
-  schema-utils@4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  schema-utils@4.8.1(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       '@types/json-schema': 7.0.15
       ajv: 8.20.0
       ajv-formats: 3.0.1(ajv@8.20.0)
       ajv-keywords: 5.1.0(ajv@8.20.0)
     optionalDependencies:
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(esbuild@0.25.12)
 
-  schema-utils@4.8.1(webpack@5.112.2):
+  schema-utils@4.8.1(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@types/json-schema': 7.0.15
       ajv: 8.20.0
       ajv-formats: 3.0.1(ajv@8.20.0)
       ajv-keywords: 5.1.0(ajv@8.20.0)
     optionalDependencies:
-      webpack: 5.112.2
+      webpack: 5.112.2(postcss@8.5.32)
 
   semver-diff@4.0.0:
     dependencies:
@@ -19842,21 +19837,21 @@ snapshots:
 
   stubborn-utils@1.0.2: {}
 
-  style-loader@2.0.0(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  style-loader@2.0.0(webpack@5.112.2(esbuild@0.25.12)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(esbuild@0.25.12)
 
-  style-loader@2.0.0(webpack@5.112.2):
+  style-loader@2.0.0(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.112.2
+      webpack: 5.112.2(postcss@8.5.32)
 
-  style-loader@3.3.4(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  style-loader@3.3.4(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
 
   styled_string@0.0.1: {}
 
@@ -19914,15 +19909,14 @@ snapshots:
 
   temp-dir@2.0.0: {}
 
-  terser-webpack-plugin@5.6.1(esbuild@0.25.12)(postcss@8.5.32)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  terser-webpack-plugin@5.6.1(postcss@8.5.32)(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
-      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      schema-utils: 4.8.1(webpack@5.112.2(postcss@8.5.32))
       terser: 5.51.2
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
     optionalDependencies:
-      esbuild: 0.25.12
       postcss: 8.5.32
 
   terser@5.51.2:
@@ -20535,15 +20529,15 @@ snapshots:
 
   webidl-conversions@7.0.0: {}
 
-  webpack-dev-middleware@6.1.3(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32)):
+  webpack-dev-middleware@6.1.3(webpack@5.112.2(postcss@8.5.32)):
     dependencies:
       colorette: 2.0.20
       memfs: 3.5.3
       mime-types: 2.1.35
       range-parser: 1.2.1
-      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      schema-utils: 4.8.1(webpack@5.112.2(postcss@8.5.32))
     optionalDependencies:
-      webpack: 5.112.2(esbuild@0.25.12)(postcss@8.5.32)
+      webpack: 5.112.2(postcss@8.5.32)
 
   webpack-hot-middleware@2.26.1:
     dependencies:
@@ -20555,7 +20549,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.112.2:
+  webpack@5.112.2(esbuild@0.25.12):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -20569,8 +20563,8 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.13.1(webpack@5.112.2)
-      schema-utils: 4.8.1(webpack@5.112.2)
+      minimizer-webpack-plugin: 5.13.1(esbuild@0.25.12)(webpack@5.112.2(esbuild@0.25.12))
+      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12))
       tapable: 2.3.3
       watchpack: 2.6.3
       webpack-sources: 3.6.0
@@ -20592,7 +20586,7 @@ snapshots:
       - svgo
       - uglify-js
 
-  webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32):
+  webpack@5.112.2(postcss@8.5.32):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -20606,8 +20600,8 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.13.1(esbuild@0.25.12)(postcss@8.5.32)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
-      schema-utils: 4.8.1(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+      minimizer-webpack-plugin: 5.13.1(postcss@8.5.32)(webpack@5.112.2(postcss@8.5.32))
+      schema-utils: 4.8.1(webpack@5.112.2(postcss@8.5.32))
       tapable: 2.3.3
       watchpack: 2.6.3
       webpack-sources: 3.6.0

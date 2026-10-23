@@ -16,7 +16,11 @@ export default {
 
   staticDirs: ['../dist'],
 
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
+    '../../oss-components/src/**/*.stories.@(js|jsx|ts|tsx)'
+  ],
 
   previewHead: (head) => {
     const html = fs.readFileSync(path.resolve(dirname, '../dist/index.html'), 'utf8');

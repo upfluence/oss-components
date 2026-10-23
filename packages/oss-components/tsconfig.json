@@ -15,6 +15,7 @@
     "rootDir": "src"
   },
   "include": ["src/**/*.ts", "src/**/*.js", "unpublished-development-types/**/*.d.ts"],
+  "exclude": ["src/**/*.stories.*"],
   // Keep the existing TS-only checks while legacy component signatures are migrated.
   "glint": {
     "environment": []
