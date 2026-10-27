@@ -46,8 +46,8 @@ export default class OssSidePanel extends Component<OssSidePanelArgs> {
   }
 
   @action
-  onClickOutside(_: any, event: Event): void {
-    const sidePanelElement = document.querySelector('.oss-side-panel');
+  onClickOutside(backdrop: HTMLElement, event: Event): void {
+    const sidePanelElement = backdrop.closest('.oss-side-panel');
     if (sidePanelElement?.contains(event.target as Node)) return;
 
     if (event.target === this.initialTarget) {

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, type TestContext } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/side-panel', function (hooks) {
@@ -166,6 +166,41 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       });
       await click('.oss-side-panel__backdrop');
       assert.ok(this.onClose.calledOnce, 'Clicked on the transparent backdrop so the side panel closes.');
+    });
+  });
+
+  module('When two side panels are mounted', (hooks) => {
+    hooks.beforeEach(function (this: TestContext) {
+      this.onCloseFirst = sinon.stub();
+      this.onCloseSecond = sinon.stub();
+    });
+
+    async function renderSidePanels() {
+      await render(
+        hbs`
+          <div data-control-name="outside-side-panels"></div>
+          <OSS::SidePanel @visible={{true}} @backdrop={{true}} @onClose={{this.onCloseFirst}} />
+          <OSS::SidePanel @visible={{true}} @backdrop={{true}} @onClose={{this.onCloseSecond}}>
+            <:main>
+              <div data-control-name="second-side-panel-content"></div>
+            </:main>
+          </OSS::SidePanel>`
+      );
+    }
+
+    test('Clicking inside the second side panel does not close it', async function (this: TestContext, assert) {
+      await renderSidePanels();
+      await click('[data-control-name="second-side-panel-content"]');
+
+      assert.true(this.onCloseSecond.notCalled);
+    });
+
+    test('Clicking outside both side panels closes them', async function (this: TestContext, assert) {
+      await renderSidePanels();
+      await click('[data-control-name="outside-side-panels"]');
+
+      assert.true(this.onCloseFirst.calledOnceWithExactly());
+      assert.true(this.onCloseSecond.calledOnceWithExactly());
     });
   });
 });
