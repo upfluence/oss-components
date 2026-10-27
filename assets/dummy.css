@@ -13895,6 +13895,7 @@ a.upf-btn--sm {
   min-width: 180px;
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-sm);
+  overflow: hidden;
   z-index: 99;
 }
 .oss-button-dropdown .oss-button-dropdown__items--visible {
@@ -15374,6 +15375,7 @@ a.oss-sidebar-item {
 }
 .oss-sidebar-group:not(.oss-sidebar-group--expanded) .oss-sidebar-group__items-container--visible {
   box-shadow: var(--box-shadow-md);
+  border: 1px solid var(--color-border-default);
   position: absolute;
   top: 0;
   left: calc(var(--sidebar-width) - var(--spacing-px-3));

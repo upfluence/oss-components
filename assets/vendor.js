@@ -81123,8 +81123,8 @@ require('@ember/-internals/bootstrap')
         });
       }
     }
-    onClickOutside(_, event) {
-      const sidePanelElement = document.querySelector('.oss-side-panel');
+    onClickOutside(backdrop, event) {
+      const sidePanelElement = backdrop.closest('.oss-side-panel');
       if (sidePanelElement?.contains(event.target)) return;
       if (event.target === this.initialTarget) {
         this.args.onClose();

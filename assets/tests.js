@@ -18804,6 +18804,42 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         assert.ok(this.onClose.calledOnce, 'Clicked on the transparent backdrop so the side panel closes.');
       });
     });
+    (0, _qunit.module)('When two side panels are mounted', hooks => {
+      hooks.beforeEach(function () {
+        this.onCloseFirst = _sinon.default.stub();
+        this.onCloseSecond = _sinon.default.stub();
+      });
+      async function renderSidePanels() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <div data-control-name="outside-side-panels"></div>
+                  <OSS::SidePanel @visible={{true}} @backdrop={{true}} @onClose={{this.onCloseFirst}} />
+                  <OSS::SidePanel @visible={{true}} @backdrop={{true}} @onClose={{this.onCloseSecond}}>
+                    <:main>
+                      <div data-control-name="second-side-panel-content"></div>
+                    </:main>
+                  </OSS::SidePanel>
+        */
+        {
+          "id": "bDWVxUwT",
+          "block": "[[[1,\"\\n          \"],[10,0],[14,\"data-control-name\",\"outside-side-panels\"],[12],[13],[1,\"\\n          \"],[8,[39,0],null,[[\"@visible\",\"@backdrop\",\"@onClose\"],[true,true,[30,0,[\"onCloseFirst\"]]]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@visible\",\"@backdrop\",\"@onClose\"],[true,true,[30,0,[\"onCloseSecond\"]]]],[[\"main\"],[[[[1,\"\\n              \"],[10,0],[14,\"data-control-name\",\"second-side-panel-content\"],[12],[13],[1,\"\\n            \"]],[]]]]]],[],false,[\"o-s-s/side-panel\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/side-panel-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.test)('Clicking inside the second side panel does not close it', async function (assert) {
+        await renderSidePanels();
+        await (0, _testHelpers.click)('[data-control-name="second-side-panel-content"]');
+        assert.true(this.onCloseSecond.notCalled);
+      });
+      (0, _qunit.test)('Clicking outside both side panels closes them', async function (assert) {
+        await renderSidePanels();
+        await (0, _testHelpers.click)('[data-control-name="outside-side-panels"]');
+        assert.true(this.onCloseFirst.calledOnceWithExactly());
+        assert.true(this.onCloseSecond.calledOnceWithExactly());
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/side-panel/header-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
