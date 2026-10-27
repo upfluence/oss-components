@@ -9,16 +9,16 @@ components for usage in our projects.
 
 ---
 
-- Ember.js v3.24 or above
-- Ember CLI v3.24 or above
-- Node.js v12 or above
+- Ember.js v3.28 or above
+- Ember CLI v3.28 or above
+- Node.js v20 or above
 
 ## Installation
 
 ---
 
 As any NPM package, you can install it via:
-`npm install --save upfluence-oss-components`
+`pnpm add @upfluence/oss-components`
 
 ## Running / Development
 
@@ -33,51 +33,8 @@ frontend stack anyway.
 
 ## Adding it to a project
 
-Here are the steps to add OSS-Components to an Ember project:
+### Asset-map adapter
 
-- Install via `npm install --save upfluence-oss-components`
-- Install the Bower package containing all the needed CSS with `bower
-install --save upfluence-oss`
-- In your `ember-cli-build.js` file, add the following lines for enabling Asset Map file generation, and importing the Upfluence OSS framework:
+OSS now provides an asset-map adapter through its top-level app re-exports and an explicitly imported final-build-tree wrapper. See [Consumer-owned asset maps](docs/asset-map.md) for setup and the plugin-web pilot.
 
-```javascript
-// In the "fingerprint" configuration
-fingerprint: {
-  generateAssetMap: true,
-  ...
-}
-
-// In the "lessOptions" configuration
-lessOptions: {
-  paths: [
-    ...,
-    'bower_components/upfluence-oss/less',
-    ...
-  ]
-}
-```
-
-- Enable the `ember-cli-ifa`, in the `config/environment.js` file
-
-```javascript
-module.exports = function(environment) {
-  var ENV = {
-    ...,
-    ifa: {
-      enabled: true
-    },
-    ...
-  };
-
-  return ENV;
-};
-```
-
-- And finally, import the OSS framework in your `app/styles/app.less` file
-
-```less
-@import 'bootstrap';
-@import 'upfluence-oss';
-@import 'upf-utils';
-...
-```
+This allows the consuming app to build and fingerprint its complete asset output, including assets supplied by addons, and inject the consumer's completed manifest into its HTML. Full compatibility with the existing template helpers and `assetMap.resolve(path)` (previously brought by `ember-cli-ifa`) calls is maintained.
