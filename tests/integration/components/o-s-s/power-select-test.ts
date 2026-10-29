@@ -428,7 +428,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
           <:option-item as |item|>
             {{item}}
           </:option-item>
-        </OSS::PowerSelect />
+        </OSS::PowerSelect>
       `);
 
       assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--error');
