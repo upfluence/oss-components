@@ -63,7 +63,6 @@
     "qunit": "^2.x || ^3.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.1.0",
     "@ember/test-helpers": "^3.3.1",
@@ -105,7 +104,6 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^5.2.7",
     "ember-cli": "~5.12.0",
-    "ember-cli-clean-css": "^3.0.0",
     "ember-cli-code-coverage": "^3.0.0",
     "ember-cli-deprecation-workflow": "^3.4.0",
     "ember-cli-inject-live-reload": "^2.1.0",
@@ -116,7 +114,7 @@
     "ember-sinon-qunit": "^5.0.0",
     "ember-source": "~5.12.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-template-lint": "^6.0.0",
+    "ember-template-lint": "^3.15.0",
     "ember-try": "^4.0.0",
     "eslint": "^10.5.0",
     "less-loader": "^7.1.0",
@@ -128,10 +126,10 @@
     "storybook-addon-designs": "^6.3.1",
     "style-loader": "^2.0.0",
     "typescript": "^5.9.3",
-    "webpack": "5.95.0"
+    "webpack": "^5.95.0"
   },
   "engines": {
-    "node": ">= 18"
+    "node": "12.* || 14.* || >= 16"
   },
   "ember": {
     "edition": "octane"
