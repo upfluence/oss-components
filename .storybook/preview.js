@@ -4,6 +4,7 @@ import './styles/preview.less';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  backgrounds: { disabled: true },
   layout: 'centered',
   controls: { expanded: true },
   options: {
