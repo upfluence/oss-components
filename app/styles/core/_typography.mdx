@@ -1,4 +1,4 @@
-import { Meta, Typeset, ColorPalette, ColorItem, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Typeset, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="Core/Typography"
@@ -315,7 +315,7 @@ Different attributes in CSS are used to have this result: `max-width`, `overflow
 
 The `text-ellipsis` class has multiple variants to determine the max length of the text. It can be used by adding a value in px for `max-width`, such as `text-ellipsis-80`. The range starts at `80` and ends at `400`, with increments of `20`.
 
-<Canvas>
+<div className="docs-preview">
   <div class="flex-column">
     <span class="text-ellipsis-80">Ellipsis 80px with text too long to read</span>
     <span class="text-ellipsis-100">Ellipsis 100px with text too long to read</span>
@@ -326,4 +326,4 @@ The `text-ellipsis` class has multiple variants to determine the max length of t
     <span class="text-ellipsis-200">Ellipsis 200px with text too long to read</span>
     <span>With no ellipsis, you can read all this text</span>
   </div>
-</Canvas>
+</div>

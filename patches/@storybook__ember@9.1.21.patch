@@ -1,0 +1,29 @@
+diff --git a/dist/client/preview/render.js b/dist/client/preview/render.js
+index d266b59058be1f146b77443a50918bf3593a0bf3..35c9cf0aa05412644d8eb0c37c73feb00d222629 100644
+--- a/dist/client/preview/render.js
++++ b/dist/client/preview/render.js
+@@ -32,7 +32,7 @@ function render(options, el) {
+         return appInstancePrivate.boot().then(() => appInstancePrivate);
+     })
+         .then((instance) => {
+-        instance.register('component:story-mode', Ember.Component.extend({
++        instance.register('component:story-mode', global.require('@ember/component').default.extend({
+             layout: template || options,
+             ...context,
+         }));
+diff --git a/dist/client/preview/render.mjs b/dist/client/preview/render.mjs
+index 1627c83075b070d85d2a27481b66d6822d994fb7..41cae85214e9d239216a8ac4725b18ced2fb5fa5 100644
+--- a/dist/client/preview/render.mjs
++++ b/dist/client/preview/render.mjs
+@@ -29,7 +29,7 @@ function render(options, el) {
+         return appInstancePrivate.boot().then(() => appInstancePrivate);
+     })
+         .then((instance) => {
+-        instance.register('component:story-mode', Ember.Component.extend({
++        instance.register('component:story-mode', global.require('@ember/component').default.extend({
+             layout: template || options,
+             ...context,
+         }));
+diff --git a/template/components/index.js b/template/components/index.js
+deleted file mode 100644
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0000000000000000000000000000000000000000
