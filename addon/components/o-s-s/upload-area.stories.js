@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { MockUploader } from 'dummy/controllers/extra';
 
 const PrivacyTypes = ['public', 'private'];
