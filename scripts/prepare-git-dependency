@@ -1,0 +1,10 @@
+#!/bin/bash
+## Builds the TypeScript declarations when pnpm installs this addon from a git commit.
+##
+## pnpm only runs `prepack` for a git dependency that has no main file, so it never ran for this addon and consumers
+## installing it from a commit got no .d.ts files. pnpm prepares git dependencies in a temporary store directory
+## (<store>/tmp/_tmp_*); a regular checkout is left alone so `pnpm install` doesn't write declarations next to the sources.
+
+case "$(basename "$PWD")" in
+  _tmp_*) exec ember ts:precompile ;;
+esac
