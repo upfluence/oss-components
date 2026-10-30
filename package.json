@@ -30,6 +30,7 @@
     "test:coverage": "COVERAGE=true pnpm test:ember",
     "storybook": "start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
+    "prepare": "bash scripts/prepare-git-dependency",
     "prepack": "ember ts:precompile",
     "install-pre-push-hook": "cp ./scripts/pre-push ./.git/hooks/pre-push",
     "remove-pre-push-hook": "rm -rf ./.git/hooks/pre-push",
