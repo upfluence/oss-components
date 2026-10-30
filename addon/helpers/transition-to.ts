@@ -24,7 +24,7 @@ export default class extends Helper {
       queryParams ? typeof queryParams === 'object' : true
     );
 
-    const router = getOwner(this).lookup('service:router') as RouterService;
+    const router = getOwner(this)!.lookup('service:router') as RouterService;
 
     return () => {
       if (model) {

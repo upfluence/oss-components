@@ -1,5 +1,4 @@
-// @ts-expect-error setModifierManager is not exposed by the Ember typings
-import { setModifierManager, capabilities } from '@ember/modifier';
+import { setModifierManager, capabilities, type ModifierManager } from '@ember/modifier';
 import { run } from '@ember/runloop';
 import { installScrollReachedModifier, type State } from './install-scroll-reached-modifier';
 
@@ -8,27 +7,28 @@ import { installScrollReachedModifier, type State } from './install-scroll-reach
  * This is useful especially for infinite scrolls.
  */
 export default setModifierManager(
-  () => ({
-    capabilities: capabilities('3.22'),
+  () =>
+    ({
+      capabilities: capabilities('3.22'),
 
-    createModifier() {
-      return {
-        element: null,
-        handler: null
-      };
-    },
+      createModifier() {
+        return {
+          element: null,
+          handler: null
+        };
+      },
 
-    installModifier(state: State, element: Element, { positional, named }: any) {
-      installScrollReachedModifier(state, element, positional, named, (targetElement, offset) => {
-        return Math.ceil(targetElement.scrollTop) + targetElement.clientHeight >= targetElement.scrollHeight - offset;
-      });
-    },
+      installModifier(state: State, element: Element, { positional, named }: any) {
+        installScrollReachedModifier(state, element, positional, named, (targetElement, offset) => {
+          return Math.ceil(targetElement.scrollTop) + targetElement.clientHeight >= targetElement.scrollHeight - offset;
+        });
+      },
 
-    destroyModifier(state: any) {
-      run(() => {
-        state.element.removeEventListener('scroll', state.handler, false);
-      });
-    }
-  }),
+      destroyModifier(state: any) {
+        run(() => {
+          state.element.removeEventListener('scroll', state.handler, false);
+        });
+      }
+    }) as unknown as ModifierManager<unknown>,
   class OnClickOutsideModifierManager {}
 );

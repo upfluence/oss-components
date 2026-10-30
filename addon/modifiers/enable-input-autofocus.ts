@@ -1,32 +1,32 @@
-// @ts-expect-error setModifierManager is not exposed by the Ember typings
-import { setModifierManager, capabilities } from '@ember/modifier';
+import { setModifierManager, capabilities, type ModifierManager } from '@ember/modifier';
 
 export default setModifierManager(
-  () => ({
-    capabilities: capabilities('3.22'),
+  () =>
+    ({
+      capabilities: capabilities('3.22'),
 
-    createModifier(): object {
-      return {
-        element: null
-      };
-    },
+      createModifier(): object {
+        return {
+          element: null
+        };
+      },
 
-    installModifier(state: any, element: HTMLElement): void {
-      state.element = element;
-      const localElement =
-        element.tagName.toLowerCase() === 'input'
-          ? (element as HTMLInputElement)
-          : (element.querySelector('input:not([disabled])') as HTMLInputElement);
+      installModifier(state: any, element: HTMLElement): void {
+        state.element = element;
+        const localElement =
+          element.tagName.toLowerCase() === 'input'
+            ? (element as HTMLInputElement)
+            : (element.querySelector('input:not([disabled])') as HTMLInputElement);
 
-      if (!localElement.disabled) {
-        localElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        localElement.focus({ preventScroll: true });
-      } else {
-        return;
-      }
-    },
+        if (!localElement.disabled) {
+          localElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          localElement.focus({ preventScroll: true });
+        } else {
+          return;
+        }
+      },
 
-    destroyModifier(): void {} // keep even if empty
-  }),
+      destroyModifier(): void {} // keep even if empty
+    }) as unknown as ModifierManager<unknown>,
   class EnableInputAutofocusModifierManager {}
 );

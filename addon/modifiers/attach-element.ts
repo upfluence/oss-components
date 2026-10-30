@@ -1,5 +1,4 @@
-// @ts-expect-error setModifierManager is not exposed by the Ember typings
-import { setModifierManager, capabilities } from '@ember/modifier';
+import { setModifierManager, capabilities, type ModifierManager } from '@ember/modifier';
 import { scheduleOnce } from '@ember/runloop';
 
 import attachDropdown, { type AttachmentOptions } from '@upfluence/oss-components/utils/attach-dropdown';
@@ -40,30 +39,31 @@ const setupModifier = (state: AttachElementState, element: HTMLElement, args: At
 };
 
 export default setModifierManager(
-  () => ({
-    capabilities: capabilities('3.22'),
+  () =>
+    ({
+      capabilities: capabilities('3.22'),
 
-    createModifier() {
-      return {
-        cleanupDrodpownAutoplacement: undefined,
-        referenceTarget: null,
-        attachedElement: null
-      };
-    },
+      createModifier() {
+        return {
+          cleanupDrodpownAutoplacement: undefined,
+          referenceTarget: null,
+          attachedElement: null
+        };
+      },
 
-    installModifier(state: AttachElementState, element: HTMLElement, args: AttachElementArgs) {
-      setupModifier(state, element, args);
-    },
+      installModifier(state: AttachElementState, element: HTMLElement, args: AttachElementArgs) {
+        setupModifier(state, element, args);
+      },
 
-    updateModifier(state: AttachElementState, args: AttachElementArgs) {
-      if (!state.attachedElement) return;
-      setupModifier(state, state.attachedElement, args);
-    },
+      updateModifier(state: AttachElementState, args: AttachElementArgs) {
+        if (!state.attachedElement) return;
+        setupModifier(state, state.attachedElement, args);
+      },
 
-    destroyModifier(state: AttachElementState) {
-      state.cleanupDrodpownAutoplacement?.();
-    }
-  }),
+      destroyModifier(state: AttachElementState) {
+        state.cleanupDrodpownAutoplacement?.();
+      }
+    }) as unknown as ModifierManager<unknown>,
 
   class AttachElementModifierNewManager {}
 );

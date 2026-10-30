@@ -2,6 +2,7 @@
   "extends": "@tsconfig/ember/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "bundler",
+    "skipLibCheck": true,
     "strictFunctionTypes": false,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {

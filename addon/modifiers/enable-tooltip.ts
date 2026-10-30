@@ -1,5 +1,4 @@
-// @ts-expect-error setModifierManager is not exposed by the Ember typings
-import { setModifierManager, capabilities } from '@ember/modifier';
+import { setModifierManager, capabilities, type ModifierManager } from '@ember/modifier';
 import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
@@ -208,51 +207,52 @@ export function initEventListener(state: EnableTooltipState, element: HTMLElemen
 }
 
 export default setModifierManager(
-  () => ({
-    capabilities: capabilities('3.22'),
+  () =>
+    ({
+      capabilities: capabilities('3.22'),
 
-    createModifier() {
-      return {
-        element: null,
-        tooltip: null,
-        attrs: null,
-        animation: null,
-        setTimeoutId: null,
-        isRendered: false
-      };
-    },
+      createModifier() {
+        return {
+          element: null,
+          tooltip: null,
+          attrs: null,
+          animation: null,
+          setTimeoutId: null,
+          isRendered: false
+        };
+      },
 
-    installModifier(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs) {
-      state.originElement = element;
-      setDefaultConfiguration(state, args);
-      initEventListener(state, element);
-    },
+      installModifier(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs) {
+        state.originElement = element;
+        setDefaultConfiguration(state, args);
+        initEventListener(state, element);
+      },
 
-    updateModifier(state: EnableTooltipState, args: EnableTooltipArgs) {
-      setDefaultConfiguration(state, args);
+      updateModifier(state: EnableTooltipState, args: EnableTooltipArgs) {
+        setDefaultConfiguration(state, args);
 
-      if (!state.tooltipElement) return;
-      const { title, subtitle, icon, html } = state.tooltipConfig;
+        if (!state.tooltipElement) return;
+        const { title, subtitle, icon, html } = state.tooltipConfig;
 
-      const titleSpan = state.tooltipElement.querySelector('.title-container .title');
-      if (titleSpan) {
-        setElementContent(<HTMLElement>titleSpan, title, html);
+        const titleSpan = state.tooltipElement.querySelector('.title-container .title');
+        if (titleSpan) {
+          setElementContent(<HTMLElement>titleSpan, title, html);
+        }
+        const subtitleSpan = state.tooltipElement.querySelector('.subtitle');
+        if (subtitleSpan) {
+          setElementContent(<HTMLElement>subtitleSpan, subtitle, html);
+        }
+        const iconI = state.tooltipElement.querySelector('.title-container i');
+        if (iconI && icon) {
+          iconI.className = icon;
+        }
+
+        computePosition(state);
+      },
+
+      destroyModifier(state: EnableTooltipState) {
+        destroy(state);
       }
-      const subtitleSpan = state.tooltipElement.querySelector('.subtitle');
-      if (subtitleSpan) {
-        setElementContent(<HTMLElement>subtitleSpan, subtitle, html);
-      }
-      const iconI = state.tooltipElement.querySelector('.title-container i');
-      if (iconI && icon) {
-        iconI.className = icon;
-      }
-
-      computePosition(state);
-    },
-
-    destroyModifier(state: EnableTooltipState) {
-      destroy(state);
-    }
-  }),
+    }) as unknown as ModifierManager<unknown>,
   class EnableTooltipModifierNewManager {}
 );
