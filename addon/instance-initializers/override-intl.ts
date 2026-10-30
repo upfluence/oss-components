@@ -1,5 +1,4 @@
-import { htmlSafe, isHTMLSafe } from '@ember/template';
-import type { SafeString } from '@ember/template/-private/handlebars';
+import { htmlSafe, isHTMLSafe, type SafeString } from '@ember/template';
 import DOMPurify from 'dompurify';
 import type { TOptions } from 'ember-intl/services/intl';
 

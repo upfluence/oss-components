@@ -19,7 +19,7 @@ importers:
         version: 1.13.5(@glint/template@1.5.2)
       '@embroider/util':
         specifier: ^1.9.0
-        version: 1.13.3(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))
+        version: 1.13.3(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))
       '@floating-ui/dom':
         specifier: ^1.6.3
         version: 1.6.3
@@ -95,7 +95,7 @@ importers:
         version: 1.1.2
       '@glint/environment-ember-loose':
         specifier: ^1.5.2
-        version: 1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7))
+        version: 1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7))
       '@glint/template':
         specifier: ^1.2.1
         version: 1.5.2
@@ -110,7 +110,7 @@ importers:
         version: 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/ember':
         specifier: 6.4.9
-        version: 6.4.9(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))(eslint@10.8.0)(typescript@5.9.3)(webpack@5.112.2(postcss@8.4.34))
+        version: 6.4.9(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))(eslint@10.8.0)(typescript@5.9.3)(webpack@5.112.2(postcss@8.4.34))
       '@storybook/ember-cli-storybook':
         specifier: ^0.4.0
         version: 0.4.0
@@ -120,60 +120,6 @@ importers:
       '@tsconfig/ember':
         specifier: ^3.0.3
         version: 3.0.3
-      '@types/ember':
-        specifier: ^4.0.10
-        version: 4.0.11(@babel/core@7.29.7)
-      '@types/ember__application':
-        specifier: ^4.0.10
-        version: 4.0.11(@babel/core@7.29.7)
-      '@types/ember__array':
-        specifier: ^4.0.9
-        version: 4.0.10(@babel/core@7.29.7)
-      '@types/ember__component':
-        specifier: ^4.0.21
-        version: 4.0.22(@babel/core@7.29.7)
-      '@types/ember__controller':
-        specifier: ^4.0.11
-        version: 4.0.12(@babel/core@7.29.7)
-      '@types/ember__debug':
-        specifier: ^4.0.7
-        version: 4.0.8(@babel/core@7.29.7)
-      '@types/ember__destroyable':
-        specifier: ^4.0.4
-        version: 4.0.5
-      '@types/ember__engine':
-        specifier: ^4.0.10
-        version: 4.0.11(@babel/core@7.29.7)
-      '@types/ember__error':
-        specifier: ^4.0.5
-        version: 4.0.6
-      '@types/ember__object':
-        specifier: ^4.0.11
-        version: 4.0.12(@babel/core@7.29.7)
-      '@types/ember__polyfills':
-        specifier: ^4.0.5
-        version: 4.0.6
-      '@types/ember__routing':
-        specifier: ^4.0.19
-        version: 4.0.21(@babel/core@7.29.7)
-      '@types/ember__runloop':
-        specifier: ^4.0.8
-        version: 4.0.9(@babel/core@7.29.7)
-      '@types/ember__service':
-        specifier: ^4.0.8
-        version: 4.0.9(@babel/core@7.29.7)
-      '@types/ember__string':
-        specifier: ^3.0.13
-        version: 3.0.15
-      '@types/ember__template':
-        specifier: ^4.0.5
-        version: 4.0.6
-      '@types/ember__test':
-        specifier: ^4.0.5
-        version: 4.0.6(@babel/core@7.29.7)
-      '@types/ember__utils':
-        specifier: ^4.0.6
-        version: 4.0.7(@babel/core@7.29.7)
       '@types/jquery':
         specifier: ^3.5.29
         version: 3.5.29
@@ -497,7 +443,6 @@ packages:
   '@babel/plugin-proposal-class-properties@7.18.6':
     resolution: {integrity: sha512-cumfXOF0+nzZrrN8Rf0t7M+tF6sZc7vhQwYQck9q1/5w2OExlD+b4v4RpMJFaV1Z7WcDRgO6FqvxqxGlwo+RHQ==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -516,34 +461,29 @@ packages:
   '@babel/plugin-proposal-nullish-coalescing-operator@7.18.6':
     resolution: {integrity: sha512-wQxQzxYeJqHcfppzBDnm1yAY0jSRkUXR2z8RePZYrKwMKgMlE8+Z6LUno+bd6LvbGh8Gltvy74+9pIYkr+XkKA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
   '@babel/plugin-proposal-object-rest-spread@7.12.1':
     resolution: {integrity: sha512-s6SowJIjzlhx8o7lsFx5zmY4At6CTtDvgNQDdPzkBQucle58A6b/TTeEBYtyDgmcXjUTM+vE8YOGHZzzbc/ioA==}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-object-rest-spread instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
   '@babel/plugin-proposal-object-rest-spread@7.20.7':
     resolution: {integrity: sha512-d2S98yCiLxDVmBmE8UjGcfPvNEUbA1U5q5WxaWFUGRzJSVAZqm5W6MbPct0jxnegUZ0niLeNX+IOzEs7wYg9Dg==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-object-rest-spread instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
   '@babel/plugin-proposal-optional-chaining@7.21.0':
     resolution: {integrity: sha512-p4zeefM72gpmEe2fkUr/OnOXpWEf8nAgk7ZYVqqfFiyIG7oFfVZcCrU64hWn5xp4tQ9LkV4bTIa5rD0KANpKNA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
   '@babel/plugin-proposal-private-methods@7.18.6':
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -556,7 +496,6 @@ packages:
   '@babel/plugin-proposal-private-property-in-object@7.21.11':
     resolution: {integrity: sha512-0QZ8qP/3RLDVBwBFoWAwCtgcDZJVwA5LUJRZU8x2YFfKNuFq161wK3cuGrALu5yiPu+vzwTAg/sMWVNeWeNyaw==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -1016,7 +955,6 @@ packages:
 
   '@babel/polyfill@7.12.1':
     resolution: {integrity: sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==}
-    deprecated: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
 
   '@babel/preset-env@7.23.9':
     resolution: {integrity: sha512-3kBGTNBBk9DQiPoXYS0g0BYlwTQYUTifqgKTjxUwEUkduRT2QOa0FPGBJ+NROQhGyYO5BuTJwGvBnqKDykac6A==}
@@ -1477,11 +1415,6 @@ packages:
     peerDependencies:
       '@glimmer/component': '>=1.1.2'
       '@glint/template': ^1.5.2
-      '@types/ember__array': ^4.0.2
-      '@types/ember__component': ^4.0.10
-      '@types/ember__controller': ^4.0.2
-      '@types/ember__object': ^4.0.4
-      '@types/ember__routing': ^4.0.11
       ember-cli-htmlbars: ^6.0.1
       ember-modifier: ^3.2.7 || ^4.0.0
     peerDependenciesMeta:
@@ -1516,7 +1449,6 @@ packages:
   '@hapi/address@1.0.1':
     resolution: {integrity: sha512-Z7nz/NjPN7nqVe9plLg7yjmKTfde3jf/6ytcNIXPVrWzzm3H/QnIHYbVQEoMtqWcxmfblOkAxF9TPpTRaCim8g==}
     engines: {node: '>=6.0.0'}
-    deprecated: Please update your dependencies as this version is no longer maintained and may contain bugs and security issues.
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -1645,7 +1577,6 @@ packages:
   '@npmcli/move-file@1.1.2':
     resolution: {integrity: sha512-1SUf/Cg2GzGDyaf15aR9St9TWlb+XvbZXWpDx8YKs7MLzMH/BCeopv+y9vzrzgkfykCGuWOlSu3mZhj2+FQcrg==}
     engines: {node: '>=10'}
-    deprecated: This functionality has been moved to @npmcli/fs
 
   '@one-ini/wasm@0.2.1':
     resolution: {integrity: sha512-TUqERXGNTifZ9y2g3wPxQrw3HpHv/02DsW3D90T9x0hhonrL1ZqpSmNrU2XkoIq0fP1N6gZfVQzy2Fw1ZvGBNg==}
@@ -1833,7 +1764,6 @@ packages:
 
   '@storybook/addon-actions@6.4.9':
     resolution: {integrity: sha512-L1N66p/vr+wPUBfrH3qffjNAcWSS/wvuL370T7cWxALA9LLA8yY9U2EpITc5btuCC5QOxApCeyHkFnrBhNa94g==}
-    deprecated: 'SECURITY: Upgrade to v6.5 or above'
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
@@ -2000,7 +1930,6 @@ packages:
 
   '@storybook/api@6.4.9':
     resolution: {integrity: sha512-U+YKcDQg8xal9sE5eSMXB9vcqk8fD1pSyewyAjjbsW5hV0B3L3i4u7z/EAD9Ujbnor+Cvxq+XGvp+Qnc5Gd40A==}
-    deprecated: 'SECURITY: Upgrade to v6.5 or above'
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
@@ -2052,7 +1981,6 @@ packages:
 
   '@storybook/core-common@6.4.9':
     resolution: {integrity: sha512-wVHRfUGnj/Tv8nGjv128NDQ5Zp6c63rSXd1lYLzfZPTJmGOz4rpPPez2IZSnnDwbAWeqUSMekFVZPj4v6yuujQ==}
-    deprecated: 'SECURITY: Upgrade to v6.5 or above'
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
@@ -2066,7 +1994,6 @@ packages:
 
   '@storybook/core-server@6.4.9':
     resolution: {integrity: sha512-Ht/e17/SNW9BgdvBsnKmqNrlZ6CpHeVsClEUnauMov8I5rxjvKBVmI/UsbJJIy6H6VLiL/RwrA3RvLoAoZE8dA==}
-    deprecated: 'SECURITY: Upgrade to v6.5 or above'
     peerDependencies:
       '@storybook/builder-webpack5': 6.4.9
       '@storybook/manager-webpack5': 6.4.9
@@ -2117,7 +2044,6 @@ packages:
 
   '@storybook/manager-webpack4@6.4.9':
     resolution: {integrity: sha512-828x3rqMuzBNSb13MSDo2nchY7fuywh+8+Vk+fn00MvBYJjogd5RQFx5ocwhHzmwXbnESIerlGwe81AzMck8ng==}
-    deprecated: 'SECURITY: Upgrade to v6 or above'
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
@@ -2198,7 +2124,6 @@ packages:
 
   '@tsconfig/ember@3.0.3':
     resolution: {integrity: sha512-StVVkcg/VxA+eDzBcTQAcnmmcmg1OxaV41OqFYluqVHpUX28TOD91DGg58n2AMU9ia27zeBBeVQiLsfmzuIV7w==}
-    deprecated: Please use @ember/app-tsconfig or @ember/library-tsconfig instead. These live at https://github.com/ember-cli/tsconfigs
 
   '@tybys/wasm-util@0.10.3':
     resolution: {integrity: sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==}
@@ -2223,63 +2148,6 @@ packages:
 
   '@types/cors@2.8.17':
     resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
-
-  '@types/ember@4.0.11':
-    resolution: {integrity: sha512-v7VIex0YILK8fP87LkIfzeeYKNnu74+xwf6U56v6MUDDGfSs9q/6NCxiUfwkxD+z5nQiUcwvfKVokX8qzZFRLw==}
-
-  '@types/ember__application@4.0.11':
-    resolution: {integrity: sha512-U1S7XW0V70nTWbFckWoraJbYGBJK69muP/CsPFLeAuUYHfkkDiwh1SfqgAUN9aHtrEJM5SuSYVYp2YsTI2yLuA==}
-
-  '@types/ember__array@4.0.10':
-    resolution: {integrity: sha512-UrhDbopLI3jB0MqV14y8yji2IuPNmeDrtT1PRYJL4CThLHrRkfeYyFvxqvrxWxn0wXKjbbjfH1gOe7BU57QrLQ==}
-
-  '@types/ember__component@4.0.22':
-    resolution: {integrity: sha512-m72EtmBN/RxOChXqRsyOg4RR5+AiB4LQ8s1CEKNYAfvANt18m4hjqxtA7QZYLTq2ZjEVJGpdMsrdDuONWjwRSQ==}
-
-  '@types/ember__controller@4.0.12':
-    resolution: {integrity: sha512-80rdnSC0UJBqoUX5/vkQcM2xkRdTPTvY0dPXEfY5cC5OZITbcSeRo5qa7ZGhgNBfH6XYyh55Lo/b811LwU3N9w==}
-
-  '@types/ember__debug@4.0.8':
-    resolution: {integrity: sha512-9wF7STmDHDsUxSjyCq2lpMq/03QOPkBQMGJnV8yOBnVZxB6f+FJH/kxaCprdMkUe7iwAPNEC2zrFFx1tzH75Kg==}
-
-  '@types/ember__destroyable@4.0.5':
-    resolution: {integrity: sha512-spJyZxpvecssbXkaOQYcbnlWgb+TasFaKrgAYVbykZY6saMwUdMOGDDoW6uP/y/+A8Jj/fUIatPWJLepeSfgww==}
-
-  '@types/ember__engine@4.0.11':
-    resolution: {integrity: sha512-ryR4Q1Xm3kQ3Ap58w10CxV3+vb3hs1cJqi7UZ5IlSdLRql7AbpS6hIjxSQ3EQ4zadeeJ6/D8JJcSwqR7eX3PFA==}
-
-  '@types/ember__error@4.0.6':
-    resolution: {integrity: sha512-vYrLaGGjHkN14K89Vm8yqB2mkpJQefE5w7QJkkgYyV+smzns1vKlPbvuFevRtoeYNn4u4yY0JyF7HceNkm3H0Q==}
-
-  '@types/ember__object@4.0.12':
-    resolution: {integrity: sha512-ZEpikPjZ02m1QCBiTPTayMJwVwF4UBlHlGDoScRB3IP/SUS1O5mmn1/CnSQDxzzF3ctfmhNuTZzVBBc1Y8OC1A==}
-
-  '@types/ember__owner@4.0.9':
-    resolution: {integrity: sha512-iyBda4aUIjBmeiKTKmPow/EJO7xWn8m85CnQTOCqQzTWJyJpgfObbXSHahOHXOfMm279Oa5NlbmS/EontB+XiQ==}
-
-  '@types/ember__polyfills@4.0.6':
-    resolution: {integrity: sha512-hbds3Qv+oVm/QKIaY1E6atvrCoJTH/MPSl4swOhX6P0RiMB2fOfFCrFSD1mP1KrU1LqpHJ2Rzs7XLe53SWVzgw==}
-
-  '@types/ember__routing@4.0.21':
-    resolution: {integrity: sha512-eXXHDsStB77oFss+P7PoLoI4nfcD/ePQckB3taWe8wf80sVY4WnkFw990anG1A9tGCnRqRhIaEY8h3/6WP6TEw==}
-
-  '@types/ember__runloop@4.0.9':
-    resolution: {integrity: sha512-iI6EN7be+NR8iTKQWC74vP7Xw2u71xMBGnmOwa1FUs1r8nv1uzxeQ39gDNm8XayuJ2XJ3G13ptROp4WTLwKTSA==}
-
-  '@types/ember__service@4.0.9':
-    resolution: {integrity: sha512-DrepocL/4hH5YxbDWbxEKMDcAchBPSGGa4g+LEINW1Po81RmSdKw5GZV4UO0mvRWgkdu3EbWUxbTzB4gmbDSeQ==}
-
-  '@types/ember__string@3.0.15':
-    resolution: {integrity: sha512-SxoaweAJUJKSIt82clIwpi/Fm0IfeisozLnXthnBp/hE2JyVcnOb1wMIbw0CCfzercmyWG1njV45VBqy8SrLDQ==}
-
-  '@types/ember__template@4.0.6':
-    resolution: {integrity: sha512-s7yTfDFtdKzxwWi3zzDIlhbMETSB+eGGmvpxhl8cnw2JX8Xj5T66NRACm4q2jJ1kJfIXhECdduw5JnIyny00vw==}
-
-  '@types/ember__test@4.0.6':
-    resolution: {integrity: sha512-Nswm/epfTepXknT8scZvWyyop1aqJcZcyzY4THGHFcXvYQQfA9rgmgrx6vo9vCJmYHh3jm0TTAIAIfoCvGaX5g==}
-
-  '@types/ember__utils@4.0.7':
-    resolution: {integrity: sha512-qQPBeWRyIPigKnZ68POlkqI5e6XA78Q4G3xHo687wQTcEtfoL/iZyPC4hn70mdijcZq8Hjch2Y3E5yhsEMzK+g==}
 
   '@types/eslint@7.29.0':
     resolution: {integrity: sha512-VNcvioYDH8/FxaeTKkM4/TiTwt6pBV9E3OfGmvaw8tPl0rrHCJ4Ll15HRT+pMiFAf/MLQvAzC+6RzUMEL9Ceng==}
@@ -2820,7 +2688,6 @@ packages:
   are-we-there-yet@2.0.0:
     resolution: {integrity: sha512-Ci/qENmwHnsYo9xKIcUJN5LeDKdJ6R1Z1j9V/J5wyq8nh/mYPEpIKJbBZXtZjG04HiK7zV/p6Vs9952MrMeUIw==}
     engines: {node: '>=10'}
-    deprecated: This package is no longer supported.
 
   argparse@1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
@@ -3160,7 +3027,6 @@ packages:
   boom@0.4.2:
     resolution: {integrity: sha512-OvfN8y1oAxxphzkl2SnCS+ztV/uVKTATtgLjWYg/7KwcNyf3rzpHxNQJZCKtsZd4+MteKczhWbSjtEX4bGgU9g==}
     engines: {node: '>=0.8.0'}
-    deprecated: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
 
   bootstrap@3.4.1:
     resolution: {integrity: sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==}
@@ -3472,7 +3338,6 @@ packages:
 
   charm@1.0.2:
     resolution: {integrity: sha512-wqW3VdPnlSWT4eRiYX+hcs+C6ViBPUWk1qTCd+37qw9kEm/a5n2qcyQDMBWvSYKN/ctqZzeXNQaeBjOetJJUkw==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   cheerio-select@2.1.0:
     resolution: {integrity: sha512-9v9kG0LvzrlcungtnJtpGNxY+fzECQKhK4EGJX2vByejiMX84MFNQw4UxPJl3bFbTMw+Dfs37XaIkCwTZfLh4g==}
@@ -3483,7 +3348,6 @@ packages:
 
   chokidar@2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
-    deprecated: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
 
   chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
@@ -3928,7 +3792,6 @@ packages:
 
   core-js@2.6.12:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
-    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
 
   core-js@3.35.1:
     resolution: {integrity: sha512-IgdsbxNyMskrTFxa9lWHyMwAJU5gXOPP+1yO+K59d50VLVAIDAbs7gIv705KzALModfK3ZrSZTPNpC0PQgIZuw==}
@@ -3984,7 +3847,6 @@ packages:
   cryptiles@0.2.2:
     resolution: {integrity: sha512-gvWSbgqP+569DdslUiCelxIv3IYK5Lgmq1UrRnk+s1WxQOQ16j3GPDcjdtgL5Au65DU/xQi6q3xPtf5Kta+3IQ==}
     engines: {node: '>=0.8.0'}
-    deprecated: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
 
   crypto-browserify@3.12.0:
     resolution: {integrity: sha512-fz4spIh+znjO2VjL+IdhEpRJ3YN6sMzITSBijk6FK2UvTqruSQW+/cCZTSNsMiZNvUeq0CqurF+dAbyiGOY6Wg==}
@@ -4852,7 +4714,6 @@ packages:
 
   exists-sync@0.1.0:
     resolution: {integrity: sha512-qEfFekfBVid4b14FNug/RNY1nv+BADnlzKGHulc+t6ZLqGY4kdHGh1iFha8lnE3sJU/1WzMzKRNxS6EvSakJUg==}
-    deprecated: Please replace with usage of fs.existsSync
 
   exit@0.1.2:
     resolution: {integrity: sha512-Zk/eNKV2zbjpKzrsQ+n1G6poVbErQxJ0LBOJXaKZ1EViLzH+hrLu9cdXI4zw9dBQJslwBEpbQ2P1oS7nDxs6jQ==}
@@ -4951,7 +4812,6 @@ packages:
 
   figgy-pudding@3.5.2:
     resolution: {integrity: sha512-0btnI/H8f2pavGMN8w40mlSKOfTK2SVJmBfBeVIj3kNw0swwgzyRq0d5TJVOwodFmtvpPeWPN/MCcfuWF0Ezbw==}
-    deprecated: This module is no longer supported.
 
   figures@2.0.0:
     resolution: {integrity: sha512-Oa2M9atig69ZkfwiApY8F2Yy+tzMbazyvqv21R0NsSC8floSOC09BbT1ITWAdoMGQvJ/aZnR1KMwdx9tvHnTNA==}
@@ -5248,7 +5108,6 @@ packages:
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
     engines: {node: '>=10'}
-    deprecated: This package is no longer supported.
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -5344,16 +5203,13 @@ packages:
 
   glob@5.0.15:
     resolution: {integrity: sha512-c9IPMazfRITpmAAKi22dK1VKxGDX9ehhqfABDriL/lzO92xcUKEJPQHrVA/2YHSNFB4iFlykVmWvwo48nr3OxA==}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   global-modules@1.0.0:
     resolution: {integrity: sha512-sKzpEkf11GpOFuw0Zzjzmt4B4UZwjOcG757PPvrfhxcLFbq0wpsgpOqxpxtxFiCG4DtG93M6XRVbF2oGdev7bg==}
@@ -5565,12 +5421,10 @@ packages:
   hoek@0.9.1:
     resolution: {integrity: sha512-ZZ6eGyzGjyMTmpSPYVECXy9uNfqBR7x5CavhUaLOeD6W0vWK1mp/b7O3f86XE0Mtfo9rZ6Bh3fnuw9Xr8MF9zA==}
     engines: {node: '>=0.8.0'}
-    deprecated: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
 
   hoek@4.3.1:
     resolution: {integrity: sha512-v7E+yIjcHECn973i0xHm4kJkEpv3C8sbYS4344WXbzYqRyiDD7rjnnKo4hsJkejQBAFdRMUGNHySeSPKSH9Rqw==}
     engines: {node: '>=6.0.0'}
-    deprecated: This module has moved and is now available at @hapi/hoek. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.
 
   hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
@@ -5747,7 +5601,6 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
-    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -6149,7 +6002,6 @@ packages:
   joi@12.1.1:
     resolution: {integrity: sha512-Gh3iTjGLqGmQKTDuMFfsV7zT4uHtckqtrp88VFOc89V/sNtshOlAAtEkMM8TxJqRt1Cei00Hlh6/Bp7WjcqEEg==}
     engines: {node: '>=6.0.0'}
-    deprecated: Please update your dependencies as this version is no longer maintained and may contain bugs and security issues.
 
   jquery@3.7.1:
     resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
@@ -6394,7 +6246,6 @@ packages:
 
   lodash.omit@4.5.0:
     resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
-    deprecated: This package is deprecated. Use destructuring assignment syntax instead.
 
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
@@ -6920,7 +6771,6 @@ packages:
 
   node-uuid@1.4.8:
     resolution: {integrity: sha512-TkCET/3rr9mUuRp+CpO7qfgT++aAxfDRaalQhwPFzI9BY/2rCDn6OfpZOVggi1AXfTPpfkTrg5f5WQx5G1uLxA==}
-    deprecated: Use uuid module instead
     hasBin: true
 
   node-watch@0.7.3:
@@ -6977,7 +6827,6 @@ packages:
 
   npmlog@5.0.1:
     resolution: {integrity: sha512-AqZtDUWOMKs1G/8lwylVjrdYgqA4d9nu8hc+0gzRxlDb1I10+FHBGMXs6aiQHFdCUUlqH99MUMuLfzWDNDtfxw==}
-    deprecated: This package is no longer supported.
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
@@ -7666,7 +7515,6 @@ packages:
   raw-body@1.1.7:
     resolution: {integrity: sha512-WmJJU2e9Y6M5UzTOkHaM7xJGAPQD8PNzx3bAd2+uhZAim6wDk6dAZxPVYLF67XhbR4hmKGh33Lpmh4XWrCH5Mg==}
     engines: {node: '>= 0.8.0'}
-    deprecated: No longer maintained. Please upgrade to a stable version.
 
   raw-body@2.5.1:
     resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
@@ -7920,7 +7768,6 @@ packages:
   request@2.40.0:
     resolution: {integrity: sha512-waNoGB4Z7bPn+lgqPk7l7hhze4Vd68jKccnwLeS7vr9GMxz0iWQbYTbBNWzfIk87Urx7V44pu29qjF/omej+Fw==}
     engines: {'0': node >= 0.8.0}
-    deprecated: request has been deprecated, see https://github.com/request/request/issues/3142
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -7979,7 +7826,6 @@ packages:
 
   resolve-url@0.2.1:
     resolution: {integrity: sha512-ZuF55hVUQaaczgOIwqWzkEcEidmlD/xl44x1UZnhOXcYuFN2S6+rcxpG+C1N3So0wvNI3DmJICUFfu2SxhBmvg==}
-    deprecated: https://github.com/lydell/resolve-url#deprecated
 
   resolve.exports@2.0.4:
     resolution: {integrity: sha512-zepuGL0ulf+nt+XaFrlKeaiTJeyPFPLLY62+ncq1/VTHBdt3HsfXOH60priZ6tnXQozdGcDeIF5JVTanvIcYWQ==}
@@ -8010,17 +7856,14 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
-    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
-    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
-    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@6.1.3:
@@ -8110,7 +7953,6 @@ packages:
   sane@4.1.0:
     resolution: {integrity: sha512-hhbzAgTIX8O7SHfp2c8/kREfEn4qO/9q8C9beyY6+tvZ87EpoZ3i1RIEvp27YBswnNbY9mWd6paKVmKbAgLfZA==}
     engines: {node: 6.* || 8.* || >= 10.*}
-    deprecated: some dependency vulnerabilities fixed, support for node < 10 dropped, and newer ECMAScript syntax/features added
     hasBin: true
 
   sane@5.0.1:
@@ -8298,7 +8140,6 @@ packages:
 
   sinon@9.2.4:
     resolution: {integrity: sha512-zljcULZQsJxVra28qIAL6ow1Z9tpattkCTEJR4RBP3TGc00FcttsP5pK284Nas5WjMZU5Yzy3kAIp3B3KRf5Yg==}
-    deprecated: 16.1.1
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -8329,7 +8170,6 @@ packages:
   sntp@0.2.4:
     resolution: {integrity: sha512-bDLrKa/ywz65gCl+LmOiIhteP1bhEsAAzhfMedPoiHP3dyYnAevlaJshdqb9Yu0sRifyP/fRqSt8t+5qGIWlGQ==}
     engines: {node: '>=0.8.0'}
-    deprecated: This module moved to @hapi/sntp. Please make sure to switch over as this distribution is no longer supported and may contain bugs and critical security issues.
 
   socket.io-adapter@2.5.2:
     resolution: {integrity: sha512-87C3LO/NOMc+eMcpcxUBebGjkpMDkNBS9tf7KJqcDsmL936EChtVva71Dw2q4tQcuVC+hAUy4an2NO/sYXmwRA==}
@@ -8362,18 +8202,15 @@ packages:
 
   source-map-resolve@0.5.3:
     resolution: {integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==}
-    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
 
   source-map-support@0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
 
   source-map-url@0.3.0:
     resolution: {integrity: sha512-QU4fa0D6aSOmrT+7OHpUXw+jS84T0MLaQNtFs8xzLNe6Arj44Magd7WEbyVW5LNYoAPVV35aKs4azxIfVJrToQ==}
-    deprecated: See https://github.com/lydell/source-map-url#deprecated
 
   source-map-url@0.4.1:
     resolution: {integrity: sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==}
-    deprecated: See https://github.com/lydell/source-map-url#deprecated
 
   source-map@0.4.4:
     resolution: {integrity: sha512-Y8nIfcb1s/7DcobUz1yOO1GSp7gyL+D9zLHDehT7iRESqGSxjJ448Sg7rvfgsRJCnKLdSl11uGf0s9X80cH0/A==}
@@ -8393,7 +8230,6 @@ packages:
 
   sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
-    deprecated: Please use @jridgewell/sourcemap-codec instead
 
   space-separated-tokens@1.1.5:
     resolution: {integrity: sha512-q/JSVd1Lptzhf5bkYm4ob4iWPjx0KiRe3sRFBNrVqbJkFaBm5vbbowy1mymoPNLRa52+oadOhJ+K49wsSeSjTA==}
@@ -8432,7 +8268,6 @@ packages:
 
   stable@0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
-    deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
 
   stagehand@1.0.1:
     resolution: {integrity: sha512-GqXBq2SPWv9hTXDFKS8WrKK1aISB0aKGHZzH+uD4ShAgs+Fz20ZfoerLOm8U+f62iRWLrw6nimOY/uYuTcVhvg==}
@@ -8644,11 +8479,9 @@ packages:
   tar@6.2.0:
     resolution: {integrity: sha512-/Wo7DcT0u5HUV486xg675HtjNd3BXZ6xDbzsCUZPt5iw8bTQ63bP0Raut3mvro9u+CUyq7YQd8Cx55fsZXxqLQ==}
     engines: {node: '>=10'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   telejson@5.3.3:
     resolution: {integrity: sha512-PjqkJZpzEggA9TBpVtJi1LVptP7tYtXB6rEubwlHap76AMjzvOdKX41CxyaW7ahhzDU1aftXnMCx5kAPDZTQBA==}
-    deprecated: 'SECURITY: Upgrade to v6 or above'
 
   temp-dir@2.0.0:
     resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}
@@ -8786,7 +8619,6 @@ packages:
   topo@2.1.1:
     resolution: {integrity: sha512-ZPrPP5nwzZy1fw9abHQH2k+YarTgp9UMAztcB3MmlcZSif63Eg+az05p6wTDaZmnqpS3Mk7K+2W60iHarlz8Ug==}
     engines: {node: '>=6.0.0'}
-    deprecated: This module has moved and is now available at @hapi/topo. Please update your dependencies as this version is no longer maintained and may contain bugs and security issues.
 
   tough-cookie@4.1.3:
     resolution: {integrity: sha512-aX/y5pVRkfRnfmuX+OdbSdXvPe6ieKX/G2s7e98f4poJHnqH3281gDPm/metm6E/WRamfx7WC4HUqkWHfQHprw==}
@@ -8807,7 +8639,6 @@ packages:
 
   trim@0.0.1:
     resolution: {integrity: sha512-YzQV+TZg4AxpKxaTHK3c3D+kRDCGVEE7LemdlQZoQXn0iennk10RsIoY6ikzAqJTc9Xjl9C1/waHom/J86ziAQ==}
-    deprecated: Use String.prototype.trim() instead
 
   trough@1.0.5:
     resolution: {integrity: sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==}
@@ -9050,7 +8881,6 @@ packages:
 
   urix@0.1.0:
     resolution: {integrity: sha512-Am1ousAhSLBeB9cG/7k7r2R0zj50uDRlZHPGbazid5s9rlF1F/QKYObEKSIunSjIOkJZqwRRLpvewjEkM7pSqg==}
-    deprecated: Please see https://github.com/lydell/urix#deprecated
 
   url-loader@4.1.1:
     resolution: {integrity: sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==}
@@ -9123,11 +8953,9 @@ packages:
 
   uuid-browser@3.1.0:
     resolution: {integrity: sha512-dsNgbLaTrd6l3MMxTtouOCFw4CBFc/3a+GgYA2YyrJvyQ1u6q4pcu3ktLoUZ/VN/Aw9WsauazbgsgdfVWgAKQg==}
-    deprecated: Package no longer supported and required. Use the uuid package or crypto.randomUUID instead
 
   uuid@3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
-    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache@2.4.0:
@@ -10504,11 +10332,11 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@ember/test-helpers@2.9.4(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))':
+  '@ember/test-helpers@2.9.4(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))':
     dependencies:
       '@ember/test-waiters': 3.1.0
       '@embroider/macros': 1.16.13(@glint/template@1.5.2)
-      '@embroider/util': 1.13.3(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))
+      '@embroider/util': 1.13.3(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))
       broccoli-debug: 0.6.5
       broccoli-funnel: 3.0.8
       ember-cli-babel: 7.26.11
@@ -10621,14 +10449,14 @@ snapshots:
       lodash: 4.17.21
       resolve: 1.22.8
 
-  '@embroider/util@1.13.3(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))':
+  '@embroider/util@1.13.3(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))':
     dependencies:
       '@embroider/macros': 1.16.13(@glint/template@1.5.2)
       broccoli-funnel: 3.0.8
       ember-cli-babel: 7.26.11
       ember-source: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34))
     optionalDependencies:
-      '@glint/environment-ember-loose': 1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7))
+      '@glint/environment-ember-loose': 1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7))
       '@glint/template': 1.5.2
     transitivePeerDependencies:
       - supports-color
@@ -11064,16 +10892,11 @@ snapshots:
     dependencies:
       '@glimmer/interfaces': 0.94.6
 
-  '@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7))':
+  '@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7))':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.29.7)
       '@glint/template': 1.5.2
     optionalDependencies:
-      '@types/ember__array': 4.0.10(@babel/core@7.29.7)
-      '@types/ember__component': 4.0.22(@babel/core@7.29.7)
-      '@types/ember__controller': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__routing': 4.0.21(@babel/core@7.29.7)
       ember-cli-htmlbars: 6.3.0
       ember-modifier: 3.2.7(@babel/core@7.29.7)
 
@@ -12098,10 +11921,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/ember@6.4.9(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))(eslint@10.8.0)(typescript@5.9.3)(webpack@5.112.2(postcss@8.4.34))':
+  '@storybook/ember@6.4.9(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))(eslint@10.8.0)(typescript@5.9.3)(webpack@5.112.2(postcss@8.4.34))':
     dependencies:
       '@babel/core': 7.29.7
-      '@ember/test-helpers': 2.9.4(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(@types/ember__array@4.0.10(@babel/core@7.29.7))(@types/ember__component@4.0.22(@babel/core@7.29.7))(@types/ember__controller@4.0.12(@babel/core@7.29.7))(@types/ember__object@4.0.12(@babel/core@7.29.7))(@types/ember__routing@4.0.21(@babel/core@7.29.7))(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))
+      '@ember/test-helpers': 2.9.4(@babel/core@7.29.7)(@glint/environment-ember-loose@1.5.2(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(ember-cli-htmlbars@6.3.0)(ember-modifier@3.2.7(@babel/core@7.29.7)))(@glint/template@1.5.2)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.29.7))(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.112.2(postcss@8.4.34)))
       '@storybook/core': 6.4.9(eslint@10.8.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.9.3)(webpack@5.112.2(postcss@8.4.34))
       '@storybook/core-common': 6.4.9(eslint@10.8.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.9.3)
       '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -12375,138 +12198,6 @@ snapshots:
   '@types/cors@2.8.17':
     dependencies:
       '@types/node': 20.11.16
-
-  '@types/ember@4.0.11(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__array': 4.0.10(@babel/core@7.29.7)
-      '@types/ember__component': 4.0.22(@babel/core@7.29.7)
-      '@types/ember__controller': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__debug': 4.0.8(@babel/core@7.29.7)
-      '@types/ember__engine': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__error': 4.0.6
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__polyfills': 4.0.6
-      '@types/ember__routing': 4.0.21(@babel/core@7.29.7)
-      '@types/ember__runloop': 4.0.9(@babel/core@7.29.7)
-      '@types/ember__service': 4.0.9(@babel/core@7.29.7)
-      '@types/ember__string': 3.0.15
-      '@types/ember__template': 4.0.6
-      '@types/ember__test': 4.0.6(@babel/core@7.29.7)
-      '@types/ember__utils': 4.0.7(@babel/core@7.29.7)
-      '@types/rsvp': 4.0.9
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__application@4.0.11(@babel/core@7.29.7)':
-    dependencies:
-      '@glimmer/component': 1.1.2(@babel/core@7.29.7)
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__engine': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__owner': 4.0.9
-      '@types/ember__routing': 4.0.21(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__array@4.0.10(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__component@4.0.22(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__controller@4.0.12(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__debug@4.0.8(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__destroyable@4.0.5': {}
-
-  '@types/ember__engine@4.0.11(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__owner': 4.0.9
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__error@4.0.6': {}
-
-  '@types/ember__object@4.0.12(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-      '@types/rsvp': 4.0.9
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__owner@4.0.9': {}
-
-  '@types/ember__polyfills@4.0.6': {}
-
-  '@types/ember__routing@4.0.21(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-      '@types/ember__controller': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-      '@types/ember__service': 4.0.9(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__runloop@4.0.9(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__service@4.0.9(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember__object': 4.0.12(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__string@3.0.15': {}
-
-  '@types/ember__template@4.0.6': {}
-
-  '@types/ember__test@4.0.6(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
-
-  '@types/ember__utils@4.0.7(@babel/core@7.29.7)':
-    dependencies:
-      '@types/ember': 4.0.11(@babel/core@7.29.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
 
   '@types/eslint@7.29.0':
     dependencies:

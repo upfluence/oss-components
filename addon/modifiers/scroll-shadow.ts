@@ -1,5 +1,4 @@
-// @ts-expect-error setModifierManager is not exposed by the Ember typings
-import { setModifierManager, capabilities } from '@ember/modifier';
+import { setModifierManager, capabilities, type ModifierManager } from '@ember/modifier';
 
 const SCROLL_SHADOW_CLASS = 'scroll-shadow';
 
@@ -10,48 +9,54 @@ type State = {
 };
 
 export default setModifierManager(
-  () => ({
-    capabilities: capabilities('3.22'),
+  () =>
+    ({
+      capabilities: capabilities('3.22'),
 
-    createModifier(): object {
-      return {
-        element: null
-      };
-    },
+      createModifier(): object {
+        return {
+          element: null
+        };
+      },
 
-    colorCSSClass(color: ColorAvailable): string {
-      return `scroll-shadow--${color || 'default'}`;
-    },
+      colorCSSClass(color: ColorAvailable): string {
+        return `scroll-shadow--${color || 'default'}`;
+      },
 
-    installModifier(state: State, element: Element, args: any): void {
-      state.element = element;
+      installModifier(
+        this: { colorCSSClass(color: ColorAvailable): string },
+        state: State,
+        element: Element,
+        args: any
+      ): void {
+        state.element = element;
 
-      state.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-        const observedEntry = entries.find((entry) => {
-          return entry.target === element;
+        state.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+          const observedEntry = entries.find((entry) => {
+            return entry.target === element;
+          });
+
+          if (observedEntry) {
+            const hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
+
+            if (hasScrollbar && !state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
+              window.requestAnimationFrame(() => {
+                state.element.classList.add(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));
+              });
+            } else if (!hasScrollbar && state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
+              window.requestAnimationFrame(() => {
+                state.element.classList.remove(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));
+              });
+            }
+          }
         });
 
-        if (observedEntry) {
-          const hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
+        state.resizeObserver.observe(element);
+      },
 
-          if (hasScrollbar && !state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
-            window.requestAnimationFrame(() => {
-              state.element.classList.add(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));
-            });
-          } else if (!hasScrollbar && state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
-            window.requestAnimationFrame(() => {
-              state.element.classList.remove(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));
-            });
-          }
-        }
-      });
-
-      state.resizeObserver.observe(element);
-    },
-
-    destroyModifier(state: State): void {
-      state.resizeObserver.unobserve(state.element);
-    }
-  }),
+      destroyModifier(state: State): void {
+        state.resizeObserver.unobserve(state.element);
+      }
+    }) as unknown as ModifierManager<unknown>,
   class scrollShadow {}
 );
