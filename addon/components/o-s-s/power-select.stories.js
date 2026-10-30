@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 const FAKE_ITEMS = ['Book of Boba Fett', 'The Bad Batch', 'The Clone Wars'];
 const FAKE_SELECTED_ITEMS = ['The Mandalorian'];

@@ -1,4 +1,4 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="Deprecated/Variables"
@@ -28,11 +28,11 @@ might come handy.
 | color-text-light   | rgba(0, 0, 0, 54%) | text-color-light   |
 | color-text-lighter | rgba(0, 0, 0, 46%) | text-color-lighter |
 
-<Canvas>
+<div className="docs-preview">
   <span class="text-color-default"> color-text </span>
   <span class="text-color-default-light"> color-text-light </span>
   <span class="text-color-default-lighter"> color-text-lighter </span>
-</Canvas>
+</div>
 
 In case you need the displayed text to contrast with a dark or colorful background, these
 are the one you might need.
@@ -43,11 +43,11 @@ are the one you might need.
 | color-text-contrast-light   | rgba(255, 255, 255, 70%)  | text-color-contrast-light   |
 | color-text-contrast-lighter | rgba(255, 255, 255, 50%)  | text-color-contrast-lighter |
 
-<Canvas>
+<div className="docs-preview">
   <span class="text-color-contrast dark"> color-text-contrast </span>
   <span class="text-color-contrast-light dark"> color-text-contrast-light </span>
   <span class="text-color-contrast-lighter dark"> color-text-contrast-lighter </span>
-</Canvas>
+</div>
 
 ## Input size
 
@@ -57,10 +57,10 @@ In case you need to custom the height of an input, these are the one you might n
 | ------------------ | ----- |
 | input-size-default | 36px  |
 
-<Canvas>
+<div className="docs-preview">
   <input type="text" class="upf-input" placeholder="input-size-default" />
   <input type="text" class="input-size-sm" placeholder="input-size-sm" />
-</Canvas>
+</div>
 
 ## Borders
 
@@ -71,13 +71,13 @@ In case you need to custom values of border, these are the one you might need.
 | default-radius | 4px     |
 | border-color   | #bfc5cb |
 
-<Canvas>
+<div className="docs-preview">
   <div class="border-box">
     Border: 1px solid; <br />
     Border Radius: @default-radius; <br />
     Border Color: @border-color;
   </div>
-</Canvas>
+</div>
 
 ## Spacing
 
