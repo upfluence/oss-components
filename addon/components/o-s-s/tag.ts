@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
-import { htmlSafe } from '@ember/template';
-import type { SafeString } from '@ember/template/-private/handlebars';
+import { htmlSafe, type SafeString } from '@ember/template';
 
 export type SkinType =
   | 'primary'
