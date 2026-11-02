@@ -50,6 +50,15 @@ export default class FormManager extends Service {
     if (this.formFeedbacks[id]?.[field]) this.deleteFieldFeedback(id, field);
   }
 
+  unregisterForm(id: string): void {
+    delete this.formValidators[id];
+
+    if (this.formFeedbacks[id]) {
+      delete this.formFeedbacks[id];
+      this.refreshFormFeedbacks();
+    }
+  }
+
   private validateForm(id: string): boolean {
     const validators = this.formValidators[id];
 

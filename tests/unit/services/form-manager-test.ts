@@ -100,6 +100,44 @@ module('Unit | Service | form-manager', function (hooks) {
     });
   });
 
+  module('#unregisterForm', () => {
+    test('it removes the feedbacks of the form', function (this: TestContext, assert) {
+      const formInstance = this.service.getInstance('test');
+
+      formInstance.setFieldFeedback('testField', {
+        kind: 'blank',
+        message: { type: 'error', value: 'Error' }
+      } as Feedback);
+
+      this.service.unregisterForm('test');
+
+      assert.deepEqual(formInstance.getErrors(), {});
+    });
+
+    test('it removes the validators of the form', function (this: TestContext, assert) {
+      const validator = sinon.stub();
+
+      this.service.registerField('test', 'testField', validator);
+
+      this.service.unregisterForm('test');
+      this.service.getInstance('test').validateForm();
+
+      assert.true(validator.notCalled);
+    });
+
+    test('it keeps the feedbacks of the other forms', function (this: TestContext, assert) {
+      const errorFeedback = { kind: 'blank', message: { type: 'error', value: 'Error' } } as Feedback;
+      const otherFormInstance = this.service.getInstance('other');
+
+      this.service.getInstance('test').setFieldFeedback('testField', errorFeedback);
+      otherFormInstance.setFieldFeedback('testField', errorFeedback);
+
+      this.service.unregisterForm('test');
+
+      assert.deepEqual(otherFormInstance.getErrors(), { testField: errorFeedback });
+    });
+  });
+
   module('Form instance methods', function (hooks) {
     hooks.beforeEach(function () {
       this.formInstance = this.service.getInstance('test');
