@@ -83,7 +83,7 @@ export interface OSSButtonArgs {
   iconUrl?: string;
   suffixIcon?: string;
   label?: string;
-  theme?: string;
+  theme?: ThemeType;
   square?: boolean;
   countDown?: {
     callback: () => void;
@@ -127,7 +127,7 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
     return SizeDefinition[this.args.size as SizeType];
   }
 
-  get theme() {
+  get theme(): ThemeType {
     if (!this.args.theme || !Object.keys(ThemeDefinition).includes(this.args.theme)) {
       return 'light';
     }
