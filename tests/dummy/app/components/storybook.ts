@@ -10,7 +10,7 @@ interface StorybookArgs {
 }
 
 export default class StorybookComponent extends Component<StorybookArgs> {
-  get storyComponent() {
+  get storyComponent(): any {
     class StoryComponent extends Component {}
 
     Object.keys(this.storyComponentArgs).forEach((key) => {
