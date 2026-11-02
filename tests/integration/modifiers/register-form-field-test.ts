@@ -103,6 +103,22 @@ module('Integration | Modifiers | modifiers/register-form-field', function (hook
     });
   });
 
+  module('when the field is replaced by another element with the same fieldId', (hooks) => {
+    hooks.beforeEach(function (this: TestContext) {
+      this.fieldVisibility = new FieldVisibility();
+      this.validator.returns({ kind: 'blank', message: { type: 'error', value: 'This field is required.' } });
+    });
+
+    test('the field is still validated', async function (this: TestContext, assert) {
+      await renderReplaceableField();
+
+      this.fieldVisibility.isVisible = false;
+      await settled();
+
+      assert.false(this.formInstance.validateForm());
+    });
+  });
+
   async function renderComponent(): Promise<void> {
     return await render(
       hbs`
@@ -116,6 +132,18 @@ module('Integration | Modifiers | modifiers/register-form-field', function (hook
       hbs`
         {{#if this.fieldVisibility.isVisible}}
           <OSS::InputContainer @value="" data-control-name="register-form-field-input" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+        {{/if}}
+      `
+    );
+  }
+
+  async function renderReplaceableField(): Promise<void> {
+    return await render(
+      hbs`
+        {{#if this.fieldVisibility.isVisible}}
+          <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+        {{else}}
+          <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
         {{/if}}
       `
     );

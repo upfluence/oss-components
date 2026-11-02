@@ -42,7 +42,9 @@ export default class FormManager extends Service {
     this.formValidators[id]![field] = validator;
   }
 
-  unregisterField(id: string, field: string): void {
+  unregisterField(id: string, field: string, validator?: Validator): void {
+    if (validator && this.formValidators[id]?.[field] !== validator) return;
+
     delete this.formValidators[id]?.[field];
 
     if (this.formFeedbacks[id]?.[field]) this.deleteFieldFeedback(id, field);

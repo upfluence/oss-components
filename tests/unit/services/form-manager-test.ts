@@ -85,6 +85,19 @@ module('Unit | Service | form-manager', function (hooks) {
 
       assert.true(formInstance.validateForm());
     });
+
+    test('it keeps the field when another validator was registered for it since', function (this: TestContext, assert) {
+      const previousValidator = sinon.stub();
+      const currentValidator = sinon.stub();
+
+      this.service.registerField('test', 'testField', previousValidator);
+      this.service.registerField('test', 'testField', currentValidator);
+
+      this.service.unregisterField('test', 'testField', previousValidator);
+      this.service.getInstance('test').validateForm();
+
+      assert.true(currentValidator.calledOnceWithExactly());
+    });
   });
 
   module('Form instance methods', function (hooks) {
