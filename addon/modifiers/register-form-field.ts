@@ -55,7 +55,7 @@ export default class RegisterFormField extends Modifier<RegisterFormFieldSignatu
   ): void {
     assert(`'form' arg must be a string but was ${typeof form}`, typeof form === 'string');
     assert(`'fieldId' arg must be a string but was ${typeof fieldId}`, typeof fieldId === 'string');
-    assert(`'validator' arg must be a string but was ${typeof validator}`, typeof validator === 'function');
+    assert(`'validator' arg must be a function but was ${typeof validator}`, typeof validator === 'function');
 
     this.targetElement = element;
     this.form = form;
