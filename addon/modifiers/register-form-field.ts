@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 import { registerDestructor } from '@ember/destroyable';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 
 import Modifier, { type ArgsFor, type PositionalArgs, type NamedArgs } from 'ember-modifier';
 
