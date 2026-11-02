@@ -19,7 +19,7 @@ interface RegisterFormFieldSignature {
 }
 
 function cleanup(instance: RegisterFormField): void {
-  instance.targetElement.removeAttribute('data-plan-field-id');
+  instance.targetElement.removeAttribute('data-form-field-id');
 
   instance.formManager.unregisterField(instance.form, instance.field);
 

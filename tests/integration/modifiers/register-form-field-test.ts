@@ -1,10 +1,12 @@
-import { render, blur, focus, settled, type TestContext } from '@ember/test-helpers';
+import { render, blur, find, focus, settled, type TestContext } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+
+const FIELD_SELECTOR = '[data-control-name="register-form-field-input"]';
 
 class FieldVisibility {
   @tracked isVisible: boolean = true;
@@ -88,6 +90,17 @@ module('Integration | Modifiers | modifiers/register-form-field', function (hook
 
       assert.deepEqual(this.formInstance.getErrors(), {});
     });
+
+    test('the data-form-field-id attribute is removed from the element', async function (this: TestContext, assert) {
+      await renderRemovableField();
+
+      const fieldElement = find(FIELD_SELECTOR);
+
+      this.fieldVisibility.isVisible = false;
+      await settled();
+
+      assert.dom(fieldElement).doesNotHaveAttribute('data-form-field-id');
+    });
   });
 
   async function renderComponent(): Promise<void> {
@@ -102,7 +115,7 @@ module('Integration | Modifiers | modifiers/register-form-field', function (hook
     return await render(
       hbs`
         {{#if this.fieldVisibility.isVisible}}
-          <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+          <OSS::InputContainer @value="" data-control-name="register-form-field-input" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
         {{/if}}
       `
     );
