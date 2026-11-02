@@ -2,9 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { render } from '@ember/test-helpers';
-import fillIn from '@ember/test-helpers/dom/fill-in';
-import typeIn from '@ember/test-helpers/dom/type-in';
+import { render, fillIn, typeIn } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/url-input', function (hooks) {
