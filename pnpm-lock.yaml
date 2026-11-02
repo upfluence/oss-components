@@ -11,7 +11,7 @@ overrides:
 
 patchedDependencies:
   '@storybook/ember@9.1.21':
-    hash: 7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab
+    hash: 016af0a8e267dc3a71440393099911d58ff8016c9034958a5f5f1a298f502f9f
     path: patches/@storybook__ember@9.1.21.patch
 
 importers:
@@ -129,7 +129,7 @@ importers:
         version: 9.1.21(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))
       '@storybook/ember':
         specifier: 9.1.21
-        version: 9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.7)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
+        version: 9.1.21(patch_hash=016af0a8e267dc3a71440393099911d58ff8016c9034958a5f5f1a298f502f9f)(@babel/core@7.29.7)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
       '@storybook/ember-cli-storybook':
         specifier: ^0.6.1
         version: 0.6.1(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))
@@ -10573,7 +10573,7 @@ snapshots:
       - ember-source
       - supports-color
 
-  '@storybook/ember@9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.7)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))':
+  '@storybook/ember@9.1.21(patch_hash=016af0a8e267dc3a71440393099911d58ff8016c9034958a5f5f1a298f502f9f)(@babel/core@7.29.7)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))':
     dependencies:
       '@babel/core': 7.29.7
       '@storybook/builder-webpack5': 9.1.21(esbuild@0.25.12)(postcss@8.5.32)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)

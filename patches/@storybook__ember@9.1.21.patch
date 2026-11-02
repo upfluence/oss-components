@@ -24,6 +24,46 @@ index 1627c83075b070d85d2a27481b66d6822d994fb7..41cae85214e9d239216a8ac4725b18ce
              layout: template || options,
              ...context,
          }));
+diff --git a/dist/server/framework-preset-babel-ember.js b/dist/server/framework-preset-babel-ember.js
+index c8c78ead09a28d80c023c76d0fc135ac7e5e9422..dd7db755cb00225ae9c4d2b1b7823fef9cb3bece 100644
+--- a/dist/server/framework-preset-babel-ember.js
++++ b/dist/server/framework-preset-babel-ember.js
+@@ -1,7 +1,14 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.previewAnnotations = exports.babel = void 0;
+-const ember_template_compiler_js_1 = require("ember-source/dist/ember-template-compiler.js");
++const ember_template_compiler_js_1 = (() => {
++    try {
++        return require("ember-source/dist/ember-template-compiler.js");
++    }
++    catch (_a) {
++        return require("ember-source/ember-template-compiler/index.js");
++    }
++})();
+ const util_1 = require("../util");
+ let emberOptions;
+ function precompileWithPlugins(string, options) {
+diff --git a/dist/server/framework-preset-babel-ember.mjs b/dist/server/framework-preset-babel-ember.mjs
+index f506d57d2218ff20cb744c02ca36d40311dafbe7..d59e5cf932ac36f40343d21c2f39b07f3566abbb 100644
+--- a/dist/server/framework-preset-babel-ember.mjs
++++ b/dist/server/framework-preset-babel-ember.mjs
+@@ -1,4 +1,14 @@
+-import { precompile } from 'ember-source/dist/ember-template-compiler.js';
++import { createRequire } from 'node:module';
++
++const emberRequire = createRequire(import.meta.url);
++const { precompile } = (() => {
++    try {
++        return emberRequire('ember-source/dist/ember-template-compiler.js');
++    }
++    catch {
++        return emberRequire('ember-source/ember-template-compiler/index.js');
++    }
++})();
+ import { findDistFile } from '../util';
+ let emberOptions;
+ function precompileWithPlugins(string, options) {
 diff --git a/template/components/index.js b/template/components/index.js
 deleted file mode 100644
 index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0000000000000000000000000000000000000000
