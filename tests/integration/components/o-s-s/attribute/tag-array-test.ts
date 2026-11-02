@@ -1,8 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import findAll from '@ember/test-helpers/dom/find-all';
+import { render, findAll } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/attribute/tag-array', function (hooks) {
   setupRenderingTest(hooks);
