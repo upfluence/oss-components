@@ -1,5 +1,6 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
+import { type TestContext } from '@ember/test-helpers';
 import sinon from 'sinon';
 import type { Feedback } from '@upfluence/oss-components/services/form-manager';
 
@@ -55,6 +56,34 @@ module('Unit | Service | form-manager', function (hooks) {
       this.service.unregisterField('test', 'testField');
 
       assert.strictEqual(this.service.formValidators['test']['testField'], undefined);
+    });
+
+    test('it removes the feedback of the unregistered field only', function (this: TestContext, assert) {
+      const warningFeedback = { kind: 'be_cautious', message: { type: 'warning', value: 'warning' } } as Feedback;
+      const errorFeedback = { kind: 'blank', message: { type: 'error', value: 'Error' } } as Feedback;
+
+      this.service.registerField('test', 'testField', sinon.stub().returns(warningFeedback));
+      this.service.registerField('test', 'otherField', sinon.stub().returns(errorFeedback));
+      this.service.getInstance('test').validateForm();
+
+      this.service.unregisterField('test', 'testField');
+
+      assert.deepEqual(this.service.formFeedbacks['test'], { otherField: errorFeedback });
+    });
+
+    test('the form is valid again once its only field in error is unregistered', function (this: TestContext, assert) {
+      const formInstance = this.service.getInstance('test');
+
+      this.service.registerField(
+        'test',
+        'testField',
+        sinon.stub().returns({ kind: 'blank', message: { type: 'error', value: 'Error' } } as Feedback)
+      );
+      formInstance.validateForm();
+
+      this.service.unregisterField('test', 'testField');
+
+      assert.true(formInstance.validateForm());
     });
   });
 

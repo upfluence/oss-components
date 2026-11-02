@@ -22,7 +22,6 @@ function cleanup(instance: RegisterFormField): void {
   instance.targetElement.removeAttribute('data-plan-field-id');
 
   instance.formManager.unregisterField(instance.form, instance.field);
-  instance.formInstance.validateField(instance.field);
 
   if (instance.innerInputs.length > 0) {
     instance.innerInputs.forEach((input) => {

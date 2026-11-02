@@ -43,9 +43,9 @@ export default class FormManager extends Service {
   }
 
   unregisterField(id: string, field: string): void {
-    if (this.formValidators[id]) {
-      delete this.formValidators[id]![field];
-    }
+    delete this.formValidators[id]?.[field];
+
+    if (this.formFeedbacks[id]?.[field]) this.deleteFieldFeedback(id, field);
   }
 
   private validateForm(id: string): boolean {
@@ -106,6 +106,10 @@ export default class FormManager extends Service {
 
   private clearErrors(id: string, field: string): void {
     if (this.formFeedbacks[id]?.[field]?.message?.type !== 'error') return;
+    this.deleteFieldFeedback(id, field);
+  }
+
+  private deleteFieldFeedback(id: string, field: string): void {
     delete this.formFeedbacks[id]?.[field];
     this.refreshFormFeedbacks();
   }
