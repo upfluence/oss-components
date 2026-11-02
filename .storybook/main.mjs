@@ -1,5 +1,9 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import * as remarkGfmModule from 'remark-gfm';
+
+// Storybook loads this file through esbuild-register, so the default export can arrive wrapped once or twice
+const remarkGfm = remarkGfmModule.default?.default ?? remarkGfmModule.default ?? remarkGfmModule;
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '../');
 const addon_path = path.join(root, 'addon');
@@ -22,7 +26,14 @@ export default {
     '../app/styles/**/*.mdx'
   ],
 
-  addons: ['@storybook/addon-links', '@storybook/addon-docs', '@storybook/addon-designs'],
+  addons: [
+    '@storybook/addon-links',
+    {
+      name: '@storybook/addon-docs',
+      options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } }
+    },
+    '@storybook/addon-designs'
+  ],
 
   babel: async (config) => ({
     ...config,
