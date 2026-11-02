@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { onlyNumeric } from '@upfluence/oss-components/utils/keyboard';
 import type IntlService from 'ember-intl/services/intl';

@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { action, computed } from '@ember/object';
 import { ensureSafeComponent } from '@embroider/util';
 import { later } from '@ember/runloop';

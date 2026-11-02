@@ -133,14 +133,18 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
         );
       });
       await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} />`);
+    });
 
+    test('It throws an error if @tabArray is empty', async function (assert) {
+      assert.expect(1);
+      this.tabArray = [];
       setupOnerror((err: any) => {
         assert.strictEqual(
           err.message,
           'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory'
         );
       });
-      await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} @tabArray=[] />`);
+      await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />`);
     });
 
     test('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
