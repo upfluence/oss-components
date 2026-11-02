@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { scheduleOnce } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';

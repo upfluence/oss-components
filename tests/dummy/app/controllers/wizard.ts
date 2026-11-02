@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import type WizardManager from '@upfluence/oss-components/services/wizard-manager';
 import type { WizardConfiguration } from '@upfluence/oss-components/services/wizard-manager';
 import WizardExampleStep from '../components/wizard/example-step';

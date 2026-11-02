@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import RouterService from '@ember/routing/router-service';
 import { assert } from '@ember/debug';
 
