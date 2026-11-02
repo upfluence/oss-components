@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@ember/test-waiters': ^4.1.2
+  ember-cli-addon-docs-yuidoc>ember-cli-htmlbars: ^7.0.1
+  '@storybook/ember-cli-storybook>ember-cli-htmlbars': ^7.0.1
+
 patchedDependencies:
   '@storybook/ember@9.1.21':
     hash: 7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab
@@ -127,7 +132,7 @@ importers:
         version: 9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.7)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))
       '@storybook/ember-cli-storybook':
         specifier: ^0.6.1
-        version: 0.6.1
+        version: 0.6.1(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^6.0.2
         version: 6.0.2(prettier@3.8.3)
@@ -1454,9 +1459,8 @@ packages:
   '@ember/test-helpers@5.7.0':
     resolution: {integrity: sha512-h77kAJpFQ9fffuLc9+XhoYsk7URDLd7jTLnq7Yk9gGvQ41JupxrGMHoRjyboytSbwngSy+0yXyMhNYfH8ng4xg==}
 
-  '@ember/test-waiters@3.1.0':
-    resolution: {integrity: sha512-bb9h95ktG2wKY9+ja1sdsFBdOms2lB19VWs8wmNpzgHv1NCetonBoV5jHBV4DHt0uS1tg9z66cZqhUVlYs96KQ==}
-    engines: {node: 10.* || 12.* || >= 14.*}
+  '@ember/test-waiters@4.1.2':
+    resolution: {integrity: sha512-zJwFaHLHjJn6mKoXYVM1SEyMT+U1JpaaSKg3JBmxHJwiIoJRI5djJ/CE33Z7N09mk5JfXd2xdhbd9LBWdlvAzg==}
 
   '@embroider/addon-shim@1.11.0':
     resolution: {integrity: sha512-vXjhIOtvrns9IBFlgEN1imSeXtuVIlLypaDexu7xzsvB4Ef6yruhH33DNd9OmO0nXIB4SbwdkIwEsLYnhrujqA==}
@@ -3492,10 +3496,6 @@ packages:
   common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
 
-  common-tags@1.8.2:
-    resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
-    engines: {node: '>=4.0.0'}
-
   commondir@1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
 
@@ -4089,13 +4089,16 @@ packages:
   ember-cli-get-component-path-option@1.0.0:
     resolution: {integrity: sha512-k47TDwcJ2zPideBCZE8sCiShSxQSpebY2BHcX2DdipMmBox5gsfyVrbKJWIHeSTTKyEUgmBIvQkqTOozEziCZA==}
 
-  ember-cli-htmlbars@5.7.2:
-    resolution: {integrity: sha512-Uj6R+3TtBV5RZoJY14oZn/sNPnc+UgmC8nb5rI4P3fR/gYoyTFIZSXiIM7zl++IpMoIrocxOrgt+mhonKphgGg==}
-    engines: {node: 10.* || >= 12.*}
-
   ember-cli-htmlbars@6.3.0:
     resolution: {integrity: sha512-N9Y80oZfcfWLsqickMfRd9YByVcTGyhYRnYQ2XVPVrp6jyUyOeRWmEAPh7ERSXpp8Ws4hr/JB9QVQrn/yZa+Ag==}
     engines: {node: 12.* || 14.* || >= 16}
+
+  ember-cli-htmlbars@7.0.1:
+    resolution: {integrity: sha512-bNVAwTvBOmk7KjGCN0Vq81w8FAWQ1zXwCS1CUUHTeWdcFypRsv0qUEkTtwxho4H3BYaoqMCXPS45Js9WWtEXYw==}
+    engines: {node: '>= 20'}
+    peerDependencies:
+      '@babel/core': '>= 7'
+      ember-source: '>= 4.0.0'
 
   ember-cli-ifa@0.10.0:
     resolution: {integrity: sha512-qtX7WqX15sldqwDWfa2+o68yNtV1UhTyQtCddDh2WLioENer696ZkZlKh8QNSYUvY/DADWbmCphl9n8S9beQDw==}
@@ -7477,10 +7480,6 @@ packages:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
 
-  strip-bom@4.0.0:
-    resolution: {integrity: sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==}
-    engines: {node: '>=8'}
-
   strip-final-newline@2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
     engines: {node: '>=6'}
@@ -9717,23 +9716,17 @@ snapshots:
 
   '@ember/test-helpers@5.7.0(@babel/core@7.29.7)':
     dependencies:
-      '@ember/test-waiters': 3.1.0
+      '@ember/test-waiters': 4.1.2
       '@embroider/addon-shim': 1.11.0
       '@simple-dom/interface': 1.4.0
       decorator-transforms: 2.4.0(@babel/core@7.29.7)
       dom-element-descriptors: 0.5.1
     transitivePeerDependencies:
       - '@babel/core'
-      - supports-color
 
-  '@ember/test-waiters@3.1.0':
+  '@ember/test-waiters@4.1.2':
     dependencies:
-      calculate-cache-key-for-tree: 2.0.0
-      ember-cli-babel: 7.26.11
-      ember-cli-version-checker: 5.1.2
-      semver: 7.8.5
-    transitivePeerDependencies:
-      - supports-color
+      '@embroider/addon-shim': 1.11.0
 
   '@embroider/addon-shim@1.11.0': {}
 
@@ -10566,16 +10559,18 @@ snapshots:
       storybook: 9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3)
       unplugin: 1.16.1
 
-  '@storybook/ember-cli-storybook@0.6.1':
+  '@storybook/ember-cli-storybook@0.6.1(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))':
     dependencies:
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 4.2.0
       cheerio: 1.2.0
-      ember-cli-addon-docs-yuidoc: 1.1.0
+      ember-cli-addon-docs-yuidoc: 1.1.0(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))
       ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 6.3.0
+      ember-cli-htmlbars: 7.0.1(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))
       lodash.merge: 4.6.2
     transitivePeerDependencies:
+      - '@babel/core'
+      - ember-source
       - supports-color
 
   '@storybook/ember@9.1.21(patch_hash=7393e3afee93c50f08c3c184426d926ccb7d6c6592616c3627474cf3a9a638ab)(@babel/core@7.29.7)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))(esbuild@0.25.12)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@9.1.21(@testing-library/dom@10.4.2)(prettier@3.8.3))(typescript@5.9.3)(webpack@5.112.2(esbuild@0.25.12)(postcss@8.5.32))':
@@ -12098,8 +12093,6 @@ snapshots:
 
   common-path-prefix@3.0.0: {}
 
-  common-tags@1.8.2: {}
-
   commondir@1.0.1: {}
 
   component-emitter@1.3.1: {}
@@ -12538,16 +12531,18 @@ snapshots:
       - supports-color
       - webpack
 
-  ember-cli-addon-docs-yuidoc@1.1.0:
+  ember-cli-addon-docs-yuidoc@1.1.0(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5)):
     dependencies:
       broccoli-caching-writer: 3.0.3
       ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 5.7.2
+      ember-cli-htmlbars: 7.0.1(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5))
       fs-extra: 9.1.0
       json-api-serializer: 2.7.0
       lodash: 4.18.1
       yuidocjs: 0.10.2
     transitivePeerDependencies:
+      - '@babel/core'
+      - ember-source
       - supports-color
 
   ember-cli-babel-plugin-helpers@1.1.1: {}
@@ -12680,27 +12675,6 @@ snapshots:
 
   ember-cli-get-component-path-option@1.0.0: {}
 
-  ember-cli-htmlbars@5.7.2:
-    dependencies:
-      '@ember/edition-utils': 1.2.0
-      babel-plugin-htmlbars-inline-precompile: 5.3.1
-      broccoli-debug: 0.6.5
-      broccoli-persistent-filter: 3.1.3
-      broccoli-plugin: 4.0.7
-      common-tags: 1.8.2
-      ember-cli-babel-plugin-helpers: 1.1.1
-      ember-cli-version-checker: 5.1.2
-      fs-tree-diff: 2.0.1
-      hash-for-dep: 1.5.1
-      heimdalljs-logger: 0.1.10
-      json-stable-stringify: 1.1.1
-      semver: 7.8.5
-      silent-error: 1.1.1
-      strip-bom: 4.0.0
-      walk-sync: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-
   ember-cli-htmlbars@6.3.0:
     dependencies:
       '@ember/edition-utils': 1.2.0
@@ -12717,6 +12691,23 @@ snapshots:
       semver: 7.6.0
       silent-error: 1.1.1
       walk-sync: 2.2.0
+    transitivePeerDependencies:
+      - supports-color
+
+  ember-cli-htmlbars@7.0.1(@babel/core@7.29.7)(ember-source@6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5)):
+    dependencies:
+      '@babel/core': 7.29.7
+      '@ember/edition-utils': 1.2.0
+      babel-plugin-ember-template-compilation: 2.2.1
+      broccoli-debug: 0.6.5
+      broccoli-persistent-filter: 3.1.3
+      broccoli-plugin: 4.0.7
+      ember-source: 6.12.1(@glimmer/component@1.1.2(@babel/core@7.29.7))(rsvp@4.8.5)
+      fs-tree-diff: 2.0.1
+      heimdalljs-logger: 0.1.10
+      js-string-escape: 1.0.1
+      silent-error: 1.1.1
+      walk-sync: 4.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -16851,8 +16842,6 @@ snapshots:
       ansi-regex: 6.5.0
 
   strip-bom@3.0.0: {}
-
-  strip-bom@4.0.0: {}
 
   strip-final-newline@2.0.0: {}
 

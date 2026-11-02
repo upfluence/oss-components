@@ -1,2 +1,6 @@
 patchedDependencies:
   '@storybook/ember@9.1.21': patches/@storybook__ember@9.1.21.patch
+overrides:
+  "@ember/test-waiters": "^4.1.2"
+  "ember-cli-addon-docs-yuidoc>ember-cli-htmlbars": "^7.0.1"
+  "@storybook/ember-cli-storybook>ember-cli-htmlbars": "^7.0.1"
