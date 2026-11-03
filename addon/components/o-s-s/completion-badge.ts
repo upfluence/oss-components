@@ -6,6 +6,7 @@ import { isTesting } from '@embroider/macros';
 
 import type { OSSBadgeArgs, SizeType, SkinType } from './badge';
 import OSSBadge, { SizeDefinition, SkinDefinition } from './badge';
+import type Owner from '@ember/owner';
 
 export const SUCCESS_COLOR = '--color-success-500';
 export const PROGRESS_COLOR = '--color-primary-500';
@@ -20,7 +21,7 @@ export default class OSSCompletionBadgeComponent extends OSSBadge<OSSCompletionB
   @tracked animatedProgress: number = 0;
   animationFrameId?: number;
 
-  constructor(owner: unknown, args: OSSCompletionBadgeComponentSignature) {
+  constructor(owner: Owner, args: OSSCompletionBadgeComponentSignature) {
     super(owner, args, true);
 
     const contentArguments = [args.icon, args.image, args.text].filter((arg: string) => arg);

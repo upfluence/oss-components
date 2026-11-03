@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
 import { isSafeString } from '@upfluence/oss-components/utils';
+import type Owner from '@ember/owner';
 
 interface OSSOnboardingStateComponentSignature {
   title: string;
@@ -10,7 +11,7 @@ interface OSSOnboardingStateComponentSignature {
 }
 
 export default class OSSOnboardingStateComponent extends Component<OSSOnboardingStateComponentSignature> {
-  constructor(owner: unknown, args: OSSOnboardingStateComponentSignature) {
+  constructor(owner: Owner, args: OSSOnboardingStateComponentSignature) {
     super(owner, args);
 
     assert(

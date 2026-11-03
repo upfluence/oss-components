@@ -18,6 +18,7 @@ import {
   FilePrivacy
 } from '@upfluence/oss-components/types/uploader';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
+import type Owner from '@ember/owner';
 
 interface OSSUploadAreaArgs {
   uploader: Uploader;
@@ -59,7 +60,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @tracked alreadyTriggerAnimation: boolean = false;
   @tracked localFeedbackMessage?: FeedbackMessage;
 
-  constructor(owner: unknown, args: OSSUploadAreaArgs) {
+  constructor(owner: Owner, args: OSSUploadAreaArgs) {
     super(owner, args);
 
     assert('[OSS::UploadArea] The uploader argument is mandatory', args.uploader);

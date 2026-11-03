@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import type Owner from '@ember/owner';
 
 export type textAreaResizeOptions = 'vertical' | 'horizontal' | 'none';
 
@@ -17,7 +18,7 @@ export interface OSSTextAreaArgs {
 }
 
 export default class OSSTextArea<T extends OSSTextAreaArgs> extends Component<T> {
-  constructor(owner: unknown, args: OSSTextAreaArgs) {
+  constructor(owner: Owner, args: OSSTextAreaArgs) {
     super(owner, args);
 
     if (this.args.resize) {

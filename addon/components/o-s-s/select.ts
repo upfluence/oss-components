@@ -9,6 +9,7 @@ import type IntlService from 'ember-intl/services/intl';
 import attachDropdown, { type AttachmentOptions } from '@upfluence/oss-components/utils/attach-dropdown';
 import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 import type { InfiniteSelectAction } from './infinite-select';
+import type Owner from '@ember/owner';
 
 interface OSSSelectArgs extends BaseDropdownArgs {
   value: any;
@@ -35,7 +36,7 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
 
   cleanupDrodpownAutoplacement?: () => void;
 
-  constructor(owner: unknown, args: OSSSelectArgs) {
+  constructor(owner: Owner, args: OSSSelectArgs) {
     super(owner, args);
 
     assert(

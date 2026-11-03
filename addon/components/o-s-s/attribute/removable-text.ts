@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import type IntlService from 'ember-intl/services/intl';
+import type Owner from '@ember/owner';
 
 interface OSSAttributeRemovableTextArgs {
   label: string;
@@ -17,7 +18,7 @@ export default class OSSAttributeRemovableText extends Component<OSSAttributeRem
   @service declare intl: IntlService;
   @tracked loading: boolean = false;
 
-  constructor(owner: unknown, args: OSSAttributeRemovableTextArgs) {
+  constructor(owner: Owner, args: OSSAttributeRemovableTextArgs) {
     super(owner, args);
     assert('[component][OSS::Attribute::RemovableText] @label parameter is required', typeof args.label === 'string');
     assert(

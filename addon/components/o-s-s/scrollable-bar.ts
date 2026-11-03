@@ -3,6 +3,7 @@ import { guidFor } from '@ember/object/internals';
 
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import type Owner from '@ember/owner';
 
 interface OSSScrollableBarComponentSignature {
   buttonStyle?: 'button' | 'icon';
@@ -15,7 +16,7 @@ export default class extends Component<OSSScrollableBarComponentSignature> {
   scrollableBarId: string = guidFor(this);
   declare intersectionObserver: IntersectionObserver;
 
-  constructor(owner: unknown, args: OSSScrollableBarComponentSignature) {
+  constructor(owner: Owner, args: OSSScrollableBarComponentSignature) {
     super(owner, args);
 
     this.intersectionObserver = new IntersectionObserver(this.intersectionObserverCallback.bind(this), {

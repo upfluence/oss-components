@@ -9,6 +9,7 @@ import type IntlService from 'ember-intl/services/intl';
 import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 import { scheduleOnce } from '@ember/runloop';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import type Owner from '@ember/owner';
 
 interface OSSPhoneNumberInputArgs extends BaseDropdownArgs {
   prefix: string;
@@ -37,7 +38,7 @@ export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInpu
   @tracked placeholder: string = this.args.placeholder ?? '(415) 000 0000';
   @tracked inputElement: HTMLElement | undefined = undefined;
 
-  constructor(owner: unknown, args: OSSPhoneNumberInputArgs) {
+  constructor(owner: Owner, args: OSSPhoneNumberInputArgs) {
     super(owner, args);
 
     assert(

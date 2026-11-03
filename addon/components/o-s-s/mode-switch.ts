@@ -4,6 +4,7 @@ import { scheduleOnce } from '@ember/runloop';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
+import type Owner from '@ember/owner';
 
 type Skin = 'primary' | 'xtd-blue' | 'xtd-cyan' | 'xtd-lime' | 'xtd-orange' | 'xtd-violet' | 'xtd-yellow';
 
@@ -32,7 +33,7 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
 
   guid: string = guidFor(this);
 
-  constructor(owner: unknown, args: ModeSwitchComponentArgs) {
+  constructor(owner: Owner, args: ModeSwitchComponentArgs) {
     super(owner, args);
 
     scheduleOnce('afterRender', this, this.initComponent);

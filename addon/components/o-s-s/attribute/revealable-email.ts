@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import type IntlService from 'ember-intl/services/intl';
+import type Owner from '@ember/owner';
 
 interface OSSAttributeRevealableEmailArgs {
   tooltip?: string;
@@ -15,7 +16,7 @@ export default class OSSAttributeRevealableEmail extends Component<OSSAttributeR
   @service declare intl: IntlService;
   @tracked loading: boolean = false;
 
-  constructor(owner: unknown, args: OSSAttributeRevealableEmailArgs) {
+  constructor(owner: Owner, args: OSSAttributeRevealableEmailArgs) {
     super(owner, args);
     assert(
       '[component][OSS::Attribute::RevealableEmail] @onRevealEmail method is required',

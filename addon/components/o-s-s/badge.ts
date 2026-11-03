@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 export type SizeType = 'sm' | 'md' | 'lg';
 export type SizeDefType = { [key in SizeType]: string };
@@ -46,7 +47,7 @@ export interface OSSBadgeArgs {
 }
 
 export default class OSSBadge<T extends OSSBadgeArgs> extends Component<T> {
-  constructor(owner: unknown, args: OSSBadgeArgs, bypassAssertions: boolean = false) {
+  constructor(owner: Owner, args: OSSBadgeArgs, bypassAssertions: boolean = false) {
     super(owner, args);
 
     if (bypassAssertions) return;

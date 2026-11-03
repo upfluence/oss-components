@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
 import UPFLocalStorage from '@upfluence/oss-components/utils/upf-local-storage';
+import type Owner from '@ember/owner';
 
 export type HomeParameters = {
   logo: string;
@@ -26,7 +27,7 @@ export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
 
   upfLocalStorage = new UPFLocalStorage();
 
-  constructor(owner: unknown, args: OSSLayoutSidebarArgs) {
+  constructor(owner: Owner, args: OSSLayoutSidebarArgs) {
     super(owner, args);
 
     scheduleOnce('afterRender', this, this.initializeSidebarState);

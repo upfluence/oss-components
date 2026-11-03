@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
 import { helper } from '@ember/component/helper';
+import type Owner from '@ember/owner';
 
 export const PROGRESS_BAR_SKINS = ['pending', 'attention', 'warning', 'success', 'danger'] as const;
 export type ProgressBarSkins = (typeof PROGRESS_BAR_SKINS)[number];
@@ -21,7 +22,7 @@ interface OSSProgressBarArgs {
 }
 
 export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
-  constructor(owner: unknown, args: OSSProgressBarArgs) {
+  constructor(owner: Owner, args: OSSProgressBarArgs) {
     super(owner, args);
 
     if (args.skins) {
