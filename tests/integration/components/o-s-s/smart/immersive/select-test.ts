@@ -7,7 +7,7 @@ import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/smart/immersive/select', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.selectedItems = [{ value: 'item1' }];

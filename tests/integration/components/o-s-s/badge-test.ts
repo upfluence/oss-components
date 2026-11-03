@@ -8,7 +8,7 @@ import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge
 
 module('Integration | Component | o-s-s/badge', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   module('sizes', function () {
     test('it sets the right class when using a supported size', async function (assert: Assert) {

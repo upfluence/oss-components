@@ -6,7 +6,7 @@ import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/information-section', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   hooks.beforeEach(function () {
     this.title = 'Information Section Title';
     this.subtitle = 'Information Section subtitle';
