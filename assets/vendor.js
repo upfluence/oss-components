@@ -77122,7 +77122,7 @@ require('@ember/-internals/bootstrap')
   _exports.default = OSSFeatureCardsContainer;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSFeatureCardsContainer);
 });
-;define("@upfluence/oss-components/components/o-s-s/form", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _service, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/form", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/destroyable", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _destroyable, _service, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -77130,7 +77130,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/service",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/destroyable",0,"@ember/service",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -77159,6 +77159,7 @@ require('@ember/-internals/bootstrap')
       this.id = this.formManager.generateId();
       this.formInstance = this.formManager.getInstance(this.id);
       this.args.onSetup(this.formInstance);
+      (0, _destroyable.registerDestructor)(this, () => this.formManager.unregisterForm(this.id));
     }
     onSubmit(event) {
       event.preventDefault();
@@ -85515,9 +85516,8 @@ require('@ember/-internals/bootstrap')
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   function cleanup(instance) {
-    instance.targetElement.removeAttribute('data-plan-field-id');
-    instance.formManager.unregisterField(instance.form, instance.field);
-    instance.formInstance.validateField(instance.field);
+    instance.targetElement.removeAttribute('data-form-field-id');
+    instance.formManager.unregisterField(instance.form, instance.field, instance.runValidator);
     if (instance.innerInputs.length > 0) {
       instance.innerInputs.forEach(input => {
         input.removeEventListener('input', instance.clearErrorsOnInput);
@@ -85530,6 +85530,7 @@ require('@ember/-internals/bootstrap')
       super(owner, args);
       _initializerDefineProperty(this, "formManager", _descriptor, this);
       _defineProperty(this, "innerInputs", []);
+      _defineProperty(this, "runValidator", () => this.validator());
       _defineProperty(this, "validateField", () => {
         this.formInstance.validateField(this.field);
       });
@@ -85547,14 +85548,15 @@ require('@ember/-internals/bootstrap')
       } = _ref;
       (true && !(typeof form === 'string') && (0, _debug.assert)(`'form' arg must be a string but was ${typeof form}`, typeof form === 'string'));
       (true && !(typeof fieldId === 'string') && (0, _debug.assert)(`'fieldId' arg must be a string but was ${typeof fieldId}`, typeof fieldId === 'string'));
-      (true && !(typeof validator === 'function') && (0, _debug.assert)(`'validator' arg must be a string but was ${typeof validator}`, typeof validator === 'function'));
+      (true && !(typeof validator === 'function') && (0, _debug.assert)(`'validator' arg must be a function but was ${typeof validator}`, typeof validator === 'function'));
       this.targetElement = element;
       this.form = form;
       this.field = fieldId;
+      this.validator = validator;
       this.validateOnBlur = typeof validateOnBlur === 'boolean' ? validateOnBlur : true;
       this.formInstance = this.formManager.getInstance(form);
       element.setAttribute('data-form-field-id', fieldId);
-      this.formManager.registerField(form, fieldId, validator);
+      this.formManager.registerField(form, fieldId, this.runValidator);
       const inputs = element.tagName === 'INPUT' ? [element] : Array.from(element.querySelectorAll('input'));
       this.innerInputs = inputs;
       inputs.forEach(input => {
@@ -85775,9 +85777,16 @@ require('@ember/-internals/bootstrap')
       this.formValidators[id] = this.formValidators[id] ?? {};
       this.formValidators[id][field] = validator;
     }
-    unregisterField(id, field) {
-      if (this.formValidators[id]) {
-        delete this.formValidators[id][field];
+    unregisterField(id, field, validator) {
+      if (validator && this.formValidators[id]?.[field] !== validator) return;
+      delete this.formValidators[id]?.[field];
+      if (this.formFeedbacks[id]?.[field]) this.deleteFieldFeedback(id, field);
+    }
+    unregisterForm(id) {
+      delete this.formValidators[id];
+      if (this.formFeedbacks[id]) {
+        delete this.formFeedbacks[id];
+        this.refreshFormFeedbacks();
       }
     }
     validateForm(id) {
@@ -85821,6 +85830,9 @@ require('@ember/-internals/bootstrap')
     }
     clearErrors(id, field) {
       if (this.formFeedbacks[id]?.[field]?.message?.type !== 'error') return;
+      this.deleteFieldFeedback(id, field);
+    }
+    deleteFieldFeedback(id, field) {
       delete this.formFeedbacks[id]?.[field];
       this.refreshFormFeedbacks();
     }

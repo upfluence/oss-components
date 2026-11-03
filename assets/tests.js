@@ -9508,10 +9508,29 @@ define("dummy/tests/integration/components/o-s-s/feature-cards-container-test", 
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/form-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/form-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@glimmer/tracking", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _tracking, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@glimmer/tracking",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  let FormVisibility = (_class = class FormVisibility {
+    constructor() {
+      _initializerDefineProperty(this, "isVisible", _descriptor, this);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isVisible", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
+  })), _class);
   (0, _qunit.module)('Integration | Component | o-s-s/form', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -9564,6 +9583,65 @@ define("dummy/tests/integration/components/o-s-s/form-test", ["qunit", "ember-qu
       await (0, _testHelpers.triggerEvent)('form', 'submit');
       assert.ok(validateFormStub.calledOnce);
     });
+    (0, _qunit.module)('when the form is destroyed', hooks => {
+      hooks.beforeEach(function () {
+        this.formVisibility = new FormVisibility();
+        this.validator = _sinon.default.stub().returns({
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'This field is required.'
+          }
+        });
+      });
+      (0, _qunit.test)('the feedbacks set on the form are cleared', async function (assert) {
+        await renderRemovableForm();
+        const formInstance = this.onSetup.firstCall.firstArg;
+        formInstance.setFieldFeedback('email', {
+          kind: 'taken',
+          message: {
+            type: 'error',
+            value: 'Email already taken.'
+          }
+        });
+        this.formVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.deepEqual(formInstance.getErrors(), {});
+      });
+      (0, _qunit.test)('the service keeps no validators for the form', async function (assert) {
+        await renderRemovableForm();
+        this.formVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.deepEqual(this.formManager.formValidators, {});
+      });
+      (0, _qunit.test)('the service keeps no feedbacks for the form', async function (assert) {
+        await renderRemovableForm();
+        this.onSetup.firstCall.firstArg.validateForm();
+        this.formVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.deepEqual(this.formManager.formFeedbacks, {});
+      });
+    });
+    async function renderRemovableForm() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+              {{#if this.formVisibility.isVisible}}
+                <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
+                  <:content>
+                    <OSS::InputContainer @value="" {{register-form-field form="foo-id" fieldId="name" validator=this.validator validateOnBlur=false}} />
+                  </:content>
+                </OSS::Form>
+              {{/if}}
+            
+      */
+      {
+        "id": "w83Xdazo",
+        "block": "[[[1,\"\\n\"],[41,[30,0,[\"formVisibility\",\"isVisible\"]],[[[1,\"          \"],[8,[39,1],null,[[\"@onSetup\",\"@onSubmit\"],[[30,0,[\"onSetup\"]],[30,0,[\"onSubmit\"]]]],[[\"content\"],[[[[1,\"\\n              \"],[8,[39,2],[[4,[38,3],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[\"foo-id\",\"name\",[30,0,[\"validator\"]],false]]]],[[\"@value\"],[\"\"]],null],[1,\"\\n            \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"      \"]],[],false,[\"if\",\"o-s-s/form\",\"o-s-s/input-container\",\"register-form-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/form-test.ts",
+        "isStrictMode": false
+      }));
+    }
   });
 });
 define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
@@ -28617,10 +28695,30 @@ define("dummy/tests/integration/modifiers/attach-element-test", ["qunit", "ember
     });
   });
 });
-define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/test-helpers", "ember-qunit", "qunit", "sinon", "@ember/template-factory"], function (_testHelpers, _emberQunit, _qunit, _sinon, _templateFactory) {
+define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/test-helpers", "@glimmer/tracking", "ember-qunit", "qunit", "sinon", "@ember/template-factory"], function (_testHelpers, _tracking, _emberQunit, _qunit, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-qunit",0,"qunit",0,"sinon"eaimeta@70e063a35619d71f
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"@glimmer/tracking",0,"ember-cli-htmlbars",0,"ember-qunit",0,"qunit",0,"sinon"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const FIELD_SELECTOR = '[data-control-name="register-form-field-input"]';
+  let FieldVisibility = (_class = class FieldVisibility {
+    constructor() {
+      _initializerDefineProperty(this, "isVisible", _descriptor, this);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isVisible", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
+  })), _class);
   (0, _qunit.module)('Integration | Modifiers | modifiers/register-form-field', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -28655,6 +28753,61 @@ define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/te
         assert.ok(this.validator.calledOnce);
       });
     });
+    (0, _qunit.module)('when the field in error is removed', hooks => {
+      hooks.beforeEach(function () {
+        this.fieldVisibility = new FieldVisibility();
+        this.validator.returns({
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'This field is required.'
+          }
+        });
+      });
+      (0, _qunit.test)('the form is invalid while the field is displayed', async function (assert) {
+        await renderRemovableField();
+        assert.false(this.formInstance.validateForm());
+      });
+      (0, _qunit.test)('the form is valid again once the field is removed', async function (assert) {
+        await renderRemovableField();
+        this.formInstance.validateForm();
+        this.fieldVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.true(this.formInstance.validateForm());
+      });
+      (0, _qunit.test)('the errors of the field are cleared', async function (assert) {
+        await renderRemovableField();
+        this.formInstance.validateForm();
+        this.fieldVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.deepEqual(this.formInstance.getErrors(), {});
+      });
+      (0, _qunit.test)('the data-form-field-id attribute is removed from the element', async function (assert) {
+        await renderRemovableField();
+        const fieldElement = (0, _testHelpers.find)(FIELD_SELECTOR);
+        this.fieldVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.dom(fieldElement).doesNotHaveAttribute('data-form-field-id');
+      });
+    });
+    (0, _qunit.module)('when the field is replaced by another element with the same fieldId', hooks => {
+      hooks.beforeEach(function () {
+        this.fieldVisibility = new FieldVisibility();
+        this.validator.returns({
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'This field is required.'
+          }
+        });
+      });
+      (0, _qunit.test)('the field is still validated', async function (assert) {
+        await renderReplaceableField();
+        this.fieldVisibility.isVisible = false;
+        await (0, _testHelpers.settled)();
+        assert.false(this.formInstance.validateForm());
+      });
+    });
     async function renderComponent() {
       return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -28665,6 +28818,40 @@ define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/te
       {
         "id": "UsUNNM91",
         "block": "[[[1,\"\\n        \"],[8,[39,0],[[4,[38,1],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[[30,0,[\"formInstance\",\"id\"]],\"name\",[30,0,[\"validator\"]],[30,0,[\"validateOnBlur\"]]]]]],[[\"@value\"],[\"foo\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/input-container\",\"register-form-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/register-form-field-test.ts",
+        "isStrictMode": false
+      }));
+    }
+    async function renderRemovableField() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+              {{#if this.fieldVisibility.isVisible}}
+                <OSS::InputContainer @value="" data-control-name="register-form-field-input" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+              {{/if}}
+            
+      */
+      {
+        "id": "WHgCKkH6",
+        "block": "[[[1,\"\\n\"],[41,[30,0,[\"fieldVisibility\",\"isVisible\"]],[[[1,\"          \"],[8,[39,1],[[24,\"data-control-name\",\"register-form-field-input\"],[4,[38,2],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[[30,0,[\"formInstance\",\"id\"]],\"name\",[30,0,[\"validator\"]],false]]]],[[\"@value\"],[\"\"]],null],[1,\"\\n\"]],[]],null],[1,\"      \"]],[],false,[\"if\",\"o-s-s/input-container\",\"register-form-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/register-form-field-test.ts",
+        "isStrictMode": false
+      }));
+    }
+    async function renderReplaceableField() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+              {{#if this.fieldVisibility.isVisible}}
+                <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+              {{else}}
+                <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+              {{/if}}
+            
+      */
+      {
+        "id": "TFNztoqY",
+        "block": "[[[1,\"\\n\"],[41,[30,0,[\"fieldVisibility\",\"isVisible\"]],[[[1,\"          \"],[8,[39,1],[[4,[38,2],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[[30,0,[\"formInstance\",\"id\"]],\"name\",[30,0,[\"validator\"]],false]]]],[[\"@value\"],[\"\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,1],[[4,[38,2],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[[30,0,[\"formInstance\",\"id\"]],\"name\",[30,0,[\"validator\"]],false]]]],[[\"@value\"],[\"\"]],null],[1,\"\\n\"]],[]]],[1,\"      \"]],[],false,[\"if\",\"o-s-s/input-container\",\"register-form-field\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/register-form-field-test.ts",
         "isStrictMode": false
       }));
@@ -29851,6 +30038,88 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
         this.service.registerField('test', 'testField', _sinon.default.stub());
         this.service.unregisterField('test', 'testField');
         assert.strictEqual(this.service.formValidators['test']['testField'], undefined);
+      });
+      (0, _qunit.test)('it removes the feedback of the unregistered field only', function (assert) {
+        const warningFeedback = {
+          kind: 'be_cautious',
+          message: {
+            type: 'warning',
+            value: 'warning'
+          }
+        };
+        const errorFeedback = {
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'Error'
+          }
+        };
+        this.service.registerField('test', 'testField', _sinon.default.stub().returns(warningFeedback));
+        this.service.registerField('test', 'otherField', _sinon.default.stub().returns(errorFeedback));
+        this.service.getInstance('test').validateForm();
+        this.service.unregisterField('test', 'testField');
+        assert.deepEqual(this.service.formFeedbacks['test'], {
+          otherField: errorFeedback
+        });
+      });
+      (0, _qunit.test)('the form is valid again once its only field in error is unregistered', function (assert) {
+        const formInstance = this.service.getInstance('test');
+        this.service.registerField('test', 'testField', _sinon.default.stub().returns({
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'Error'
+          }
+        }));
+        formInstance.validateForm();
+        this.service.unregisterField('test', 'testField');
+        assert.true(formInstance.validateForm());
+      });
+      (0, _qunit.test)('it keeps the field when another validator was registered for it since', function (assert) {
+        const previousValidator = _sinon.default.stub();
+        const currentValidator = _sinon.default.stub();
+        this.service.registerField('test', 'testField', previousValidator);
+        this.service.registerField('test', 'testField', currentValidator);
+        this.service.unregisterField('test', 'testField', previousValidator);
+        this.service.getInstance('test').validateForm();
+        assert.true(currentValidator.calledOnceWithExactly());
+      });
+    });
+    (0, _qunit.module)('#unregisterForm', () => {
+      (0, _qunit.test)('it removes the feedbacks of the form', function (assert) {
+        const formInstance = this.service.getInstance('test');
+        formInstance.setFieldFeedback('testField', {
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'Error'
+          }
+        });
+        this.service.unregisterForm('test');
+        assert.deepEqual(formInstance.getErrors(), {});
+      });
+      (0, _qunit.test)('it removes the validators of the form', function (assert) {
+        const validator = _sinon.default.stub();
+        this.service.registerField('test', 'testField', validator);
+        this.service.unregisterForm('test');
+        this.service.getInstance('test').validateForm();
+        assert.true(validator.notCalled);
+      });
+      (0, _qunit.test)('it keeps the feedbacks of the other forms', function (assert) {
+        const errorFeedback = {
+          kind: 'blank',
+          message: {
+            type: 'error',
+            value: 'Error'
+          }
+        };
+        const otherFormInstance = this.service.getInstance('other');
+        this.service.getInstance('test').setFieldFeedback('testField', errorFeedback);
+        otherFormInstance.setFieldFeedback('testField', errorFeedback);
+        this.service.unregisterForm('test');
+        assert.deepEqual(otherFormInstance.getErrors(), {
+          testField: errorFeedback
+        });
       });
     });
     (0, _qunit.module)('Form instance methods', function (hooks) {
