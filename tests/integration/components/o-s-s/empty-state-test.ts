@@ -6,7 +6,7 @@ import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/empty-state', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('it renders with default properties', async function (assert) {
     await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" />`);

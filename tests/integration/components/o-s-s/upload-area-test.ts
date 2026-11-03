@@ -22,7 +22,7 @@ const PDFfile = new File(
 
 module('Integration | Component | o-s-s/upload-area', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   setupToast(hooks);
 
   hooks.beforeEach(function () {

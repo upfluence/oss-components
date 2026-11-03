@@ -7,7 +7,7 @@ import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/url-input', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::UrlInput @prefix="https://" />`);
