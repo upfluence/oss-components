@@ -49,7 +49,7 @@ oss-components:
       try_again: Try again
       upload_failed:
         title: Upload failed
-        description: We couldn’t upload your file. Please try again. If the problem persists, contact support.
+        description: We couldn't upload your file. Please try again. If the problem persists, contact support.
       filetype:
         title: Unsupported format
         description: The uploaded file format is not allowed.

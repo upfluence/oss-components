@@ -1,12 +1,13 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { click, render, triggerEvent, waitFor, waitUntil } from '@ember/test-helpers';
+import { click, render, triggerEvent, waitFor, settled } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
-import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 import { setupToast } from '@upfluence/oss-components/test-support';
+import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 const file = new File(
@@ -470,7 +471,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
           @onUploadFailure={{this.onUploadFailure}} />
       `);
       await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
-      await waitUntil(() => this.toastErrorStub.called, { timeout: 2000 });
+      await settled();
 
       assert.ok(
         this.toastErrorStub.calledOnceWithExactly(
@@ -491,7 +492,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
           @onUploadFailure={{this.onUploadFailure}} />
       `);
       await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
-      await waitUntil(() => this.toastErrorStub.called, { timeout: 2000 });
+      await settled();
 
       assert.dom('.oss-upload-item').exists({ count: 1 });
       assert.true(this.onUploadFailure.calledOnceWithExactly(0, { payload: {} }));
