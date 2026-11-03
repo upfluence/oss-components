@@ -1,8 +1,10 @@
 import { htmlSafe, isHTMLSafe, type SafeString } from '@ember/template';
 import DOMPurify from 'dompurify';
-import type { TOptions } from 'ember-intl/services/intl';
+import type IntlService from 'ember-intl/services/intl';
 
 import { RICH_TEXT_SVG_CONFIG } from '@upfluence/oss-components/utils/sanitize-config';
+
+type TOptions = NonNullable<Parameters<IntlService['t']>[1]>;
 
 const OVERRIDE_APPLIED_KEY = '__ossOverrideIntlApplied';
 
