@@ -2,6 +2,8 @@
 
 .EXPORT_ALL_VARIABLES:
 
+PORT := 0
+
 SHELL := /bin/bash
 
 all:	clear upfluence echo start ## Starts the dev server
@@ -18,7 +20,7 @@ echo:
 	@echo Starting OSS-Components
 
 start: ## Starts the dev server
-	pnpm ember serve --port 0
+	pnpm ember serve --port $PORT
 
 clean: ## Cleans ./node_modules && ./dist
 	@echo "Cleaning up ./node_modules & ./dist folders"
