@@ -6,6 +6,7 @@ import { click, findAll, render } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 import { setupToast } from '@upfluence/oss-components/test-support';
+import type Owner from '@ember/owner';
 
 module('Integration | Component | o-s-s/code-block', function (hooks) {
   setupRenderingTest(hooks);
@@ -118,7 +119,7 @@ export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
   @tracked componentHeight: number = 0;
   @service declare toast: ToastService;
 
-  constructor(owner: unknown, args: OSSCodeBlockArgs) {
+  constructor(owner: Owner, args: OSSCodeBlockArgs) {
     super(owner, args);
     if (this.args.collapseHeight) {
       this.componentHeight = this.args.collapseHeight;

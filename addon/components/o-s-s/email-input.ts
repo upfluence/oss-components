@@ -4,6 +4,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import type { FeedbackMessage } from '@upfluence/oss-components/types';
+import type Owner from '@ember/owner';
 
 interface OSSEmailInputArgs {
   value: string | null;
@@ -30,7 +31,7 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
 
   @tracked regexError: string | null = null;
 
-  constructor(owner: unknown, args: OSSEmailInputArgs) {
+  constructor(owner: Owner, args: OSSEmailInputArgs) {
     super(owner, args);
 
     assert('[component][OSS::EmailInput] The @value parameter is mandatory', typeof args.value !== 'undefined');

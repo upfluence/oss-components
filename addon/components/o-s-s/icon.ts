@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { IconNames } from './iconName.enum';
+import type Owner from '@ember/owner';
 
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand' | 'flag' | 'duotone-regular';
 
@@ -20,7 +21,7 @@ export const STYLE_CLASSES: Record<IconStyle, string> = {
 };
 
 export default class OSSIcon extends Component<OSSIconArgs> {
-  constructor(owner: unknown, args: OSSIconArgs) {
+  constructor(owner: Owner, args: OSSIconArgs) {
     super(owner, args);
     assert('[component][OSS::Icon] The @icon parameter is mandatory', typeof args.icon !== 'undefined');
   }

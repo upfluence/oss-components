@@ -10,6 +10,7 @@ import type { OSSBadgeArgs } from '../badge';
 import { isSafeString } from '@upfluence/oss-components/utils';
 import type { OSSIconArgs } from '@upfluence/oss-components/components/o-s-s/icon';
 import type { CountryData } from '@upfluence/oss-components/utils/country-codes';
+import type Owner from '@ember/owner';
 
 type IconSpec = OSSIconArgs & {
   tooltip?: { title: ReturnType<IntlService['t']>; placement?: string };
@@ -43,7 +44,7 @@ interface OSSInfiniteSelectOptionComponentSignature {
 }
 
 export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfiniteSelectOptionComponentSignature> {
-  constructor(owner: unknown, args: OSSInfiniteSelectOptionComponentSignature['Args']) {
+  constructor(owner: Owner, args: OSSInfiniteSelectOptionComponentSignature['Args']) {
     super(owner, args);
     assert(
       '[component][OSS::InfiniteSelect::Option] @title is required',

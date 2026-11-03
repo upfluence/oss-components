@@ -4,6 +4,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import type Owner from '@ember/owner';
 
 export type Currency = {
   code: string;
@@ -82,7 +83,7 @@ export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Co
   @tracked filteredCurrencies: Currency[] = this.currencies;
   @tracked localValue: number;
 
-  constructor(owner: unknown, args: OSSCurrencyInputArgs, preventDefaultAssertions?: boolean) {
+  constructor(owner: Owner, args: OSSCurrencyInputArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
 
     this.localValue = this.args.value;

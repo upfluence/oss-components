@@ -1,10 +1,11 @@
 import { assert } from '@ember/debug';
 import OSSToggleButtons, { type OSSToggleButtonsArgs } from '../toggle-buttons';
+import type Owner from '@ember/owner';
 
 interface OSSSmartToggleButtonsArgs extends OSSToggleButtonsArgs {}
 
 export default class OSSSmartToggleButtons extends OSSToggleButtons<OSSSmartToggleButtonsArgs> {
-  constructor(owner: unknown, args: OSSSmartToggleButtonsArgs) {
+  constructor(owner: Owner, args: OSSSmartToggleButtonsArgs) {
     super(owner, args, true);
 
     assert(

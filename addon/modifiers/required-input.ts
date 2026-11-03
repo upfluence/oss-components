@@ -1,5 +1,6 @@
 import Modifier, { type ArgsFor } from 'ember-modifier';
 import { registerDestructor } from '@ember/destroyable';
+import type Owner from '@ember/owner';
 
 interface RequiredInputSignature {
   Element: HTMLElement;
@@ -9,7 +10,7 @@ export default class RegisterFormField extends Modifier<RequiredInputSignature> 
   declare targetElement: HTMLElement;
   markerElement?: HTMLSpanElement;
 
-  constructor(owner: unknown, args: ArgsFor<RequiredInputSignature>) {
+  constructor(owner: Owner, args: ArgsFor<RequiredInputSignature>) {
     super(owner, args);
     registerDestructor(this, () => this.cleanup());
   }

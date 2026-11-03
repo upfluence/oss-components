@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 import type { OSSTagArgs } from './tag';
+import type Owner from '@ember/owner';
 
 interface OSSNavTabArgs {
   onSelection(selectedTab: TabDefinition): void;
@@ -21,7 +22,7 @@ export interface TabDefinition {
 }
 
 export default class OSSNavTab extends Component<OSSNavTabArgs> {
-  constructor(owner: unknown, args: OSSNavTabArgs) {
+  constructor(owner: Owner, args: OSSNavTabArgs) {
     super(owner, args);
 
     assert(

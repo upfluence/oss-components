@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
 import { isSafeString } from '@upfluence/oss-components/utils';
+import type Owner from '@ember/owner';
 
 type Options = {
   primaryGradiantColor?: string;
@@ -18,7 +19,7 @@ interface OSSMarketingBannerComponentSignature {
 }
 
 export default class OSSMarketingBannerComponent extends Component<OSSMarketingBannerComponentSignature> {
-  constructor(owner: unknown, args: OSSMarketingBannerComponentSignature) {
+  constructor(owner: Owner, args: OSSMarketingBannerComponentSignature) {
     super(owner, args);
     assert(
       '[component][OSS::Marketing::Banner] @title is required',

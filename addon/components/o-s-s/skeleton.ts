@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
+import type Owner from '@ember/owner';
 
 export interface OSSSkeletonArgs {
   width?: number | string;
@@ -14,7 +15,7 @@ export interface OSSSkeletonArgs {
 const RANGE_PERCENTAGE: number = 15;
 
 export default class OSSSkeleton<T extends OSSSkeletonArgs> extends Component<T> {
-  constructor(owner: unknown, args: OSSSkeletonArgs, preventDefaultAssertions?: boolean) {
+  constructor(owner: Owner, args: OSSSkeletonArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
 
     if (preventDefaultAssertions) return;
