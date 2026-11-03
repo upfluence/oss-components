@@ -1,6 +1,9 @@
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import * as remarkGfmModule from 'remark-gfm';
+
+const require = createRequire(import.meta.url);
 
 // Storybook loads this file through esbuild-register, so the default export can arrive wrapped once or twice
 const remarkGfm = remarkGfmModule.default?.default ?? remarkGfmModule.default ?? remarkGfmModule;
@@ -35,11 +38,25 @@ export default {
     '@storybook/addon-designs'
   ],
 
+  // Ember 7 has no `Ember` global nor AMD bundle: templates are compiled to template factories and @ember/* resolves to ember-source's own modules
   babel: async (config) => ({
     ...config,
     presets: [...(config.presets || []), ['@babel/preset-typescript', { allowDeclareFields: true }]],
     plugins: [
-      ...(config.plugins || []),
+      ...(config.plugins || []).filter(
+        (plugin) => !/babel-plugin-(htmlbars-inline-precompile|ember-modules-api-polyfill)/.test([plugin].flat()[0])
+      ),
+      [
+        require.resolve('babel-plugin-ember-template-compilation'),
+        {
+          compiler: require('ember-source/ember-template-compiler/index.js'),
+          enableLegacyModules: [
+            'ember-cli-htmlbars',
+            'ember-cli-htmlbars-inline-precompile',
+            'htmlbars-inline-precompile'
+          ]
+        }
+      ],
       ['@babel/plugin-proposal-decorators', { legacy: true }],
       ['@babel/plugin-transform-class-properties', { loose: true }]
     ]
@@ -52,6 +69,14 @@ export default {
       test: /\.less$/i,
       use: ['style-loader', { loader: 'css-loader', options: { url: false } }, 'less-loader']
     });
+
+    config.externals = [
+      ...[config.externals || []].flat(),
+      ({ request }, callback) =>
+        /^(@ember\/|@glimmer\/tracking$|ember-source\/)/.test(request)
+          ? callback(null, `var window.require(${JSON.stringify(request)})`)
+          : callback()
+    ];
 
     config.resolve.alias = Object.assign(config.resolve.alias || {}, {
       '@upfluence/oss-components': path.resolve(addon_path),

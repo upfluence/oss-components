@@ -88,6 +88,7 @@
     "@types/sinon": "^10.0.2",
     "@upfluence/w-conf": "^0.4.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-ember-template-compilation": "^2.2.1",
     "css-loader": "^5.2.7",
     "ember-cli": "~7.3.0",
     "ember-cli-code-coverage": "^3.0.0",
