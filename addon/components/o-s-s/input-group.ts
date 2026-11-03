@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 interface OSSInputGroupArgs {
   value?: string;
@@ -14,7 +15,7 @@ interface OSSInputGroupArgs {
 }
 
 export default class OSSInputGroup extends Component<OSSInputGroupArgs> {
-  constructor(owner: unknown, args: OSSInputGroupArgs) {
+  constructor(owner: Owner, args: OSSInputGroupArgs) {
     super(owner, args);
 
     assert(

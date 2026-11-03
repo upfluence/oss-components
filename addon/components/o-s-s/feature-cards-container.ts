@@ -2,13 +2,14 @@ import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
 import type { OSSFeatureCardArgs, OSSFeatureCardColorVariant, OSSFeatureCardShadowVariant } from './feature-card';
+import type Owner from '@ember/owner';
 
 type OSSFeatureCardsContainerArgs = {
   cards: OSSFeatureCardArgs[];
 };
 
 export default class OSSFeatureCardsContainer extends Component<OSSFeatureCardsContainerArgs> {
-  constructor(owner: unknown, args: OSSFeatureCardsContainerArgs) {
+  constructor(owner: Owner, args: OSSFeatureCardsContainerArgs) {
     super(owner, args);
 
     assert('[OSS::FeatureCardsContainer] The @cards parameter is mandatory', Array.isArray(args.cards));

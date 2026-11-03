@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { isSafeString } from '@upfluence/oss-components/utils';
 import type { IntlService } from 'ember-intl';
+import type Owner from '@ember/owner';
 
 export const COLOR_VARIANTS = ['blue', 'violet', 'yellow'] as const;
 export type OSSFeatureCardColorVariant = (typeof COLOR_VARIANTS)[number];
@@ -25,7 +26,7 @@ export type OSSFeatureCardArgs = {
 };
 
 export default class OSSFeatureCard extends Component<OSSFeatureCardArgs> {
-  constructor(owner: unknown, args: OSSFeatureCardArgs) {
+  constructor(owner: Owner, args: OSSFeatureCardArgs) {
     super(owner, args);
 
     assert(

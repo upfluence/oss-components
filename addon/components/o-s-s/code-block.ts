@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ToastService from '@upfluence/oss-components/services/toast';
+import type Owner from '@ember/owner';
 
 interface OSSCodeBlockArgs {
   content: string;
@@ -18,7 +19,7 @@ export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
   @tracked componentHeight: number = 0;
   @service declare toast: ToastService;
 
-  constructor(owner: unknown, args: OSSCodeBlockArgs) {
+  constructor(owner: Owner, args: OSSCodeBlockArgs) {
     super(owner, args);
     if (this.args.collapseHeight) {
       this.componentHeight = this.args.collapseHeight;

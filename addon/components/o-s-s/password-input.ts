@@ -6,6 +6,7 @@ import { assert } from '@ember/debug';
 import { isEmpty } from '@ember/utils';
 import { helper } from '@ember/component/helper';
 import type { FeedbackMessage } from './input-container';
+import type Owner from '@ember/owner';
 
 export type ValidatorSet = Record<string, { labelKey: string; regex: RegExp }>;
 export const INPUT_VALIDATORS: ValidatorSet = {
@@ -60,7 +61,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
 
   private runValidation: boolean = typeof this.args.validates === 'function';
 
-  constructor(owner: unknown, args: OSSPasswordInputArgs) {
+  constructor(owner: Owner, args: OSSPasswordInputArgs) {
     super(owner, args);
 
     assert('[component][OSS::PasswordInput] The @value parameter is mandatory', typeof this.args.value !== 'undefined');

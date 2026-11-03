@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 interface OSSButtonDropdownArgs {
   icon?: string;
@@ -15,7 +16,7 @@ interface OSSButtonDropdownArgs {
 export default class extends Component<OSSButtonDropdownArgs> {
   @tracked displayDropdown: boolean = false;
 
-  constructor(owner: unknown, args: OSSButtonDropdownArgs) {
+  constructor(owner: Owner, args: OSSButtonDropdownArgs) {
     super(owner, args);
 
     assert(
