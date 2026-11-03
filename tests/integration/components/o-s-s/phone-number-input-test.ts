@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import {
   render,
   setupOnerror,
@@ -15,6 +16,7 @@ import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.onChange = sinon.stub();

@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { render } from '@ember/test-helpers';
 
 import type { FeedbackMessageType } from '@upfluence/oss-components/types';
@@ -8,6 +9,7 @@ import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils'
 
 module('Integration | Component | o-s-s/banner', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Banner />`);
