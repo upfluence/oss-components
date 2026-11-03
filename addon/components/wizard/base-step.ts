@@ -1,13 +1,14 @@
 import Component from '@glimmer/component';
 import { action, set } from '@ember/object';
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
+import type Owner from '@ember/owner';
 
 export interface WizardBaseStepSignature {
   step: Step;
 }
 
 export abstract class WizardBaseStep<T extends WizardBaseStepSignature> extends Component<T> {
-  constructor(owner: unknown, args: T) {
+  constructor(owner: Owner, args: T) {
     super(owner, args);
     set(args.step, 'validateStep', this.onStepSubmission?.bind(this));
   }

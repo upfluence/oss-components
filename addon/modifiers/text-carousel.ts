@@ -1,5 +1,6 @@
 import Modifier from 'ember-modifier';
 import { registerDestructor } from '@ember/destroyable';
+import type Owner from '@ember/owner';
 
 interface TextCarouselArgs {
   positional: [labels?: string[]];
@@ -12,7 +13,7 @@ interface TextCarouselArgs {
 export default class TextCarouselModifier extends Modifier<TextCarouselArgs> {
   intervalId?: number;
 
-  constructor(owner: unknown, args: TextCarouselArgs) {
+  constructor(owner: Owner, args: TextCarouselArgs) {
     super(owner, args);
     registerDestructor(this, () => this.clearInterval());
   }

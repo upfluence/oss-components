@@ -4,6 +4,7 @@ import { WizardBaseStep, type WizardBaseStepSignature } from '@upfluence/oss-com
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import type Owner from '@ember/owner';
 
 interface TestStepSignature extends WizardBaseStepSignature {
   step: Step;
@@ -11,7 +12,7 @@ interface TestStepSignature extends WizardBaseStepSignature {
 }
 
 class TestStepComponent extends WizardBaseStep<TestStepSignature> {
-  constructor(owner: unknown, args: TestStepSignature) {
+  constructor(owner: Owner, args: TestStepSignature) {
     super(owner, args);
 
     this.registerMethodsForTestingValidations(args);

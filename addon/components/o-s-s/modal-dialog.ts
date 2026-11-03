@@ -2,6 +2,7 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
+import type Owner from '@ember/owner';
 
 export interface OSSModalDialogArgs extends BaseModalArgs {
   title: string;
@@ -14,7 +15,7 @@ export interface OSSModalDialogArgs extends BaseModalArgs {
 export default class OSSModalDialog extends BaseModal<OSSModalDialogArgs> {
   @tracked displayModal: boolean = true;
 
-  constructor(owner: unknown, args: OSSModalDialogArgs) {
+  constructor(owner: Owner, args: OSSModalDialogArgs) {
     super(owner, args);
 
     assert('[component][OSS::ModalDialog] The close function is mandatory', args.close);

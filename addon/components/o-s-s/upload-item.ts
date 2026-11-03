@@ -12,6 +12,7 @@ import {
   type UploadRequest
 } from '@upfluence/oss-components/types/uploader';
 import { humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';
+import type Owner from '@ember/owner';
 
 export interface OSSUploadItemArgs {
   uploader: Uploader;
@@ -42,7 +43,7 @@ export default class OSSUploadItem<T extends OSSUploadItemArgs> extends Componen
 
   request?: UploadRequest;
 
-  constructor(owner: unknown, args: OSSUploadItemArgs) {
+  constructor(owner: Owner, args: OSSUploadItemArgs) {
     super(owner, args);
 
     if (args.file instanceof File) {

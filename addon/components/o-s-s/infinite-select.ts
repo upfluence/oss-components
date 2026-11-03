@@ -6,6 +6,7 @@ import { helper } from '@ember/component/helper';
 
 import { guidFor } from '@ember/object/internals';
 import type { SkinType } from './button';
+import type Owner from '@ember/owner';
 
 export type InfiniteSelectAction = {
   skin?: SkinType;
@@ -51,7 +52,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   searchInput: HTMLInputElement | null = null;
 
-  constructor(owner: unknown, args: InfiniteSelectArgs) {
+  constructor(owner: Owner, args: InfiniteSelectArgs) {
     super(owner, args);
 
     assert(

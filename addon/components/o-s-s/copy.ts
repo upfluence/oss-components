@@ -6,6 +6,7 @@ import { isTesting } from '@embroider/macros';
 
 import ToastService from '@upfluence/oss-components/services/toast';
 import type { IntlService } from 'ember-intl';
+import type Owner from '@ember/owner';
 
 interface OSSCopyArgs {
   value: string;
@@ -24,7 +25,7 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   @tracked animated: boolean;
   @tracked showCheckmark: boolean = false;
 
-  constructor(owner: unknown, args: OSSCopyArgs) {
+  constructor(owner: Owner, args: OSSCopyArgs) {
     super(owner, args);
 
     this.inline = this.args.inline ?? false;

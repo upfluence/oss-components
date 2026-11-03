@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import type Owner from '@ember/owner';
 
 type StarType = 'solid' | 'regular';
 type Star = { type: StarType };
@@ -35,7 +36,7 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   @tracked private hoverIndex: number | null = null;
   @tracked private isSubmitting = false;
 
-  constructor(owner: unknown, args: OSSStarRatingArgs) {
+  constructor(owner: Owner, args: OSSStarRatingArgs) {
     super(owner, args);
 
     assert(
