@@ -1,10 +1,11 @@
 import { action } from '@ember/object';
 import { WizardBaseStep, type WizardBaseStepSignature } from '@upfluence/oss-components/components/wizard/base-step';
+import type Owner from '@ember/owner';
 
 interface WizardExampleStepSignature extends WizardBaseStepSignature {}
 
 export default class WizardExampleStep extends WizardBaseStep<WizardExampleStepSignature> {
-  constructor(owner: unknown, args: WizardExampleStepSignature) {
+  constructor(owner: Owner, args: WizardExampleStepSignature) {
     super(owner, args);
     console.log('WizardExampleStep initialized for step:', this.args.step.id);
   }

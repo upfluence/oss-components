@@ -11,6 +11,7 @@ import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import type { FeedbackMessage } from '@upfluence/oss-components/types';
 
 import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
+import type Owner from '@ember/owner';
 
 type Item = {
   name: string;
@@ -33,7 +34,7 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
   cleanupDrodpownAutoplacement?: () => void;
   handleSelectorClose = this.closeDropdown;
 
-  constructor(owner: unknown, args: OSSCountrySelectorArgs) {
+  constructor(owner: Owner, args: OSSCountrySelectorArgs) {
     super(owner, args);
 
     this.filteredItems = this.args.sourceList;

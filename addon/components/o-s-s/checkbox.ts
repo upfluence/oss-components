@@ -3,6 +3,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import type { FeedbackMessage } from './input-container';
+import type Owner from '@ember/owner';
 
 export const AVAILABLE_SIZES = ['sm'];
 type SizeType = 'sm';
@@ -22,7 +23,7 @@ interface OSSCheckboxArgs {
 }
 
 export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
-  constructor(owner: unknown, args: OSSCheckboxArgs) {
+  constructor(owner: Owner, args: OSSCheckboxArgs) {
     super(owner, args);
 
     assert('[component][OSS::Checkbox] Boolean @checked argument is mandatory.', typeof args.checked === 'boolean');

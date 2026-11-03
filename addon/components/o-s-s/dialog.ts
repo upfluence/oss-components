@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
 import { isSafeString } from '@upfluence/oss-components/utils';
+import type Owner from '@ember/owner';
 
 export type Skin = 'alert' | 'primary' | 'error';
 export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean; icon?: string };
@@ -23,7 +24,7 @@ const BTN_STYLE_MATCHER: Record<Skin, string> = {
 };
 
 export default class OSSDialog extends BaseModal<OSSDialogArgs> {
-  constructor(owner: unknown, args: OSSDialogArgs) {
+  constructor(owner: Owner, args: OSSDialogArgs) {
     super(owner, args);
 
     assert(

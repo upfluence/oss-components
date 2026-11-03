@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 export type SocialPostType =
   | 'article'
@@ -40,7 +41,7 @@ interface OSSSocialPostBadgeArgs {
 }
 
 export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs> {
-  constructor(owner: unknown, args: OSSSocialPostBadgeArgs) {
+  constructor(owner: Owner, args: OSSSocialPostBadgeArgs) {
     super(owner, args);
     assert(
       '[component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory',

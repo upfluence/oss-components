@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import Modifier, { type ArgsFor, type PositionalArgs, type NamedArgs } from 'ember-modifier';
 
 import type { default as FormManager, FormInstance, Validator } from '../services/form-manager';
+import type Owner from '@ember/owner';
 
 interface RegisterFormFieldSignature {
   Element: HTMLElement;
@@ -43,7 +44,7 @@ export default class RegisterFormField extends Modifier<RegisterFormFieldSignatu
 
   innerInputs: HTMLElement[] = [];
 
-  constructor(owner: unknown, args: ArgsFor<RegisterFormFieldSignature>) {
+  constructor(owner: Owner, args: ArgsFor<RegisterFormFieldSignature>) {
     super(owner, args);
     registerDestructor(this, cleanup);
   }

@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import RouterService from '@ember/routing/router-service';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 export type LinkType = {
   href: string;
@@ -19,7 +20,7 @@ interface OSSLinkArgs {
 export default class OSSLink extends Component<OSSLinkArgs> {
   @service declare router: RouterService;
 
-  constructor(owner: unknown, args: OSSLinkArgs) {
+  constructor(owner: Owner, args: OSSLinkArgs) {
     super(owner, args);
 
     assert('[component][OSS::Link] You must pass either a @label or an @icon argument.', args.label || args.icon);

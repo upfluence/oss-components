@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import OSSButton, { type OSSButtonArgs } from '../button';
+import type Owner from '@ember/owner';
 
 type SmartSkinType = 'primary' | 'secondary';
 
@@ -21,7 +22,7 @@ interface OSSSmartButtonArgs extends OSSButtonArgs {
 }
 
 export default class OSSSmartButton extends OSSButton<OSSSmartButtonArgs> {
-  constructor(owner: unknown, args: OSSSmartButtonArgs) {
+  constructor(owner: Owner, args: OSSSmartButtonArgs) {
     super(owner, args, true);
 
     assert(

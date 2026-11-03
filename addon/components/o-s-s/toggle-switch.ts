@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 
 interface ToggleSwitchArgs {
   value: boolean;
@@ -9,7 +10,7 @@ interface ToggleSwitchArgs {
 }
 
 export default class OSSToggleSwitchComponent extends Component<ToggleSwitchArgs> {
-  constructor(owner: unknown, args: ToggleSwitchArgs) {
+  constructor(owner: Owner, args: ToggleSwitchArgs) {
     super(owner, args);
 
     assert('[component][OSS::ToggleSwitch] Please provide an onChange action', args.onChange);

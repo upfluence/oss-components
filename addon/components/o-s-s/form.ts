@@ -5,6 +5,7 @@ import { registerDestructor } from '@ember/destroyable';
 import { service } from '@ember/service';
 
 import type { default as FormManager, FormInstance } from '@upfluence/oss-components/services/form-manager';
+import type Owner from '@ember/owner';
 
 interface OSSFormComponentSignature {
   onSetup(instance: FormInstance): void;
@@ -17,7 +18,7 @@ export default class OSSFormComponent extends Component<OSSFormComponentSignatur
   @tracked declare id: string;
   @tracked declare formInstance: FormInstance;
 
-  constructor(owner: unknown, args: OSSFormComponentSignature) {
+  constructor(owner: Owner, args: OSSFormComponentSignature) {
     super(owner, args);
 
     this.id = this.formManager.generateId();
