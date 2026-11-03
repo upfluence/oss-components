@@ -6,7 +6,7 @@ import { render, triggerEvent } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/attribute/base', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('It renders', async function (assert) {
     await render(hbs`<OSS::Attribute::Base />`);

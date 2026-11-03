@@ -10,7 +10,7 @@ const ILLUSTRATION_SRC = '/assets/images/brand-icon.svg';
 
 module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.title = 'Title';

@@ -7,7 +7,7 @@ import { htmlSafe } from '@ember/template';
 
 module('Integration | Component | upf-stat', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks, { 'upf-stat-test': { label: 'Total <b>revenue</b>' } });
+  setupIntl(hooks, 'en-us', { 'upf-stat-test': { label: 'Total <b>revenue</b>' } });
 
   test('it renders the label', async function (assert) {
     this.label = 'Total revenue';

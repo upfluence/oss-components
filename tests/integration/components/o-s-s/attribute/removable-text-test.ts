@@ -7,7 +7,7 @@ import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/attribute/removable-text', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.onRemove = sinon.stub().resolves();

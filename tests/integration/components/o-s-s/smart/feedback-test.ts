@@ -11,7 +11,7 @@ const LONG_TEXT = 'This influencer shows a very low brand safety risk profile ac
 
 module('Integration | Component | o-s-s/smart/feedback', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('it renders the component container', async function (assert) {
     await render(hbs`<OSS::Smart::Feedback />`);

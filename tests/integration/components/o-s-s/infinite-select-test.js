@@ -35,7 +35,7 @@ const FAKE_DATA_GROUPED = [
 
 module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('the index values from the @items array are available in the option named block', async function (assert) {
     this.items = FAKE_DATA;
