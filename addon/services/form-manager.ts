@@ -42,9 +42,20 @@ export default class FormManager extends Service {
     this.formValidators[id]![field] = validator;
   }
 
-  unregisterField(id: string, field: string): void {
-    if (this.formValidators[id]) {
-      delete this.formValidators[id]![field];
+  unregisterField(id: string, field: string, validator?: Validator): void {
+    if (validator && this.formValidators[id]?.[field] !== validator) return;
+
+    delete this.formValidators[id]?.[field];
+
+    if (this.formFeedbacks[id]?.[field]) this.deleteFieldFeedback(id, field);
+  }
+
+  unregisterForm(id: string): void {
+    delete this.formValidators[id];
+
+    if (this.formFeedbacks[id]) {
+      delete this.formFeedbacks[id];
+      this.refreshFormFeedbacks();
     }
   }
 
@@ -106,6 +117,10 @@ export default class FormManager extends Service {
 
   private clearErrors(id: string, field: string): void {
     if (this.formFeedbacks[id]?.[field]?.message?.type !== 'error') return;
+    this.deleteFieldFeedback(id, field);
+  }
+
+  private deleteFieldFeedback(id: string, field: string): void {
     delete this.formFeedbacks[id]?.[field];
     this.refreshFormFeedbacks();
   }

@@ -19,10 +19,9 @@ interface RegisterFormFieldSignature {
 }
 
 function cleanup(instance: RegisterFormField): void {
-  instance.targetElement.removeAttribute('data-plan-field-id');
+  instance.targetElement.removeAttribute('data-form-field-id');
 
-  instance.formManager.unregisterField(instance.form, instance.field);
-  instance.formInstance.validateField(instance.field);
+  instance.formManager.unregisterField(instance.form, instance.field, instance.runValidator);
 
   if (instance.innerInputs.length > 0) {
     instance.innerInputs.forEach((input) => {
@@ -56,16 +55,17 @@ export default class RegisterFormField extends Modifier<RegisterFormFieldSignatu
   ): void {
     assert(`'form' arg must be a string but was ${typeof form}`, typeof form === 'string');
     assert(`'fieldId' arg must be a string but was ${typeof fieldId}`, typeof fieldId === 'string');
-    assert(`'validator' arg must be a string but was ${typeof validator}`, typeof validator === 'function');
+    assert(`'validator' arg must be a function but was ${typeof validator}`, typeof validator === 'function');
 
     this.targetElement = element;
     this.form = form;
     this.field = fieldId;
+    this.validator = validator;
     this.validateOnBlur = typeof validateOnBlur === 'boolean' ? validateOnBlur : true;
     this.formInstance = this.formManager.getInstance(form);
 
     element.setAttribute('data-form-field-id', fieldId);
-    this.formManager.registerField(form, fieldId, validator);
+    this.formManager.registerField(form, fieldId, this.runValidator);
 
     const inputs = element.tagName === 'INPUT' ? [element] : Array.from(element.querySelectorAll('input'));
 
@@ -81,6 +81,8 @@ export default class RegisterFormField extends Modifier<RegisterFormFieldSignatu
       });
     }
   }
+
+  runValidator: Validator = () => this.validator();
 
   validateField = (): void => {
     this.formInstance.validateField(this.field);

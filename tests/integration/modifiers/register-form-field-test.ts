@@ -1,9 +1,16 @@
-import { render, blur, focus, type TestContext } from '@ember/test-helpers';
+import { render, blur, find, focus, settled, type TestContext } from '@ember/test-helpers';
+import { tracked } from '@glimmer/tracking';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+
+const FIELD_SELECTOR = '[data-control-name="register-form-field-input"]';
+
+class FieldVisibility {
+  @tracked isVisible: boolean = true;
+}
 
 module('Integration | Modifiers | modifiers/register-form-field', function (hooks) {
   setupRenderingTest(hooks);
@@ -50,10 +57,94 @@ module('Integration | Modifiers | modifiers/register-form-field', function (hook
     });
   });
 
+  module('when the field in error is removed', (hooks) => {
+    hooks.beforeEach(function (this: TestContext) {
+      this.fieldVisibility = new FieldVisibility();
+      this.validator.returns({ kind: 'blank', message: { type: 'error', value: 'This field is required.' } });
+    });
+
+    test('the form is invalid while the field is displayed', async function (this: TestContext, assert) {
+      await renderRemovableField();
+
+      assert.false(this.formInstance.validateForm());
+    });
+
+    test('the form is valid again once the field is removed', async function (this: TestContext, assert) {
+      await renderRemovableField();
+
+      this.formInstance.validateForm();
+
+      this.fieldVisibility.isVisible = false;
+      await settled();
+
+      assert.true(this.formInstance.validateForm());
+    });
+
+    test('the errors of the field are cleared', async function (this: TestContext, assert) {
+      await renderRemovableField();
+
+      this.formInstance.validateForm();
+
+      this.fieldVisibility.isVisible = false;
+      await settled();
+
+      assert.deepEqual(this.formInstance.getErrors(), {});
+    });
+
+    test('the data-form-field-id attribute is removed from the element', async function (this: TestContext, assert) {
+      await renderRemovableField();
+
+      const fieldElement = find(FIELD_SELECTOR);
+
+      this.fieldVisibility.isVisible = false;
+      await settled();
+
+      assert.dom(fieldElement).doesNotHaveAttribute('data-form-field-id');
+    });
+  });
+
+  module('when the field is replaced by another element with the same fieldId', (hooks) => {
+    hooks.beforeEach(function (this: TestContext) {
+      this.fieldVisibility = new FieldVisibility();
+      this.validator.returns({ kind: 'blank', message: { type: 'error', value: 'This field is required.' } });
+    });
+
+    test('the field is still validated', async function (this: TestContext, assert) {
+      await renderReplaceableField();
+
+      this.fieldVisibility.isVisible = false;
+      await settled();
+
+      assert.false(this.formInstance.validateForm());
+    });
+  });
+
   async function renderComponent(): Promise<void> {
     return await render(
       hbs`
         <OSS::InputContainer @value="foo" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=this.validateOnBlur}} />
+      `
+    );
+  }
+
+  async function renderRemovableField(): Promise<void> {
+    return await render(
+      hbs`
+        {{#if this.fieldVisibility.isVisible}}
+          <OSS::InputContainer @value="" data-control-name="register-form-field-input" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+        {{/if}}
+      `
+    );
+  }
+
+  async function renderReplaceableField(): Promise<void> {
+    return await render(
+      hbs`
+        {{#if this.fieldVisibility.isVisible}}
+          <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+        {{else}}
+          <OSS::InputContainer @value="" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=false}} />
+        {{/if}}
       `
     );
   }

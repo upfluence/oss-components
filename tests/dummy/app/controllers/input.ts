@@ -1,14 +1,17 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
-import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
+import type { default as FormManager, Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
 import { isBlank } from '@ember/utils';
 import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu';
 import { ensureSafeComponent } from '@embroider/util';
 
 export default class Input extends Controller {
+  @service declare formManager: FormManager;
+
   @tracked shopUrl: string = '';
   @tracked inputValue: string = '';
   @tracked searchFieldValue: string = '';
@@ -51,6 +54,10 @@ export default class Input extends Controller {
   @tracked currencyOnly: string = '';
   @tracked formInstance?: FormInstance;
   @tracked formFieldValue: string = '';
+  @tracked isDemoFormVisible: boolean = true;
+  @tracked isFormFieldVisible: boolean = true;
+  @tracked isFormFieldSwapped: boolean = false;
+  @tracked lastSubmitResult: string = 'not submitted yet';
   @tracked declare referenceTarget: HTMLElement;
   @tracked declare contextMenuPanel: HTMLElement;
   @tracked displayContextMenuPanel: boolean = false;
@@ -169,6 +176,10 @@ export default class Input extends Controller {
   subdomainRegex: RegExp = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
   urlRegex: RegExp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
+  get formsWithFeedbacksCount(): number {
+    return Object.keys(this.formManager.formFeedbacks).length;
+  }
+
   @action
   handleTextAreaInput(newValue: string): void {
     console.log('new value = ' + newValue);
@@ -263,8 +274,23 @@ export default class Input extends Controller {
   }
 
   @action
-  onFormSubmit(): void {
-    console.log('submitted form instance:', this.formInstance, ' with field value: ', this.formFieldValue);
+  onFormSubmit(isValid: boolean): void {
+    this.lastSubmitResult = isValid ? 'valid' : 'invalid';
+  }
+
+  @action
+  toggleFormField(): void {
+    this.isFormFieldVisible = !this.isFormFieldVisible;
+  }
+
+  @action
+  swapFormField(): void {
+    this.isFormFieldSwapped = !this.isFormFieldSwapped;
+  }
+
+  @action
+  toggleDemoForm(): void {
+    this.isDemoFormVisible = !this.isDemoFormVisible;
   }
 
   @action

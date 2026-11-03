@@ -839,24 +839,55 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">Form</div>
-    <OSS::Form @onSetup={{this.onFormSetup}} @onSubmit={{this.onFormSubmit}}>
-      <:content>
-        <div class="fx-col fx-gap-px-6">
-          <span class="oss-label" {{required-input}}>This is a required form field</span>
-          <OSS::InputContainer
-            @value={{this.formFieldValue}}
-            @placeholder="Form field placeholder"
-            @feedbackMessage={{form-field-feedback this.formInstance.id "form-field"}}
-            {{register-form-field
-              form=this.formInstance.id
-              fieldId="form-field"
-              validator=this.validateFormField
-              validateOnBlur=true
-            }}
-          />
-        </div>
-      </:content>
-    </OSS::Form>
-    <OSS::Button @skin="primary" @label="Submit" type="submit" form={{this.formInstance.id}} />
+    {{#if this.isDemoFormVisible}}
+      <OSS::Form @onSetup={{this.onFormSetup}} @onSubmit={{this.onFormSubmit}}>
+        <:content>
+          {{#if this.isFormFieldVisible}}
+            <div class="fx-col fx-gap-px-6">
+              <span class="oss-label" {{required-input}}>This is a required form field</span>
+              {{#if this.isFormFieldSwapped}}
+                <OSS::InputContainer
+                  @value={{this.formFieldValue}}
+                  @placeholder="Replacement field (same fieldId)"
+                  @feedbackMessage={{form-field-feedback this.formInstance.id "form-field"}}
+                  {{register-form-field
+                    form=this.formInstance.id
+                    fieldId="form-field"
+                    validator=this.validateFormField
+                    validateOnBlur=true
+                  }}
+                />
+              {{else}}
+                <OSS::InputContainer
+                  @value={{this.formFieldValue}}
+                  @placeholder="Form field placeholder"
+                  @feedbackMessage={{form-field-feedback this.formInstance.id "form-field"}}
+                  {{register-form-field
+                    form=this.formInstance.id
+                    fieldId="form-field"
+                    validator=this.validateFormField
+                    validateOnBlur=true
+                  }}
+                />
+              {{/if}}
+            </div>
+          {{/if}}
+        </:content>
+      </OSS::Form>
+    {{/if}}
+    <div class="fx-row fx-gap-px-12">
+      <OSS::Button @skin="primary" @label="Submit" type="submit" form={{this.formInstance.id}} />
+      <OSS::Button
+        @label={{if this.isFormFieldVisible "Hide field" "Show field"}}
+        {{on "click" this.toggleFormField}}
+      />
+      <OSS::Button @label="Swap field" {{on "click" this.swapFormField}} />
+      <OSS::Button
+        @label={{if this.isDemoFormVisible "Destroy form" "Recreate form"}}
+        {{on "click" this.toggleDemoForm}}
+      />
+    </div>
+    <span>Last submit: {{this.lastSubmitResult}}</span>
+    <span>Forms with feedbacks in form-manager: {{this.formsWithFeedbacksCount}}</span>
   </div>
 </div>
