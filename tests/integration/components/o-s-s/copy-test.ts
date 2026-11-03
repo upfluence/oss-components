@@ -10,6 +10,9 @@ import { setupClipboard, setupToast } from '@upfluence/oss-components/test-suppo
 module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
+  hooks.beforeEach(function () {
+    this.intl = this.owner.lookup('service:intl');
+  });
   setupClipboard(hooks);
   setupToast(hooks);
 

@@ -19,6 +19,9 @@ const buildFile = (name = '1px.png', type = 'image/png') => {
 module('Integration | Component | o-s-s/upload-item', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
+  hooks.beforeEach(function () {
+    this.intl = this.owner.lookup('service:intl');
+  });
 
   hooks.beforeEach(function () {
     this.owner.register('service:uploader', MockUploader);
