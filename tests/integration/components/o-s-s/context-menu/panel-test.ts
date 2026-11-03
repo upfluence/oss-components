@@ -10,7 +10,7 @@ import { SUBPANEL_OFFSET } from '@upfluence/oss-components/components/o-s-s/cont
 
 module('Integration | Component | o-s-s/context-menu/panel', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.subItems = [

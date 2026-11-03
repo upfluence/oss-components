@@ -10,7 +10,7 @@ import type Owner from '@ember/owner';
 
 module('Integration | Component | o-s-s/code-block', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   setupToast(hooks);
 
   hooks.beforeEach(function () {

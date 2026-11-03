@@ -6,7 +6,7 @@ import { render, triggerEvent } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/attribute/text', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   module('Default behavior', function () {
     module('Render conditions', function () {

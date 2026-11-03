@@ -8,7 +8,7 @@ import { set } from '@ember/object';
 
 module('Integration | Component | o-s-s/access-panel', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.records = [{ label: 'foo' }, { label: 'bar' }];

@@ -11,7 +11,7 @@ import { countries } from '@upfluence/oss-components/utils/country-codes';
 
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.value = '';
