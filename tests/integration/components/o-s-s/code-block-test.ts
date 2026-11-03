@@ -6,7 +6,6 @@ import { click, findAll, render } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 import { setupToast } from '@upfluence/oss-components/test-support';
-import type Owner from '@ember/owner';
 
 module('Integration | Component | o-s-s/code-block', function (hooks) {
   setupRenderingTest(hooks);
