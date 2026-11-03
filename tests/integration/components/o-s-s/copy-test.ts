@@ -9,7 +9,7 @@ import { setupClipboard, setupToast } from '@upfluence/oss-components/test-suppo
 
 module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   setupClipboard(hooks);
   setupToast(hooks);
 

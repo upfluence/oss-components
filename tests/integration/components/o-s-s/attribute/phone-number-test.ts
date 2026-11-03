@@ -6,7 +6,7 @@ import { render } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/attribute/phone-number', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Attribute::PhoneNumber />`);

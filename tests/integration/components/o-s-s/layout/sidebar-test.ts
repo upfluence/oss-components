@@ -10,7 +10,7 @@ const upfLocalStorage = new UPFLocalStorage();
 
 module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     upfLocalStorage.delete('oss-layout-sidebar-expanded');

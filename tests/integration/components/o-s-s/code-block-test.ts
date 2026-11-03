@@ -9,7 +9,7 @@ import { setupToast } from '@upfluence/oss-components/test-support';
 
 module('Integration | Component | o-s-s/code-block', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   setupToast(hooks);
 
   hooks.beforeEach(function () {

@@ -7,7 +7,7 @@ import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/slider', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.value = 10;
