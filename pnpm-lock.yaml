@@ -13,6 +13,9 @@ patchedDependencies:
   '@storybook/ember@9.1.21':
     hash: 016af0a8e267dc3a71440393099911d58ff8016c9034958a5f5f1a298f502f9f
     path: patches/@storybook__ember@9.1.21.patch
+  ember-cli-ifa@0.10.0:
+    hash: f32485d45b2ff4c212f836bd56cc5bc515f6cebba4bc692f04baa81c3e0d1883
+    path: patches/ember-cli-ifa@0.10.0.patch
 
 importers:
 
@@ -65,7 +68,7 @@ importers:
         version: 7.0.1(@babel/core@7.29.7)(ember-source@7.3.1(@glimmer/component@2.2.1))
       ember-cli-ifa:
         specifier: ^0.10.0
-        version: 0.10.0
+        version: 0.10.0(patch_hash=f32485d45b2ff4c212f836bd56cc5bc515f6cebba4bc692f04baa81c3e0d1883)
       ember-cli-less:
         specifier: ^2.0.6
         version: 2.0.6
@@ -12418,7 +12421,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-cli-ifa@0.10.0:
+  ember-cli-ifa@0.10.0(patch_hash=f32485d45b2ff4c212f836bd56cc5bc515f6cebba4bc692f04baa81c3e0d1883):
     dependencies:
       ember-cli-babel: 7.26.11
     transitivePeerDependencies:

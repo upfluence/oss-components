@@ -1,0 +1,11 @@
+diff --git a/addon/helpers/asset-map.js b/addon/helpers/asset-map.js
+index 67076dc10d4393420406af215b769f1229496983..620723fe73e8f963753a33eb30eb83d825589f1e 100644
+--- a/addon/helpers/asset-map.js
++++ b/addon/helpers/asset-map.js
+@@ -1,5 +1,5 @@
+ import Helper from '@ember/component/helper';
+-import { inject as service } from '@ember/service';
++import { service } from '@ember/service';
+ import { get } from '@ember/object';
+ 
+ export default Helper.extend({
