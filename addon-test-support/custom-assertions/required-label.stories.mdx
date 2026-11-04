@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Custom Assertions/Required Label"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Required Label Assertion
+
+It's now possible to use `assert.requiredLabel('my-selector', 'My label')` in your tests to check that a label is marked as
+required by the `required-input` modifier and has the expected text.
+
+## Usage
+
+```handlebars
+<label {{required-input}} data-control-name='my-form-email-label'>{{t 'my_form.email'}}</label>
+```
+
+```typescript
+assert.requiredLabel('[data-control-name="my-form-email-label"]', this.intl.t('my_form.email'));
+```
+
+## assert.requiredLabel(selector, label)
+
+`requiredLabel(selector: string, label: string, message?: string)`
+
+| Name               | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| selector           | Selector of the label element, scoped to the test root element |
+| label              | Expected text of the label, without the asterisk               |
+| message (optional) | Custom assertion message                                       |
+
+## What is checked
+
+- The element ends with the asterisk added by `required-input` (`<span class="font-color-error-500">*</span>`).
+- Its text, without the asterisk, equals `label`. Whitespace is collapsed and trimmed, so `Email*`, `Email *` and a label
+  written on several lines all match `Email`.
+
+The assertion fails when the element does not exist, when the asterisk is missing or when the text differs.
