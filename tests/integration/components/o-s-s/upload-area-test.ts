@@ -1,12 +1,13 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { click, render, triggerEvent, waitFor } from '@ember/test-helpers';
+import { click, render, triggerEvent, waitFor, settled } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
-import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 import { setupToast } from '@upfluence/oss-components/test-support';
+import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 const file = new File(
@@ -453,6 +454,48 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       await click('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
 
       assert.dom('.oss-upload-item').exists({ count: 1 });
+    });
+  });
+
+  module('on upload failure', function (hooks) {
+    hooks.beforeEach(function () {
+      this.mockUploader.mode = 'failure';
+      this.onUploadFailure = sinon.stub();
+    });
+
+    test('it displays an error toast and keeps the item in its error state', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @rules={{this.validationRules}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+          @onUploadFailure={{this.onUploadFailure}} />
+      `);
+      await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
+      await settled();
+
+      assert.ok(
+        this.toastErrorStub.calledOnceWithExactly(
+          this.intl.t('oss-components.upload-area.errors.upload_failed.description'),
+          this.intl.t('oss-components.upload-area.errors.upload_failed.title')
+        )
+      );
+      assert.dom('.oss-upload-item').hasClass('oss-upload-item--errored');
+      assert.dom('[data-control-name="upload-item-try-again-button"]').exists();
+      assert.true(this.onUploadFailure.calledOnceWithExactly({ payload: {} }));
+    });
+
+    test('with multiple files, the index of the failed item is passed to @onUploadFailure', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+          @onUploadFailure={{this.onUploadFailure}} />
+      `);
+      await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
+      await settled();
+
+      assert.dom('.oss-upload-item').exists({ count: 1 });
+      assert.true(this.onUploadFailure.calledOnceWithExactly(0, { payload: {} }));
     });
   });
 

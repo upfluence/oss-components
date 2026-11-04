@@ -116,9 +116,12 @@ export default class OSSUploadItem<T extends OSSUploadItemArgs> extends Componen
   }
 
   @action
-  performUpload(): void {
+  performUpload(event?: PointerEvent): void {
+    event?.stopPropagation();
+
     if (this.request) {
       this.uploading = true;
+      this.error = undefined;
       this.args.uploader.upload(this.request, this.args.rules);
     }
   }

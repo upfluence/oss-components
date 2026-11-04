@@ -236,6 +236,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   @action
   onUploadFailure(index: number, error: FailedUploadResponse): void {
+    this.toast.error(
+      this.intl.t('oss-components.upload-area.errors.upload_failed.description'),
+      this.intl.t('oss-components.upload-area.errors.upload_failed.title')
+    );
+
     if (this.multiple) {
       this.args.onUploadFailure?.(index, error);
     } else {

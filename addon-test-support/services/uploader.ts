@@ -1,3 +1,5 @@
+import { later } from '@ember/runloop';
+
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
 import {
   type default as UploaderInterface,
@@ -18,30 +20,35 @@ export default class extends BaseUploader implements UploaderInterface {
     }
 
     let progressStep = 0;
-    const interval = setInterval(() => {
+
+    const tick = () => {
       const progressEvent = new ProgressEvent('progress', { total: 1000, loaded: progressStep });
       request.onProgress?.(progressEvent);
       progressStep += 250;
 
-      if (progressStep === 1000) {
-        if (this.mode === 'success') {
-          request.onSuccess?.({
-            key: 'uploader/foo.png',
-            filename: 'Foo.png',
-            url: 'https://oss-components.upfluence.co/uploader/foo.png',
-            content_type: 'png',
-            size: 1000
-          });
-        } else {
-          request.onFailure?.({
-            payload: {}
-          });
-        }
-
-        clearInterval(interval);
-        this.mode = 'success';
+      if (progressStep < 1000) {
+        later(tick, 100);
+        return;
       }
-    }, 100);
+
+      if (this.mode === 'success') {
+        request.onSuccess?.({
+          key: 'uploader/foo.png',
+          filename: 'Foo.png',
+          url: 'https://oss-components.upfluence.co/uploader/foo.png',
+          content_type: 'png',
+          size: 1000
+        });
+      } else {
+        request.onFailure?.({
+          payload: {}
+        });
+      }
+
+      this.mode = 'success';
+    };
+
+    later(tick, 100);
   }
 
   get url(): string {
