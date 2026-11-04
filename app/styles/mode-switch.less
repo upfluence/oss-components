@@ -62,6 +62,14 @@
   &.mode-switch--plain {
     background-color: var(--color-gray-50);
   }
+
+  &.mode-switch--disabled {
+    opacity: 0.6;
+
+    label {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .mode-switch__background {

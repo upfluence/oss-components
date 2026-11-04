@@ -874,6 +874,12 @@
           @onSelect={{this.onChangeMode1}}
         />
         <OSS::ModeSwitch
+          @options={{this.modeSwitchOptions1}}
+          @selected={{this.modeSwitchSelected1}}
+          @onSelect={{this.onChangeMode1}}
+          @disabled={{true}}
+        />
+        <OSS::ModeSwitch
           @options={{this.modeSwitchOptions2}}
           @selected={{this.modeSwitchSelected2}}
           @onSelect={{this.onChangeMode2}}
@@ -912,13 +918,12 @@
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
       <OSS::Smart::Pill
-        @label="Pill"
         @icon="fad fa-badge-percent"
         @selected={{not this.selectedPill}}
         {{on "click" this.onPillClick}}
       />
       <OSS::Charger @label="Pill" @selected={{this.selectedPill}} {{on "click" this.onPillClick}} />
-      <OSS::Pill @label="Pill" @icon="fa-badge-percent" @selected={{not this.selectedPill}} @disabled={{true}} />
+      <OSS::Pill @label="azea" @icon="fa-bookmark" @selected={{not this.selectedPill}} @disabled={{true}} />
       <OSS::Pill @label="Pill" @selected={{this.selectedPill}} @disabled={{true}} />
     </div>
   </div>
