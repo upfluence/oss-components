@@ -38,6 +38,59 @@ module('Integration | Component | o-s-s/mode-switch', function (hooks) {
     assert.dom('[data-control-name="option2-input"]').isNotChecked();
   });
 
+  module('disabled argument', function () {
+    test('it disables options and prevents selection', async function (this: TestContext, assert) {
+      await render(hbs`<OSS::ModeSwitch @options={{this.options}} @onSelect={{this.onSelect}} @disabled={{true}} />`);
+
+      assert.dom('[data-control-name="option1-input"]').isDisabled();
+      assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '-1');
+
+      await click('[data-control-name="option2-label"]');
+      assert.notOk(this.onSelect.called);
+      assert.dom('[data-control-name="option1-input"]').isChecked();
+      assert.dom('[data-control-name="option2-input"]').isNotChecked();
+    });
+
+    test('it becomes actionable when disabled is turned off', async function (this: TestContext, assert) {
+      this.disabled = true;
+      await render(
+        hbs`<OSS::ModeSwitch @options={{this.options}} @onSelect={{this.onSelect}} @disabled={{this.disabled}} />`
+      );
+
+      assert.dom('[data-control-name="option1-input"]').isDisabled();
+      assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '-1');
+
+      this.set('disabled', false);
+
+      assert.dom('[data-control-name="option1-input"]').doesNotHaveAttribute('disabled');
+      assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '0');
+
+      await click('[data-control-name="option2-label"]');
+      assert.ok(this.onSelect.calledWith('option2'));
+      assert.dom('[data-control-name="option2-input"]').isChecked();
+    });
+
+    test('it prevents selection when disabled is turned on', async function (this: TestContext, assert) {
+      this.disabled = false;
+      await render(
+        hbs`<OSS::ModeSwitch @options={{this.options}} @onSelect={{this.onSelect}} @disabled={{this.disabled}} />`
+      );
+
+      assert.dom('[data-control-name="option1-input"]').doesNotHaveAttribute('disabled');
+      assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '0');
+
+      this.set('disabled', true);
+
+      assert.dom('[data-control-name="option1-input"]').isDisabled();
+      assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '-1');
+
+      await click('[data-control-name="option2-label"]');
+      assert.notOk(this.onSelect.called);
+      assert.dom('[data-control-name="option1-input"]').isChecked();
+      assert.dom('[data-control-name="option2-input"]').isNotChecked();
+    });
+  });
+
   module('selected option parameter', function () {
     test('it renders with option 1 as selected parameter', async function (assert) {
       await render(hbs`<OSS::ModeSwitch @options={{this.options}} @selected='option1' @onSelect={{this.onSelect}} />`);

@@ -5,12 +5,13 @@
       name={{this.guid}}
       id={{concat this.guid "-" option.key}}
       checked={{eq this.selectedOptionKey option.key}}
+      disabled={{@disabled}}
       {{on "change" (fn @onSelect option.key)}}
       data-control-name={{concat option.key "-input"}}
     />
     <label
       for={{concat this.guid "-" option.key}}
-      tabindex="0"
+      tabindex={{this.optionLabelTabIndex}}
       {{on "keydown" (fn this.onKeyDown option.key)}}
       data-control-name={{concat option.key "-label"}}
     >

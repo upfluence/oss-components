@@ -45,6 +45,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    disabled: {
+      description: 'Whether the switch is disabled',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
     size: {
       description: 'Changes the size of the switch',
       table: {
@@ -71,7 +81,7 @@ export default {
 };
 
 const Template = (args) => ({
-  template: hbs`<OSS::ModeSwitch @options={{this.options}} @selected={{this.selected}} @plain={{this.plain}} @size={{this.size}} @onSelect={{this.onSelect}} />`,
+  template: hbs`<OSS::ModeSwitch @options={{this.options}} @selected={{this.selected}} @plain={{this.plain}} @size={{this.size}} @disabled={{this.disabled}} @onSelect={{this.onSelect}} />`,
   context: { ...args, onSelect: action('onSelect') }
 });
 
@@ -83,5 +93,6 @@ Default.args = {
   ],
   selected: 'option1',
   plain: false,
+  disabled: false,
   size: undefined
 };

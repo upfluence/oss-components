@@ -103,6 +103,7 @@ export default class Visual extends Controller {
     }
   ];
   @tracked modeSwitchSelected1: string = 'default';
+  @tracked modeSwitchDisabled: boolean = true;
   modeSwitchOptions2: ModeSwitchOption[] = [
     { key: 'or', label: 'OR', skin: 'xtd-blue' },
     { key: 'and', label: 'AND', skin: 'xtd-violet', icon: 'fa-exclamation-circle' }

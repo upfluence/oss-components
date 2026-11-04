@@ -21,9 +21,12 @@ interface ModeSwitchComponentArgs {
   onSelect(key: string): void;
   plain?: boolean;
   size?: 'xs';
+  disabled?: boolean;
 }
 
 const DEFAULT_SKIN = 'primary';
+const FOCUSABLE_INDEX = '0';
+const NON_FOCUSABLE_INDEX = '-1';
 
 export default class ModeSwitchComponent extends Component<ModeSwitchComponentArgs> {
   containerDiv: HTMLElement = document.createElement('div');
@@ -42,6 +45,10 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
     return this.args.selected ?? this.args.options[0]!.key;
   }
 
+  get optionLabelTabIndex(): string {
+    return this.args.disabled ? NON_FOCUSABLE_INDEX : FOCUSABLE_INDEX;
+  }
+
   @action
   registerContainerDiv(container: HTMLElement): void {
     this.containerDiv = container;
@@ -55,6 +62,7 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
 
   @action
   onKeyDown(inputId: string, event: KeyboardEvent): void {
+    if (this.args.disabled) return;
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault();
     const inputElement = document.getElementById(`${this.guid}-${inputId}`) as HTMLInputElement;
@@ -70,6 +78,10 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
 
     if (this.args.size === 'xs') {
       classes.push('mode-switch--xs');
+    }
+
+    if (this.args.disabled) {
+      classes.push('mode-switch--disabled');
     }
 
     return classes.join(' ');
@@ -128,6 +140,5 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
       'transition',
       'left 0.25s ease, width 0.25s ease, background-color 0.25s ease'
     );
-    this.containerDiv.style.setProperty('transition', 'font-weight 0.25s ease, color 0.25s ease');
   }
 }
