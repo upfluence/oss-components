@@ -78864,12 +78864,13 @@ require('@ember/-internals/bootstrap')
         name={{this.guid}}
         id={{concat this.guid "-" option.key}}
         checked={{eq this.selectedOptionKey option.key}}
+        disabled={{@disabled}}
         {{on "change" (fn @onSelect option.key)}}
         data-control-name={{concat option.key "-input"}}
       />
       <label
         for={{concat this.guid "-" option.key}}
-        tabindex="0"
+        tabindex={{this.optionLabelTabIndex}}
         {{on "keydown" (fn this.onKeyDown option.key)}}
         data-control-name={{concat option.key "-label"}}
       >
@@ -78891,12 +78892,14 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "Txc+BxIy",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[16,5,[30,0,[\"computedStyles\"]]],[17,1],[4,[38,0],[[30,0,[\"registerContainerDiv\"]]],null],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,2]],null]],null],null,[[[1,\"    \"],[11,\"input\"],[16,3,[30,0,[\"guid\"]]],[16,1,[28,[37,3],[[30,0,[\"guid\"]],\"-\",[30,3,[\"key\"]]],null]],[16,\"checked\",[28,[37,4],[[30,0,[\"selectedOptionKey\"]],[30,3,[\"key\"]]],null]],[16,\"data-control-name\",[28,[37,3],[[30,3,[\"key\"]],\"-input\"],null]],[24,4,\"radio\"],[4,[38,5],[\"change\",[28,[37,6],[[30,4],[30,3,[\"key\"]]],null]],null],[12],[13],[1,\"\\n    \"],[11,\"label\"],[16,\"for\",[28,[37,3],[[30,0,[\"guid\"]],\"-\",[30,3,[\"key\"]]],null]],[24,\"tabindex\",\"0\"],[16,\"data-control-name\",[28,[37,3],[[30,3,[\"key\"]],\"-label\"],null]],[4,[38,5],[\"keydown\",[28,[37,6],[[30,0,[\"onKeyDown\"]],[30,3,[\"key\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,3,[\"icon\"]],[[[1,\"        \"],[8,[39,8],null,[[\"@style\",\"@icon\"],[[28,[37,9],[[30,3,[\"icon\"]]],null],[28,[37,10],[[30,3,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,3,[\"label\"]]],[1,\"\\n\"],[41,[30,3,[\"tag\"]],[[[1,\"        \"],[8,[39,11],null,[[\"@skin\",\"@plain\",\"@label\",\"@size\"],[[30,3,[\"tag\",\"skin\"]],[30,3,[\"tag\",\"plain\"]],[30,3,[\"tag\",\"label\"]],[30,3,[\"tag\",\"size\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[3]],null],[1,\"  \"],[11,0],[24,0,\"mode-switch__background\"],[4,[38,0],[[30,0,[\"registerBackgroundElement\"]]],null],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@options\",\"option\",\"@onSelect\"],false,[\"did-insert\",\"each\",\"-track-array\",\"concat\",\"eq\",\"on\",\"fn\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
+    "id": "CZIT3GeM",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[16,5,[30,0,[\"computedStyles\"]]],[17,1],[4,[38,0],[[30,0,[\"registerContainerDiv\"]]],null],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,2]],null]],null],null,[[[1,\"    \"],[11,\"input\"],[16,3,[30,0,[\"guid\"]]],[16,1,[28,[37,3],[[30,0,[\"guid\"]],\"-\",[30,3,[\"key\"]]],null]],[16,\"checked\",[28,[37,4],[[30,0,[\"selectedOptionKey\"]],[30,3,[\"key\"]]],null]],[16,\"disabled\",[30,4]],[16,\"data-control-name\",[28,[37,3],[[30,3,[\"key\"]],\"-input\"],null]],[24,4,\"radio\"],[4,[38,5],[\"change\",[28,[37,6],[[30,5],[30,3,[\"key\"]]],null]],null],[12],[13],[1,\"\\n    \"],[11,\"label\"],[16,\"for\",[28,[37,3],[[30,0,[\"guid\"]],\"-\",[30,3,[\"key\"]]],null]],[16,\"tabindex\",[30,0,[\"optionLabelTabIndex\"]]],[16,\"data-control-name\",[28,[37,3],[[30,3,[\"key\"]],\"-label\"],null]],[4,[38,5],[\"keydown\",[28,[37,6],[[30,0,[\"onKeyDown\"]],[30,3,[\"key\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,3,[\"icon\"]],[[[1,\"        \"],[8,[39,8],null,[[\"@style\",\"@icon\"],[[28,[37,9],[[30,3,[\"icon\"]]],null],[28,[37,10],[[30,3,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,3,[\"label\"]]],[1,\"\\n\"],[41,[30,3,[\"tag\"]],[[[1,\"        \"],[8,[39,11],null,[[\"@skin\",\"@plain\",\"@label\",\"@size\"],[[30,3,[\"tag\",\"skin\"]],[30,3,[\"tag\",\"plain\"]],[30,3,[\"tag\",\"label\"]],[30,3,[\"tag\",\"size\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[3]],null],[1,\"  \"],[11,0],[24,0,\"mode-switch__background\"],[4,[38,0],[[30,0,[\"registerBackgroundElement\"]]],null],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@options\",\"option\",\"@disabled\",\"@onSelect\"],false,[\"did-insert\",\"each\",\"-track-array\",\"concat\",\"eq\",\"on\",\"fn\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/mode-switch.hbs",
     "isStrictMode": false
   });
   const DEFAULT_SKIN = 'primary';
+  const FOCUSABLE_INDEX = '0';
+  const NON_FOCUSABLE_INDEX = '-1';
   let ModeSwitchComponent = _exports.default = (_class = class ModeSwitchComponent extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
@@ -78909,6 +78912,9 @@ require('@ember/-internals/bootstrap')
     get selectedOptionKey() {
       return this.args.selected ?? this.args.options[0].key;
     }
+    get optionLabelTabIndex() {
+      return this.args.disabled ? NON_FOCUSABLE_INDEX : FOCUSABLE_INDEX;
+    }
     registerContainerDiv(container) {
       this.containerDiv = container;
       this.containerStyles = getComputedStyle(this.containerDiv);
@@ -78917,6 +78923,7 @@ require('@ember/-internals/bootstrap')
       this.backgroundElement = backgroundDiv;
     }
     onKeyDown(inputId, event) {
+      if (this.args.disabled) return;
       if (event.key !== 'Enter' && event.key !== ' ') return;
       event.preventDefault();
       const inputElement = document.getElementById(`${this.guid}-${inputId}`);
@@ -78929,6 +78936,9 @@ require('@ember/-internals/bootstrap')
       }
       if (this.args.size === 'xs') {
         classes.push('mode-switch--xs');
+      }
+      if (this.args.disabled) {
+        classes.push('mode-switch--disabled');
       }
       return classes.join(' ');
     }
@@ -78959,7 +78969,6 @@ require('@ember/-internals/bootstrap')
     }
     addTransitionsStyle() {
       this.backgroundElement.style.setProperty('transition', 'left 0.25s ease, width 0.25s ease, background-color 0.25s ease');
-      this.containerDiv.style.setProperty('transition', 'font-weight 0.25s ease, color 0.25s ease');
     }
   }, (_applyDecoratedDescriptor(_class.prototype, "registerContainerDiv", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainerDiv"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerBackgroundElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerBackgroundElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onKeyDown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onKeyDown"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, ModeSwitchComponent);

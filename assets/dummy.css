@@ -9701,6 +9701,7 @@ For complete information visit: www.freakflagsprite.com
   border-radius: var(--mode-switch__border-radius);
   display: flex;
   gap: var(--spacing-px-6);
+  transition: font-weight 250ms ease, color 250ms ease, opacity 300ms ease-in-out;
 }
 .mode-switch input {
   visibility: hidden;
@@ -9740,6 +9741,12 @@ For complete information visit: www.freakflagsprite.com
 }
 .mode-switch.mode-switch--plain {
   background-color: var(--color-gray-50);
+}
+.mode-switch.mode-switch--disabled {
+  opacity: 0.6;
+}
+.mode-switch.mode-switch--disabled label {
+  cursor: not-allowed;
 }
 .mode-switch__background {
   height: 34px;

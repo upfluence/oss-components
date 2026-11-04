@@ -13880,6 +13880,69 @@ define("dummy/tests/integration/components/o-s-s/mode-switch-test", ["qunit", "e
       assert.dom('[data-control-name="option1-input"]').isChecked();
       assert.dom('[data-control-name="option2-input"]').isNotChecked();
     });
+    (0, _qunit.module)('disabled argument', function () {
+      (0, _qunit.test)('it disables options and prevents selection', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ModeSwitch @options={{this.options}} @onSelect={{this.onSelect}} @disabled={{true}} />
+        */
+        {
+          "id": "RAQa7SDC",
+          "block": "[[[8,[39,0],null,[[\"@options\",\"@onSelect\",\"@disabled\"],[[30,0,[\"options\"]],[30,0,[\"onSelect\"]],true]],null]],[],false,[\"o-s-s/mode-switch\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/mode-switch-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="option1-input"]').isDisabled();
+        assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '-1');
+        await (0, _testHelpers.click)('[data-control-name="option2-label"]');
+        assert.notOk(this.onSelect.called);
+        assert.dom('[data-control-name="option1-input"]').isChecked();
+        assert.dom('[data-control-name="option2-input"]').isNotChecked();
+      });
+      (0, _qunit.test)('it becomes actionable when disabled is turned off', async function (assert) {
+        this.disabled = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ModeSwitch @options={{this.options}} @onSelect={{this.onSelect}} @disabled={{this.disabled}} />
+        */
+        {
+          "id": "U62NW6ok",
+          "block": "[[[8,[39,0],null,[[\"@options\",\"@onSelect\",\"@disabled\"],[[30,0,[\"options\"]],[30,0,[\"onSelect\"]],[30,0,[\"disabled\"]]]],null]],[],false,[\"o-s-s/mode-switch\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/mode-switch-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="option1-input"]').isDisabled();
+        assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '-1');
+        this.set('disabled', false);
+        assert.dom('[data-control-name="option1-input"]').doesNotHaveAttribute('disabled');
+        assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '0');
+        await (0, _testHelpers.click)('[data-control-name="option2-label"]');
+        assert.ok(this.onSelect.calledWith('option2'));
+        assert.dom('[data-control-name="option2-input"]').isChecked();
+      });
+      (0, _qunit.test)('it prevents selection when disabled is turned on', async function (assert) {
+        this.disabled = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ModeSwitch @options={{this.options}} @onSelect={{this.onSelect}} @disabled={{this.disabled}} />
+        */
+        {
+          "id": "U62NW6ok",
+          "block": "[[[8,[39,0],null,[[\"@options\",\"@onSelect\",\"@disabled\"],[[30,0,[\"options\"]],[30,0,[\"onSelect\"]],[30,0,[\"disabled\"]]]],null]],[],false,[\"o-s-s/mode-switch\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/mode-switch-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="option1-input"]').doesNotHaveAttribute('disabled');
+        assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '0');
+        this.set('disabled', true);
+        assert.dom('[data-control-name="option1-input"]').isDisabled();
+        assert.dom('[data-control-name="option1-label"]').hasAttribute('tabindex', '-1');
+        await (0, _testHelpers.click)('[data-control-name="option2-label"]');
+        assert.notOk(this.onSelect.called);
+        assert.dom('[data-control-name="option1-input"]').isChecked();
+        assert.dom('[data-control-name="option2-input"]').isNotChecked();
+      });
+    });
     (0, _qunit.module)('selected option parameter', function () {
       (0, _qunit.test)('it renders with option 1 as selected parameter', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
