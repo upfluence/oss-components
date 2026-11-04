@@ -26020,10 +26020,10 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "sinon", "@upfluence/oss-components/test-support/services/uploader", "@upfluence/oss-components/test-support", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _sinon, _uploader, _testSupport2, _utils, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/upload-area-test", ["@ember/test-helpers", "ember-intl/test-support", "ember-qunit", "qunit", "sinon", "@upfluence/oss-components/test-support", "@upfluence/oss-components/test-support/services/uploader", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_testHelpers, _testSupport, _emberQunit, _qunit, _sinon, _testSupport2, _uploader, _utils, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"sinon",0,"@upfluence/oss-components/test-support/services/uploader",0,"@upfluence/oss-components/test-support",0,"@upfluence/oss-components/utils"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"ember-qunit",0,"qunit",0,"sinon",0,"@upfluence/oss-components/test-support",0,"@upfluence/oss-components/test-support/services/uploader",0,"@upfluence/oss-components/utils"eaimeta@70e063a35619d71f
   const file = new File([new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])], '1px.png', {
     type: 'image/png'
   });
@@ -26680,6 +26680,70 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         assert.dom('.oss-upload-item').exists({
           count: 1
         });
+      });
+    });
+    (0, _qunit.module)('on upload failure', function (hooks) {
+      hooks.beforeEach(function () {
+        this.mockUploader.mode = 'failure';
+        this.onUploadFailure = _sinon.default.stub();
+      });
+      (0, _qunit.test)('it displays an error toast and keeps the item in its error state', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @rules={{this.validationRules}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onUploadFailure={{this.onUploadFailure}} />
+              
+        */
+        {
+          "id": "rxb6HPbr",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@onUploadFailure\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onUploadFailure\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        await (0, _testHelpers.settled)();
+        assert.ok(this.toastErrorStub.calledOnceWithExactly(this.intl.t('oss-components.upload-area.errors.upload_failed.description'), this.intl.t('oss-components.upload-area.errors.upload_failed.title')));
+        assert.dom('.oss-upload-item').hasClass('oss-upload-item--errored');
+        assert.dom('[data-control-name="upload-item-try-again-button"]').exists();
+        assert.true(this.onUploadFailure.calledOnceWithExactly({
+          payload: {}
+        }));
+      });
+      (0, _qunit.test)('with multiple files, the index of the failed item is passed to @onUploadFailure', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::UploadArea
+                  @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
+                  @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+                  @onUploadFailure={{this.onUploadFailure}} />
+              
+        */
+        {
+          "id": "Eh+Gijak",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@multiple\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@onUploadFailure\"],[[30,0,[\"mockUploader\"]],true,[30,0,[\"validationRules\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onUploadFailure\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+          dataTransfer: {
+            files: [file]
+          }
+        });
+        await (0, _testHelpers.settled)();
+        assert.dom('.oss-upload-item').exists({
+          count: 1
+        });
+        assert.true(this.onUploadFailure.calledOnceWithExactly(0, {
+          payload: {}
+        }));
       });
     });
     (0, _qunit.module)('for @onHandleFileUpload', function (hooks) {

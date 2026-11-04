@@ -84162,6 +84162,7 @@ require('@ember/-internals/bootstrap')
       }
     }
     onUploadFailure(index, error) {
+      this.toast.error(this.intl.t('oss-components.upload-area.errors.upload_failed.description'), this.intl.t('oss-components.upload-area.errors.upload_failed.title'));
       if (this.multiple) {
         this.args.onUploadFailure?.(index, error);
       } else {
@@ -84416,9 +84417,11 @@ require('@ember/-internals/bootstrap')
     onProgress(event) {
       this.uploadProgress = Math.trunc(event.loaded / event.total * 100);
     }
-    performUpload() {
+    performUpload(event) {
+      event?.stopPropagation();
       if (this.request) {
         this.uploading = true;
+        this.error = undefined;
         this.args.uploader.upload(this.request, this.args.rules);
       }
     }
@@ -93724,7 +93727,11 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
             "title": "Unsupported format"
           },
           "server": "Upload failed, please try again",
-          "try_again": "Try again"
+          "try_again": "Try again",
+          "upload_failed": {
+            "description": "We couldn't upload your file. Please try again. If the problem persists, contact support.",
+            "title": "Upload failed"
+          }
         },
         "file_input_label": "Choose a file to upload",
         "tooltips": {

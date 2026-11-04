@@ -24012,14 +24012,14 @@ define("@upfluence/oss-components/test-support/register-assertions", ["exports",
     });
   }
 });
-define("@upfluence/oss-components/test-support/services/uploader", ["exports", "@upfluence/oss-components/services/base-uploader"], function (_exports, _baseUploader) {
+define("@upfluence/oss-components/test-support/services/uploader", ["exports", "@ember/runloop", "@upfluence/oss-components/services/base-uploader"], function (_exports, _runloop, _baseUploader) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/services/base-uploader"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/runloop",0,"@upfluence/oss-components/services/base-uploader"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -24035,31 +24035,33 @@ define("@upfluence/oss-components/test-support/services/uploader", ["exports", "
         return;
       }
       let progressStep = 0;
-      const interval = setInterval(() => {
+      const tick = () => {
         const progressEvent = new ProgressEvent('progress', {
           total: 1000,
           loaded: progressStep
         });
         request.onProgress?.(progressEvent);
         progressStep += 250;
-        if (progressStep === 1000) {
-          if (this.mode === 'success') {
-            request.onSuccess?.({
-              key: 'uploader/foo.png',
-              filename: 'Foo.png',
-              url: 'https://oss-components.upfluence.co/uploader/foo.png',
-              content_type: 'png',
-              size: 1000
-            });
-          } else {
-            request.onFailure?.({
-              payload: {}
-            });
-          }
-          clearInterval(interval);
-          this.mode = 'success';
+        if (progressStep < 1000) {
+          (0, _runloop.later)(tick, 100);
+          return;
         }
-      }, 100);
+        if (this.mode === 'success') {
+          request.onSuccess?.({
+            key: 'uploader/foo.png',
+            filename: 'Foo.png',
+            url: 'https://oss-components.upfluence.co/uploader/foo.png',
+            content_type: 'png',
+            size: 1000
+          });
+        } else {
+          request.onFailure?.({
+            payload: {}
+          });
+        }
+        this.mode = 'success';
+      };
+      (0, _runloop.later)(tick, 100);
     }
     get url() {
       return 'https://oss-components.upfluence.co';
