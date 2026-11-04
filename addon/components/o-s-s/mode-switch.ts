@@ -140,6 +140,5 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
       'transition',
       'left 0.25s ease, width 0.25s ease, background-color 0.25s ease'
     );
-    this.containerDiv.style.setProperty('transition', 'font-weight 0.25s ease, color 0.25s ease');
   }
 }

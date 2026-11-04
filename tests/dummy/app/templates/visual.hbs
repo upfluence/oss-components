@@ -877,7 +877,13 @@
           @options={{this.modeSwitchOptions1}}
           @selected={{this.modeSwitchSelected1}}
           @onSelect={{this.onChangeMode1}}
-          @disabled={{true}}
+          @disabled={{this.modeSwitchDisabled}}
+        />
+        Disabled
+        <OSS::ToggleSwitch
+          @value={{this.modeSwitchDisabled}}
+          @onChange={{fn (mut this.modeSwitchDisabled)}}
+          aria-label="Disable mode switch"
         />
         <OSS::ModeSwitch
           @options={{this.modeSwitchOptions2}}
@@ -918,12 +924,13 @@
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
       <OSS::Smart::Pill
+        @label="Pill"
         @icon="fad fa-badge-percent"
         @selected={{not this.selectedPill}}
         {{on "click" this.onPillClick}}
       />
       <OSS::Charger @label="Pill" @selected={{this.selectedPill}} {{on "click" this.onPillClick}} />
-      <OSS::Pill @label="azea" @icon="fa-bookmark" @selected={{not this.selectedPill}} @disabled={{true}} />
+      <OSS::Pill @label="Pill" @icon="fa-badge-percent" @selected={{not this.selectedPill}} @disabled={{true}} />
       <OSS::Pill @label="Pill" @selected={{this.selectedPill}} @disabled={{true}} />
     </div>
   </div>

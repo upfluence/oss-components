@@ -9,11 +9,11 @@ export interface OSSPillArgs {
 }
 
 export default class OSSPill<T extends OSSPillArgs> extends Component<T> {
-  // constructor(owner: unknown, args: OSSPillArgs) {
-  //   super(owner, args);
+  constructor(owner: unknown, args: OSSPillArgs) {
+    super(owner, args);
 
-  //   assert('[component][OSS::Pill] You must pass a @label argument.', args.label);
-  // }
+    assert('[component][OSS::Pill] You must pass a @label argument.', args.label);
+  }
 
   get computedClasses(): string {
     const computedClasses = ['oss-pill'];
