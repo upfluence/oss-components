@@ -2,15 +2,27 @@ import { getRootElement } from '@ember/test-helpers';
 
 const REQUIRED_MARKER_SELECTOR = 'span.font-color-error-500';
 
-function findRequiredMarker(element: Element): Element | null {
-  const marker = element.lastElementChild;
+function isTextOrElement(node: Node): boolean {
+  return node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE;
+}
 
-  return marker?.matches(REQUIRED_MARKER_SELECTOR) && marker.textContent === '*' ? marker : null;
+function isBlankText(node: Node): boolean {
+  return node.nodeType === Node.TEXT_NODE && (node.textContent ?? '').trim() === '';
+}
+
+function findRequiredMarker(element: Element): Element | null {
+  const lastNode = Array.from(element.childNodes)
+    .reverse()
+    .find((node) => isTextOrElement(node) && !isBlankText(node));
+
+  return lastNode instanceof Element && lastNode.matches(REQUIRED_MARKER_SELECTOR) && lastNode.textContent === '*'
+    ? lastNode
+    : null;
 }
 
 function extractLabelText(element: Element, marker: Element | null): string {
   return Array.from(element.childNodes)
-    .filter((node) => node !== marker)
+    .filter((node) => node !== marker && isTextOrElement(node))
     .map((node) => node.textContent ?? '')
     .join('')
     .replace(/\s+/g, ' ')

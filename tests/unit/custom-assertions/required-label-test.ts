@@ -24,6 +24,12 @@ module('Test Support | Custom Assertions | requiredLabel', function (hooks) {
       assert.requiredLabel('label', 'Name');
     });
 
+    test('it ignores HTML comments in the label', async function (this: TestContext, assert) {
+      await render(hbs`<label {{required-input}}><!-- explanation -->Name</label>`);
+
+      assert.requiredLabel('label', 'Name');
+    });
+
     test('it fails when the text differs', async function (this: TestContext, assert) {
       assert.expect(1);
       await render(hbs`<label {{required-input}}>Email</label>`);
@@ -58,6 +64,25 @@ module('Test Support | Custom Assertions | requiredLabel', function (hooks) {
         pushResultStub.calledOnceWithExactly({
           result: false,
           actual: { label: 'Name', required: false },
+          expected: { label: 'Name', required: true },
+          message: 'label is a required label with the text "Name"'
+        })
+      );
+    });
+
+    test('it fails when the asterisk precedes the text', async function (this: TestContext, assert) {
+      assert.expect(1);
+      await render(hbs`<label><span class="font-color-error-500">*</span>Name</label>`);
+
+      const pushResultStub = sinon.stub(assert, 'pushResult');
+
+      assert.requiredLabel('label', 'Name');
+      pushResultStub.restore();
+
+      assert.true(
+        pushResultStub.calledOnceWithExactly({
+          result: false,
+          actual: { label: '*Name', required: false },
           expected: { label: 'Name', required: true },
           message: 'label is a required label with the text "Name"'
         })
