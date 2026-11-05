@@ -1,11 +1,12 @@
 import { getRootElement } from '@ember/test-helpers';
+import type { SafeString } from '@ember/template/-private/handlebars';
 
 const REQUIRED_MARKER_SELECTOR = 'span.font-color-error-500';
 
 export interface FormFieldAssertions {
   isRequired(message?: string): void;
   isNotRequired(message?: string): void;
-  hasLabel(label: string, message?: string): void;
+  hasLabel(label: string | SafeString, message?: string): void;
 }
 
 function isTextOrElement(node: Node): boolean {
@@ -60,15 +61,16 @@ const assertion = function (this: Assert, selector: string): FormFieldAssertions
       pushRequiredResult(false, message ?? `${selector} is not a required field`);
     },
 
-    hasLabel: (label: string, message?: string): void => {
+    hasLabel: (label: string | SafeString, message?: string): void => {
+      const expected = label.toString();
       const labelElement = findLabel(selector);
       const actual = labelElement ? extractLabelText(labelElement) : null;
 
       this.pushResult({
-        result: actual === label,
+        result: actual === expected,
         actual,
-        expected: label,
-        message: message ?? `${selector} has the label "${label}"`
+        expected,
+        message: message ?? `${selector} has the label "${expected}"`
       });
     }
   };

@@ -58,7 +58,8 @@ Checks that the label does not end with that asterisk.
 
 ### hasLabel
 
-`hasLabel(label: string, message?: string)`
+`hasLabel(label: string | SafeString, message?: string)`
 
-Checks that the text of the label, without the asterisk, equals `label`. Whitespace is collapsed and trimmed, so
+Checks that the text of the label, without the asterisk, equals `label`. A `SafeString`, as returned by `this.intl.t`
+with `htmlSafe: true`, is compared through its string value. Whitespace is collapsed and trimmed, so
 `Email*`, `Email *` and a label written on several lines all match `Email`.

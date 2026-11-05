@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, type TestContext } from '@ember/test-helpers';
+import { htmlSafe } from '@ember/template';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -88,6 +89,12 @@ module('Test Support | Custom Assertions | formField', (hooks) => {
       `);
 
       assert.formField('.field').hasLabel('Name');
+    });
+
+    test('it passes when the expected label is a SafeString', async function (this: TestContext, assert) {
+      await render(hbs`<div class="field"><label {{required-input}}>Name</label><input /></div>`);
+
+      assert.formField('.field').hasLabel(htmlSafe('Name'));
     });
 
     test('it ignores HTML comments in the label', async function (this: TestContext, assert) {
