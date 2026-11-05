@@ -3,7 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, settled, triggerEvent, type TestContext } from '@ember/test-helpers';
 import { tracked } from '@glimmer/tracking';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 import sinon from 'sinon';
+import type { FormInstance } from '@upfluence/oss-components/services/form-manager';
+import { setupToast } from '@upfluence/oss-components/test-support';
 
 class FormVisibility {
   @tracked isVisible: boolean = true;
@@ -11,6 +14,8 @@ class FormVisibility {
 
 module('Integration | Component | o-s-s/form', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
+  setupToast(hooks);
 
   hooks.beforeEach(function () {
     this.formManager = this.owner.lookup('service:form-manager');
@@ -101,6 +106,64 @@ module('Integration | Component | o-s-s/form', function (hooks) {
       assert.deepEqual(this.formManager.formFeedbacks, {});
     });
   });
+
+  module('when the submitted form has errors', (hooks) => {
+    hooks.beforeEach(function (this: TestContext) {
+      this.onSetup = (formInstance: FormInstance): void => {
+        this.formInstance = formInstance;
+      };
+      this.validator = sinon
+        .stub()
+        .returns({ kind: 'blank', message: { type: 'error', value: 'This field is required.' } });
+    });
+
+    test('no toast is displayed when onSubmit does not call displayErrorsToast', async function (this: TestContext, assert) {
+      await renderFormWithField();
+
+      await triggerEvent('form', 'submit');
+
+      assert.true(this.toastErrorStub.notCalled);
+    });
+
+    test('the validation errors toast is displayed when onSubmit calls displayErrorsToast', async function (this: TestContext, assert) {
+      this.onSubmit = (): void => this.formInstance.displayErrorsToast();
+      await renderFormWithField();
+
+      await triggerEvent('form', 'submit');
+
+      assert.true(
+        this.toastErrorStub.calledOnceWithExactly(
+          this.intl.t('oss-components.forms.errors.toast.requirement.message'),
+          this.intl.t('oss-components.forms.errors.toast.requirement.title')
+        )
+      );
+    });
+
+    test('onSubmit can read getErrors to handle custom errors itself', async function (this: TestContext, assert) {
+      this.validator.returns({ kind: 'taken', message: { type: 'error', value: 'Name already taken.' } });
+      this.onSubmit = (): void => {
+        const { name } = this.formInstance.getErrors();
+        this.toastService.error(name.message.value, 'Name');
+      };
+      await renderFormWithField();
+
+      await triggerEvent('form', 'submit');
+
+      assert.true(this.toastErrorStub.calledOnceWithExactly('Name already taken.', 'Name'));
+    });
+  });
+
+  async function renderFormWithField(): Promise<void> {
+    return await render(
+      hbs`
+        <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
+          <:content>
+            <OSS::InputContainer @value="" {{register-form-field form="foo-id" fieldId="name" validator=this.validator validateOnBlur=false}} />
+          </:content>
+        </OSS::Form>
+      `
+    );
+  }
 
   async function renderRemovableForm(): Promise<void> {
     return await render(
