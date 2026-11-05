@@ -8,6 +8,8 @@
     {{#if @icon}}
       <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{/if}}
-    <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+    {{#if @label}}
+      <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+    {{/if}}
   </div>
 </div>
