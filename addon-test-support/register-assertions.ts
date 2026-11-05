@@ -1,9 +1,9 @@
 import tooltipAssertions from '@upfluence/oss-components/test-support/custom-assertions/tooltip';
 import infiniteSelectOptionAssertions from '@upfluence/oss-components/test-support/custom-assertions/infinite-select-option';
 import dcnAssertions from '@upfluence/oss-components/test-support/custom-assertions/dcn';
-import requiredLabelAssertions from '@upfluence/oss-components/test-support/custom-assertions/required-label';
+import formFieldAssertions from '@upfluence/oss-components/test-support/custom-assertions/form-field';
 
-const ASSERTIONS = [tooltipAssertions, infiniteSelectOptionAssertions, dcnAssertions, requiredLabelAssertions];
+const ASSERTIONS = [tooltipAssertions, infiniteSelectOptionAssertions, dcnAssertions, formFieldAssertions];
 
 export default function registerAssertions(assert: Assert) {
   ASSERTIONS.forEach((assertion) => {
