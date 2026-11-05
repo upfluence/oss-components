@@ -35,6 +35,9 @@ importers:
       broccoli-merge-trees:
         specifier: ^4.2.0
         version: 4.2.0
+      broccoli-plugin:
+        specifier: ^4.0.7
+        version: 4.0.7
       calculate-cache-key-for-tree:
         specifier: ^2.0.0
         version: 2.0.0
@@ -50,9 +53,6 @@ importers:
       ember-cli-htmlbars:
         specifier: ^6.3.0
         version: 6.3.0
-      ember-cli-ifa:
-        specifier: ^0.10.0
-        version: 0.10.0
       ember-cli-less:
         specifier: ^2.0.6
         version: 2.0.6
@@ -192,6 +192,12 @@ importers:
       babel-loader:
         specifier: ^8.1.0
         version: 8.3.0(@babel/core@7.23.9)(webpack@5.90.1)
+      broccoli:
+        specifier: ^3.5.2
+        version: 3.5.2
+      broccoli-asset-rev:
+        specifier: ^3.0.0
+        version: 3.0.0
       css-loader:
         specifier: ^5.2.7
         version: 5.2.7(webpack@5.90.1)
@@ -3117,6 +3123,12 @@ packages:
     resolution: {integrity: sha512-VRE+0PYAN4jQfkIq3GKRj4U/4UV9rVpLan5ll6fVYV4ziVg4OEfR5GUnILEg++QtR4xSaugRxCPU5XJLDy3bNQ==}
     engines: {node: '>=6'}
 
+  broccoli-asset-rev@3.0.0:
+    resolution: {integrity: sha512-gAHQZnwvtl74tGevUqGuWoyOdJUdMMv0TjGSMzbdyGImr9fZcnM6xmggDA8bUawrMto9NFi00ZtNUgA4dQiUBw==}
+
+  broccoli-asset-rewrite@2.0.0:
+    resolution: {integrity: sha512-dqhxdQpooNi7LHe8J9Jdxp6o3YPFWl4vQmint6zrsn2sVbOo+wpyiX3erUSt0IBtjNkAxqJjuvS375o2cLBHTA==}
+
   broccoli-babel-transpiler@7.8.1:
     resolution: {integrity: sha512-6IXBgfRt7HZ61g67ssBc6lBb3Smw3DPZ9dEYirgtvXWpRZ2A9M22nxy6opEwJDgDJzlu/bB7ToppW33OFkA1gA==}
     engines: {node: '>= 6'}
@@ -3153,6 +3165,9 @@ packages:
   broccoli-file-creator@2.1.1:
     resolution: {integrity: sha512-YpjOExWr92C5vhnK0kmD81kM7U09kdIRZk9w4ZDCDHuHXW+VE/x6AGEOQQW3loBQQ6Jk+k+TSm8dESy4uZsnjw==}
     engines: {node: ^4.5 || 6.* || >= 7.*}
+
+  broccoli-filter@1.3.0:
+    resolution: {integrity: sha512-VXJXw7eBfG82CFxaBDjYmyN7V72D4In2zwLVQJd/h3mBfF3CMdRTsv2L20lmRTtCv1sAHcB+LgMso90e/KYiLw==}
 
   broccoli-funnel-reducer@1.0.0:
     resolution: {integrity: sha512-SaOCEdh+wnt2jFUV2Qb32m7LXyElvFwW3NKNaEJyi5PGQNwxfqpkc0KI6AbQANKgdj/40U2UC0WuGThFwuEUaA==}
@@ -3845,6 +3860,9 @@ packages:
   copy-concurrently@1.0.5:
     resolution: {integrity: sha512-f2domd9fsVDFtaFcbaRZuYXwtdmnzqbADSwhSWYxYB/Q8zsdUUFMXVRwXGDMWmbEzAn1kdRrtI1T/KTFOL4X2A==}
 
+  copy-dereference@1.0.0:
+    resolution: {integrity: sha512-40TSLuhhbiKeszZhK9LfNdazC67Ue4kq/gGwN5sdxEUWPXTIMmKmGmgD9mPfNKVAeecEW+NfEIpBaZoACCQLLw==}
+
   copy-descriptor@0.1.1:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
     engines: {node: '>=0.10.0'}
@@ -4273,10 +4291,6 @@ packages:
   ember-cli-htmlbars@6.3.0:
     resolution: {integrity: sha512-N9Y80oZfcfWLsqickMfRd9YByVcTGyhYRnYQ2XVPVrp6jyUyOeRWmEAPh7ERSXpp8Ws4hr/JB9QVQrn/yZa+Ag==}
     engines: {node: 12.* || 14.* || >= 16}
-
-  ember-cli-ifa@0.10.0:
-    resolution: {integrity: sha512-qtX7WqX15sldqwDWfa2+o68yNtV1UhTyQtCddDh2WLioENer696ZkZlKh8QNSYUvY/DADWbmCphl9n8S9beQDw==}
-    engines: {node: 10.* || >= 12}
 
   ember-cli-inject-live-reload@2.1.0:
     resolution: {integrity: sha512-YV5wYRD5PJHmxaxaJt18u6LE6Y+wo455BnmcpN+hGNlChy2piM9/GMvYgTAz/8Vin8RJ5KekqP/w/NEaRndc/A==}
@@ -13235,6 +13249,23 @@ snapshots:
       broccoli-plugin: 1.3.1
       symlink-or-copy: 1.3.1
 
+  broccoli-asset-rev@3.0.0:
+    dependencies:
+      broccoli-asset-rewrite: 2.0.0
+      broccoli-filter: 1.3.0
+      broccoli-persistent-filter: 1.4.6
+      json-stable-stringify: 1.1.1
+      minimatch: 3.1.2
+      rsvp: 3.6.2
+    transitivePeerDependencies:
+      - supports-color
+
+  broccoli-asset-rewrite@2.0.0:
+    dependencies:
+      broccoli-filter: 1.3.0
+    transitivePeerDependencies:
+      - supports-color
+
   broccoli-babel-transpiler@7.8.1:
     dependencies:
       '@babel/core': 7.23.9
@@ -13344,6 +13375,20 @@ snapshots:
     dependencies:
       broccoli-plugin: 1.3.1
       mkdirp: 0.5.6
+
+  broccoli-filter@1.3.0:
+    dependencies:
+      broccoli-kitchen-sink-helpers: 0.3.1
+      broccoli-plugin: 1.3.1
+      copy-dereference: 1.0.0
+      debug: 2.6.9
+      mkdirp: 0.5.6
+      promise-map-series: 0.2.3
+      rsvp: 3.6.2
+      symlink-or-copy: 1.3.1
+      walk-sync: 0.3.4
+    transitivePeerDependencies:
+      - supports-color
 
   broccoli-funnel-reducer@1.0.0: {}
 
@@ -14123,6 +14168,8 @@ snapshots:
       rimraf: 2.7.1
       run-queue: 1.0.3
 
+  copy-dereference@1.0.0: {}
+
   copy-descriptor@0.1.1: {}
 
   copy-to-clipboard@3.3.3:
@@ -14745,12 +14792,6 @@ snapshots:
       semver: 7.6.0
       silent-error: 1.1.1
       walk-sync: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-
-  ember-cli-ifa@0.10.0:
-    dependencies:
-      ember-cli-babel: 7.26.11
     transitivePeerDependencies:
       - supports-color
 

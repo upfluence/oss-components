@@ -46,6 +46,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - name: asset-map-build
+            command: pnpm test:asset-map-build
           - name: current
             command: pnpm test:ember
           - name: next

@@ -26,6 +26,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test --silent -r dot",
+    "test:asset-map-build": "node --test tests/build/*-test.cjs",
     "test:ember-compatibility": "ember try:each",
     "test:coverage": "COVERAGE=true pnpm test:ember",
     "storybook": "start-storybook -p 6006 -s dist",
@@ -45,12 +46,12 @@
     "bootstrap": "^3.3.7",
     "broccoli-funnel": "^3.0.8",
     "broccoli-merge-trees": "^4.2.0",
+    "broccoli-plugin": "^4.0.7",
     "calculate-cache-key-for-tree": "^2.0.0",
     "dompurify": "^3.3.0",
     "ember-auto-import": "^2.7.2",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-htmlbars": "^6.3.0",
-    "ember-cli-ifa": "^0.10.0",
     "ember-cli-less": "^2.0.6",
     "ember-cli-typescript": "^5.3.0",
     "ember-intl": "^6.4.0",
@@ -102,6 +103,8 @@
     "@types/sinon": "^10.0.2",
     "@upfluence/w-conf": "^0.4.0",
     "babel-loader": "^8.1.0",
+    "broccoli-asset-rev": "^3.0.0",
+    "broccoli": "^3.5.2",
     "css-loader": "^5.2.7",
     "ember-cli": "~4.12.3",
     "ember-cli-code-coverage": "^3.0.0",
@@ -129,7 +132,7 @@
     "webpack": "5"
   },
   "engines": {
-    "node": "12.* || 14.* || >= 16"
+    "node": "20.* || 22.* || 24.*"
   },
   "ember": {
     "edition": "octane"
