@@ -18,9 +18,7 @@ function isBlankText(node: Node): boolean {
 }
 
 function findLabel(selector: string): Element | null {
-  const labels = getRootElement().querySelector(selector)?.querySelectorAll('label');
-
-  return labels?.length === 1 ? labels.item(0) : null;
+  return getRootElement().querySelector(selector);
 }
 
 function findRequiredMarker(label: Element): Element | null {
