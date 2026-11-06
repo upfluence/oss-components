@@ -1,13 +1,17 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { type TestContext } from '@ember/test-helpers';
+import { setupIntl } from 'ember-intl/test-support';
 import sinon from 'sinon';
 import type { Feedback } from '@upfluence/oss-components/services/form-manager';
+import { setupToast } from '@upfluence/oss-components/test-support';
 
 const FAKE_UUID = '1234-5678-9101-1121-3141-';
 
 module('Unit | Service | form-manager', function (hooks) {
   setupTest(hooks);
+  setupIntl(hooks);
+  setupToast(hooks);
 
   hooks.beforeEach(function () {
     this.randomUUIDStub = sinon.stub(window.crypto, 'randomUUID').returns(FAKE_UUID);
@@ -27,11 +31,11 @@ module('Unit | Service | form-manager', function (hooks) {
 
   module('#getInstance', function () {
     test('it returns a form instance', function (assert) {
-      assert.expect(5);
+      assert.expect(6);
       const instance = this.service.getInstance('test');
 
       assert.strictEqual(instance.id, 'test');
-      ['validateForm', 'validateField', 'getErrors', 'clearErrors'].forEach((method) => {
+      ['validateForm', 'validateField', 'getErrors', 'clearErrors', 'displayErrorsToast'].forEach((method) => {
         assert.strictEqual(typeof instance[method], 'function');
       });
     });
@@ -285,5 +289,86 @@ module('Unit | Service | form-manager', function (hooks) {
         assert.deepEqual(this.service.formFeedbacks['test'][field], feedback);
       });
     });
+
+    module('#displayErrorsToast', function () {
+      test('it displays the requirement toast when only blank errors are present', function (this: TestContext, assert) {
+        registerFieldFeedback(this, 'firstName', 'blank', 'error');
+        registerFieldFeedback(this, 'lastName', 'blank', 'error');
+        this.formInstance.validateForm();
+
+        this.formInstance.displayErrorsToast();
+
+        assert.true(
+          this.toastErrorStub.calledOnceWithExactly(
+            this.intl.t('oss-components.forms.errors.toast.requirement.message'),
+            this.intl.t('oss-components.forms.errors.toast.requirement.title')
+          )
+        );
+      });
+
+      test('it displays the format toast when only invalid errors are present', function (this: TestContext, assert) {
+        registerFieldFeedback(this, 'email', 'invalid', 'error');
+        this.formInstance.validateForm();
+
+        this.formInstance.displayErrorsToast();
+
+        assert.true(
+          this.toastErrorStub.calledOnceWithExactly(
+            this.intl.t('oss-components.forms.errors.toast.format.message'),
+            this.intl.t('oss-components.forms.errors.toast.format.title')
+          )
+        );
+      });
+
+      test('it displays the format and requirement toast when blank and invalid errors are present', function (this: TestContext, assert) {
+        registerFieldFeedback(this, 'firstName', 'blank', 'error');
+        registerFieldFeedback(this, 'email', 'invalid', 'error');
+        this.formInstance.validateForm();
+
+        this.formInstance.displayErrorsToast();
+
+        assert.true(
+          this.toastErrorStub.calledOnceWithExactly(
+            this.intl.t('oss-components.forms.errors.toast.format_and_requirement.message'),
+            this.intl.t('oss-components.forms.errors.toast.format_and_requirement.title')
+          )
+        );
+      });
+
+      test('it does not display any toast when the form has no error', function (this: TestContext, assert) {
+        this.formInstance.validateForm();
+
+        this.formInstance.displayErrorsToast();
+
+        assert.true(this.toastErrorStub.notCalled);
+      });
+
+      test('it does not display any toast when only other error kinds are present', function (this: TestContext, assert) {
+        registerFieldFeedback(this, 'apiKey', 'api-error', 'error');
+        this.formInstance.validateForm();
+
+        this.formInstance.displayErrorsToast();
+
+        assert.true(this.toastErrorStub.notCalled);
+      });
+
+      test('it ignores blank feedbacks that are not errors', function (this: TestContext, assert) {
+        registerFieldFeedback(this, 'nickname', 'blank', 'warning');
+        this.formInstance.validateForm();
+
+        this.formInstance.displayErrorsToast();
+
+        assert.true(this.toastErrorStub.notCalled);
+      });
+    });
   });
+
+  function registerFieldFeedback(
+    context: TestContext,
+    field: string,
+    kind: string,
+    type: Feedback['message']['type']
+  ): void {
+    context.service.registerField('test', field, sinon.stub().returns({ kind, message: { type, value: kind } }));
+  }
 });
