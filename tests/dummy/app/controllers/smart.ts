@@ -1,3 +1,4 @@
+import type Owner from '@ember/owner';
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { next } from '@ember/runloop';
@@ -64,7 +65,7 @@ export default class Smart extends Controller {
   @tracked multilinePlaceholder: string = 'Small placeholder\nwith multiple\nlines';
   @tracked numberValue: number = 42;
 
-  constructor(owner: object) {
+  constructor(owner: Owner) {
     super(owner);
     this.addContentToFeedbackComponent();
   }

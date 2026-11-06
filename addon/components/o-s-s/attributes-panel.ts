@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import type Owner from '@ember/owner';
 
 export type Mode = 'view' | 'edition';
 
@@ -20,7 +21,7 @@ export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs
   @tracked modeSelected: Mode = this.args.initialMode ?? 'view';
   @tracked isLoading: boolean = false;
 
-  constructor(owner: unknown, args: OSSAttributesPanelArgs) {
+  constructor(owner: Owner, args: OSSAttributesPanelArgs) {
     super(owner, args);
 
     assert('[component][OSS::AttributesPanel] The @title parameter is mandatory', typeof args.title === 'string');

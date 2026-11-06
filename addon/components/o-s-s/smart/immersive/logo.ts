@@ -4,6 +4,7 @@ import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
+import type Owner from '@ember/owner';
 
 const FALLBACK_SVG_URL = '/@upfluence/oss-components/assets/images/picture-frame.svg';
 type size = 'sm' | 'md' | 'lg';
@@ -24,7 +25,7 @@ export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartIm
   @tracked declare element: HTMLElement;
   fallbackSvgUrl = FALLBACK_SVG_URL;
 
-  constructor(owner: unknown, args: OSSSmartImmersiveLogoArgs) {
+  constructor(owner: Owner, args: OSSSmartImmersiveLogoArgs) {
     super(owner, args);
 
     if (!args.url && args.icon) {

@@ -1,8 +1,5 @@
 import { setComponentTemplate } from '@ember/component';
-import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
-
-import type { IntlService } from 'ember-intl';
 
 interface StorybookArgs {
   story: {
@@ -13,15 +10,7 @@ interface StorybookArgs {
 }
 
 export default class StorybookComponent extends Component<StorybookArgs> {
-  @service declare intl: IntlService;
-
-  constructor(owner: any, args: StorybookArgs) {
-    super(owner, args);
-
-    this.intl.setLocale('en-us');
-  }
-
-  get storyComponent() {
+  get storyComponent(): any {
     class StoryComponent extends Component {}
 
     Object.keys(this.storyComponentArgs).forEach((key) => {

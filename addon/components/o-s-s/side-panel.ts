@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { run } from '@ember/runloop';
+import type Owner from '@ember/owner';
 
 interface OssSidePanelArgs {
   visible: boolean;
@@ -16,7 +17,7 @@ export default class OssSidePanel extends Component<OssSidePanelArgs> {
   @tracked showReturnButton: boolean = false;
   declare initialTarget: HTMLElement | null;
 
-  constructor(owner: unknown, args: OssSidePanelArgs) {
+  constructor(owner: Owner, args: OssSidePanelArgs) {
     super(owner, args);
 
     assert('[component][OSS::SidePanel] The onClose function is mandatory', args.onClose);

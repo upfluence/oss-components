@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { isBlank } from '@ember/utils';
+import type Owner from '@ember/owner';
 
 export const extractCSSVars = (): string[] => {
   return Array.from(document.styleSheets)
@@ -31,7 +32,7 @@ export default class OSSIllustration extends Component<OSSIllustrationArgs> {
   @tracked preloaded: boolean = false;
   @tracked svgDocument: SVGSVGElement | null = null;
 
-  constructor(owner: unknown, args: OSSIllustrationArgs) {
+  constructor(owner: Owner, args: OSSIllustrationArgs) {
     super(owner, args);
     this.fetchAndPatchSVG();
   }

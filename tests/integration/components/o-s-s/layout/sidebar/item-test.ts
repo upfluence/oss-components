@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, find, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import type RouterService from '@ember/routing/router-service';
 import sinon from 'sinon';
 
 module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
@@ -107,7 +108,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     });
 
     test('when the item is clicked with a link, it redirects to the linked route', async function (assert) {
-      const router = this.owner.lookup('service:router');
+      const router = this.owner.lookup('service:router') as RouterService;
       await render(
         hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}}/>`
       );

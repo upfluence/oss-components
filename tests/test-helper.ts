@@ -3,7 +3,8 @@ import config from 'dummy/config/environment';
 import { setApplication } from '@ember/test-helpers';
 import * as QUnit from 'qunit';
 import { setup } from 'qunit-dom';
-import { start } from 'ember-qunit';
+import { loadTests } from 'ember-qunit/test-loader';
+import { start, setupEmberOnerrorValidation } from 'ember-qunit';
 import 'qunit-dom';
 
 import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
@@ -18,6 +19,8 @@ QUnit.done(async () => {
 
 setApplication(Application.create(config.APP));
 
+setupEmberOnerrorValidation();
+loadTests();
 start();
 
 declare module '@ember/test-helpers' {

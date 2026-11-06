@@ -3,6 +3,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import { isSafeString } from '@upfluence/oss-components/utils';
+import type Owner from '@ember/owner';
 
 interface TogglableSectionArgs {
   title: string | ReturnType<typeof htmlSafe>;
@@ -18,7 +19,7 @@ interface TogglableSectionArgs {
 }
 
 export default class extends Component<TogglableSectionArgs> {
-  constructor(owner: unknown, args: TogglableSectionArgs) {
+  constructor(owner: Owner, args: TogglableSectionArgs) {
     super(owner, args);
 
     assert(

@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { helper } from '@ember/component/helper';
 import { action } from '@ember/object';
 

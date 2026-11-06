@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
 import type { SidebarItemTag } from '@upfluence/oss-components/components/o-s-s/layout/sidebar/item';
+import type Owner from '@ember/owner';
 
 export type GroupItem = {
   icon?: string;
@@ -41,7 +42,7 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
 
   declare triggerElement: HTMLElement;
 
-  constructor(owner: unknown, args: OSSLayoutSidebarGroupComponentSignature) {
+  constructor(owner: Owner, args: OSSLayoutSidebarGroupComponentSignature) {
     super(owner, args);
 
     if (this.collapsible) this.collapsed = false;

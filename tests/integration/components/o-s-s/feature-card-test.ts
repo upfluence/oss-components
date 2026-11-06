@@ -7,7 +7,7 @@ import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/feature-card', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.title = this.intl.t('Audience & content insights', { htmlSafe: true });
