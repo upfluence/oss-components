@@ -446,6 +446,10 @@
           <OSS::Smart::Pill @label="Text" @selected={{this.selectedPillTwo}} @loading={{this.pillLoading}} />
           <OSS::Button @label="Toggle loading" {{on "click" this.togglePillLoading}} />
         </div>
+        <div class="fx-row fx-xalign-start fx-gap-px-10">
+          <OSS::Smart::Pill @icon="fa-bookmark" @selected={{false}} @loading={{false}} />
+          <OSS::Smart::Pill @icon="fas fa-bookmark" @selected={{true}} @loading={{false}} />
+        </div>
       </div>
     </div>
 
