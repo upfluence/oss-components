@@ -79787,6 +79787,9 @@ require('@ember/-internals/bootstrap')
   class OSSPill extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
+      this.validateArgs(args);
+    }
+    validateArgs(args) {
       (true && !(args.label) && (0, _debug.assert)('[component][OSS::Pill] You must pass a @label argument.', args.label));
     }
     get computedClasses() {
@@ -82537,7 +82540,7 @@ require('@ember/-internals/bootstrap')
   }), _applyDecoratedDescriptor(_class.prototype, "handleUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartNumberInput);
 });
-;define("@upfluence/oss-components/components/o-s-s/smart/pill", ["exports", "@ember/component", "@glimmer/tracking", "@upfluence/oss-components/components/o-s-s/pill", "@ember/object", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/template-factory"], function (_exports, _component, _tracking, _pill, _object, _runSmartGradientAnimation, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/smart/pill", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@upfluence/oss-components/components/o-s-s/pill", "@ember/template-factory"], function (_exports, _component, _debug, _object, _tracking, _runSmartGradientAnimation, _pill, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -82545,7 +82548,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/tracking",0,"@upfluence/oss-components/components/o-s-s/pill",0,"@ember/object",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@upfluence/oss-components/components/o-s-s/pill",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -82564,13 +82567,15 @@ require('@ember/-internals/bootstrap')
       {{#if @icon}}
         <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{/if}}
-      <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+      {{#if @label}}
+        <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+      {{/if}}
     </div>
   </div>
   */
   {
-    "id": "nDOBqy+5",
-    "block": "[[[11,0],[24,0,\"oss-smart-pill-container\"],[17,1],[4,[38,0],[[30,0,[\"registerElement\"]]],null],[4,[38,1],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,2]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"computedClasses\"]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,3],[[24,0,\"icon\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,1],[15,0,[29,[\"label \",[52,[30,2],\"loading-animation\"]]]],[12],[1,[30,4]],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@icon\",\"@label\"],false,[\"did-insert\",\"did-update\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "TsXskh3w",
+    "block": "[[[11,0],[24,0,\"oss-smart-pill-container\"],[17,1],[4,[38,0],[[30,0,[\"registerElement\"]]],null],[4,[38,1],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,2]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"computedClasses\"]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,3],[[24,0,\"icon\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,4],[[[1,\"      \"],[10,1],[15,0,[29,[\"label \",[52,[30,2],\"loading-animation\"]]]],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@icon\",\"@label\"],false,[\"did-insert\",\"did-update\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/smart/pill.hbs",
     "isStrictMode": false
   });
@@ -82579,6 +82584,9 @@ require('@ember/-internals/bootstrap')
       super(...arguments);
       _initializerDefineProperty(this, "element", _descriptor, this);
     }
+    validateArgs(args) {
+      (true && !(args.label || args.icon) && (0, _debug.assert)('[component][OSS::Smart::Pill] You must pass a @label or an @icon argument.', args.label || args.icon));
+    }
     get computedClasses() {
       const computedClasses = ['oss-smart-pill'];
       if (this.args.selected) {
@@ -82586,6 +82594,9 @@ require('@ember/-internals/bootstrap')
       }
       if (this.args.disabled) {
         computedClasses.push('oss-smart-pill--disabled');
+      }
+      if (this.args.icon && !this.args.label) {
+        computedClasses.push('oss-smart-pill--icon-only');
       }
       return computedClasses.join(' ');
     }

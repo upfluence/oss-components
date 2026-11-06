@@ -22423,6 +22423,34 @@ define("dummy/tests/integration/components/o-s-s/smart/pill-test", ["qunit", "em
       }));
       assert.dom('.icon.fa-gift').exists();
     });
+    (0, _qunit.test)('it renders as an icon-only circle when only @icon is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @icon="fa-bookmark" />
+      */
+      {
+        "id": "1u9Wzj+X",
+        "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fa-bookmark\"]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-pill').hasClass('oss-smart-pill--icon-only');
+      assert.dom('.icon.fa-bookmark').exists();
+      assert.dom('.label').doesNotExist();
+    });
+    (0, _qunit.test)('it does not render the icon-only style when a @label is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" @icon="fa-bookmark" />
+      */
+      {
+        "id": "z6JUYU3N",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@icon\"],[\"Pill\",\"fa-bookmark\"]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-pill').doesNotHaveClass('oss-smart-pill--icon-only');
+    });
     (0, _qunit.test)('it renders the corresponding style when the component is selected', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*

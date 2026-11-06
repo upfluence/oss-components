@@ -12734,11 +12734,14 @@ a.upf-btn--sm {
   padding: var(--spacing-px-9) var(--spacing-px-12);
   transition: all 0.25s ease-in-out;
 }
+.oss-smart-pill-container .oss-smart-pill:not(.oss-smart-pill--icon-only) .label,
+.oss-smart-pill-container .oss-smart-pill:not(.oss-smart-pill--icon-only) .icon {
+  font-weight: normal;
+}
 .oss-smart-pill-container .oss-smart-pill .label,
 .oss-smart-pill-container .oss-smart-pill .icon {
   color: var(--color-gray-600);
   font-size: var(--font-size-sm);
-  font-weight: normal;
   padding: 0;
 }
 .oss-smart-pill-container .oss-smart-pill:not(.oss-smart-pill--disabled):hover {
