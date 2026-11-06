@@ -3,6 +3,7 @@
 /// <reference path="./custom-assertions/tooltip.ts" preserve="true" />
 /// <reference path="./custom-assertions/infinite-select-option.ts" preserve="true" />
 /// <reference path="./custom-assertions/dcn.ts" preserve="true" />
+/// <reference path="./custom-assertions/form-field.ts" preserve="true" />
 /* eslint-enable @typescript-eslint/triple-slash-reference */
 import tooltipAssertions from '@upfluence/oss-components/test-support/custom-assertions/tooltip';
 import infiniteSelectOptionAssertions from '@upfluence/oss-components/test-support/custom-assertions/infinite-select-option';

@@ -1,5 +1,5 @@
 import { getRootElement } from '@ember/test-helpers';
-import type { SafeString } from '@ember/template/-private/handlebars';
+import type { SafeString } from '@ember/template';
 
 const REQUIRED_MARKER_SELECTOR = 'span.font-color-error-500';
 

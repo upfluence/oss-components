@@ -10,7 +10,7 @@ const FAKE_UUID = '1234-5678-9101-1121-3141-';
 
 module('Unit | Service | form-manager', function (hooks) {
   setupTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   setupToast(hooks);
 
   hooks.beforeEach(function () {
