@@ -47,7 +47,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     needs: [lint, tests]
-    if: contains(github.ref, 'refs/tags/v')
+    if: contains(github.ref, 'refs/tags/v') && !contains(github.ref, '-')
     timeout-minutes: 10
     steps:
       - uses: webfactory/ssh-agent@v0.5.0
