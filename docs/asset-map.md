@@ -30,7 +30,7 @@ return injectAssetMap(app.toTree(), {
 });
 ```
 
-The utility requires Node 16.7+ (`fs.cpSync`); the plugin-web pilot uses Node 20. An explicit manifest path avoids ambiguity between broccoli-asset-rev's fingerprinting passes. Default fingerprinted asset-map filenames are also supported: the final manifest is identified through references to earlier manifests, not directory order.
+The utility runs on the Node versions listed in this package's `engines` (20, 22 and 24). An explicit manifest path avoids ambiguity between broccoli-asset-rev's fingerprinting passes. Default fingerprinted asset-map filenames are also supported: the final manifest is identified through references to earlier manifests, not directory order.
 
 Add this marker to `app/index.html` and `tests/index.html`:
 

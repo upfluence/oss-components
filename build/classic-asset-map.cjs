@@ -57,6 +57,18 @@ function readManifest(directory, fingerprint) {
   return final[0].manifest;
 }
 
+// fs.cpSync ignores `dereference` for nested symlinks on Node 22.17+ and 24 (nodejs/node#59168) and copies them
+// as symlinks. Copy by hand so the output never links back into the (cached) input tree.
+function copyTree(source, destination) {
+  fs.mkdirSync(destination, { recursive: true });
+  for (const entry of fs.readdirSync(source)) {
+    const from = path.join(source, entry);
+    const to = path.join(destination, entry);
+    if (fs.statSync(from).isDirectory()) copyTree(from, to);
+    else fs.copyFileSync(from, to);
+  }
+}
+
 class AssetMapInjection extends Plugin {
   constructor(input, { fingerprint = {}, rootURL = '/', htmlPaths = ['index.html', 'tests/index.html'] } = {}) {
     super([input], { annotation: 'Inject consumer asset map', persistentOutput: false });
@@ -74,7 +86,7 @@ class AssetMapInjection extends Plugin {
     const manifest = enabled ? readManifest(input, this.fingerprint) : { assets: {}, prepend: '' };
     const payload = encodeURIComponent(JSON.stringify({ ...manifest, enabled, rootURL: this.rootURL }));
 
-    fs.cpSync(input, this.outputPath, { recursive: true, dereference: true });
+    copyTree(input, this.outputPath);
     let injected = 0;
     for (const relative of this.htmlPaths) {
       const file = path.join(this.outputPath, relative);

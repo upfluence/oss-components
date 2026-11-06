@@ -134,6 +134,34 @@ test('rebuilds inject the new manifest, not stale data', async (t) => {
   assert.notEqual(manifestAt(builder.outputPath).assets[appAsset], before);
 });
 
+function symlinksIn(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isSymbolicLink()) return [entryPath];
+    return entry.isDirectory() ? symlinksIn(entryPath) : [];
+  });
+}
+
+test('never writes through symlinked directories into cached upstream trees', async (t) => {
+  // merge-trees symlinks a directory that exists in a single input, so tests/ is a link into `source`.
+  const source = fixture(t, { 'assets/app.js': 'before' });
+  const extra = fs.mkdtempSync(path.join(os.tmpdir(), 'upfluence-asset-map-extra-'));
+  t.after(() => fs.rmSync(extra, { recursive: true, force: true }));
+  fs.writeFileSync(path.join(extra, 'robots.txt'), 'ok');
+  const builder = new Builder(
+    injectAssetMap(mergeTrees([source, extra], { overwrite: true }), { fingerprint: { enabled: false } })
+  );
+  t.after(() => builder.cleanup());
+  await builder.build();
+  assert.deepEqual(symlinksIn(builder.outputPath), [], 'the output tree contains real files only');
+  assert.equal(fs.readFileSync(path.join(source, 'index.html'), 'utf8'), html);
+  assert.equal(fs.readFileSync(path.join(source, 'tests/index.html'), 'utf8'), html);
+  fs.writeFileSync(path.join(source, 'assets/app.js'), 'after');
+  await builder.build();
+  assert.deepEqual(manifestAt(builder.outputPath, 'tests/index.html'), manifestAt(builder.outputPath));
+  assert.equal(fs.readFileSync(path.join(source, 'tests/index.html'), 'utf8'), html);
+});
+
 test('preserves symlink-backed cached HTML across non-HTML rebuilds', async (t) => {
   const source = fixture(t, { 'assets/app.js': 'before' });
   const input = fixture(t);
