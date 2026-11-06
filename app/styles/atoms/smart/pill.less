@@ -11,11 +11,17 @@
     padding: var(--spacing-px-9) var(--spacing-px-12);
     transition: all 0.25s ease-in-out;
 
+    &:not(.oss-smart-pill--icon-only) {
+      .label,
+      .icon {
+        font-weight: normal;
+      }
+    }
+
     .label,
     .icon {
       color: var(--color-gray-600);
       font-size: var(--font-size-sm);
-      font-weight: normal;
       padding: 0;
     }
 

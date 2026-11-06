@@ -76,10 +76,13 @@ const defaultArgs = {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::Smart::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} @loading={{this.loading}} />
+      <OSS::Smart::Pill @label={{this.label}} @icon={{this.icon}} @selected={{this.selected}} @disabled={{this.disabled}} @loading={{this.loading}} />
   `,
   context: args
 });
 
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = defaultArgs;
+
+export const IconOnly = DefaultUsageTemplate.bind({});
+IconOnly.args = { ...defaultArgs, label: undefined, icon: 'far fa-bookmark' };

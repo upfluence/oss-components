@@ -13,6 +13,10 @@ export default class OSSPill<T extends OSSPillArgs> extends Component<T> {
   constructor(owner: Owner, args: OSSPillArgs) {
     super(owner, args);
 
+    this.validateArgs(args);
+  }
+
+  protected validateArgs(args: OSSPillArgs): void {
     assert('[component][OSS::Pill] You must pass a @label argument.', args.label);
   }
 
