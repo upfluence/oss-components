@@ -18,7 +18,7 @@
 
 ## Compatibility
 
-- Ember 3.28 and 4.12; classic apps require ember-auto-import 2 and Webpack 5.
+- Ember 6.12; classic apps require ember-auto-import 2 and Webpack 5.
 - Node 20, 22, or 24.
 
 ## Installation and styles

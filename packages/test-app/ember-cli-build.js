@@ -18,7 +18,11 @@ module.exports = function (defaults) {
       prepend: process.env.CDN_URL || ''
     },
     lessOptions: { paths: [path.join(ossRoot, 'node_modules'), 'node_modules'] },
-    autoImport: { watchDependencies: ['@upfluence/oss-components'] },
+    autoImport: {
+      watchDependencies: ['@upfluence/oss-components'],
+      // Sinon's Node entry needs the `util` polyfill webpack 5 no longer provides; its ESM build is self-contained.
+      webpack: { resolve: { alias: { sinon$: 'sinon/pkg/sinon-esm.js' } } }
+    },
     'ember-cli-babel': { enableTypeScriptTransform: true },
     trees: {
       public: mergeTrees([
