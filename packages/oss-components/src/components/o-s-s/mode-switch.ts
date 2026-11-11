@@ -27,8 +27,6 @@ interface ModeSwitchComponentArgs {
 }
 
 const DEFAULT_SKIN = 'primary';
-const FOCUSABLE_INDEX = '0';
-const NON_FOCUSABLE_INDEX = '-1';
 
 export default class ModeSwitchComponent extends Component<ModeSwitchComponentArgs> {
   containerDiv: HTMLElement = document.createElement('div');
@@ -45,10 +43,6 @@ export default class ModeSwitchComponent extends Component<ModeSwitchComponentAr
 
   get selectedOptionKey(): string {
     return this.args.selected ?? this.args.options[0]!.key;
-  }
-
-  get optionLabelTabIndex(): string {
-    return this.args.disabled ? NON_FOCUSABLE_INDEX : FOCUSABLE_INDEX;
   }
 
   @action
