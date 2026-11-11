@@ -1,7 +1,9 @@
 <div
   class="oss-smart__feedback {{this.currentStateClass}}"
   role={{if this.showChevron "button"}}
+  tabindex={{if this.showChevron "0"}}
   {{on "click" this.toggle}}
+  {{on "keydown" this.onKeyDown}}
   ...attributes
 >
   <OSS::Smart::Blob @loading={{@loading}} />
