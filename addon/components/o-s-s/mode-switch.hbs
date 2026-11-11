@@ -11,7 +11,7 @@
     />
     <label
       for={{concat this.guid "-" option.key}}
-      tabindex={{this.optionLabelTabIndex}}
+      tabindex={{if @disabled "-1" "0"}}
       {{on "keydown" (fn this.onKeyDown option.key)}}
       data-control-name={{concat option.key "-label"}}
     >
