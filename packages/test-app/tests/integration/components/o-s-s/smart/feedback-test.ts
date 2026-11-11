@@ -1,4 +1,4 @@
-import { click, render, settled, waitFor } from '@ember/test-helpers';
+import { click, render, settled, triggerKeyEvent, waitFor } from '@ember/test-helpers';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
@@ -154,6 +154,7 @@ module('Integration | Component | o-s-s/smart/feedback', function (hooks) {
       await render(hbs`<OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />`);
 
       assert.dom('.oss-smart__feedback').doesNotHaveAttribute('role');
+      assert.dom('.oss-smart__feedback').doesNotHaveAttribute('tabindex');
     });
 
     test('clicking short feedback does not expand it', async function (assert) {
@@ -188,6 +189,7 @@ module('Integration | Component | o-s-s/smart/feedback', function (hooks) {
       await render(hbs`<OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />`);
 
       assert.dom('.oss-smart__feedback').hasAttribute('role', 'button');
+      assert.dom('.oss-smart__feedback').hasAttribute('tabindex', '0');
     });
 
     test('clicking a truncated feedback expands it and flips the chevron up', async function (assert) {
@@ -198,6 +200,19 @@ module('Integration | Component | o-s-s/smart/feedback', function (hooks) {
 
       assert.dom('.oss-smart__feedback').doesNotHaveClass('oss-smart__feedback--collapsed');
       assert.dom('[data-control-name="oss-smart-feedback-chevron"]').hasClass('fa-chevron-up');
+    });
+
+    test('Enter and Space toggle a truncated feedback', async function (assert) {
+      this.content = [{ text: LONG_TEXT }];
+
+      await render(hbs`<OSS::Smart::Feedback @loading={{false}} @content={{this.content}} />`);
+      await triggerKeyEvent('.oss-smart__feedback', 'keydown', 'Enter');
+
+      assert.dom('.oss-smart__feedback').doesNotHaveClass('oss-smart__feedback--collapsed');
+
+      await triggerKeyEvent('.oss-smart__feedback', 'keydown', ' ');
+
+      assert.dom('.oss-smart__feedback').hasClass('oss-smart__feedback--collapsed');
     });
 
     test('clicking twice collapses it again', async function (assert) {
