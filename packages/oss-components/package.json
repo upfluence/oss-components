@@ -66,6 +66,7 @@
     "babel-plugin-ember-template-compilation": "^2.2.1",
     "broccoli": "^3.5.2",
     "broccoli-asset-rev": "^3.0.0",
+    "broccoli-merge-trees": "^4.2.0",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-code-coverage": "^3.1.0",
     "ember-cli-htmlbars": "^7.0.1",
