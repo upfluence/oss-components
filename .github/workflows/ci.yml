@@ -10,7 +10,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_VERSION: '20'
+  NODE_VERSION: '24'
   FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
@@ -42,6 +42,7 @@ jobs:
     uses: upfluence/actions/.github/workflows/any-js-ember-test.yml@master
     secrets: inherit
     with:
+      node-version: '24'
       test-variants: |
         [{ "name": "default", "command": "pnpm test:ember" }]
   build:
