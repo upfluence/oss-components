@@ -1,7 +1,9 @@
-import Service from '@ember/service';
+import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
 import { type FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import type ToastService from '@upfluence/oss-components/services/toast';
+import type { IntlService } from 'ember-intl';
 
 export type FormInstanceId = string;
 export type FormInstance = {
@@ -11,13 +13,28 @@ export type FormInstance = {
   getErrors(): ValidationFeedbacks;
   clearErrors(field?: string): void;
   setFieldFeedback(field: string, feedback: Feedback): void;
+  displayErrorsToast(): void;
 };
 export type Feedback = { kind: string; message: FeedbackMessage };
 export type Validator = () => Feedback | undefined;
 export type Validations = Record<string, Validator>;
 export type ValidationFeedbacks = Record<string, Feedback>;
+export type ErrorsToastKey = 'requirement' | 'format' | 'format_and_requirement';
+
+function errorsToastKey(errors: ValidationFeedbacks): ErrorsToastKey | undefined {
+  const kinds = new Set(Object.values(errors).map((feedback) => feedback.kind));
+
+  if (kinds.has('blank') && kinds.has('invalid')) return 'format_and_requirement';
+  if (kinds.has('blank')) return 'requirement';
+  if (kinds.has('invalid')) return 'format';
+
+  return undefined;
+}
 
 export default class FormManager extends Service {
+  @service declare intl: IntlService;
+  @service declare toast: ToastService;
+
   formValidators: Record<FormInstanceId, Validations> = {};
 
   @tracked formFeedbacks: Record<FormInstanceId, ValidationFeedbacks> = {};
@@ -33,7 +50,8 @@ export default class FormManager extends Service {
       validateField: (field: string): boolean => this.validateField(id, field),
       getErrors: (): ValidationFeedbacks => this.getFieldErrors(id),
       clearErrors: (field: string) => this.clearErrors(id, field),
-      setFieldFeedback: (field: string, feedback: Feedback): void => this.setFieldFeedback(id, field, feedback)
+      setFieldFeedback: (field: string, feedback: Feedback): void => this.setFieldFeedback(id, field, feedback),
+      displayErrorsToast: (): void => this.displayErrorsToast(id)
     };
   }
 
@@ -113,6 +131,17 @@ export default class FormManager extends Service {
 
       return acc;
     }, {});
+  }
+
+  private displayErrorsToast(id: string): void {
+    const toastKey = errorsToastKey(this.getFieldErrors(id));
+
+    if (!toastKey) return;
+
+    this.toast.error(
+      this.intl.t(`oss-components.forms.errors.toast.${toastKey}.message`),
+      this.intl.t(`oss-components.forms.errors.toast.${toastKey}.title`)
+    );
   }
 
   private clearErrors(id: string, field: string): void {

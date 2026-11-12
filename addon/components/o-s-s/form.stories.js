@@ -29,7 +29,7 @@ export default {
     docs: {
       description: {
         component:
-          'A form component that integrates with the FormManager service for validation and form state management. Provides form instance management and validation on submit.'
+          'A form component that integrates with the FormManager service for validation and form state management. Provides form instance management and validation on submit. When `onSubmit` receives `isValid = false`, call `formInstance.displayErrorsToast()` to show the validation error toast matching the error kinds: `blank` (required fields), `invalid` (format) or both.'
       }
     }
   }

@@ -24,6 +24,20 @@ module('Integration | Component | o-s-s/smart/pill', function (hooks) {
     assert.dom('.icon.fa-gift').exists();
   });
 
+  test('it renders as an icon-only circle when only @icon is provided', async function (assert) {
+    await render(hbs`<OSS::Smart::Pill @icon="fa-bookmark" />`);
+
+    assert.dom('.oss-smart-pill').hasClass('oss-smart-pill--icon-only');
+    assert.dom('.icon.fa-bookmark').exists();
+    assert.dom('.label').doesNotExist();
+  });
+
+  test('it does not render the icon-only style when a @label is provided', async function (assert) {
+    await render(hbs`<OSS::Smart::Pill @label="Pill" @icon="fa-bookmark" />`);
+
+    assert.dom('.oss-smart-pill').doesNotHaveClass('oss-smart-pill--icon-only');
+  });
+
   test('it renders the corresponding style when the component is selected', async function (assert) {
     await render(hbs`<OSS::Smart::Pill @label="Pill" @selected={{true}} />`);
 

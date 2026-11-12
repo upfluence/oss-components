@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Custom Assertions/Form Field"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Form Field Assertions
+
+It's now possible to use `assert.formField('my-selector')` in your tests to check a form field: whether its label is
+marked as required by the `required-input` modifier, and the text of that label.
+
+## Usage
+
+The selector targets the label element of the field.
+
+```handlebars
+<div class='fx-col fx-gap-px-6'>
+  <label {{required-input}} data-control-name='my-form-email-label'>{{t 'my_form.email'}}</label>
+  <OSS::InputContainer @value={{this.email}} />
+</div>
+```
+
+```typescript
+const EMAIL_LABEL_SELECTOR = '[data-control-name="my-form-email-label"]';
+
+assert.formField(EMAIL_LABEL_SELECTOR).isRequired();
+assert.formField(EMAIL_LABEL_SELECTOR).hasLabel(this.intl.t('my_form.email'));
+```
+
+## assert.formField(selector)
+
+`formField(selector: string)`
+
+| Name     | Description                                                                 |
+| -------- | --------------------------------------------------------------------------- |
+| selector | Selector of the label element of the field, scoped to the test root element |
+
+The label can be any element, such as a `<label>` or a `<span>`. Every assertion fails when it does not exist.
+
+## Available assertions
+
+### isRequired
+
+`isRequired(message?: string)`
+
+Checks that the label ends with the asterisk added by `required-input` (`<span class="font-color-error-500">*</span>`).
+
+### isNotRequired
+
+`isNotRequired(message?: string)`
+
+Checks that the label does not end with that asterisk.
+
+### hasLabel
+
+`hasLabel(label: string | SafeString, message?: string)`
+
+Checks that the text of the label, without the asterisk, equals `label`. A `SafeString`, as returned by `this.intl.t`
+with `htmlSafe: true`, is compared through its string value. Whitespace is collapsed and trimmed, so
+`Email*`, `Email *` and a label written on several lines all match `Email`.
