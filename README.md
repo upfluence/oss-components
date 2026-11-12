@@ -1,21 +1,30 @@
-# Upfluence OSS Components
+<div align="center">
+  <img src=".github/assets/logo.svg" width="96" height="96" alt="">
+  <h1>@upfluence/oss-components</h1>
+  <p>This addon hosts branded components, following the OSS framework, for use in our projects.</p>
 
-This project hosts a bunch of branded (following the OSS framework)
-components for usage in our projects.
+[![ci](https://github.com/upfluence/oss-components/actions/workflows/ci.yml/badge.svg)](https://github.com/upfluence/oss-components/actions/workflows/ci.yml)
+[![Coverage](https://sonarqube.upfluence.co/api/project_badges/measure?project=oss-components&metric=coverage&token=sqb_aca5da52bb5343d80618b453f40f77c534a000fa)](https://sonarqube.upfluence.co/dashboard?id=oss-components)
+[![Maintainability Rating](https://sonarqube.upfluence.co/api/project_badges/measure?project=oss-components&metric=sqale_rating&token=sqb_aca5da52bb5343d80618b453f40f77c534a000fa)](https://sonarqube.upfluence.co/dashboard?id=oss-components)
+[![Quality Gate Status](https://sonarqube.upfluence.co/api/project_badges/measure?project=oss-components&metric=alert_status&token=sqb_aca5da52bb5343d80618b453f40f77c534a000fa)](https://sonarqube.upfluence.co/dashboard?id=oss-components)
+[![Code Smells](https://sonarqube.upfluence.co/api/project_badges/measure?project=oss-components&metric=code_smells&token=sqb_aca5da52bb5343d80618b453f40f77c534a000fa)](https://sonarqube.upfluence.co/dashboard?id=oss-components)
 
-[Short description of the addon.]
+[Compatibility](#compatibility) •
+[Installation](#installation) •
+[Running / Development](#running--development) •
+[Adding it to a project](#adding-it-to-a-project)
+
+</div>
 
 ## Compatibility
 
----
+- Ember.js v6.12 or above
+- Node.js v24 or above
+- pnpm 10
 
-- Ember.js v3.28 or above
-- Ember CLI v3.28 or above
-- Node.js v20 or above
+Apps on Ember.js below 6.12 should stay on `3.x`.
 
 ## Installation
-
----
 
 As any NPM package, you can install it via:
 `pnpm add @upfluence/oss-components`
@@ -28,7 +37,8 @@ and its custom components.
 It's an Ember app, so we assume you have all set up as that's our
 frontend stack anyway.
 
-- `ember server`
+- `make install`
+- `pnpm start`
 - Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Adding it to a project
