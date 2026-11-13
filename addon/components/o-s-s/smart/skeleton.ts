@@ -3,13 +3,14 @@ import type { OSSSkeletonArgs } from '../skeleton';
 import OSSSkeleton from '../skeleton';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
+import type Owner from '@ember/owner';
 
 interface OSSSmartSkeletonArgs extends OSSSkeletonArgs {}
 
 const MIN_HEIGHT = 10;
 
 export default class OSSSmartSkeleton extends OSSSkeleton<OSSSmartSkeletonArgs> {
-  constructor(owner: unknown, args: OSSSmartSkeletonArgs) {
+  constructor(owner: Owner, args: OSSSmartSkeletonArgs) {
     super(owner, args, true);
 
     if (this.args.direction) {

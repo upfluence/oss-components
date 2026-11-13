@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import { isBlank } from '@ember/utils';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import type { IntlService } from 'ember-intl';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';

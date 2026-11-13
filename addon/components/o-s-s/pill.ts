@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
+import type Owner from '@ember/owner';
 
 export interface OSSPillArgs {
   label: string;
@@ -9,7 +10,7 @@ export interface OSSPillArgs {
 }
 
 export default class OSSPill<T extends OSSPillArgs> extends Component<T> {
-  constructor(owner: unknown, args: OSSPillArgs) {
+  constructor(owner: Owner, args: OSSPillArgs) {
     super(owner, args);
 
     this.validateArgs(args);

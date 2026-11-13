@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
+import type Owner from '@ember/owner';
 
 export type SkinType = 'default' | 'primary' | 'success' | 'danger';
 
@@ -26,7 +27,7 @@ interface OSSChipArgs {
 }
 
 export default class OSSChip extends Component<OSSChipArgs> {
-  constructor(owner: unknown, args: OSSChipArgs) {
+  constructor(owner: Owner, args: OSSChipArgs) {
     super(owner, args);
 
     assert(

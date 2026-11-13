@@ -2,12 +2,11 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { render } from '@ember/test-helpers';
-import triggerEvent from '@ember/test-helpers/dom/trigger-event';
+import { render, triggerEvent } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/attribute/text', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   module('Default behavior', function () {
     module('Render conditions', function () {

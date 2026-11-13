@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
+import type Owner from '@ember/owner';
 
 interface OSSAttributeTextArgs {
   label: string;
@@ -10,7 +11,7 @@ interface OSSAttributeTextArgs {
 }
 
 export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
-  constructor(owner: unknown, args: OSSAttributeTextArgs) {
+  constructor(owner: Owner, args: OSSAttributeTextArgs) {
     super(owner, args);
     assert('[component][OSS::Attribute::Text] @label is required', typeof args.label === 'string');
   }

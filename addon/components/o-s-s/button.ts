@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 
 export type SkinType =
   | 'default'
@@ -83,7 +84,7 @@ export interface OSSButtonArgs {
   iconUrl?: string;
   suffixIcon?: string;
   label?: string;
-  theme?: string;
+  theme?: ThemeType;
   square?: boolean;
   countDown?: {
     callback: () => void;
@@ -98,7 +99,7 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
   @tracked intervalState: boolean = false;
   @tracked counterTimeLeft: number = 0;
 
-  constructor(owner: unknown, args: OSSButtonArgs, preventDefaultAssertions?: boolean) {
+  constructor(owner: Owner, args: OSSButtonArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
 
     if (preventDefaultAssertions) return;
@@ -127,7 +128,7 @@ export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
     return SizeDefinition[this.args.size as SizeType];
   }
 
-  get theme() {
+  get theme(): ThemeType {
     if (!this.args.theme || !Object.keys(ThemeDefinition).includes(this.args.theme)) {
       return 'light';
     }

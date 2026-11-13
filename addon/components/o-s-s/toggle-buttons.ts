@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import type Owner from '@ember/owner';
 
 export type Toggle = {
   value: string;
@@ -17,7 +18,7 @@ export interface OSSToggleButtonsArgs {
 }
 
 export default class OSSToggleButtons<T extends OSSToggleButtonsArgs> extends Component<T> {
-  constructor(owner: unknown, args: OSSToggleButtonsArgs, preventDefaultAssertions?: boolean) {
+  constructor(owner: Owner, args: OSSToggleButtonsArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
 
     if (preventDefaultAssertions) return;

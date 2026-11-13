@@ -1,9 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, triggerKeyEvent, waitFor } from '@ember/test-helpers';
+import { render, setupOnerror, triggerKeyEvent, waitFor, click } from '@ember/test-helpers';
 import sinon from 'sinon';
-import click from '@ember/test-helpers/dom/click';
 import EmberObject from '@ember/object';
 
 module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
@@ -117,7 +116,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
       test('When Modal A is closed, Modal B is displayed', async function (assert) {
         this.helper = EmberObject.create({
           displayModalA: true
-        });
+        } as object);
         await render(
           hbs`
           {{#if this.helper.displayModalA}}
@@ -158,7 +157,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
           displayModalA: true,
           displayModalB: true,
           displayModalC: true
-        });
+        } as object);
         await render(
           hbs`
             {{#if this.helper.displayModalA}}

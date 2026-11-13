@@ -10,6 +10,7 @@ import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 
 import OSSCurrencyInput, { type Currency, type OSSCurrencyInputArgs } from '../../currency-input';
+import type Owner from '@ember/owner';
 
 interface OSSSmartImmersiveCurrencyInputArgs extends OSSCurrencyInputArgs {
   loading: boolean;
@@ -23,7 +24,7 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
 
   @tracked declare element: HTMLElement;
 
-  constructor(owner: unknown, args: OSSCurrencyInputArgs) {
+  constructor(owner: Owner, args: OSSCurrencyInputArgs) {
     super(owner, args, true);
 
     assert(

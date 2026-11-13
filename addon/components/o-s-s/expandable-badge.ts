@@ -3,6 +3,7 @@ import OSSBadge, { SizeDefinition, SkinDefinition, type OSSBadgeArgs, type SizeT
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 import { next } from '@ember/runloop';
+import type Owner from '@ember/owner';
 
 interface OSSExpandableBadgeComponentSignature extends OSSBadgeArgs {
   expandedLabel: string;
@@ -14,7 +15,7 @@ interface OSSExpandableBadgeComponentSignature extends OSSBadgeArgs {
 export default class OSSExpandableBadgeComponent extends OSSBadge<OSSExpandableBadgeComponentSignature> {
   @tracked expanded: boolean = false;
 
-  constructor(owner: unknown, args: OSSExpandableBadgeComponentSignature) {
+  constructor(owner: Owner, args: OSSExpandableBadgeComponentSignature) {
     super(owner, args, true);
 
     const contentArguments = [args.icon, args.image, args.flag, args.text].filter((arg: string) => arg);

@@ -7,7 +7,7 @@ import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/context-menu', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   hooks.beforeEach(function () {
     this.label = 'Open menu';

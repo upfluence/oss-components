@@ -15,7 +15,7 @@ import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
 
 module('Integration | Component | o-s-s/completion-badge', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::CompletionBadge @icon="fas fa-check" />`);

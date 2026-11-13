@@ -3,6 +3,7 @@ import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
 import { isSafeString } from '@upfluence/oss-components/utils';
+import type Owner from '@ember/owner';
 
 interface OSSEmptyStateComponentSignature {
   badgeIcon?: string;
@@ -14,7 +15,7 @@ interface OSSEmptyStateComponentSignature {
 const ALLOWED_SIZES: string[] = ['sm', 'md'];
 
 export default class OSSEmptyStateComponent extends Component<OSSEmptyStateComponentSignature> {
-  constructor(owner: unknown, args: OSSEmptyStateComponentSignature) {
+  constructor(owner: Owner, args: OSSEmptyStateComponentSignature) {
     super(owner, args);
 
     assert(

@@ -2,9 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { set } from '@ember/object';
-import { click, render } from '@ember/test-helpers';
-import settled from '@ember/test-helpers/settled';
-import setupOnerror from '@ember/test-helpers/setup-onerror';
+import { click, render, settled, setupOnerror } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) {

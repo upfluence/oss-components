@@ -7,7 +7,7 @@ import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/power-select', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
 
   const onSearch = sinon.stub();
   const onChange = sinon.stub();
@@ -428,7 +428,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
           <:option-item as |item|>
             {{item}}
           </:option-item>
-        </OSS::PowerSelect />
+        </OSS::PowerSelect>
       `);
 
       assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--error');

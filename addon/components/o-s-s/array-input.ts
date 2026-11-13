@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import type Owner from '@ember/owner';
 
 interface OSSArrayInputArgs {
   values?: string[];
@@ -19,7 +20,7 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
   @tracked currentValue = '';
   @tracked items: string[] = [];
 
-  constructor(owner: unknown, args: OSSArrayInputArgs) {
+  constructor(owner: Owner, args: OSSArrayInputArgs) {
     super(owner, args);
     if (this.args.values) {
       this.items = this.args.values;

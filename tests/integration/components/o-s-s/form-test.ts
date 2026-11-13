@@ -14,7 +14,7 @@ class FormVisibility {
 
 module('Integration | Component | o-s-s/form', function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks);
+  setupIntl(hooks, 'en-us');
   setupToast(hooks);
 
   hooks.beforeEach(function () {
