@@ -1,5 +1,25 @@
 'use strict';
 
+define("dummy/tests/helpers/index", ["exports", "ember-qunit"], function (_exports, _emberQunit) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.setupApplicationTest = setupApplicationTest;
+  _exports.setupRenderingTest = setupRenderingTest;
+  _exports.setupTest = setupTest;
+  0; //eaimeta@70e063a35619d71f0,"ember-qunit"eaimeta@70e063a35619d71f
+  function setupApplicationTest(hooks, options) {
+    (0, _emberQunit.setupApplicationTest)(hooks, options);
+  }
+  function setupRenderingTest(hooks, options) {
+    (0, _emberQunit.setupRenderingTest)(hooks, options);
+  }
+  function setupTest(hooks, options) {
+    (0, _emberQunit.setupTest)(hooks, options);
+  }
+});
 define("dummy/tests/integration/components/modifiers/enable-input-autofocus-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 
