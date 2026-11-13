@@ -22,6 +22,8 @@
 - Node.js v24 or above
 - pnpm 10
 
+Required peer dependency: `ember-source` `^6.12.0`.
+
 Apps on Ember.js below 6.12 should stay on `3.x`.
 
 ## Installation
