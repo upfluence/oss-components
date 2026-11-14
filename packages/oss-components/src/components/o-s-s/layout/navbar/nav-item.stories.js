@@ -56,5 +56,7 @@ const defaultArgs = {
   active: false
 };
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs
+};

@@ -106,8 +106,10 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
+};
 
 const PrefixUsageTemplate = (args) => ({
   template: hbs`
@@ -121,8 +123,10 @@ const PrefixUsageTemplate = (args) => ({
   context: args
 });
 
-export const PrefixUsage = PrefixUsageTemplate.bind({});
-PrefixUsage.args = defaultArgs;
+export const PrefixUsage = {
+  render: PrefixUsageTemplate,
+  args: defaultArgs
+};
 
 const SuffixUsageTemplate = (args) => ({
   template: hbs`
@@ -136,5 +140,7 @@ const SuffixUsageTemplate = (args) => ({
   context: args
 });
 
-export const SuffixUsage = SuffixUsageTemplate.bind({});
-SuffixUsage.args = defaultArgs;
+export const SuffixUsage = {
+  render: SuffixUsageTemplate,
+  args: defaultArgs
+};

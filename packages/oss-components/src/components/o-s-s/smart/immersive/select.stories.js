@@ -172,38 +172,42 @@ const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
   };
 };
 
-export const Select = TemplateSingle.bind({});
+export const Select = {
+  render: TemplateSingle,
 
-Select.args = {
-  placeholder: 'Placeholder',
-  values: [{ value: 'step 1' }],
-  loading: false,
-  multiple: false,
-  hideCheckboxes: false,
-  searchEnabled: true,
-  items: [
-    { value: 'step 1', label: 'Step 1' },
-    { value: 'step 2', label: 'Step 2' },
-    { value: 'step 3', label: 'Step 3' }
-  ],
-  onSearch: fn(),
-  onChange: fn()
+  args: {
+    placeholder: 'Placeholder',
+    values: [{ value: 'step 1' }],
+    loading: false,
+    multiple: false,
+    hideCheckboxes: false,
+    searchEnabled: true,
+    items: [
+      { value: 'step 1', label: 'Step 1' },
+      { value: 'step 2', label: 'Step 2' },
+      { value: 'step 3', label: 'Step 3' }
+    ],
+    onSearch: fn(),
+    onChange: fn()
+  }
 };
 
-export const Multiple = Template.bind({});
+export const Multiple = {
+  render: Template,
 
-Multiple.args = {
-  placeholder: 'Placeholder',
-  values: [{ value: 'step 1' }, { value: 'step 2' }],
-  loading: false,
-  multiple: true,
-  hideCheckboxes: false,
-  searchEnabled: true,
-  items: [
-    { value: 'step 1', label: 'Step 1' },
-    { value: 'step 2', label: 'Step 2' },
-    { value: 'step 3', label: 'Step 3' }
-  ],
-  onSearch: fn(),
-  onChange: fn()
+  args: {
+    placeholder: 'Placeholder',
+    values: [{ value: 'step 1' }, { value: 'step 2' }],
+    loading: false,
+    multiple: true,
+    hideCheckboxes: false,
+    searchEnabled: true,
+    items: [
+      { value: 'step 1', label: 'Step 1' },
+      { value: 'step 2', label: 'Step 2' },
+      { value: 'step 3', label: 'Step 3' }
+    ],
+    onSearch: fn(),
+    onChange: fn()
+  }
 };

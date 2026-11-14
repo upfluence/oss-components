@@ -161,30 +161,44 @@ const CustomLoadingStatesTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const CustomContent = CustomContentTemplate.bind({});
-CustomContent.args = {
-  ...defaultArgs
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
 };
 
-export const SearchDisabled = DefaultUsageTemplate.bind({});
-SearchDisabled.args = {
-  ...defaultArgs,
-  onSearch: undefined
+export const CustomContent = {
+  render: CustomContentTemplate,
+
+  args: {
+    ...defaultArgs
+  }
 };
 
-export const LoadingState = DefaultUsageTemplate.bind({});
-LoadingState.args = {
-  ...defaultArgs,
-  loading: true,
-  initialLoad: false
+export const SearchDisabled = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    onSearch: undefined
+  }
 };
 
-export const CustomLoadingState = CustomLoadingStatesTemplate.bind({});
-CustomLoadingState.args = {
-  ...defaultArgs,
-  loading: true,
-  initialLoad: false
+export const LoadingState = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    loading: true,
+    initialLoad: false
+  }
+};
+
+export const CustomLoadingState = {
+  render: CustomLoadingStatesTemplate,
+
+  args: {
+    ...defaultArgs,
+    loading: true,
+    initialLoad: false
+  }
 };

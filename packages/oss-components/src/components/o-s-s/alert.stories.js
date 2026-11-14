@@ -103,8 +103,12 @@ const ExtraContentTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const UsageExtraContent = ExtraContentTemplate.bind({});
-UsageExtraContent.args = defaultArgs;
+export const UsageExtraContent = {
+  render: ExtraContentTemplate,
+  args: defaultArgs
+};

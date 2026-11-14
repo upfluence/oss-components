@@ -178,11 +178,17 @@ const WithoutToggleTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithActionsNamedBlock = WithActionsNamedBlockTemplate.bind({});
-WithActionsNamedBlock.args = defaultArgs;
+export const WithActionsNamedBlock = {
+  render: WithActionsNamedBlockTemplate,
+  args: defaultArgs
+};
 
-export const WithoutToggle = WithoutToggleTemplate.bind({});
-WithoutToggle.args = defaultArgs;
+export const WithoutToggle = {
+  render: WithoutToggleTemplate,
+  args: defaultArgs
+};

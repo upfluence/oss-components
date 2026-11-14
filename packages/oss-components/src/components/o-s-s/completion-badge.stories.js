@@ -112,20 +112,29 @@ const Template = (args) => ({
   context: args
 });
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-volume-up' }
+export const WithIcon = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ icon: 'fas fa-volume-up' }
+  }
 };
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: '/@upfluence/oss-components/assets/images/no-image.svg' }
+export const WithImage = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ image: '/@upfluence/oss-components/assets/images/no-image.svg' }
+  }
 };
 
-export const WithText = Template.bind({});
-WithText.args = {
-  ...defaultArgs,
-  ...{ text: '2x' }
+export const WithText = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ text: '2x' }
+  }
 };

@@ -85,10 +85,14 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  placement: 'bottom',
-  offset: null,
-  width: null,
-  maxHeight: null
+
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    placement: 'bottom',
+    offset: null,
+    width: null,
+    maxHeight: null
+  }
 };

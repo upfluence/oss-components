@@ -131,17 +131,25 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const WithError = DefaultUsageTemplate.bind({});
-WithError.args = {
-  ...defaultArgs,
-  hasError: true
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
 };
 
-export const WithErrorMessage = DefaultUsageTemplate.bind({});
-WithErrorMessage.args = {
-  ...defaultArgs,
-  errorMessage: 'This field is required'
+export const WithError = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    hasError: true
+  }
+};
+
+export const WithErrorMessage = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    errorMessage: 'This field is required'
+  }
 };

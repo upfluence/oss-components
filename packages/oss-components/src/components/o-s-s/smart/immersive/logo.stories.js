@@ -116,38 +116,53 @@ const Template = ({ iconName, iconColor, ...rest }) => {
   };
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  iconName: 'rabbit',
-  iconColor: 'orange',
-  url: undefined,
-  editable: false,
-  loading: false,
-  size: 'md',
-  hasError: false,
-  onEdit: fn()
+export const Default = {
+  render: Template,
+
+  args: {
+    iconName: 'rabbit',
+    iconColor: 'orange',
+    url: undefined,
+    editable: false,
+    loading: false,
+    size: 'md',
+    hasError: false,
+    onEdit: fn()
+  }
 };
 
-export const Editable = Template.bind({});
-Editable.args = {
-  ...Default.args,
-  editable: true
+export const Editable = {
+  render: Template,
+
+  args: {
+    ...Default.args,
+    editable: true
+  }
 };
 
-export const ImageMode = Template.bind({});
-ImageMode.args = {
-  ...Default.args,
-  url: 'https://example.com/logo.png'
+export const ImageMode = {
+  render: Template,
+
+  args: {
+    ...Default.args,
+    url: 'https://example.com/logo.png'
+  }
 };
 
-export const LoadingState = Template.bind({});
-LoadingState.args = {
-  ...Default.args,
-  loading: true
+export const LoadingState = {
+  render: Template,
+
+  args: {
+    ...Default.args,
+    loading: true
+  }
 };
 
-export const OversizeState = Template.bind({});
-OversizeState.args = {
-  ...Default.args,
-  oversize: true
+export const OversizeState = {
+  render: Template,
+
+  args: {
+    ...Default.args,
+    oversize: true
+  }
 };

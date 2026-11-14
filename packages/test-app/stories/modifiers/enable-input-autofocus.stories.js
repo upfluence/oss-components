@@ -19,4 +19,6 @@ const DefaultUsageTemplate = () => ({
   `
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
+export const BasicUsage = {
+  render: DefaultUsageTemplate
+};

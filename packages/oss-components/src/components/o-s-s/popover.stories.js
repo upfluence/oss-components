@@ -123,14 +123,22 @@ const WithCustomTitleTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithContextualActions = WithContextualActionsTemplate.bind({});
-WithContextualActions.args = defaultArgs;
+export const WithContextualActions = {
+  render: WithContextualActionsTemplate,
+  args: defaultArgs
+};
 
-export const WithIllustration = WithIllustrationTemplate.bind({});
-WithIllustration.args = defaultArgs;
+export const WithIllustration = {
+  render: WithIllustrationTemplate,
+  args: defaultArgs
+};
 
-export const WithCustomTitle = WithCustomTitleTemplate.bind({});
-WithCustomTitle.args = defaultArgs;
+export const WithCustomTitle = {
+  render: WithCustomTitleTemplate,
+  args: defaultArgs
+};

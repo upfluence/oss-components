@@ -85,15 +85,18 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  options: [
-    { key: 'option1', label: 'Option 1', icon: 'check', skin: 'primary' },
-    { key: 'option2', label: 'Option 2', tag: { label: 'New', skin: 'primary' }, skin: 'xtd-blue' }
-  ],
-  selected: 'option1',
-  plain: false,
-  disabled: false,
-  size: undefined,
-  onSelect: fn()
+export const Default = {
+  render: Template,
+
+  args: {
+    options: [
+      { key: 'option1', label: 'Option 1', icon: 'check', skin: 'primary' },
+      { key: 'option2', label: 'Option 2', tag: { label: 'New', skin: 'primary' }, skin: 'xtd-blue' }
+    ],
+    selected: 'option1',
+    plain: false,
+    disabled: false,
+    size: undefined,
+    onSelect: fn()
+  }
 };

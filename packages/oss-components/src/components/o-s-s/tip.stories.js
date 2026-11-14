@@ -89,10 +89,15 @@ const CustomContentTemplate = (args) => ({
   context: args
 });
 
-export const Default = DefaultUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
+};
 
-export const CustomContent = CustomContentTemplate.bind({});
-CustomContent.args = {
-  ...defaultArgs
+export const CustomContent = {
+  render: CustomContentTemplate,
+
+  args: {
+    ...defaultArgs
+  }
 };

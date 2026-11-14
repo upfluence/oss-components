@@ -148,8 +148,12 @@ const WithContextualActionTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
+};
 
-export const WithContextualAction = WithContextualActionTemplate.bind({});
-WithContextualAction.args = defaultArgs;
+export const WithContextualAction = {
+  render: WithContextualActionTemplate,
+  args: defaultArgs
+};

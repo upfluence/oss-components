@@ -100,5 +100,7 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
-export const UsageWithIcon = BasicUsageTemplate.bind({});
-UsageWithIcon.args = defaultArgs;
+export const UsageWithIcon = {
+  render: BasicUsageTemplate,
+  args: defaultArgs
+};

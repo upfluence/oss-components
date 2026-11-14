@@ -137,8 +137,12 @@ const WithIllustrationTemplate = (args) => ({
   context: args
 });
 
-export const Usage = BasicUsageTemplate.bind({});
-export const WithIlllustration = WithIllustrationTemplate.bind({});
+export const Usage = {
+  render: BasicUsageTemplate,
+  args: defaultArgs
+};
 
-Usage.args = defaultArgs;
-WithIlllustration.args = defaultArgs;
+export const WithIlllustration = {
+  render: WithIllustrationTemplate,
+  args: defaultArgs
+};

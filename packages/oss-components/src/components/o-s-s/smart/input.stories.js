@@ -146,5 +146,7 @@ const defaultArgs = {
   loading: false
 };
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};

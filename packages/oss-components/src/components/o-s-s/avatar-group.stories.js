@@ -98,8 +98,11 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs,
-  ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+export const Default = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+  }
 };

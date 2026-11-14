@@ -89,11 +89,17 @@ const ActionTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const UsageWithImage = ImageTemplate.bind({});
-UsageWithImage.args = defaultArgs;
+export const UsageWithImage = {
+  render: ImageTemplate,
+  args: defaultArgs
+};
 
-export const UsageWithActions = ActionTemplate.bind({});
-UsageWithActions.args = defaultArgs;
+export const UsageWithActions = {
+  render: ActionTemplate,
+  args: defaultArgs
+};

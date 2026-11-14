@@ -180,143 +180,187 @@ const Template = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
-
-export const SingleSelectionSelected = Template.bind({});
-SingleSelectionSelected.args = {
-  ...defaultArgs,
-  title: 'Selected Option',
-  selected: true,
-  selectionType: 'single'
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs
 };
 
-export const MultipleSelection = Template.bind({});
-MultipleSelection.args = {
-  ...defaultArgs,
-  title: 'Multiple Selection Option',
-  selectionType: 'multiple'
-};
+export const SingleSelectionSelected = {
+  render: Template,
 
-export const MultipleSelectionSelected = Template.bind({});
-MultipleSelectionSelected.args = {
-  ...defaultArgs,
-  title: 'Selected Multiple Option',
-  selected: true,
-  selectionType: 'multiple'
-};
-
-export const WithSubtitle = Template.bind({});
-WithSubtitle.args = {
-  ...defaultArgs,
-  title: 'Title',
-  subtitle: 'Subtitle'
-};
-
-export const WithPrefixAvatar = Template.bind({});
-WithPrefixAvatar.args = {
-  ...defaultArgs,
-  title: 'John Doe',
-  subtitle: 'Software Engineer',
-  prefixAvatar: {
-    initials: 'JV',
-    size: 'sm'
+  args: {
+    ...defaultArgs,
+    title: 'Selected Option',
+    selected: true,
+    selectionType: 'single'
   }
 };
 
-export const WithPrefixBadge = Template.bind({});
-WithPrefixBadge.args = {
-  ...defaultArgs,
-  title: 'Premium Feature',
-  prefixBadge: {
-    icon: 'far fa-thumbs-up',
-    size: 'sm'
+export const MultipleSelection = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Multiple Selection Option',
+    selectionType: 'multiple'
   }
 };
 
-export const WithPrefixIcon = Template.bind({});
-WithPrefixIcon.args = {
-  ...defaultArgs,
-  title: 'Important Option',
-  prefixIcon: {
-    icon: 'fa-star',
-    style: 'solid'
+export const MultipleSelectionSelected = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Selected Multiple Option',
+    selected: true,
+    selectionType: 'multiple'
   }
 };
 
-export const WithPrefixCountry = Template.bind({});
-WithPrefixCountry.args = {
-  ...defaultArgs,
-  title: 'United States',
-  subtitle: 'North America',
-  prefixCountry: 'us'
-};
+export const WithSubtitle = {
+  render: Template,
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...defaultArgs,
-  title: 'Verified Option',
-  icon: {
-    icon: 'fa-check-circle',
-    style: 'solid'
+  args: {
+    ...defaultArgs,
+    title: 'Title',
+    subtitle: 'Subtitle'
   }
 };
 
-export const WithSuffixHint = Template.bind({});
-WithSuffixHint.args = {
-  ...defaultArgs,
-  title: 'Option with Hint',
-  suffixHint: '+99'
-};
+export const WithPrefixAvatar = {
+  render: Template,
 
-export const WithSuffixTag = Template.bind({});
-WithSuffixTag.args = {
-  ...defaultArgs,
-  title: 'Tagged Option',
-  suffixTag: {
-    label: 'New',
-    skin: 'success',
-    size: 'xs'
+  args: {
+    ...defaultArgs,
+    title: 'John Doe',
+    subtitle: 'Software Engineer',
+    prefixAvatar: {
+      initials: 'JV',
+      size: 'sm'
+    }
   }
 };
 
-export const WithSuffixIcon = Template.bind({});
-WithSuffixIcon.args = {
-  ...defaultArgs,
-  title: 'Option with Suffix Icon',
-  suffixIcon: {
-    icon: 'fa-external-link'
+export const WithPrefixBadge = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Premium Feature',
+    prefixBadge: {
+      icon: 'far fa-thumbs-up',
+      size: 'sm'
+    }
   }
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  ...defaultArgs,
-  title: 'Disabled Option',
-  subtitle: 'This option cannot be selected',
-  disabled: true
+export const WithPrefixIcon = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Important Option',
+    prefixIcon: {
+      icon: 'fa-star',
+      style: 'solid'
+    }
+  }
 };
 
-export const ComplexExample = Template.bind({});
-ComplexExample.args = {
-  ...defaultArgs,
-  title: 'Complex Option',
-  subtitle: 'With multiple decorators',
-  selectionType: 'multiple',
-  selected: true,
-  prefixAvatar: {
-    initials: 'CE',
-    size: 'sm'
-  },
-  icon: {
-    icon: 'fa-info-circle'
-  },
-  suffixTag: {
-    label: 'Premium',
-    skin: 'primary',
-    size: 'xs'
-  },
-  suffixHint: '+5'
+export const WithPrefixCountry = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'United States',
+    subtitle: 'North America',
+    prefixCountry: 'us'
+  }
+};
+
+export const WithIcon = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Verified Option',
+    icon: {
+      icon: 'fa-check-circle',
+      style: 'solid'
+    }
+  }
+};
+
+export const WithSuffixHint = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Option with Hint',
+    suffixHint: '+99'
+  }
+};
+
+export const WithSuffixTag = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Tagged Option',
+    suffixTag: {
+      label: 'New',
+      skin: 'success',
+      size: 'xs'
+    }
+  }
+};
+
+export const WithSuffixIcon = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Option with Suffix Icon',
+    suffixIcon: {
+      icon: 'fa-external-link'
+    }
+  }
+};
+
+export const Disabled = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Disabled Option',
+    subtitle: 'This option cannot be selected',
+    disabled: true
+  }
+};
+
+export const ComplexExample = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    title: 'Complex Option',
+    subtitle: 'With multiple decorators',
+    selectionType: 'multiple',
+    selected: true,
+    prefixAvatar: {
+      initials: 'CE',
+      size: 'sm'
+    },
+    icon: {
+      icon: 'fa-info-circle'
+    },
+    suffixTag: {
+      label: 'Premium',
+      skin: 'primary',
+      size: 'xs'
+    },
+    suffixHint: '+5'
+  }
 };
 
 const MultipleOptionsTemplate = (args) => ({
@@ -353,9 +397,12 @@ const MultipleOptionsTemplate = (args) => ({
   context: args
 });
 
-export const MultipleOptions = MultipleOptionsTemplate.bind({});
-MultipleOptions.args = {
-  onSelect: fn()
+export const MultipleOptions = {
+  render: MultipleOptionsTemplate,
+
+  args: {
+    onSelect: fn()
+  }
 };
 
 const WithNamedBlocksTemplate = (args) => ({
@@ -379,10 +426,13 @@ const WithNamedBlocksTemplate = (args) => ({
   context: args
 });
 
-export const WithNamedBlocks = WithNamedBlocksTemplate.bind({});
-WithNamedBlocks.args = {
-  title: 'Option with Named Blocks',
-  selectionType: 'single',
-  selected: false,
-  onSelect: fn()
+export const WithNamedBlocks = {
+  render: WithNamedBlocksTemplate,
+
+  args: {
+    title: 'Option with Named Blocks',
+    selectionType: 'single',
+    selected: false,
+    onSelect: fn()
+  }
 };

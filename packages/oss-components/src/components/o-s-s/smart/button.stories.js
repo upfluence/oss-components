@@ -134,14 +134,19 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithIconUrl = Template.bind({});
-WithIconUrl.args = {
-  ...defaultArgs,
-  ...{
-    icon: undefined,
-    iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
+export const WithIconUrl = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      icon: undefined,
+      iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
+    }
   }
 };

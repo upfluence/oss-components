@@ -106,14 +106,18 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: 0,
-  min: 0,
-  max: 15,
-  step: 3,
-  minReachedTooltip: '',
-  maxReachedTooltip: '',
-  disabled: false,
-  onChange: fn()
+
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    value: 0,
+    min: 0,
+    max: 15,
+    step: 3,
+    minReachedTooltip: '',
+    maxReachedTooltip: '',
+    disabled: false,
+    onChange: fn()
+  }
 };

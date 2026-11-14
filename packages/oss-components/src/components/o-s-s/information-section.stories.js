@@ -144,14 +144,22 @@ const ContentBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithCustomBadge = BadgeBlockTemplate.bind({});
-WithCustomBadge.args = defaultArgs;
+export const WithCustomBadge = {
+  render: BadgeBlockTemplate,
+  args: defaultArgs
+};
 
-export const WithCustomAction = ActionBlockTemplate.bind({});
-WithCustomAction.args = defaultArgs;
+export const WithCustomAction = {
+  render: ActionBlockTemplate,
+  args: defaultArgs
+};
 
-export const WithCustomContent = ContentBlockTemplate.bind({});
-WithCustomContent.args = defaultArgs;
+export const WithCustomContent = {
+  render: ContentBlockTemplate,
+  args: defaultArgs
+};
