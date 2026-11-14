@@ -1,9 +1,21 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <div style="width:270px">
+        <OSS::Smart::Immersive::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                                              @hasError={{this.hasError}} @allowedCurrencies={{this.allowedCurrencies}}
+                                              @placeholder={{this.placeholder}} />
+      </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Immersive::CurrencyInput',
   component: 'currency-input',
+  render: Template,
   argTypes: {
     currency: {
       description: 'The currency applied to the component (EUR, USD, etc.)',
@@ -87,18 +99,6 @@ const defaultArgs = {
   placeholder: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <div style="width:270px">
-        <OSS::Smart::Immersive::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                                              @hasError={{this.hasError}} @allowedCurrencies={{this.allowedCurrencies}}
-                                              @placeholder={{this.placeholder}} />
-      </div>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

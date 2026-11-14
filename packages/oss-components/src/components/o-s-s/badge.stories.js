@@ -15,9 +15,18 @@ const SkinTypes = [
   'xtd-smart'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Badge @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
+                @plain={{this.plain}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Badge',
   component: 'badge',
+  render: Template,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -98,37 +107,23 @@ const defaultArgs = {
   skin: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Badge @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
-                @plain={{this.plain}} />
-  `,
-  context: args
-});
-
 export const WithIcon = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{ icon: 'fas fa-volume-up' }
+    icon: 'fas fa-volume-up'
   }
 };
 
 export const WithImage = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+    image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
   }
 };
 
 export const WithText = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{ text: '2x' }
+    text: '2x'
   }
 };

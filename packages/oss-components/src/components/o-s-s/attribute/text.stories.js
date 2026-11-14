@@ -1,8 +1,19 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="padding: 12px; background: white">
+      <OSS::Attribute::Text @value={{this.value}} @label={{this.label}} @tooltip={{this.tooltip}}
+                            @copyable={{this.copyable}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Attribute::Text',
   component: 'text',
+  render: BasicUsageTemplate,
   argTypes: {
     label: {
       type: { required: true },
@@ -64,17 +75,6 @@ const defaultArgs = {
   copyable: true
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="padding: 12px; background: white">
-      <OSS::Attribute::Text @value={{this.value}} @label={{this.label}} @tooltip={{this.tooltip}}
-                            @copyable={{this.copyable}} />
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: BasicUsageTemplate,
   args: defaultArgs
 };

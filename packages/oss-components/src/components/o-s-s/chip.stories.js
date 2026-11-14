@@ -3,9 +3,17 @@ import { fn } from 'storybook/test';
 
 const SkinTypes = ['default', 'primary', 'success', 'danger'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Chip',
   component: 'chip',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -84,13 +92,6 @@ const defaultArgs = {
   onRemove: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}} />
-  `,
-  context: args
-});
-
 const WithPrefixTemplate = (args) => ({
   template: hbs`
     <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}}>
@@ -103,7 +104,6 @@ const WithPrefixTemplate = (args) => ({
 });
 
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 

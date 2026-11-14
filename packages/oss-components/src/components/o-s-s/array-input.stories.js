@@ -1,9 +1,19 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`<div style="display: flex; justify-content: center">
+      <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}}
+                       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ArrayInput',
   component: 'array-input',
+  render: DefaultUsageTemplate,
   argTypes: {
     values: {
       description: 'An array of values which will be displayed as deletable items',
@@ -102,18 +112,7 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`<div style="display: flex; justify-content: center">
-      <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}}
-                       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} />
-    </div>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
-
   args: {
     values: ['Iron Man', 'Thor', 'Loki', 'Hulk'],
     placeholder: 'Enter a super hero name',

@@ -5,9 +5,21 @@ import MockUploader from '../../test-support/services/uploader';
 
 const PrivacyTypes = ['public', 'private'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="padding: 24px; background-color: white">
+        <OSS::UploadItem @uploader={{this.uploader}} @file={{this.file}} @rules={{this.rules}} @privacy={{this.privacy}}
+                         @scope={{this.scope}} @onEdition={{this.onEdition}} @onDeletion={{this.onDeletion}}
+                         @onUploadSuccess={{this.onUploadSuccess}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::UploadItem',
   component: 'upload-item',
+  render: DefaultUsageTemplate,
   argTypes: {
     uploader: {
       type: { required: true },
@@ -143,18 +155,6 @@ const defaultArgs = {
   onDeletion: fn(),
   onUploadSuccess: fn()
 };
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="padding: 24px; background-color: white">
-        <OSS::UploadItem @uploader={{this.uploader}} @file={{this.file}} @rules={{this.rules}} @privacy={{this.privacy}}
-                         @scope={{this.scope}} @onEdition={{this.onEdition}} @onDeletion={{this.onDeletion}}
-                         @onUploadSuccess={{this.onUploadSuccess}} />
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };

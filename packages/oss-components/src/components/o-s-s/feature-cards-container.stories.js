@@ -1,8 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="display: flex; justify-content: center; overflow-x: auto; min-inline-size: 950px;">
+      <OSS::FeatureCardsContainer @cards={{this.cards}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::FeatureCardsContainer',
   component: 'feature-cards-container',
+  render: Template,
   argTypes: {
     cards: {
       description:
@@ -80,31 +90,18 @@ const oneCardArgs = {
   cards: threeCardsArgs.cards.slice(0, 1)
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="display: flex; justify-content: center; overflow-x: auto; min-inline-size: 950px;">
-      <OSS::FeatureCardsContainer @cards={{this.cards}} />
-    </div>
-  `,
-  context: args
-});
-
 export const ThreeCards = {
-  render: Template,
   args: threeCardsArgs
 };
 
 export const ThreeCardsWithContainerDefaults = {
-  render: Template,
   args: threeCardsWithDefaultsArgs
 };
 
 export const TwoCards = {
-  render: Template,
   args: twoCardsArgs
 };
 
 export const OneCard = {
-  render: Template,
   args: oneCardArgs
 };

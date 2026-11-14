@@ -6,9 +6,22 @@ import MockUploader from '../../test-support/services/uploader';
 const PrivacyTypes = ['public', 'private'];
 const SizeTypes = ['md', 'lg'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="padding: 24px; background-color: white">
+        <OSS::UploadArea @uploader={{this.uploader}} @subtitle={{this.subtitle}} @disabled={{this.disabled}}
+                         @privacy={{this.privacy}} @scope={{this.scope}} @rules={{this.rules}} @artifact={{this.artifact}}
+                         @size={{this.size}} @multiple={{this.multiple}} @feedbackMessage={{this.feedbackMessage}}
+                         @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::UploadArea',
   component: 'upload-area',
+  render: DefaultUsageTemplate,
   argTypes: {
     uploader: {
       type: { required: true },
@@ -228,54 +241,29 @@ const defaultArtifact = {
   content_type: 'svg',
   size: '517'
 };
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="padding: 24px; background-color: white">
-        <OSS::UploadArea @uploader={{this.uploader}} @subtitle={{this.subtitle}} @disabled={{this.disabled}}
-                         @privacy={{this.privacy}} @scope={{this.scope}} @rules={{this.rules}} @artifact={{this.artifact}}
-                         @size={{this.size}} @multiple={{this.multiple}} @feedbackMessage={{this.feedbackMessage}}
-                         @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 
 export const WithFeedbackMessage = {
-  render: DefaultUsageTemplate,
-
   args: {
     ...defaultArgs,
-    ...{
-      feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
-    }
+    feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
   }
 };
 
 export const SingleWithArtifact = {
-  render: DefaultUsageTemplate,
-
   args: {
     ...defaultArgs,
-    ...{
-      artifact: defaultArtifact
-    }
+    artifact: defaultArtifact
   }
 };
 
 export const MultipleWithArtifact = {
-  render: DefaultUsageTemplate,
-
   args: {
     ...defaultArgs,
-    ...{
-      multiple: true,
-      size: 'lg',
-      artifact: defaultArtifact
-    }
+    multiple: true,
+    size: 'lg',
+    artifact: defaultArtifact
   }
 };

@@ -3,9 +3,28 @@ import { hbs } from 'ember-cli-htmlbars';
 const ProgressBarSkins = ['pending', 'attention', 'warning', 'success', 'danger'];
 const ProgressBarSizes = ['xs', 'sm'];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="background-color: #1c1c1c;width:200px">
+      <OSS::ProgressBar
+        @value={{this.value}}
+        @label={{this.label}}
+        @displayValue={{this.displayValue}}
+        @skin={{this.skin}}
+        @size={{this.size}}
+        @coloredBackground={{this.coloredBackground}}
+        @secondarySkin={{this.secondarySkin}}
+        @skins={{this.skins}}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ProgressBar',
   component: 'progress-bar',
+  render: BasicUsageTemplate,
   argTypes: {
     value: {
       type: { required: true },
@@ -114,25 +133,6 @@ const defaultArgs = {
   skins: undefined
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="background-color: #1c1c1c;width:200px">
-      <OSS::ProgressBar
-        @value={{this.value}}
-        @label={{this.label}}
-        @displayValue={{this.displayValue}}
-        @skin={{this.skin}}
-        @size={{this.size}}
-        @coloredBackground={{this.coloredBackground}}
-        @secondarySkin={{this.secondarySkin}}
-        @skins={{this.skins}}
-      />
-    </div>
-  `,
-  context: args
-});
-
 export const Usage = {
-  render: BasicUsageTemplate,
   args: defaultArgs
 };

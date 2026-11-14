@@ -1,8 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="padding: 12px; background: white">
+      <OSS::Attribute::Country @countryCode={{this.countryCode}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Attribute::Country',
   component: 'country',
+  render: Template,
   argTypes: {
     countryCode: {
       description: 'The country-code in alpha2 format that will be used to display the flag and country name.',
@@ -26,16 +36,6 @@ const defaultArgs = {
   countryCode: 'FR'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="padding: 12px; background: white">
-      <OSS::Attribute::Country @countryCode={{this.countryCode}} />
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

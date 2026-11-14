@@ -3,9 +3,19 @@ import { fn } from 'storybook/test';
 
 const ResizeTypes = ['horizontal', 'vertical', 'none', null];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::Smart::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+                     @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
+                     @resize={{this.resize}} @loading={{this.loading}}/>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::TextArea',
   component: 'smart text-area',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: 'Value of the textarea',
@@ -112,16 +122,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::Smart::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                     @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
-                     @resize={{this.resize}} @loading={{this.loading}}/>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };

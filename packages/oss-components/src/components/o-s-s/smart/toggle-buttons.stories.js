@@ -1,9 +1,19 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 250px">
+      <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::ToggleButtons',
   component: 'smart toggle-buttons',
+  render: DefaultUsageTemplate,
   argTypes: {
     toggles: {
       type: { required: true },
@@ -70,23 +80,11 @@ const defaultArgs = {
   onSelection: fn(),
   disabled: false
 };
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 250px">
-      <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 
 export const WithImage = {
-  render: DefaultUsageTemplate,
-
   args: {
     ...defaultArgs,
     toggles: [

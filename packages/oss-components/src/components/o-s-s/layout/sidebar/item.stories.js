@@ -1,9 +1,24 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="background: var(--sidebar-bg-color)">
+      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
+                                  @hasNotifications={{this.hasNotifications}}
+                                  @link={{this.link}} @label={{this.label}}
+                                  @expanded={{this.expanded}} @tag={{this.tag}}
+                                  @lockedAction={{this.lockedAction}}
+                                  @action={{this.action}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Layout::Sidebar::Item',
   component: 'item',
+  render: Template,
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -129,20 +144,6 @@ const defaultArgs = {
   action: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="background: var(--sidebar-bg-color)">
-      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
-                                  @hasNotifications={{this.hasNotifications}}
-                                  @link={{this.link}} @label={{this.label}}
-                                  @expanded={{this.expanded}} @tag={{this.tag}}
-                                  @lockedAction={{this.lockedAction}}
-                                  @action={{this.action}} />
-    </div>
-  `,
-  context: args
-});
-
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Item
@@ -158,7 +159,6 @@ const IconNamedBlockTemplate = (args) => ({
 });
 
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };
 
@@ -168,8 +168,6 @@ export const WithNamedBlockIcon = {
 };
 
 export const WithTag = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     expanded: true,

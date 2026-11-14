@@ -1,7 +1,21 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::InformationSection
+      @title={{this.title}}
+      @badgeIcon={{this.badgeIcon}}
+      @imageUrl={{this.imageUrl}}
+      @subtitle={{this.subtitle}}
+      @plain={{this.plain}}
+    />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::InformationSection',
+  render: Template,
   argTypes: {
     title: {
       description: 'The title of the section',
@@ -78,19 +92,6 @@ const defaultArgs = {
   plain: true
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::InformationSection
-      @title={{this.title}}
-      @badgeIcon={{this.badgeIcon}}
-      @imageUrl={{this.imageUrl}}
-      @subtitle={{this.subtitle}}
-      @plain={{this.plain}}
-    />
-  `,
-  context: args
-});
-
 const BadgeBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InformationSection
@@ -145,7 +146,6 @@ const ContentBlockTemplate = (args) => ({
 });
 
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 

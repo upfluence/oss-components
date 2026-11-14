@@ -1,7 +1,22 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <form id={{this.form}}>
+      <OSS::InputContainer {{register-form-field
+        form=this.form
+        fieldId=this.fieldId
+        validator=this.validator
+        validateOnBlur=this.validateOnBlur
+        }} />
+    </form>
+  `,
+  context: args
+});
+
 export default {
   title: 'Helpers & Modifiers/Modifiers/Register-Form-Field/Definition',
+  render: Template,
   argTypes: {
     form: {
       description: 'The name of the form this field belongs to. Used to retrieve the correct FormManager instance.',
@@ -58,21 +73,6 @@ const defaultArgs = {
   validateOnBlur: true
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <form id={{this.form}}>
-      <OSS::InputContainer {{register-form-field
-        form=this.form
-        fieldId=this.fieldId
-        validator=this.validator
-        validateOnBlur=this.validateOnBlur
-        }} />
-    </form>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

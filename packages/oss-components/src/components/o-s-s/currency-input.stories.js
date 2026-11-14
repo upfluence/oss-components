@@ -1,9 +1,22 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <div style="width:270px">
+        <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
+                            @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
+                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} @allowFloatValues={{this.allowFloatValues}} @options={{this.options}} />
+      </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::CurrencyInput',
   component: 'currency-input',
+  render: Template,
   argTypes: {
     currency: {
       description: 'The currency applied to the component (EUR, USD, etc.)',
@@ -167,19 +180,6 @@ const defaultArgs = {
   }
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <div style="width:270px">
-        <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
-                            @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
-                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} @allowFloatValues={{this.allowFloatValues}} @options={{this.options}} />
-      </div>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

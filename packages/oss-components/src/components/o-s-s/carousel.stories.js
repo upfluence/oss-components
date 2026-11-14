@@ -1,8 +1,32 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
+                   @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
+                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
+                   @loop={{this.loop}} @onSwipe={{this.onSwipe}}
+                   @onPageChange={{this.onPageChange}}>
+      <:pages>
+        <div class="page">
+          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
+        </div>
+        <div class="page">
+          <OSS::Banner @icon="fas fa-image" @title="PAGE 2"/>
+        </div>
+        <div class="page">
+          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
+        </div>
+      </:pages>
+    </OSS::Carousel>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Carousel',
   component: 'carousel',
+  render: Template,
   argTypes: {
     buttonIcon: {
       description:
@@ -120,30 +144,6 @@ const defaultArgs = {
   indicatorsPosition: 'top'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
-                   @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
-                   @loop={{this.loop}} @onSwipe={{this.onSwipe}}
-                   @onPageChange={{this.onPageChange}}>
-      <:pages>
-        <div class="page">
-          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
-        </div>
-        <div class="page">
-          <OSS::Banner @icon="fas fa-image" @title="PAGE 2"/>
-        </div>
-        <div class="page">
-          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
-        </div>
-      </:pages>
-    </OSS::Carousel>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

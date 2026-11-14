@@ -2,9 +2,21 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const DirectionTypes = ['row', 'col', 'column'];
 
+const Template = (args) => ({
+  template: hbs`
+    <div class="bg-color-white padding-px-6">
+      <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}}
+                     @direction={{this.direction}}
+                     @randomize={{this.randomize}}/>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Skeleton',
   component: 'skeleton',
+  render: Template,
   argTypes: {
     height: {
       description: 'Box height in px',
@@ -90,18 +102,6 @@ const defaultArgs = {
   randomize: false
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div class="bg-color-white padding-px-6">
-      <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}}
-                     @direction={{this.direction}}
-                     @randomize={{this.randomize}}/>
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

@@ -1,8 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::Smart::Pill @label={{this.label}} @icon={{this.icon}} @selected={{this.selected}} @disabled={{this.disabled}} @loading={{this.loading}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Pill',
   component: 'pill',
+  render: DefaultUsageTemplate,
   argTypes: {
     label: {
       description: 'Content of the smart pill',
@@ -74,19 +82,10 @@ const defaultArgs = {
   loading: false
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::Smart::Pill @label={{this.label}} @icon={{this.icon}} @selected={{this.selected}} @disabled={{this.disabled}} @loading={{this.loading}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 
 export const IconOnly = {
-  render: DefaultUsageTemplate,
   args: { ...defaultArgs, label: undefined, icon: 'far fa-bookmark' }
 };

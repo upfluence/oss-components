@@ -3,9 +3,28 @@ import { fn } from 'storybook/test';
 
 const MODES = ['view', 'edition'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+      <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
+                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
+                            @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
+          <:view-mode>
+            View mode
+          </:view-mode>
+          <:edition-mode>
+            Edition mode
+          </:edition-mode>
+        </OSS::AttributesPanel>
+      </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::AttributesPanel',
   component: 'attributes-panel',
+  render: DefaultUsageTemplate,
   argTypes: {
     title: {
       description: 'The title of the panel',
@@ -109,24 +128,6 @@ const defaultArgs = {
   onEdit: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
-      <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
-                            @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
-          <:view-mode>
-            View mode
-          </:view-mode>
-          <:edition-mode>
-            Edition mode
-          </:edition-mode>
-        </OSS::AttributesPanel>
-      </div>
-  `,
-  context: args
-});
-
 const WithContextualActionTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
@@ -149,7 +150,6 @@ const WithContextualActionTemplate = (args) => ({
 });
 
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 

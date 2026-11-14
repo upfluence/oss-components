@@ -23,9 +23,21 @@ const SkinTypes = [
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Button
+      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
+      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
+      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Button',
   component: 'button',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -184,57 +196,33 @@ const defaultArgs = {
   disabled: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Button
-      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
-      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 
 export const WithCountDown = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{
-      countDown: {
-        callback: function () {
-          alert('Count down finish');
-        },
-        time: 3000
-      }
+    countDown: {
+      callback: function () {
+        alert('Count down finish');
+      },
+      time: 3000
     }
   }
 };
 
 export const WithIconUrl = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{
-      icon: undefined,
-      iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
-    }
+    icon: undefined,
+    iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };
 
 export const WithSuffixIcon = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{
-      suffixIcon: 'fas fa-chevron-down'
-    }
+    suffixIcon: 'fas fa-chevron-down'
   }
 };

@@ -1,9 +1,20 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="background: var(--sidebar-bg-color)">
+      <OSS::Layout::Sidebar::Group
+        @icon={{this.icon}} @label={{this.label}} @expanded={{this.expanded}} @items={{this.items}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Layout::Sidebar::Group',
   component: 'group',
+  render: Template,
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -107,16 +118,6 @@ const defaultArgs = {
   ]
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="background: var(--sidebar-bg-color)">
-      <OSS::Layout::Sidebar::Group
-        @icon={{this.icon}} @label={{this.label}} @expanded={{this.expanded}} @items={{this.items}} />
-    </div>
-  `,
-  context: args
-});
-
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Group
@@ -145,7 +146,6 @@ const WithHeaderTagTemplate = (args) => ({
 });
 
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };
 

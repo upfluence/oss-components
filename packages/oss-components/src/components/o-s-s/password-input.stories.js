@@ -1,9 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
+                          @autocomplete={{this.autocomplete}} @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::PasswordInput',
   component: 'password-input',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: 'Value of the password input',
@@ -119,15 +128,6 @@ const defaultArgs = {
   validatorSet: undefined
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
-                          @autocomplete={{this.autocomplete}} @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };

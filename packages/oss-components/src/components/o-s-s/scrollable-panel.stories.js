@@ -1,9 +1,33 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="height:200px; width: 300px; background-color: white; " >
+      <OSS::ScrollablePanel @plain={{this.plain}}
+                            @disableShadows={{this.disableShadows}}
+                            @onBottomReached={{this.onBottomReached}}
+                            @hideScrollbar={{this.hideScrollbar}}
+                            @horizontal={{this.horizontal}}
+                            @offset={{this.offset}} >
+        <div class="fx-col fx-gap-px-12 padding-px-12">
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+        </div>
+      </OSS::ScrollablePanel>
+    </div>
+  `,
+
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ScrollablePanel',
   component: 'scrollable-panel',
+  render: Template,
   argTypes: {
     plain: {
       description: 'When plain is true, the top and bottom shadows are displayed in white, otherwise in grey',
@@ -87,29 +111,6 @@ const horizontalArgs = {
   horizontal: true
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="height:200px; width: 300px; background-color: white; " >
-      <OSS::ScrollablePanel @plain={{this.plain}}
-                            @disableShadows={{this.disableShadows}}
-                            @onBottomReached={{this.onBottomReached}}
-                            @hideScrollbar={{this.hideScrollbar}}
-                            @horizontal={{this.horizontal}}
-                            @offset={{this.offset}} >
-        <div class="fx-col fx-gap-px-12 padding-px-12">
-          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-        </div>
-      </OSS::ScrollablePanel>
-    </div>
-  `,
-
-  context: args
-});
-
 const TemplateHorizontal = (args) => ({
   template: hbs`
     <div style="height:70px; width: 300px; background-color: white; " >
@@ -134,7 +135,6 @@ const TemplateHorizontal = (args) => ({
 });
 
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs,
 
   argTypes: {

@@ -1,9 +1,30 @@
 import hbs from 'htmlbars-inline-precompile';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="background-color: #ffff;" {{did-insert (fn this.postRender this)}}>
+      {{#if this.isInitialized}}
+        <OSS::ContextMenu::Panel 
+          @items={{this.items}}
+          @referenceTarget={{this.referenceTarget}}
+          @offset={{this.offset}}
+          @placement="bottom-start"
+          @onMouseLeave={{this.onMouseLeave}}
+          @onClose={{this.onClose}}
+          @registerPanel={{this.registerPanel}}
+          @unregisterPanel={{this.unregisterPanel}}
+        />
+      {{/if}}
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ContextMenu::Panel',
   component: 'o-s-s/context-menu/panel',
+  render: Template,
   argTypes: {
     items: {
       type: { required: true },
@@ -129,27 +150,6 @@ const defaultArgs = {
   }
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="background-color: #ffff;" {{did-insert (fn this.postRender this)}}>
-      {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel 
-          @items={{this.items}}
-          @referenceTarget={{this.referenceTarget}}
-          @offset={{this.offset}}
-          @placement="bottom-start"
-          @onMouseLeave={{this.onMouseLeave}}
-          @onClose={{this.onClose}}
-          @registerPanel={{this.registerPanel}}
-          @unregisterPanel={{this.unregisterPanel}}
-        />
-      {{/if}}
-    </div>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

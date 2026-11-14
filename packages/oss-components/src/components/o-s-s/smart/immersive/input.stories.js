@@ -1,9 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Input',
   component: 'input',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -98,16 +107,7 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 

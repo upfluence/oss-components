@@ -1,20 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-export default {
-  title: 'Components/OSS::ContentPanel',
-  component: 'code-panel',
-  argTypes: {},
-  parameters: {
-    docs: {
-      description: {
-        component: 'Used to display content in pages with default styling.'
-      }
-    }
-  }
-};
-
-const defaultArgs = {};
-
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div class="font-color-black">
@@ -27,7 +12,22 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
+export default {
+  title: 'Components/OSS::ContentPanel',
+  component: 'code-panel',
   render: BasicUsageTemplate,
+  argTypes: {},
+  parameters: {
+    docs: {
+      description: {
+        component: 'Used to display content in pages with default styling.'
+      }
+    }
+  }
+};
+
+const defaultArgs = {};
+
+export const BasicUsage = {
   args: defaultArgs
 };
