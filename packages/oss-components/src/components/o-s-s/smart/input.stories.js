@@ -1,9 +1,25 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+     <OSS::Smart::Input
+          @value={{this.value}} 
+          @disabled={{this.disabled}}
+          @placeholder={{this.placeholder}}
+          @type={{this.type}}
+          @errorMessage={{this.errorMessage}}
+          @onChange={{this.onChange}}
+          @loading={{this.loading}}
+        />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Input',
   component: 'button',
+  render: Template,
   argTypes: {
     argTypes: {
       value: {
@@ -121,21 +137,6 @@ export default {
   }
 };
 
-const Template = (args) => ({
-  template: hbs`
-     <OSS::Smart::Input
-          @value={{this.value}} 
-          @disabled={{this.disabled}}
-          @placeholder={{this.placeholder}}
-          @type={{this.type}}
-          @errorMessage={{this.errorMessage}}
-          @onChange={{this.onChange}}
-          @loading={{this.loading}}
-        />
-  `,
-  context: args
-});
-
 const defaultArgs = {
   value: 'John',
   disabled: false,
@@ -147,6 +148,5 @@ const defaultArgs = {
 };
 
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

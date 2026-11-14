@@ -1,9 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
+                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} @autocomplete={{this.autocomplete}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::EmailInput',
   component: 'email-input',
+  render: Template,
   argTypes: {
     value: {
       description: 'Value of the email input',
@@ -103,15 +112,6 @@ const defaultArgs = {
   validates: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
-                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} @autocomplete={{this.autocomplete}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

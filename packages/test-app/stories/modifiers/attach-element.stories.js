@@ -15,8 +15,26 @@ const PlacementDefinitions = [
   'right-end'
 ];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div class="fx-col" style="justify-content: center; height: 500px; width: 750px; background-color: white">
+      <div class="fx-row" style="justify-content: center;">
+        <span style="color: var(--color-gray-900)" class="attached-element-reference">
+          I am the reference element
+        </span>
+
+        <div style="background-color: var(--color-primary-500); color: var(--color-white); position: absolute;" {{attach-element to=".attached-element-reference" placement=this.placement}}>
+          Floating element
+        </div>
+      </div>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Helpers & Modifiers/Modifiers/Attach Element/Definition',
+  render: DefaultUsageTemplate,
   argTypes: {
     placement: {
       description: 'The placement definition',
@@ -69,26 +87,7 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div class="fx-col" style="justify-content: center; height: 500px; width: 750px; background-color: white">
-      <div class="fx-row" style="justify-content: center;">
-        <span style="color: var(--color-gray-900)" class="attached-element-reference">
-          I am the reference element
-        </span>
-
-        <div style="background-color: var(--color-primary-500); color: var(--color-white); position: absolute;" {{attach-element to=".attached-element-reference" placement=this.placement}}>
-          Floating element
-        </div>
-      </div>
-    </div>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
-
   args: {
     placement: 'bottom',
     offset: null,

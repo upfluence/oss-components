@@ -13,9 +13,27 @@ const FAKE_DATA = [
   { name: 'Spider Man', characters: 'Peter Parker' }
 ];
 
+const Template = (args) => ({
+  template: hbs`
+  <div style="width: 250px">
+    <OSS::Select
+      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
+      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
+      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Select',
   component: 'select',
+  render: Template,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -219,23 +237,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-  <div style="width: 250px">
-    <OSS::Select
-      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
-      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
-      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
-      <:option as |item|>
-        {{item.name}}
-      </:option>
-    </OSS::Select>
-  </div>
-  `,
-  context: args
-});
-
 const SmartSkinTemplate = (args) => ({
   template: hbs`
   <div style="width: 250px">
@@ -293,7 +294,6 @@ const WithEmptyStateNamedBlockTemplate = (args) => ({
 });
 
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 

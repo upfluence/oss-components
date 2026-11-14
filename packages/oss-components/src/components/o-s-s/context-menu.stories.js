@@ -22,9 +22,30 @@ const SkinTypes = [
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
 
+const Template = (args) => ({
+  template: hbs`<OSS::ContextMenu @items={{this.items}}
+                                  @label={{this.label}} 
+                                  @skin={{this.skin}} 
+                                  @loading={{this.loading}}
+                                  @icon={{this.icon}}
+                                  @theme={{this.theme}}
+                                  @square={{this.square}}
+                                  @countDown={{this.countDown}}
+                                  @loadingOptions={{this.loadingOptions}}
+                                  @iconUrl={{this.iconUrl}}
+                                  @size={{this.size}}
+                                  disabled={{this.disabled}}
+                                  @closeOnMouseLeave={{this.closeOnMouseLeave}}
+                                  @onMenuOpened={{this.onMenuOpened}}
+                                  @onMenuClosed={{this.onMenuClosed}}
+                                  />`,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ContextMenu',
   component: 'o-s-s/context-menu',
+  render: Template,
   argTypes: {
     items: {
       type: { required: true },
@@ -223,27 +244,6 @@ const defaultArgs = {
   onMenuClosed: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`<OSS::ContextMenu @items={{this.items}}
-                                  @label={{this.label}} 
-                                  @skin={{this.skin}} 
-                                  @loading={{this.loading}}
-                                  @icon={{this.icon}}
-                                  @theme={{this.theme}}
-                                  @square={{this.square}}
-                                  @countDown={{this.countDown}}
-                                  @loadingOptions={{this.loadingOptions}}
-                                  @iconUrl={{this.iconUrl}}
-                                  @size={{this.size}}
-                                  disabled={{this.disabled}}
-                                  @closeOnMouseLeave={{this.closeOnMouseLeave}}
-                                  @onMenuOpened={{this.onMenuOpened}}
-                                  @onMenuClosed={{this.onMenuClosed}}
-                                  />`,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

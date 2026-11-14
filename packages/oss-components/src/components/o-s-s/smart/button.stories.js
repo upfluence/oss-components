@@ -3,9 +3,19 @@ import { hbs } from 'ember-cli-htmlbars';
 const SkinTypes = ['primary', 'secondary'];
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Smart::Button
+      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
+      @circle={{this.circle}} @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} @disabled={{this.disabled}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Button',
   component: 'button',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -125,28 +135,14 @@ const defaultArgs = {
   disabled: false
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Smart::Button
-      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @circle={{this.circle}} @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} @disabled={{this.disabled}} />
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 
 export const WithIconUrl = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{
-      icon: undefined,
-      iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
-    }
+    icon: undefined,
+    iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };

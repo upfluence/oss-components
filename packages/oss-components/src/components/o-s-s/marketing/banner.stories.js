@@ -16,9 +16,28 @@ function getAllCSSColorAvailable() {
 
 const ColorOptions = getAllCSSColorAvailable();
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 600px;">
+      <OSS::Marketing::Banner
+        @title={{this.title}}
+        @subtitle={{this.subtitle}}
+        @options={{hash
+          primaryGradiantColor=this.primaryGradiantColor
+          secondaryGradiantColor=this.secondaryGradiantColor
+          backgroundGridDisplayed=this.backgroundGridDisplayed
+          illustrationAlwaysVisible=this.illustrationAlwaysVisible
+        }}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Marketing::Banner',
   component: 'marketing-banner',
+  render: BasicUsageTemplate,
   argTypes: {
     title: {
       description: 'The main title text displayed in the banner',
@@ -106,24 +125,6 @@ const defaultArgs = {
   backgroundGridDisplayed: true,
   illustrationAlwaysVisible: false
 };
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 600px;">
-      <OSS::Marketing::Banner
-        @title={{this.title}}
-        @subtitle={{this.subtitle}}
-        @options={{hash
-          primaryGradiantColor=this.primaryGradiantColor
-          secondaryGradiantColor=this.secondaryGradiantColor
-          backgroundGridDisplayed=this.backgroundGridDisplayed
-          illustrationAlwaysVisible=this.illustrationAlwaysVisible
-        }}
-      />
-    </div>
-  `,
-  context: args
-});
 
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
@@ -229,7 +230,6 @@ const CompleteExampleTemplateSmallScreen = (args) => ({
 });
 
 export const BasicUsage = {
-  render: BasicUsageTemplate,
   args: defaultArgs
 };
 

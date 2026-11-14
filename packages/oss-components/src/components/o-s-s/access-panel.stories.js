@@ -1,9 +1,26 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+      <OSS::AccessPanel
+        @records={{this.records}}
+        @initialLoad={{this.initialLoad}}
+        @loading={{this.loading}}
+        @onBottomReached={{this.onBottomReached}}
+        @onClose={{this.onClose}}
+        @onSearch={{this.onSearch}}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::AccessPanel',
   component: 'access-panel',
+  render: DefaultUsageTemplate,
   argTypes: {
     records: {
       description: 'The list of elements displayed inside the panel',
@@ -100,22 +117,6 @@ const defaultArgs = {
   onSearch: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
-      <OSS::AccessPanel
-        @records={{this.records}}
-        @initialLoad={{this.initialLoad}}
-        @loading={{this.loading}}
-        @onBottomReached={{this.onBottomReached}}
-        @onClose={{this.onClose}}
-        @onSearch={{this.onSearch}}
-      />
-    </div>
-  `,
-  context: args
-});
-
 const CustomContentTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
@@ -162,7 +163,6 @@ const CustomLoadingStatesTemplate = (args) => ({
 });
 
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 
@@ -175,8 +175,6 @@ export const CustomContent = {
 };
 
 export const SearchDisabled = {
-  render: DefaultUsageTemplate,
-
   args: {
     ...defaultArgs,
     onSearch: undefined
@@ -184,8 +182,6 @@ export const SearchDisabled = {
 };
 
 export const LoadingState = {
-  render: DefaultUsageTemplate,
-
   args: {
     ...defaultArgs,
     loading: true,

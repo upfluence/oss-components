@@ -1,8 +1,23 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div class="bg-color-white padding-px-6">
+      <OSS::Smart::Feedback
+        @loading={{this.loading}}
+        @collapsible={{this.collapsible}}
+        @content={{this.content}}
+        @error={{this.error}}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Feedback',
   component: 'oss-smart-feedback',
+  render: Template,
   argTypes: {
     loading: {
       description: 'Whether the feedback component is in a loading state',
@@ -60,28 +75,11 @@ const defaultArgs = {
   error: null
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div class="bg-color-white padding-px-6">
-      <OSS::Smart::Feedback
-        @loading={{this.loading}}
-        @collapsible={{this.collapsible}}
-        @content={{this.content}}
-        @error={{this.error}}
-      />
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 
 export const WithSections = {
-  render: Template,
-
   args: {
     loading: false,
     collapsible: true,
@@ -94,8 +92,6 @@ export const WithSections = {
 };
 
 export const Loading = {
-  render: Template,
-
   args: {
     loading: true,
     collapsible: true,
@@ -105,8 +101,6 @@ export const Loading = {
 };
 
 export const WithError = {
-  render: Template,
-
   args: {
     loading: false,
     collapsible: true,

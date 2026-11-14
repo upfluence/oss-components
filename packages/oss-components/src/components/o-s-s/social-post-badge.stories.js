@@ -14,9 +14,17 @@ const SocialPostTypes = [
   'twitch_stream'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::SocialPostBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}} @plain={{this.plain}}/>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::SocialPostBadge',
   component: 'socialPostBadge',
+  render: Template,
   argTypes: {
     postType: {
       type: { required: true },
@@ -81,14 +89,6 @@ const defaultArgs = {
   onToggle: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::SocialPostBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}} @plain={{this.plain}}/>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

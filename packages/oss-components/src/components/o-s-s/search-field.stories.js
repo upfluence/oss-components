@@ -1,9 +1,17 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::SearchField @value={{this.value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::SearchField',
   component: 'search-field',
+  render: Template,
   argTypes: {
     value: {
       type: { required: true },
@@ -68,14 +76,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::SearchField @value={{this.value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

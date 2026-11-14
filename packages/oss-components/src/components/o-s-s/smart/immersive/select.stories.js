@@ -1,9 +1,43 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
+  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+
+  return {
+    template: hbs`
+      <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+        <OSS::Smart::Immersive::Select
+          @placeholder={{this.placeholder}}
+          @values={{this.values}}
+          @loading={{this.loading}}
+          @items={{this.items}}
+          @onSearch={{this.onSearch}}
+          @onChange={{this.onChange}}
+          @multiple={{this.multiple}}
+          @hideCheckboxes={{this.hideCheckboxes}}
+          @searchEnabled={{this.searchEnabled}}
+        >
+          <:selected-item as |item|>{{item.value}}</:selected-item>
+          <:option-item as |item|>
+            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+              {{item.label}}
+            </div>
+          </:option-item>
+        </OSS::Smart::Immersive::Select>
+      </div>
+    `,
+    context: {
+      ...rest,
+      icon
+    }
+  };
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Select',
   component: 'oss-smart-immersive-select',
+  render: TemplateSingle,
   argTypes: {
     placeholder: {
       name: 'Placeholder',
@@ -139,42 +173,7 @@ const Template = ({ iconName, iconColor, ...rest }) => {
   };
 };
 
-const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
-  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
-
-  return {
-    template: hbs`
-      <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
-        <OSS::Smart::Immersive::Select
-          @placeholder={{this.placeholder}}
-          @values={{this.values}}
-          @loading={{this.loading}}
-          @items={{this.items}}
-          @onSearch={{this.onSearch}}
-          @onChange={{this.onChange}}
-          @multiple={{this.multiple}}
-          @hideCheckboxes={{this.hideCheckboxes}}
-          @searchEnabled={{this.searchEnabled}}
-        >
-          <:selected-item as |item|>{{item.value}}</:selected-item>
-          <:option-item as |item|>
-            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
-              {{item.label}}
-            </div>
-          </:option-item>
-        </OSS::Smart::Immersive::Select>
-      </div>
-    `,
-    context: {
-      ...rest,
-      icon
-    }
-  };
-};
-
 export const Select = {
-  render: TemplateSingle,
-
   args: {
     placeholder: 'Placeholder',
     values: [{ value: 'step 1' }],

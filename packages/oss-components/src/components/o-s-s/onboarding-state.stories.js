@@ -1,8 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div class="fx-row" style="width:600px" >
+      <OSS::OnboardingState
+        @title={{this.title}}
+        @subtitle={{this.subtitle}}
+        @imageUrl={{this.imageUrl}}
+      >
+        <:actions>
+          <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" />
+          <OSS::Button @label="Learn more" />
+        </:actions>
+        <:tag>
+          <OSS::Tag @label="New" @icon="fa-sparkles" @skin="primary" />
+        </:tag>
+      </OSS::OnboardingState>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::OnboardingState',
   component: 'onboarding-state',
+  render: Template,
   argTypes: {
     title: {
       description: 'The title of the onboarding state',
@@ -55,28 +77,6 @@ const defaultArgs = {
   imageUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div class="fx-row" style="width:600px" >
-      <OSS::OnboardingState
-        @title={{this.title}}
-        @subtitle={{this.subtitle}}
-        @imageUrl={{this.imageUrl}}
-      >
-        <:actions>
-          <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" />
-          <OSS::Button @label="Learn more" />
-        </:actions>
-        <:tag>
-          <OSS::Tag @label="New" @icon="fa-sparkles" @skin="primary" />
-        </:tag>
-      </OSS::OnboardingState>
-    </div>
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

@@ -4,8 +4,24 @@ const PlacementDefinitions = ['bottom', 'top', 'left', 'right'];
 const TriggerDefinitions = ['hover focus', 'hover', 'focus'];
 const OverflowDirectionDefinitions = ['horizontal', 'vertical'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
+      <div class="fx-row" style="justify-content: center;">
+        <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
+                                                                    placement=this.placement trigger=this.triggerValue
+                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
+          I have a tooltip
+        </span>
+      </div>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Helpers & Modifiers/Modifiers/Tooltip/Definition',
+  render: DefaultUsageTemplate,
   argTypes: {
     title: {
       description: 'The title value',
@@ -103,21 +119,6 @@ const defaultArgs = {
   displayOnlyOnOverflow: false
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
-      <div class="fx-row" style="justify-content: center;">
-        <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
-                                                                    placement=this.placement trigger=this.triggerValue
-                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
-          I have a tooltip
-        </span>
-      </div>
-    </div>
-  `,
-  context: args
-});
-
 const OverflowUsageTemplate = (args) => ({
   template: hbs`
     <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
@@ -152,7 +153,6 @@ const LineClampUsageTemplate = (args) => ({
 });
 
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };
 

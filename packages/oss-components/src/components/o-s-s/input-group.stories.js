@@ -3,9 +3,18 @@ import { fn } from 'storybook/test';
 
 const AutocompleteValues = ['on', 'off'];
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @type={{this.type}} @value={{this.value}}
+                       @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::InputGroup',
   component: 'input-group',
+  render: Template,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -125,15 +134,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @type={{this.type}} @value={{this.value}}
-                       @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };

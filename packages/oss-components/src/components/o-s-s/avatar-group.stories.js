@@ -2,8 +2,16 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::AvatarGroup @avatars={{this.avatars}} @size={{this.size}} @max={{this.max}} @loading={{this.loading}} @loadingCount={{this.loadingCount}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::AvatarGroup',
+  render: Template,
   argTypes: {
     avatars: {
       description: 'Avatars to display',
@@ -91,18 +99,9 @@ const defaultArgs = {
   loadingCount: null
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::AvatarGroup @avatars={{this.avatars}} @size={{this.size}} @max={{this.max}} @loading={{this.loading}} @loadingCount={{this.loadingCount}} />
-  `,
-  context: args
-});
-
 export const Default = {
-  render: Template,
-
   args: {
     ...defaultArgs,
-    ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+    image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
   }
 };

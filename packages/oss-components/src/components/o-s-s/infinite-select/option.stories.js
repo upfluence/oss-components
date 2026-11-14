@@ -3,9 +3,34 @@ import { fn } from 'storybook/test';
 
 const SelectionTypes = ['single', 'multiple'];
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="width: 700px; background-color: #ffff;">
+      <OSS::InfiniteSelect::Option
+        @title={{this.title}}
+        @subtitle={{this.subtitle}}
+        @selectionType={{this.selectionType}}
+        @selected={{this.selected}}
+        @disabled={{this.disabled}}
+        @prefixAvatar={{this.prefixAvatar}}
+        @prefixBadge={{this.prefixBadge}}
+        @prefixIcon={{this.prefixIcon}}
+        @prefixCountry={{this.prefixCountry}}
+        @icon={{this.icon}}
+        @suffixHint={{this.suffixHint}}
+        @suffixTag={{this.suffixTag}}
+        @suffixIcon={{this.suffixIcon}}
+        @onSelect={{this.onSelect}}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::InfiniteSelect::Option',
   component: 'infinite-select/option',
+  render: Template,
   argTypes: {
     title: {
       type: { required: true },
@@ -156,38 +181,11 @@ const defaultArgs = {
   onSelect: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="width: 700px; background-color: #ffff;">
-      <OSS::InfiniteSelect::Option
-        @title={{this.title}}
-        @subtitle={{this.subtitle}}
-        @selectionType={{this.selectionType}}
-        @selected={{this.selected}}
-        @disabled={{this.disabled}}
-        @prefixAvatar={{this.prefixAvatar}}
-        @prefixBadge={{this.prefixBadge}}
-        @prefixIcon={{this.prefixIcon}}
-        @prefixCountry={{this.prefixCountry}}
-        @icon={{this.icon}}
-        @suffixHint={{this.suffixHint}}
-        @suffixTag={{this.suffixTag}}
-        @suffixIcon={{this.suffixIcon}}
-        @onSelect={{this.onSelect}}
-      />
-    </div>
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: Template,
   args: defaultArgs
 };
 
 export const SingleSelectionSelected = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Selected Option',
@@ -197,8 +195,6 @@ export const SingleSelectionSelected = {
 };
 
 export const MultipleSelection = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Multiple Selection Option',
@@ -207,8 +203,6 @@ export const MultipleSelection = {
 };
 
 export const MultipleSelectionSelected = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Selected Multiple Option',
@@ -218,8 +212,6 @@ export const MultipleSelectionSelected = {
 };
 
 export const WithSubtitle = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Title',
@@ -228,8 +220,6 @@ export const WithSubtitle = {
 };
 
 export const WithPrefixAvatar = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'John Doe',
@@ -242,8 +232,6 @@ export const WithPrefixAvatar = {
 };
 
 export const WithPrefixBadge = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Premium Feature',
@@ -255,8 +243,6 @@ export const WithPrefixBadge = {
 };
 
 export const WithPrefixIcon = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Important Option',
@@ -268,8 +254,6 @@ export const WithPrefixIcon = {
 };
 
 export const WithPrefixCountry = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'United States',
@@ -279,8 +263,6 @@ export const WithPrefixCountry = {
 };
 
 export const WithIcon = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Verified Option',
@@ -292,8 +274,6 @@ export const WithIcon = {
 };
 
 export const WithSuffixHint = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Option with Hint',
@@ -302,8 +282,6 @@ export const WithSuffixHint = {
 };
 
 export const WithSuffixTag = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Tagged Option',
@@ -316,8 +294,6 @@ export const WithSuffixTag = {
 };
 
 export const WithSuffixIcon = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Option with Suffix Icon',
@@ -328,8 +304,6 @@ export const WithSuffixIcon = {
 };
 
 export const Disabled = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Disabled Option',
@@ -339,8 +313,6 @@ export const Disabled = {
 };
 
 export const ComplexExample = {
-  render: Template,
-
   args: {
     ...defaultArgs,
     title: 'Complex Option',

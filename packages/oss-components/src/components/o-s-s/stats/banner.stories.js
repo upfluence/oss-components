@@ -1,8 +1,43 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const PlaygroundTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 1200px; max-width: 100%;">
+      <OSS::Stats::Banner
+        @titleConfig={{this.titleConfig}}
+        @badge={{this.badge}}
+        @statValue={{this.statValue}}
+        @loading={{this.loading}}
+      >
+        <:title-suffix>
+          <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
+            <:items>
+              <div class="oss-button-dropdown__item">Option A</div>
+              <div class="oss-button-dropdown__item">Option B</div>
+            </:items>
+          </OSS::ButtonDropdown>
+        </:title-suffix>
+
+        <:extra-badges>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:extra-badges>
+
+        <:cta>
+          <div class="fx-row fx-gap-px-6">
+            <OSS::Button @skin="primary" @label={{this.ctaPrimaryLabel}} @icon="fas fa-box-open" @size="md" />
+            <OSS::Button @skin="secondary" @label={{this.ctaSecondaryLabel}} @icon="fa-download" @size="md" />
+          </div>
+        </:cta>
+      </OSS::Stats::Banner>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Stats::Banner',
   component: 'stats-banner',
+  render: PlaygroundTemplate,
   argTypes: {
     titleConfig: {
       description: 'Header object: { text, infoCircle }. Optional when a "title" named block is passed instead.',
@@ -81,40 +116,6 @@ const defaultArgs = {
   ctaPrimaryLabel: 'CTA',
   ctaSecondaryLabel: 'Export'
 };
-
-const PlaygroundTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 1200px; max-width: 100%;">
-      <OSS::Stats::Banner
-        @titleConfig={{this.titleConfig}}
-        @badge={{this.badge}}
-        @statValue={{this.statValue}}
-        @loading={{this.loading}}
-      >
-        <:title-suffix>
-          <OSS::ButtonDropdown @icon="fa-caret-down" @hideArrow={{true}} @square={{true}} @size="sm">
-            <:items>
-              <div class="oss-button-dropdown__item">Option A</div>
-              <div class="oss-button-dropdown__item">Option B</div>
-            </:items>
-          </OSS::ButtonDropdown>
-        </:title-suffix>
-
-        <:extra-badges>
-          <OSS::Badge @text="2x" @size="lg" />
-        </:extra-badges>
-
-        <:cta>
-          <div class="fx-row fx-gap-px-6">
-            <OSS::Button @skin="primary" @label={{this.ctaPrimaryLabel}} @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="secondary" @label={{this.ctaSecondaryLabel}} @icon="fa-download" @size="md" />
-          </div>
-        </:cta>
-      </OSS::Stats::Banner>
-    </div>
-  `,
-  context: args
-});
 
 const ThreeUpTemplate = (args) => ({
   template: hbs`
@@ -274,7 +275,6 @@ const IntegrationBadgesTemplate = (args) => ({
 });
 
 export const Default = {
-  render: PlaygroundTemplate,
   args: defaultArgs
 };
 

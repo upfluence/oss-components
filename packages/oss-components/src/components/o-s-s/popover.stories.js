@@ -3,8 +3,20 @@ import { hbs } from 'ember-cli-htmlbars';
 const Placements = ['top', 'right', 'bottom', 'left'];
 const Sizes = [null, 'sm', 'md'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+      <:content>
+        Popover content
+      </:content>
+    </OSS::Popover>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Popover',
+  render: Template,
   argTypes: {
     arrowPlacement: {
       description: 'The arrow placement definition',
@@ -67,17 +79,6 @@ const defaultArgs = {
   size: 'sm'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
-      <:content>
-        Popover content
-      </:content>
-    </OSS::Popover>
-  `,
-  context: args
-});
-
 const WithContextualActionsTemplate = (args) => ({
   template: hbs`
     <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
@@ -124,7 +125,6 @@ const WithCustomTitleTemplate = (args) => ({
 });
 
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 

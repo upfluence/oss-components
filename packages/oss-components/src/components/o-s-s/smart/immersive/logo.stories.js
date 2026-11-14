@@ -3,9 +3,32 @@ import { fn } from 'storybook/test';
 
 import { LOGO_COLORS, LOGO_ICONS } from '@upfluence/oss-components/utils/logo-config';
 
+const Template = ({ iconName, iconColor, ...rest }) => {
+  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+
+  return {
+    template: hbs`
+        <OSS::Smart::Immersive::Logo
+          @icon={{this.icon}}
+          @url={{this.url}}
+          @editable={{this.editable}}
+          @loading={{this.loading}}
+          @size={{this.size}}
+          @hasError={{this.hasError}}
+          @onEdit={{this.onEdit}}
+        />
+    `,
+    context: {
+      ...rest,
+      icon
+    }
+  };
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Logo',
   component: 'oss-smart-immersive-logo',
+  render: Template,
   argTypes: {
     icon: {
       name: 'Icon',
@@ -94,31 +117,7 @@ export default {
   }
 };
 
-const Template = ({ iconName, iconColor, ...rest }) => {
-  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
-
-  return {
-    template: hbs`
-        <OSS::Smart::Immersive::Logo
-          @icon={{this.icon}}
-          @url={{this.url}}
-          @editable={{this.editable}}
-          @loading={{this.loading}}
-          @size={{this.size}}
-          @hasError={{this.hasError}}
-          @onEdit={{this.onEdit}}
-        />
-    `,
-    context: {
-      ...rest,
-      icon
-    }
-  };
-};
-
 export const Default = {
-  render: Template,
-
   args: {
     iconName: 'rabbit',
     iconColor: 'orange',
@@ -132,8 +131,6 @@ export const Default = {
 };
 
 export const Editable = {
-  render: Template,
-
   args: {
     ...Default.args,
     editable: true
@@ -141,8 +138,6 @@ export const Editable = {
 };
 
 export const ImageMode = {
-  render: Template,
-
   args: {
     ...Default.args,
     url: 'https://example.com/logo.png'
@@ -150,8 +145,6 @@ export const ImageMode = {
 };
 
 export const LoadingState = {
-  render: Template,
-
   args: {
     ...Default.args,
     loading: true
@@ -159,8 +152,6 @@ export const LoadingState = {
 };
 
 export const OversizeState = {
-  render: Template,
-
   args: {
     ...Default.args,
     oversize: true

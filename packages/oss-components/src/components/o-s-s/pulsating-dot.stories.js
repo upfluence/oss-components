@@ -2,9 +2,15 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const SkinTypes = ['primary', 'success', 'error', 'warning'];
 
+const Template = (args) => ({
+  template: hbs`<OSS::PulsatingDot @skin={{this.skin}} />`,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::PulsatingDot',
   component: 'PulsatingDot',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Adjust the color of the dot and the pulsating animation.',
@@ -31,12 +37,6 @@ const defaultArgs = {
   skin: 'primary'
 };
 
-const Template = (args) => ({
-  template: hbs`<OSS::PulsatingDot @skin={{this.skin}} />`,
-  context: args
-});
-
 export const Default = {
-  render: Template,
   args: defaultArgs
 };

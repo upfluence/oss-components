@@ -1,8 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::Smart::Blob @loading={{this.loading}} @size={{this.size}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Blob',
   component: 'smart-blob',
+  render: DefaultUsageTemplate,
   argTypes: {
     loading: {
       description: 'Displays the loading state when true',
@@ -44,14 +52,6 @@ const defaultArgs = {
   size: 'md'
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::Smart::Blob @loading={{this.loading}} @size={{this.size}} />
-  `,
-  context: args
-});
-
 export const BasicUsage = {
-  render: DefaultUsageTemplate,
   args: defaultArgs
 };

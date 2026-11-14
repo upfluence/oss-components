@@ -3,8 +3,23 @@ import { fn } from 'storybook/test';
 
 const COMPONENT_SIZES = ['sm', 'md'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::TogglableSection
+      @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
+      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
+      @disabled={{this.disabled}} @size={{this.size}} @switchable={{this.switchable}}>
+      <:contents>
+        Setting content
+      </:contents>
+    </OSS::TogglableSection>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::TogglableSection',
+  render: Template,
   argTypes: {
     title: {
       description: 'Title',
@@ -133,20 +148,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::TogglableSection
-      @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
-      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
-      @disabled={{this.disabled}} @size={{this.size}} @switchable={{this.switchable}}>
-      <:contents>
-        Setting content
-      </:contents>
-    </OSS::TogglableSection>
-  `,
-  context: args
-});
-
 const WithActionsNamedBlockTemplate = (args) => ({
   template: hbs`
     <OSS::TogglableSection
@@ -179,7 +180,6 @@ const WithoutToggleTemplate = (args) => ({
 });
 
 export const Default = {
-  render: Template,
   args: defaultArgs
 };
 
