@@ -1,13 +1,13 @@
 # Consumer-owned asset maps
 
-OSS provides an `asset-map` service/helper implementation through its top-level `app/` re-exports and an explicitly imported classic-build utility. No build integration is activated by OSS addon hooks.
+OSS provides an `asset-map` service/helper implementation through its v2 `app-js` registrations and an explicitly imported classic-build utility. No build integration is activated by OSS addon hooks.
 
 ## Ownership
 
 - The consuming app builds and fingerprints its complete asset output, including assets supplied by addons.
 - `injectAssetMap` wraps that final build tree and injects the consumer's completed manifest into its HTML.
 - OSS publishes runtime code, not a manifest or environment-specific URLs.
-- OSS's top-level `app/services/asset-map.js` and `app/helpers/asset-map.js` register the implementation in the consumer, including the dummy app. Each service instance owns its URL table.
+- OSS's `app-js` service and helper mappings register the implementation in the consumer, including the test app. Each service instance owns its URL table.
 
 ## Classic app setup
 
@@ -38,7 +38,7 @@ Add this marker to `app/index.html` and `tests/index.html`:
 <meta name="upfluence:asset-map" content="__UPFLUENCE_ASSET_MAP__" />
 ```
 
-No consumer-local service/helper re-exports are needed: OSS supplies them through its top-level `app/` folder. Resolution and manifest validation live alongside the service in `addon/services/asset-map.ts`.
+No consumer-local service/helper re-exports are needed: OSS supplies them through v2 `app-js` mappings. Resolution and manifest validation live alongside the service in `packages/oss-components/src/services/asset-map.ts`.
 
 Remove `ember-cli-ifa` and its `ifa` environment configuration in the same consumer change. Existing template helpers and `assetMap.resolve(path)` calls stay unchanged.
 
@@ -59,18 +59,18 @@ Browser instances read the owning page's meta tag when instantiated. Non-browser
 
 Only plugin-web is migrated in this pilot. Its installed OSS package must be replaced with this local implementation (or a newly published version) before the pilot can build. The existing registry version 3.99.9 does not contain the new build utility. Do not commit machine-local linking overrides.
 
-For this local pilot, `plugin-web/node_modules/@upfluence/oss-components` points to the sibling OSS checkout. No package.json override or local path was added to the lockfile. Reinstalling dependencies can replace that link. Before deploying, publish the updated OSS package and update plugin-web to that release; no release version was chosen in this change.
+For local integration, install a packed addon or verify a local link points to `packages/oss-components` and that `dist` exists. Do not commit local overrides. Reinstalling dependencies can replace local links. Before deploying, publish the updated OSS package and update plugin-web to that release; no release version was chosen in this change.
 
 Adopting this OSS change is a dependency-contract change: its app re-exports register the owned adapter automatically, so every adopting consumer must remove IFA and configure the wrapper together. Unmigrated apps should stay on the older OSS release until migrated; adding IFA directly would create competing registrations. This pilot does not edit those other apps.
 
-For the future OSS v2 conversion, preserve the Node utility as an explicit package export, the runtime modules as ordinary exports, and the consumer registrations through v2 `app-js` mappings (the equivalent of the current `app/` re-exports). Classic consumers can keep using the wrapper. A Vite integration will produce the same logical-name-to-URL table without broccoli-asset-rev; it is not implemented here.
+The OSS v2 package preserves the Node utility as an explicit package export, runtime modules as ordinary exports, and consumer registrations through `app-js` mappings. Classic consumers can keep using the wrapper. A Vite integration will produce the same logical-name-to-URL table without broccoli-asset-rev; it is not implemented here.
 
 ## Validation
 
 ```sh
 pnpm test:asset-map-build
-pnpm exec tsc --noEmit
-pnpm exec ember test --filter='asset-map' --launch=Chrome
+pnpm typecheck
+pnpm --filter test-app exec ember test --filter='asset-map' --launch=Chrome
 ```
 
 Build tests exercise real broccoli-asset-rev output with app-owned and namespaced addon-owned assets, CDN prepend, hashed/default/custom manifests, disabled fingerprinting, repeated builds, and error paths. Ember tests cover the service, independent instances, helper output, and reactive configuration.

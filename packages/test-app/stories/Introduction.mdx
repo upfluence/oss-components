@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import EmberTomster from './assets/images/ember-tomster.png';
+import JavascriptBundlers from './assets/images/javascript-bundlers.jpg';
+
+<Meta
+  title="Getting Started/Introduction"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+<div class="upf-align--center margin-top-xx-sm padding-sm">
+  <img
+    src="https://s3.amazonaws.com/creators-upfluence-com-assets/assets/images/upf-logo-white-e708bc155baf08f397439dcdbd3a2b5b.svg"
+    alt="upfluence-logo"
+    width="50%"
+  />
+</div>
+
+<div class="upf-align--center">
+  <h1>Welcome to Upfluence's Design System</h1>
+</div>
+
+OSS is a design system built to help Upfluence's developers and designers quickly
+create the best experience for our clients. At Upfluence, we love to create
+harmonious experiences for our users, solving challenging interactions once then
+applying the solutions consistently across our products — making sure users only
+have to learn them once.
+
+## What is a design system?
+
+Modern user interfaces are constructed from hundreds of UI components that are
+endlessly reused to deliver different user experiences. Design systems catalog all the
+reusable UI components to help teams assemble complex, yet durable UIs faster. Since
+both designers and developers contribute to the UI components, the design system
+serves as a bridge between disciplines. It is also the “source of truth” for an
+organization’s common components.
+
+## Installation 💻
+
+<p class="upf-align--center">
+  <img src={EmberTomster} width="8%" />
+</p>
+
+<p>
+  Yay 🎊 if you are going with Ember JS, our framework of choice at Upfluence. In order to install and use OSS, just
+  follow these simple steps:
+</p>
+
+```console
+john@acme:~$ ember install ember-cli-less
+john@acme:~$ pnpm add @upfluence/oss-components
+```
+
+```css
+// app/styles/app.less
+
+@import '@upfluence/oss-components/styles/oss-components.less';
+```
+
+Configure LESS package lookup as shown in the repository README, including OSS's Bootstrap dependency.
+Your app also supplies FontAwesome: load its CSS before OSS styles and serve the matching webfonts.

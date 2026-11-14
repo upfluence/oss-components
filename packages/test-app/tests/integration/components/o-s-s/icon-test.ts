@@ -1,0 +1,57 @@
+import { render, setupOnerror } from '@ember/test-helpers';
+
+import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
+const STYLE_CLASSES = {
+  solid: 'fas',
+  regular: 'far',
+  light: 'fal',
+  duotone: 'fad',
+  brand: 'fab',
+  'duotone-regular': 'fadr'
+};
+
+module('Integration | Component | o-s-s/icon', function (hooks) {
+  setupRenderingTest(hooks);
+
+  test('it renders', async function (assert) {
+    await render(hbs`<OSS::Icon @icon="fa-laptop-code" />`);
+    assert.dom('i').exists();
+  });
+
+  test('it renders the correct icon class', async function (assert) {
+    await render(hbs`<OSS::Icon @icon="fa-code-merge" />`);
+    assert.dom('i').hasClass('fa-code-merge');
+  });
+
+  test('it renders the correct default style class', async function (assert) {
+    await render(hbs`<OSS::Icon @icon="fa-code-merge" />`);
+    assert.dom('i').hasClass('far');
+  });
+
+  test('it renders the correct style flag specific classes', async function (assert) {
+    await render(hbs`<OSS::Icon @icon="US" @style="flag" />`);
+    assert.dom('i').hasClass('fflag-US');
+    assert.dom('i').hasClass('ff-sm');
+    assert.dom('i').hasClass('ff-round');
+  });
+
+  for (const [key, value] of Object.entries(STYLE_CLASSES)) {
+    test(`it renders the correct style ${key} class`, async function (assert) {
+      this.style = key;
+      await render(hbs`<OSS::Icon @icon="fa-code-merge" @style={{this.style}} />`);
+      assert.dom('i').hasClass(value);
+    });
+  }
+
+  test('it throws an error if icon argument is missing', async function (assert) {
+    assert.expect(1);
+    setupOnerror((error: Error) => {
+      assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
+    });
+
+    await render(hbs`<OSS::Icon />`);
+  });
+});
