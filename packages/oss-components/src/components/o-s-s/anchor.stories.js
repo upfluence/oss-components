@@ -77,10 +77,14 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  link: 'https://www.upfluence.com',
-  disableAutoActive: false,
-  noopener: true,
-  noreferrer: true
+
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    link: 'https://www.upfluence.com',
+    disableAutoActive: false,
+    noopener: true,
+    noreferrer: true
+  }
 };

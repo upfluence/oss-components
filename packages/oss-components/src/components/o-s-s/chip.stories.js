@@ -102,8 +102,12 @@ const WithPrefixTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const UsageWithPrefix = WithPrefixTemplate.bind({});
-UsageWithPrefix.args = defaultArgs;
+export const UsageWithPrefix = {
+  render: WithPrefixTemplate,
+  args: defaultArgs
+};

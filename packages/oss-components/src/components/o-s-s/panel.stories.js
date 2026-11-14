@@ -30,4 +30,6 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template
+};

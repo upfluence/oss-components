@@ -292,14 +292,22 @@ const WithEmptyStateNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const SmartSkin = SmartSkinTemplate.bind({});
-SmartSkin.args = defaultArgs;
+export const SmartSkin = {
+  render: SmartSkinTemplate,
+  args: defaultArgs
+};
 
-export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
-WithSelectedNamedBlock.args = defaultArgs;
+export const WithSelectedNamedBlock = {
+  render: WithSelectedNamedBlockTemplate,
+  args: defaultArgs
+};
 
-export const WithEmptyStateNamedBlock = WithEmptyStateNamedBlockTemplate.bind({});
-WithEmptyStateNamedBlock.args = defaultArgs;
+export const WithEmptyStateNamedBlock = {
+  render: WithEmptyStateNamedBlockTemplate,
+  args: defaultArgs
+};

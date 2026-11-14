@@ -228,27 +228,37 @@ const OptionBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithOptionBlock = OptionBlockTemplate.bind({});
-WithOptionBlock.args = defaultArgs;
+export const WithOptionBlock = {
+  render: OptionBlockTemplate,
+  args: defaultArgs
+};
 
-export const EmptyState = Template.bind({});
-EmptyState.args = {
-  ...defaultArgs,
-  ...{
-    items: []
+export const EmptyState = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      items: []
+    }
   }
 };
 
-export const WithGroupsBlock = Template.bind({});
-WithGroupsBlock.args = {
-  ...defaultArgs,
-  ...{
-    items: FAKE_DATA.map((item, index) => ({
-      ...item,
-      groupKey: index % 2 === 0 ? 'Group A' : 'Group B'
-    }))
+export const WithGroupsBlock = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      items: FAKE_DATA.map((item, index) => ({
+        ...item,
+        groupKey: index % 2 === 0 ? 'Group A' : 'Group B'
+      }))
+    }
   }
 };

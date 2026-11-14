@@ -124,36 +124,51 @@ const DefaultTemplate = (args) => ({
   context: args
 });
 
-export const Default = DefaultTemplate.bind({});
-Default.args = {
-  value: 10,
-  onChange: fn()
+export const Default = {
+  render: DefaultTemplate,
+
+  args: {
+    value: 10,
+    onChange: fn()
+  }
 };
 
-export const Loading = DefaultTemplate.bind({});
-Loading.args = {
-  loading: true,
-  placeholder: 'Loading...',
-  onChange: fn()
+export const Loading = {
+  render: DefaultTemplate,
+
+  args: {
+    loading: true,
+    placeholder: 'Loading...',
+    onChange: fn()
+  }
 };
 
-export const Filled = DefaultTemplate.bind({});
-Filled.args = {
-  value: 100,
-  onChange: fn()
+export const Filled = {
+  render: DefaultTemplate,
+
+  args: {
+    value: 100,
+    onChange: fn()
+  }
 };
 
-export const Error = DefaultTemplate.bind({});
-Error.args = {
-  value: 50,
-  hasError: true,
-  errorMessage: 'Invalid value',
-  onChange: fn()
+export const Error = {
+  render: DefaultTemplate,
+
+  args: {
+    value: 50,
+    hasError: true,
+    errorMessage: 'Invalid value',
+    onChange: fn()
+  }
 };
 
-export const Disabled = DefaultTemplate.bind({});
-Disabled.args = {
-  value: 25,
-  disabled: true,
-  onChange: fn()
+export const Disabled = {
+  render: DefaultTemplate,
+
+  args: {
+    value: 25,
+    disabled: true,
+    onChange: fn()
+  }
 };

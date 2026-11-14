@@ -144,21 +144,31 @@ const WithHeaderTagTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
-
-export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
-WithNamedBlockIcon.args = defaultArgs;
-
-export const WithHeaderTag = WithHeaderTagTemplate.bind({});
-WithHeaderTag.args = {
-  ...defaultArgs,
-  tag: { label: '9+', skin: 'danger', plain: true }
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs
 };
 
-export const WithHeaderTagExpanded = WithHeaderTagTemplate.bind({});
-WithHeaderTagExpanded.args = {
-  ...defaultArgs,
-  expanded: true,
-  tag: { label: '9+', skin: 'danger', plain: true }
+export const WithNamedBlockIcon = {
+  render: IconNamedBlockTemplate,
+  args: defaultArgs
+};
+
+export const WithHeaderTag = {
+  render: WithHeaderTagTemplate,
+
+  args: {
+    ...defaultArgs,
+    tag: { label: '9+', skin: 'danger', plain: true }
+  }
+};
+
+export const WithHeaderTagExpanded = {
+  render: WithHeaderTagTemplate,
+
+  args: {
+    ...defaultArgs,
+    expanded: true,
+    tag: { label: '9+', skin: 'danger', plain: true }
+  }
 };

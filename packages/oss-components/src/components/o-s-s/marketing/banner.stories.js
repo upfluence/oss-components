@@ -228,37 +228,51 @@ const CompleteExampleTemplateSmallScreen = (args) => ({
   context: args
 });
 
-export const BasicUsage = BasicUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const WithIllustration = WithIllustrationTemplate.bind({});
-WithIllustration.args = {
-  ...defaultArgs,
-  title: 'Launch Your Project',
-  subtitle: 'Connect with your audience and achieve your goals'
+export const BasicUsage = {
+  render: BasicUsageTemplate,
+  args: defaultArgs
 };
 
-export const WithActions = WithActionsTemplate.bind({});
-WithActions.args = {
-  ...defaultArgs,
-  title: 'Ready to Get Started?',
-  subtitle: 'Join thousands of users already using our platform'
+export const WithIllustration = {
+  render: WithIllustrationTemplate,
+
+  args: {
+    ...defaultArgs,
+    title: 'Launch Your Project',
+    subtitle: 'Connect with your audience and achieve your goals'
+  }
 };
 
-export const CompleteExample = CompleteExampleTemplate.bind({});
-CompleteExample.args = {
-  ...defaultArgs,
-  title: 'Transform Your Workflow',
-  subtitle: 'Elevate your productivity with data-driven insights',
-  primaryGradiantColor: '--color-cyan-100',
-  secondaryGradiantColor: '--color-lime-100'
+export const WithActions = {
+  render: WithActionsTemplate,
+
+  args: {
+    ...defaultArgs,
+    title: 'Ready to Get Started?',
+    subtitle: 'Join thousands of users already using our platform'
+  }
 };
 
-export const CompleteExampleSmallScreen = CompleteExampleTemplateSmallScreen.bind({});
-CompleteExampleSmallScreen.args = {
-  ...defaultArgs,
-  title: 'Transform Your Workflow',
-  subtitle: 'Elevate your productivity with data-driven insights',
-  primaryGradiantColor: '--color-cyan-100',
-  secondaryGradiantColor: '--color-lime-100'
+export const CompleteExample = {
+  render: CompleteExampleTemplate,
+
+  args: {
+    ...defaultArgs,
+    title: 'Transform Your Workflow',
+    subtitle: 'Elevate your productivity with data-driven insights',
+    primaryGradiantColor: '--color-cyan-100',
+    secondaryGradiantColor: '--color-lime-100'
+  }
+};
+
+export const CompleteExampleSmallScreen = {
+  render: CompleteExampleTemplateSmallScreen,
+
+  args: {
+    ...defaultArgs,
+    title: 'Transform Your Workflow',
+    subtitle: 'Elevate your productivity with data-driven insights',
+    primaryGradiantColor: '--color-cyan-100',
+    secondaryGradiantColor: '--color-lime-100'
+  }
 };

@@ -149,25 +149,36 @@ const Template = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
-
-export const ProvinceUsage = Template.bind({});
-ProvinceUsage.args = {
-  ...defaultArgs,
-  ...{ sourceList: gbProvinces }
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs
 };
 
-export const PrefilledUsage = Template.bind({});
-PrefilledUsage.args = {
-  ...defaultArgs,
-  ...{ value: 'FR' }
+export const ProvinceUsage = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ sourceList: gbProvinces }
+  }
 };
 
-export const WithFeedbackMessage = Template.bind({});
-WithFeedbackMessage.args = {
-  ...defaultArgs,
-  ...{
-    feedbackMessage: { type: 'error', value: 'This is an error message' }
+export const PrefilledUsage = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ value: 'FR' }
+  }
+};
+
+export const WithFeedbackMessage = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      feedbackMessage: { type: 'error', value: 'This is an error message' }
+    }
   }
 };

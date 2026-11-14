@@ -133,15 +133,20 @@ const TemplateHorizontal = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
-BasicUsage.argTypes = {
-  horizontal: {
-    description:
-      'When horizontal is true, left & rights shadows are displayed instead of top & bottom (Use with fx-row see `Horizontal Usage` story)',
-    control: false
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs,
+
+  argTypes: {
+    horizontal: {
+      description:
+        'When horizontal is true, left & rights shadows are displayed instead of top & bottom (Use with fx-row see `Horizontal Usage` story)',
+      control: false
+    }
   }
 };
 
-export const HorizontalUsage = TemplateHorizontal.bind({});
-HorizontalUsage.args = horizontalArgs;
+export const HorizontalUsage = {
+  render: TemplateHorizontal,
+  args: horizontalArgs
+};

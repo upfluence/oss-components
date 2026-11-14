@@ -177,26 +177,38 @@ const ActionTemplate = (args) => ({
   context: args
 });
 
-export const UsageWithIcon = Template.bind({});
-UsageWithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-info-circle' }
-};
+export const UsageWithIcon = {
+  render: Template,
 
-export const UsageWithImage = Template.bind({});
-UsageWithImage.args = {
-  ...defaultArgs,
-  ...{
-    image:
-      'https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg'
+  args: {
+    ...defaultArgs,
+    ...{ icon: 'fas fa-info-circle' }
   }
 };
 
-export const UsageWithCustomIcon = CustomIconTemplate.bind({});
-UsageWithCustomIcon.args = defaultArgs;
+export const UsageWithImage = {
+  render: Template,
 
-export const UsageWithActionsBlock = ActionTemplate.bind({});
-UsageWithActionsBlock.args = defaultArgs;
+  args: {
+    ...defaultArgs,
+    ...{
+      image:
+        'https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg'
+    }
+  }
+};
 
-export const UsageWithCustomTitle = CustomTitleTemplate.bind({});
-UsageWithCustomTitle.args = defaultArgs;
+export const UsageWithCustomIcon = {
+  render: CustomIconTemplate,
+  args: defaultArgs
+};
+
+export const UsageWithActionsBlock = {
+  render: ActionTemplate,
+  args: defaultArgs
+};
+
+export const UsageWithCustomTitle = {
+  render: CustomTitleTemplate,
+  args: defaultArgs
+};

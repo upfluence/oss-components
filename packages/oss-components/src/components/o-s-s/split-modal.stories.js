@@ -68,5 +68,7 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
-export const Usage = BasicUsageTemplate.bind({});
-Usage.args = defaultArgs;
+export const Usage = {
+  render: BasicUsageTemplate,
+  args: defaultArgs
+};

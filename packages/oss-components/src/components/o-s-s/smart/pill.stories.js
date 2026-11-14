@@ -81,8 +81,12 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
+};
 
-export const IconOnly = DefaultUsageTemplate.bind({});
-IconOnly.args = { ...defaultArgs, label: undefined, icon: 'far fa-bookmark' };
+export const IconOnly = {
+  render: DefaultUsageTemplate,
+  args: { ...defaultArgs, label: undefined, icon: 'far fa-bookmark' }
+};

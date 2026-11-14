@@ -240,31 +240,42 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
-export const Default = DefaultUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
+};
 
-export const WithFeedbackMessage = DefaultUsageTemplate.bind({});
-WithFeedbackMessage.args = {
-  ...defaultArgs,
-  ...{
-    feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
+export const WithFeedbackMessage = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
+    }
   }
 };
 
-export const SingleWithArtifact = DefaultUsageTemplate.bind({});
-SingleWithArtifact.args = {
-  ...defaultArgs,
-  ...{
-    artifact: defaultArtifact
+export const SingleWithArtifact = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      artifact: defaultArtifact
+    }
   }
 };
 
-export const MultipleWithArtifact = DefaultUsageTemplate.bind({});
-MultipleWithArtifact.args = {
-  ...defaultArgs,
-  ...{
-    multiple: true,
-    size: 'lg',
-    artifact: defaultArtifact
+export const MultipleWithArtifact = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      multiple: true,
+      size: 'lg',
+      artifact: defaultArtifact
+    }
   }
 };

@@ -74,35 +74,46 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
-
-export const WithSections = Template.bind({});
-WithSections.args = {
-  loading: false,
-  collapsible: true,
-  content: [
-    { title: 'Risk Summary', text: 'This influencer has a low risk profile.' },
-    { title: '💡 Why these filters?', bullets: ['Follower count', 'Engagement rate', 'Content category'] }
-  ],
-  error: null
+export const Default = {
+  render: Template,
+  args: defaultArgs
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
-  collapsible: true,
-  content: [],
-  error: null
+export const WithSections = {
+  render: Template,
+
+  args: {
+    loading: false,
+    collapsible: true,
+    content: [
+      { title: 'Risk Summary', text: 'This influencer has a low risk profile.' },
+      { title: '💡 Why these filters?', bullets: ['Follower count', 'Engagement rate', 'Content category'] }
+    ],
+    error: null
+  }
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
-  loading: false,
-  collapsible: true,
-  content: [],
-  error: {
-    title: 'Summary could not be generated, please, retry.',
-    onRetry: () => {}
+export const Loading = {
+  render: Template,
+
+  args: {
+    loading: true,
+    collapsible: true,
+    content: [],
+    error: null
+  }
+};
+
+export const WithError = {
+  render: Template,
+
+  args: {
+    loading: false,
+    collapsible: true,
+    content: [],
+    error: {
+      title: 'Summary could not be generated, please, retry.',
+      onRetry: () => {}
+    }
   }
 };

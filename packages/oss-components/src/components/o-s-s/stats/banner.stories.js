@@ -273,144 +273,167 @@ const IntegrationBadgesTemplate = (args) => ({
   context: args
 });
 
-export const Default = PlaygroundTemplate.bind({});
-Default.args = defaultArgs;
-
-export const ThreeUpCompact = ThreeUpTemplate.bind({});
-ThreeUpCompact.args = {
-  ...defaultArgs,
-  titleConfig: {
-    text: 'Revenue',
-    infoCircle: 'Revenue generated during the selected period'
-  },
-  badge: {
-    icon: 'fa-check',
-    skin: 'success'
-  },
-  statValue: {
-    label: '$12,493',
-    suffix: 'vs last month'
-  },
-  ctaSecondaryLabel: 'Details'
+export const Default = {
+  render: PlaygroundTemplate,
+  args: defaultArgs
 };
 
-export const WithDefaultCards = DefaultTemplate.bind({});
-WithDefaultCards.args = {
-  ...defaultArgs,
-  titleConfig: {
-    text: 'Commissions overview',
-    infoCircle: 'Summary of pending and approved commissions'
-  },
-  badge: {
-    icon: 'fa-star',
-    skin: 'primary',
-    extraIcon: {
-      icon: 'fa-bolt',
-      color: '#fb923c'
+export const ThreeUpCompact = {
+  render: ThreeUpTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: {
+      text: 'Revenue',
+      infoCircle: 'Revenue generated during the selected period'
+    },
+    badge: {
+      icon: 'fa-check',
+      skin: 'success'
+    },
+    statValue: {
+      label: '$12,493',
+      suffix: 'vs last month'
+    },
+    ctaSecondaryLabel: 'Details'
+  }
+};
+
+export const WithDefaultCards = {
+  render: DefaultTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: {
+      text: 'Commissions overview',
+      infoCircle: 'Summary of pending and approved commissions'
+    },
+    badge: {
+      icon: 'fa-star',
+      skin: 'primary',
+      extraIcon: {
+        icon: 'fa-bolt',
+        color: '#fb923c'
+      }
+    },
+    statValue: {
+      label: '$5,920',
+      suffix: 'to authorize',
+      tags: [
+        {
+          label: 'Urgent',
+          skin: 'warning',
+          icon: 'fa-triangle-exclamation',
+          plain: false
+        }
+      ]
+    },
+    ctaPrimaryLabel: 'Pay',
+    ctaSecondaryLabel: 'Export CSV'
+  }
+};
+
+export const Loading = {
+  render: LoadingTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: {
+      text: 'Loading stats banner title',
+      infoCircle: 'Helpful title information'
+    },
+    badge: {
+      icon: 'fa-hourglass-half',
+      skin: 'alert'
+    },
+    statValue: {
+      label: '999,999',
+      suffix: 'Fetching latest data'
+    },
+    loading: true
+  }
+};
+
+export const Minimal = {
+  render: MinimalTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: {
+      text: 'Active campaigns',
+      infoCircle: undefined
+    },
+    badge: undefined,
+    statValue: {
+      label: '42',
+      suffix: 'currently running'
     }
-  },
-  statValue: {
-    label: '$5,920',
-    suffix: 'to authorize',
-    tags: [
-      {
-        label: 'Urgent',
-        skin: 'warning',
-        icon: 'fa-triangle-exclamation',
-        plain: false
-      }
-    ]
-  },
-  ctaPrimaryLabel: 'Pay',
-  ctaSecondaryLabel: 'Export CSV'
-};
-
-export const Loading = LoadingTemplate.bind({});
-Loading.args = {
-  ...defaultArgs,
-  titleConfig: {
-    text: 'Loading stats banner title',
-    infoCircle: 'Helpful title information'
-  },
-  badge: {
-    icon: 'fa-hourglass-half',
-    skin: 'alert'
-  },
-  statValue: {
-    label: '999,999',
-    suffix: 'Fetching latest data'
-  },
-  loading: true
-};
-
-export const Minimal = MinimalTemplate.bind({});
-Minimal.args = {
-  ...defaultArgs,
-  titleConfig: {
-    text: 'Active campaigns',
-    infoCircle: undefined
-  },
-  badge: undefined,
-  statValue: {
-    label: '42',
-    suffix: 'currently running'
   }
 };
 
-export const WithTitleSuffixOnly = TitleSuffixOnlyTemplate.bind({});
-WithTitleSuffixOnly.args = {
-  ...defaultArgs,
-  titleConfig: {
-    text: 'Paid amount',
-    infoCircle: 'Compare period-over-period in the dropdown'
-  },
-  badge: {
-    icon: 'fa-chart-line',
-    skin: 'primary'
-  },
-  statValue: {
-    label: '$87,240',
-    suffix: 'last 30 days',
-    tags: [
-      {
-        label: '+12%',
-        skin: 'success',
-        icon: 'fa-arrow-up',
-        plain: false
-      }
-    ]
+export const WithTitleSuffixOnly = {
+  render: TitleSuffixOnlyTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: {
+      text: 'Paid amount',
+      infoCircle: 'Compare period-over-period in the dropdown'
+    },
+    badge: {
+      icon: 'fa-chart-line',
+      skin: 'primary'
+    },
+    statValue: {
+      label: '$87,240',
+      suffix: 'last 30 days',
+      tags: [
+        {
+          label: '+12%',
+          skin: 'success',
+          icon: 'fa-arrow-up',
+          plain: false
+        }
+      ]
+    }
   }
 };
 
-export const WithIntegrationBadges = IntegrationBadgesTemplate.bind({});
-WithIntegrationBadges.args = {
-  ...defaultArgs,
-  titleConfig: {
-    text: 'Connected integrations',
-    infoCircle: 'Channels currently connected to this stat card'
-  },
-  badge: {
-    icon: 'fa-plug',
-    skin: 'primary'
-  },
-  statValue: {
-    label: '4',
-    suffix: 'active channels'
-  },
-  ctaSecondaryLabel: 'Manage'
+export const WithIntegrationBadges = {
+  render: IntegrationBadgesTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: {
+      text: 'Connected integrations',
+      infoCircle: 'Channels currently connected to this stat card'
+    },
+    badge: {
+      icon: 'fa-plug',
+      skin: 'primary'
+    },
+    statValue: {
+      label: '4',
+      suffix: 'active channels'
+    },
+    ctaSecondaryLabel: 'Manage'
+  }
 };
 
-export const WithCustomTitleBlock = CustomTitleTemplate.bind({});
-WithCustomTitleBlock.args = {
-  ...defaultArgs,
-  titleConfig: undefined,
-  customTitle: 'Premium members',
-  badge: {
-    icon: 'fa-crown',
-    skin: 'primary'
-  },
-  statValue: {
-    label: '312',
-    suffix: 'active this month'
+export const WithCustomTitleBlock = {
+  render: CustomTitleTemplate,
+
+  args: {
+    ...defaultArgs,
+    titleConfig: undefined,
+    customTitle: 'Premium members',
+    badge: {
+      icon: 'fa-crown',
+      skin: 'primary'
+    },
+    statValue: {
+      label: '312',
+      suffix: 'active this month'
+    }
   }
 };

@@ -157,15 +157,22 @@ const IconNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
-WithNamedBlockIcon.args = defaultArgs;
+export const WithNamedBlockIcon = {
+  render: IconNamedBlockTemplate,
+  args: defaultArgs
+};
 
-export const WithTag = Template.bind({});
-WithTag.args = {
-  ...defaultArgs,
-  expanded: true,
-  tag: { label: 'New', skin: 'chat-gpt', plain: true }
+export const WithTag = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    expanded: true,
+    tag: { label: 'New', skin: 'chat-gpt', plain: true }
+  }
 };

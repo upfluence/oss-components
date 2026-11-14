@@ -110,12 +110,16 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  values: ['Iron Man', 'Thor', 'Loki', 'Hulk'],
-  placeholder: 'Enter a super hero name',
-  errorMessage: '',
-  disabled: false,
-  onChange: fn(),
-  validator: fn()
+
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+
+  args: {
+    values: ['Iron Man', 'Thor', 'Loki', 'Hulk'],
+    placeholder: 'Enter a super hero name',
+    errorMessage: '',
+    disabled: false,
+    onChange: fn(),
+    validator: fn()
+  }
 };

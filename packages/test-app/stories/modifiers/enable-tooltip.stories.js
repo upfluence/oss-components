@@ -151,11 +151,17 @@ const LineClampUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  render: DefaultUsageTemplate,
+  args: defaultArgs
+};
 
-export const OverflowUsage = OverflowUsageTemplate.bind({});
-OverflowUsage.args = defaultArgs;
+export const OverflowUsage = {
+  render: OverflowUsageTemplate,
+  args: defaultArgs
+};
 
-export const LineClampUsage = LineClampUsageTemplate.bind({});
-LineClampUsage.args = { ...defaultArgs, displayOnlyOnOverflow: true, overflowDirection: 'vertical' };
+export const LineClampUsage = {
+  render: LineClampUsageTemplate,
+  args: { ...defaultArgs, displayOnlyOnOverflow: true, overflowDirection: 'vertical' }
+};

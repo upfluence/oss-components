@@ -89,14 +89,22 @@ const Template = (args) => ({
   context: args
 });
 
-export const ThreeCards = Template.bind({});
-ThreeCards.args = threeCardsArgs;
+export const ThreeCards = {
+  render: Template,
+  args: threeCardsArgs
+};
 
-export const ThreeCardsWithContainerDefaults = Template.bind({});
-ThreeCardsWithContainerDefaults.args = threeCardsWithDefaultsArgs;
+export const ThreeCardsWithContainerDefaults = {
+  render: Template,
+  args: threeCardsWithDefaultsArgs
+};
 
-export const TwoCards = Template.bind({});
-TwoCards.args = twoCardsArgs;
+export const TwoCards = {
+  render: Template,
+  args: twoCardsArgs
+};
 
-export const OneCard = Template.bind({});
-OneCard.args = oneCardArgs;
+export const OneCard = {
+  render: Template,
+  args: oneCardArgs
+};

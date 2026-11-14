@@ -112,8 +112,12 @@ const Template = (args) => ({
   context: args
 });
 
-export const Usage = Template.bind({});
-Usage.args = defaultArgs;
+export const Usage = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithMainActionArgs = Template.bind({});
-WithMainActionArgs.args = withMainActionArgs;
+export const WithMainActionArgs = {
+  render: Template,
+  args: withMainActionArgs
+};

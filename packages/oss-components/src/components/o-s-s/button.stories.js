@@ -195,35 +195,46 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  render: Template,
+  args: defaultArgs
+};
 
-export const WithCountDown = Template.bind({});
-WithCountDown.args = {
-  ...defaultArgs,
-  ...{
-    countDown: {
-      callback: function () {
-        alert('Count down finish');
-      },
-      time: 3000
+export const WithCountDown = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      countDown: {
+        callback: function () {
+          alert('Count down finish');
+        },
+        time: 3000
+      }
     }
   }
 };
 
-export const WithIconUrl = Template.bind({});
-WithIconUrl.args = {
-  ...defaultArgs,
-  ...{
-    icon: undefined,
-    iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
+export const WithIconUrl = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      icon: undefined,
+      iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
+    }
   }
 };
 
-export const WithSuffixIcon = Template.bind({});
-WithSuffixIcon.args = {
-  ...defaultArgs,
-  ...{
-    suffixIcon: 'fas fa-chevron-down'
+export const WithSuffixIcon = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{
+      suffixIcon: 'fas fa-chevron-down'
+    }
   }
 };

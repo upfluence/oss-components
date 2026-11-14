@@ -102,17 +102,25 @@ const Template = (args) => ({
   context: args
 });
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+export const WithImage = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+  }
 };
 
-export const WithInitials = Template.bind({});
-WithInitials.args = {
-  ...defaultArgs,
-  ...{ initials: 'TS' }
+export const WithInitials = {
+  render: Template,
+
+  args: {
+    ...defaultArgs,
+    ...{ initials: 'TS' }
+  }
 };
 
-export const WithoutParam = Template.bind({});
-WithoutParam.args = defaultArgs;
+export const WithoutParam = {
+  render: Template,
+  args: defaultArgs
+};
