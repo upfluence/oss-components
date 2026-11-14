@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::PasswordInput',
@@ -115,7 +115,7 @@ const defaultArgs = {
   placeholder: '*****',
   errorMessage: undefined,
   autocomplete: undefined,
-  validates: action('validates'),
+  validates: fn(),
   validatorSet: undefined
 };
 

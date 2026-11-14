@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const MODES = ['view', 'edition'];
 
@@ -104,9 +104,9 @@ const defaultArgs = {
   isSaveDisabled: false,
   customEditIcon: 'fa-pen',
   initialMode: 'view',
-  onSave: action('onSave'),
-  onCancel: action('onCancel'),
-  onEdit: action('onEdit')
+  onSave: fn(),
+  onCancel: fn(),
+  onEdit: fn()
 };
 
 const DefaultUsageTemplate = (args) => ({

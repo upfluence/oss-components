@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const ResizeTypes = ['horizontal', 'vertical', 'none', null];
 
@@ -109,7 +109,7 @@ const defaultArgs = {
   placeholder: 'this is the placeholder',
   hasError: false,
   loading: false,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 const DefaultUsageTemplate = (args) => ({

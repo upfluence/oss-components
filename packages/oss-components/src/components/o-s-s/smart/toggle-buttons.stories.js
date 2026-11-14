@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Smart::ToggleButtons',
@@ -67,7 +67,7 @@ const defaultArgs = {
     { value: 'products', label: 'Products' }
   ],
   selectedToggle: 'categories',
-  onSelection: action('onSelection'),
+  onSelection: fn(),
   disabled: false
 };
 const DefaultUsageTemplate = (args) => ({

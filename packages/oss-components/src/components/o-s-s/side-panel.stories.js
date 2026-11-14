@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
@@ -72,7 +72,7 @@ const defaultArgs = {
   backdrop: true,
   size: 'sm',
   noPadding: false,
-  onClose: action('onClose')
+  onClose: fn()
 };
 
 const BasicUsageTemplate = (args) => ({

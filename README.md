@@ -52,6 +52,7 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 - Change `@upfluence/oss-components/addon/...` imports to canonical `@upfluence/oss-components/...` imports.
 - Remove TypeScript `paths` mappings to this package's old `addon` and `addon-test-support` directories. Public exports resolve generated declarations directly.
 - Import helpers from `/test-support` or its documented subpaths. Test consumers provide QUnit, qunit-dom, Sinon, and Ember test helpers.
+- `/test-support` imports `sinon`, an optional peer that now requires 15.2.0 or later: older releases point bundlers at Sinon's Node build, which fails under Vite and webpack 5. Add a compatible `sinon` to your devDependencies, since package managers don't install optional peers.
 
 ### Consumer-owned asset maps
 

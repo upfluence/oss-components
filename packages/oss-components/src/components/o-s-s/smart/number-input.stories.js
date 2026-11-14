@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Smart::NumberInput',
@@ -127,20 +127,20 @@ const DefaultTemplate = (args) => ({
 export const Default = DefaultTemplate.bind({});
 Default.args = {
   value: 10,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 export const Loading = DefaultTemplate.bind({});
 Loading.args = {
   loading: true,
   placeholder: 'Loading...',
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 export const Filled = DefaultTemplate.bind({});
 Filled.args = {
   value: 100,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 export const Error = DefaultTemplate.bind({});
@@ -148,12 +148,12 @@ Error.args = {
   value: 50,
   hasError: true,
   errorMessage: 'Invalid value',
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 export const Disabled = DefaultTemplate.bind({});
 Disabled.args = {
   value: 25,
   disabled: true,
-  onChange: action('onChange')
+  onChange: fn()
 };

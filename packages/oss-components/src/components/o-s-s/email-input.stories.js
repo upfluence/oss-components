@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::EmailInput',
@@ -100,7 +100,7 @@ const defaultArgs = {
   feedbackMessage: undefined,
   validateFormat: false,
   autocomplete: 'on',
-  validates: action('validates')
+  validates: fn()
 };
 
 const Template = (args) => ({

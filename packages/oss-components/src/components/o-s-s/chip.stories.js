@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SkinTypes = ['default', 'primary', 'success', 'danger'];
 
@@ -81,7 +81,7 @@ const defaultArgs = {
   label: 'Label',
   disabled: false,
   maxDisplayWidth: 0,
-  onRemove: action('onRemove')
+  onRemove: fn()
 };
 
 const Template = (args) => ({

@@ -25,6 +25,7 @@ export default defineConfig(
         'packages/*/linters/**/*.js'
       ]
     },
-    { files: ['**/*.mjs'], languageOptions: { sourceType: 'module' } }
+    { files: ['**/*.mjs'], languageOptions: { sourceType: 'module' } },
+    { files: ['packages/oss-components/src/**/*.stories.js'], rules: { 'ember/no-test-support-import': 'off' } }
   )
 );

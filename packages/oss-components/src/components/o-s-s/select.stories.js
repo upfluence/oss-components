@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SkinTypes = ['default', 'smart'];
 
@@ -212,11 +212,11 @@ const defaultArgs = {
     skin: 'tertiary',
     label: 'Add Hero',
     icon: 'fa-plus',
-    onClick: action('footer action clicked'),
+    onClick: fn(),
     closeOnClick: true
   },
-  onSearch: action('onSearch'),
-  onChange: action('onChange')
+  onSearch: fn(),
+  onChange: fn()
 };
 
 const Template = (args) => ({

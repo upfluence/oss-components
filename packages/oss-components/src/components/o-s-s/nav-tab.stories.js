@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::NavTab',
@@ -70,7 +70,7 @@ const defaultArgs = {
       tag: { label: 'X', skin: 'danger' }
     }
   ],
-  onSelection: action('onSelection')
+  onSelection: fn()
 };
 
 const Template = (args) => ({

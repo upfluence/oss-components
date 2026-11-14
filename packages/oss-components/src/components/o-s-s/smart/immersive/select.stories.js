@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Smart::Immersive::Select',
@@ -186,8 +186,8 @@ Select.args = {
     { value: 'step 2', label: 'Step 2' },
     { value: 'step 3', label: 'Step 3' }
   ],
-  onSearch: action('onSearch'),
-  onChange: action('onChange')
+  onSearch: fn(),
+  onChange: fn()
 };
 
 export const Multiple = Template.bind({});
@@ -204,6 +204,6 @@ Multiple.args = {
     { value: 'step 2', label: 'Step 2' },
     { value: 'step 3', label: 'Step 3' }
   ],
-  onSearch: action('onSearch'),
-  onChange: action('onChange')
+  onSearch: fn(),
+  onChange: fn()
 };

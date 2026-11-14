@@ -7,7 +7,7 @@
     "allowJs": true,
     "checkJs": false,
     "skipLibCheck": true,
-    "types": ["qunit", "qunit-dom", "sinon"],
+    "types": ["qunit", "qunit-dom", "sinon", "@embroider/core/virtual", "vite/client"],
     "baseUrl": ".",
     "paths": {
       "test-app/tests/*": ["tests/*"],

@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
@@ -99,7 +99,7 @@ const defaultArgs = {
   subtitle: 'This is a subtitle',
   size: 'sm',
   icon: null,
-  close: action('close'),
+  close: fn(),
   enqueue: undefined,
   disableClickOutside: undefined
 };

@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const AutocompleteValues = ['on', 'off'];
 
@@ -143,7 +143,7 @@ const defaultArgs = {
   disabled: false,
   inputOptions: { min: 0, max: 100 },
   autocomplete: undefined,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 const Template = (args) => ({

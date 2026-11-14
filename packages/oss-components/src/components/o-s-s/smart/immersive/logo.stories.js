@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 import { LOGO_COLORS, LOGO_ICONS } from '@upfluence/oss-components/utils/logo-config';
 
@@ -125,7 +125,7 @@ Default.args = {
   loading: false,
   size: 'md',
   hasError: false,
-  onEdit: action('onEdit')
+  onEdit: fn()
 };
 
 export const Editable = Template.bind({});

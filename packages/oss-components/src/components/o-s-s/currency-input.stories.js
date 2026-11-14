@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::CurrencyInput',
@@ -156,7 +156,7 @@ const defaultArgs = {
   onlyCurrency: false,
   errorMessage: '',
   feedbackMessage: undefined,
-  onChange: action('onChange'),
+  onChange: fn(),
   allowCurrencyUpdate: true,
   allowedCurrencies: undefined,
   placeholder: undefined,

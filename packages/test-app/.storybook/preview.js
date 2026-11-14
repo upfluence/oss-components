@@ -1,8 +1,10 @@
-import { hbs } from 'ember-cli-htmlbars';
+import App from 'test-app/app';
+import StorybookComponent from 'test-app/components/storybook';
 
 import './styles/preview.less';
 
 export const parameters = {
+  ember: { app: App },
   actions: { argTypesRegex: '^on[A-Z].*' },
   backgrounds: { disabled: true },
   layout: 'centered',
@@ -24,14 +26,7 @@ export const parameters = {
   }
 };
 
+// The stories return the legacy `{ template, context }` shape; the Storybook component renders it.
 export const decorators = [
-  (storyFn, { globals }) => {
-    return {
-      template: hbs`<Storybook @globals={{this.globals}} @story={{this.story}}/>`,
-      context: {
-        globals,
-        story: storyFn()
-      }
-    };
-  }
+  (Story, { globals }) => ({ component: StorybookComponent, args: { story: Story(), globals } })
 ];

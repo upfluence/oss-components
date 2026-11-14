@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Attribute::RemovableText',
@@ -53,7 +53,7 @@ const defaultArgs = {
   label: 'City',
   value: 'Paris',
   removeTooltip: undefined,
-  onRemove: action('onRemove')
+  onRemove: fn()
 };
 
 const Template = (args) => ({

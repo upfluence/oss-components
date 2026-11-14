@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Layout::Sidebar::Group',
@@ -83,7 +83,7 @@ const defaultArgs = {
       hasNotifications: false,
       locked: false,
       link: 'http://upfluence.com',
-      lockedAction: action('lockedAction')
+      lockedAction: fn()
     },
     {
       icon: 'far fa-bullseye-pointer',
@@ -92,7 +92,7 @@ const defaultArgs = {
       hasNotifications: true,
       locked: false,
       link: 'http://upfluence.com',
-      lockedAction: action('lockedAction'),
+      lockedAction: fn(),
       tag: { label: 'New', skin: 'chat-gpt', plain: true }
     }
   ]

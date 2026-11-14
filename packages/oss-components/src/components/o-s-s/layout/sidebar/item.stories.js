@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Layout::Sidebar::Item',
@@ -125,8 +125,8 @@ const defaultArgs = {
   hasNotifications: false,
   locked: false,
   link: 'http://upfluence.com',
-  lockedAction: action('lockedAction'),
-  action: action('action')
+  lockedAction: fn(),
+  action: fn()
 };
 
 const Template = (args) => ({

@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::ScrollablePanel',
@@ -79,7 +79,7 @@ const defaultArgs = {
   disableShadows: false,
   hideScrollbar: false,
   offset: 0,
-  onBottomReached: action('onBottomReached')
+  onBottomReached: fn()
 };
 
 const horizontalArgs = {

@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
@@ -88,7 +88,7 @@ const defaultArgs = {
   label: 'Actions',
   square: false,
   hideArrow: false,
-  mainAction: action('mainAction')
+  mainAction: fn()
 };
 
 const withMainActionArgs = {
@@ -96,7 +96,7 @@ const withMainActionArgs = {
   label: 'Actions',
   square: true,
   hideArrow: false,
-  mainAction: action('mainAction')
+  mainAction: fn()
 };
 
 const Template = (args) => ({

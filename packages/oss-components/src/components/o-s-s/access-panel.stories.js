@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::AccessPanel',
@@ -95,9 +95,9 @@ const defaultArgs = {
   initialLoad: false,
   loading: false,
   filtered: undefined,
-  onBottomReached: action('onBottomReached'),
-  onClose: action('onClose'),
-  onSearch: action('onSearch')
+  onBottomReached: fn(),
+  onClose: fn(),
+  onSearch: fn()
 };
 
 const DefaultUsageTemplate = (args) => ({

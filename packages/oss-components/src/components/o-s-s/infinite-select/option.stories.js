@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SelectionTypes = ['single', 'multiple'];
 
@@ -153,7 +153,7 @@ const defaultArgs = {
   suffixHint: undefined,
   suffixTag: undefined,
   suffixIcon: undefined,
-  onSelect: action('onSelect')
+  onSelect: fn()
 };
 
 const Template = (args) => ({
@@ -355,7 +355,7 @@ const MultipleOptionsTemplate = (args) => ({
 
 export const MultipleOptions = MultipleOptionsTemplate.bind({});
 MultipleOptions.args = {
-  onSelect: action('onSelect')
+  onSelect: fn()
 };
 
 const WithNamedBlocksTemplate = (args) => ({
@@ -384,5 +384,5 @@ WithNamedBlocks.args = {
   title: 'Option with Named Blocks',
   selectionType: 'single',
   selected: false,
-  onSelect: action('onSelect')
+  onSelect: fn()
 };

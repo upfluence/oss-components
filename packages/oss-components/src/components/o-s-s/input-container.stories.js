@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const AutocompleteValues = ['on', 'off'];
 
@@ -130,7 +130,7 @@ const defaultArgs = {
   feedbackMessage: undefined,
   errorMessage: undefined,
   autocomplete: undefined,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 const DefaultUsageTemplate = (args) => ({

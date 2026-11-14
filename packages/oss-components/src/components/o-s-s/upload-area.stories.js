@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
-import { MockUploader } from 'test-app/controllers/extra';
+import { fn } from 'storybook/test';
+
+import MockUploader from '../../test-support/services/uploader';
 
 const PrivacyTypes = ['public', 'private'];
 const SizeTypes = ['md', 'lg'];
@@ -217,8 +218,8 @@ const defaultArgs = {
   artifact: undefined,
   size: 'md',
   multiple: false,
-  onUploadSuccess: action('onUploadSuccess'),
-  onFileDeletion: action('onFileDeletion')
+  onUploadSuccess: fn(),
+  onFileDeletion: fn()
 };
 const defaultArtifact = {
   key: 'key',

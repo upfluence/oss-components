@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Smart::Immersive::CurrencyInput',
@@ -81,7 +81,7 @@ export default {
 const defaultArgs = {
   value: 42,
   currency: 'USD',
-  onChange: action('onChange'),
+  onChange: fn(),
   hasError: false,
   allowedCurrencies: undefined,
   placeholder: undefined

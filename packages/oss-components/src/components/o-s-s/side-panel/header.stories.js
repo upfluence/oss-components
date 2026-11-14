@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::SidePanel::Header',
@@ -45,8 +45,8 @@ export default {
 
 const defaultArgs = {
   title: 'Side panel header title',
-  onClose: action('onClose'),
-  onReturn: action('onReturn')
+  onClose: fn(),
+  onReturn: fn()
 };
 
 const BasicUsageTemplate = (args) => ({

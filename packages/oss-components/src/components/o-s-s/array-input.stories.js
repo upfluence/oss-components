@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::ArrayInput',
@@ -116,6 +116,6 @@ BasicUsage.args = {
   placeholder: 'Enter a super hero name',
   errorMessage: '',
   disabled: false,
-  onChange: action('onChange'),
-  validator: action('validator')
+  onChange: fn(),
+  validator: fn()
 };

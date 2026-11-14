@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Checkbox',
@@ -96,7 +96,7 @@ const defaultArgs = {
   disabled: false,
   hasError: false,
   size: null,
-  onChange: action('onSelect')
+  onChange: fn()
 };
 
 const Template = (args) => ({

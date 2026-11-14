@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const partialCountries = [
   {
@@ -138,7 +138,7 @@ const defaultArgs = {
   sourceList: partialCountries,
   value: undefined,
   feedbackMessage: undefined,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 const Template = (args) => ({

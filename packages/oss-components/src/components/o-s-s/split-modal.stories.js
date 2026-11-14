@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::SplitModal',
@@ -47,7 +47,7 @@ export default {
 };
 
 const defaultArgs = {
-  close: action('close'),
+  close: fn(),
   disableClickOutside: false
 };
 

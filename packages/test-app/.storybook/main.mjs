@@ -1,33 +1,60 @@
+import { locateEmbroiderWorkingDir } from '@embroider/core';
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import * as remarkGfmModule from 'remark-gfm';
+import remarkGfm from 'remark-gfm';
 
-// Storybook loads this file through esbuild-register, so the default export can arrive wrapped once or twice
-const remarkGfm = remarkGfmModule.default?.default ?? remarkGfmModule.default ?? remarkGfmModule;
+import { assetMapMeta } from '../vite-asset-map.mjs';
 
-const require = createRequire(import.meta.url);
-const dirname = path.dirname(fileURLToPath(import.meta.url));
-const ossRoot = path.dirname(require.resolve('@upfluence/oss-components/package.json'));
+const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+const appHeadContent = [
+  assetMapMeta(),
+  '<link rel="stylesheet" href="/@embroider/virtual/vendor.css" />',
+  '<link rel="stylesheet" href="https://uweb.s3.us-east-1.amazonaws.com/fa-current/css/all.min.css" />',
+  '<link rel="stylesheet" href="/app/styles/app.less" />',
+  '<script src="/@embroider/virtual/vendor.js"></script>',
+  '</head>'
+].join('');
+
+// ember-storybook drops Embroider's content-for plugin, so the preview gets the app's head here: the config the app
+// reads at boot, the asset map, and Embroider's vendor and app assets. As a `pre` hook, `vite build` bundles them.
+function appHead() {
+  return {
+    name: 'test-app:head',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html) {
+        const contentFor = JSON.parse(
+          fs.readFileSync(path.join(locateEmbroiderWorkingDir(appRoot), 'content-for.json'), 'utf8')
+        );
+        return html.replace('</head>', `${contentFor['/index.html'].head}${appHeadContent}`);
+      }
+    }
+  };
+}
+
+// The stories colocated in the addon import `storybook/test`. Under Embroider an addon may only import its dependencies
+// and peerDependencies, so the import is resolved here, from the test-app. A `resolve.alias` would cover the build but
+// not Vite's dependency scan.
+function storybookTestFromTestApp() {
+  const file = fileURLToPath(import.meta.resolve('storybook/test'));
+
+  return {
+    name: 'test-app:storybook-test',
+    enforce: 'pre',
+    resolveId: (source) => (source === 'storybook/test' ? file : null)
+  };
+}
 
 export default {
-  framework: '@storybook/ember',
-
-  staticDirs: ['../dist'],
+  framework: 'ember-storybook',
 
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|ts|tsx)',
     '../../oss-components/src/**/*.stories.@(js|jsx|ts|tsx)'
   ],
-
-  previewHead: (head) => {
-    const html = fs.readFileSync(path.resolve(dirname, '../dist/index.html'), 'utf8');
-    const manifest = html.match(/<meta name="upfluence:asset-map"[^>]*>/)?.[0];
-    if (!manifest) throw new Error('Build the Storybook test app before starting Storybook.');
-    return `${head}\n${manifest}`;
-  },
 
   addons: [
     '@storybook/addon-links',
@@ -38,30 +65,13 @@ export default {
     '@storybook/addon-designs'
   ],
 
-  babel: async (config) => ({
-    ...config,
-    presets: [...(config.presets || []), ['@babel/preset-typescript', { allowDeclareFields: true }]],
-    plugins: [
-      ...(config.plugins || []),
-      ['@babel/plugin-proposal-decorators', { legacy: true }],
-      ['@babel/plugin-transform-class-properties', { loose: true }]
-    ]
-  }),
+  viteFinal: async (config) => {
+    const { mergeConfig } = await import('vite');
+    const resolveStorybookTest = storybookTestFromTestApp();
 
-  webpackFinal: async (config) => {
-    config.resolve.fallback = { ...config.resolve.fallback, fs: false, child_process: false };
-
-    config.module.rules.push({
-      test: /\.less$/i,
-      use: [
-        'style-loader',
-        { loader: 'css-loader', options: { url: false } },
-        { loader: 'less-loader', options: { lessOptions: { paths: [path.join(ossRoot, 'node_modules')] } } }
-      ]
-    });
-
-    config.resolve.alias = { ...config.resolve.alias, 'test-app': path.resolve(dirname, '../app') };
-
-    return config;
+    return mergeConfig(
+      { ...config, plugins: [resolveStorybookTest, ...config.plugins] },
+      { optimizeDeps: { rolldownOptions: { plugins: [resolveStorybookTest] } }, plugins: [appHead()] }
+    );
   }
 };

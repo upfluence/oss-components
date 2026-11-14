@@ -58,7 +58,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.register('component:test-step', TestStepComponent);
+    this.TestStep = TestStepComponent;
     this.step = {
       id: '1',
       key: 'step-1',
@@ -68,14 +68,14 @@ module('Integration | Component | wizard/base-step', function (hooks) {
   });
 
   test('it sets validateStep if not present', async function (assert) {
-    await render(hbs`<TestStep @step={{this.step}} />`);
+    await render(hbs`<this.TestStep @step={{this.step}} />`);
 
     assert.strictEqual(typeof this.step.validateStep, 'function');
   });
 
   test("It doesn't set validateStep if already present", async function (assert) {
     this.step.validateStep = () => Promise.resolve(true);
-    await render(hbs`<TestStep @step={{this.step}} />`);
+    await render(hbs`<this.TestStep @step={{this.step}} />`);
 
     assert.strictEqual(this.step.validateStep, this.step.validateStep);
   });
@@ -84,7 +84,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
     test('If displayState is "active" and the step has not been visited, the onFirstInsertion hook is called', async function (assert) {
       this.step.displayState = 'active';
       this.step.visited = false;
-      await render(hbs`<TestStep @step={{this.step}} />`);
+      await render(hbs`<this.TestStep @step={{this.step}} />`);
 
       this.step.onVisibleState();
       assert.true(this.step.onFirstInsertionCalled);
@@ -93,7 +93,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
     test('If displayState is "active" and the step has not been visited, the step is marked as visited', async function (assert) {
       this.step.displayState = 'active';
       this.step.visited = false;
-      await render(hbs`<TestStep @step={{this.step}} />`);
+      await render(hbs`<this.TestStep @step={{this.step}} />`);
 
       this.step.onVisibleState();
       assert.true(this.step.visited);
@@ -102,7 +102,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
     test('If displayState is "active" and the step has been visited, the onRevisit hook is called', async function (assert) {
       this.step.displayState = 'active';
       this.step.visited = true;
-      await render(hbs`<TestStep @step={{this.step}} />`);
+      await render(hbs`<this.TestStep @step={{this.step}} />`);
 
       this.step.onVisibleState();
       assert.true(this.step.onRevisitCalled);
@@ -110,7 +110,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
 
     test('If displayState is "previous", the onLeave hook is called', async function (assert) {
       this.step.displayState = 'previous';
-      await render(hbs`<TestStep @step={{this.step}} />`);
+      await render(hbs`<this.TestStep @step={{this.step}} />`);
 
       this.step.onVisibleState();
       assert.true(this.step.onLeaveCalled);
@@ -118,7 +118,7 @@ module('Integration | Component | wizard/base-step', function (hooks) {
 
     test('If displayState is "next", the onLeave hook is called', async function (assert) {
       this.step.displayState = 'next';
-      await render(hbs`<TestStep @step={{this.step}} />`);
+      await render(hbs`<this.TestStep @step={{this.step}} />`);
 
       this.step.onVisibleState();
       assert.true(this.step.onLeaveCalled);

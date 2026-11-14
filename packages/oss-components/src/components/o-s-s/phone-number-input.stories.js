@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::PhoneNumberInput',
@@ -81,8 +81,8 @@ const defaultArgs = {
   prefix: '+33',
   number: '742424242',
   placeholder: '(415) 000 0000',
-  onChange: action('onChange'),
-  validates: action('validates')
+  onChange: fn(),
+  validates: fn()
 };
 
 const DefaultUsageTemplate = (args) => ({

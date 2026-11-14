@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const FAKE_DATA = [
   { superhero: 'Batman', characters: 'Bruce Wayne' },
@@ -192,13 +192,13 @@ const defaultArgs = {
     skin: 'tertiary',
     label: 'Add Hero',
     icon: 'fa-plus',
-    onClick: action('footer action clicked'),
+    onClick: fn(),
     closeOnClick: true
   },
-  onSelect: action('onSelect'),
-  onSearch: action('onSearch'),
-  onBottomReached: action('onBottomReached'),
-  didRender: action('didRender')
+  onSelect: fn(),
+  onSearch: fn(),
+  onBottomReached: fn(),
+  didRender: fn()
 };
 
 const Template = (args) => ({

@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::ModeSwitch',
@@ -82,7 +82,7 @@ export default {
 
 const Template = (args) => ({
   template: hbs`<OSS::ModeSwitch @options={{this.options}} @selected={{this.selected}} @plain={{this.plain}} @size={{this.size}} @disabled={{this.disabled}} @onSelect={{this.onSelect}} />`,
-  context: { ...args, onSelect: action('onSelect') }
+  context: args
 });
 
 export const Default = Template.bind({});
@@ -94,5 +94,6 @@ Default.args = {
   selected: 'option1',
   plain: false,
   disabled: false,
-  size: undefined
+  size: undefined,
+  onSelect: fn()
 };

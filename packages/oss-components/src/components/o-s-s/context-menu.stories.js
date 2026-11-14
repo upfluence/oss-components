@@ -1,5 +1,5 @@
 import hbs from 'htmlbars-inline-precompile';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SkinTypes = [
   'default',
@@ -219,8 +219,8 @@ const defaultArgs = {
   iconUrl: undefined,
   disabled: false,
   closeOnMouseLeave: false,
-  onMenuOpened: action('onMenuOpened'),
-  onMenuClosed: action('onMenuClosed')
+  onMenuOpened: fn(),
+  onMenuClosed: fn()
 };
 
 const Template = (args) => ({

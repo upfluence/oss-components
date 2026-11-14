@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
-import { MockUploader } from 'test-app/controllers/extra';
+import { fn } from 'storybook/test';
+
+import MockUploader from '../../test-support/services/uploader';
 
 const PrivacyTypes = ['public', 'private'];
 
@@ -138,9 +139,9 @@ const defaultArgs = {
   ],
   privacy: 'private',
   scope: undefined,
-  onEdition: action('onEdition'),
-  onDeletion: action('onDeletion'),
-  onUploadSuccess: action('onUploadSuccess')
+  onEdition: fn(),
+  onDeletion: fn(),
+  onUploadSuccess: fn()
 };
 const DefaultUsageTemplate = (args) => ({
   template: hbs`

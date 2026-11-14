@@ -11,6 +11,7 @@ storybook-static
 
 # misc
 **/.env*
+!packages/test-app/.env.development
 /.pnp*
 /.sass-cache
 **/.eslintcache

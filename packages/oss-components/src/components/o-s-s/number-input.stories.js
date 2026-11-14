@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::NumberInput',
@@ -115,5 +115,5 @@ BasicUsage.args = {
   minReachedTooltip: '',
   maxReachedTooltip: '',
   disabled: false,
-  onChange: action('onChange')
+  onChange: fn()
 };

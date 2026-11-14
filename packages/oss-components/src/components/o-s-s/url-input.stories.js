@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::UrlInput',
@@ -109,7 +109,7 @@ const defaultArgs = {
   disabled: false,
   errorMessage: '',
   validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
-  onChange: action('onChange')
+  onChange: fn()
 };
 const DefaultUsageTemplate = (args) => ({
   template: hbs`

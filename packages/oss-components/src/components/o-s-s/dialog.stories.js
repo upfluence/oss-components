@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SkinTypes = ['alert', 'error', 'primary'];
 
@@ -96,13 +96,13 @@ const defaultArgs = {
   icon: 'fa-warning',
   mainAction: {
     label: 'Discard',
-    action: action('discard'),
+    action: fn(),
     loading: false,
     icon: null
   },
   secondaryAction: {
     label: 'Cancel',
-    action: action('cancel'),
+    action: fn(),
     icon: null
   }
 };

@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Smart::Input',
@@ -142,7 +142,7 @@ const defaultArgs = {
   type: undefined,
   placeholder: 'this is the placeholder',
   errorMessage: undefined,
-  onChange: action('onChange'),
+  onChange: fn(),
   loading: false
 };
 

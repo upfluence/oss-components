@@ -1,5 +1,5 @@
 import hbs from 'htmlbars-inline-precompile';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::ContextMenu::Panel',
@@ -118,10 +118,10 @@ const defaultArgs = {
   items: items,
   offset: { mainAxis: -100, crossAxis: -100 },
   placement: 'bottom-start',
-  onMouseLeave: action('onMouseLeave'),
-  onClose: action('onClose'),
-  registerPanel: action('registerPanel'),
-  unregisterPanel: action('unregisterPanel'),
+  onMouseLeave: fn(),
+  onClose: fn(),
+  registerPanel: fn(),
+  unregisterPanel: fn(),
   isInitialized: false,
   postRender(self, element) {
     self.set('referenceTarget', element);

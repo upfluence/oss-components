@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::SearchField',
@@ -65,7 +65,7 @@ export default {
 const defaultArgs = {
   value: 'John',
   placeholder: 'My placeholder',
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 const Template = (args) => ({

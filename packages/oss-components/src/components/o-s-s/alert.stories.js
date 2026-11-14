@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const SkinTypes = ['success', 'info', 'warning', 'error'];
 
@@ -77,7 +77,7 @@ const defaultArgs = {
   title: 'Title',
   subtitle: 'I am a subtitle in the alert',
   closable: false,
-  onClose: action('onClose')
+  onClose: fn()
 };
 
 const Template = (args) => ({

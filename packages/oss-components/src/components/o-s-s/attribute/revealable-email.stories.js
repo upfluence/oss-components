@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 export default {
   title: 'Components/OSS::Attribute::RevealableEmail',
@@ -45,7 +45,7 @@ export default {
 const defaultArgs = {
   tooltip: 'This is the main tooltip',
   lockTooltip: undefined,
-  onRevealEmail: action('onSearch')
+  onRevealEmail: fn()
 };
 
 const Template = (args) => ({

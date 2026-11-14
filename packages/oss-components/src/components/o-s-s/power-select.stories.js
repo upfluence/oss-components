@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const FAKE_ITEMS = ['Book of Boba Fett', 'The Bad Batch', 'The Clone Wars'];
 const FAKE_SELECTED_ITEMS = ['The Mandalorian'];
@@ -164,9 +164,9 @@ const defaultArgs = {
   addressableAs: undefined,
   feedbackMessage: undefined,
   hasError: false,
-  onSearch: action('onSearch'),
-  onChange: action('onChange', { allowFunction: true }),
-  onBottomReached: action('onBottomReached')
+  onSearch: fn(),
+  onChange: fn(),
+  onBottomReached: fn()
 };
 
 const Template = (args) => ({

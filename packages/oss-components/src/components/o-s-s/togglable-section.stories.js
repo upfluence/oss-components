@@ -1,5 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from 'storybook/actions';
+import { fn } from 'storybook/test';
 
 const COMPONENT_SIZES = ['sm', 'md'];
 
@@ -130,7 +130,7 @@ const defaultArgs = {
   size: undefined,
   disabled: undefined,
   switchable: undefined,
-  onChange: action('onChange')
+  onChange: fn()
 };
 
 const Template = (args) => ({

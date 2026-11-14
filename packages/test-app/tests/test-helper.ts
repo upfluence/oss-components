@@ -1,8 +1,7 @@
 import { setApplication } from '@ember/test-helpers';
 
-import { forceModulesToBeLoaded, sendCoverage } from 'ember-cli-code-coverage/test-support';
-import { start, setupEmberOnerrorValidation } from 'ember-qunit';
-import { loadTests } from 'ember-qunit/test-loader';
+import { sendCoverage } from 'ember-cli-code-coverage/test-support';
+import { start as qunitStart, setupEmberOnerrorValidation } from 'ember-qunit';
 import * as QUnit from 'qunit';
 import { setup } from 'qunit-dom';
 import 'qunit-dom';
@@ -11,21 +10,26 @@ import config from 'test-app/config/environment';
 
 import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
 
-registerAssertions(QUnit.assert);
-setup(QUnit.assert);
-QUnit.done(async () => {
-  forceModulesToBeLoaded((_, moduleName) => !moduleName.endsWith('.stories'));
-  await sendCoverage();
-});
-
-setApplication(Application.create(config.APP));
-
-setupEmberOnerrorValidation();
-loadTests();
-start();
-
 declare module '@ember/test-helpers' {
   interface TestContext {
     [key: string]: any;
   }
+}
+
+export function start() {
+  registerAssertions(QUnit.assert);
+  setup(QUnit.assert);
+  QUnit.done(async () => {
+    if (import.meta.env.COVERAGE) {
+      // Also report the addon modules no test imports, as the classic build did.
+      const modules = import.meta.glob(['../../oss-components/dist/**/*.js', '!../../oss-components/dist/_app_/**']);
+      await Promise.allSettled(Object.values(modules).map((load) => load()));
+    }
+    await sendCoverage();
+  });
+
+  setApplication(Application.create(config.APP));
+
+  setupEmberOnerrorValidation();
+  qunitStart();
 }
