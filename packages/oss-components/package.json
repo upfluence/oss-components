@@ -36,7 +36,6 @@
     "@embroider/macros": "^1.20.6",
     "@embroider/util": "^1.9.0",
     "@floating-ui/dom": "^1.6.3",
-    "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "bootstrap": "^3.3.7",
     "broccoli-plugin": "^4.0.7",
@@ -52,6 +51,7 @@
     "@babel/runtime": "^7.24.0",
     "@ember/test-helpers": "^5.4.1",
     "@embroider/addon-dev": "^8.5.0",
+    "@glimmer/component": "^2.2.1",
     "@glint/core": "^1.5.2",
     "@glint/environment-ember-loose": "^1.5.2",
     "@glint/template": "^1.5.2",
@@ -86,6 +86,7 @@
   },
   "peerDependencies": {
     "ember-source": "^6.12.0",
+    "@glimmer/component": "^1.1.2 || ^2.0.0",
     "@ember/test-helpers": ">=2",
     "qunit": "^2 || ^3",
     "sinon": ">=15.2.0",
