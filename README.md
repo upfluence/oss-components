@@ -18,8 +18,13 @@
 
 ## Compatibility
 
-- Ember 6.12; classic apps require ember-auto-import 2 and Webpack 5.
-- Node 20, 22, or 24.
+- Ember.js v6.12 or above; classic apps also require ember-auto-import 2 and Webpack 5.
+- Node.js v24 or above
+- pnpm 10
+
+Required peer dependency: `ember-source` `^6.12.0`.
+
+Apps on Ember.js below 6.12 should stay on `3.x`.
 
 ## Installation and styles
 

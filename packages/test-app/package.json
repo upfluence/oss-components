@@ -1,6 +1,6 @@
 {
   "name": "test-app",
-  "version": "4.0.0-beta.3",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "lint": "npm-run-all --aggregate-output --continue-on-error lint:format lint:js lint:hbs",
