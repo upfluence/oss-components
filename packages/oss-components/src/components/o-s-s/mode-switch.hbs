@@ -10,8 +10,9 @@
       data-control-name={{concat option.key "-input"}}
     />
     <label
+      {{! template-lint-disable no-positive-tabindex }}
       for={{concat this.guid "-" option.key}}
-      tabindex={{if @disabled "-1" "0"}}
+      tabindex={{this.optionLabelTabIndex}}
       {{on "keydown" (fn this.onKeyDown option.key)}}
       data-control-name={{concat option.key "-label"}}
     >

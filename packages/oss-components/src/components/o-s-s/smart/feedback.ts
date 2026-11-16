@@ -66,15 +66,6 @@ export default class OSSSmartFeedback extends Component<OSSSmartFeedbackArgs> {
   }
 
   @action
-  onKeyDown(event: KeyboardEvent): void {
-    if (!this.showChevron || event.target !== event.currentTarget) return;
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-
-    event.preventDefault();
-    this.toggle();
-  }
-
-  @action
   setupTruncation(element: HTMLElement): void {
     this.contentElement = element;
     this.measureTruncation();
