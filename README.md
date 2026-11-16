@@ -91,6 +91,23 @@ pnpm --filter @upfluence/oss-components build:analyze
 
 Git hooks remain opt-in through `make enable_pre_hook`. No install or default Make target installs them.
 
+### Generators
+
+Run these commands from the workspace root:
+
+```sh
+pnpm generate component o-s-s/example-card
+pnpm generate helper format-example
+pnpm generate modifier track-example --blueprint function
+pnpm generate service example
+pnpm generate util example
+pnpm destroy component o-s-s/example-card --dry-run
+```
+
+Add `--dry-run` to either command to preview the file paths. Components get paired `.ts` and `.hbs` files and a colocated story. Rendering tests go in the test app's `tests/integration` directory. Services and utilities get unit tests. Helpers and modifiers default to classes and accept `--blueprint function`.
+
+Rollup discovers the generated modules. Wildcard exports provide the compiled JavaScript and declarations under the canonical package paths. The pnpm lockfile pins the generator branch's resolved commit. Run `pnpm -w update @upfluence/ember-blueprints` to pick up a newer commit from that branch.
+
 ## Packaging and release
 
 `prepack` builds JavaScript and declarations. Verify with `npm pack --dry-run` from `packages/oss-components`. Runtime exports, styles, public assets, translations, the CommonJS asset-map wrapper, and the template lint plugin are included; stories and test-app files are excluded.

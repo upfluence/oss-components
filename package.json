@@ -5,6 +5,8 @@
   "scripts": {
     "build": "pnpm --filter @upfluence/oss-components build",
     "build:test-app": "pnpm build && pnpm --filter test-app build",
+    "generate": "ember-blueprints generate",
+    "destroy": "ember-blueprints destroy",
     "lint": "pnpm exec prettier . --check && pnpm --filter @upfluence/oss-components --filter test-app lint:js && pnpm --filter @upfluence/oss-components --filter test-app lint:hbs",
     "lint:fix": "pnpm exec prettier . --write && pnpm --filter @upfluence/oss-components --filter test-app lint:fix",
     "typecheck": "pnpm --filter @upfluence/oss-components --filter test-app typecheck",
@@ -21,6 +23,7 @@
     "remove-pre-push-hook": "rm -f \"$(git rev-parse --git-path hooks/pre-push)\""
   },
   "devDependencies": {
+    "@upfluence/ember-blueprints": "git+https://github.com/upfluence/ember-blueprints.git#pn/generators-support",
     "@upfluence/w-conf": "^0.4.0",
     "eslint": "^10.5.0",
     "prettier": "^3.8.1",
