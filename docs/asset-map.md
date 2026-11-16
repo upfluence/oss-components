@@ -1,11 +1,11 @@
 # Consumer-owned asset maps
 
-OSS provides an `asset-map` service/helper implementation through its v2 `app-js` registrations and an explicitly imported classic-build utility. No build integration is activated by OSS addon hooks.
+OSS provides an `asset-map` service/helper implementation through its v2 `app-js` registrations, plus two explicitly imported build utilities: a classic (Broccoli) wrapper and a Vite plugin. No build integration is activated by OSS addon hooks.
 
 ## Ownership
 
 - The consuming app builds and fingerprints its complete asset output, including assets supplied by addons.
-- `injectAssetMap` wraps that final build tree and injects the consumer's completed manifest into its HTML.
+- `injectAssetMap` (classic) wraps that final build tree, or the `assetMap` Vite plugin hooks into the consumer's Vite build, and injects the consumer's completed manifest into its HTML.
 - OSS publishes runtime code, not a manifest or environment-specific URLs.
 - OSS's `app-js` service and helper mappings register the implementation in the consumer, including the test app. Each service instance owns its URL table.
 
@@ -44,6 +44,44 @@ Remove `ember-cli-ifa` and its `ifa` environment configuration in the same consu
 
 The wrapper rejects an IFA meta tag, including one injected by an active transitive dependency. Missing/invalid production manifests, ambiguous manifests, or missing HTML markers fail the build. Development builds with fingerprinting disabled receive an empty map and the consumer's rootURL; no production CDN prefix is applied.
 
+## Vite app setup
+
+Apps built with `@embroider/vite` (`compatBuild(app, buildOnce)` in `ember-cli-build.js`) can't use the classic wrapper: Vite, not Broccoli, emits the final HTML and assets. They add the plugin to `vite.config.mjs` instead:
+
+```js
+import { assetMap } from '@upfluence/oss-components/build/vite-asset-map.mjs';
+
+export default defineConfig({
+  // The CDN goes in Vite's base; asset-map reads its prefix from there.
+  base: process.env.CDN_URL || '/',
+  plugins: [classicEmberSupport(), ember(), assetMap() /* , babel(...) */]
+});
+```
+
+Keep `ember-cli-build.js` returning `compatBuild(app, buildOnce)` without `injectAssetMap`. The EmberApp `fingerprint` options and `autoImport.publicAssetURL` no longer apply under Vite. Keep the same `<meta name="upfluence:asset-map" content="__UPFLUENCE_ASSET_MAP__" />` marker in the root `index.html` and in `tests/index.html`. Tested with Vite 8. The workspace test app uses this setup (`packages/test-app/vite.config.mjs`). Its Storybook drops the plugin and injects a disabled map, because Storybook builds with a relative base.
+
+**Prefix.** Vite's `base` is the single source for the asset-map prefix, so asset-map URLs stay in step with the JS/CSS URLs Vite writes:
+
+| `base`                                        | `prepend` | `rootURL` |
+| --------------------------------------------- | --------- | --------- |
+| Absolute URL (`https://cdn.example.com/app/`) | `base`    | `/`       |
+| Path (`/`, `/plugin/`)                        | `''`      | `base`    |
+| Relative (`''`, `./`)                         | rejected  | rejected  |
+
+A relative base would produce document-relative URLs, which break on nested routes, so `vite build` fails on it.
+
+**Dev server (`vite`).** Every HTML page gets an empty, disabled map (`{ assets: {}, prepend: '', rootURL: base, enabled: false }`): Vite serves `public/` and `@embroider/vite` serves addon public assets at stable paths under `base`, so every name resolves to `base` + logical path without warnings.
+
+**`vite build`.** Vite copies `public/` verbatim and `@embroider/vite` emits addon public assets under their stable public path (`@upfluence/oss-components/assets/...`), so neither is fingerprinted by Vite. To keep classic cache-busting, the plugin:
+
+- picks app `public/` files and addon public assets whose extension is in `extensions` (default `png`, `jpg`, `jpeg`, `gif`, `svg`, `webp`, `avif`, `ico`; override with `assetMap({ extensions: [...] })`);
+- emits a content-hashed copy next to each one, keeping the directory layout (`assets/images/logo.svg` → `assets/images/logo-<16 hex>.svg`);
+- maps each logical name to its hashed copy (`enabled: true`).
+
+This applies to every `vite build`, test builds (`vite build --mode development`) included, so tests should get expected asset URLs from the `asset-map` service rather than hardcode stable paths. The stable copies stay in the output, so CSS `url()`s, favicons and other direct references keep working. Assets Vite already fingerprints from module imports (`import url from './logo.svg'`) are not in the map; the importing module already has their URL. A public file whose extension isn't listed resolves to its stable path and warns as a missing entry in development-mode builds.
+
+**Failures.** The Vite plugin shares the classic wrapper's HTML checks, in the dev server and in `vite build`: an `ember-cli-ifa:assetMap` meta (including one injected through `content-for`) fails, and every HTML entry must contain the placeholder exactly once.
+
 ## Resolution contract
 
 - Logical names resolve to manifest output paths with the consumer's CDN prepend, or its rootURL when no prepend exists.
@@ -63,17 +101,17 @@ For local integration, install a packed addon or verify a local link points to `
 
 Adopting this OSS change is a dependency-contract change: its app re-exports register the owned adapter automatically, so every adopting consumer must remove IFA and configure the wrapper together. Unmigrated apps should stay on the older OSS release until migrated; adding IFA directly would create competing registrations. This pilot does not edit those other apps.
 
-The OSS v2 package preserves the Node utility as an explicit package export, runtime modules as ordinary exports, and consumer registrations through `app-js` mappings. Classic consumers can keep using the wrapper. A Vite integration will produce the same logical-name-to-URL table without broccoli-asset-rev; it is not implemented here.
+The OSS v2 package preserves the Node utility as an explicit package export, runtime modules as ordinary exports, and consumer registrations through `app-js` mappings. Classic consumers can keep using the wrapper; Vite consumers use the `assetMap` plugin (see [Vite app setup](#vite-app-setup)), which produces the same manifest shape without broccoli-asset-rev.
 
 ## Validation
 
 ```sh
 pnpm test:asset-map-build
 pnpm typecheck
-pnpm --filter test-app exec ember test --filter='asset-map' --launch=Chrome
+pnpm build && pnpm --filter test-app test:ember --filter='asset-map' --launch=Chrome
 ```
 
-Build tests exercise real broccoli-asset-rev output with app-owned and namespaced addon-owned assets, CDN prepend, hashed/default/custom manifests, disabled fingerprinting, repeated builds, and error paths. Ember tests cover the service, independent instances, helper output, and reactive configuration.
+Build tests exercise real broccoli-asset-rev output with app-owned and namespaced addon-owned assets, CDN prepend, hashed/default/custom manifests, disabled fingerprinting, repeated builds, and error paths. Vite tests run real Vite 8 builds and dev servers: app `public/` and addon public assets (emitted the way `@embroider/vite` does), Vite-imported assets left out, CDN `base`, the `extensions` option, rebuilds, and the same error paths plus relative bases. Ember tests cover the service, independent instances, helper output, and reactive configuration.
 
 Before accepting the plugin-web pilot, run its development and production builds with the local/new OSS package, then check dynamically selected login images, branding logos, locked-state illustrations, profile empty-state images, and OSS upload/social badges. Verify CDN URLs point to actual emitted files.
 

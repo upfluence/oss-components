@@ -65,7 +65,7 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 
 ### Consumer-owned asset maps
 
-Follow [Consumer-owned asset maps](docs/asset-map.md). The consuming app explicitly calls `injectAssetMap` from `@upfluence/oss-components/build/classic-asset-map.cjs`; addon hooks do not activate it. Remove competing ember-cli-ifa registrations when adopting this adapter.
+Follow [Consumer-owned asset maps](docs/asset-map.md). The consuming app explicitly calls `injectAssetMap` from `@upfluence/oss-components/build/classic-asset-map.cjs` (classic builds) or adds the `assetMap` plugin from `@upfluence/oss-components/build/vite-asset-map.mjs` (Vite builds); addon hooks do not activate either. Remove competing ember-cli-ifa registrations when adopting this adapter.
 
 ## Development
 
@@ -111,7 +111,7 @@ Rollup discovers the generated modules. Wildcard exports provide the compiled Ja
 
 ## Packaging and release
 
-`prepack` builds JavaScript and declarations. Verify with `npm pack --dry-run` from `packages/oss-components`. Runtime exports, styles, public assets, translations, the CommonJS asset-map wrapper, and the template lint plugin are included; stories and test-app files are excluded.
+`prepack` builds JavaScript and declarations. Verify with `npm pack --dry-run` from `packages/oss-components`. Runtime exports, styles, public assets, translations, the asset-map build adapters (the classic wrapper and the Vite plugin), and the template lint plugin are included; stories and test-app files are excluded.
 
 Release versioning uses root `pnpm exec release-it major`; tagged CI publishes from the addon package to GitHub Packages after checks and both Ember scenarios pass. Use `pnpm exec release-it major --dry-run --ci` to inspect the release workflow. The migration itself does not publish or change versions.
 

@@ -91,7 +91,6 @@ export default class AssetMapService extends Service {
     }
   }
 
-  // Also provides the build-independent seam for a future Vite integration.
   configure(manifest: AssetManifest): void {
     this.table = new AssetURLTable(manifest);
   }
@@ -99,7 +98,7 @@ export default class AssetMapService extends Service {
   resolve(name: string): string {
     if (!this.table) {
       throw new Error(
-        '[upfluence asset-map] Missing consumer manifest. Wrap the consuming app build with injectAssetMap.'
+        '[upfluence asset-map] Missing consumer manifest. Add the assetMap Vite plugin, or wrap a classic build with injectAssetMap.'
       );
     }
 

@@ -5,6 +5,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import type AssetMapService from '@upfluence/oss-components/services/asset-map';
+
 const ICONS_MATCHING: Record<string, string> = {
   article: '.fab.fa-wordpress',
   facebook_status: '.fab.fa-facebook-f',
@@ -60,9 +62,11 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
         hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
+      const assetMap = this.owner.lookup('service:asset-map') as AssetMapService;
+
       assert
         .dom('.oss-social-post-badge img')
-        .hasAttribute('src', `/@upfluence/oss-components/assets/icons/${IMG_MATCHING[media]}`);
+        .hasAttribute('src', assetMap.resolve(`@upfluence/oss-components/assets/icons/${IMG_MATCHING[media]}`));
     });
   });
 

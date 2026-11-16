@@ -3,9 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const Plugin = require('broccoli-plugin');
-
-const PLACEHOLDER = '__UPFLUENCE_ASSET_MAP__';
-const PREFIX = '[upfluence asset-map]';
+const { PREFIX, injectManifest } = require('./asset-map-html.cjs');
 
 function validateManifest(manifest) {
   if (
@@ -84,24 +82,18 @@ class AssetMapInjection extends Plugin {
     const input = this.inputPaths[0];
     const enabled = this.fingerprint.enabled !== false;
     const manifest = enabled ? readManifest(input, this.fingerprint) : { assets: {}, prepend: '' };
-    const payload = encodeURIComponent(JSON.stringify({ ...manifest, enabled, rootURL: this.rootURL }));
+    const payload = { ...manifest, enabled, rootURL: this.rootURL };
 
     copyTree(input, this.outputPath);
     let injected = 0;
     for (const relative of this.htmlPaths) {
       const file = path.join(this.outputPath, relative);
       if (!fs.existsSync(file)) continue;
-      const html = fs.readFileSync(file, 'utf8');
-      if (html.includes('ember-cli-ifa:assetMap')) {
-        throw new Error(`${PREFIX} Remove ember-cli-ifa from the consuming app and its active dependencies.`);
-      }
-      if (html.split(PLACEHOLDER).length !== 2) {
-        throw new Error(`${PREFIX} Expected exactly one ${PLACEHOLDER} placeholder in ${relative}.`);
-      }
+      const html = injectManifest(fs.readFileSync(file, 'utf8'), payload, relative);
       // Broccoli's cached trees can expose HTML through symlinks. Replace the
       // output entry atomically rather than writing through a link to the input.
       const temporaryFile = `${file}.upfluence-asset-map.tmp`;
-      fs.writeFileSync(temporaryFile, html.replace(PLACEHOLDER, payload), { flag: 'wx' });
+      fs.writeFileSync(temporaryFile, html, { flag: 'wx' });
       try {
         fs.renameSync(temporaryFile, file);
       } finally {

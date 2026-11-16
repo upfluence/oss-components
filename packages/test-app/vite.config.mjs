@@ -4,7 +4,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import { defineConfig } from 'vite';
 
-import { upfluenceAssetMap } from './vite-asset-map.mjs';
+import { assetMap } from '@upfluence/oss-components/build/vite-asset-map.mjs';
 
 const ossRoot = path.dirname(createRequire(import.meta.url).resolve('@upfluence/oss-components/package.json'));
 
@@ -29,6 +29,6 @@ export default defineConfig({
       babelHelpers: 'runtime',
       extensions
     }),
-    upfluenceAssetMap()
+    assetMap()
   ]
 });

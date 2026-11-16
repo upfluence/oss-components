@@ -4,12 +4,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import remarkGfm from 'remark-gfm';
 
-import { assetMapMeta } from '../vite-asset-map.mjs';
-
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
+// Storybook builds with a relative base, which the `assetMap` plugin rejects, so the preview gets a disabled map.
+const disabledAssetMap = encodeURIComponent(JSON.stringify({ assets: {}, prepend: '', rootURL: '/', enabled: false }));
+
 const appHeadContent = [
-  assetMapMeta(),
+  `<meta name="upfluence:asset-map" content="${disabledAssetMap}" />`,
   '<link rel="stylesheet" href="/@embroider/virtual/vendor.css" />',
   '<link rel="stylesheet" href="https://uweb.s3.us-east-1.amazonaws.com/fa-current/css/all.min.css" />',
   '<link rel="stylesheet" href="/app/styles/app.less" />',
@@ -70,7 +71,13 @@ export default {
     const resolveStorybookTest = storybookTestFromTestApp();
 
     return mergeConfig(
-      { ...config, plugins: [resolveStorybookTest, ...config.plugins] },
+      {
+        ...config,
+        plugins: [
+          resolveStorybookTest,
+          ...config.plugins.flat(Infinity).filter((p) => p?.name !== 'upfluence-asset-map')
+        ]
+      },
       { optimizeDeps: { rolldownOptions: { plugins: [resolveStorybookTest] } }, plugins: [appHead()] }
     );
   }

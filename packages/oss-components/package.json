@@ -28,7 +28,7 @@
     "typecheck": "glint",
     "prepack": "rollup --config",
     "start": "rollup --config --watch",
-    "test:asset-map-build": "node --test tests/build/*-test.cjs"
+    "test:asset-map-build": "node --test tests/build/*-test.cjs tests/build/*-test.mjs"
   },
   "dependencies": {
     "@ember/render-modifiers": "^2.1.0",
@@ -82,6 +82,7 @@
     "rollup-plugin-visualizer": "^5.14.0",
     "sinon": "^22.1.0",
     "typescript": "^5.9.3",
+    "vite": "^8.3.8",
     "webpack": "^5.95.0"
   },
   "peerDependencies": {
@@ -181,6 +182,7 @@
     "./_app_/*": "./dist/_app_/*",
     "./styles/*": "./styles/*",
     "./build/classic-asset-map.cjs": "./build/classic-asset-map.cjs",
+    "./build/vite-asset-map.mjs": "./build/vite-asset-map.mjs",
     "./linters/handlebars": "./linters/handlebars/index.js",
     "./addon-main.js": "./addon-main.cjs",
     "./package.json": "./package.json",
