@@ -54,6 +54,7 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 ### Breaking migration changes
 
 - Change `/app/styles/...` imports to `/styles/...`.
+- `styles/oss-components.less` no longer inlines FontAwesome Pro. Load your licensed FontAwesome CSS before the OSS styles and serve its webfonts (see [Installation and styles](#installation-and-styles)).
 - Change `@upfluence/oss-components/addon/...` imports to canonical `@upfluence/oss-components/...` imports.
 - Remove TypeScript `paths` mappings to this package's old `addon` and `addon-test-support` directories. Public exports resolve generated declarations directly.
 - Import helpers from `/test-support` or its documented subpaths. Test consumers provide QUnit, qunit-dom, Sinon, and Ember test helpers.
