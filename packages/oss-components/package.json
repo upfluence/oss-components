@@ -290,10 +290,6 @@
       "types": "./declarations/components/o-s-s/icon.d.ts",
       "default": "./dist/components/o-s-s/icon.js"
     },
-    "./components/o-s-s/iconName.enum": {
-      "types": "./declarations/components/o-s-s/iconName.enum.d.ts",
-      "default": "./dist/components/o-s-s/iconName.enum.js"
-    },
     "./components/o-s-s/illustration": {
       "types": "./declarations/components/o-s-s/illustration.d.ts",
       "default": "./dist/components/o-s-s/illustration.js"
@@ -397,10 +393,6 @@
     "./components/o-s-s/private/base-dropdown": {
       "types": "./declarations/components/o-s-s/private/base-dropdown.d.ts",
       "default": "./dist/components/o-s-s/private/base-dropdown.js"
-    },
-    "./components/o-s-s/private/base-modal": {
-      "types": "./declarations/components/o-s-s/private/base-modal.d.ts",
-      "default": "./dist/components/o-s-s/private/base-modal.js"
     },
     "./components/o-s-s/progress-bar": {
       "types": "./declarations/components/o-s-s/progress-bar.d.ts",
@@ -645,10 +637,6 @@
     "./modifiers/enable-tooltip": {
       "types": "./declarations/modifiers/enable-tooltip.d.ts",
       "default": "./dist/modifiers/enable-tooltip.js"
-    },
-    "./modifiers/install-scroll-reached-modifier": {
-      "types": "./declarations/modifiers/install-scroll-reached-modifier.d.ts",
-      "default": "./dist/modifiers/install-scroll-reached-modifier.js"
     },
     "./modifiers/on-bottom-reached": {
       "types": "./declarations/modifiers/on-bottom-reached.d.ts",
@@ -976,15 +964,7 @@
       "./services/base-uploader.js": "./dist/_app_/services/base-uploader.js",
       "./services/form-manager.js": "./dist/_app_/services/form-manager.js",
       "./services/toast.js": "./dist/_app_/services/toast.js",
-      "./services/wizard-manager.js": "./dist/_app_/services/wizard-manager.js",
-      "./utils/attach-dropdown.js": "./dist/_app_/utils/attach-dropdown.js",
-      "./utils/constants.js": "./dist/_app_/utils/constants.js",
-      "./utils/easter-eggs.js": "./dist/_app_/utils/easter-eggs.js",
-      "./utils/filesize-parser.js": "./dist/_app_/utils/filesize-parser.js",
-      "./utils/index.js": "./dist/_app_/utils/index.js",
-      "./utils/keyboard.js": "./dist/_app_/utils/keyboard.js",
-      "./utils/logo-config.js": "./dist/_app_/utils/logo-config.js",
-      "./utils/upf-local-storage.js": "./dist/_app_/utils/upf-local-storage.js"
+      "./services/wizard-manager.js": "./dist/_app_/services/wizard-manager.js"
     },
     "public-assets": {
       "./public/assets/components/marketing-banner/grid.svg": "/@upfluence/oss-components/assets/components/marketing-banner/grid.svg",

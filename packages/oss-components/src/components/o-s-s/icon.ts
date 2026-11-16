@@ -2,12 +2,10 @@ import { assert } from '@ember/debug';
 import type Owner from '@ember/owner';
 import Component from '@glimmer/component';
 
-import { IconNames } from './iconName.enum';
-
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand' | 'flag' | 'duotone-regular';
 
 export interface OSSIconArgs {
-  icon: keyof typeof IconNames | string;
+  icon: string;
   style?: IconStyle;
 }
 
@@ -28,13 +26,10 @@ export default class OSSIcon extends Component<OSSIconArgs> {
   }
 
   get iconClass(): string {
-    if (typeof this.args.icon === 'string' && this.args.icon.includes('fa-')) {
-      return this.args.icon;
-    }
-    if (typeof this.args.icon === 'string' && this.args.style === 'flag') {
+    if (typeof this.args.icon === 'string' && !this.args.icon.includes('fa-') && this.args.style === 'flag') {
       return `fflag-${this.args.icon} ff-sm ff-round`;
     }
-    return IconNames[this.args.icon as keyof typeof IconNames];
+    return this.args.icon;
   }
 
   get computedClass(): string {

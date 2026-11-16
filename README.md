@@ -58,6 +58,9 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 - Remove TypeScript `paths` mappings to this package's old `addon` and `addon-test-support` directories. Public exports resolve generated declarations directly.
 - Import helpers from `/test-support` or its documented subpaths. Test consumers provide QUnit, qunit-dom, Sinon, and Ember test helpers.
 - `/test-support` imports `sinon`, an optional peer that now requires 15.2.0 or later: older releases point bundlers at Sinon's Node build, which fails under Vite and webpack 5. Add a compatible `sinon` to your devDependencies, since package managers don't install optional peers.
+- The consumer app namespace re-exports OSS components, helpers, modifiers, services, and instance-initializers, default exports only. Import utils and named helper exports (such as `formatMoneyHelper`) from `@upfluence/oss-components/...`, not from your app's `utils/` or `helpers/`.
+- `components/o-s-s/private/base-modal` and `modifiers/install-scroll-reached-modifier` are internal and no longer importable.
+- `OSS::Icon` no longer maps enum names to icons: pass the FontAwesome class (`fa-laptop-code`, not `LaptopCode`). `components/o-s-s/iconName.enum` is removed.
 
 ### Consumer-owned asset maps
 

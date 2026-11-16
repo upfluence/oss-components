@@ -4,7 +4,8 @@ import { type TestContext } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { initialize } from 'test-app/instance-initializers/override-intl';
+
+import { initialize } from '@upfluence/oss-components/instance-initializers/override-intl';
 
 module('Unit | Instance Initializer | override-intl', function (hooks) {
   setupTest(hooks);

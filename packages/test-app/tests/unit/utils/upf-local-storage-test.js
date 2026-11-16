@@ -1,5 +1,6 @@
 import { module, test } from 'qunit';
-import UPFLocalStorage from 'test-app/utils/upf-local-storage';
+
+import UPFLocalStorage from '@upfluence/oss-components/utils/upf-local-storage';
 
 const TEST_KEY = 'testKey';
 const DEFAULT_PREFIX = '_upf.';
