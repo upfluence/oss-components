@@ -1,8 +1,9 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { set } from '@ember/object';
 import { click, render, settled, setupOnerror, triggerEvent } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/carousel', function (hooks) {
@@ -16,7 +17,6 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     this.autoPlay = undefined;
     this.loop = undefined;
     this.onPageChange = sinon.spy();
-    this.swipeable = undefined;
     this.onSwipe = sinon.spy();
   });
 
@@ -26,7 +26,7 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
                      @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
                      @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}
                      @indicatorsPosition={{this.indicatorsPosition}} @loop={{this.loop}}
-                     @swipeable={{this.swipeable}} @onSwipe={{this.onSwipe}}>
+                     @onSwipe={{this.onSwipe}}>
         <:pages>
           <div class="page">Page 1</div>
           <div class="page">Page 2</div>
@@ -312,7 +312,7 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     });
   });
 
-  module('Swipe', (hooks) => {
+  module('Swipe', () => {
     async function swipe(startX: number, endX: number, startY = 0, endY = 0) {
       await triggerEvent('.oss-carousel .page-container', 'touchstart', {
         changedTouches: [{ clientX: startX, clientY: startY }]
@@ -322,26 +322,12 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
       });
     }
 
-    hooks.beforeEach(function () {
-      this.swipeable = true;
-    });
-
-    test('By default, swiping does nothing', async function (assert) {
-      this.swipeable = undefined;
+    test('When @onSwipe is not provided, swiping does nothing', async function (assert) {
+      this.onSwipe = undefined;
       await renderCarousel();
       await swipe(200, 100);
 
       assert.dom('.oss-carousel .page--active').hasText('Page 1');
-      assert.true(this.onSwipe.notCalled);
-    });
-
-    test('When swipeable is false, swiping does nothing', async function (assert) {
-      this.swipeable = false;
-      await renderCarousel();
-      await swipe(200, 100);
-
-      assert.dom('.oss-carousel .page--active').hasText('Page 1');
-      assert.true(this.onSwipe.notCalled);
     });
 
     test('Swiping left goes to the next page and calls @onSwipe with "left"', async function (assert) {

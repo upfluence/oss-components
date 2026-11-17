@@ -15,7 +15,6 @@ interface OSSCarouselArgs {
   indicatorsPosition?: 'top' | 'bottom';
   showControls?: 'overlay' | 'outside';
   autoPlay?: number;
-  swipeable?: boolean;
   loop?: boolean;
   onPageChange?(page: number): void;
   onSwipe?(direction: 'left' | 'right'): void;
@@ -37,7 +36,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   private touchStart: { x: number; y: number } | null = null;
 
   get swipeable(): boolean {
-    return this.args.swipeable ?? false;
+    return this.args.onSwipe === undefined ? false : true;
   }
 
   get buttonIcon(): string {

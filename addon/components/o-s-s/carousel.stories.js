@@ -78,20 +78,9 @@ export default {
         }
       }
     },
-    swipeable: {
-      description:
-        'Allows changing the page by swiping left or right on touch devices. A swipe is ignored if it is shorter than 50px or mostly vertical. When `loop` is false, swiping past the first or last page does not change the page.',
-      table: {
-        type: {
-          summary: 'boolean'
-        },
-        defaultValue: { summary: 'false' }
-      },
-      control: { type: 'boolean' }
-    },
     onSwipe: {
       description:
-        'Action triggered when a valid swipe is performed, with the direction of the swipe. Only called when `swipeable` is true.',
+        'Action triggered when a valid swipe is performed, with the direction of the swipe. Providing it enables swiping to change pages. A swipe is ignored if it is shorter than 50px or mostly vertical. When `loop` is false, swiping past the first or last page does not change the page.',
       table: {
         category: 'Actions',
         type: {
@@ -128,7 +117,6 @@ const defaultArgs = {
   showControls: undefined,
   autoPlay: undefined,
   loop: true,
-  swipeable: false,
   indicatorsPosition: 'top'
 };
 
@@ -137,7 +125,7 @@ const Template = (args) => ({
     <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                    @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
                    @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
-                   @loop={{this.loop}} @swipeable={{this.swipeable}} @onSwipe={{this.onSwipe}}
+                   @loop={{this.loop}} @onSwipe={{this.onSwipe}}
                    @onPageChange={{this.onPageChange}}>
       <:pages>
         <div class="page">
