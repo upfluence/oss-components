@@ -1,10 +1,11 @@
 import { action } from '@ember/object';
+import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { isTesting } from '@embroider/macros';
 
 const DEFAULT_BUTTON_ICON: string = 'fa-circle';
 const DEFAULT_CONTROL_NAME_PREFIX: string = 'oss-carousel';
+const SWIPE_THRESHOLD: number = 50;
 const ANIMATION_TIME: number = isTesting() ? 5 : 500;
 
 interface OSSCarouselArgs {
@@ -14,8 +15,10 @@ interface OSSCarouselArgs {
   indicatorsPosition?: 'top' | 'bottom';
   showControls?: 'overlay' | 'outside';
   autoPlay?: number;
+  swipeable?: boolean;
   loop?: boolean;
   onPageChange?(page: number): void;
+  onSwipe?(direction: 'left' | 'right'): void;
 }
 
 interface AnimationHandler {
@@ -31,6 +34,11 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   @tracked controlNamePrefix: string = DEFAULT_CONTROL_NAME_PREFIX;
 
   declare private autoPlayInterval: number;
+  private touchStart: { x: number; y: number } | null = null;
+
+  get swipeable(): boolean {
+    return this.args.swipeable ?? false;
+  }
 
   get buttonIcon(): string {
     return this.args.buttonIcon ?? DEFAULT_BUTTON_ICON;
@@ -70,10 +78,43 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     }
     this.pages[0]!.classList.add('page--active');
     this.currentPageIndex = 0;
+    this.setupAutoPlay();
+  }
+
+  @action
+  setupAutoPlay(): void {
+    clearInterval(this.autoPlayInterval);
     if (this.args.autoPlay) {
       this.autoPlayInterval = setInterval(() => {
         this.nextPage();
-      }, this.args.autoPlay);
+      }, this.args.autoPlay) as unknown as number;
+    }
+  }
+
+  @action
+  onTouchStart(event: TouchEvent): void {
+    const touch = event.changedTouches[0];
+    this.touchStart = this.swipeable && touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }
+
+  @action
+  onTouchEnd(event: TouchEvent): void {
+    const touch = event.changedTouches[0];
+    const start = this.touchStart;
+    this.touchStart = null;
+    if (!this.swipeable || !start || !touch) return;
+
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+    const direction = deltaX < 0 ? 'left' : 'right';
+    this.args.onSwipe?.(direction);
+
+    if (direction === 'left') {
+      if (this.loop || this.currentPageIndex < this.pages.length - 1) this.nextPage();
+    } else if (this.loop || this.currentPageIndex > 0) {
+      this.previousPage();
     }
   }
 
