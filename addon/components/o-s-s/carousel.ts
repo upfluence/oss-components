@@ -55,12 +55,20 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     return this.args.loop ?? true;
   }
 
+  get canGoToPreviousPage(): boolean {
+    return this.loop || this.currentPageIndex > 0;
+  }
+
+  get canGoToNextPage(): boolean {
+    return this.loop || this.currentPageIndex < (this.pages ?? []).length - 1;
+  }
+
   get showPreviousControl(): boolean {
-    return this.showControls && (this.loop || this.currentPageIndex > 0);
+    return this.showControls && this.canGoToPreviousPage;
   }
 
   get showNextControl(): boolean {
-    return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
+    return this.showControls && this.canGoToNextPage;
   }
 
   get showControlsOutside(): boolean {
@@ -86,7 +94,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     if (this.args.autoPlay) {
       this.autoPlayInterval = setInterval(() => {
         this.nextPage();
-      }, this.args.autoPlay) as unknown as number;
+      }, this.args.autoPlay);
     }
   }
 
@@ -110,9 +118,9 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     const direction = deltaX < 0 ? 'left' : 'right';
     this.args.onSwipe?.(direction);
 
-    if (direction === 'left') {
-      if (this.loop || this.currentPageIndex < this.pages.length - 1) this.nextPage();
-    } else if (this.loop || this.currentPageIndex > 0) {
+    if (direction === 'left' && this.canGoToNextPage) {
+      this.nextPage();
+    } else if (direction === 'right' && this.canGoToPreviousPage) {
       this.previousPage();
     }
   }
