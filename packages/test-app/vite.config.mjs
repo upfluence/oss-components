@@ -1,12 +1,9 @@
 import { babel } from '@rollup/plugin-babel';
 import { classicEmberSupport, ember, extensions } from '@embroider/vite';
-import { createRequire } from 'node:module';
-import path from 'node:path';
 import { defineConfig } from 'vite';
 
+import { ossLessPaths } from '@upfluence/oss-components/build/less-paths.cjs';
 import { assetMap } from '@upfluence/oss-components/build/vite-asset-map.mjs';
-
-const ossRoot = path.dirname(createRequire(import.meta.url).resolve('@upfluence/oss-components/package.json'));
 
 export default defineConfig({
   define: {
@@ -17,8 +14,8 @@ export default defineConfig({
       less: {
         // The OSS styles rely on Less 3 math (`16 / @rem`). less is pinned to 4.2.2: 4.9.1 fails on their `rgb(from …)`.
         math: 'always',
-        // They also import Less files from their own dependencies.
-        paths: [path.join(ossRoot, 'node_modules')]
+        // They import bootstrap's LESS by bare name, resolved next to oss-components.
+        paths: ossLessPaths()
       }
     }
   },

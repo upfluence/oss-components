@@ -34,20 +34,35 @@ Install `@upfluence/oss-components`. Import the umbrella stylesheet before appli
 @import '@upfluence/oss-components/styles/oss-components.less';
 ```
 
-Configure the consuming LESS compiler to resolve packages from the app's `node_modules` and OSS's dependency directory (for the preserved Bootstrap LESS imports):
+The OSS styles import Bootstrap 3's LESS by bare name (`bootstrap/less/…`). Add `ossLessPaths()` to the app's LESS paths: pnpm keeps a package's dependencies next to it, not inside it, so the helper resolves Bootstrap from OSS's own location.
+
+Classic apps (`ember-cli-build.js`):
 
 ```js
-const path = require('node:path');
-const ossRoot = path.dirname(require.resolve('@upfluence/oss-components/package.json'));
-// Merge these options into your EmberApp configuration:
-const options = {
+const { ossLessPaths } = require('@upfluence/oss-components/build/less-paths.cjs');
+
+let app = new EmberApp(defaults, {
   lessOptions: {
-    paths: [path.join(ossRoot, 'node_modules'), 'node_modules']
+    paths: [...ossLessPaths(), 'node_modules']
   }
-};
+});
 ```
 
-The entire LESS hierarchy, including variables and mixins, remains available under `styles/`. Styles are compiled by the consuming application; components do not inject CSS at runtime.
+Vite apps (`vite.config.mjs`), where Less 4 also needs Less 3 math:
+
+```js
+import { ossLessPaths } from '@upfluence/oss-components/build/less-paths.cjs';
+
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      less: { math: 'always', paths: ossLessPaths() }
+    }
+  }
+});
+```
+
+The entire LESS hierarchy, including variables and mixins, ships as raw LESS in `styles/` at the package root, next to `dist/` rather than inside it. `styles/oss-components.less` stays the complete stylesheet and the supported import, compiled by the consuming application. Component-level styles only cover rules that aren't in it: they're compiled into the addon's JavaScript and injected at runtime, with no setup on the consumer side.
 
 FontAwesome is owned by the consuming app: install your licensed FontAwesome package, include its CSS before OSS styles, and serve its matching webfonts. OSS does not install or copy FontAwesome. The workspace test app demonstrates this integration.
 
@@ -91,6 +106,21 @@ pnpm --filter @upfluence/oss-components build:analyze
 ```
 
 Git hooks remain opt-in through `make enable_pre_hook`. No install or default Make target installs them.
+
+### Component styles
+
+Components can import their own styles for rules that aren't in the global bundle, such as a new component's. Rollup compiles the LESS with `rollup-plugin-styles` (the same setup as hypermarket), inlines the CSS into the component's JavaScript, and appends it to `<head>` the first time the module loads.
+
+```ts
+// src/components/o-s-s/pill.ts
+import './pill.less';
+```
+
+- Put the `.less` next to the component and import it from its `.ts` or `.js`. A template-only component needs a backing module to hold the import.
+- Use the `var(--…)` tokens for values.
+- `styles/oss-components.less` stays complete: never move or copy rules from `styles/` into a component's `.less`. Component styles are for new styles only.
+- `url()` is not processed: reference assets by their public path (`/@upfluence/oss-components/assets/…`).
+- Injected `<style>` tags come after the app's CSS, so a component rule beats an app override of equal specificity. Keep selectors low-specificity.
 
 ### Generators
 
