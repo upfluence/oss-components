@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
-const SelectionTypes = ['single', 'multiple'];
+import OSSInfiniteSelectOption from './option.ts';
 
 const Template = (args) => ({
   template: hbs`
@@ -29,126 +29,14 @@ const Template = (args) => ({
 
 export default {
   title: 'Components/OSS::InfiniteSelect::Option',
-  component: 'infinite-select/option',
+  component: OSSInfiniteSelectOption,
   render: Template,
   argTypes: {
-    title: {
-      type: { required: true },
-      description: 'The main title text of the option',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'text' }
-    },
-    subtitle: {
-      description: 'Optional subtitle text displayed below the title',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'text' }
-    },
-    selectionType: {
-      description: 'The selection type - single selection with radio behavior or multiple selection with checkboxes',
-      table: {
-        type: { summary: SelectionTypes.join('|') },
-        defaultValue: { summary: 'single' }
-      },
-      options: SelectionTypes,
-      control: { type: 'select' }
-    },
-    selected: {
-      description: 'Whether the option is currently selected',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-      control: { type: 'boolean' }
-    },
-    disabled: {
-      description: 'Whether the option is disabled and cannot be selected',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      },
-      control: { type: 'boolean' }
-    },
-    prefixAvatar: {
-      description: 'Optional avatar displayed before the title. Object with properties: image, initials, size, loading',
-      table: {
-        type: { summary: 'OSSAvatarArgs' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
-    prefixBadge: {
-      description:
-        'Optional badge displayed before the title. Object with properties: icon, image, text, skin, plain, size',
-      table: {
-        type: { summary: 'OSSBadgeArgs' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
-    prefixIcon: {
-      description: 'Optional icon displayed before the title. Object with properties: icon, style, tooltip',
-      table: {
-        type: { summary: 'IconSpec' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
-    prefixCountry: {
-      description: 'Optional country flag displayed before the title. Use alpha2 country code (e.g., "US", "FR")',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'text' }
-    },
-    icon: {
-      description: 'Optional icon displayed after the title. Object with properties: icon, style, tooltip',
-      table: {
-        type: { summary: 'IconSpec' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
-    suffixHint: {
-      description: 'Optional hint text displayed at the end of the option',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'text' }
-    },
-    suffixTag: {
-      description:
-        'Optional tag displayed at the end of the option. Object with properties: label, skin, icon, suffixIcon, hasEllipsis, plain, htmlSafe, size',
-      table: {
-        type: { summary: 'OSSTagArgs' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
-    suffixIcon: {
-      description:
-        'Optional icon displayed at the very end of the option. Object with properties: icon, style, tooltip',
-      table: {
-        type: { summary: 'IconSpec' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
-    onSelect: {
-      type: { required: true },
-      description: 'Callback function called when the option is selected/deselected',
-      table: {
-        category: 'Actions',
-        type: { summary: 'onSelect(value: boolean): void' }
-      }
-    }
+    // `ReturnType<IntlService['t']>` is being extracted as `any` currently, which gets an object control.
+    // I still have to investigate why this is happening and lookup for existing issues in ember-storybook.
+    title: { control: 'text', table: { type: { summary: 'string | SafeString' } } },
+    subtitle: { control: 'text', table: { type: { summary: 'string | SafeString' } } },
+    suffixHint: { control: 'text', table: { type: { summary: 'string | SafeString' } } }
   },
   parameters: {
     docs: {
