@@ -22,7 +22,7 @@
 - Node.js v24 or above
 - pnpm 10
 
-Required peer dependency: `ember-source` `^6.12.0`.
+Required peer dependencies: `ember-source` `^6.12.0`, `@glimmer/component` `^1.1.2 || ^2.0.0`, `@glimmer/tracking` `^1.1.2` and `ember-intl` `^6.4.0`.
 
 Apps on Ember.js below 6.12 should stay on `3.x`.
 
@@ -73,6 +73,7 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 - Change `@upfluence/oss-components/addon/...` imports to canonical `@upfluence/oss-components/...` imports.
 - Remove TypeScript `paths` mappings to this package's old `addon` and `addon-test-support` directories. Public exports resolve generated declarations directly.
 - Import helpers from `/test-support` or its documented subpaths. Test consumers provide QUnit, qunit-dom, Sinon, and Ember test helpers.
+- `@glimmer/component`, `@glimmer/tracking` and `ember-intl` are peer dependencies: the app owns the single copy of each. OSS no longer brings its own, which broke apps on `@glimmer/component` 2. Declare them in your app if it doesn't already.
 - `/test-support` imports `sinon`, an optional peer that now requires 15.2.0 or later: older releases point bundlers at Sinon's Node build, which fails under Vite and webpack 5. Add a compatible `sinon` to your devDependencies, since package managers don't install optional peers.
 - The consumer app namespace re-exports OSS components, helpers, modifiers, services, and instance-initializers, default exports only. Import utils and named helper exports (such as `formatMoneyHelper`) from `@upfluence/oss-components/...`, not from your app's `utils/` or `helpers/`.
 - `components/o-s-s/private/base-modal` and `modifiers/install-scroll-reached-modifier` are internal and no longer importable.
