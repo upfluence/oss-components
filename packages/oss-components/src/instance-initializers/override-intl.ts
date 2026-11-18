@@ -1,9 +1,8 @@
 import { htmlSafe, isHTMLSafe, type SafeString } from '@ember/template';
 
-import DOMPurify from 'dompurify';
 import type { TOptions } from 'ember-intl/services/intl';
 
-import { RICH_TEXT_SVG_CONFIG } from '../utils/sanitize-config';
+import { sanitizeHtml } from '../utils/sanitize-config';
 
 const OVERRIDE_APPLIED_KEY = '__ossOverrideIntlApplied';
 
@@ -21,7 +20,7 @@ export function initialize(appInstance: any): void {
 
     if (options && options.htmlSafe) {
       const stringToSanitize = isHTMLSafe(result) ? result.toString() : (result as string);
-      const sanitized = DOMPurify.sanitize(stringToSanitize, RICH_TEXT_SVG_CONFIG);
+      const sanitized = sanitizeHtml(stringToSanitize);
       result = htmlSafe(sanitized);
     }
 

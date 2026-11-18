@@ -1,5 +1,7 @@
 import DOMPurify, { type Config } from 'dompurify';
 
+export type SanitizeConfig = Config;
+
 /**
  * Configure DOMPurify hooks.
  */
@@ -26,3 +28,20 @@ export const RICH_TEXT_SVG_CONFIG: Config = {
   USE_PROFILES: { html: true, svg: false, mathMl: false },
   ADD_ATTR: ['target']
 };
+
+/**
+ * Sanitizes `dirty` with OSS's own DOMPurify instance, so the hooks above (safe `target="_blank"` links, no
+ * `url()`/`@import`/`@font-face` in `style`) always apply.
+ *
+ * Consumers must use this instead of importing `dompurify` themselves: OSS's ES module build and an app's
+ * CommonJS imports of `dompurify` resolve to two separate DOMPurify instances, and hooks only exist on the
+ * instance they were added to.
+ */
+export function sanitizeHtml(dirty: string, config: SanitizeConfig = RICH_TEXT_SVG_CONFIG): string {
+  return DOMPurify.sanitize(dirty, {
+    ...config,
+    RETURN_DOM: false,
+    RETURN_DOM_FRAGMENT: false,
+    RETURN_TRUSTED_TYPE: false
+  }) as string;
+}
