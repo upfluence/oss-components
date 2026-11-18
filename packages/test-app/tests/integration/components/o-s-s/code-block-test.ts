@@ -30,7 +30,7 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
     assert.strictEqual(codeLines.length, 60);
     assert.dom(codeLines[0]).hasText("import Component from '@glimmer/component';");
     assert.dom(codeLines[1]).hasText(`import { action } from '@ember/object';`);
-    assert.dom(codeLines[2]).hasText(`import { inject as service } from '@ember/service';`);
+    assert.dom(codeLines[2]).hasText(`import { service } from '@ember/service';`);
   });
 
   test('If copyable parameter is set, the copy button is visible', async function (assert) {
@@ -101,7 +101,7 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
 
 const codeExample = `import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ToastService from '@upfluence/oss-components/services/toast';
 

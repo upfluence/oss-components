@@ -75,7 +75,7 @@ export default {
 const defaultArgs = {
   content: `import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ToastService from '@upfluence/oss-components/services/toast';
 

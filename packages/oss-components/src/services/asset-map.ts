@@ -9,6 +9,8 @@ export interface AssetManifest {
   enabled?: boolean;
 }
 
+const ERROR_PREFIX = '[upfluence asset-map]';
+
 export function validateAssetManifest(value: unknown): AssetManifest {
   const manifest = value as AssetManifest | null;
   if (
@@ -21,7 +23,7 @@ export function validateAssetManifest(value: unknown): AssetManifest {
     (manifest.rootURL !== undefined && typeof manifest.rootURL !== 'string') ||
     (manifest.enabled !== undefined && typeof manifest.enabled !== 'boolean')
   ) {
-    throw new Error('[upfluence asset-map] Invalid consumer manifest.');
+    throw new Error(`${ERROR_PREFIX} Invalid consumer manifest.`);
   }
   return manifest;
 }
@@ -58,7 +60,7 @@ export class AssetURLTable {
     const mapped = this.urls.get(key);
     if (!mapped && this.enabled && !this.warned.has(key)) {
       this.warned.add(key);
-      warn(`[upfluence asset-map] No manifest entry for "${name}".`, false, {
+      warn(`${ERROR_PREFIX} No manifest entry for "${name}".`, false, {
         id: 'upfluence.asset-map.missing-entry'
       });
     }
@@ -98,7 +100,7 @@ export default class AssetMapService extends Service {
   resolve(name: string): string {
     if (!this.table) {
       throw new Error(
-        '[upfluence asset-map] Missing consumer manifest. Add the assetMap Vite plugin, or wrap a classic build with injectAssetMap.'
+        `${ERROR_PREFIX} Missing consumer manifest. Add the assetMap Vite plugin, or wrap a classic build with injectAssetMap.`
       );
     }
 

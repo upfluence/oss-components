@@ -39,7 +39,7 @@ jobs:
       node-version: ${{ vars.NODE_VERSION }}
       ember-try-working-directory: packages/test-app
       test-variants: |
-        [{ "name": "default", "command": "pnpm -w test" }]
+        [{ "name": "default", "command": "pnpm --workspace-root test" }]
   build:
     runs-on: ubuntu-24.04
     needs: [checks, tests]
