@@ -16,9 +16,28 @@ function getAllCSSColorAvailable() {
 
 const ColorOptions = getAllCSSColorAvailable();
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 600px;">
+      <OSS::Marketing::Banner
+        @title={{this.title}}
+        @subtitle={{this.subtitle}}
+        @options={{hash
+          primaryGradiantColor=this.primaryGradiantColor
+          secondaryGradiantColor=this.secondaryGradiantColor
+          backgroundGridDisplayed=this.backgroundGridDisplayed
+          illustrationAlwaysVisible=this.illustrationAlwaysVisible
+        }}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Marketing::Banner',
   component: 'marketing-banner',
+  render: BasicUsageTemplate,
   argTypes: {
     title: {
       description: 'The main title text displayed in the banner',
@@ -106,24 +125,6 @@ const defaultArgs = {
   backgroundGridDisplayed: true,
   illustrationAlwaysVisible: false
 };
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 600px;">
-      <OSS::Marketing::Banner
-        @title={{this.title}}
-        @subtitle={{this.subtitle}}
-        @options={{hash
-          primaryGradiantColor=this.primaryGradiantColor
-          secondaryGradiantColor=this.secondaryGradiantColor
-          backgroundGridDisplayed=this.backgroundGridDisplayed
-          illustrationAlwaysVisible=this.illustrationAlwaysVisible
-        }}
-      />
-    </div>
-  `,
-  context: args
-});
 
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
@@ -228,37 +229,50 @@ const CompleteExampleTemplateSmallScreen = (args) => ({
   context: args
 });
 
-export const BasicUsage = BasicUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const WithIllustration = WithIllustrationTemplate.bind({});
-WithIllustration.args = {
-  ...defaultArgs,
-  title: 'Launch Your Project',
-  subtitle: 'Connect with your audience and achieve your goals'
+export const BasicUsage = {
+  args: defaultArgs
 };
 
-export const WithActions = WithActionsTemplate.bind({});
-WithActions.args = {
-  ...defaultArgs,
-  title: 'Ready to Get Started?',
-  subtitle: 'Join thousands of users already using our platform'
+export const WithIllustration = {
+  render: WithIllustrationTemplate,
+
+  args: {
+    ...defaultArgs,
+    title: 'Launch Your Project',
+    subtitle: 'Connect with your audience and achieve your goals'
+  }
 };
 
-export const CompleteExample = CompleteExampleTemplate.bind({});
-CompleteExample.args = {
-  ...defaultArgs,
-  title: 'Transform Your Workflow',
-  subtitle: 'Elevate your productivity with data-driven insights',
-  primaryGradiantColor: '--color-cyan-100',
-  secondaryGradiantColor: '--color-lime-100'
+export const WithActions = {
+  render: WithActionsTemplate,
+
+  args: {
+    ...defaultArgs,
+    title: 'Ready to Get Started?',
+    subtitle: 'Join thousands of users already using our platform'
+  }
 };
 
-export const CompleteExampleSmallScreen = CompleteExampleTemplateSmallScreen.bind({});
-CompleteExampleSmallScreen.args = {
-  ...defaultArgs,
-  title: 'Transform Your Workflow',
-  subtitle: 'Elevate your productivity with data-driven insights',
-  primaryGradiantColor: '--color-cyan-100',
-  secondaryGradiantColor: '--color-lime-100'
+export const CompleteExample = {
+  render: CompleteExampleTemplate,
+
+  args: {
+    ...defaultArgs,
+    title: 'Transform Your Workflow',
+    subtitle: 'Elevate your productivity with data-driven insights',
+    primaryGradiantColor: '--color-cyan-100',
+    secondaryGradiantColor: '--color-lime-100'
+  }
+};
+
+export const CompleteExampleSmallScreen = {
+  render: CompleteExampleTemplateSmallScreen,
+
+  args: {
+    ...defaultArgs,
+    title: 'Transform Your Workflow',
+    subtitle: 'Elevate your productivity with data-driven insights',
+    primaryGradiantColor: '--color-cyan-100',
+    secondaryGradiantColor: '--color-lime-100'
+  }
 };

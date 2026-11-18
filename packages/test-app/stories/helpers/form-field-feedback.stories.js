@@ -1,7 +1,17 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <form id={{this.form}}>
+      <OSS::InputContainer @value="Hello world" @feedback={{form-field-feedback this.form this.fieldId}} />
+    </form>
+  `,
+  context: args
+});
+
 export default {
   title: 'Helpers & Modifiers/Helpers/Form-Field-Feedback/Definition',
+  render: Template,
   argTypes: {
     form: {
       description: 'The name of the form from which the feedback message should be retrieved.',
@@ -37,14 +47,6 @@ const defaultArgs = {
   fieldId: 'field-id'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <form id={{this.form}}>
-      <OSS::InputContainer @value="Hello world" @feedback={{form-field-feedback this.form this.fieldId}} />
-    </form>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};

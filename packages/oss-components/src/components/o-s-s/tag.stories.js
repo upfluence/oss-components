@@ -17,9 +17,18 @@ const SkinTypes = [
 ];
 const Sizes = [null, 'xs'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
+              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} @suffixIcon={{this.suffixIcon}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Tag',
   component: 'tag',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -129,13 +138,6 @@ const defaultArgs = {
   size: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
-              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} @suffixIcon={{this.suffixIcon}} />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};

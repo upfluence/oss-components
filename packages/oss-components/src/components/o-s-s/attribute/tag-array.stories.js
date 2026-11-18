@@ -1,8 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="padding: 12px; background: white">
+      <OSS::Attribute::TagArray @label={{this.label}} @tags={{this.tags}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Attribute::TagArray',
   component: 'tag-array',
+  render: Template,
   argTypes: {
     label: {
       description: 'The label of the component.',
@@ -41,14 +51,6 @@ const defaultArgs = {
   tags: ['watermelon', 'vodkamelon', 'whiskeymelon', 'tequilamelon']
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="padding: 12px; background: white">
-      <OSS::Attribute::TagArray @label={{this.label}} @tags={{this.tags}} />
-    </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};

@@ -1,9 +1,17 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::RadioButton @selected={{this.selected}} @disabled={{this.disabled}} @onChange={{this.onChange}}/>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::RadioButton',
   component: 'radio-button',
+  render: Template,
   argTypes: {
     selected: {
       description: 'Whether the radio-button is selected or not',
@@ -50,12 +58,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::RadioButton @selected={{this.selected}} @disabled={{this.disabled}} @onChange={{this.onChange}}/>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};

@@ -1,17 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-export default {
-  title: 'Components/OSS::Panel',
-  component: 'Panel',
-  parameters: {
-    docs: {
-      description: {
-        component: 'A Panel component to display links & row components'
-      }
-    }
-  }
-};
-
 const Template = (args) => ({
   template: hbs`
     <OSS::Panel
@@ -30,4 +18,17 @@ const Template = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
+export default {
+  title: 'Components/OSS::Panel',
+  component: 'Panel',
+  render: Template,
+  parameters: {
+    docs: {
+      description: {
+        component: 'A Panel component to display links & row components'
+      }
+    }
+  }
+};
+
+export const Default = {};

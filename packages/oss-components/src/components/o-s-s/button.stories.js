@@ -23,9 +23,21 @@ const SkinTypes = [
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Button
+      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
+      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
+      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Button',
   component: 'button',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -184,24 +196,13 @@ const defaultArgs = {
   disabled: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Button
-      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
-      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
-  `,
-  context: args
-});
+export const Default = {
+  args: defaultArgs
+};
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
-
-export const WithCountDown = Template.bind({});
-WithCountDown.args = {
-  ...defaultArgs,
-  ...{
+export const WithCountDown = {
+  args: {
+    ...defaultArgs,
     countDown: {
       callback: function () {
         alert('Count down finish');
@@ -211,19 +212,17 @@ WithCountDown.args = {
   }
 };
 
-export const WithIconUrl = Template.bind({});
-WithIconUrl.args = {
-  ...defaultArgs,
-  ...{
+export const WithIconUrl = {
+  args: {
+    ...defaultArgs,
     icon: undefined,
     iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };
 
-export const WithSuffixIcon = Template.bind({});
-WithSuffixIcon.args = {
-  ...defaultArgs,
-  ...{
+export const WithSuffixIcon = {
+  args: {
+    ...defaultArgs,
     suffixIcon: 'fas fa-chevron-down'
   }
 };

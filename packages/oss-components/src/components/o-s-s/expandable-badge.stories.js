@@ -15,9 +15,18 @@ const SkinTypes = [
   'xtd-smart'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
+                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ExpandableBadge',
   component: 'expandable-badge',
+  render: Template,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -130,34 +139,30 @@ const defaultArgs = {
   skin: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
-                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
-  `,
-  context: args
-});
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-volume-up' }
+export const WithIcon = {
+  args: {
+    ...defaultArgs,
+    icon: 'fas fa-volume-up'
+  }
 };
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: '/@upfluence/oss-components/assets/images/no-image.svg' }
+export const WithImage = {
+  args: {
+    ...defaultArgs,
+    image: '/@upfluence/oss-components/assets/images/no-image.svg'
+  }
 };
 
-export const WithFlag = Template.bind({});
-WithFlag.args = {
-  ...defaultArgs,
-  ...{ flag: 'us' }
+export const WithFlag = {
+  args: {
+    ...defaultArgs,
+    flag: 'us'
+  }
 };
 
-export const WithText = Template.bind({});
-WithText.args = {
-  ...defaultArgs,
-  ...{ text: '2x' }
+export const WithText = {
+  args: {
+    ...defaultArgs,
+    text: '2x'
+  }
 };

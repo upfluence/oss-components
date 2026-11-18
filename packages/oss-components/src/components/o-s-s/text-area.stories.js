@@ -3,9 +3,19 @@ import { fn } from 'storybook/test';
 
 const ResizeTypes = ['horizontal', 'vertical', 'none', null];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+                     @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
+                     @resize={{this.resize}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::TextArea',
   component: 'text-area',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: 'Value of the textarea',
@@ -122,26 +132,20 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                     @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
-                     @resize={{this.resize}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const WithError = DefaultUsageTemplate.bind({});
-WithError.args = {
-  ...defaultArgs,
-  hasError: true
+export const BasicUsage = {
+  args: defaultArgs
 };
 
-export const WithErrorMessage = DefaultUsageTemplate.bind({});
-WithErrorMessage.args = {
-  ...defaultArgs,
-  errorMessage: 'This field is required'
+export const WithError = {
+  args: {
+    ...defaultArgs,
+    hasError: true
+  }
+};
+
+export const WithErrorMessage = {
+  args: {
+    ...defaultArgs,
+    errorMessage: 'This field is required'
+  }
 };

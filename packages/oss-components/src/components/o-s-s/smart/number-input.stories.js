@@ -1,9 +1,29 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultTemplate = (args) => ({
+  template: hbs`
+    <OSS::Smart::NumberInput
+      @value={{this.value}}
+      @min={{this.min}}
+      @max={{this.max}}
+      @step={{this.step}}
+      @loading={{this.loading}}
+      @placeholder={{this.placeholder}}
+      @hasError={{this.hasError}}
+      @errorMessage={{this.errorMessage}}
+      @feedbackMessage={{this.feedbackMessage}}
+      @disabled={{this.disabled}}
+      @onChange={{this.onChange}}
+    />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::NumberInput',
   component: 'smart-number-input',
+  render: DefaultTemplate,
   argTypes: {
     value: {
       description: '[OPTIONAL] The current value of the input',
@@ -105,55 +125,41 @@ export default {
   }
 };
 
-const DefaultTemplate = (args) => ({
-  template: hbs`
-    <OSS::Smart::NumberInput
-      @value={{this.value}}
-      @min={{this.min}}
-      @max={{this.max}}
-      @step={{this.step}}
-      @loading={{this.loading}}
-      @placeholder={{this.placeholder}}
-      @hasError={{this.hasError}}
-      @errorMessage={{this.errorMessage}}
-      @feedbackMessage={{this.feedbackMessage}}
-      @disabled={{this.disabled}}
-      @onChange={{this.onChange}}
-    />
-  `,
-  context: args
-});
-
-export const Default = DefaultTemplate.bind({});
-Default.args = {
-  value: 10,
-  onChange: fn()
+export const Default = {
+  args: {
+    value: 10,
+    onChange: fn()
+  }
 };
 
-export const Loading = DefaultTemplate.bind({});
-Loading.args = {
-  loading: true,
-  placeholder: 'Loading...',
-  onChange: fn()
+export const Loading = {
+  args: {
+    loading: true,
+    placeholder: 'Loading...',
+    onChange: fn()
+  }
 };
 
-export const Filled = DefaultTemplate.bind({});
-Filled.args = {
-  value: 100,
-  onChange: fn()
+export const Filled = {
+  args: {
+    value: 100,
+    onChange: fn()
+  }
 };
 
-export const Error = DefaultTemplate.bind({});
-Error.args = {
-  value: 50,
-  hasError: true,
-  errorMessage: 'Invalid value',
-  onChange: fn()
+export const Error = {
+  args: {
+    value: 50,
+    hasError: true,
+    errorMessage: 'Invalid value',
+    onChange: fn()
+  }
 };
 
-export const Disabled = DefaultTemplate.bind({});
-Disabled.args = {
-  value: 25,
-  disabled: true,
-  onChange: fn()
+export const Disabled = {
+  args: {
+    value: 25,
+    disabled: true,
+    onChange: fn()
+  }
 };

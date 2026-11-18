@@ -1,8 +1,14 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}} />`,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::EmptyState',
   component: 'empty state',
+  render: Template,
   argTypes: {
     badgeIcon: {
       description: 'A font-awesome icon to be displayed in a badge',
@@ -66,11 +72,6 @@ const defaultArgs = {
   size: 'md'
 };
 
-const Template = (args) => ({
-  template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}} />`,
-  context: args
-});
-
 const ImageTemplate = (args) => ({
   template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
     <:image>
@@ -89,11 +90,16 @@ const ActionTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};
 
-export const UsageWithImage = ImageTemplate.bind({});
-UsageWithImage.args = defaultArgs;
+export const UsageWithImage = {
+  render: ImageTemplate,
+  args: defaultArgs
+};
 
-export const UsageWithActions = ActionTemplate.bind({});
-UsageWithActions.args = defaultArgs;
+export const UsageWithActions = {
+  render: ActionTemplate,
+  args: defaultArgs
+};

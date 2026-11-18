@@ -1,8 +1,17 @@
 import hbs from 'htmlbars-inline-precompile';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`<div style="display: flex; justify-content: center">
+      <OSS::Anchor @link={{this.link}} @noopener={{this.noopener}} @noreferrer={{this.noreferrer}}>link</OSS::Anchor>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Anchor',
   component: 'anchor',
+  render: DefaultUsageTemplate,
   argTypes: {
     link: {
       description: 'Url or Route to redirect on click',
@@ -70,17 +79,11 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`<div style="display: flex; justify-content: center">
-      <OSS::Anchor @link={{this.link}} @noopener={{this.noopener}} @noreferrer={{this.noreferrer}}>link</OSS::Anchor>
-    </div>
-  `,
-  context: args
-});
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  link: 'https://www.upfluence.com',
-  disableAutoActive: false,
-  noopener: true,
-  noreferrer: true
+export const BasicUsage = {
+  args: {
+    link: 'https://www.upfluence.com',
+    disableAutoActive: false,
+    noopener: true,
+    noreferrer: true
+  }
 };

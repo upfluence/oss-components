@@ -1,8 +1,17 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}} @scrollable={{this.scrollable}}
+                      @collapseHeight={{this.collapseHeight}} @onCopyMessage={{this.onCopyMessage}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::CodeBlock',
   component: 'code-block',
+  render: BasicUsageTemplate,
   argTypes: {
     content: {
       type: { required: true },
@@ -92,13 +101,6 @@ interface OSSCodeBlockArgs {
   onCopyMessage: 'Copied to clipboard!'
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}} @scrollable={{this.scrollable}}
-                      @collapseHeight={{this.collapseHeight}} @onCopyMessage={{this.onCopyMessage}} />
-  `,
-  context: args
-});
-
-export const UsageWithIcon = BasicUsageTemplate.bind({});
-UsageWithIcon.args = defaultArgs;
+export const UsageWithIcon = {
+  args: defaultArgs
+};

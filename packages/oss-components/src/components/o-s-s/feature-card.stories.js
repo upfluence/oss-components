@@ -3,9 +3,23 @@ import { hbs } from 'ember-cli-htmlbars';
 const ColorVariants = ['blue', 'violet', 'yellow'];
 const ShadowVariants = ['sm', 'lg'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::FeatureCard
+      @title={{this.title}}
+      @description={{this.description}}
+      @image={{this.image}}
+      @colorVariant={{this.colorVariant}}
+      @shadowVariant={{this.shadowVariant}}
+    />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::FeatureCard',
   component: 'feature-card',
+  render: Template,
   argTypes: {
     title: {
       description: 'Card title',
@@ -77,18 +91,6 @@ const defaultArgs = {
   shadowVariant: 'lg'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::FeatureCard
-      @title={{this.title}}
-      @description={{this.description}}
-      @image={{this.image}}
-      @colorVariant={{this.colorVariant}}
-      @shadowVariant={{this.shadowVariant}}
-    />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};

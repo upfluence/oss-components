@@ -3,9 +3,18 @@ import { fn } from 'storybook/test';
 
 const SkinTypes = ['success', 'info', 'warning', 'error'];
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}
+                  @closable={{this.closable}} @onClose={{this.onClose}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Alert',
   component: 'alert',
+  render: Template,
   argTypes: {
     skin: {
       description: 'Skin of the alert',
@@ -80,14 +89,6 @@ const defaultArgs = {
   onClose: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}
-                  @closable={{this.closable}} @onClose={{this.onClose}} />
-  `,
-  context: args
-});
-
 const ExtraContentTemplate = (args) => ({
   template: hbs`
       <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}
@@ -103,8 +104,11 @@ const ExtraContentTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};
 
-export const UsageExtraContent = ExtraContentTemplate.bind({});
-UsageExtraContent.args = defaultArgs;
+export const UsageExtraContent = {
+  render: ExtraContentTemplate,
+  args: defaultArgs
+};

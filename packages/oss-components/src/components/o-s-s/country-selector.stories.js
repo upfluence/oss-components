@@ -72,9 +72,18 @@ const gbProvinces = [
   }
 ];
 
+const Template = (args) => ({
+  template: hbs`<div style="width: 200px">
+      <OSS::CountrySelector @sourceList={{this.sourceList}} @value={{this.value}} @onChange={{this.onChange}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::CountrySelector',
   component: 'country-selector',
+  render: Template,
   argTypes: {
     sourceList: {
       description:
@@ -141,33 +150,27 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`<div style="width: 200px">
-      <OSS::CountrySelector @sourceList={{this.sourceList}} @value={{this.value}} @onChange={{this.onChange}} />
-    </div>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
-
-export const ProvinceUsage = Template.bind({});
-ProvinceUsage.args = {
-  ...defaultArgs,
-  ...{ sourceList: gbProvinces }
+export const BasicUsage = {
+  args: defaultArgs
 };
 
-export const PrefilledUsage = Template.bind({});
-PrefilledUsage.args = {
-  ...defaultArgs,
-  ...{ value: 'FR' }
+export const ProvinceUsage = {
+  args: {
+    ...defaultArgs,
+    sourceList: gbProvinces
+  }
 };
 
-export const WithFeedbackMessage = Template.bind({});
-WithFeedbackMessage.args = {
-  ...defaultArgs,
-  ...{
+export const PrefilledUsage = {
+  args: {
+    ...defaultArgs,
+    value: 'FR'
+  }
+};
+
+export const WithFeedbackMessage = {
+  args: {
+    ...defaultArgs,
     feedbackMessage: { type: 'error', value: 'This is an error message' }
   }
 };

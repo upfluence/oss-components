@@ -1,9 +1,19 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 250px">
+      <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::ToggleButtons',
   component: 'smart toggle-buttons',
+  render: DefaultUsageTemplate,
   argTypes: {
     toggles: {
       type: { required: true },
@@ -70,23 +80,16 @@ const defaultArgs = {
   onSelection: fn(),
   disabled: false
 };
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 250px">
-      <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
-    </div>
-  `,
-  context: args
-});
+export const Default = {
+  args: defaultArgs
+};
 
-export const Default = DefaultUsageTemplate.bind({});
-Default.args = defaultArgs;
-
-export const WithImage = DefaultUsageTemplate.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  toggles: [
-    { value: 'categories', label: 'Categories', icon: 'fas fa-tags' },
-    { value: 'products', label: 'Products', image: '/@upfluence/oss-components/assets/images/no-image.svg' }
-  ]
+export const WithImage = {
+  args: {
+    ...defaultArgs,
+    toggles: [
+      { value: 'categories', label: 'Categories', icon: 'fas fa-tags' },
+      { value: 'products', label: 'Products', image: '/@upfluence/oss-components/assets/images/no-image.svg' }
+    ]
+  }
 };

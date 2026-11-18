@@ -1,9 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}}
+                      @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} @disabled={{this.disabled}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::NumberInput',
   component: 'number-input',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: '[OPTIONAL] The starting value the input will take. Defaults to 0.',
@@ -99,21 +108,15 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}}
-                      @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} @disabled={{this.disabled}} />
-  `,
-  context: args
-});
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: 0,
-  min: 0,
-  max: 15,
-  step: 3,
-  minReachedTooltip: '',
-  maxReachedTooltip: '',
-  disabled: false,
-  onChange: fn()
+export const BasicUsage = {
+  args: {
+    value: 0,
+    min: 0,
+    max: 15,
+    step: 3,
+    minReachedTooltip: '',
+    maxReachedTooltip: '',
+    disabled: false,
+    onChange: fn()
+  }
 };

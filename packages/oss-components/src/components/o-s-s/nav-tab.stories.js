@@ -1,9 +1,19 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+  <div class="background-color-white padding-px-6">
+    <OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />
+  </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::NavTab',
   component: 'NavTab',
+  render: Template,
   argTypes: {
     onSelection: {
       type: { required: true },
@@ -73,14 +83,6 @@ const defaultArgs = {
   onSelection: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-  <div class="background-color-white padding-px-6">
-    <OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />
-  </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};

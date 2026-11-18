@@ -1,9 +1,26 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+      <OSS::AccessPanel
+        @records={{this.records}}
+        @initialLoad={{this.initialLoad}}
+        @loading={{this.loading}}
+        @onBottomReached={{this.onBottomReached}}
+        @onClose={{this.onClose}}
+        @onSearch={{this.onSearch}}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::AccessPanel',
   component: 'access-panel',
+  render: DefaultUsageTemplate,
   argTypes: {
     records: {
       description: 'The list of elements displayed inside the panel',
@@ -100,22 +117,6 @@ const defaultArgs = {
   onSearch: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
-      <OSS::AccessPanel
-        @records={{this.records}}
-        @initialLoad={{this.initialLoad}}
-        @loading={{this.loading}}
-        @onBottomReached={{this.onBottomReached}}
-        @onClose={{this.onClose}}
-        @onSearch={{this.onSearch}}
-      />
-    </div>
-  `,
-  context: args
-});
-
 const CustomContentTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
@@ -161,30 +162,39 @@ const CustomLoadingStatesTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const CustomContent = CustomContentTemplate.bind({});
-CustomContent.args = {
-  ...defaultArgs
+export const BasicUsage = {
+  args: defaultArgs
 };
 
-export const SearchDisabled = DefaultUsageTemplate.bind({});
-SearchDisabled.args = {
-  ...defaultArgs,
-  onSearch: undefined
+export const CustomContent = {
+  render: CustomContentTemplate,
+
+  args: {
+    ...defaultArgs
+  }
 };
 
-export const LoadingState = DefaultUsageTemplate.bind({});
-LoadingState.args = {
-  ...defaultArgs,
-  loading: true,
-  initialLoad: false
+export const SearchDisabled = {
+  args: {
+    ...defaultArgs,
+    onSearch: undefined
+  }
 };
 
-export const CustomLoadingState = CustomLoadingStatesTemplate.bind({});
-CustomLoadingState.args = {
-  ...defaultArgs,
-  loading: true,
-  initialLoad: false
+export const LoadingState = {
+  args: {
+    ...defaultArgs,
+    loading: true,
+    initialLoad: false
+  }
+};
+
+export const CustomLoadingState = {
+  render: CustomLoadingStatesTemplate,
+
+  args: {
+    ...defaultArgs,
+    loading: true,
+    initialLoad: false
+  }
 };

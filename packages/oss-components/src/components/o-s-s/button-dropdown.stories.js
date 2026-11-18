@@ -3,9 +3,23 @@ import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}} @square={{this.square}} @hideArrow={{this.hideArrow}}>
+      <:items>
+        <div class="oss-button-dropdown__item font-color-gray-900">
+          <OSS::Icon @style="solid" @icon="fa-share" /> Share
+        </div>
+      </:items>
+    </OSS::ButtonDropdown>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ButtonDropdown',
   component: 'button-dropdown',
+  render: Template,
   argTypes: {
     icon: {
       description: 'The icon displayed left to the button label. Font Awesome class, for example: far fa-user',
@@ -99,21 +113,10 @@ const withMainActionArgs = {
   mainAction: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}} @square={{this.square}} @hideArrow={{this.hideArrow}}>
-      <:items>
-        <div class="oss-button-dropdown__item font-color-gray-900">
-          <OSS::Icon @style="solid" @icon="fa-share" /> Share
-        </div>
-      </:items>
-    </OSS::ButtonDropdown>
-  `,
-  context: args
-});
+export const Usage = {
+  args: defaultArgs
+};
 
-export const Usage = Template.bind({});
-Usage.args = defaultArgs;
-
-export const WithMainActionArgs = Template.bind({});
-WithMainActionArgs.args = withMainActionArgs;
+export const WithMainActionArgs = {
+  args: withMainActionArgs
+};

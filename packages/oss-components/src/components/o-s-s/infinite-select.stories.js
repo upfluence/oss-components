@@ -13,9 +13,22 @@ const FAKE_DATA = [
 
 const SkinTypes = ['default', 'smart'];
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::InfiniteSelect
+        @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
+        @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
+        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
+        class="upf-align--absolute-center"/>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::InfiniteSelect',
   component: 'infinite-select',
+  render: Template,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -201,18 +214,6 @@ const defaultArgs = {
   didRender: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::InfiniteSelect
-        @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
-        @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
-        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
-        class="upf-align--absolute-center"/>
-  `,
-  context: args
-});
-
 const OptionBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InfiniteSelect
@@ -228,24 +229,25 @@ const OptionBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};
 
-export const WithOptionBlock = OptionBlockTemplate.bind({});
-WithOptionBlock.args = defaultArgs;
+export const WithOptionBlock = {
+  render: OptionBlockTemplate,
+  args: defaultArgs
+};
 
-export const EmptyState = Template.bind({});
-EmptyState.args = {
-  ...defaultArgs,
-  ...{
+export const EmptyState = {
+  args: {
+    ...defaultArgs,
     items: []
   }
 };
 
-export const WithGroupsBlock = Template.bind({});
-WithGroupsBlock.args = {
-  ...defaultArgs,
-  ...{
+export const WithGroupsBlock = {
+  args: {
+    ...defaultArgs,
     items: FAKE_DATA.map((item, index) => ({
       ...item,
       groupKey: index % 2 === 0 ? 'Group A' : 'Group B'

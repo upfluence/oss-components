@@ -1,8 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Pill',
   component: 'pill',
+  render: DefaultUsageTemplate,
   argTypes: {
     label: {
       description: 'Content of the pill',
@@ -63,12 +71,6 @@ const defaultArgs = {
   disabled: false
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};

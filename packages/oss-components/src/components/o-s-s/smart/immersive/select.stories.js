@@ -1,9 +1,43 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
+  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+
+  return {
+    template: hbs`
+      <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+        <OSS::Smart::Immersive::Select
+          @placeholder={{this.placeholder}}
+          @values={{this.values}}
+          @loading={{this.loading}}
+          @items={{this.items}}
+          @onSearch={{this.onSearch}}
+          @onChange={{this.onChange}}
+          @multiple={{this.multiple}}
+          @hideCheckboxes={{this.hideCheckboxes}}
+          @searchEnabled={{this.searchEnabled}}
+        >
+          <:selected-item as |item|>{{item.value}}</:selected-item>
+          <:option-item as |item|>
+            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+              {{item.label}}
+            </div>
+          </:option-item>
+        </OSS::Smart::Immersive::Select>
+      </div>
+    `,
+    context: {
+      ...rest,
+      icon
+    }
+  };
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Select',
   component: 'oss-smart-immersive-select',
+  render: TemplateSingle,
   argTypes: {
     placeholder: {
       name: 'Placeholder',
@@ -139,71 +173,40 @@ const Template = ({ iconName, iconColor, ...rest }) => {
   };
 };
 
-const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
-  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
-
-  return {
-    template: hbs`
-      <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
-        <OSS::Smart::Immersive::Select
-          @placeholder={{this.placeholder}}
-          @values={{this.values}}
-          @loading={{this.loading}}
-          @items={{this.items}}
-          @onSearch={{this.onSearch}}
-          @onChange={{this.onChange}}
-          @multiple={{this.multiple}}
-          @hideCheckboxes={{this.hideCheckboxes}}
-          @searchEnabled={{this.searchEnabled}}
-        >
-          <:selected-item as |item|>{{item.value}}</:selected-item>
-          <:option-item as |item|>
-            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
-              {{item.label}}
-            </div>
-          </:option-item>
-        </OSS::Smart::Immersive::Select>
-      </div>
-    `,
-    context: {
-      ...rest,
-      icon
-    }
-  };
+export const Select = {
+  args: {
+    placeholder: 'Placeholder',
+    values: [{ value: 'step 1' }],
+    loading: false,
+    multiple: false,
+    hideCheckboxes: false,
+    searchEnabled: true,
+    items: [
+      { value: 'step 1', label: 'Step 1' },
+      { value: 'step 2', label: 'Step 2' },
+      { value: 'step 3', label: 'Step 3' }
+    ],
+    onSearch: fn(),
+    onChange: fn()
+  }
 };
 
-export const Select = TemplateSingle.bind({});
+export const Multiple = {
+  render: Template,
 
-Select.args = {
-  placeholder: 'Placeholder',
-  values: [{ value: 'step 1' }],
-  loading: false,
-  multiple: false,
-  hideCheckboxes: false,
-  searchEnabled: true,
-  items: [
-    { value: 'step 1', label: 'Step 1' },
-    { value: 'step 2', label: 'Step 2' },
-    { value: 'step 3', label: 'Step 3' }
-  ],
-  onSearch: fn(),
-  onChange: fn()
-};
-
-export const Multiple = Template.bind({});
-
-Multiple.args = {
-  placeholder: 'Placeholder',
-  values: [{ value: 'step 1' }, { value: 'step 2' }],
-  loading: false,
-  multiple: true,
-  hideCheckboxes: false,
-  searchEnabled: true,
-  items: [
-    { value: 'step 1', label: 'Step 1' },
-    { value: 'step 2', label: 'Step 2' },
-    { value: 'step 3', label: 'Step 3' }
-  ],
-  onSearch: fn(),
-  onChange: fn()
+  args: {
+    placeholder: 'Placeholder',
+    values: [{ value: 'step 1' }, { value: 'step 2' }],
+    loading: false,
+    multiple: true,
+    hideCheckboxes: false,
+    searchEnabled: true,
+    items: [
+      { value: 'step 1', label: 'Step 1' },
+      { value: 'step 2', label: 'Step 2' },
+      { value: 'step 3', label: 'Step 3' }
+    ],
+    onSearch: fn(),
+    onChange: fn()
+  }
 };

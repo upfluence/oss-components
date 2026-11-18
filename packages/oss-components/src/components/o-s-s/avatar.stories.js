@@ -12,9 +12,17 @@ const SkinType = [
   'xtd-cyan'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} @skin={{this.skin}}/>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Avatar',
   component: 'avatar',
+  render: Template,
   argTypes: {
     size: {
       description: 'Adjust the size of the avatar component',
@@ -95,24 +103,20 @@ const defaultArgs = {
   skin: undefined
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} @skin={{this.skin}}/>
-  `,
-  context: args
-});
-
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
+export const WithImage = {
+  args: {
+    ...defaultArgs,
+    image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
+  }
 };
 
-export const WithInitials = Template.bind({});
-WithInitials.args = {
-  ...defaultArgs,
-  ...{ initials: 'TS' }
+export const WithInitials = {
+  args: {
+    ...defaultArgs,
+    initials: 'TS'
+  }
 };
 
-export const WithoutParam = Template.bind({});
-WithoutParam.args = defaultArgs;
+export const WithoutParam = {
+  args: defaultArgs
+};

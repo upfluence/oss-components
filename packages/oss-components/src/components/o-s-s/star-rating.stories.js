@@ -15,9 +15,20 @@ const STAR_COLORS = [
   'red'
 ];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::StarRating @rating={{this.rating}}
+                       @totalStars={{this.totalStars}}
+                       @activeColor={{this.activeColor}}
+                       @passiveColor={{this.passiveColor}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::StarRating',
   component: 'star-rating',
+  render: BasicUsageTemplate,
   argTypes: {
     rating: {
       type: { required: true },
@@ -84,15 +95,6 @@ const defaultArgs = {
   passiveColor: 'grey'
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::StarRating @rating={{this.rating}}
-                       @totalStars={{this.totalStars}}
-                       @activeColor={{this.activeColor}}
-                       @passiveColor={{this.passiveColor}} />
-  `,
-  context: args
-});
-
-export const Usage = BasicUsageTemplate.bind({});
-Usage.args = defaultArgs;
+export const Usage = {
+  args: defaultArgs
+};

@@ -1,8 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::Link @icon={{this.icon}} @label={{this.label}} @transitionTo={{this.transitionTo}} @link={{this.link}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Link',
   component: 'link',
+  render: Template,
   argTypes: {
     icon: {
       description: 'Icon set on the left position. Font Awesome class, for example: far fa-link',
@@ -69,12 +77,6 @@ const defaultArgs = {
   }
 };
 
-const Template = (args) => ({
-  template: hbs`
-      <OSS::Link @icon={{this.icon}} @label={{this.label}} @transitionTo={{this.transitionTo}} @link={{this.link}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};

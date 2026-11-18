@@ -3,9 +3,33 @@ import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::SidePanel 
+      @visible={{this.visible}} 
+      @backdrop={{this.backdrop}} 
+      @size={{this.size}} 
+      @onClose={{this.onClose}} 
+      @noPadding={{this.noPadding}}
+    >
+      <:header>
+        Header goes here
+      </:header>
+      <:main>
+        Content goes here
+      </:main>
+      <:footer>
+        Footer goes here
+      </:footer>
+    </OSS::SidePanel>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::SidePanel',
   component: 'side-panel',
+  render: BasicUsageTemplate,
   argTypes: {
     visible: {
       description: 'The side panel visibility state. True displays the side panel, false closes it.',
@@ -75,29 +99,6 @@ const defaultArgs = {
   onClose: fn()
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::SidePanel 
-      @visible={{this.visible}} 
-      @backdrop={{this.backdrop}} 
-      @size={{this.size}} 
-      @onClose={{this.onClose}} 
-      @noPadding={{this.noPadding}}
-    >
-      <:header>
-        Header goes here
-      </:header>
-      <:main>
-        Content goes here
-      </:main>
-      <:footer>
-        Footer goes here
-      </:footer>
-    </OSS::SidePanel>
-  `,
-  context: args
-});
-
-export const Usage = BasicUsageTemplate.bind({});
-
-Usage.args = defaultArgs;
+export const Usage = {
+  args: defaultArgs
+};

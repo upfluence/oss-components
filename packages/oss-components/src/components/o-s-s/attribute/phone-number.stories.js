@@ -1,8 +1,19 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="padding: 12px; background: white">
+      <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}}
+                                   @hasError={{this.hasError}} @errorMessage={{this.errorMessage}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Attribute::PhoneNumber',
   component: 'phone-number',
+  render: Template,
   argTypes: {
     countryCode: {
       description:
@@ -66,15 +77,6 @@ const defaultArgs = {
   errorMessage: ''
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="padding: 12px; background: white">
-      <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}}
-                                   @hasError={{this.hasError}} @errorMessage={{this.errorMessage}} />
-    </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};

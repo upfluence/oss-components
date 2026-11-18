@@ -13,9 +13,27 @@ const FAKE_DATA = [
   { name: 'Spider Man', characters: 'Peter Parker' }
 ];
 
+const Template = (args) => ({
+  template: hbs`
+  <div style="width: 250px">
+    <OSS::Select
+      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
+      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
+      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Select',
   component: 'select',
+  render: Template,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -219,23 +237,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const Template = (args) => ({
-  template: hbs`
-  <div style="width: 250px">
-    <OSS::Select
-      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
-      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
-      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
-      <:option as |item|>
-        {{item.name}}
-      </:option>
-    </OSS::Select>
-  </div>
-  `,
-  context: args
-});
-
 const SmartSkinTemplate = (args) => ({
   template: hbs`
   <div style="width: 250px">
@@ -292,14 +293,21 @@ const WithEmptyStateNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};
 
-export const SmartSkin = SmartSkinTemplate.bind({});
-SmartSkin.args = defaultArgs;
+export const SmartSkin = {
+  render: SmartSkinTemplate,
+  args: defaultArgs
+};
 
-export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
-WithSelectedNamedBlock.args = defaultArgs;
+export const WithSelectedNamedBlock = {
+  render: WithSelectedNamedBlockTemplate,
+  args: defaultArgs
+};
 
-export const WithEmptyStateNamedBlock = WithEmptyStateNamedBlockTemplate.bind({});
-WithEmptyStateNamedBlock.args = defaultArgs;
+export const WithEmptyStateNamedBlock = {
+  render: WithEmptyStateNamedBlockTemplate,
+  args: defaultArgs
+};

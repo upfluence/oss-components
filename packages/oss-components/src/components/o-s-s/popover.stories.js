@@ -3,8 +3,20 @@ import { hbs } from 'ember-cli-htmlbars';
 const Placements = ['top', 'right', 'bottom', 'left'];
 const Sizes = [null, 'sm', 'md'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+      <:content>
+        Popover content
+      </:content>
+    </OSS::Popover>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Popover',
+  render: Template,
   argTypes: {
     arrowPlacement: {
       description: 'The arrow placement definition',
@@ -67,17 +79,6 @@ const defaultArgs = {
   size: 'sm'
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
-      <:content>
-        Popover content
-      </:content>
-    </OSS::Popover>
-  `,
-  context: args
-});
-
 const WithContextualActionsTemplate = (args) => ({
   template: hbs`
     <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
@@ -123,14 +124,21 @@ const WithCustomTitleTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {
+  args: defaultArgs
+};
 
-export const WithContextualActions = WithContextualActionsTemplate.bind({});
-WithContextualActions.args = defaultArgs;
+export const WithContextualActions = {
+  render: WithContextualActionsTemplate,
+  args: defaultArgs
+};
 
-export const WithIllustration = WithIllustrationTemplate.bind({});
-WithIllustration.args = defaultArgs;
+export const WithIllustration = {
+  render: WithIllustrationTemplate,
+  args: defaultArgs
+};
 
-export const WithCustomTitle = WithCustomTitleTemplate.bind({});
-WithCustomTitle.args = defaultArgs;
+export const WithCustomTitle = {
+  render: WithCustomTitleTemplate,
+  args: defaultArgs
+};

@@ -3,9 +3,22 @@ import { fn } from 'storybook/test';
 
 const SkinTypes = ['alert', 'error', 'primary'];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::Dialog
+      @title={{this.title}}
+      @skin={{this.skin}}
+      @icon={{this.icon}}
+      @mainAction={{this.mainAction}}
+      @secondaryAction={{this.secondaryAction}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Dialog',
   component: 'dialog',
+  render: BasicUsageTemplate,
   argTypes: {
     title: {
       type: { required: true },
@@ -107,17 +120,6 @@ const defaultArgs = {
   }
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::Dialog
-      @title={{this.title}}
-      @skin={{this.skin}}
-      @icon={{this.icon}}
-      @mainAction={{this.mainAction}}
-      @secondaryAction={{this.secondaryAction}} />
-  `,
-  context: args
-});
-
-export const Usage = BasicUsageTemplate.bind({});
-Usage.args = defaultArgs;
+export const Usage = {
+  args: defaultArgs
+};

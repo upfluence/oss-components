@@ -1,8 +1,22 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="height:100vh; padding:5px;">
+     <OSS::Layout::Navbar::NavItem @icon={{this.icon}} @label={{this.label}} @active={{this.active}}>
+      <:extra>
+          <OSS::Link @label="Extra content link" />
+      </:extra>
+     </OSS::Layout::Navbar::NavItem>
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Layout::Navbar::NavItem',
   component: 'navbar item',
+  render: Template,
   parameters: {
     docs: {
       description: {
@@ -37,24 +51,12 @@ export default {
   }
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="height:100vh; padding:5px;">
-     <OSS::Layout::Navbar::NavItem @icon={{this.icon}} @label={{this.label}} @active={{this.active}}>
-      <:extra>
-          <OSS::Link @label="Extra content link" />
-      </:extra>
-     </OSS::Layout::Navbar::NavItem>
-    </div>
-  `,
-  context: args
-});
-
 const defaultArgs = {
   icon: 'fa-laptop-code',
   label: 'Label',
   active: false
 };
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};

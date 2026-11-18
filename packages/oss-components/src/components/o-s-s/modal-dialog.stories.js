@@ -3,9 +3,25 @@ import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::ModalDialog @title={{this.title}} @icon={{this.icon}} @close={{this.close}} @subtitle={{this.subtitle}}
+                        @size={{this.size}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
+        <:content>
+          Content goes here
+        </:content>
+        <:footer>
+          Footer goes here
+        </:footer>
+      </OSS::ModalDialog>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ModalDialog',
   component: 'modal-dialog',
+  render: BasicUsageTemplate,
   argTypes: {
     title: {
       description: 'The modal dialog title',
@@ -104,21 +120,6 @@ const defaultArgs = {
   disableClickOutside: undefined
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::ModalDialog @title={{this.title}} @icon={{this.icon}} @close={{this.close}} @subtitle={{this.subtitle}}
-                        @size={{this.size}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
-        <:content>
-          Content goes here
-        </:content>
-        <:footer>
-          Footer goes here
-        </:footer>
-      </OSS::ModalDialog>
-  `,
-  context: args
-});
-
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}
@@ -137,8 +138,11 @@ const WithIllustrationTemplate = (args) => ({
   context: args
 });
 
-export const Usage = BasicUsageTemplate.bind({});
-export const WithIlllustration = WithIllustrationTemplate.bind({});
+export const Usage = {
+  args: defaultArgs
+};
 
-Usage.args = defaultArgs;
-WithIlllustration.args = defaultArgs;
+export const WithIlllustration = {
+  render: WithIllustrationTemplate,
+  args: defaultArgs
+};

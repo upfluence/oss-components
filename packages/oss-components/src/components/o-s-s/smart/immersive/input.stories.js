@@ -1,9 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Input',
   component: 'input',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -98,16 +107,9 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};
 
 const PrefixUsageTemplate = (args) => ({
   template: hbs`
@@ -121,8 +123,10 @@ const PrefixUsageTemplate = (args) => ({
   context: args
 });
 
-export const PrefixUsage = PrefixUsageTemplate.bind({});
-PrefixUsage.args = defaultArgs;
+export const PrefixUsage = {
+  render: PrefixUsageTemplate,
+  args: defaultArgs
+};
 
 const SuffixUsageTemplate = (args) => ({
   template: hbs`
@@ -136,5 +140,7 @@ const SuffixUsageTemplate = (args) => ({
   context: args
 });
 
-export const SuffixUsage = SuffixUsageTemplate.bind({});
-SuffixUsage.args = defaultArgs;
+export const SuffixUsage = {
+  render: SuffixUsageTemplate,
+  args: defaultArgs
+};
