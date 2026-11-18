@@ -1,0 +1,30 @@
+import { action } from '@ember/object';
+import { isEmpty } from '@ember/utils';
+import { tracked } from '@glimmer/tracking';
+
+import { runSmartGradientAnimation } from '../../../utils/run-smart-gradient-animation';
+import OSSInputContainer from '../input-container';
+
+interface SmartInputArgs {
+  value?: string;
+  placeholder?: string;
+  ariaLabel?: string;
+  loading: boolean;
+  onChange?: (value: string) => void;
+}
+
+export default class OSSSmartInput extends OSSInputContainer<SmartInputArgs> {
+  @tracked declare element: HTMLElement;
+
+  @action
+  handleUpdate(): void {
+    if (!this.args.loading && !isEmpty(this.args.value)) {
+      runSmartGradientAnimation(this.element);
+    }
+  }
+
+  @action
+  registerElement(element: HTMLElement): void {
+    this.element = element;
+  }
+}

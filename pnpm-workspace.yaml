@@ -1,2 +1,5 @@
-patchedDependencies:
-  '@storybook/ember@9.1.21': patches/@storybook__ember@9.1.21.patch
+packages:
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@upfluence/ember-blueprints'
