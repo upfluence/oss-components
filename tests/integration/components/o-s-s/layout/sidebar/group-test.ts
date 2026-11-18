@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, triggerEvent } from '@ember/test-helpers';
+import { click, find, render, triggerEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -245,6 +245,75 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
       assert
         .dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag')
         .hasClass('upf-tag--plain');
+    });
+  });
+
+  module('group header has a tag', function (hooks) {
+    const header = '.oss-sidebar-group > .oss-sidebar-group__title-container';
+    const tag = `${header} .oss-sidebar-item__tag`;
+
+    hooks.beforeEach(function () {
+      this.expanded = true;
+      this.groupTag = { label: '9+', skin: 'danger', plain: true };
+    });
+
+    test('the tag is displayed on the group header when expanded', async function (assert) {
+      await render(hbs`
+        <OSS::Layout::Sidebar::Group
+          @icon="fa-screen-users"
+          @label="Apps"
+          @expanded={{this.expanded}}
+          @items={{this.items}}
+          @tag={{this.groupTag}}
+        />
+      `);
+
+      assert.dom(tag).hasText('9+').hasClass('upf-tag--critical').hasStyle({ opacity: '1' });
+
+      const badge = find(tag) as HTMLElement;
+      const label = find(`${header} .oss-sidebar-item__label`) as HTMLElement;
+      assert.strictEqual(badge.offsetLeft - label.offsetLeft - label.offsetWidth, 6, 'the badge follows the group label');
+      assert.true(
+        Math.abs(badge.offsetTop + badge.offsetHeight / 2 - label.offsetTop - label.offsetHeight / 2) <= 1,
+        'the badge is vertically centered with the label'
+      );
+    });
+
+    test('the tag is displayed on the group header when collapsed', async function (assert) {
+      this.expanded = false;
+      await render(hbs`
+        <OSS::Layout::Sidebar::Group
+          @icon="fa-screen-users"
+          @label="Apps"
+          @expanded={{this.expanded}}
+          @items={{this.items}}
+          @tag={{this.groupTag}}
+        />
+      `);
+
+      assert.dom(tag).hasText('9+').hasStyle({ opacity: '1' });
+
+      const badge = find(tag) as HTMLElement;
+      const item = find(`${header} .oss-sidebar-item`) as HTMLElement;
+      assert.strictEqual(
+        item.clientWidth - badge.offsetLeft - badge.offsetWidth,
+        3,
+        'the badge is inset from the right edge'
+      );
+      assert.strictEqual(badge.offsetTop, 2, 'the badge is inset from the top edge');
+    });
+
+    test('the tag is optional and groups without a tag render as before', async function (assert) {
+      await render(hbs`
+        <OSS::Layout::Sidebar::Group
+          @icon="fa-screen-users"
+          @label="Apps"
+          @expanded={{this.expanded}}
+          @items={{this.items}}
+        />
+      `);
+
+      assert.dom(tag).doesNotExist();
     });
   });
 });
