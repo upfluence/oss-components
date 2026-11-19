@@ -5,6 +5,8 @@ if (typeof module !== 'undefined') {
     disable_watching: true,
     launch_in_ci: ['Chrome', 'Firefox'],
     launch_in_dev: ['Chrome', 'Firefox'],
+    // Run both browsers at the same time in CI mode (testem's default of 1 runs them one after the other).
+    parallel: 2,
     browser_start_timeout: 120,
     browser_args: {
       Chrome: {
