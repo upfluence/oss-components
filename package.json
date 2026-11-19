@@ -50,6 +50,9 @@
         }
       }
     },
+    "git": {
+      "tagName": "v${version}"
+    },
     "npm": false
   }
 }
