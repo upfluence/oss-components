@@ -36,7 +36,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   private touchStart: { x: number; y: number } | null = null;
 
   get swipeable(): boolean {
-    return this.args.onSwipe === undefined ? false : true;
+    return !(this.args.onSwipe === undefined);
   }
 
   get buttonIcon(): string {
@@ -113,7 +113,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
 
     const deltaX = touch.clientX - start.x;
     const deltaY = touch.clientY - start.y;
-    if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (Math.abs(deltaX) < Math.max(SWIPE_THRESHOLD, Math.abs(deltaY))) return;
 
     const direction = deltaX < 0 ? 'left' : 'right';
     this.args.onSwipe?.(direction);
