@@ -1,5 +1,5 @@
 import EmberObject from '@ember/object';
-import { render, setupOnerror, triggerKeyEvent, waitFor, click } from '@ember/test-helpers';
+import { render, setupOnerror, settled, triggerKeyEvent, click } from '@ember/test-helpers';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
@@ -102,7 +102,15 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     assert.dom('.oss-modal-dialog footer').hasText('footer content');
   });
 
-  module('Queue management - if the @enqueue param is truthy', () => {
+  module('Queue management - if the @enqueue param is truthy', (hooks) => {
+    hooks.beforeEach(function () {
+      this.clock = sinon.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+    });
+
+    hooks.afterEach(function () {
+      this.clock.restore();
+    });
+
     module('When rendering two modals', () => {
       test('The second modal is not displayed', async function (assert) {
         await render(
@@ -133,7 +141,9 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         await click('.fa-times');
         assert.ok(this.closeModal.calledOnce);
         this.helper.set('displayModalA', false);
-        await waitFor('[data-control-name="modal-b"]', { timeout: 1000 });
+        await settled();
+        await this.clock.tickAsync(1000);
+        await settled();
         assert.dom('[data-control-name="modal-a"]').doesNotExist();
         assert.dom('[data-control-name="modal-b"]').exists();
       });
@@ -185,7 +195,9 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         this.helper.set('displayModalA', false);
         assert.false(this.helper.displayModalA);
 
-        await waitFor('[data-control-name="modal-b"]', { timeout: 1000 });
+        await settled();
+        await this.clock.tickAsync(1000);
+        await settled();
         assert.dom('[data-control-name="modal-a"]').doesNotExist();
         assert.dom('[data-control-name="modal-b"]').exists();
         assert.dom('[data-control-name="modal-c"]').doesNotExist();
@@ -195,7 +207,9 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         this.helper.set('displayModalB', false);
         assert.false(this.helper.displayModalB);
 
-        await waitFor('[data-control-name="modal-c"]', { timeout: 1000 });
+        await settled();
+        await this.clock.tickAsync(1000);
+        await settled();
         assert.dom('[data-control-name="modal-a"]').doesNotExist();
         assert.dom('[data-control-name="modal-b"]').doesNotExist();
         assert.dom('[data-control-name="modal-c"]').exists();

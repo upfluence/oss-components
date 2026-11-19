@@ -13,7 +13,6 @@ env:
   FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
-  # Gates the tests: a type error fails here in ~40s instead of after a full test run.
   typecheck:
     name: Typecheck
     runs-on: ubuntu-24.04
@@ -25,12 +24,10 @@ jobs:
           github-token: ${{ secrets.PAT_TOKEN }}
           node-version: ${{ vars.NODE_VERSION }}
           pnpm-version: ${{ vars.PNPM_VERSION }}
-      # The test-app resolves the addon's types through its built declarations/.
       - name: Build Addon
         run: pnpm build
       - name: Typecheck
         run: pnpm typecheck
-  # Runs alongside typecheck and the tests, without blocking them.
   lint:
     name: Lint
     runs-on: ubuntu-24.04

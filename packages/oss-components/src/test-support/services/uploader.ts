@@ -10,6 +10,8 @@ import {
 
 export default class extends BaseUploader implements UploaderInterface {
   mode: 'success' | 'failure' = 'success';
+  // Delay between the 4 simulated progress events, in ms. Tests that only check the end state can set it to 0.
+  progressInterval: number = 100;
 
   async upload(request: UploadRequest, validationRules?: FileValidator[]): Promise<void> {
     const validations: ValidationResponse = await this.validate(request, validationRules || []);
@@ -27,7 +29,7 @@ export default class extends BaseUploader implements UploaderInterface {
       progressStep += 250;
 
       if (progressStep < 1000) {
-        later(tick, 100);
+        later(tick, this.progressInterval);
         return;
       }
 
@@ -48,7 +50,7 @@ export default class extends BaseUploader implements UploaderInterface {
       this.mode = 'success';
     };
 
-    later(tick, 100);
+    later(tick, this.progressInterval);
   }
 
   get url(): string {
