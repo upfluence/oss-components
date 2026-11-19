@@ -3,6 +3,7 @@ import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/smart/button', function (hooks) {
   setupRenderingTest(hooks);
@@ -158,7 +159,7 @@ module('Integration | Component | o-s-s/smart/button', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Smart::Button />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Smart::Button />{{/if}}`);
     });
   });
 });

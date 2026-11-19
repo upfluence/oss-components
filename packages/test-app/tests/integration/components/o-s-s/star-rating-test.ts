@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
 
@@ -66,7 +67,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::StarRating @totalStars={{5}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::StarRating @totalStars={{5}} />{{/if}}`);
     });
 
     test('failing to pass @totalStart throws an error', async function (assert) {
@@ -78,7 +79,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::StarRating @rating={{5}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::StarRating @rating={{5}} />{{/if}}`);
     });
   });
 });

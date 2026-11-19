@@ -5,6 +5,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
   setupRenderingTest(hooks);
@@ -247,7 +248,10 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>{{/if}}`
+      );
     });
 
     test('The component throws an error if the close parameter is not passed', async function (assert) {
@@ -259,7 +263,10 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::ModalDialog @title="Test"></OSS::ModalDialog>`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ModalDialog @title="Test"></OSS::ModalDialog>{{/if}}`
+      );
     });
   });
 });

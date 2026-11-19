@@ -5,6 +5,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/password-input', function (hooks) {
   setupRenderingTest(hooks);
@@ -222,6 +223,6 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
       );
     });
 
-    await render(hbs`<OSS::PasswordInput />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::PasswordInput />{{/if}}`);
   });
 });

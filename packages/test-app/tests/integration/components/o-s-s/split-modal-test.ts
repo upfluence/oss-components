@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/split-modal', function (hooks) {
   setupRenderingTest(hooks);
@@ -98,7 +99,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::SplitModal />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::SplitModal />{{/if}}`);
     });
   });
 });

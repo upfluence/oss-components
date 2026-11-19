@@ -3,6 +3,7 @@ import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 const STYLE_CLASSES = {
   solid: 'fas',
@@ -52,6 +53,6 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
       assert.strictEqual(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
     });
 
-    await render(hbs`<OSS::Icon />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Icon />{{/if}}`);
   });
 });

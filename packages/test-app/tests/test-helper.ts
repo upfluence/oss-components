@@ -7,6 +7,7 @@ import { setup } from 'qunit-dom';
 import 'qunit-dom';
 import Application from 'test-app/app';
 import config from 'test-app/config/environment';
+import { setupLeakedRendererGuard } from 'test-app/tests/helpers/render-expecting-error';
 
 import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
 
@@ -19,6 +20,9 @@ declare module '@ember/test-helpers' {
 export function start() {
   registerAssertions(QUnit.assert);
   setup(QUnit.assert);
+  // Fails any test that leaks a broken renderer (emberjs/ember.js#21767), see the helper.
+  setupLeakedRendererGuard();
+
   QUnit.done(async () => {
     if (import.meta.env.COVERAGE) {
       // Also report the addon modules no test imports, as the classic build did.

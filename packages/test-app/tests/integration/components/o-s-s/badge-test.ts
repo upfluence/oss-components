@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 
@@ -82,7 +83,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Badge @skin="foo" @text="2x" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Badge @skin="foo" @text="2x" />{{/if}}`);
     });
 
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
@@ -94,7 +95,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Badge @size="foo" @text="2x" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Badge @size="foo" @text="2x" />{{/if}}`);
     });
 
     test('it throws an error if no argument is passed', async function (assert: Assert) {
@@ -106,7 +107,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Badge />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Badge />{{/if}}`);
     });
 
     test('it throws an error if more than one content argument is passed', async function (assert: Assert) {
@@ -118,7 +119,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Badge @icon="fas fa-users" @text="2x" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Badge @icon="fas fa-users" @text="2x" />{{/if}}`);
     });
   });
 });

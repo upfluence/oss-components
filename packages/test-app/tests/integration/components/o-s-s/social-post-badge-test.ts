@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import type AssetMapService from '@upfluence/oss-components/services/asset-map';
 
@@ -133,8 +134,9 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
           'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory'
         );
       });
-      await render(
-        hbs`<OSS::SocialPostBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::SocialPostBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>{{/if}}`
       );
     });
 
@@ -148,8 +150,9 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
           'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter should be a value of SocialPostType'
         );
       });
-      await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>{{/if}}`
       );
     });
   });

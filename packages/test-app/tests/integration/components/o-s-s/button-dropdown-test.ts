@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
   setupRenderingTest(hooks);
@@ -220,8 +221,9 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
         );
       });
 
-      await render(
-        hbs`<OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>{{/if}}`
       );
     });
 
@@ -234,8 +236,9 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
         );
       });
 
-      await render(
-        hbs`<OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>{{/if}}`
       );
     });
   });

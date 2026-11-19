@@ -3,6 +3,7 @@ import { render, find, findAll, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/skeleton', function (hooks) {
   setupRenderingTest(hooks);
@@ -150,7 +151,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
           'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col'
         );
       });
-      await render(hbs`<OSS::Skeleton @direction="toto"/>`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Skeleton @direction="toto"/>{{/if}}`);
     });
   });
 });

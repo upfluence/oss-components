@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
   setupRenderingTest(hooks);
@@ -45,7 +46,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::ToggleSwitch />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::ToggleSwitch />{{/if}}`);
     });
 
     test('it throws an error if no value is passed', async function (assert) {
@@ -59,7 +60,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::ToggleSwitch @onChange={{this.onChange}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::ToggleSwitch @onChange={{this.onChange}} />{{/if}}`);
     });
 
     test('it throws an error if passed value is not a boolean', async function (assert) {
@@ -73,7 +74,10 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::ToggleSwitch @value="true" @onChange={{this.onChange}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ToggleSwitch @value="true" @onChange={{this.onChange}} />{{/if}}`
+      );
     });
   });
 });

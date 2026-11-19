@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 import { CSSVariableToRGB } from 'test-app/tests/integration/utils';
 
 const ILLUSTRATION_SRC = '/assets/images/brand-icon.svg';
@@ -232,7 +233,10 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
       });
-      await render(hbs`<OSS::Marketing::Banner @subtitle={{this.subtitle}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Marketing::Banner @subtitle={{this.subtitle}} />{{/if}}`
+      );
     });
 
     test('It throws an error if @subtitle is not passed', async function (assert) {
@@ -240,7 +244,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
       });
-      await render(hbs`<OSS::Marketing::Banner @title={{this.title}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Marketing::Banner @title={{this.title}} />{{/if}}`);
     });
   });
 });

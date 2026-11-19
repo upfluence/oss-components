@@ -5,6 +5,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
   setupRenderingTest(hooks);
@@ -177,8 +178,9 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory'
         );
       });
-      await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>{{/if}}`
       );
       await settled();
     });
@@ -191,7 +193,10 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>{{/if}}`
+      );
       await settled();
     });
 
@@ -203,7 +208,10 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory'
         );
       });
-      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />{{/if}}`
+      );
       await settled();
     });
 
@@ -217,8 +225,9 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles'
         );
       });
-      await render(
-        hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>{{/if}}`
       );
       await settled();
     });

@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { SkinDefinition, type SkinType } from '@upfluence/oss-components/components/o-s-s/chip';
 
@@ -111,7 +112,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
           'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::Chip @label={{this.label}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Chip @label={{this.label}} />{{/if}}`);
     });
 
     test('It throws an error if @label is not passed', async function (assert) {
@@ -119,7 +120,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
       setupOnerror((err: any) => {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
       });
-      await render(hbs`<OSS::Chip @onRemove={{this.onRemove}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Chip @onRemove={{this.onRemove}} />{{/if}}`);
     });
   });
 });

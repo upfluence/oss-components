@@ -3,6 +3,7 @@ import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { SkinDefinition, type SkinType } from '@upfluence/oss-components/components/o-s-s/tag';
 
@@ -115,6 +116,6 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
       );
     });
 
-    await render(hbs`<OSS::Tag />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Tag />{{/if}}`);
   });
 });

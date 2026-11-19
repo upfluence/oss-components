@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/empty-state', function (hooks) {
   setupRenderingTest(hooks);
@@ -103,7 +104,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::EmptyState @subtitle="Try again later" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::EmptyState @subtitle="Try again later" />{{/if}}`);
     });
 
     test('it throws an error if the @subtitle parameter is not passed', async function (assert) {
@@ -115,7 +116,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::EmptyState @title="No Data" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::EmptyState @title="No Data" />{{/if}}`);
     });
   });
 });
