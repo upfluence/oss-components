@@ -7,6 +7,7 @@ export type textAreaResizeOptions = 'vertical' | 'horizontal' | 'none';
 
 export interface OSSTextAreaArgs {
   rows?: number;
+  maxLength?: number;
   resize?: textAreaResizeOptions;
   value?: string;
   disabled?: boolean;

@@ -6,6 +6,7 @@
       aria-label={{@ariaLabel}}
       disabled={{@disabled}}
       rows={{this.rows}}
+      maxlength={{@maxLength}}
       class="oss-textarea {{this.computedClass}}"
       {{on "keyup" (fn this._onChange @value)}}
     />

@@ -27,6 +27,16 @@ export default {
       },
       control: { type: 'number' }
     },
+    maxLength: {
+      description: 'Maximum number of characters allowed in the textarea. Unlimited when omitted.',
+      table: {
+        type: {
+          summary: 'number'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'number', min: 0, step: 1 }
+    },
     resize: {
       description: 'Define direction in which textarea can be resized (By default the resize is set to Both)',
       table: {
@@ -114,6 +124,7 @@ export default {
 const defaultArgs = {
   value: 'John',
   rows: 2,
+  maxLength: undefined,
   resize: null,
   disabled: false,
   placeholder: 'this is the placeholder',
@@ -126,7 +137,7 @@ const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
                      @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
-                     @resize={{this.resize}} />
+                     @resize={{this.resize}} @maxLength={{this.maxLength}} />
   `,
   context: args
 });
