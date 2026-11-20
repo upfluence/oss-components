@@ -565,14 +565,26 @@
       Text area
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <OSS::TextArea @value={{this.textAreaValue}} @onChange={{this.handleTextAreaInput}} @rows={{6}} />
-      <OSS::TextArea
-        @value={{this.textAreaValue}}
-        @onChange={{this.handleTextAreaInput}}
-        @errorMessage="This is an error message"
-        @rows={{5}}
-        @resize="vertical"
-      />
+      <div class="fx-col fx-1 fx-gap-px-6">
+        <span class="font-size-sm font-weight-semibold">Maximum 100 characters</span>
+        <OSS::TextArea
+          @value={{this.textAreaValue}}
+          @onChange={{this.handleTextAreaInput}}
+          @rows={{6}}
+          @maxLength={{100}}
+          @ariaLabel="Message limited to 100 characters"
+        />
+      </div>
+      <div class="fx-col fx-1 fx-gap-px-6">
+        <span class="font-size-sm font-weight-semibold">With error message</span>
+        <OSS::TextArea
+          @value={{this.textAreaValue}}
+          @onChange={{this.handleTextAreaInput}}
+          @errorMessage="This is an error message"
+          @rows={{5}}
+          @resize="vertical"
+        />
+      </div>
     </div>
   </div>
 
