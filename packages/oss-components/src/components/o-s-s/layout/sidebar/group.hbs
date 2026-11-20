@@ -7,6 +7,7 @@
         @expanded={{@expanded}}
         @active={{this.isActive}}
         @hasNotifications={{and (not @expanded) this.hasNotifications}}
+        @tag={{@tag}}
         {{on "mouseenter" this.handleMouseEnter}}
         {{on "mouseleave" this.handleMouseLeave}}
         class={{if @expanded "oss-sidebar-item--group-header"}}
@@ -22,6 +23,7 @@
         @expanded={{@expanded}}
         @active={{this.isActive}}
         @hasNotifications={{and (not @expanded) this.hasNotifications}}
+        @tag={{@tag}}
         {{on "mouseenter" this.handleMouseEnter}}
         {{on "mouseleave" this.handleMouseLeave}}
         class={{if @expanded "oss-sidebar-item--group-header"}}

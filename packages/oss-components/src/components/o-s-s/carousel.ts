@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 const DEFAULT_BUTTON_ICON: string = 'fa-circle';
 const DEFAULT_CONTROL_NAME_PREFIX: string = 'oss-carousel';
+const SWIPE_THRESHOLD: number = 50;
 const ANIMATION_TIME: number = isTesting() ? 5 : 500;
 
 interface OSSCarouselArgs {
@@ -16,6 +17,7 @@ interface OSSCarouselArgs {
   autoPlay?: number;
   loop?: boolean;
   onPageChange?(page: number): void;
+  onSwipe?(direction: 'left' | 'right'): void;
 }
 
 interface AnimationHandler {
@@ -31,6 +33,11 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   @tracked controlNamePrefix: string = DEFAULT_CONTROL_NAME_PREFIX;
 
   declare private autoPlayInterval: number;
+  private touchStart: { x: number; y: number } | null = null;
+
+  get swipeable(): boolean {
+    return !(this.args.onSwipe === undefined);
+  }
 
   get buttonIcon(): string {
     return this.args.buttonIcon ?? DEFAULT_BUTTON_ICON;
@@ -48,12 +55,20 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     return this.args.loop ?? true;
   }
 
+  get canGoToPreviousPage(): boolean {
+    return this.loop || this.currentPageIndex > 0;
+  }
+
+  get canGoToNextPage(): boolean {
+    return this.loop || this.currentPageIndex < (this.pages ?? []).length - 1;
+  }
+
   get showPreviousControl(): boolean {
-    return this.showControls && (this.loop || this.currentPageIndex > 0);
+    return this.showControls && this.canGoToPreviousPage;
   }
 
   get showNextControl(): boolean {
-    return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
+    return this.showControls && this.canGoToNextPage;
   }
 
   get showControlsOutside(): boolean {
@@ -70,10 +85,43 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     }
     this.pages[0]!.classList.add('page--active');
     this.currentPageIndex = 0;
+    this.setupAutoPlay();
+  }
+
+  @action
+  setupAutoPlay(): void {
+    clearInterval(this.autoPlayInterval);
     if (this.args.autoPlay) {
       this.autoPlayInterval = setInterval(() => {
         this.nextPage();
       }, this.args.autoPlay);
+    }
+  }
+
+  @action
+  onTouchStart(event: TouchEvent): void {
+    const touch = event.changedTouches[0];
+    this.touchStart = this.swipeable && touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }
+
+  @action
+  onTouchEnd(event: TouchEvent): void {
+    const touch = event.changedTouches[0];
+    const start = this.touchStart;
+    this.touchStart = null;
+    if (!this.swipeable || !start || !touch) return;
+
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    if (Math.abs(deltaX) < Math.max(SWIPE_THRESHOLD, Math.abs(deltaY))) return;
+
+    const direction = deltaX < 0 ? 'left' : 'right';
+    this.args.onSwipe?.(direction);
+
+    if (direction === 'left' && this.canGoToNextPage) {
+      this.nextPage();
+    } else if (direction === 'right' && this.canGoToPreviousPage) {
+      this.previousPage();
     }
   }
 
