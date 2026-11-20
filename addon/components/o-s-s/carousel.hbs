@@ -1,6 +1,7 @@
 <div
   class="oss-carousel {{if (eq @indicatorsPosition 'bottom') 'oss-carousel__reverse'}}"
   {{did-insert this.initialize}}
+  {{did-update this.setupAutoPlay @autoPlay}}
   ...attributes
 >
   {{#if this.showIndicators}}
@@ -16,7 +17,7 @@
       {{/each}}
     </div>
   {{/if}}
-  <div class="page-container">
+  <div class="page-container" {{on "touchstart" this.onTouchStart passive=true}} {{on "touchend" this.onTouchEnd}}>
     {{yield to="pages"}}
   </div>
   {{#if this.showControls}}

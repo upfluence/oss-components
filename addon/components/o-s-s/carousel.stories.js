@@ -78,6 +78,16 @@ export default {
         }
       }
     },
+    onSwipe: {
+      description:
+        'Action triggered when a valid swipe is performed, with the direction of the swipe. Providing it enables swiping to change pages. A swipe is ignored if it is shorter than 50px or mostly vertical. When `loop` is false, swiping past the first or last page does not change the page.',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: "onSwipe(direction: 'left' | 'right'): void"
+        }
+      }
+    },
     indicatorsPosition: {
       description: 'Whether to show the page indicators at the top or the bottom of the carousel.',
       table: {
@@ -115,7 +125,8 @@ const Template = (args) => ({
     <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                    @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
                    @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
-                   @loop={{this.loop}}>
+                   @loop={{this.loop}} @onSwipe={{this.onSwipe}}
+                   @onPageChange={{this.onPageChange}}>
       <:pages>
         <div class="page">
           <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
