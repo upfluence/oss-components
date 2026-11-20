@@ -25,6 +25,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
     this.owner.register('service:uploader', MockUploader);
 
     this.uploader = this.owner.lookup('service:uploader');
+    this.uploader.progressInterval = 0;
     this.file = { filename: 'foo.png', url: 'https://oss-components.org/foo.png', content_type: 'image/png' };
     this.validationRules = [{ type: 'filesize', value: '1MB' }];
     this.scope = 'anonymous';

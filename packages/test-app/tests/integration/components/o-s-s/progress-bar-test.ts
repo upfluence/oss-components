@@ -6,6 +6,8 @@ import { module, test } from 'qunit';
 
 import { PROGRESS_BAR_SKINS } from '@upfluence/oss-components/components/o-s-s/progress-bar';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   setupRenderingTest(hooks);
   hooks.beforeEach(function () {
@@ -227,7 +229,10 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::ProgressBar @skins={{hash success=30 warning=45 danger=35}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::ProgressBar @skins={{hash success=30 warning=45 danger=35}} />{{/if}}`
+      );
     });
 
     test('if the value is updated, the classes also update', async function (assert) {

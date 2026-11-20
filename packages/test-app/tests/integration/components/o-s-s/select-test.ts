@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/select', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
@@ -577,7 +579,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Select />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Select />{{/if}}`);
     });
 
     test('it throws an error if the component is invoked with no option named blocked', async function (assert) {

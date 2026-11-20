@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/currency-input', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
@@ -261,7 +263,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
         'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
       );
     });
-    await render(hbs`<OSS::CurrencyInput />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::CurrencyInput />{{/if}}`);
   });
 
   module('When @feedbackMessage is defined', () => {

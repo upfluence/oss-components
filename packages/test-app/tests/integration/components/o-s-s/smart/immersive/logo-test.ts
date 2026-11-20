@@ -7,6 +7,8 @@ import sinon from 'sinon';
 
 import { LOGO_COLORS, LOGO_ICONS } from '@upfluence/oss-components/utils/logo-config';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) {
   setupRenderingTest(hooks);
   hooks.beforeEach(function () {
@@ -174,10 +176,10 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       );
     });
 
-    render(hbs`<OSS::Smart::Immersive::Logo
-      @icon={{this.icon}}
-      @editable={{this.editable}}
-    />`);
+    await renderExpectingError(
+      this,
+      hbs`{{#if this.show}}<OSS::Smart::Immersive::Logo @icon={{this.icon}} @editable={{this.editable}} />{{/if}}`
+    );
   });
 
   test('it uses the fallback SVG when both icon and url are missing', async function (assert) {

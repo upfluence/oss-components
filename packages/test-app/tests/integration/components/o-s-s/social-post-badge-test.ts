@@ -7,6 +7,8 @@ import sinon from 'sinon';
 
 import type AssetMapService from '@upfluence/oss-components/services/asset-map';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 const ICONS_MATCHING: Record<string, string> = {
   article: '.fab.fa-wordpress',
   facebook_status: '.fab.fa-facebook-f',
@@ -133,8 +135,9 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
           'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory'
         );
       });
-      await render(
-        hbs`<OSS::SocialPostBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::SocialPostBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>{{/if}}`
       );
     });
 
@@ -148,8 +151,9 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
           'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter should be a value of SocialPostType'
         );
       });
-      await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>{{/if}}`
       );
     });
   });

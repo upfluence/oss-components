@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/togglable-section', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -31,9 +33,12 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     setupOnerror((err: any) => {
       assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @subtitle={{this.subtitle}}
+    await renderExpectingError(
+      this,
+      hbs`{{#if this.show}}<OSS::TogglableSection @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                 @onChange={{this.onChange}} />`);
+                                                 @onChange={{this.onChange}} />{{/if}}`
+    );
   });
 
   test('It throws an error if the @toggled param is not passed', async function (assert) {
@@ -41,9 +46,12 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     setupOnerror((err: any) => {
       assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await renderExpectingError(
+      this,
+      hbs`{{#if this.show}}<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}}
-                                                 @onChange={{this.onChange}} />`);
+                                                 @onChange={{this.onChange}} />{{/if}}`
+    );
   });
 
   test('It throws an error if the @onChange function is not passed', async function (assert) {
@@ -51,8 +59,11 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     setupOnerror((err: any) => {
       assert.strictEqual(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}} />`);
+    await renderExpectingError(
+      this,
+      hbs`{{#if this.show}}<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}} />{{/if}}`
+    );
   });
 
   test('It displays no image if @iconUrl param is not passed', async function (assert) {

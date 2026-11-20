@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/infinite-select/option', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -531,7 +533,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
           'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required'
         );
       });
-      await render(hbs`<OSS::InfiniteSelect::Option />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::InfiniteSelect::Option />{{/if}}`);
     });
 
     test('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
@@ -542,7 +544,10 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
           'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::InfiniteSelect::Option @title={{this.title}} />{{/if}}`
+      );
     });
   });
 });

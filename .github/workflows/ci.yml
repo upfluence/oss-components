@@ -13,8 +13,23 @@ env:
   FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
-  checks:
-    name: Lint & Typecheck
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-24.04
+    if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
+    timeout-minutes: 10
+    steps:
+      - uses: upfluence/actions/setup-js@master
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          node-version: ${{ vars.NODE_VERSION }}
+          pnpm-version: ${{ vars.PNPM_VERSION }}
+      - name: Build Addon
+        run: pnpm build
+      - name: Typecheck
+        run: pnpm typecheck
+  lint:
+    name: Lint
     runs-on: ubuntu-24.04
     if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
     timeout-minutes: 10
@@ -28,11 +43,9 @@ jobs:
         run: pnpm build
       - name: Lint
         run: pnpm lint
-      - name: Typecheck
-        run: pnpm typecheck
   tests:
     name: Tests
-    needs: [checks]
+    needs: [typecheck]
     uses: upfluence/actions/.github/workflows/any-js-ember-test.yml@master
     secrets: inherit
     with:
@@ -42,7 +55,7 @@ jobs:
         [{ "name": "default", "command": "pnpm --workspace-root test" }]
   build:
     runs-on: ubuntu-24.04
-    needs: [checks, tests]
+    needs: [typecheck, lint, tests]
     if: contains(github.ref, 'refs/tags/v') && !contains(github.ref, '-')
     timeout-minutes: 10
     steps:
@@ -64,7 +77,7 @@ jobs:
   release:
     name: Release Package
     runs-on: ubuntu-24.04
-    needs: [checks, tests]
+    needs: [typecheck, lint, tests]
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
     steps:

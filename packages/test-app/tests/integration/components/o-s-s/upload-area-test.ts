@@ -30,6 +30,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     this.owner.register('service:uploader', MockUploader);
 
     this.mockUploader = this.owner.lookup('service:uploader');
+    this.mockUploader.progressInterval = 0;
     this.validationRules = [{ type: 'filesize', value: '1MB' }];
     this.size = null;
     this.subtitle = 'JPG, PNG, PDF (Max 800x400px - 2MB)';

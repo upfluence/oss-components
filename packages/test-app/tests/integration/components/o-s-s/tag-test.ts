@@ -6,6 +6,8 @@ import { module, test } from 'qunit';
 
 import { SkinDefinition, type SkinType } from '@upfluence/oss-components/components/o-s-s/tag';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/tag', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -115,6 +117,6 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
       );
     });
 
-    await render(hbs`<OSS::Tag />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Tag />{{/if}}`);
   });
 });

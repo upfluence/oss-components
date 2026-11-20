@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
@@ -202,7 +204,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
         'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory'
       );
     });
-    await render(hbs`<OSS::AttributesPanel @onSave={{this.onSave}} />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::AttributesPanel @onSave={{this.onSave}} />{{/if}}`);
   });
 
   test('it throws an error if @onSave is missing', async function (assert) {
@@ -213,7 +215,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
         'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory'
       );
     });
-    await render(hbs`<OSS::AttributesPanel @title={{this.title}} />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::AttributesPanel @title={{this.title}} />{{/if}}`);
   });
 
   test('Edition mode is displayed when passed through initialMode argument', async function (assert) {

@@ -5,6 +5,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/checkbox', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -166,7 +168,7 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
           'Assertion Failed: [component][OSS::Checkbox] Boolean @checked argument is mandatory.'
         );
       });
-      await render(hbs`<OSS::Checkbox />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Checkbox />{{/if}}`);
     });
 
     test('it throws an error if the onChange argument is missing', async function (assert) {
@@ -178,7 +180,7 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Checkbox @checked={{true}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Checkbox @checked={{true}} />{{/if}}`);
     });
   });
 });

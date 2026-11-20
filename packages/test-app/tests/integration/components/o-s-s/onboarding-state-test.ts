@@ -4,6 +4,8 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 const TITLE = 'Welcome to OSS';
 const SUBTITLE = 'Get started by following the steps below.';
 const IMAGE_URL = '/assets/images/upfluence-full-blue-logo.svg';
@@ -126,7 +128,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
       });
 
-      await render(hbs`<OSS::OnboardingState />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::OnboardingState />{{/if}}`);
     });
 
     test('for subtitle, the component throws an error if the parameter is not passed', async function (assert) {
@@ -138,7 +140,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::OnboardingState @title={{this.title}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::OnboardingState @title={{this.title}} />{{/if}}`);
     });
 
     test('for imageUrl, the component throws an error if the parameter is not passed', async function (assert) {
@@ -150,7 +152,10 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}}  />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}}  />{{/if}}`
+      );
     });
   });
 });

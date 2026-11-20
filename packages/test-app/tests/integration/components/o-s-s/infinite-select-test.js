@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 function _isFocused(element) {
   return element === document.activeElement;
 }
@@ -511,7 +513,10 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
           );
         });
 
-        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />`);
+        await renderExpectingError(
+          this,
+          hbs`{{#if this.show}}<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />{{/if}}`
+        );
       });
     });
 
@@ -525,7 +530,10 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
           );
         });
 
-        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />`);
+        await renderExpectingError(
+          this,
+          hbs`{{#if this.show}}<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />{{/if}}`
+        );
       });
     });
   });

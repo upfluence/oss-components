@@ -23,13 +23,17 @@
     "remove-pre-push-hook": "rm -f \"$(git rev-parse --git-path hooks/pre-push)\""
   },
   "devDependencies": {
+    "@release-it-plugins/workspaces": "^3.2.0",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@upfluence/ember-blueprints": "git+https://github.com/upfluence/ember-blueprints.git#pn/generators-support",
     "@upfluence/w-conf": "^0.4.0",
+    "@vitejs/devtools": "^0.8.3",
+    "@vitejs/devtools-rolldown": "^0.8.3",
+    "@vitejs/devtools-vite": "^0.8.3",
     "eslint": "^10.5.0",
     "prettier": "^3.8.1",
-    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "release-it": "^15.9.3",
-    "@release-it-plugins/workspaces": "^3.2.0"
+    "vite-plugin-checker": "^1.0.0"
   },
   "engines": {
     "node": ">= 24",

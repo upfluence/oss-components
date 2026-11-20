@@ -5,6 +5,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/nav-tab', function (hooks) {
   setupRenderingTest(hooks);
   hooks.beforeEach(function () {
@@ -122,7 +124,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
           'Assertion Failed: [component][OSS::NavTab] The parameter @onSelection of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::NavTab @tabArray={{this.tabArray}} />{{/if}}`);
     });
 
     test('It throws an error if @tabArray is not passed', async function (assert) {
@@ -133,7 +135,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
           'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory'
         );
       });
-      await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::NavTab @onSelection={{this.onSelection}} />{{/if}}`);
     });
 
     test('It throws an error if @tabArray is empty', async function (assert) {
@@ -145,7 +147,10 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
           'Assertion Failed: [component][OSS::NavTab] The parameter @tabArray is mandatory'
         );
       });
-      await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />{{/if}}`
+      );
     });
 
     test('It throws an error if @label and @icon is missing for any element in @tabArray', async function (assert) {
@@ -157,7 +162,10 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
           'Assertion Failed: [component][OSS::NavTab] The @label or @icon parameter is mandatory for each element in @tabArray'
         );
       });
-      await render(hbs`<OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />{{/if}}`
+      );
     });
   });
 });

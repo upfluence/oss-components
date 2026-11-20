@@ -4,6 +4,8 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/pill', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -44,7 +46,7 @@ module('Integration | Component | o-s-s/pill', function (hooks) {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Pill] You must pass a @label argument.');
       });
 
-      await render(hbs`<OSS::Pill />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Pill />{{/if}}`);
     });
   });
 });

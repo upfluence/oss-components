@@ -5,7 +5,6 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { CSSVariableToRGB } from 'test-app/tests/integration/utils';
 
 import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 import {
@@ -14,6 +13,9 @@ import {
   PROGRESS_COLOR,
   SUCCESS_COLOR
 } from '@upfluence/oss-components/components/o-s-s/completion-badge';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+import { CSSVariableToRGB } from 'test-app/tests/integration/utils';
 
 module('Integration | Component | o-s-s/completion-badge', function (hooks) {
   setupRenderingTest(hooks);
@@ -190,7 +192,7 @@ module('Integration | Component | o-s-s/completion-badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::CompletionBadge @skin="foo" @text="2x" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::CompletionBadge @skin="foo" @text="2x" />{{/if}}`);
     });
 
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
@@ -202,7 +204,7 @@ module('Integration | Component | o-s-s/completion-badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::CompletionBadge @size="foo" @text="2x" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::CompletionBadge @size="foo" @text="2x" />{{/if}}`);
     });
 
     test('it throws an error if no argument is passed', async function (assert: Assert) {
@@ -214,7 +216,7 @@ module('Integration | Component | o-s-s/completion-badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::CompletionBadge />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::CompletionBadge />{{/if}}`);
     });
 
     test('it throws an error if more than one content argument is passed', async function (assert: Assert) {
@@ -226,7 +228,10 @@ module('Integration | Component | o-s-s/completion-badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::CompletionBadge @icon="fas fa-users" @text="2x" />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::CompletionBadge @icon="fas fa-users" @text="2x" />{{/if}}`
+      );
     });
   });
 });

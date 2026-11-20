@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/smart/immersive/currency-input', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
@@ -254,6 +256,6 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
         'Assertion Failed: [component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory'
       );
     });
-    await render(hbs`<OSS::Smart::Immersive::CurrencyInput />`);
+    await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Smart::Immersive::CurrencyInput />{{/if}}`);
   });
 });

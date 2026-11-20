@@ -6,6 +6,8 @@ import { module, test } from 'qunit';
 
 import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -110,7 +112,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Avatar @size="test" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Avatar @size="test" />{{/if}}`);
     });
 
     test('it throws an error if the wrong skin argument is passed', async function (assert: Assert) {
@@ -122,7 +124,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Avatar @skin="test" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Avatar @skin="test" />{{/if}}`);
     });
 
     test('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {

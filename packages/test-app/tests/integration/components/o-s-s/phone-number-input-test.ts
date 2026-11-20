@@ -14,6 +14,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -239,7 +241,10 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
         );
       });
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />{{/if}}`
+      );
       await settled();
     });
 
@@ -252,7 +257,10 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
         );
       });
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />{{/if}}`
+      );
       await settled();
     });
 
@@ -265,7 +273,7 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
         );
       });
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @number="" @prefix="" />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::PhoneNumberInput @number="" @prefix="" />{{/if}}`);
       await settled();
     });
   });

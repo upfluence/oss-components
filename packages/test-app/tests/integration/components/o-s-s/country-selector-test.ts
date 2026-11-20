@@ -10,6 +10,8 @@ import sinon from 'sinon';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
@@ -248,7 +250,10 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
           'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory'
         );
       });
-      await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::CountrySelector @onChange={{this.onchange}} />{{/if}}`
+      );
       await settled();
     });
 
@@ -260,7 +265,10 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
           'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory'
         );
       });
-      await render(hbs`<OSS::CountrySelector @sourceList={{this.countries}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::CountrySelector @sourceList={{this.countries}} />{{/if}}`
+      );
       await settled();
     });
   });

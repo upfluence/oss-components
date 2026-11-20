@@ -6,6 +6,8 @@ import { module, test } from 'qunit';
 
 import type { OSSFeatureCardArgs } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/feature-cards-container', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -137,7 +139,7 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
         );
       });
 
-      await render(hbs`<OSS::FeatureCardsContainer />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::FeatureCardsContainer />{{/if}}`);
     });
 
     test('it throws when @cards has invalid count', async function (assert) {
@@ -151,7 +153,10 @@ module('Integration | Component | o-s-s/feature-cards-container', function (hook
         );
       });
 
-      await render(hbs`<OSS::FeatureCardsContainer @cards={{this.cards}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::FeatureCardsContainer @cards={{this.cards}} />{{/if}}`
+      );
     });
   });
 });

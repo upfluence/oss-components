@@ -5,6 +5,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/button', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -243,7 +245,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Button />`);
+      await renderExpectingError(this, hbs`{{#if this.show}}<OSS::Button />{{/if}}`);
     });
 
     test('it fails if callback missing for @countDown argument', async function (assert) {
@@ -255,7 +257,10 @@ module('Integration | Component | o-s-s/button', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash time=1000}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Button @label="Test" @countDown={{hash time=1000}} />{{/if}}`
+      );
     });
   });
 });

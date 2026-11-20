@@ -6,6 +6,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -177,8 +179,9 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory'
         );
       });
-      await render(
-        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>{{/if}}`
       );
       await settled();
     });
@@ -191,7 +194,10 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>{{/if}}`
+      );
       await settled();
     });
 
@@ -203,7 +209,10 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory'
         );
       });
-      await render(hbs`<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />{{/if}}`
+      );
       await settled();
     });
 
@@ -217,8 +226,9 @@ module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) 
           'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles'
         );
       });
-      await render(
-        hbs`<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>{{/if}}`
       );
       await settled();
     });

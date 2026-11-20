@@ -7,6 +7,8 @@ import { module, test } from 'qunit';
 
 import { COLOR_VARIANTS, SHADOW_VARIANTS } from '@upfluence/oss-components/components/o-s-s/feature-card';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/feature-card', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, 'en-us');
@@ -91,7 +93,10 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @title parameter is mandatory');
       });
 
-      await render(hbs`<OSS::FeatureCard @description={{this.description}} @image={{this.image}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::FeatureCard @description={{this.description}} @image={{this.image}} />{{/if}}`
+      );
     });
 
     test('it throws when @description is missing', async function (assert) {
@@ -100,7 +105,10 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] The @description parameter is mandatory');
       });
 
-      await render(hbs`<OSS::FeatureCard @title={{this.title}} @image={{this.image}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::FeatureCard @title={{this.title}} @image={{this.image}} />{{/if}}`
+      );
     });
 
     test('it throws when @image is missing', async function (assert) {
@@ -112,7 +120,10 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::FeatureCard @title={{this.title}} @description={{this.description}} />{{/if}}`
+      );
     });
 
     test('it throws when @colorVariant is unknown', async function (assert) {
@@ -124,8 +135,9 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
         );
       });
 
-      await render(
-        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant="green" />`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @colorVariant="green" />{{/if}}`
       );
     });
 
@@ -135,8 +147,9 @@ module('Integration | Component | o-s-s/feature-card', function (hooks) {
         assert.strictEqual(err.message, 'Assertion Failed: [OSS::FeatureCard] @shadowVariant must be one of: sm, lg');
       });
 
-      await render(
-        hbs`<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @shadowVariant="xl" />`
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::FeatureCard @title={{this.title}} @description={{this.description}} @image={{this.image}} @shadowVariant="xl" />{{/if}}`
       );
     });
   });

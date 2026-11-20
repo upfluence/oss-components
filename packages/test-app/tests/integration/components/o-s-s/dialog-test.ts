@@ -5,6 +5,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+
 module('Integration | Component | o-s-s/dialog', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -170,7 +172,10 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
         assert.strictEqual(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
       });
 
-      await render(hbs`<OSS::Dialog @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Dialog @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />{{/if}}`
+      );
     });
 
     test('The component throws an error if the @mainAction parameter is not passed', async function (assert) {
@@ -182,7 +187,10 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Dialog @title={{this.title}} @secondaryAction={{this.secondaryAction}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Dialog @title={{this.title}} @secondaryAction={{this.secondaryAction}} />{{/if}}`
+      );
     });
 
     test('The component throws an error if the @secondaryAction parameter is not passed', async function (assert) {
@@ -194,7 +202,10 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} />`);
+      await renderExpectingError(
+        this,
+        hbs`{{#if this.show}}<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} />{{/if}}`
+      );
     });
   });
 });
