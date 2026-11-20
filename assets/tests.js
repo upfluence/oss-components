@@ -12897,6 +12897,100 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/group-test", ["q
         assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item__tag').hasClass('upf-tag--plain');
       });
     });
+    (0, _qunit.module)('group header has a tag', function (hooks) {
+      const header = '.oss-sidebar-group > .oss-sidebar-group__title-container';
+      const tag = `${header} .oss-sidebar-item__tag`;
+      hooks.beforeEach(function () {
+        this.expanded = true;
+        this.groupTag = {
+          label: '9+',
+          skin: 'danger',
+          plain: true
+        };
+      });
+      (0, _qunit.test)('the tag is displayed on the group header when expanded', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Layout::Sidebar::Group
+                  @icon="fa-screen-users"
+                  @label="Apps"
+                  @expanded={{this.expanded}}
+                  @items={{this.items}}
+                  @tag={{this.groupTag}}
+                />
+              
+        */
+        {
+          "id": "ajFX6wV2",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@tag\"],[\"fa-screen-users\",\"Apps\",[30,0,[\"expanded\"]],[30,0,[\"items\"]],[30,0,[\"groupTag\"]]]],null],[1,\"\\n      \"]],[],[\"o-s-s/layout/sidebar/group\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/group-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(tag).hasText('9+').hasClass('upf-tag--critical').hasStyle({
+          opacity: '1'
+        });
+        const badge = (0, _testHelpers.find)(tag);
+        const label = (0, _testHelpers.find)(`${header} .oss-sidebar-item__label`);
+        assert.strictEqual(badge.offsetLeft - label.offsetLeft - label.offsetWidth, 6, 'the badge follows the group label');
+        assert.true(Math.abs(badge.offsetTop + badge.offsetHeight / 2 - label.offsetTop - label.offsetHeight / 2) <= 1, 'the badge is vertically centered with the label');
+      });
+      (0, _qunit.test)('the tag is displayed on the group header when collapsed', async function (assert) {
+        this.expanded = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Layout::Sidebar::Group
+                  @icon="fa-screen-users"
+                  @label="Apps"
+                  @expanded={{this.expanded}}
+                  @items={{this.items}}
+                  @tag={{this.groupTag}}
+                />
+              
+        */
+        {
+          "id": "ajFX6wV2",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@tag\"],[\"fa-screen-users\",\"Apps\",[30,0,[\"expanded\"]],[30,0,[\"items\"]],[30,0,[\"groupTag\"]]]],null],[1,\"\\n      \"]],[],[\"o-s-s/layout/sidebar/group\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/group-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(tag).hasText('9+').hasStyle({
+          opacity: '1',
+          position: 'absolute',
+          right: '3px',
+          top: '2px'
+        });
+      });
+      (0, _qunit.test)('when the group has no header tag, the item tag is still displayed', async function (assert) {
+        this.items[0].tag = {
+          label: 'New',
+          skin: 'chat-gpt',
+          plain: true
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Layout::Sidebar::Group
+                  @icon="fa-screen-users"
+                  @label="Apps"
+                  @expanded={{this.expanded}}
+                  @items={{this.items}}
+                />
+              
+        */
+        {
+          "id": "VeYwPccC",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\"],[\"fa-screen-users\",\"Apps\",[30,0,[\"expanded\"]],[30,0,[\"items\"]]]],null],[1,\"\\n      \"]],[],[\"o-s-s/layout/sidebar/group\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/group-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(tag).doesNotExist();
+        assert.dom('.oss-sidebar-group__items-container .oss-sidebar-item__tag').hasText('New').hasStyle({
+          opacity: '1'
+        });
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {

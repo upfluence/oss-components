@@ -2039,12 +2039,43 @@
       super(...arguments);
       _initializerDefineProperty(this, "toast", _descriptor, this);
       _initializerDefineProperty(this, "router", _descriptor2, this);
+      _defineProperty(this, "featuredTag", {
+        label: '9+',
+        skin: 'danger',
+        plain: true
+      });
+      _defineProperty(this, "newFeaturesTag", {
+        label: '3',
+        skin: 'danger',
+        plain: true
+      });
+    }
+    get sidebarGroupItems() {
+      return [{
+        icon: 'far fa-search',
+        label: 'Search',
+        hasNotifications: false,
+        active: false,
+        link: 'index'
+      }, {
+        icon: 'far fa-chart-bar',
+        label: 'Analytics',
+        hasNotifications: false,
+        active: false,
+        link: 'data'
+      }, {
+        icon: 'far fa-cog',
+        label: 'Settings',
+        hasNotifications: false,
+        active: false,
+        link: 'extra'
+      }];
     }
     redirectTo(route) {
       console.log('redirectTo', route);
     }
     onClick() {
-      this.toast.success('Item clicked!');
+      this.toast.success('Item clicked!', '');
     }
   }, _descriptor = _applyDecoratedDescriptor(_class.prototype, "toast", [_service.service], {
     configurable: true,
@@ -5061,6 +5092,20 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
           class={{if (eq this.router.currentRouteName "smart") "active"}}
           @link="smart"
         />
+        <OSS::Layout::Sidebar::Group
+          @icon="far fa-star"
+          @label="Featured"
+          @expanded={{state.expanded}}
+          @items={{this.sidebarGroupItems}}
+          @tag={{this.featuredTag}}
+        />
+        <OSS::Layout::Sidebar::Group
+          @icon="far fa-sparkles"
+          @label="New Features"
+          @expanded={{state.expanded}}
+          @items={{this.sidebarGroupItems}}
+          @tag={{this.newFeaturesTag}}
+        />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-lock"
           @locked={{true}}
@@ -5099,8 +5144,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   </div>
   */
   {
-    "id": "hMiMA6YY",
-    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,1],null,[[\"@homeParameters\",\"@expandable\"],[[28,[37,2],null,[[\"logo\",\"url\"],[\"/assets/images/brand-icon.svg\",\"/\"]]],true]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\",\"@action\"],[\"far fa-message-plus\",\"Display\",[30,1,[\"expanded\"]],\"index\",[30,0,[\"onClick\"]]]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-input-text\",\"Input\",[30,1,[\"expanded\"]],\"input\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-toggle-on\",\"Visual\",[30,1,[\"expanded\"]],\"visual\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-line-columns\",\"Data\",[30,1,[\"expanded\"]],\"data\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-window-restore\",\"Overlay\",[30,1,[\"expanded\"]],\"overlay\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-link\",\"Extra\",[30,1,[\"expanded\"]],\"extra\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-hat-wizard\",\"Wizard\",[30,1,[\"expanded\"]],\"wizard\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"smart\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-brain-circuit\",\"Smart\",[30,1,[\"expanded\"]],\"smart\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@locked\",\"@label\",\"@expanded\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,\"Locked State\",[30,1,[\"expanded\"]],[28,[37,7],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,7],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@defaultAction\",\"@label\",\"@expanded\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,7],[[30,0,[\"redirectTo\"]],\"pointer\"],null],\"Notifications\",[30,1,[\"expanded\"]],true]],null],[1,\"\\n    \"]],[1]],[[[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@label\",\"@expanded\"],[\"fal fa-info-circle\",\"Help center\",[30,2,[\"expanded\"]]]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-9 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,9],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n\\n\"],[41,[30,2,[\"expanded\"]],[[[1,\"          My account\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[2]]]]],[1,\"\\n\\n  \"],[10,0],[14,0,\"demo-outlet\"],[12],[1,\"\\n    \"],[46,[28,[37,11],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"state\",\"sidebar\"],[\"div\",\"o-s-s/layout/sidebar\",\"hash\",\":content\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"fn\",\":footer\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
+    "id": "XbmjTHKW",
+    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,1],null,[[\"@homeParameters\",\"@expandable\"],[[28,[37,2],null,[[\"logo\",\"url\"],[\"/assets/images/brand-icon.svg\",\"/\"]]],true]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\",\"@action\"],[\"far fa-message-plus\",\"Display\",[30,1,[\"expanded\"]],\"index\",[30,0,[\"onClick\"]]]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-input-text\",\"Input\",[30,1,[\"expanded\"]],\"input\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-toggle-on\",\"Visual\",[30,1,[\"expanded\"]],\"visual\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-line-columns\",\"Data\",[30,1,[\"expanded\"]],\"data\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-window-restore\",\"Overlay\",[30,1,[\"expanded\"]],\"overlay\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-link\",\"Extra\",[30,1,[\"expanded\"]],\"extra\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-hat-wizard\",\"Wizard\",[30,1,[\"expanded\"]],\"wizard\"]],null],[1,\"\\n      \"],[8,[39,4],[[16,0,[52,[28,[37,6],[[30,0,[\"router\",\"currentRouteName\"]],\"smart\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-brain-circuit\",\"Smart\",[30,1,[\"expanded\"]],\"smart\"]],null],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@tag\"],[\"far fa-star\",\"Featured\",[30,1,[\"expanded\"]],[30,0,[\"sidebarGroupItems\"]],[30,0,[\"featuredTag\"]]]],null],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@tag\"],[\"far fa-sparkles\",\"New Features\",[30,1,[\"expanded\"]],[30,0,[\"sidebarGroupItems\"]],[30,0,[\"newFeaturesTag\"]]]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@locked\",\"@label\",\"@expanded\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,\"Locked State\",[30,1,[\"expanded\"]],[28,[37,8],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,8],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@defaultAction\",\"@label\",\"@expanded\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,8],[[30,0,[\"redirectTo\"]],\"pointer\"],null],\"Notifications\",[30,1,[\"expanded\"]],true]],null],[1,\"\\n    \"]],[1]],[[[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@label\",\"@expanded\"],[\"fal fa-info-circle\",\"Help center\",[30,2,[\"expanded\"]]]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-9 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,10],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n\\n\"],[41,[30,2,[\"expanded\"]],[[[1,\"          My account\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[2]]]]],[1,\"\\n\\n  \"],[10,0],[14,0,\"demo-outlet\"],[12],[1,\"\\n    \"],[46,[28,[37,12],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"state\",\"sidebar\"],[\"div\",\"o-s-s/layout/sidebar\",\"hash\",\":content\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"o-s-s/layout/sidebar/group\",\"fn\",\":footer\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
     "moduleName": "dummy/templates/application.hbs",
     "isStrictMode": false
   });
