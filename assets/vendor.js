@@ -33222,7 +33222,7 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@embroider/macros",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
   function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
@@ -33234,6 +33234,7 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
     <div
     class="oss-carousel {{if (eq @indicatorsPosition 'bottom') 'oss-carousel__reverse'}}"
     {{did-insert this.initialize}}
+    {{did-update this.setupAutoPlay @autoPlay}}
     ...attributes
   >
     {{#if this.showIndicators}}
@@ -33249,7 +33250,7 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
         {{/each}}
       </div>
     {{/if}}
-    <div class="page-container">
+    <div class="page-container" {{on "touchstart" this.onTouchStart passive=true}} {{on "touchend" this.onTouchEnd}}>
       {{yield to="pages"}}
     </div>
     {{#if this.showControls}}
@@ -33277,13 +33278,14 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
   </div>
   */
   {
-    "id": "R2JGp98y",
-    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,2],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,3],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,5],[[28,[37,5],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,6],[\"click\",[28,[37,7],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[8,[39,8],[[16,0,[29,[[52,[28,[37,2],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]]],[[\"@icon\",\"@style\"],[[30,0,[\"buttonIcon\"]],\"solid\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"page-container\"],[12],[1,\"\\n    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,10],[\"carousel-control--left\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[16,\"data-control-name\",[28,[37,10],[[30,0,[\"controlNamePrefix\"]],\"-control-left\"],null]],[24,\"role\",\"button\"],[4,[38,6],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,8],null,[[\"@icon\"],[\"fa-arrow-left\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,10],[\"carousel-control--right\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[16,\"data-control-name\",[28,[37,10],[[30,0,[\"controlNamePrefix\"]],\"-control-right\"],null]],[24,\"role\",\"button\"],[4,[38,6],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,8],null,[[\"@icon\"],[\"fa-arrow-right\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],[\"div\",\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"o-s-s/icon\",\"yield\",\"concat\"]]",
+    "id": "GaYleKBy",
+    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,2],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,3],[[30,0,[\"initialize\"]]],null],[4,[38,4],[[30,0,[\"setupAutoPlay\"]],[30,3]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[28,[37,8],[[30,0,[\"displayPage\"]],[30,4]],null]],null],[12],[1,\"\\n          \"],[8,[39,9],[[16,0,[29,[[52,[28,[37,2],[[30,5],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]]],[[\"@icon\",\"@style\"],[[30,0,[\"buttonIcon\"]],\"solid\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[4,5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"page-container\"],[4,[38,7],[\"touchstart\",[30,0,[\"onTouchStart\"]]],[[\"passive\"],[true]]],[4,[38,7],[\"touchend\",[30,0,[\"onTouchEnd\"]]],null],[12],[1,\"\\n    \"],[18,6,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,11],[\"carousel-control--left\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[16,\"data-control-name\",[28,[37,11],[[30,0,[\"controlNamePrefix\"]],\"-control-left\"],null]],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,9],null,[[\"@icon\"],[\"fa-arrow-left\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,11],[\"carousel-control--right\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[16,\"data-control-name\",[28,[37,11],[[30,0,[\"controlNamePrefix\"]],\"-control-right\"],null]],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,9],null,[[\"@icon\"],[\"fa-arrow-right\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"@indicatorsPosition\",\"&attrs\",\"@autoPlay\",\"page\",\"index\",\"&pages\"],[\"div\",\"if\",\"eq\",\"did-insert\",\"did-update\",\"each\",\"-track-array\",\"on\",\"fn\",\"o-s-s/icon\",\"yield\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/carousel.hbs",
     "isStrictMode": false
   });
   const DEFAULT_BUTTON_ICON = 'fa-circle';
   const DEFAULT_CONTROL_NAME_PREFIX = 'oss-carousel';
+  const SWIPE_THRESHOLD = 50;
   const ANIMATION_TIME = (0, _runtime.isTesting)() ? 5 : 500;
   let OSSCarousel = _exports.default = (_class = class OSSCarousel extends _component2.default {
     constructor() {
@@ -33294,6 +33296,7 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
       _initializerDefineProperty(this, "prevPageIndex", _descriptor4, this);
       _initializerDefineProperty(this, "ongoingAnimation", _descriptor5, this);
       _initializerDefineProperty(this, "controlNamePrefix", _descriptor6, this);
+      _defineProperty(this, "touchStart", null);
       _defineProperty(this, "slideAnimationHandler", (page, executeAfterAnimation) => {
         const classesToCleanup = ['animate--slide-from-left', 'animate--slide-from-right', 'animate--slide-to-left', 'animate--slide-to-right'];
         this.pages.forEach(p => p.classList.remove(...classesToCleanup));
@@ -33317,6 +33320,9 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
         setTimeout(() => executeAfterAnimation(), ANIMATION_TIME);
       });
     }
+    get swipeable() {
+      return !(this.args.onSwipe === undefined);
+    }
     get buttonIcon() {
       return this.args.buttonIcon ?? DEFAULT_BUTTON_ICON;
     }
@@ -33329,11 +33335,17 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
     get loop() {
       return this.args.loop ?? true;
     }
+    get canGoToPreviousPage() {
+      return this.loop || this.currentPageIndex > 0;
+    }
+    get canGoToNextPage() {
+      return this.loop || this.currentPageIndex < (this.pages ?? []).length - 1;
+    }
     get showPreviousControl() {
-      return this.showControls && (this.loop || this.currentPageIndex > 0);
+      return this.showControls && this.canGoToPreviousPage;
     }
     get showNextControl() {
-      return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
+      return this.showControls && this.canGoToNextPage;
     }
     get showControlsOutside() {
       return this.args.showControls === 'outside';
@@ -33347,10 +33359,37 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
       }
       this.pages[0].classList.add('page--active');
       this.currentPageIndex = 0;
+      this.setupAutoPlay();
+    }
+    setupAutoPlay() {
+      clearInterval(this.autoPlayInterval);
       if (this.args.autoPlay) {
         this.autoPlayInterval = setInterval(() => {
           this.nextPage();
         }, this.args.autoPlay);
+      }
+    }
+    onTouchStart(event) {
+      const touch = event.changedTouches[0];
+      this.touchStart = this.swipeable && touch ? {
+        x: touch.clientX,
+        y: touch.clientY
+      } : null;
+    }
+    onTouchEnd(event) {
+      const touch = event.changedTouches[0];
+      const start = this.touchStart;
+      this.touchStart = null;
+      if (!this.swipeable || !start || !touch) return;
+      const deltaX = touch.clientX - start.x;
+      const deltaY = touch.clientY - start.y;
+      if (Math.abs(deltaX) < Math.max(SWIPE_THRESHOLD, Math.abs(deltaY))) return;
+      const direction = deltaX < 0 ? 'left' : 'right';
+      this.args.onSwipe?.(direction);
+      if (direction === 'left' && this.canGoToNextPage) {
+        this.nextPage();
+      } else if (direction === 'right' && this.canGoToPreviousPage) {
+        this.previousPage();
       }
     }
     previousPage() {
@@ -33432,7 +33471,7 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
     initializer: function () {
       return DEFAULT_CONTROL_NAME_PREFIX;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "previousPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "previousPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "nextPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "nextPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "displayPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "displayPage"), _class.prototype), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupAutoPlay", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupAutoPlay"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onTouchStart", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onTouchStart"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onTouchEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onTouchEnd"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "previousPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "previousPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "nextPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "nextPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "displayPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "displayPage"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCarousel);
 });
 ;define("@upfluence/oss-components/components/o-s-s/checkbox", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _internals, _templateFactory) {

@@ -4335,10 +4335,10 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/carousel-test", ["@ember/object", "@ember/test-helpers", "ember-qunit", "qunit", "sinon", "@ember/template-factory"], function (_object, _testHelpers, _emberQunit, _qunit, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/object",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-qunit",0,"qunit",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/carousel', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -4349,6 +4349,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
       this.autoPlay = undefined;
       this.loop = undefined;
       this.onPageChange = _sinon.default.spy();
+      this.onSwipe = _sinon.default.spy();
     });
     async function renderCarousel() {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -4357,7 +4358,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
             <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                            @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
                            @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}
-                           @indicatorsPosition={{this.indicatorsPosition}} @loop={{this.loop}}>
+                           @indicatorsPosition={{this.indicatorsPosition}} @loop={{this.loop}}
+                           @onSwipe={{this.onSwipe}}>
               <:pages>
                 <div class="page">Page 1</div>
                 <div class="page">Page 2</div>
@@ -4367,8 +4369,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
           
       */
       {
-        "id": "CZFNLzkg",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\",\"@indicatorsPosition\",\"@loop\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]],[30,0,[\"indicatorsPosition\"]],[30,0,[\"loop\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],[\"o-s-s/carousel\",\":pages\",\"div\"]]",
+        "id": "wbvIIvNH",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\",\"@indicatorsPosition\",\"@loop\",\"@onSwipe\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]],[30,0,[\"indicatorsPosition\"]],[30,0,[\"loop\"]],[30,0,[\"onSwipe\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],[\"o-s-s/carousel\",\":pages\",\"div\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/carousel-test.ts",
         "isStrictMode": false
       }));
@@ -4581,12 +4583,135 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         assert.dom('.animate--slide-from-left').exists();
       });
     });
-    (0, _qunit.module)('Auto play', () => {
+    (0, _qunit.module)('Auto play', hooks => {
+      let clock;
+      hooks.beforeEach(function () {
+        clock = _sinon.default.useFakeTimers({
+          toFake: ['setInterval', 'clearInterval']
+        });
+      });
+      hooks.afterEach(function () {
+        clock.restore();
+      });
       (0, _qunit.test)('When specified, it automatically switches to the next page', async function (assert) {
         this.autoPlay = 100;
         await renderCarousel();
-        await new Promise(resolve => setTimeout(resolve, 101));
+        clock.tick(101);
         assert.dom('.oss-carousel .page--active').hasText('Page 2');
+      });
+      (0, _qunit.test)('When autoPlay is updated, the new interval is applied', async function (assert) {
+        this.autoPlay = 10000;
+        await renderCarousel();
+        (0, _object.set)(this, 'autoPlay', 50);
+        await (0, _testHelpers.settled)();
+        clock.tick(51);
+        assert.dom('.oss-carousel .page--active').hasText('Page 2');
+      });
+      (0, _qunit.test)('When autoPlay is updated, the previous interval is cleared', async function (assert) {
+        this.autoPlay = 50;
+        await renderCarousel();
+        (0, _object.set)(this, 'autoPlay', 10000);
+        await (0, _testHelpers.settled)();
+        clock.tick(120);
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+      });
+      (0, _qunit.test)('When autoPlay is set to undefined, the auto play stops', async function (assert) {
+        this.autoPlay = 50;
+        await renderCarousel();
+        (0, _object.set)(this, 'autoPlay', undefined);
+        await (0, _testHelpers.settled)();
+        clock.tick(120);
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+      });
+      (0, _qunit.test)('When autoPlay goes from undefined to a value, the auto play starts', async function (assert) {
+        await renderCarousel();
+        (0, _object.set)(this, 'autoPlay', 50);
+        await (0, _testHelpers.settled)();
+        clock.tick(51);
+        assert.dom('.oss-carousel .page--active').hasText('Page 2');
+      });
+    });
+    (0, _qunit.module)('Swipe', () => {
+      async function swipe(startX, endX) {
+        let startY = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        let endY = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+        await (0, _testHelpers.triggerEvent)('.oss-carousel .page-container', 'touchstart', {
+          changedTouches: [{
+            clientX: startX,
+            clientY: startY
+          }]
+        });
+        await (0, _testHelpers.triggerEvent)('.oss-carousel .page-container', 'touchend', {
+          changedTouches: [{
+            clientX: endX,
+            clientY: endY
+          }]
+        });
+      }
+      (0, _qunit.test)('When @onSwipe is not provided, swiping does nothing', async function (assert) {
+        this.onSwipe = undefined;
+        await renderCarousel();
+        await swipe(200, 100);
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+      });
+      (0, _qunit.test)('Swiping left goes to the next page and calls @onSwipe with "left"', async function (assert) {
+        await renderCarousel();
+        await swipe(200, 100);
+        assert.dom('.oss-carousel .page--active').hasText('Page 2');
+        assert.true(this.onSwipe.calledOnceWithExactly('left'));
+      });
+      (0, _qunit.test)('Swiping right goes to the previous page and calls @onSwipe with "right"', async function (assert) {
+        await renderCarousel();
+        await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(2)');
+        await swipe(100, 200);
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+        assert.true(this.onSwipe.calledOnceWithExactly('right'));
+      });
+      (0, _qunit.test)('Swiping right on the first page loops to the last page when loop is enabled', async function (assert) {
+        await renderCarousel();
+        await swipe(100, 200);
+        assert.dom('.oss-carousel .page--active').hasText('Page 3');
+      });
+      (0, _qunit.test)('A swipe shorter than the threshold is ignored', async function (assert) {
+        await renderCarousel();
+        await swipe(100, 70);
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+        assert.true(this.onSwipe.notCalled);
+      });
+      (0, _qunit.test)('A mostly vertical swipe is ignored', async function (assert) {
+        await renderCarousel();
+        await swipe(200, 140, 0, 300);
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+        assert.true(this.onSwipe.notCalled);
+      });
+      (0, _qunit.test)('A touchend without a touchstart is ignored', async function (assert) {
+        await renderCarousel();
+        await (0, _testHelpers.triggerEvent)('.oss-carousel .page-container', 'touchend', {
+          changedTouches: [{
+            clientX: 0,
+            clientY: 0
+          }]
+        });
+        assert.dom('.oss-carousel .page--active').hasText('Page 1');
+        assert.true(this.onSwipe.notCalled);
+      });
+      (0, _qunit.module)('When loop is false', hooks => {
+        hooks.beforeEach(function () {
+          this.loop = false;
+        });
+        (0, _qunit.test)('Swiping right on the first page does not change the page but still calls @onSwipe', async function (assert) {
+          await renderCarousel();
+          await swipe(100, 200);
+          assert.dom('.oss-carousel .page--active').hasText('Page 1');
+          assert.true(this.onSwipe.calledOnceWithExactly('right'));
+        });
+        (0, _qunit.test)('Swiping left on the last page does not change the page but still calls @onSwipe', async function (assert) {
+          await renderCarousel();
+          await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(3)');
+          await swipe(200, 100);
+          assert.dom('.oss-carousel .page--active').hasText('Page 3');
+          assert.true(this.onSwipe.calledOnceWithExactly('left'));
+        });
       });
     });
     (0, _qunit.test)('@onPageChange is called when changing the page when the parameter is defined', async function (assert) {
