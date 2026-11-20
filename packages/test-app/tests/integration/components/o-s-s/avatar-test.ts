@@ -3,9 +3,10 @@ import { find, render, setupOnerror, waitFor, waitUntil } from '@ember/test-help
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);

@@ -4,9 +4,10 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import type AssetMapService from '@upfluence/oss-components/services/asset-map';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 const ICONS_MATCHING: Record<string, string> = {
   article: '.fab.fa-wordpress',

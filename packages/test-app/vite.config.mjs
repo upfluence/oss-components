@@ -1,11 +1,13 @@
 import { babel } from '@rollup/plugin-babel';
 import { classicEmberSupport, ember, extensions } from '@embroider/vite';
 import { defineConfig } from 'vite';
+import checker from 'vite-plugin-checker';
 
 import { ossLessPaths } from '@upfluence/oss-components/build/less-paths.cjs';
 import { assetMap } from '@upfluence/oss-components/build/vite-asset-map.mjs';
 
 export default defineConfig({
+  devtools: { apply: 'serve' },
   define: {
     'import.meta.env.COVERAGE': JSON.stringify(process.env.COVERAGE === 'true')
   },
@@ -22,6 +24,7 @@ export default defineConfig({
   plugins: [
     classicEmberSupport(),
     ember(),
+    checker({ typescript: true, enableBuild: false }),
     babel({
       babelHelpers: 'runtime',
       extensions

@@ -6,10 +6,11 @@ import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);

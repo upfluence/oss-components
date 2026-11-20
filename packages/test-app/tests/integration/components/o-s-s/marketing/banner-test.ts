@@ -4,6 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+
 import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 import { CSSVariableToRGB } from 'test-app/tests/integration/utils';
 

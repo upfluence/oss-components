@@ -5,8 +5,6 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
-import { CSSVariableToRGB } from 'test-app/tests/integration/utils';
 
 import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 import {
@@ -15,6 +13,9 @@ import {
   PROGRESS_COLOR,
   SUCCESS_COLOR
 } from '@upfluence/oss-components/components/o-s-s/completion-badge';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
+import { CSSVariableToRGB } from 'test-app/tests/integration/utils';
 
 module('Integration | Component | o-s-s/completion-badge', function (hooks) {
   setupRenderingTest(hooks);

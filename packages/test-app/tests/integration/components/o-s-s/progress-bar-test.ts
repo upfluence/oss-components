@@ -3,9 +3,10 @@ import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { PROGRESS_BAR_SKINS } from '@upfluence/oss-components/components/o-s-s/progress-bar';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   setupRenderingTest(hooks);

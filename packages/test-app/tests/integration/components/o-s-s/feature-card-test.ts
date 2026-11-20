@@ -4,9 +4,10 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { COLOR_VARIANTS, SHADOW_VARIANTS } from '@upfluence/oss-components/components/o-s-s/feature-card';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/feature-card', function (hooks) {
   setupRenderingTest(hooks);

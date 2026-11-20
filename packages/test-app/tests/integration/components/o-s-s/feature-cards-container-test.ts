@@ -3,9 +3,10 @@ import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import type { OSSFeatureCardArgs } from '@upfluence/oss-components/components/o-s-s/feature-card';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/feature-cards-container', function (hooks) {
   setupRenderingTest(hooks);
