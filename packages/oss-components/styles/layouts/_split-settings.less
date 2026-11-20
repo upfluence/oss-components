@@ -35,15 +35,24 @@
 
 .split-settings.split-settings--column {
   flex-direction: column;
+  flex-wrap: nowrap;
+  gap: var(--spacing-px-12);
+
   .split-settings__info {
-    .margin-bottom-md;
-    .padding-right-none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .split-settings__content {
+    min-width: 0;
   }
 }
 
-// Will remove when proper documentation will be added.
-// Usage:
-// <div class="split-settings">
-//   <div class="split-settings__info"></div>
-//   <div class="split-settings__content"></div>
-// </div>
+.split-settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-px-36);
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
