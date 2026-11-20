@@ -25318,6 +25318,77 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
         assert.ok(heightRowHeight > twoRowHeight);
       });
     });
+    (0, _qunit.module)('@maxLength', function () {
+      (0, _qunit.test)('it leaves the textarea unlimited by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea />
+        */
+        {
+          "id": "0m+Lbozz",
+          "block": "[[[8,[39,0],null,null,null]],[],[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).doesNotHaveAttribute('maxlength');
+      });
+      (0, _qunit.test)('it applies the limit to the native textarea', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @maxLength={{100}} />
+        */
+        {
+          "id": "8dEmxDSF",
+          "block": "[[[8,[39,0],null,[[\"@maxLength\"],[100]],null]],[],[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasAttribute('maxlength', '100');
+      });
+      (0, _qunit.test)('it supports a zero-character limit', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @maxLength={{0}} />
+        */
+        {
+          "id": "NnY1tuxA",
+          "block": "[[[8,[39,0],null,[[\"@maxLength\"],[0]],null]],[],[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasAttribute('maxlength', '0');
+      });
+      (0, _qunit.test)('it updates the limit when the argument changes', async function (assert) {
+        this.maxLength = 100;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @maxLength={{this.maxLength}} />
+        */
+        {
+          "id": "95jLrR7m",
+          "block": "[[[8,[39,0],null,[[\"@maxLength\"],[[30,0,[\"maxLength\"]]]],null]],[],[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('maxLength', 50);
+        assert.dom(this.textareaSelector).hasAttribute('maxlength', '50');
+      });
+      (0, _qunit.test)('it removes the limit when the argument is cleared', async function (assert) {
+        this.maxLength = 100;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::TextArea @maxLength={{this.maxLength}} />
+        */
+        {
+          "id": "95jLrR7m",
+          "block": "[[[8,[39,0],null,[[\"@maxLength\"],[[30,0,[\"maxLength\"]]]],null]],[],[\"o-s-s/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('maxLength', undefined);
+        assert.dom(this.textareaSelector).doesNotHaveAttribute('maxlength');
+      });
+    });
     (0, _qunit.test)('When the field is updated, the @onChange method is called', async function (assert) {
       this.onChange = _sinon.default.spy();
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

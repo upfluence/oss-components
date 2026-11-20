@@ -41925,6 +41925,7 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
         aria-label={{@ariaLabel}}
         disabled={{@disabled}}
         rows={{this.rows}}
+        maxlength={{@maxLength}}
         class="oss-textarea {{this.computedClass}}"
         {{on "keyup" (fn this._onChange @value)}}
       />
@@ -41935,8 +41936,8 @@ if(typeof key==='string'){deprecateUntil(`importing ${key} from the 'ember' barr
   </div>
   */
   {
-    "id": "QaGQ4q4p",
-    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,0,[\"hasError\"]],\" oss-textarea-container--errored\"]]]],[17,1],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"placeholder\",[30,2]],[16,\"aria-label\",[30,3]],[16,\"disabled\",[30,4]],[16,\"rows\",[30,0,[\"rows\"]]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[4,[38,3],[\"keyup\",[28,[37,4],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@placeholder\",\"@ariaLabel\",\"@disabled\",\"@value\",\"@errorMessage\"],[\"div\",\"if\",\"textarea\",\"on\",\"fn\",\"span\"]]",
+    "id": "ByAebRde",
+    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,0,[\"hasError\"]],\" oss-textarea-container--errored\"]]]],[17,1],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"placeholder\",[30,2]],[16,\"aria-label\",[30,3]],[16,\"disabled\",[30,4]],[16,\"rows\",[30,0,[\"rows\"]]],[16,\"maxlength\",[30,5]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[4,[38,3],[\"keyup\",[28,[37,4],[[30,0,[\"_onChange\"]],[30,6]],null]],null]],[[\"@value\"],[[30,6]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,7],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,7]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@placeholder\",\"@ariaLabel\",\"@disabled\",\"@maxLength\",\"@value\",\"@errorMessage\"],[\"div\",\"if\",\"textarea\",\"on\",\"fn\",\"span\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/text-area.hbs",
     "isStrictMode": false
   });
