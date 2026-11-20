@@ -7,6 +7,9 @@ import { ossLessPaths } from '@upfluence/oss-components/build/less-paths.cjs';
 import { assetMap } from '@upfluence/oss-components/build/vite-asset-map.mjs';
 
 export default defineConfig({
+  server: {
+    port: 8000
+  },
   devtools: { apply: 'serve' },
   define: {
     'import.meta.env.COVERAGE': JSON.stringify(process.env.COVERAGE === 'true')
