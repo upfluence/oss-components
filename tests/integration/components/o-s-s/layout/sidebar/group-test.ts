@@ -272,7 +272,11 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
 
       const badge = find(tag) as HTMLElement;
       const label = find(`${header} .oss-sidebar-item__label`) as HTMLElement;
-      assert.strictEqual(badge.offsetLeft - label.offsetLeft - label.offsetWidth, 6, 'the badge follows the group label');
+      assert.strictEqual(
+        badge.offsetLeft - label.offsetLeft - label.offsetWidth,
+        6,
+        'the badge follows the group label'
+      );
       assert.true(
         Math.abs(badge.offsetTop + badge.offsetHeight / 2 - label.offsetTop - label.offsetHeight / 2) <= 1,
         'the badge is vertically centered with the label'
@@ -291,19 +295,12 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
         />
       `);
 
-      assert.dom(tag).hasText('9+').hasStyle({ opacity: '1' });
-
-      const badge = find(tag) as HTMLElement;
-      const item = find(`${header} .oss-sidebar-item`) as HTMLElement;
-      assert.strictEqual(
-        item.clientWidth - badge.offsetLeft - badge.offsetWidth,
-        3,
-        'the badge is inset from the right edge'
-      );
-      assert.strictEqual(badge.offsetTop, 2, 'the badge is inset from the top edge');
+      assert.dom(tag).hasText('9+').hasStyle({ opacity: '1', position: 'absolute', right: '3px', top: '2px' });
     });
 
-    test('the tag is optional and groups without a tag render as before', async function (assert) {
+    test('when the group has no header tag, the item tag is still displayed', async function (assert) {
+      this.items[0].tag = { label: 'New', skin: 'chat-gpt', plain: true };
+
       await render(hbs`
         <OSS::Layout::Sidebar::Group
           @icon="fa-screen-users"
@@ -314,6 +311,10 @@ module('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) 
       `);
 
       assert.dom(tag).doesNotExist();
+      assert
+        .dom('.oss-sidebar-group__items-container .oss-sidebar-item__tag')
+        .hasText('New')
+        .hasStyle({ opacity: '1' });
     });
   });
 });
