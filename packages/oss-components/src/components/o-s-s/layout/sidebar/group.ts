@@ -27,6 +27,7 @@ interface OSSLayoutSidebarGroupComponentSignature {
   items?: GroupItem[];
   icon?: string;
   collapsible?: boolean;
+  tag?: SidebarItemTag;
 }
 
 const GROUP_LIST_HIDE_DELAY = 450;

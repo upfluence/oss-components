@@ -45,6 +45,15 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    tag: {
+      description: 'An optional tag beside the expanded group label or over the collapsed group icon',
+      table: {
+        type: {
+          summary: 'SidebarItemTag'
+        },
+        defaultValue: { summary: 'undefined' }
+      }
+    },
     items: {
       description: 'An array of items to display as children of the group using OSS::Layout::Sidebar::Item',
       table: {
@@ -93,7 +102,7 @@ const defaultArgs = {
       locked: false,
       link: 'http://upfluence.com',
       lockedAction: fn(),
-      tag: { label: 'New', skin: 'chat-gpt', plain: true }
+      tag: { label: '3', skin: 'danger', plain: true }
     }
   ]
 };
@@ -120,8 +129,36 @@ const IconNamedBlockTemplate = (args) => ({
   context: args
 });
 
+const WithHeaderTagTemplate = (args) => ({
+  template: hbs`
+    <div style="background: var(--sidebar-bg-color)">
+      <OSS::Layout::Sidebar::Group
+        @icon={{this.icon}}
+        @label={{this.label}}
+        @expanded={{this.expanded}}
+        @items={{this.items}}
+        @tag={{this.tag}}
+      />
+    </div>
+  `,
+  context: args
+});
+
 export const BasicUsage = Template.bind({});
 BasicUsage.args = defaultArgs;
 
 export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
 WithNamedBlockIcon.args = defaultArgs;
+
+export const WithHeaderTag = WithHeaderTagTemplate.bind({});
+WithHeaderTag.args = {
+  ...defaultArgs,
+  tag: { label: '9+', skin: 'danger', plain: true }
+};
+
+export const WithHeaderTagExpanded = WithHeaderTagTemplate.bind({});
+WithHeaderTagExpanded.args = {
+  ...defaultArgs,
+  expanded: true,
+  tag: { label: '9+', skin: 'danger', plain: true }
+};
