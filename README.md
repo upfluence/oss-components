@@ -1,7 +1,7 @@
 <div align="center">
   <img src=".github/assets/logo.svg" width="96" height="96" alt="">
   <h1>@upfluence/oss-components</h1>
-  <p>This addon hosts branded components, following the OSS framework, for use in our projects.</p>
+  <p>Shared branded Ember components, helpers, modifiers, services, translations, and LESS styles.</p>
 
 [![ci](https://github.com/upfluence/oss-components/actions/workflows/ci.yml/badge.svg)](https://github.com/upfluence/oss-components/actions/workflows/ci.yml)
 [![Coverage](https://sonarqube.upfluence.co/api/project_badges/measure?project=oss-components&metric=coverage&token=sqb_aca5da52bb5343d80618b453f40f77c534a000fa)](https://sonarqube.upfluence.co/dashboard?id=oss-components)
@@ -10,43 +10,141 @@
 [![Code Smells](https://sonarqube.upfluence.co/api/project_badges/measure?project=oss-components&metric=code_smells&token=sqb_aca5da52bb5343d80618b453f40f77c534a000fa)](https://sonarqube.upfluence.co/dashboard?id=oss-components)
 
 [Compatibility](#compatibility) •
-[Installation](#installation) •
-[Running / Development](#running--development) •
-[Adding it to a project](#adding-it-to-a-project)
+[Installation and styles](#installation-and-styles) •
+[Development](#development) •
+[Packaging and release](#packaging-and-release)
 
 </div>
 
 ## Compatibility
 
-- Ember.js v6.12 or above
+- Ember.js v6.12 or above; classic apps also require ember-auto-import 2 and Webpack 5.
 - Node.js v24 or above
 - pnpm 10
 
-Required peer dependency: `ember-source` `^6.12.0`.
+Required peer dependencies: `ember-source` `^6.12.0`, `@glimmer/component` `^1.1.2 || ^2.0.0`, `@glimmer/tracking` `^1.1.2` and `ember-intl` `^6.4.0`.
 
 Apps on Ember.js below 6.12 should stay on `3.x`.
 
-## Installation
+## Installation and styles
 
-As any NPM package, you can install it via:
-`pnpm add @upfluence/oss-components`
+Install `@upfluence/oss-components`. Import the umbrella stylesheet before application overrides:
 
-## Running / Development
+```less
+@import '@upfluence/oss-components/styles/oss-components.less';
+```
 
-This addon's dummy app is actually a showcase of the frontend framework
-and its custom components.
+The OSS styles import Bootstrap 3's LESS by bare name (`bootstrap/less/…`). Add `ossLessPaths()` to the app's LESS paths: pnpm keeps a package's dependencies next to it, not inside it, so the helper resolves Bootstrap from OSS's own location.
 
-It's an Ember app, so we assume you have all set up as that's our
-frontend stack anyway.
+Classic apps (`ember-cli-build.js`):
 
-- `make install`
-- `pnpm start`
-- Visit your app at [http://localhost:4200](http://localhost:4200).
+```js
+const { ossLessPaths } = require('@upfluence/oss-components/build/less-paths.cjs');
 
-## Adding it to a project
+let app = new EmberApp(defaults, {
+  lessOptions: {
+    paths: [...ossLessPaths(), 'node_modules']
+  }
+});
+```
 
-### Asset-map adapter
+Vite apps (`vite.config.mjs`), where Less 4 also needs Less 3 math:
 
-OSS now provides an asset-map adapter through its top-level app re-exports and an explicitly imported final-build-tree wrapper. See [Consumer-owned asset maps](docs/asset-map.md) for setup and the plugin-web pilot.
+```js
+import { ossLessPaths } from '@upfluence/oss-components/build/less-paths.cjs';
 
-This allows the consuming app to build and fingerprint its complete asset output, including assets supplied by addons, and inject the consumer's completed manifest into its HTML. Full compatibility with the existing template helpers and `assetMap.resolve(path)` (previously brought by `ember-cli-ifa`) calls is maintained.
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      less: { math: 'always', paths: ossLessPaths() }
+    }
+  }
+});
+```
+
+The entire LESS hierarchy, including variables and mixins, ships as raw LESS in `styles/` at the package root, next to `dist/` rather than inside it. `styles/oss-components.less` stays the complete stylesheet and the supported import, compiled by the consuming application. Component-level styles only cover rules that aren't in it: they're compiled into the addon's JavaScript and injected at runtime, with no setup on the consumer side.
+
+FontAwesome is owned by the consuming app: install your licensed FontAwesome package, include its CSS before OSS styles, and serve its matching webfonts. OSS does not install or copy FontAwesome. The workspace test app demonstrates this integration.
+
+### Breaking migration changes
+
+- Change `/app/styles/...` imports to `/styles/...`.
+- `styles/oss-components.less` no longer inlines FontAwesome Pro. Load your licensed FontAwesome CSS before the OSS styles and serve its webfonts (see [Installation and styles](#installation-and-styles)).
+- Change `@upfluence/oss-components/addon/...` imports to canonical `@upfluence/oss-components/...` imports.
+- Remove TypeScript `paths` mappings to this package's old `addon` and `addon-test-support` directories. Public exports resolve generated declarations directly.
+- Import helpers from `/test-support` or its documented subpaths. Test consumers provide QUnit, qunit-dom, Sinon, and Ember test helpers.
+- `@glimmer/component`, `@glimmer/tracking` and `ember-intl` are peer dependencies: the app owns the single copy of each. OSS no longer brings its own, which broke apps on `@glimmer/component` 2. Declare them in your app if it doesn't already.
+- Sanitize HTML with `sanitizeHtml` from `@upfluence/oss-components/utils/sanitize-config` rather than importing `dompurify` yourself. OSS adds its hooks (safe `target="_blank"` links, no `url()` in `style`) to its own DOMPurify copy, and an app's `dompurify` import resolves to a different one under ember-auto-import, so those hooks no longer apply to it.
+- `/test-support` imports `sinon`, an optional peer that now requires 15.2.0 or later: older releases point bundlers at Sinon's Node build, which fails under Vite and webpack 5. Add a compatible `sinon` to your devDependencies, since package managers don't install optional peers.
+- The consumer app namespace re-exports OSS components, helpers, modifiers, services, and instance-initializers, default exports only. Import utils and named helper exports (such as `formatMoneyHelper`) from `@upfluence/oss-components/...`, not from your app's `utils/` or `helpers/`.
+- `components/o-s-s/private/base-modal` and `modifiers/install-scroll-reached-modifier` are internal and no longer importable.
+- `OSS::Icon` no longer maps enum names to icons: pass the FontAwesome class (`fa-laptop-code`, not `LaptopCode`). `components/o-s-s/iconName.enum` is removed.
+
+### Consumer-owned asset maps
+
+Follow [Consumer-owned asset maps](docs/asset-map.md). The consuming app explicitly calls `injectAssetMap` from `@upfluence/oss-components/build/classic-asset-map.cjs` (classic builds) or adds the `assetMap` plugin from `@upfluence/oss-components/build/vite-asset-map.mjs` (Vite builds); addon hooks do not activate either. Remove competing ember-cli-ifa registrations when adopting this adapter.
+
+## Development
+
+This is a pnpm workspace with the published addon in `packages/oss-components` and its demo, tests, and Storybook in `packages/test-app`.
+
+Component stories stay colocated with their implementations in the addon's `src/components` directory. Storybook discovers them from the test app alongside the general guides in `packages/test-app/stories`; addon imports inside stories use the compiled package's public paths. Stories are excluded from runtime entrypoints, declaration generation, and the published package.
+
+```sh
+pnpm install
+pnpm build
+pnpm start
+```
+
+`pnpm start` runs Rollup watch and Ember serve through pnpm's native parallel runner. `pnpm storybook` builds the addon and test app before opening Storybook on port 6006. `pnpm build-storybook` produces `packages/test-app/storybook-static`.
+
+```sh
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm test:coverage
+pnpm test:ember-compatibility
+pnpm --filter @upfluence/oss-components build:analyze
+```
+
+Git hooks remain opt-in through `make enable_pre_hook`. No install or default Make target installs them.
+
+### Component styles
+
+Components can import their own styles for rules that aren't in the global bundle, such as a new component's. Rollup compiles the LESS with `rollup-plugin-styles` (the same setup as hypermarket), inlines the CSS into the component's JavaScript, and appends it to `<head>` the first time the module loads.
+
+```ts
+// src/components/o-s-s/pill.ts
+import './pill.less';
+```
+
+- Put the `.less` next to the component and import it from its `.ts` or `.js`. A template-only component needs a backing module to hold the import.
+- Use the `var(--…)` tokens for values.
+- `styles/oss-components.less` stays complete: never move or copy rules from `styles/` into a component's `.less`. Component styles are for new styles only.
+- `url()` is not processed: reference assets by their public path (`/@upfluence/oss-components/assets/…`).
+- Injected `<style>` tags come after the app's CSS, so a component rule beats an app override of equal specificity. Keep selectors low-specificity.
+
+### Generators
+
+Run these commands from the workspace root:
+
+```sh
+pnpm generate component o-s-s/example-card
+pnpm generate helper format-example
+pnpm generate modifier track-example --blueprint function
+pnpm generate service example
+pnpm generate util example
+pnpm destroy component o-s-s/example-card --dry-run
+```
+
+Add `--dry-run` to either command to preview the file paths. Components get paired `.ts` and `.hbs` files and a colocated story. Rendering tests go in the test app's `tests/integration` directory. Services and utilities get unit tests. Helpers and modifiers default to classes and accept `--blueprint function`.
+
+Rollup discovers the generated modules. Wildcard exports provide the compiled JavaScript and declarations under the canonical package paths. The pnpm lockfile pins the generator branch's resolved commit. Run `pnpm -w update @upfluence/ember-blueprints` to pick up a newer commit from that branch.
+
+## Packaging and release
+
+`prepack` builds JavaScript and declarations. Verify with `npm pack --dry-run` from `packages/oss-components`. Runtime exports, styles, public assets, translations, the asset-map build adapters (the classic wrapper and the Vite plugin), and the template lint plugin are included; stories and test-app files are excluded.
+
+Release versioning uses root `pnpm exec release-it major`; tagged CI publishes from the addon package to GitHub Packages after checks and both Ember scenarios pass. Use `pnpm exec release-it major --dry-run --ci` to inspect the release workflow. The migration itself does not publish or change versions.
+
+Use a packed package or verified local links for consumer validation. Do not commit machine-local links or restore old stylesheet paths as compatibility shims.
