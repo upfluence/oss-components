@@ -75,6 +75,44 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
     });
   });
 
+  module('@maxLength', function () {
+    test('it leaves the textarea unlimited by default', async function (assert) {
+      await render(hbs`<OSS::TextArea />`);
+
+      assert.dom(this.textareaSelector).doesNotHaveAttribute('maxlength');
+    });
+
+    test('it applies the limit to the native textarea', async function (assert) {
+      await render(hbs`<OSS::TextArea @maxLength={{100}} />`);
+
+      assert.dom(this.textareaSelector).hasAttribute('maxlength', '100');
+    });
+
+    test('it supports a zero-character limit', async function (assert) {
+      await render(hbs`<OSS::TextArea @maxLength={{0}} />`);
+
+      assert.dom(this.textareaSelector).hasAttribute('maxlength', '0');
+    });
+
+    test('it updates the limit when the argument changes', async function (assert) {
+      this.maxLength = 100;
+      await render(hbs`<OSS::TextArea @maxLength={{this.maxLength}} />`);
+
+      this.set('maxLength', 50);
+
+      assert.dom(this.textareaSelector).hasAttribute('maxlength', '50');
+    });
+
+    test('it removes the limit when the argument is cleared', async function (assert) {
+      this.maxLength = 100;
+      await render(hbs`<OSS::TextArea @maxLength={{this.maxLength}} />`);
+
+      this.set('maxLength', undefined);
+
+      assert.dom(this.textareaSelector).doesNotHaveAttribute('maxlength');
+    });
+  });
+
   test('When the field is updated, the @onChange method is called', async function (assert) {
     this.onChange = sinon.spy();
 
