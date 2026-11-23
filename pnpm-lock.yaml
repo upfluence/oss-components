@@ -391,7 +391,7 @@ importers:
         specifier: ^10.6.7
         version: 10.6.7(@types/react@18.2.54)(prettier@3.8.3)(react@18.3.1)
       typescript:
-        specifier: 5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
       vite:
         specifier: ^8.0.10
@@ -13021,11 +13021,11 @@ snapshots:
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.21(@babel/core@7.29.13)
       '@types/ember__runloop': 4.0.10
-      '@types/ember__service': 4.0.9(@babel/core@7.29.13)
+      '@types/ember__service': 4.0.9
       '@types/ember__string': 3.0.15
       '@types/ember__template': 4.0.7
       '@types/ember__test': 4.0.6(@babel/core@7.29.13)
-      '@types/ember__utils': 4.0.7(@babel/core@7.29.13)
+      '@types/ember__utils': 4.0.7
       '@types/rsvp': 4.0.9
     optional: true
 
@@ -13042,7 +13042,7 @@ snapshots:
       '@types/ember__polyfills': 4.0.6
       '@types/ember__routing': 4.0.21(@babel/core@7.29.13)
       '@types/ember__runloop': 4.0.10(@babel/core@7.29.13)
-      '@types/ember__service': 4.0.9(@babel/core@7.29.13)
+      '@types/ember__service': 4.0.9
       '@types/ember__string': 3.0.15
       '@types/ember__template': 4.0.7
       '@types/ember__test': 4.0.6(@babel/core@7.29.13)
@@ -13127,7 +13127,7 @@ snapshots:
       '@types/ember': 4.0.11(@babel/core@7.29.13)
       '@types/ember__controller': 4.0.12(@babel/core@7.29.13)
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
-      '@types/ember__service': 4.0.9(@babel/core@7.29.13)
+      '@types/ember__service': 4.0.9
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -13146,12 +13146,9 @@ snapshots:
       - supports-color
     optional: true
 
-  '@types/ember__service@4.0.9(@babel/core@7.29.13)':
+  '@types/ember__service@4.0.9':
     dependencies:
       '@types/ember__object': 4.0.12(@babel/core@7.29.13)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
     optional: true
 
   '@types/ember__string@3.0.15':
@@ -13166,6 +13163,11 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+    optional: true
+
+  '@types/ember__utils@4.0.7':
+    dependencies:
+      '@types/ember': 4.0.11
     optional: true
 
   '@types/ember__utils@4.0.7(@babel/core@7.29.13)':
