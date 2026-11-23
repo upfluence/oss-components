@@ -1,0 +1,1 @@
+import{n as r}from"./rolldown-runtime-Db735jMf.js";import{i as o}from"./badge-BsGi0qbL.js";function t(){return(t=r(()=>{o()}))()}export{t};

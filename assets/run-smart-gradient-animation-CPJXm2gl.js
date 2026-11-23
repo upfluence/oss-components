@@ -1,0 +1,1 @@
+import{n as t}from"./rolldown-runtime-Db735jMf.js";function r(t){t&&(t.classList.add("smart-rotating-gradient"),setTimeout(()=>{t.classList.remove("smart-rotating-gradient")},a))}var a;function n(){return(n=t(()=>{a=1900}))()}export{r as n,n as t};

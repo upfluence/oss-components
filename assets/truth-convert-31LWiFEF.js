@@ -1,0 +1,1 @@
+import{n}from"./rolldown-runtime-Db735jMf.js";import{Hn as o,Un as t,ei as r,go as s,yo as a}from"./index-Cn-XMJI4-P-OR-PdC.js";function e(n){const o=n&&s(n,"isTruthy");return"boolean"==typeof o?o:t(n)?0!==s(n,"length"):!!n}function i(){return(i=n(()=>{o(),r()}))()}export{e as n,i as t};

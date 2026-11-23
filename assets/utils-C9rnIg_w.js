@@ -1,0 +1,1 @@
+import{n as r}from"./rolldown-runtime-Db735jMf.js";import{f as n,p as t}from"./index-Cn-XMJI4-P-OR-PdC.js";import{t as o}from"./template-BXN_0oGN.js";function s(r){return!!r&&(r.constructor&&"SafeString"===r.constructor.name||t(r))}var a;function e(){return(e=r(()=>{o(),a=["error","warning","success"]}))()}export{e as n,s as r,a as t};

@@ -1,0 +1,1 @@
+import{n as o}from"./rolldown-runtime-Db735jMf.js";import{n as r}from"./button-CVZ98cT5.js";function t(){return(t=o(()=>{r()}))()}export{t};

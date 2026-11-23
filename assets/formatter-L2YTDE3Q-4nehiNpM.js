@@ -1,0 +1,1 @@
+import{n as a}from"./rolldown-runtime-Db735jMf.js";import{a as s,c as r,n,o,s as t,t as m}from"./chunk-DRQKCCAG-DoCVVfiP.js";var u;function c(){return(c=a(()=>{m(),o(),u=(0,s(n(),1).default)(2)(async(a,s)=>!1===a?s:t(s))}))()}c();export{u as formatter};

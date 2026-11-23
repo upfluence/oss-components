@@ -1,0 +1,1 @@
+import{n as r}from"./rolldown-runtime-Db735jMf.js";import{n as t,t as a}from"./metal-DeqY3AyM.js";var n,o;function s(){return(s=r(()=>{a(),({cached:n,tracked:o}=t)}))()}export{o as n,s as t};

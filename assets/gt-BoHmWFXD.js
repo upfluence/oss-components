@@ -1,0 +1,1 @@
+import{n as r}from"./rolldown-runtime-Db735jMf.js";import{f as n,u as e}from"./index-Cn-XMJI4-P-OR-PdC.js";import{t as o}from"./helper-BXN_0oGN.js";function t([r,n],e){return e.forceNumber&&("number"!=typeof r&&(r=Number(r)),"number"!=typeof n&&(n=Number(n))),r>n}var u;function m(){return(m=r(()=>{o(),u=e(t)}))()}function s(){return(s=r(()=>{m()}))()}export{u as n,m as r,s as t};

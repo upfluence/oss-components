@@ -1,0 +1,1 @@
+import{n}from"./rolldown-runtime-Db735jMf.js";import{mn as r,pn as t}from"./index-Cn-XMJI4-P-OR-PdC.js";function o(n){return r(n)||"string"==typeof n&&!1===/\S/.test(n)}function s(){return(s=n(()=>{t()}))()}function i(n){return!o(n)}function e(){return(e=n(()=>{s()}))()}export{o as i,i as n,s as r,e as t};
