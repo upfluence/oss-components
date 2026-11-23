@@ -64,6 +64,15 @@
       <OSS::Button @label="Success" @skin="success" @size="md" {{on "click" (fn this.triggerToast "success")}} />
       <OSS::Button @label="Warning" @skin="alert" @size="md" {{on "click" (fn this.triggerToast "warning")}} />
       <OSS::Button @label="Error" @skin="destructive" @size="md" {{on "click" (fn this.triggerToast "error")}} />
+      <OSS::Button
+        @label="Error with link"
+        @skin="primary"
+        @size="md"
+        {{on
+          "click"
+          (fn this.triggerToast "info" (hash label="Open Google" link=(hash href="https://google.com" target="_blank")))
+        }}
+      />
     </div>
   </div>
 

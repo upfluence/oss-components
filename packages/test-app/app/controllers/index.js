@@ -23,8 +23,9 @@ export default class ApplicationController extends Controller {
   noop() {}
 
   @action
-  triggerToast(type) {
-    this.toast[type](`I am the ${type} subtitle`, 'Title');
+  triggerToast(type, link = undefined) {
+    console.log(type, link)
+    this.toast[type](`I am the ${type} subtitle`, 'Title', { link });
   }
 
   @action

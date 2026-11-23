@@ -1,11 +1,12 @@
 import { htmlSafe } from '@ember/template';
 import { click, find, render, triggerEvent, waitUntil } from '@ember/test-helpers';
-import { TOAST_TYPES, type ToastType } from '@upfluence/oss-components/components/o-s-s/toast';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
+
+import { TOAST_TYPES, type ToastType } from '@upfluence/oss-components/components/o-s-s/toast';
 
 const ICONS: Record<ToastType, string> = {
   info: 'fa-info-circle',
@@ -64,6 +65,47 @@ module('Integration | Component | o-s-s/toast', function (hooks) {
       assert.dom('.toast .subtitle a').doesNotExist();
       assert.dom('.toast .subtitle').hasText('Go to <a href="#">the page</a>');
     });
+
+    test('it is optional', async function (assert) {
+      await render(hbs`<OSS::Toast @type="info" @title="Title" @timeout="none" />`);
+
+      assert.dom('.toast .title').hasText('Title');
+      assert.dom('.toast .subtitle').doesNotExist();
+    });
+  });
+
+  module('link', function (hooks) {
+    hooks.afterEach(function () {
+      sinon.restore();
+    });
+
+    test('it is not rendered by default', async function (assert) {
+      await render(hbs`<OSS::Toast @type="info" @subtitle="Subtitle" @timeout="none" />`);
+
+      assert.dom('.toast .upf-link').doesNotExist();
+    });
+
+    test('it renders an OSS::Link under the subtitle', async function (assert) {
+      this.link = { label: 'Learn more', icon: 'fa-arrow-right' };
+      await render(hbs`<OSS::Toast @type="info" @subtitle="Subtitle" @link={{this.link}} @timeout="none" />`);
+
+      assert.dom('.toast .text-container .subtitle + .upf-link').exists();
+      assert.dom('.toast .upf-link span').hasText('Learn more');
+      assert.dom('.toast .upf-link i').hasClass('fa-arrow-right');
+    });
+
+    test('clicking it opens the link without calling @onClick', async function (assert) {
+      const windowOpenStub = sinon.stub(window, 'open');
+      this.link = { label: 'Learn more', link: { href: 'https://www.upfluence.com', target: '_blank' } };
+      await render(
+        hbs`<OSS::Toast @type="info" @subtitle="Subtitle" @link={{this.link}} @timeout="none" @onClick={{this.onClick}} />`
+      );
+
+      await click('.toast .upf-link');
+
+      assert.true(windowOpenStub.calledOnceWithExactly('https://www.upfluence.com', '_blank'));
+      assert.ok(this.onClick.notCalled);
+    });
   });
 
   module('badge', function () {
@@ -115,6 +157,8 @@ module('Integration | Component | o-s-s/toast', function (hooks) {
 
       assert.dom('.toast button').exists({ count: 1 });
       assert.dom('.toast button').hasAttribute('data-control-name', 'toast-close-button');
+      assert.dom('.toast button').hasClass('upf-square-btn');
+      assert.dom('.toast button').hasClass('upf-square-btn--sm');
     });
 
     test('@onClick is called on the first click only', async function (assert) {

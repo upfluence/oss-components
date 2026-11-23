@@ -20,11 +20,26 @@
       {{#if @title}}
         <span class="title">{{@title}}</span>
       {{/if}}
-      <span class="subtitle">{{@subtitle}}</span>
+      {{#if @subtitle}}
+        <span class="subtitle">{{@subtitle}}</span>
+      {{/if}}
+      {{#if @link}}
+        <OSS::Link
+          @label={{@link.label}}
+          @icon={{@link.icon}}
+          @link={{@link.link}}
+          @transitionTo={{@link.transitionTo}}
+          {{on "click" this.onLinkClick}}
+        />
+      {{/if}}
     </div>
-    {{! template-lint-disable u-template-lint/no-bare-button}}
-    <button type="button" data-control-name="toast-close-button" {{on "click" this.close}}>
-      <OSS::Icon @icon="fa-times" />
-    </button>
+    <OSS::Button
+      class="toast-close-button"
+      @size="sm"
+      @icon="fa-times"
+      @square={{true}}
+      {{on "click" this.close}}
+      data-control-name="toast-close-button"
+    />
   </div>
 </div>

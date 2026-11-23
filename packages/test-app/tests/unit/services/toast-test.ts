@@ -52,6 +52,21 @@ module('Unit | Service | toast', function (hooks) {
     assert.dom('.toasts-container', document.body).doesNotExist();
   });
 
+  test('a toast without message renders no subtitle', async function (assert: Assert) {
+    this.service.info('', 'Title', { timeout: 'none' });
+    await settled();
+
+    assert.dom(findToast()?.querySelector('.title')).hasText('Title');
+    assert.dom('.toasts-container .toast .subtitle', document.body).doesNotExist();
+  });
+
+  test('it displays the link option', async function (assert: Assert) {
+    this.service.info('Message', 'Title', { timeout: 'none', link: { label: 'Learn more' } });
+    await settled();
+
+    assert.dom(findToast()?.querySelector('.upf-link span')).hasText('Learn more');
+  });
+
   test('it renders every toast in a single container', async function (assert: Assert) {
     this.service.info('First', 'Title', { timeout: 'none' });
     this.service.success('Second', 'Title', { timeout: 'none' });

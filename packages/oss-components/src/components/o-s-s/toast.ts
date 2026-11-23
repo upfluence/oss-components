@@ -3,6 +3,8 @@ import Component from '@glimmer/component';
 
 import type { IntlService } from 'ember-intl';
 
+import type { LinkType } from './link';
+
 export const TOAST_TYPES: string[] = ['info', 'warning', 'error', 'success'];
 const DEFAULT_TIMEOUT: number = 5000;
 const CLEAR_ANIMATION_DURATION: number = 300;
@@ -15,20 +17,21 @@ const ICON_CLASSES: Record<ToastType, string> = {
 
 export type ToastType = (typeof TOAST_TYPES)[number];
 export type ToastBadge = { icon?: string; image?: string; text?: string };
+export type ToastLink = { label: string; icon?: string; link?: LinkType; transitionTo?: string };
 
 export interface OSSToastSignature {
   Args: {
     type: ToastType;
     title?: string | ReturnType<IntlService['t']>;
-    subtitle: string | ReturnType<IntlService['t']>;
+    subtitle?: string | ReturnType<IntlService['t']>;
     badge?: ToastBadge;
+    link?: ToastLink;
     timeout?: number | 'none';
     onClick?(event: MouseEvent): void;
     onClear?(): void;
   };
   Element: HTMLDivElement;
 }
-
 
 export default class OSSToast extends Component<OSSToastSignature> {
   declare private _DOMElement: HTMLDivElement;
@@ -86,6 +89,11 @@ export default class OSSToast extends Component<OSSToastSignature> {
     this._clicked = true;
     event.stopPropagation();
     this.args.onClick(event);
+  }
+
+  @action
+  onLinkClick(event: MouseEvent): void {
+    event.stopPropagation();
   }
 
   @action

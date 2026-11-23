@@ -9,7 +9,7 @@ import { tracked } from '@glimmer/tracking';
 import type { IntlService } from 'ember-intl';
 
 import OSSToastsContainer from '../components/o-s-s/private/toasts-container';
-import type { ToastType as OSSToastType } from '../components/o-s-s/toast';
+import type { ToastLink, ToastType as OSSToastType } from '../components/o-s-s/toast';
 
 enum ToastType {
   INFO = 'info',
@@ -21,9 +21,10 @@ enum ToastType {
 /**
  * Toast Options
  *
- * @param {boolean} closeButton - Whether or not a button should be displayed to close the toast early.
- * @param {boolean} tapToDismiss - Whether or not a tap on the toast should close it.
- * @param {Function} onclick - A function to be called when the toast is clicked.
+ * @param {Function} onclick - A function to be called the first time the toast is clicked.
+ * @param {number|'none'} timeout - Duration in milliseconds before the toast clears itself, or 'none' to keep it.
+ * @param {Object} badge - A badge displayed instead of the type icon: one of image, icon or text.
+ * @param {Object} link - A link displayed under the message, with OSS::Link's label, icon, link and transitionTo.
  */
 export type ToastOptions = {
   onclick?: (event: Event) => void;
@@ -33,6 +34,7 @@ export type ToastOptions = {
     image?: string;
     text?: string;
   };
+  link?: ToastLink;
 };
 
 export type ToastEntry = {
@@ -42,6 +44,7 @@ export type ToastEntry = {
   title?: string | ReturnType<IntlService['t']>;
   subtitle: string | ReturnType<IntlService['t']>;
   badge?: ToastOptions['badge'];
+  link?: ToastOptions['link'];
   timeout?: ToastOptions['timeout'];
   onclick?: ToastOptions['onclick'];
 };
@@ -57,7 +60,8 @@ const DEFAULT_TOAST_TIMEOUT = 5000;
 const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
   onclick: undefined,
   timeout: DEFAULT_TOAST_TIMEOUT,
-  badge: undefined
+  badge: undefined,
+  link: undefined
 });
 
 export default class Toast extends Service {
@@ -126,7 +130,7 @@ export default class Toast extends Service {
     ): void => {
       if (isEmpty(message) && isEmpty(title)) return;
 
-      const { badge, timeout, onclick } = { ...DEFAULT_OPTIONS, ...(opts || {}) };
+      const { badge, link, timeout, onclick } = { ...DEFAULT_OPTIONS, ...(opts || {}) };
       const toast: ToastEntry = {
         id: ++this._nextId,
         createdAt: Date.now(),
@@ -134,6 +138,7 @@ export default class Toast extends Service {
         title,
         subtitle: message,
         badge,
+        link,
         timeout,
         onclick
       };
