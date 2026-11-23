@@ -24,7 +24,6 @@ export default class ApplicationController extends Controller {
 
   @action
   triggerToast(type, link = undefined) {
-    console.log(type, link)
     this.toast[type](`I am the ${type} subtitle`, 'Title', { link });
   }
 
