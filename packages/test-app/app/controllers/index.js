@@ -23,7 +23,13 @@ export default class ApplicationController extends Controller {
   noop() {}
 
   @action
-  triggerToast(type, link = undefined) {
+  triggerToast(type, maybeLink = undefined) {
+    let link;
+
+    if (Object.hasOwn(maybeLink, 'label')) {
+      link = maybeLink;
+    }
+
     this.toast[type](`I am the ${type} subtitle`, 'Title', { link });
   }
 
