@@ -12,14 +12,16 @@ type FakeClock = ReturnType<typeof sinon.useFakeTimers>;
 
 async function withFakeClock(fn: (clock: FakeClock) => Promise<void>): Promise<void> {
   const installedClock = (globalThis.setTimeout as typeof setTimeout & { clock?: FakeClock }).clock;
-  const clock = installedClock ?? sinon.useFakeTimers();
+  if (installedClock) {
+    return fn(installedClock);
+  }
 
+  // ember-sinon-qunit throws when the shared sinon.useFakeTimers is called twice in a test.
+  const sandbox = sinon.createSandbox();
   try {
-    await fn(clock);
+    await fn(sandbox.useFakeTimers());
   } finally {
-    if (!installedClock) {
-      clock.restore();
-    }
+    sandbox.restore();
   }
 }
 
