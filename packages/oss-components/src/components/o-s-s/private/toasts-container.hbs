@@ -1,0 +1,13 @@
+<div class="toasts-container">
+  {{#each this.toast.toasts key="id" as |entry|}}
+    <OSS::Toast
+      @type={{entry.type}}
+      @title={{entry.title}}
+      @subtitle={{entry.subtitle}}
+      @badge={{entry.badge}}
+      @timeout={{entry.timeout}}
+      @onClick={{entry.onclick}}
+      @onClear={{fn this.toast.dismiss entry.id}}
+    />
+  {{/each}}
+</div>
