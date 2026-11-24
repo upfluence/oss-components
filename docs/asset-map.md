@@ -78,7 +78,9 @@ A relative base would produce document-relative URLs, which break on nested rout
 - emits a content-hashed copy next to each one, keeping the directory layout (`assets/images/logo.svg` → `assets/images/logo-<16 hex>.svg`);
 - maps each logical name to its hashed copy (`enabled: true`).
 
-This applies to every `vite build`, test builds (`vite build --mode development`) included, so tests should get expected asset URLs from the `asset-map` service rather than hardcode stable paths. The stable copies stay in the output, so CSS `url()`s, favicons and other direct references keep working. Assets Vite already fingerprints from module imports (`import url from './logo.svg'`) are not in the map; the importing module already has their URL. A public file whose extension isn't listed resolves to its stable path and warns as a missing entry in development-mode builds.
+This applies to every `vite build`, test builds (`vite build --mode development`) included, so tests should get expected asset URLs from the `asset-map` service rather than hardcode stable paths. The stable copies stay in the output, but a direct reference to them resolves against the page's host rather than `base`, so OSS components resolve their own images through the `asset-map` service. Assets Vite already fingerprints from module imports (`import url from './logo.svg'`) are not in the map; the importing module already has their URL. A public file whose extension isn't listed resolves to its stable path and warns as a missing entry in development-mode builds.
+
+**OSS stylesheets.** The OSS Less builds its font and image URLs from `@oss-assets-root`, which defaults to the stable path (`/@upfluence/oss-components/assets`). Classic builds compile the same URLs as before, and broccoli-asset-rev keeps rewriting them. In `vite build`, the plugin points the variable at this package's files through Less `modifyVars`, so Vite resolves, hashes and serves them from `base` like any imported asset; without the plugin, Vite leaves the stable paths unresolved and warns. The dev server keeps the stable paths, which `@embroider/vite` serves.
 
 **Failures.** The Vite plugin shares the classic wrapper's HTML checks, in the dev server and in `vite build`: an `ember-cli-ifa:assetMap` meta (including one injected through `content-for`) fails, and every HTML entry must contain the placeholder exactly once.
 
@@ -111,7 +113,7 @@ pnpm typecheck
 pnpm build && pnpm --filter test-app test:ember --filter='asset-map' --launch=Chrome
 ```
 
-Build tests exercise real broccoli-asset-rev output with app-owned and namespaced addon-owned assets, CDN prepend, hashed/default/custom manifests, disabled fingerprinting, repeated builds, and error paths. Vite tests run real Vite 8 builds and dev servers: app `public/` and addon public assets (emitted the way `@embroider/vite` does), Vite-imported assets left out, CDN `base`, the `extensions` option, rebuilds, and the same error paths plus relative bases. Ember tests cover the service, independent instances, helper output, and reactive configuration.
+Build tests exercise real broccoli-asset-rev output with app-owned and namespaced addon-owned assets, CDN prepend, hashed/default/custom manifests, disabled fingerprinting, repeated builds, and error paths. Vite tests run real Vite 8 builds and dev servers: app `public/` and addon public assets (emitted the way `@embroider/vite` does), Vite-imported assets left out, CDN `base`, the `extensions` option, OSS stylesheet assets, rebuilds, and the same error paths plus relative bases. Ember tests cover the service, independent instances, helper output, and reactive configuration.
 
 Before accepting the plugin-web pilot, run its development and production builds with the local/new OSS package, then check dynamically selected login images, branding logos, locked-state illustrations, profile empty-state images, and OSS upload/social badges. Verify CDN URLs point to actual emitted files.
 
