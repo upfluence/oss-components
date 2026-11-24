@@ -1,12 +1,14 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import assetMapHTML from './asset-map-html.cjs';
 
 const { PREFIX, injectManifest } = assetMapHTML;
 
 const DEFAULT_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'avif', 'ico'];
+const PUBLIC_ASSETS = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../public/assets');
 
 function isAbsoluteURL(url) {
   return /^(?:[a-z][a-z\d+.-]*:)?\/\//i.test(url);
@@ -39,7 +41,8 @@ function publicFiles(directory, relative = '') {
  * - `vite` (dev server): an empty, disabled map rooted at Vite's `base`.
  * - `vite build`: app `public/` files and addon public assets matching `extensions` get a content-hashed copy
  *   next to their stable one, and the map points each logical name to its hashed copy. An absolute `base`
- *   (CDN) becomes the manifest's `prepend`.
+ *   (CDN) becomes the manifest's `prepend`. The OSS styles' `@oss-assets-root` points at this package's files, so
+ *   Vite hashes the fonts and images they reference and serves them from `base`.
  *
  * @param {{ extensions?: string[] }} [options]
  * @returns {import('vite').Plugin}
@@ -69,6 +72,13 @@ export function assetMap({ extensions = DEFAULT_EXTENSIONS } = {}) {
 
   return {
     name: 'upfluence-asset-map',
+
+    config(_config, { command }) {
+      if (command !== 'build') return;
+      return {
+        css: { preprocessorOptions: { less: { modifyVars: { 'oss-assets-root': `'${PUBLIC_ASSETS}'` } } } }
+      };
+    },
 
     configResolved(resolved) {
       config = resolved;

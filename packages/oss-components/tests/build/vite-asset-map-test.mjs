@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { build, createServer } from 'vite';
 
 import { assetMap } from '../../build/vite-asset-map.mjs';
@@ -138,6 +139,28 @@ test('an absolute base becomes the CDN prepend', async (t) => {
   for (const hashed of Object.values(manifest.assets)) {
     assert.ok(fs.existsSync(path.join(outDir, hashed)), `${hashed} is an output-relative path`);
   }
+});
+
+test('build serves the OSS stylesheet assets as hashed files from the base', async (t) => {
+  const variables = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../styles/core/_variables.less');
+  const root = fixture(t, {
+    'main.js': 'import "./styles.less";\n',
+    'styles.less': `@import '${variables}';\n.flag { background-image: url('@{oss-assets-root}/images/flagSprite42.png'); }\n`
+  });
+  const outDir = await viteBuild(root, { base: 'https://cdn.example.com/amb/' });
+  const css = fs
+    .readdirSync(path.join(outDir, 'assets'))
+    .filter((file) => file.endsWith('.css'))
+    .map((file) => fs.readFileSync(path.join(outDir, 'assets', file), 'utf8'))
+    .join('');
+  const url = css.match(/url\(([^)]*flagSprite42[^)]*)\)/)[1];
+
+  assert.match(url, /^https:\/\/cdn\.example\.com\/amb\/assets\/flagSprite42-[\w-]+\.png$/);
+  assert.ok(fs.existsSync(path.join(outDir, url.replace('https://cdn.example.com/amb/', ''))));
+});
+
+test('dev server leaves the OSS stylesheet asset root alone', () => {
+  assert.equal(assetMap().config({}, { command: 'serve', mode: 'development' }), undefined);
 });
 
 test('extensions narrows the fingerprinted files', async (t) => {
