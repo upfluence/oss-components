@@ -10,7 +10,7 @@ export default {
   component: 'o-s-s/toast',
   argTypes: {
     type: {
-      description: 'Type of the toast, sets its colors, icon and counter',
+      description: 'Type of the toast, sets its general look (colors, icon)',
       table: {
         type: { summary: ToastTypes.join('|') }
       },

@@ -67,9 +67,9 @@ const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
 export default class Toast extends Service {
   @tracked toasts: ToastEntry[] = [];
 
-  private _nextId: number = 0;
-  private _host?: HTMLElement;
-  private _renderResult?: ReturnType<typeof renderComponent>;
+  private nextId: number = 0;
+  private host?: HTMLElement;
+  private renderResult?: ReturnType<typeof renderComponent>;
 
   /**
    * Display a success toast
@@ -79,7 +79,7 @@ export default class Toast extends Service {
    * @param {Object} opts - Toast options
    * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
    */
-  success: ToastFunction = this._delegate(ToastType.SUCCESS);
+  success: ToastFunction = this.delegate(ToastType.SUCCESS);
 
   /**
    * Display an error toast
@@ -89,7 +89,7 @@ export default class Toast extends Service {
    * @param {Object} opts - Toast options
    * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
    */
-  error: ToastFunction = this._delegate(ToastType.ERROR);
+  error: ToastFunction = this.delegate(ToastType.ERROR);
 
   /**
    * Display a warning toast
@@ -99,7 +99,7 @@ export default class Toast extends Service {
    * @param {Object} opts - Toast options
    * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
    */
-  warning: ToastFunction = this._delegate(ToastType.WARNING);
+  warning: ToastFunction = this.delegate(ToastType.WARNING);
 
   /**
    * Display an information toast
@@ -109,7 +109,7 @@ export default class Toast extends Service {
    * @param {Object} opts - Toast options
    * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
    */
-  info: ToastFunction = this._delegate(ToastType.INFO);
+  info: ToastFunction = this.delegate(ToastType.INFO);
 
   @action
   dismiss(id: number): void {
@@ -117,12 +117,12 @@ export default class Toast extends Service {
   }
 
   willDestroy(): void {
-    this._renderResult?.destroy();
-    this._host?.remove();
+    this.renderResult?.destroy();
+    this.host?.remove();
     super.willDestroy();
   }
 
-  private _delegate(type: ToastType): ToastFunction {
+  private delegate(type: ToastType): ToastFunction {
     return (
       message: string | ReturnType<IntlService['t']>,
       title?: string | ReturnType<IntlService['t']>,
@@ -132,7 +132,7 @@ export default class Toast extends Service {
 
       const { badge, link, timeout, onclick } = { ...DEFAULT_OPTIONS, ...(opts || {}) };
       const toast: ToastEntry = {
-        id: ++this._nextId,
+        id: ++this.nextId,
         createdAt: Date.now(),
         type,
         title,
@@ -143,23 +143,23 @@ export default class Toast extends Service {
         onclick
       };
 
-      schedule('actions', this, this._push, toast);
+      schedule('actions', this, this.push, toast);
     };
   }
 
-  private _push(toast: ToastEntry): void {
+  private push(toast: ToastEntry): void {
     if (this.isDestroying || this.isDestroyed) return;
 
     this.toasts = [...this.toasts, toast];
-    this._mount();
+    this.mount();
   }
 
-  private _mount(): void {
-    if (this._host) return;
+  private mount(): void {
+    if (this.host) return;
 
-    this._host = document.createElement('div');
-    document.body.append(this._host);
-    this._renderResult = renderComponent(OSSToastsContainer, { into: this._host, owner: getOwner(this)! });
+    this.host = document.createElement('div');
+    document.body.append(this.host);
+    this.renderResult = renderComponent(OSSToastsContainer, { into: this.host, owner: getOwner(this)! });
   }
 }
 

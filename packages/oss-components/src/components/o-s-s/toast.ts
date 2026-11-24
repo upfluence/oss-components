@@ -34,11 +34,11 @@ export interface OSSToastSignature {
 }
 
 export default class OSSToast extends Component<OSSToastSignature> {
-  declare private _DOMElement: HTMLDivElement;
-  private _counterAnimation?: Animation;
-  private _clearAnimation?: Animation;
-  private _clicked: boolean = false;
-  private _clearing: boolean = false;
+  declare private DOMElement: HTMLDivElement;
+  private counterAnimation?: Animation;
+  private clearAnimation?: Animation;
+  private clicked: boolean = false;
+  private clearing: boolean = false;
 
   get iconClass(): string {
     return ICON_CLASSES[this.args.type] ?? ICON_CLASSES.info!;
@@ -55,38 +55,38 @@ export default class OSSToast extends Component<OSSToastSignature> {
 
   @action
   registerElement(element: HTMLDivElement): void {
-    this._DOMElement = element;
+    this.DOMElement = element;
   }
 
   @action
   startCounter(element: HTMLElement): void {
     if (this.args.timeout === 'none') return;
 
-    this._counterAnimation = element.animate([{ width: '100%' }, { width: '0' }], {
+    this.counterAnimation = element.animate([{ width: '100%' }, { width: '0' }], {
       duration: typeof this.args.timeout === 'number' ? this.args.timeout : DEFAULT_TIMEOUT,
       fill: 'forwards',
       id: 'counter'
     });
-    this._counterAnimation.addEventListener('finish', () => this.close());
+    this.counterAnimation.addEventListener('finish', () => this.close());
   }
 
   @action
   pauseCounter(): void {
-    if (this._clearing) return;
-    this._counterAnimation?.pause();
+    if (this.clearing) return;
+    this.counterAnimation?.pause();
   }
 
   @action
   resumeCounter(): void {
-    if (this._clearing) return;
-    this._counterAnimation?.play();
+    if (this.clearing) return;
+    this.counterAnimation?.play();
   }
 
   @action
   onToastClick(event: MouseEvent): void {
-    if (!this.args.onClick || this._clicked) return;
+    if (!this.args.onClick || this.clicked) return;
 
-    this._clicked = true;
+    this.clicked = true;
     event.stopPropagation();
     this.args.onClick(event);
   }
@@ -99,24 +99,24 @@ export default class OSSToast extends Component<OSSToastSignature> {
   @action
   close(event?: Event): void {
     event?.stopPropagation();
-    if (this._clearing) return;
+    if (this.clearing) return;
 
-    this._clearing = true;
-    if (this._counterAnimation?.playState === 'running') this._counterAnimation.pause();
+    this.clearing = true;
+    if (this.counterAnimation?.playState === 'running') this.counterAnimation.pause();
 
-    this._clearAnimation = this._DOMElement.animate(
+    this.clearAnimation = this.DOMElement.animate(
       [
         { opacity: 1, transform: 'translate(0, 0)' },
         { opacity: 0, transform: 'translate(0, -30%)' }
       ],
       { duration: CLEAR_ANIMATION_DURATION, fill: 'forwards', id: 'destroy' }
     );
-    this._clearAnimation.addEventListener('finish', () => this.args.onClear?.());
+    this.clearAnimation.addEventListener('finish', () => this.args.onClear?.());
   }
 
   willDestroy(): void {
-    this._counterAnimation?.cancel();
-    this._clearAnimation?.cancel();
+    this.counterAnimation?.cancel();
+    this.clearAnimation?.cancel();
     super.willDestroy();
   }
 }
