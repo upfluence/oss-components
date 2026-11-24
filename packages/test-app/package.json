@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "test:ember": "vite build --mode development && ember test --path dist",
     "test:ember-compatibility": "ember try:each",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
