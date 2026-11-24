@@ -1,10 +1,12 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import type Owner from '@ember/owner';
+import { service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
+import type AssetMapService from '../../../../services/asset-map';
 import { runSmartGradientAnimation } from '../../../../utils/run-smart-gradient-animation';
 
 const FALLBACK_SVG_URL = '/@upfluence/oss-components/assets/images/picture-frame.svg';
@@ -23,8 +25,8 @@ interface OSSSmartImmersiveLogoArgs {
 const BASE_COMPONENT_CLASS = 'oss-smart__immersive-icon-container';
 
 export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartImmersiveLogoArgs> {
+  @service('asset-map') declare assetMap: AssetMapService;
   @tracked declare element: HTMLElement;
-  fallbackSvgUrl = FALLBACK_SVG_URL;
 
   constructor(owner: Owner, args: OSSSmartImmersiveLogoArgs) {
     super(owner, args);
@@ -42,6 +44,10 @@ export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartIm
         );
       }
     }
+  }
+
+  get fallbackSvgUrl(): string {
+    return this.assetMap.resolve(FALLBACK_SVG_URL);
   }
 
   get size(): size {
@@ -90,6 +96,7 @@ export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartIm
 
   @action
   onError(event: Event): void {
-    (<HTMLImageElement>event.target).src = FALLBACK_SVG_URL;
+    if (this.isDestroying || this.isDestroyed) return;
+    (<HTMLImageElement>event.target).src = this.fallbackSvgUrl;
   }
 }
