@@ -64,10 +64,10 @@ export default {
     },
     badge: {
       description:
-        'Arguments of an OSS::Badge (icon, image, text, skin, plain) displayed on the bottom-right corner of the avatar',
+        'Arguments of an OSS::Badge (icon, image, text, skin, plain) and an optional tooltip, displayed on the bottom-right corner of the avatar',
       table: {
         type: {
-          summary: "Partial<Omit<OSSBadgeArgs, 'size'>>"
+          summary: "Partial<Omit<OSSBadgeArgs, 'size'>> & { tooltip?: string }"
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -136,6 +136,6 @@ WithIcon.args = {
   ...defaultArgs,
   ...{
     image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg',
-    badge: { icon: 'fab fa-instagram', skin: 'xtd-violet', plain: true }
+    badge: { icon: 'fab fa-instagram', skin: 'xtd-violet', plain: true, tooltip: 'Instagram' }
   }
 };

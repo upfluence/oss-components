@@ -4,9 +4,10 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
+
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);
@@ -91,6 +92,20 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       await render(hbs`<OSS::Avatar @badge={{this.badge}} />`);
 
       assert.dom('.upf-avatar__badge img').hasAttribute('src', '/assets/images/brand-icon.svg');
+    });
+
+    test('it displays a tooltip on the badge when a tooltip is provided', async function (assert) {
+      this.badge = { icon: 'fab fa-instagram', tooltip: 'Instagram' };
+      await render(hbs`<OSS::Avatar @badge={{this.badge}} />`);
+
+      await assert.tooltip('.upf-avatar__badge').hasTitle('Instagram');
+    });
+
+    test('it does not display a tooltip on the badge when no tooltip is provided', async function (assert) {
+      this.badge = { icon: 'fab fa-instagram' };
+      await render(hbs`<OSS::Avatar @badge={{this.badge}} />`);
+
+      await assert.tooltip('.upf-avatar__badge').doesNotExist();
     });
 
     test('it does not display the badge while loading', async function (assert) {

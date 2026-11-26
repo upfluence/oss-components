@@ -33,7 +33,7 @@ export interface OSSAvatarArgs {
   size?: SizeType;
   loading?: boolean;
   skin?: SkinType;
-  badge?: Partial<Omit<OSSBadgeArgs, 'size'>>;
+  badge?: Partial<Omit<OSSBadgeArgs, 'size'>> & { tooltip?: string };
 }
 
 export const DEFAULT_IMAGE_URL: string = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';

@@ -7,13 +7,14 @@
     {{/if}}
     {{#if @badge}}
       <OSS::Badge
-        class="upf-avatar__badge"
         @icon={{@badge.icon}}
         @image={{@badge.image}}
         @text={{@badge.text}}
         @skin={{@badge.skin}}
         @size={{"sm"}}
         @plain={{@badge.plain}}
+        class="upf-avatar__badge"
+        {{enable-tooltip title=@badge.tooltip}}
       />
     {{/if}}
   {{/unless}}
