@@ -9,10 +9,19 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  prefix: '+33',
+  number: '742424242',
+  placeholder: '(415) 000 0000',
+  onChange: fn(),
+  validates: fn()
+};
+
 export default {
   title: 'Components/OSS::PhoneNumberInput',
   component: 'phone-number-input',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     prefix: {
       description: 'Country code phone number prefix',
@@ -86,14 +95,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  prefix: '+33',
-  number: '742424242',
-  placeholder: '(415) 000 0000',
-  onChange: fn(),
-  validates: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

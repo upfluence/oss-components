@@ -25,10 +25,22 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  skin: 'primary',
+  label: 'Label',
+  icon: 'far fa-thumbs-up',
+  suffixIcon: null,
+  hasEllipsis: false,
+  plain: false,
+  htmlSafe: false,
+  size: undefined
+};
+
 export default {
   title: 'Components/OSS::Tag',
   component: 'tag',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -127,17 +139,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'primary',
-  label: 'Label',
-  icon: 'far fa-thumbs-up',
-  suffixIcon: null,
-  hasEllipsis: false,
-  plain: false,
-  htmlSafe: false,
-  size: undefined
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

@@ -27,10 +27,28 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Title',
+  subtitle: undefined,
+  selectionType: 'single',
+  selected: false,
+  disabled: false,
+  prefixAvatar: undefined,
+  prefixBadge: undefined,
+  prefixIcon: undefined,
+  prefixCountry: undefined,
+  icon: undefined,
+  suffixHint: undefined,
+  suffixTag: undefined,
+  suffixIcon: undefined,
+  onSelect: fn()
+};
+
 export default {
   title: 'Components/OSS::InfiniteSelect::Option',
   component: OSSInfiniteSelectOption,
   render: Template,
+  args: defaultArgs,
   argTypes: {
     // `ReturnType<IntlService['t']>` is being extracted as `any` currently, which gets an object control.
     // I still have to investigate why this is happening and lookup for existing issues in ember-storybook.
@@ -52,30 +70,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Title',
-  subtitle: undefined,
-  selectionType: 'single',
-  selected: false,
-  disabled: false,
-  prefixAvatar: undefined,
-  prefixBadge: undefined,
-  prefixIcon: undefined,
-  prefixCountry: undefined,
-  icon: undefined,
-  suffixHint: undefined,
-  suffixTag: undefined,
-  suffixIcon: undefined,
-  onSelect: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const SingleSelectionSelected = {
   args: {
-    ...defaultArgs,
     title: 'Selected Option',
     selected: true,
     selectionType: 'single'
@@ -84,7 +82,6 @@ export const SingleSelectionSelected = {
 
 export const MultipleSelection = {
   args: {
-    ...defaultArgs,
     title: 'Multiple Selection Option',
     selectionType: 'multiple'
   }
@@ -92,7 +89,6 @@ export const MultipleSelection = {
 
 export const MultipleSelectionSelected = {
   args: {
-    ...defaultArgs,
     title: 'Selected Multiple Option',
     selected: true,
     selectionType: 'multiple'
@@ -101,7 +97,6 @@ export const MultipleSelectionSelected = {
 
 export const WithSubtitle = {
   args: {
-    ...defaultArgs,
     title: 'Title',
     subtitle: 'Subtitle'
   }
@@ -109,7 +104,6 @@ export const WithSubtitle = {
 
 export const WithPrefixAvatar = {
   args: {
-    ...defaultArgs,
     title: 'John Doe',
     subtitle: 'Software Engineer',
     prefixAvatar: {
@@ -121,7 +115,6 @@ export const WithPrefixAvatar = {
 
 export const WithPrefixBadge = {
   args: {
-    ...defaultArgs,
     title: 'Premium Feature',
     prefixBadge: {
       icon: 'far fa-thumbs-up',
@@ -132,7 +125,6 @@ export const WithPrefixBadge = {
 
 export const WithPrefixIcon = {
   args: {
-    ...defaultArgs,
     title: 'Important Option',
     prefixIcon: {
       icon: 'fa-star',
@@ -143,7 +135,6 @@ export const WithPrefixIcon = {
 
 export const WithPrefixCountry = {
   args: {
-    ...defaultArgs,
     title: 'United States',
     subtitle: 'North America',
     prefixCountry: 'us'
@@ -152,7 +143,6 @@ export const WithPrefixCountry = {
 
 export const WithIcon = {
   args: {
-    ...defaultArgs,
     title: 'Verified Option',
     icon: {
       icon: 'fa-check-circle',
@@ -163,7 +153,6 @@ export const WithIcon = {
 
 export const WithSuffixHint = {
   args: {
-    ...defaultArgs,
     title: 'Option with Hint',
     suffixHint: '+99'
   }
@@ -171,7 +160,6 @@ export const WithSuffixHint = {
 
 export const WithSuffixTag = {
   args: {
-    ...defaultArgs,
     title: 'Tagged Option',
     suffixTag: {
       label: 'New',
@@ -183,7 +171,6 @@ export const WithSuffixTag = {
 
 export const WithSuffixIcon = {
   args: {
-    ...defaultArgs,
     title: 'Option with Suffix Icon',
     suffixIcon: {
       icon: 'fa-external-link'
@@ -193,7 +180,6 @@ export const WithSuffixIcon = {
 
 export const Disabled = {
   args: {
-    ...defaultArgs,
     title: 'Disabled Option',
     subtitle: 'This option cannot be selected',
     disabled: true
@@ -202,7 +188,6 @@ export const Disabled = {
 
 export const ComplexExample = {
   args: {
-    ...defaultArgs,
     title: 'Complex Option',
     subtitle: 'With multiple decorators',
     selectionType: 'multiple',
@@ -258,11 +243,7 @@ const MultipleOptionsTemplate = (args) => ({
 });
 
 export const MultipleOptions = {
-  render: MultipleOptionsTemplate,
-
-  args: {
-    onSelect: fn()
-  }
+  render: MultipleOptionsTemplate
 };
 
 const WithNamedBlocksTemplate = (args) => ({
@@ -290,9 +271,6 @@ export const WithNamedBlocks = {
   render: WithNamedBlocksTemplate,
 
   args: {
-    title: 'Option with Named Blocks',
-    selectionType: 'single',
-    selected: false,
-    onSelect: fn()
+    title: 'Option with Named Blocks'
   }
 };

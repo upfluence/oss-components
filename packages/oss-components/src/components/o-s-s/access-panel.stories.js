@@ -17,10 +17,21 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  records: [{ label: 'foo' }, { label: 'bar' }],
+  initialLoad: false,
+  loading: false,
+  filtered: undefined,
+  onBottomReached: fn(),
+  onClose: fn(),
+  onSearch: fn()
+};
+
 export default {
   title: 'Components/OSS::AccessPanel',
   component: 'access-panel',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     records: {
       description: 'The list of elements displayed inside the panel',
@@ -107,15 +118,6 @@ export default {
     }
   }
 };
-const defaultArgs = {
-  records: [{ label: 'foo' }, { label: 'bar' }],
-  initialLoad: false,
-  loading: false,
-  filtered: undefined,
-  onBottomReached: fn(),
-  onClose: fn(),
-  onSearch: fn()
-};
 
 const CustomContentTemplate = (args) => ({
   template: hbs`
@@ -162,28 +164,20 @@ const CustomLoadingStatesTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const CustomContent = {
-  render: CustomContentTemplate,
-
-  args: {
-    ...defaultArgs
-  }
+  render: CustomContentTemplate
 };
 
 export const SearchDisabled = {
   args: {
-    ...defaultArgs,
     onSearch: undefined
   }
 };
 
 export const LoadingState = {
   args: {
-    ...defaultArgs,
     loading: true,
     initialLoad: false
   }
@@ -193,7 +187,6 @@ export const CustomLoadingState = {
   render: CustomLoadingStatesTemplate,
 
   args: {
-    ...defaultArgs,
     loading: true,
     initialLoad: false
   }

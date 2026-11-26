@@ -14,9 +14,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  arrowPlacement: 'top',
+  title: 'Popover Title',
+  subtitle: 'Subtitle',
+  size: 'sm'
+};
+
 export default {
   title: 'Components/OSS::Popover',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     arrowPlacement: {
       description: 'The arrow placement definition',
@@ -72,13 +80,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  arrowPlacement: 'top',
-  title: 'Popover Title',
-  subtitle: 'Subtitle',
-  size: 'sm'
-};
-
 const WithContextualActionsTemplate = (args) => ({
   template: hbs`
     <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
@@ -124,21 +125,16 @@ const WithCustomTitleTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithContextualActions = {
-  render: WithContextualActionsTemplate,
-  args: defaultArgs
+  render: WithContextualActionsTemplate
 };
 
 export const WithIllustration = {
-  render: WithIllustrationTemplate,
-  args: defaultArgs
+  render: WithIllustrationTemplate
 };
 
 export const WithCustomTitle = {
-  render: WithCustomTitleTemplate,
-  args: defaultArgs
+  render: WithCustomTitleTemplate
 };

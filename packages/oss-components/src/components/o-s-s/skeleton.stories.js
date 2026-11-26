@@ -13,10 +13,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  height: 200,
+  width: 300,
+  multiple: 1,
+  gap: 9,
+  randomize: false
+};
+
 export default {
   title: 'Components/OSS::Skeleton',
   component: 'skeleton',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     height: {
       description: 'Box height in px',
@@ -94,14 +103,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  height: 200,
-  width: 300,
-  multiple: 1,
-  gap: 9,
-  randomize: false
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

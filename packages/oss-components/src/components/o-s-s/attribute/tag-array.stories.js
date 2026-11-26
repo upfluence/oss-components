@@ -9,10 +9,16 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Fruits',
+  tags: ['watermelon', 'vodkamelon', 'whiskeymelon', 'tequilamelon']
+};
+
 export default {
   title: 'Components/OSS::Attribute::TagArray',
   component: 'tag-array',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'The label of the component.',
@@ -46,11 +52,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Fruits',
-  tags: ['watermelon', 'vodkamelon', 'whiskeymelon', 'tequilamelon']
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

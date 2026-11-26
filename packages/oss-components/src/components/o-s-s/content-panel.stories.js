@@ -12,10 +12,13 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {};
+
 export default {
   title: 'Components/OSS::ContentPanel',
   component: 'code-panel',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {},
   parameters: {
     docs: {
@@ -26,8 +29,4 @@ export default {
   }
 };
 
-const defaultArgs = {};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

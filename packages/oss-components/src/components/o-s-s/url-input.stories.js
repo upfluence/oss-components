@@ -11,10 +11,22 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: '',
+  prefix: 'https://',
+  suffix: '@shopify.com',
+  placeholder: 'subdomain',
+  disabled: false,
+  errorMessage: '',
+  validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::UrlInput',
   component: 'url-input',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -112,16 +124,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: '',
-  prefix: 'https://',
-  suffix: '@shopify.com',
-  placeholder: 'subdomain',
-  disabled: false,
-  errorMessage: '',
-  validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
-  onChange: fn()
-};
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

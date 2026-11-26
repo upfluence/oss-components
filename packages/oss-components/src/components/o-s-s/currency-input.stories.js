@@ -13,10 +13,29 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 42,
+  currency: 'USD',
+  disabled: false,
+  onlyCurrency: false,
+  errorMessage: '',
+  feedbackMessage: undefined,
+  onChange: fn(),
+  allowCurrencyUpdate: true,
+  allowedCurrencies: undefined,
+  placeholder: undefined,
+  allowFloatValues: undefined,
+  options: {
+    allowSearch: true,
+    allowEmpty: false
+  }
+};
+
 export default {
   title: 'Components/OSS::CurrencyInput',
   component: 'currency-input',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     currency: {
       description: 'The currency applied to the component (EUR, USD, etc.)',
@@ -162,24 +181,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 42,
-  currency: 'USD',
-  disabled: false,
-  onlyCurrency: false,
-  errorMessage: '',
-  feedbackMessage: undefined,
-  onChange: fn(),
-  allowCurrencyUpdate: true,
-  allowedCurrencies: undefined,
-  placeholder: undefined,
-  allowFloatValues: undefined,
-  options: {
-    allowSearch: true,
-    allowEmpty: false
-  }
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

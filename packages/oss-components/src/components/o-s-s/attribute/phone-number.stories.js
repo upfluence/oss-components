@@ -10,10 +10,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  countryCode: 'FR',
+  prefix: '+33',
+  number: '612345678',
+  hasError: false,
+  errorMessage: ''
+};
+
 export default {
   title: 'Components/OSS::Attribute::PhoneNumber',
   component: 'phone-number',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     countryCode: {
       description:
@@ -69,14 +78,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  countryCode: 'FR',
-  prefix: '+33',
-  number: '612345678',
-  hasError: false,
-  errorMessage: ''
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

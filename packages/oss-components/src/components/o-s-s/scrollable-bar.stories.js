@@ -20,10 +20,15 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  buttonStyle: undefined
+};
+
 export default {
   title: 'Components/OSS::ScrollableBar',
   component: 'scrollable-bar',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     buttonStyle: {
       description: 'Updates the style of scroll buttons. Defaults to "button"',
@@ -45,10 +50,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  buttonStyle: undefined
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

@@ -8,10 +8,17 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: false,
+  disabled: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::ToggleSwitch',
   component: 'toggle-switch',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -58,11 +65,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: false,
-  disabled: false,
-  onChange: fn()
-};
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

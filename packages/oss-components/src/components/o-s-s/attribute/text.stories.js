@@ -10,10 +10,17 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Label',
+  value: 'Your copied value',
+  copyable: true
+};
+
 export default {
   title: 'Components/OSS::Attribute::Text',
   component: 'text',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       type: { required: true },
@@ -69,12 +76,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  value: 'Your copied value',
-  copyable: true
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

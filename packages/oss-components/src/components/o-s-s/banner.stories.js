@@ -12,10 +12,23 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Content of the Title',
+  subtitle: 'Content of the Subtitle',
+  icon: undefined,
+  image: undefined,
+  plain: false,
+  selected: false,
+  disabled: false,
+  feedbackMessage: undefined,
+  size: undefined
+};
+
 export default {
   title: 'Components/OSS::Banner',
   component: 'banner',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: "Sets the component's title",
@@ -125,18 +138,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Content of the Title',
-  subtitle: 'Content of the Subtitle',
-  icon: undefined,
-  image: undefined,
-  plain: false,
-  selected: false,
-  disabled: false,
-  feedbackMessage: undefined,
-  size: undefined
-};
-
 const CustomTitleTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
@@ -180,30 +181,25 @@ const ActionTemplate = (args) => ({
 
 export const UsageWithIcon = {
   args: {
-    ...defaultArgs,
     icon: 'fas fa-info-circle'
   }
 };
 
 export const UsageWithImage = {
   args: {
-    ...defaultArgs,
     image:
       'https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg'
   }
 };
 
 export const UsageWithCustomIcon = {
-  render: CustomIconTemplate,
-  args: defaultArgs
+  render: CustomIconTemplate
 };
 
 export const UsageWithActionsBlock = {
-  render: ActionTemplate,
-  args: defaultArgs
+  render: ActionTemplate
 };
 
 export const UsageWithCustomTitle = {
-  render: CustomTitleTemplate,
-  args: defaultArgs
+  render: CustomTitleTemplate
 };

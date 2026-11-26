@@ -8,10 +8,19 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'Your copied value',
+  inline: false,
+  icon: undefined,
+  tooltip: undefined,
+  animated: false
+};
+
 export default {
   title: 'Components/OSS::Copy',
   component: 'copy',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -80,14 +89,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'Your copied value',
-  inline: false,
-  icon: undefined,
-  tooltip: undefined,
-  animated: false
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

@@ -11,10 +11,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  skin: 'info',
+  title: 'Title',
+  subtitle: 'I am a subtitle in the alert',
+  closable: false,
+  onClose: fn()
+};
+
 export default {
   title: 'Components/OSS::Alert',
   component: 'alert',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Skin of the alert',
@@ -81,14 +90,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'info',
-  title: 'Title',
-  subtitle: 'I am a subtitle in the alert',
-  closable: false,
-  onClose: fn()
-};
-
 const ExtraContentTemplate = (args) => ({
   template: hbs`
       <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}
@@ -104,11 +105,8 @@ const ExtraContentTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const UsageExtraContent = {
-  render: ExtraContentTemplate,
-  args: defaultArgs
+  render: ExtraContentTemplate
 };

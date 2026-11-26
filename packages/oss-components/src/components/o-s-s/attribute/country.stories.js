@@ -9,10 +9,15 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  countryCode: 'FR'
+};
+
 export default {
   title: 'Components/OSS::Attribute::Country',
   component: 'country',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     countryCode: {
       description: 'The country-code in alpha2 format that will be used to display the flag and country name.',
@@ -32,10 +37,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  countryCode: 'FR'
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

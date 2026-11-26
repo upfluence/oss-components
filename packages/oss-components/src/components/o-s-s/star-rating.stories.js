@@ -25,10 +25,18 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  rating: 3,
+  totalStars: 5,
+  activeColor: 'yellow',
+  passiveColor: 'grey'
+};
+
 export default {
   title: 'Components/OSS::StarRating',
   component: 'star-rating',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     rating: {
       type: { required: true },
@@ -88,13 +96,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  rating: 3,
-  totalStars: 5,
-  activeColor: 'yellow',
-  passiveColor: 'grey'
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};

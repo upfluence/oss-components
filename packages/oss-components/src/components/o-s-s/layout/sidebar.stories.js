@@ -19,10 +19,20 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  expandable: false,
+  homeParameters: {
+    logo: '/assets/images/brand-icon.svg',
+    url: 'https://www.upfluence.com'
+  },
+  alwaysExpanded: false
+};
+
 export default {
   title: 'Components/OSS::Layout::Sidebar',
   component: 'sidebar',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     homeParameters: {
       description: 'Options to configure the header of the sidebar',
@@ -69,15 +79,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  expandable: false,
-  homeParameters: {
-    logo: '/assets/images/brand-icon.svg',
-    url: 'https://www.upfluence.com'
-  },
-  alwaysExpanded: false
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

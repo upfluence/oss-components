@@ -10,10 +10,17 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Side panel header title',
+  onClose: fn(),
+  onReturn: fn()
+};
+
 export default {
   title: 'Components/OSS::SidePanel::Header',
   component: 'header',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The side panel header title',
@@ -53,12 +60,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Side panel header title',
-  onClose: fn(),
-  onReturn: fn()
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};

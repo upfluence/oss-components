@@ -10,10 +10,16 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Label',
+  rating: 3
+};
+
 export default {
   title: 'Components/OSS::Attribute::Rating',
   component: 'rating',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       type: { required: true },
@@ -52,11 +58,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  rating: 3
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

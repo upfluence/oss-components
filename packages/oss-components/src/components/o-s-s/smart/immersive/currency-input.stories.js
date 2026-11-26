@@ -12,10 +12,20 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 42,
+  currency: 'USD',
+  onChange: fn(),
+  hasError: false,
+  allowedCurrencies: undefined,
+  placeholder: undefined
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::CurrencyInput',
   component: 'currency-input',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     currency: {
       description: 'The currency applied to the component (EUR, USD, etc.)',
@@ -90,15 +100,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 42,
-  currency: 'USD',
-  onChange: fn(),
-  hasError: false,
-  allowedCurrencies: undefined,
-  placeholder: undefined
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

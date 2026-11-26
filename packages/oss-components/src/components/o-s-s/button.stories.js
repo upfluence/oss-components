@@ -34,10 +34,26 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  skin: 'default',
+  size: 'md',
+  loading: false,
+  label: 'Label',
+  icon: 'far fa-envelope-open',
+  theme: 'light',
+  square: false,
+  countDown: undefined,
+  loadingOptions: undefined,
+  iconUrl: undefined,
+  suffixIcon: undefined,
+  disabled: undefined
+};
+
 export default {
   title: 'Components/OSS::Button',
   component: 'button',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -181,28 +197,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'default',
-  size: 'md',
-  loading: false,
-  label: 'Label',
-  icon: 'far fa-envelope-open',
-  theme: 'light',
-  square: false,
-  countDown: undefined,
-  loadingOptions: undefined,
-  iconUrl: undefined,
-  suffixIcon: undefined,
-  disabled: undefined
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithCountDown = {
   args: {
-    ...defaultArgs,
     countDown: {
       callback: function () {
         alert('Count down finish');
@@ -214,7 +212,6 @@ export const WithCountDown = {
 
 export const WithIconUrl = {
   args: {
-    ...defaultArgs,
     icon: undefined,
     iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
@@ -222,7 +219,6 @@ export const WithIconUrl = {
 
 export const WithSuffixIcon = {
   args: {
-    ...defaultArgs,
     suffixIcon: 'fas fa-chevron-down'
   }
 };

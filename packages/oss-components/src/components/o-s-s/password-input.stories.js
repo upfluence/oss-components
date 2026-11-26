@@ -9,10 +9,21 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'myPassword',
+  disabled: false,
+  placeholder: '*****',
+  errorMessage: undefined,
+  autocomplete: undefined,
+  validates: fn(),
+  validatorSet: undefined
+};
+
 export default {
   title: 'Components/OSS::PasswordInput',
   component: 'password-input',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the password input',
@@ -118,16 +129,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'myPassword',
-  disabled: false,
-  placeholder: '*****',
-  errorMessage: undefined,
-  autocomplete: undefined,
-  validates: fn(),
-  validatorSet: undefined
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

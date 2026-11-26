@@ -23,10 +23,22 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  size: 'md',
+  expandedLabel: 'Content',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  flag: undefined,
+  plain: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::ExpandableBadge',
   component: 'expandable-badge',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -128,41 +140,26 @@ export default {
   }
 };
 
-const defaultArgs = {
-  size: 'md',
-  expandedLabel: 'Content',
-  icon: undefined,
-  image: undefined,
-  text: undefined,
-  flag: undefined,
-  plain: false,
-  skin: undefined
-};
-
 export const WithIcon = {
   args: {
-    ...defaultArgs,
     icon: 'fas fa-volume-up'
   }
 };
 
 export const WithImage = {
   args: {
-    ...defaultArgs,
     image: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };
 
 export const WithFlag = {
   args: {
-    ...defaultArgs,
     flag: 'us'
   }
 };
 
 export const WithText = {
   args: {
-    ...defaultArgs,
     text: '2x'
   }
 };

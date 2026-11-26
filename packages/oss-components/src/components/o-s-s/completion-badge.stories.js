@@ -23,10 +23,21 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  progress: 42,
+  size: 'md',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  plain: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::CompletionBadge',
   component: 'completion-badge',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -103,33 +114,20 @@ export default {
   }
 };
 
-const defaultArgs = {
-  progress: 42,
-  size: 'md',
-  icon: undefined,
-  image: undefined,
-  text: undefined,
-  plain: false,
-  skin: undefined
-};
-
 export const WithIcon = {
   args: {
-    ...defaultArgs,
     icon: 'fas fa-volume-up'
   }
 };
 
 export const WithImage = {
   args: {
-    ...defaultArgs,
     image: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };
 
 export const WithText = {
   args: {
-    ...defaultArgs,
     text: '2x'
   }
 };

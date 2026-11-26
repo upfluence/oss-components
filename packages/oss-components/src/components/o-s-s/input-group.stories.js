@@ -11,10 +11,23 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  type: undefined,
+  prefix: 'email',
+  suffix: '@domain.com',
+  errorMessage: undefined,
+  placeholder: 'My placeholder',
+  autocomplete: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::InputGroup',
   component: 'input-group',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -122,18 +135,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  disabled: false,
-  type: undefined,
-  prefix: 'email',
-  suffix: '@domain.com',
-  errorMessage: undefined,
-  placeholder: 'My placeholder',
-  autocomplete: undefined,
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

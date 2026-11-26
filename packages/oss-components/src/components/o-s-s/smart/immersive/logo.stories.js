@@ -25,10 +25,22 @@ const Template = ({ iconName, iconColor, ...rest }) => {
   };
 };
 
+const defaultArgs = {
+  iconName: 'rabbit',
+  iconColor: 'orange',
+  url: undefined,
+  editable: false,
+  loading: false,
+  size: 'md',
+  hasError: false,
+  onEdit: fn()
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Logo',
   component: 'oss-smart-immersive-logo',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       name: 'Icon',
@@ -117,43 +129,28 @@ export default {
   }
 };
 
-export const Default = {
-  args: {
-    iconName: 'rabbit',
-    iconColor: 'orange',
-    url: undefined,
-    editable: false,
-    loading: false,
-    size: 'md',
-    hasError: false,
-    onEdit: fn()
-  }
-};
+export const Default = {};
 
 export const Editable = {
   args: {
-    ...Default.args,
     editable: true
   }
 };
 
 export const ImageMode = {
   args: {
-    ...Default.args,
     url: 'https://example.com/logo.png'
   }
 };
 
 export const LoadingState = {
   args: {
-    ...Default.args,
     loading: true
   }
 };
 
 export const OversizeState = {
   args: {
-    ...Default.args,
     oversize: true
   }
 };

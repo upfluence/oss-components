@@ -19,10 +19,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  size: 'md',
+  image: undefined,
+  initials: undefined,
+  loading: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::Avatar',
   component: 'avatar',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the avatar component',
@@ -95,28 +104,16 @@ export default {
   }
 };
 
-const defaultArgs = {
-  size: 'md',
-  image: undefined,
-  initials: undefined,
-  loading: false,
-  skin: undefined
-};
-
 export const WithImage = {
   args: {
-    ...defaultArgs,
     image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
   }
 };
 
 export const WithInitials = {
   args: {
-    ...defaultArgs,
     initials: 'TS'
   }
 };
 
-export const WithoutParam = {
-  args: defaultArgs
-};
+export const WithoutParam = {};

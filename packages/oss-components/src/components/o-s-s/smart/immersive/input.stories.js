@@ -9,10 +9,20 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  type: undefined,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Input',
   component: 'input',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -98,18 +108,7 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  disabled: false,
-  type: undefined,
-  placeholder: 'this is the placeholder',
-  errorMessage: undefined,
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 const PrefixUsageTemplate = (args) => ({
   template: hbs`
@@ -124,8 +123,7 @@ const PrefixUsageTemplate = (args) => ({
 });
 
 export const PrefixUsage = {
-  render: PrefixUsageTemplate,
-  args: defaultArgs
+  render: PrefixUsageTemplate
 };
 
 const SuffixUsageTemplate = (args) => ({
@@ -141,6 +139,5 @@ const SuffixUsageTemplate = (args) => ({
 });
 
 export const SuffixUsage = {
-  render: SuffixUsageTemplate,
-  args: defaultArgs
+  render: SuffixUsageTemplate
 };

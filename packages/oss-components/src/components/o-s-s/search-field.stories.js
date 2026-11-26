@@ -8,10 +8,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'John',
+  placeholder: 'My placeholder',
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::SearchField',
   component: 'search-field',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -70,12 +77,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  placeholder: 'My placeholder',
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

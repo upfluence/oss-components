@@ -15,10 +15,20 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  checked: false,
+  partial: false,
+  disabled: false,
+  hasError: false,
+  size: null,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Checkbox',
   component: 'checkbox',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the checkbox',
@@ -105,15 +115,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  checked: false,
-  partial: false,
-  disabled: false,
-  hasError: false,
-  size: null,
-  onChange: fn()
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

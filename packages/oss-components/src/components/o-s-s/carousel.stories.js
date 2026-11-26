@@ -23,10 +23,21 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  buttonIcon: undefined,
+  animationStyle: undefined,
+  showIndicators: undefined,
+  showControls: undefined,
+  autoPlay: undefined,
+  loop: true,
+  indicatorsPosition: 'top'
+};
+
 export default {
   title: 'Components/OSS::Carousel',
   component: 'carousel',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     buttonIcon: {
       description:
@@ -134,16 +145,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  buttonIcon: undefined,
-  animationStyle: undefined,
-  showIndicators: undefined,
-  showControls: undefined,
-  autoPlay: undefined,
-  loop: true,
-  indicatorsPosition: 'top'
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

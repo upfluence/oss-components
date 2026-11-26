@@ -26,10 +26,19 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  visible: true,
+  backdrop: true,
+  size: 'sm',
+  noPadding: false,
+  onClose: fn()
+};
+
 export default {
   title: 'Components/OSS::SidePanel',
   component: 'side-panel',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     visible: {
       description: 'The side panel visibility state. True displays the side panel, false closes it.',
@@ -91,14 +100,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  visible: true,
-  backdrop: true,
-  size: 'sm',
-  noPadding: false,
-  onClose: fn()
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};

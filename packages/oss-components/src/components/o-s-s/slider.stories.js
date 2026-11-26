@@ -22,10 +22,26 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 30,
+  min: 0,
+  max: 100,
+  step: 1,
+  defaultValue: undefined,
+  displayInputValue: false,
+  tooltipLabel: undefined,
+  unit: 'percentage',
+  disabled: false,
+  inputOptions: { min: 0, max: 100 },
+  autocomplete: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Slider',
   component: 'slider',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -151,21 +167,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 30,
-  min: 0,
-  max: 100,
-  step: 1,
-  defaultValue: undefined,
-  displayInputValue: false,
-  tooltipLabel: undefined,
-  unit: 'percentage',
-  disabled: false,
-  inputOptions: { min: 0, max: 100 },
-  autocomplete: undefined,
-  onChange: fn()
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

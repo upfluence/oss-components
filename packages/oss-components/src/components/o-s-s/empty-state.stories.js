@@ -5,10 +5,18 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  badgeIcon: 'fa-thumbs-up',
+  title: 'Empty State Title',
+  subtitle: 'Additional information here',
+  size: 'md'
+};
+
 export default {
   title: 'Components/OSS::EmptyState',
   component: 'empty state',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     badgeIcon: {
       description: 'A font-awesome icon to be displayed in a badge',
@@ -65,13 +73,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  badgeIcon: 'fa-thumbs-up',
-  title: 'Empty State Title',
-  subtitle: 'Additional information here',
-  size: 'md'
-};
-
 const ImageTemplate = (args) => ({
   template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
     <:image>
@@ -90,16 +91,12 @@ const ActionTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const UsageWithImage = {
-  render: ImageTemplate,
-  args: defaultArgs
+  render: ImageTemplate
 };
 
 export const UsageWithActions = {
-  render: ActionTemplate,
-  args: defaultArgs
+  render: ActionTemplate
 };

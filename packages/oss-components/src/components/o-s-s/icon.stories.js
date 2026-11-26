@@ -11,10 +11,16 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  icon: 'fa-laptop-code',
+  style: 'regular'
+};
+
 export default {
   title: 'Components/OSS::Icon',
   component: 'icon',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'The fontawesome icon value',
@@ -49,11 +55,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'fa-laptop-code',
-  style: 'regular'
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

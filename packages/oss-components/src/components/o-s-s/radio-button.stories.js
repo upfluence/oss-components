@@ -8,10 +8,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  selected: false,
+  disabled: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::RadioButton',
   component: 'radio-button',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     selected: {
       description: 'Whether the radio-button is selected or not',
@@ -52,12 +59,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  selected: false,
-  disabled: false,
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

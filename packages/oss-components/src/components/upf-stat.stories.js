@@ -5,10 +5,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  name: 'Stat',
+  data: '80',
+  label: 'Label'
+};
+
 export default {
   title: 'Components/Stats',
   component: 'upf-stat',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     name: {
       description: "Insight's name",
@@ -51,11 +58,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  name: 'Stat',
-  data: '80',
-  label: 'Label'
-};
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

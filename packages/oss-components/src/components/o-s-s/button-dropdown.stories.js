@@ -16,10 +16,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  icon: 'far fa-user',
+  label: 'Actions',
+  square: false,
+  hideArrow: false,
+  mainAction: fn()
+};
+
 export default {
   title: 'Components/OSS::ButtonDropdown',
   component: 'button-dropdown',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'The icon displayed left to the button label. Font Awesome class, for example: far fa-user',
@@ -97,26 +106,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'far fa-user',
-  label: 'Actions',
-  square: false,
-  hideArrow: false,
-  mainAction: fn()
-};
-
-const withMainActionArgs = {
-  icon: 'far fa-user',
-  label: 'Actions',
-  square: true,
-  hideArrow: false,
-  mainAction: fn()
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};
 
 export const WithMainActionArgs = {
-  args: withMainActionArgs
+  args: {
+    square: true
+  }
 };

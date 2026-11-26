@@ -7,9 +7,14 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  src: '/@upfluence/oss-components/assets/images/no-records.svg'
+};
+
 export default {
   title: 'Components/OSS::Illustration',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     src: {
       description: 'Path to an SVG Illustration',
@@ -31,10 +36,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  src: '/@upfluence/oss-components/assets/images/no-records.svg'
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

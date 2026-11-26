@@ -11,10 +11,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Label',
+  icon: 'fa-search',
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::Panel::Row',
   component: 'Row',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'The icon displayed left to the button label. Font Awesome class, for example: far fa-user',
@@ -57,12 +64,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  icon: 'fa-search',
-  disabled: false
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

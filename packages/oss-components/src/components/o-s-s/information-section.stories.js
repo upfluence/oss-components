@@ -13,9 +13,18 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Title',
+  subtitle: 'Subtitle',
+  imageUrl: '/assets/images/upfluence-white-logo.svg',
+  badgeIcon: 'fa-pen',
+  plain: true
+};
+
 export default {
   title: 'Components/OSS::InformationSection',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The title of the section',
@@ -84,14 +93,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Title',
-  subtitle: 'Subtitle',
-  imageUrl: '/assets/images/upfluence-white-logo.svg',
-  badgeIcon: 'fa-pen',
-  plain: true
-};
-
 const BadgeBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InformationSection
@@ -145,21 +146,16 @@ const ContentBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithCustomBadge = {
-  render: BadgeBlockTemplate,
-  args: defaultArgs
+  render: BadgeBlockTemplate
 };
 
 export const WithCustomAction = {
-  render: ActionBlockTemplate,
-  args: defaultArgs
+  render: ActionBlockTemplate
 };
 
 export const WithCustomContent = {
-  render: ContentBlockTemplate,
-  args: defaultArgs
+  render: ContentBlockTemplate
 };

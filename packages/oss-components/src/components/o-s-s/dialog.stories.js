@@ -15,10 +15,28 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'You are about to discard your changes',
+  skin: undefined,
+  icon: 'fa-warning',
+  mainAction: {
+    label: 'Discard',
+    action: fn(),
+    loading: false,
+    icon: null
+  },
+  secondaryAction: {
+    label: 'Cancel',
+    action: fn(),
+    icon: null
+  }
+};
+
 export default {
   title: 'Components/OSS::Dialog',
   component: 'dialog',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       type: { required: true },
@@ -103,23 +121,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'You are about to discard your changes',
-  skin: undefined,
-  icon: 'fa-warning',
-  mainAction: {
-    label: 'Discard',
-    action: fn(),
-    loading: false,
-    icon: null
-  },
-  secondaryAction: {
-    label: 'Cancel',
-    action: fn(),
-    icon: null
-  }
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};

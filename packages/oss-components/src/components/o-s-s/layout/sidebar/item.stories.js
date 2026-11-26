@@ -15,10 +15,22 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  icon: 'far fa-search',
+  label: 'Search',
+  expanded: false,
+  hasNotifications: false,
+  locked: false,
+  link: 'http://upfluence.com',
+  lockedAction: fn(),
+  action: fn()
+};
+
 export default {
   title: 'Components/OSS::Layout::Sidebar::Item',
   component: 'item',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -133,17 +145,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'far fa-search',
-  label: 'Search',
-  expanded: false,
-  hasNotifications: false,
-  locked: false,
-  link: 'http://upfluence.com',
-  lockedAction: fn(),
-  action: fn()
-};
-
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Item
@@ -158,18 +159,14 @@ const IconNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const WithNamedBlockIcon = {
-  render: IconNamedBlockTemplate,
-  args: defaultArgs
+  render: IconNamedBlockTemplate
 };
 
 export const WithTag = {
   args: {
-    ...defaultArgs,
     expanded: true,
     tag: { label: 'New', skin: 'chat-gpt', plain: true }
   }

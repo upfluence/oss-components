@@ -24,10 +24,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  plain: false,
+  disableShadows: false,
+  hideScrollbar: false,
+  offset: 0,
+  onBottomReached: fn()
+};
+
 export default {
   title: 'Components/OSS::ScrollablePanel',
   component: 'scrollable-panel',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     plain: {
       description: 'When plain is true, the top and bottom shadows are displayed in white, otherwise in grey',
@@ -98,19 +107,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  plain: false,
-  disableShadows: false,
-  hideScrollbar: false,
-  offset: 0,
-  onBottomReached: fn()
-};
-
-const horizontalArgs = {
-  ...defaultArgs,
-  horizontal: true
-};
-
 const TemplateHorizontal = (args) => ({
   template: hbs`
     <div style="height:70px; width: 300px; background-color: white; " >
@@ -135,8 +131,6 @@ const TemplateHorizontal = (args) => ({
 });
 
 export const BasicUsage = {
-  args: defaultArgs,
-
   argTypes: {
     horizontal: {
       description:
@@ -148,5 +142,7 @@ export const BasicUsage = {
 
 export const HorizontalUsage = {
   render: TemplateHorizontal,
-  args: horizontalArgs
+  args: {
+    horizontal: true
+  }
 };

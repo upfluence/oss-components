@@ -7,10 +7,18 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Pill',
+  selected: false,
+  disabled: false,
+  loading: false
+};
+
 export default {
   title: 'Components/OSS::Smart::Pill',
   component: 'pill',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'Content of the smart pill',
@@ -75,17 +83,8 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Pill',
-  selected: false,
-  disabled: false,
-  loading: false
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const IconOnly = {
-  args: { ...defaultArgs, label: undefined, icon: 'far fa-bookmark' }
+  args: { label: undefined, icon: 'far fa-bookmark' }
 };

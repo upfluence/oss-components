@@ -12,10 +12,23 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'John',
+  rows: 2,
+  maxLength: undefined,
+  resize: null,
+  disabled: false,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  hasError: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::TextArea',
   component: 'text-area',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the textarea',
@@ -131,32 +144,16 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  rows: 2,
-  maxLength: undefined,
-  resize: null,
-  disabled: false,
-  placeholder: 'this is the placeholder',
-  errorMessage: undefined,
-  hasError: false,
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const WithError = {
   args: {
-    ...defaultArgs,
     hasError: true
   }
 };
 
 export const WithErrorMessage = {
   args: {
-    ...defaultArgs,
     errorMessage: 'This field is required'
   }
 };

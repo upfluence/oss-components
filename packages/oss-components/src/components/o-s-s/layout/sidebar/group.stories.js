@@ -11,10 +11,39 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  icon: 'far fa-search',
+  label: 'Search',
+  expanded: false,
+  collapsible: true,
+  items: [
+    {
+      icon: 'far fa-search',
+      label: 'Search',
+      expanded: false,
+      hasNotifications: false,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: fn()
+    },
+    {
+      icon: 'far fa-bullseye-pointer',
+      label: 'Live Capture',
+      expanded: false,
+      hasNotifications: true,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: fn(),
+      tag: { label: '3', skin: 'danger', plain: true }
+    }
+  ]
+};
+
 export default {
   title: 'Components/OSS::Layout::Sidebar::Group',
   component: 'group',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -90,34 +119,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'far fa-search',
-  label: 'Search',
-  expanded: false,
-  collapsible: true,
-  items: [
-    {
-      icon: 'far fa-search',
-      label: 'Search',
-      expanded: false,
-      hasNotifications: false,
-      locked: false,
-      link: 'http://upfluence.com',
-      lockedAction: fn()
-    },
-    {
-      icon: 'far fa-bullseye-pointer',
-      label: 'Live Capture',
-      expanded: false,
-      hasNotifications: true,
-      locked: false,
-      link: 'http://upfluence.com',
-      lockedAction: fn(),
-      tag: { label: '3', skin: 'danger', plain: true }
-    }
-  ]
-};
-
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Group
@@ -145,20 +146,16 @@ const WithHeaderTagTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const WithNamedBlockIcon = {
-  render: IconNamedBlockTemplate,
-  args: defaultArgs
+  render: IconNamedBlockTemplate
 };
 
 export const WithHeaderTag = {
   render: WithHeaderTagTemplate,
 
   args: {
-    ...defaultArgs,
     tag: { label: '9+', skin: 'danger', plain: true }
   }
 };
@@ -167,7 +164,6 @@ export const WithHeaderTagExpanded = {
   render: WithHeaderTagTemplate,
 
   args: {
-    ...defaultArgs,
     expanded: true,
     tag: { label: '9+', skin: 'danger', plain: true }
   }

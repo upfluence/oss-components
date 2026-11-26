@@ -34,10 +34,41 @@ const PlaygroundTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  titleConfig: {
+    text: 'Very long stats banner title that should truncate with ellipsis when the available width becomes too small',
+    infoCircle: 'This is a helpful description of the stat'
+  },
+  badge: {
+    icon: 'fa-check',
+    skin: 'success',
+    extraIcon: {
+      icon: 'fa-star',
+      color: '#f59e0b'
+    }
+  },
+  statValue: {
+    label: '123,456',
+    suffix: 'Extra info',
+    tags: [
+      {
+        label: 'New',
+        skin: 'success',
+        icon: 'fa-sparkles',
+        plain: false
+      }
+    ]
+  },
+  loading: false,
+  ctaPrimaryLabel: 'CTA',
+  ctaSecondaryLabel: 'Export'
+};
+
 export default {
   title: 'Components/OSS::Stats::Banner',
   component: 'stats-banner',
   render: PlaygroundTemplate,
+  args: defaultArgs,
   argTypes: {
     titleConfig: {
       description: 'Header object: { text, infoCircle }. Optional when a "title" named block is passed instead.',
@@ -85,36 +116,6 @@ export default {
       url: 'https://www.figma.com/design/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=10473-33118&t=7S673T1Ca3SwQ2Py-4'
     }
   }
-};
-
-const defaultArgs = {
-  titleConfig: {
-    text: 'Very long stats banner title that should truncate with ellipsis when the available width becomes too small',
-    infoCircle: 'This is a helpful description of the stat'
-  },
-  badge: {
-    icon: 'fa-check',
-    skin: 'success',
-    extraIcon: {
-      icon: 'fa-star',
-      color: '#f59e0b'
-    }
-  },
-  statValue: {
-    label: '123,456',
-    suffix: 'Extra info',
-    tags: [
-      {
-        label: 'New',
-        skin: 'success',
-        icon: 'fa-sparkles',
-        plain: false
-      }
-    ]
-  },
-  loading: false,
-  ctaPrimaryLabel: 'CTA',
-  ctaSecondaryLabel: 'Export'
 };
 
 const ThreeUpTemplate = (args) => ({
@@ -274,15 +275,12 @@ const IntegrationBadgesTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const ThreeUpCompact = {
   render: ThreeUpTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: {
       text: 'Revenue',
       infoCircle: 'Revenue generated during the selected period'
@@ -303,7 +301,6 @@ export const WithDefaultCards = {
   render: DefaultTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: {
       text: 'Commissions overview',
       infoCircle: 'Summary of pending and approved commissions'
@@ -337,7 +334,6 @@ export const Loading = {
   render: LoadingTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: {
       text: 'Loading stats banner title',
       infoCircle: 'Helpful title information'
@@ -358,7 +354,6 @@ export const Minimal = {
   render: MinimalTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: {
       text: 'Active campaigns',
       infoCircle: undefined
@@ -375,7 +370,6 @@ export const WithTitleSuffixOnly = {
   render: TitleSuffixOnlyTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: {
       text: 'Paid amount',
       infoCircle: 'Compare period-over-period in the dropdown'
@@ -403,7 +397,6 @@ export const WithIntegrationBadges = {
   render: IntegrationBadgesTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: {
       text: 'Connected integrations',
       infoCircle: 'Channels currently connected to this stat card'
@@ -424,7 +417,6 @@ export const WithCustomTitleBlock = {
   render: CustomTitleTemplate,
 
   args: {
-    ...defaultArgs,
     titleConfig: undefined,
     customTitle: 'Premium members',
     badge: {

@@ -80,10 +80,18 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  sourceList: partialCountries,
+  value: undefined,
+  feedbackMessage: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::CountrySelector',
   component: 'country-selector',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     sourceList: {
       description:
@@ -143,34 +151,22 @@ export default {
   }
 };
 
-const defaultArgs = {
-  sourceList: partialCountries,
-  value: undefined,
-  feedbackMessage: undefined,
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const ProvinceUsage = {
   args: {
-    ...defaultArgs,
     sourceList: gbProvinces
   }
 };
 
 export const PrefilledUsage = {
   args: {
-    ...defaultArgs,
     value: 'FR'
   }
 };
 
 export const WithFeedbackMessage = {
   args: {
-    ...defaultArgs,
     feedbackMessage: { type: 'error', value: 'This is an error message' }
   }
 };

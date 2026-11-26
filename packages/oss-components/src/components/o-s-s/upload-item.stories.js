@@ -16,10 +16,33 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultFile = {
+  key: 'key',
+  filename: 'upfluence-blue-logo.svg',
+  url: 'https://upfluence-common.s3.amazonaws.com/pictograms/upfluence-blue-logo.svg',
+  content_type: 'svg',
+  size: '517'
+};
+
+const defaultArgs = {
+  uploader: MockUploader,
+  file: defaultFile,
+  rules: [
+    { type: 'filesize', value: '10MB' },
+    { type: 'filetype', value: ['image', 'pdf'] }
+  ],
+  privacy: 'private',
+  scope: undefined,
+  onEdition: fn(),
+  onDeletion: fn(),
+  onUploadSuccess: fn()
+};
+
 export default {
   title: 'Components/OSS::UploadItem',
   component: 'upload-item',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     uploader: {
       type: { required: true },
@@ -135,26 +158,4 @@ export default {
   }
 };
 
-const defaultFile = {
-  key: 'key',
-  filename: 'upfluence-blue-logo.svg',
-  url: 'https://upfluence-common.s3.amazonaws.com/pictograms/upfluence-blue-logo.svg',
-  content_type: 'svg',
-  size: '517'
-};
-const defaultArgs = {
-  uploader: MockUploader,
-  file: defaultFile,
-  rules: [
-    { type: 'filesize', value: '10MB' },
-    { type: 'filetype', value: ['image', 'pdf'] }
-  ],
-  privacy: 'private',
-  scope: undefined,
-  onEdition: fn(),
-  onDeletion: fn(),
-  onUploadSuccess: fn()
-};
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

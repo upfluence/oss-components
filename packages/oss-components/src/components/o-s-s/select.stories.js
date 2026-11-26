@@ -30,10 +30,36 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  items: FAKE_DATA,
+  value: FAKE_DATA[0],
+  targetLabel: 'name',
+  placeholder: undefined,
+  disabled: false,
+  hasError: false,
+  errorMessage: undefined,
+  successMessage: undefined,
+  addressableAs: undefined,
+  placeholderEllipsis: false,
+  dropdownWidth: undefined,
+  dropdownPlacementOptions: undefined,
+  skin: 'default',
+  action: {
+    skin: 'tertiary',
+    label: 'Add Hero',
+    icon: 'fa-plus',
+    onClick: fn(),
+    closeOnClick: true
+  },
+  onSearch: fn(),
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Select',
   component: 'select',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -212,31 +238,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  items: FAKE_DATA,
-  value: FAKE_DATA[0],
-  targetLabel: 'name',
-  placeholder: undefined,
-  disabled: false,
-  hasError: false,
-  errorMessage: undefined,
-  successMessage: undefined,
-  addressableAs: undefined,
-  placeholderEllipsis: false,
-  dropdownWidth: undefined,
-  dropdownPlacementOptions: undefined,
-  skin: 'default',
-  action: {
-    skin: 'tertiary',
-    label: 'Add Hero',
-    icon: 'fa-plus',
-    onClick: fn(),
-    closeOnClick: true
-  },
-  onSearch: fn(),
-  onChange: fn()
-};
-
 const SmartSkinTemplate = (args) => ({
   template: hbs`
   <div style="width: 250px">
@@ -293,21 +294,16 @@ const WithEmptyStateNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const SmartSkin = {
-  render: SmartSkinTemplate,
-  args: defaultArgs
+  render: SmartSkinTemplate
 };
 
 export const WithSelectedNamedBlock = {
-  render: WithSelectedNamedBlockTemplate,
-  args: defaultArgs
+  render: WithSelectedNamedBlockTemplate
 };
 
 export const WithEmptyStateNamedBlock = {
-  render: WithEmptyStateNamedBlockTemplate,
-  args: defaultArgs
+  render: WithEmptyStateNamedBlockTemplate
 };

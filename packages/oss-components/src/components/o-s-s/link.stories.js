@@ -7,10 +7,21 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  icon: 'far fa-link',
+  label: 'I am link',
+  transitionTo: undefined,
+  link: {
+    href: 'https://www.google.fr',
+    target: '_blank'
+  }
+};
+
 export default {
   title: 'Components/OSS::Link',
   component: 'link',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'Icon set on the left position. Font Awesome class, for example: far fa-link',
@@ -67,16 +78,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'far fa-link',
-  label: 'I am link',
-  transitionTo: undefined,
-  link: {
-    href: 'https://www.google.fr',
-    target: '_blank'
-  }
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

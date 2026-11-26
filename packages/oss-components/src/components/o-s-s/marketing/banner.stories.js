@@ -34,10 +34,20 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Welcome to Our Platform',
+  subtitle: 'Discover powerful tools to grow your business',
+  primaryGradiantColor: '--color-violet-100',
+  secondaryGradiantColor: '--color-melon-100',
+  backgroundGridDisplayed: true,
+  illustrationAlwaysVisible: false
+};
+
 export default {
   title: 'Components/OSS::Marketing::Banner',
   component: 'marketing-banner',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The main title text displayed in the banner',
@@ -115,15 +125,6 @@ export default {
       url: 'https://www.figma.com/file/N7SDuH9mvC9zTlsLN49N4L/2.0-UI-Kit-%F0%9F%92%A0?node-id=1343-6190&p=f&t=eK7N52oGFl9Y0IDC-0'
     }
   }
-};
-
-const defaultArgs = {
-  title: 'Welcome to Our Platform',
-  subtitle: 'Discover powerful tools to grow your business',
-  primaryGradiantColor: '--color-violet-100',
-  secondaryGradiantColor: '--color-melon-100',
-  backgroundGridDisplayed: true,
-  illustrationAlwaysVisible: false
 };
 
 const WithIllustrationTemplate = (args) => ({
@@ -229,15 +230,12 @@ const CompleteExampleTemplateSmallScreen = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const WithIllustration = {
   render: WithIllustrationTemplate,
 
   args: {
-    ...defaultArgs,
     title: 'Launch Your Project',
     subtitle: 'Connect with your audience and achieve your goals'
   }
@@ -247,7 +245,6 @@ export const WithActions = {
   render: WithActionsTemplate,
 
   args: {
-    ...defaultArgs,
     title: 'Ready to Get Started?',
     subtitle: 'Join thousands of users already using our platform'
   }
@@ -257,7 +254,6 @@ export const CompleteExample = {
   render: CompleteExampleTemplate,
 
   args: {
-    ...defaultArgs,
     title: 'Transform Your Workflow',
     subtitle: 'Elevate your productivity with data-driven insights',
     primaryGradiantColor: '--color-cyan-100',
@@ -269,7 +265,6 @@ export const CompleteExampleSmallScreen = {
   render: CompleteExampleTemplateSmallScreen,
 
   args: {
-    ...defaultArgs,
     title: 'Transform Your Workflow',
     subtitle: 'Elevate your productivity with data-driven insights',
     primaryGradiantColor: '--color-cyan-100',

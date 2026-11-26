@@ -13,10 +13,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  icon: 'fa-laptop-code',
+  label: 'Label',
+  active: false
+};
+
 export default {
   title: 'Components/OSS::Layout::Navbar::NavItem',
   component: 'navbar item',
   render: Template,
+  args: defaultArgs,
   parameters: {
     docs: {
       description: {
@@ -51,12 +58,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'fa-laptop-code',
-  label: 'Label',
-  active: false
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

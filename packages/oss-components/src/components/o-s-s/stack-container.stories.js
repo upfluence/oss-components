@@ -17,10 +17,19 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  direction: 'row',
+  style: 'under',
+  pxMargin: '-6px',
+  bringToFrontOnHover: false,
+  subElementClass: undefined
+};
+
 export default {
   title: 'Components/OSS::StackContainer',
   component: 'stack-container',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     direction: {
       description: 'Whether the stack is displayed in a column or row. Default is row.',
@@ -86,14 +95,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  direction: 'row',
-  style: 'under',
-  pxMargin: '-6px',
-  bringToFrontOnHover: false,
-  subElementClass: undefined
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

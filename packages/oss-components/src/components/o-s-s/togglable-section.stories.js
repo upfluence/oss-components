@@ -17,9 +17,23 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Settings',
+  subtitle: 'Subtitle string',
+  toggled: false,
+  iconUrl: '',
+  badgeIcon: 'fa-search',
+  icon: '',
+  size: undefined,
+  disabled: undefined,
+  switchable: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::TogglableSection',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'Title',
@@ -135,19 +149,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Settings',
-  subtitle: 'Subtitle string',
-  toggled: false,
-  iconUrl: '',
-  badgeIcon: 'fa-search',
-  icon: '',
-  size: undefined,
-  disabled: undefined,
-  switchable: undefined,
-  onChange: fn()
-};
-
 const WithActionsNamedBlockTemplate = (args) => ({
   template: hbs`
     <OSS::TogglableSection
@@ -179,16 +180,12 @@ const WithoutToggleTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithActionsNamedBlock = {
-  render: WithActionsNamedBlockTemplate,
-  args: defaultArgs
+  render: WithActionsNamedBlockTemplate
 };
 
 export const WithoutToggle = {
-  render: WithoutToggleTemplate,
-  args: defaultArgs
+  render: WithoutToggleTemplate
 };

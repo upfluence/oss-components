@@ -12,10 +12,22 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'John',
+  rows: 2,
+  resize: null,
+  disabled: false,
+  placeholder: 'this is the placeholder',
+  hasError: false,
+  loading: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Smart::TextArea',
   component: 'smart text-area',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the textarea',
@@ -111,17 +123,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  rows: 2,
-  resize: null,
-  disabled: false,
-  placeholder: 'this is the placeholder',
-  hasError: false,
-  loading: false,
-  onChange: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

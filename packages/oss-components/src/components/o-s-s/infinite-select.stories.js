@@ -25,10 +25,34 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  items: FAKE_DATA,
+  itemLabel: 'superhero',
+  searchEnabled: true,
+  searchPlaceholder: 'My Placeholder...',
+  loading: false,
+  loadingMore: false,
+  inline: false,
+  enableKeyboard: true,
+  skin: 'default',
+  action: {
+    skin: 'tertiary',
+    label: 'Add Hero',
+    icon: 'fa-plus',
+    onClick: fn(),
+    closeOnClick: true
+  },
+  onSelect: fn(),
+  onSearch: fn(),
+  onBottomReached: fn(),
+  didRender: fn()
+};
+
 export default {
   title: 'Components/OSS::InfiniteSelect',
   component: 'infinite-select',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -191,29 +215,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  items: FAKE_DATA,
-  itemLabel: 'superhero',
-  searchEnabled: true,
-  searchPlaceholder: 'My Placeholder...',
-  loading: false,
-  loadingMore: false,
-  inline: false,
-  enableKeyboard: true,
-  skin: 'default',
-  action: {
-    skin: 'tertiary',
-    label: 'Add Hero',
-    icon: 'fa-plus',
-    onClick: fn(),
-    closeOnClick: true
-  },
-  onSelect: fn(),
-  onSearch: fn(),
-  onBottomReached: fn(),
-  didRender: fn()
-};
-
 const OptionBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InfiniteSelect
@@ -229,25 +230,20 @@ const OptionBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithOptionBlock = {
-  render: OptionBlockTemplate,
-  args: defaultArgs
+  render: OptionBlockTemplate
 };
 
 export const EmptyState = {
   args: {
-    ...defaultArgs,
     items: []
   }
 };
 
 export const WithGroupsBlock = {
   args: {
-    ...defaultArgs,
     items: FAKE_DATA.map((item, index) => ({
       ...item,
       groupKey: index % 2 === 0 ? 'Group A' : 'Group B'

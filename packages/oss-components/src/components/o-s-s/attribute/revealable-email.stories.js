@@ -11,10 +11,17 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  tooltip: 'This is the main tooltip',
+  lockTooltip: undefined,
+  onRevealEmail: fn()
+};
+
 export default {
   title: 'Components/OSS::Attribute::RevealableEmail',
   component: 'revealable-email',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     tooltip: {
       description:
@@ -53,12 +60,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  tooltip: 'This is the main tooltip',
-  lockTooltip: undefined,
-  onRevealEmail: fn()
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

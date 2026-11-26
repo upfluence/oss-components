@@ -9,9 +9,15 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  form: 'form-instance',
+  fieldId: 'field-id'
+};
+
 export default {
   title: 'Helpers & Modifiers/Helpers/Form-Field-Feedback/Definition',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     form: {
       description: 'The name of the form from which the feedback message should be retrieved.',
@@ -42,11 +48,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  form: 'form-instance',
-  fieldId: 'field-id'
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

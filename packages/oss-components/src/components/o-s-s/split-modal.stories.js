@@ -18,10 +18,16 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  close: fn(),
+  disableClickOutside: false
+};
+
 export default {
   title: 'Components/OSS::SplitModal',
   component: 'split-modal',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     close: {
       description: 'The callback that closes the split-modal',
@@ -64,11 +70,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  close: fn(),
-  disableClickOutside: false
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};

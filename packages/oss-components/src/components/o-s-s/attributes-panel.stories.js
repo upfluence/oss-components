@@ -21,10 +21,22 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Title',
+  icon: 'fa-laptop-code',
+  isSaveDisabled: false,
+  customEditIcon: 'fa-pen',
+  initialMode: 'view',
+  onSave: fn(),
+  onCancel: fn(),
+  onEdit: fn()
+};
+
 export default {
   title: 'Components/OSS::AttributesPanel',
   component: 'attributes-panel',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The title of the panel',
@@ -117,17 +129,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Title',
-  icon: 'fa-laptop-code',
-  isSaveDisabled: false,
-  customEditIcon: 'fa-pen',
-  initialMode: 'view',
-  onSave: fn(),
-  onCancel: fn(),
-  onEdit: fn()
-};
-
 const WithContextualActionTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
@@ -149,11 +150,8 @@ const WithContextualActionTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const WithContextualAction = {
-  render: WithContextualActionTemplate,
-  args: defaultArgs
+  render: WithContextualActionTemplate
 };

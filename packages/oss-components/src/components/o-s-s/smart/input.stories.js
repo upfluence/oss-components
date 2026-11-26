@@ -16,10 +16,21 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  type: undefined,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  onChange: fn(),
+  loading: false
+};
+
 export default {
   title: 'Components/OSS::Smart::Input',
   component: 'button',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     argTypes: {
       value: {
@@ -137,16 +148,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  disabled: false,
-  type: undefined,
-  placeholder: 'this is the placeholder',
-  errorMessage: undefined,
-  onChange: fn(),
-  loading: false
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

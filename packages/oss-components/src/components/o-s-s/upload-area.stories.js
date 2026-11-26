@@ -18,10 +18,28 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  uploader: MockUploader,
+  subtitle: 'JPG, PNG, PDF (Max 800x400px - 2MB)',
+  disabled: false,
+  privacy: 'private',
+  scope: undefined,
+  rules: [
+    { type: 'filesize', value: '10MB' },
+    { type: 'filetype', value: ['image', 'pdf'] }
+  ],
+  artifact: undefined,
+  size: 'md',
+  multiple: false,
+  onUploadSuccess: fn(),
+  onFileDeletion: fn()
+};
+
 export default {
   title: 'Components/OSS::UploadArea',
   component: 'upload-area',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     uploader: {
       type: { required: true },
@@ -218,22 +236,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  uploader: MockUploader,
-  subtitle: 'JPG, PNG, PDF (Max 800x400px - 2MB)',
-  disabled: false,
-  privacy: 'private',
-  scope: undefined,
-  rules: [
-    { type: 'filesize', value: '10MB' },
-    { type: 'filetype', value: ['image', 'pdf'] }
-  ],
-  artifact: undefined,
-  size: 'md',
-  multiple: false,
-  onUploadSuccess: fn(),
-  onFileDeletion: fn()
-};
 const defaultArtifact = {
   key: 'key',
   filename: 'upfluence-blue-logo.svg',
@@ -241,27 +243,23 @@ const defaultArtifact = {
   content_type: 'svg',
   size: '517'
 };
-export const Default = {
-  args: defaultArgs
-};
+
+export const Default = {};
 
 export const WithFeedbackMessage = {
   args: {
-    ...defaultArgs,
     feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
   }
 };
 
 export const SingleWithArtifact = {
   args: {
-    ...defaultArgs,
     artifact: defaultArtifact
   }
 };
 
 export const MultipleWithArtifact = {
   args: {
-    ...defaultArgs,
     multiple: true,
     size: 'lg',
     artifact: defaultArtifact

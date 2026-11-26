@@ -15,10 +15,19 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Label',
+  active: false,
+  icon: 'fa-handshake',
+  important: false,
+  size: 'sm'
+};
+
 export default {
   title: 'Components/OSS::Tip',
   component: 'tip',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'Text content of the tip',
@@ -68,14 +77,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  active: false,
-  icon: 'fa-handshake',
-  important: false,
-  size: 'sm'
-};
-
 const CustomContentTemplate = (args) => ({
   template: hbs`
     <OSS::Tip
@@ -90,14 +91,8 @@ const CustomContentTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const CustomContent = {
-  render: CustomContentTemplate,
-
-  args: {
-    ...defaultArgs
-  }
+  render: CustomContentTemplate
 };

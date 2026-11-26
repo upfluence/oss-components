@@ -18,10 +18,21 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Modal Dialog',
+  subtitle: 'This is a subtitle',
+  size: 'sm',
+  icon: null,
+  close: fn(),
+  enqueue: undefined,
+  disableClickOutside: undefined
+};
+
 export default {
   title: 'Components/OSS::ModalDialog',
   component: 'modal-dialog',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The modal dialog title',
@@ -110,16 +121,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Modal Dialog',
-  subtitle: 'This is a subtitle',
-  size: 'sm',
-  icon: null,
-  close: fn(),
-  enqueue: undefined,
-  disableClickOutside: undefined
-};
-
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}
@@ -138,11 +139,8 @@ const WithIllustrationTemplate = (args) => ({
   context: args
 });
 
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};
 
 export const WithIlllustration = {
-  render: WithIllustrationTemplate,
-  args: defaultArgs
+  render: WithIllustrationTemplate
 };

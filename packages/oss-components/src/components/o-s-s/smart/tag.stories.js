@@ -13,10 +13,18 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Tag',
+  type: 'keyword',
+  size: 'md',
+  successAnimationOnInsertion: false
+};
+
 export default {
   title: 'Components/OSS::Smart::Tag',
   component: 'smart-tag',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'The text content of the tag.',
@@ -77,13 +85,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Tag',
-  type: 'keyword',
-  size: 'md',
-  successAnimationOnInsertion: false
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

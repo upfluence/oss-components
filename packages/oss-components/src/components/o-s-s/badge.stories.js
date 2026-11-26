@@ -23,10 +23,20 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  size: 'md',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  plain: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::Badge',
   component: 'badge',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -98,32 +108,20 @@ export default {
   }
 };
 
-const defaultArgs = {
-  size: 'md',
-  icon: undefined,
-  image: undefined,
-  text: undefined,
-  plain: false,
-  skin: undefined
-};
-
 export const WithIcon = {
   args: {
-    ...defaultArgs,
     icon: 'fas fa-volume-up'
   }
 };
 
 export const WithImage = {
   args: {
-    ...defaultArgs,
     image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
   }
 };
 
 export const WithText = {
   args: {
-    ...defaultArgs,
     text: '2x'
   }
 };

@@ -9,9 +9,24 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  avatars: [
+    { image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg', initials: 'JI' },
+    {
+      image: 'https://cdn.dribbble.com/users/485347/screenshots/2983299/8_most_influential_people_dribble-01.jpg',
+      initials: 'SF'
+    }
+  ],
+  size: 'md',
+  max: null,
+  loading: false,
+  loadingCount: null
+};
+
 export default {
   title: 'Components/OSS::AvatarGroup',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     avatars: {
       description: 'Avatars to display',
@@ -85,23 +100,8 @@ export default {
   }
 };
 
-const defaultArgs = {
-  avatars: [
-    { image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg', initials: 'JI' },
-    {
-      image: 'https://cdn.dribbble.com/users/485347/screenshots/2983299/8_most_influential_people_dribble-01.jpg',
-      initials: 'SF'
-    }
-  ],
-  size: 'md',
-  max: null,
-  loading: false,
-  loadingCount: null
-};
-
 export const Default = {
   args: {
-    ...defaultArgs,
     image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
   }
 };

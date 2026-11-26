@@ -11,10 +11,18 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'City',
+  value: 'Paris',
+  removeTooltip: undefined,
+  onRemove: fn()
+};
+
 export default {
   title: 'Components/OSS::Attribute::RemovableText',
   component: 'removable-text',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'The label of the component.',
@@ -60,13 +68,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'City',
-  value: 'Paris',
-  removeTooltip: undefined,
-  onRemove: fn()
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

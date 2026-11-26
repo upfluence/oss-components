@@ -19,9 +19,19 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Title',
+  subtitle: 'A very nice subtitle',
+  icon: 'far fa-fire',
+  placement: 'bottom',
+  triggerValue: 'hover focus',
+  displayOnlyOnOverflow: false
+};
+
 export default {
   title: 'Helpers & Modifiers/Modifiers/Tooltip/Definition',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The title value',
@@ -110,14 +120,6 @@ export default {
     }
   }
 };
-const defaultArgs = {
-  title: 'Title',
-  subtitle: 'A very nice subtitle',
-  icon: 'far fa-fire',
-  placement: 'bottom',
-  triggerValue: 'hover focus',
-  displayOnlyOnOverflow: false
-};
 
 const OverflowUsageTemplate = (args) => ({
   template: hbs`
@@ -152,16 +154,13 @@ const LineClampUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};
 
 export const OverflowUsage = {
-  render: OverflowUsageTemplate,
-  args: defaultArgs
+  render: OverflowUsageTemplate
 };
 
 export const LineClampUsage = {
   render: LineClampUsageTemplate,
-  args: { ...defaultArgs, displayOnlyOnOverflow: true, overflowDirection: 'vertical' }
+  args: { displayOnlyOnOverflow: true, overflowDirection: 'vertical' }
 };

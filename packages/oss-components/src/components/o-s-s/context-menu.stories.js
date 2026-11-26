@@ -42,10 +42,42 @@ const Template = (args) => ({
   context: args
 });
 
+const items = [
+  { title: 'Item 1', action: () => console.log('Item 1 selected') },
+  {
+    title: 'Item 2',
+    action: () => console.log('Item 2 selected'),
+    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
+  },
+  {
+    title: 'Item 3',
+    action: () => console.log('Item 3 selected')
+  }
+];
+
+const defaultArgs = {
+  items: items,
+  label: 'Open menu',
+  skin: 'default',
+  loading: false,
+  icon: 'far fa-envelope-open',
+  theme: 'light',
+  size: 'md',
+  square: false,
+  countDown: undefined,
+  loadingOptions: undefined,
+  iconUrl: undefined,
+  disabled: false,
+  closeOnMouseLeave: false,
+  onMenuOpened: fn(),
+  onMenuClosed: fn()
+};
+
 export default {
   title: 'Components/OSS::ContextMenu',
   component: 'o-s-s/context-menu',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       type: { required: true },
@@ -213,37 +245,4 @@ export default {
   }
 };
 
-const items = [
-  { title: 'Item 1', action: () => console.log('Item 1 selected') },
-  {
-    title: 'Item 2',
-    action: () => console.log('Item 2 selected'),
-    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
-  },
-  {
-    title: 'Item 3',
-    action: () => console.log('Item 3 selected')
-  }
-];
-
-const defaultArgs = {
-  items: items,
-  label: 'Open menu',
-  skin: 'default',
-  loading: false,
-  icon: 'far fa-envelope-open',
-  theme: 'light',
-  size: 'md',
-  square: false,
-  countDown: undefined,
-  loadingOptions: undefined,
-  iconUrl: undefined,
-  disabled: false,
-  closeOnMouseLeave: false,
-  onMenuOpened: fn(),
-  onMenuClosed: fn()
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

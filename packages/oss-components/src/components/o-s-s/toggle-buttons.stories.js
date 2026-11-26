@@ -10,10 +10,21 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  toggles: [
+    { value: 'categories', label: 'Categories' },
+    { value: 'products', label: 'Products' }
+  ],
+  selectedToggle: 'categories',
+  onSelection: fn(),
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::ToggleButtons',
   component: 'toggle-buttons',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     toggles: {
       type: { required: true },
@@ -71,15 +82,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  toggles: [
-    { value: 'categories', label: 'Categories' },
-    { value: 'products', label: 'Products' }
-  ],
-  selectedToggle: 'categories',
-  onSelection: fn(),
-  disabled: false
-};
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

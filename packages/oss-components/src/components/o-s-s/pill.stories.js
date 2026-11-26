@@ -7,10 +7,17 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  label: 'Pill',
+  selected: false,
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::Pill',
   component: 'pill',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'Content of the pill',
@@ -65,12 +72,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Pill',
-  selected: false,
-  disabled: false
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

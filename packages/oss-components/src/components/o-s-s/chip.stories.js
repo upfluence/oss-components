@@ -10,10 +10,19 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  skin: 'default',
+  label: 'Label',
+  disabled: false,
+  maxDisplayWidth: 0,
+  onRemove: fn()
+};
+
 export default {
   title: 'Components/OSS::Chip',
   component: 'chip',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -84,14 +93,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'default',
-  label: 'Label',
-  disabled: false,
-  maxDisplayWidth: 0,
-  onRemove: fn()
-};
-
 const WithPrefixTemplate = (args) => ({
   template: hbs`
     <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}}>
@@ -103,11 +104,8 @@ const WithPrefixTemplate = (args) => ({
   context: args
 });
 
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const UsageWithPrefix = {
-  render: WithPrefixTemplate,
-  args: defaultArgs
+  render: WithPrefixTemplate
 };

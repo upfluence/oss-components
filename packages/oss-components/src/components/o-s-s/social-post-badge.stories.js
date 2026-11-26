@@ -21,10 +21,18 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  postType: 'pin',
+  plain: false,
+  selected: false,
+  onToggle: undefined
+};
+
 export default {
   title: 'Components/OSS::SocialPostBadge',
   component: 'socialPostBadge',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     postType: {
       type: { required: true },
@@ -82,13 +90,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  postType: 'pin',
-  plain: false,
-  selected: false,
-  onToggle: undefined
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

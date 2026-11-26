@@ -21,10 +21,20 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  value: 30,
+  label: 'Hello',
+  displayValue: true,
+  coloredBackground: false,
+  secondarySkin: undefined,
+  skins: undefined
+};
+
 export default {
   title: 'Components/OSS::ProgressBar',
   component: 'progress-bar',
   render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -124,15 +134,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 30,
-  label: 'Hello',
-  displayValue: true,
-  coloredBackground: false,
-  secondarySkin: undefined,
-  skins: undefined
-};
-
-export const Usage = {
-  args: defaultArgs
-};
+export const Usage = {};

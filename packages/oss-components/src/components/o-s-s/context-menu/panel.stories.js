@@ -21,10 +21,39 @@ const Template = (args) => ({
   context: args
 });
 
+const items = [
+  { title: 'Item 1', action: () => console.log('Item 1 selected') },
+  {
+    title: 'Item 2',
+    action: () => console.log('Item 2 selected'),
+    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
+  },
+  {
+    title: 'Item 3',
+    action: () => console.log('Item 3 selected')
+  }
+];
+
+const defaultArgs = {
+  items: items,
+  offset: { mainAxis: -100, crossAxis: -100 },
+  placement: 'bottom-start',
+  onMouseLeave: fn(),
+  onClose: fn(),
+  registerPanel: fn(),
+  unregisterPanel: fn(),
+  isInitialized: false,
+  postRender(self, element) {
+    self.set('referenceTarget', element);
+    self.set('isInitialized', true);
+  }
+};
+
 export default {
   title: 'Components/OSS::ContextMenu::Panel',
   component: 'o-s-s/context-menu/panel',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       type: { required: true },
@@ -122,34 +151,4 @@ export default {
   }
 };
 
-const items = [
-  { title: 'Item 1', action: () => console.log('Item 1 selected') },
-  {
-    title: 'Item 2',
-    action: () => console.log('Item 2 selected'),
-    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
-  },
-  {
-    title: 'Item 3',
-    action: () => console.log('Item 3 selected')
-  }
-];
-
-const defaultArgs = {
-  items: items,
-  offset: { mainAxis: -100, crossAxis: -100 },
-  placement: 'bottom-start',
-  onMouseLeave: fn(),
-  onClose: fn(),
-  registerPanel: fn(),
-  unregisterPanel: fn(),
-  isInitialized: false,
-  postRender(self, element) {
-    self.set('referenceTarget', element);
-    self.set('isInitialized', true);
-  }
-};
-
-export const BasicUsage = {
-  args: defaultArgs
-};
+export const BasicUsage = {};

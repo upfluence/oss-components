@@ -7,10 +7,15 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  skin: 'primary'
+};
+
 export default {
   title: 'Components/OSS::PulsatingDot',
   component: 'PulsatingDot',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Adjust the color of the dot and the pulsating animation.',
@@ -33,10 +38,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'primary'
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

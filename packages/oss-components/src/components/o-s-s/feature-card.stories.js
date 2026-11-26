@@ -16,10 +16,22 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  title: 'Audience & content insights',
+  description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
+  image: {
+    src: '/@upfluence/oss-components/assets/images/no-image.svg',
+    alt: 'No image illustration'
+  },
+  colorVariant: 'violet',
+  shadowVariant: 'lg'
+};
+
 export default {
   title: 'Components/OSS::FeatureCard',
   component: 'feature-card',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'Card title',
@@ -80,17 +92,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Audience & content insights',
-  description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
-  image: {
-    src: '/@upfluence/oss-components/assets/images/no-image.svg',
-    alt: 'No image illustration'
-  },
-  colorVariant: 'violet',
-  shadowVariant: 'lg'
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};

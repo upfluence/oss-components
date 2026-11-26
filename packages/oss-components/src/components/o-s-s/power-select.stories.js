@@ -24,10 +24,27 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  items: FAKE_ITEMS,
+  selectedItems: FAKE_SELECTED_ITEMS,
+  loading: false,
+  loadingMore: false,
+  borderless: false,
+  placeholder: 'My placeholder',
+  searchPlaceholder: 'My search placeholder',
+  addressableAs: undefined,
+  feedbackMessage: undefined,
+  hasError: false,
+  onSearch: fn(),
+  onChange: fn(),
+  onBottomReached: fn()
+};
+
 export default {
   title: 'Components/OSS::PowerSelect',
   component: 'power-select',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       description: 'List of items to select',
@@ -174,31 +191,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  items: FAKE_ITEMS,
-  selectedItems: FAKE_SELECTED_ITEMS,
-  loading: false,
-  loadingMore: false,
-  borderless: false,
-  placeholder: 'My placeholder',
-  searchPlaceholder: 'My search placeholder',
-  addressableAs: undefined,
-  feedbackMessage: undefined,
-  hasError: false,
-  onSearch: fn(),
-  onChange: fn(),
-  onBottomReached: fn()
-};
-
-export const Default = {
-  args: {
-    ...defaultArgs
-  }
-};
+export const Default = {};
 
 export const WithoutSelectedItem = {
   args: {
-    ...defaultArgs,
     selectedItems: []
   }
 };

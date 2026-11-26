@@ -12,10 +12,23 @@ const Template = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  skin: 'primary',
+  size: 'md',
+  loading: false,
+  label: 'Label',
+  icon: 'far fa-envelope-open',
+  circle: false,
+  loadingOptions: undefined,
+  iconUrl: undefined,
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::Smart::Button',
   component: 'button',
   render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -123,25 +136,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'primary',
-  size: 'md',
-  loading: false,
-  label: 'Label',
-  icon: 'far fa-envelope-open',
-  circle: false,
-  loadingOptions: undefined,
-  iconUrl: undefined,
-  disabled: false
-};
-
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithIconUrl = {
   args: {
-    ...defaultArgs,
     icon: undefined,
     iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }

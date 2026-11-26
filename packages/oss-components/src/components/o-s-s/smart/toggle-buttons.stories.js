@@ -10,10 +10,21 @@ const DefaultUsageTemplate = (args) => ({
   context: args
 });
 
+const defaultArgs = {
+  toggles: [
+    { value: 'categories', label: 'Categories' },
+    { value: 'products', label: 'Products' }
+  ],
+  selectedToggle: 'categories',
+  onSelection: fn(),
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::Smart::ToggleButtons',
   component: 'smart toggle-buttons',
   render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     toggles: {
       type: { required: true },
@@ -71,22 +82,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  toggles: [
-    { value: 'categories', label: 'Categories' },
-    { value: 'products', label: 'Products' }
-  ],
-  selectedToggle: 'categories',
-  onSelection: fn(),
-  disabled: false
-};
-export const Default = {
-  args: defaultArgs
-};
+export const Default = {};
 
 export const WithImage = {
   args: {
-    ...defaultArgs,
     toggles: [
       { value: 'categories', label: 'Categories', icon: 'fas fa-tags' },
       { value: 'products', label: 'Products', image: '/@upfluence/oss-components/assets/images/no-image.svg' }
