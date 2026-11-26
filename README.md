@@ -84,6 +84,10 @@ FontAwesome is owned by the consuming app: install your licensed FontAwesome pac
 
 Follow [Consumer-owned asset maps](docs/asset-map.md). The consuming app explicitly calls `injectAssetMap` from `@upfluence/oss-components/build/classic-asset-map.cjs` (classic builds) or adds the `assetMap` plugin from `@upfluence/oss-components/build/vite-asset-map.mjs` (Vite builds); addon hooks do not activate either. Remove competing ember-cli-ifa registrations when adopting this adapter.
 
+## Patterns
+
+Patterns attach a UX behavior to an existing action, such as asking for confirmation before running it. Import them from `@upfluence/oss-components/patterns/...` and see the [Patterns docs in Storybook](https://storybook.upfluence.co/?path=/docs/patterns-confirmation--docs) (source in [`packages/test-app/stories/patterns`](packages/test-app/stories/patterns)).
+
 ## Development
 
 This is a pnpm workspace with the published addon in `packages/oss-components` and its demo, tests, and Storybook in `packages/test-app`.

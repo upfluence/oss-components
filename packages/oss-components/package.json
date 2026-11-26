@@ -176,6 +176,10 @@
       "types": "./declarations/types.d.ts",
       "default": "./dist/types.js"
     },
+    "./patterns/*": {
+      "types": "./declarations/patterns/*.d.ts",
+      "default": "./dist/patterns/*.js"
+    },
     "./utils/*": {
       "types": "./declarations/utils/*.d.ts",
       "default": "./dist/utils/*.js"

@@ -1,0 +1,102 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Patterns/Confirmation"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Confirmation
+
+Patterns attach a UX behavior to an existing action. Import them from `@upfluence/oss-components/patterns/...`.
+
+`@confirmable` asks for confirmation before running a method. It renders an `OSS::Dialog`, calls the method on confirm, and keeps the confirm button loading until the promise it returns settles. `confirm(context, options)` is the imperative form.
+
+## Usage
+
+```ts
+import { action } from '@ember/object';
+import { confirmable } from '@upfluence/oss-components/patterns/confirmation';
+
+export default class ListActions extends Component<ListActionsSignature> {
+  @action
+  @confirmable<ListActions>({
+    baseTranslationKey: 'lists.delete_confirmation',
+    when: (self) => self.args.list.itemsCount > 0
+  })
+  deleteList(): Promise<void> {
+    return this.args.list.destroyRecord();
+  }
+}
+```
+
+```yaml
+lists:
+  delete_confirmation:
+    title: Delete this list?
+    subtitle: It can't be undone.
+    confirm: Delete
+    cancel: Cancel
+```
+
+## Options
+
+| Option                                             | Description                                                                                                                                                                                                                        |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `baseTranslationKey`                               | Reads the `title`, `subtitle`, `confirm` and `cancel` keys under it, as plain text. All four are required: a missing one fails an assertion when the dialog opens.                                                                 |
+| `title`, `subtitle`, `confirmLabel`, `cancelLabel` | A string, an `intl.t(key, { htmlSafe: true })` result, or a `(self, ...args) =>` function that returns one. Overrides its translation key. Without a `baseTranslationKey`, `title`, `confirmLabel` and `cancelLabel` are required. |
+| `when`                                             | `(self, ...args) => boolean`. When it returns `false`, the method runs right away, without a dialog.                                                                                                                               |
+| `skin`                                             | Passed to `OSS::Dialog`: `alert` (default), `primary` or `error`.                                                                                                                                                                  |
+| `icon`                                             | Passed to `OSS::Dialog`. Defaults to `fa-warning`.                                                                                                                                                                                 |
+
+`self` is the decorated instance and `args` the method's arguments, both typed through the generics. A text that needs a value or markup comes from a function, here with an `htmlSafe` translation (OSS sanitizes those):
+
+```ts
+@action
+@confirmable<ListActions, [List]>({
+  baseTranslationKey: 'lists.delete_confirmation',
+  title: (self, list) => self.intl.t('lists.delete_named', { htmlSafe: true, name: list.name })
+})
+deleteList(list: List): Promise<void> {
+  return list.destroyRecord();
+}
+```
+
+## Rules
+
+- Put `@action` above `@confirmable`. The other way around fails an assertion.
+- Return the method's promise so the dialog waits for it, showing the primary
+  action in loading state in the meantime. Cancel is ignored while it runs. An error closes the dialog and is rethrown to the caller.
+
+## Imperative form
+
+`confirm(context, options)` takes the same options as strings, plus `onConfirm`. It resolves to `true` once `onConfirm` has settled, and to `false` when cancelled. The context must have an owner: a component, controller, route or service.
+
+```ts
+import { confirm } from '@upfluence/oss-components/patterns/confirmation';
+
+async archiveSelection(): Promise<void> {
+  const archived = await confirm(this, {
+    baseTranslationKey: 'lists.archive_confirmation',
+    onConfirm: () => this.lists.archive(this.selection)
+  });
+
+  if (archived) this.selection = [];
+}
+```
+
+## Testing
+
+In tests, the dialog renders inside `#ember-testing`, so the usual test helpers find it:
+
+```ts
+await click('[data-control-name="delete-list"]');
+assert.dom('[data-control-name="confirmable-dialog"]').exists();
+
+await click('[data-control-name="dialog-primary-action-button"]');
+assert.true(this.destroyRecordStub.calledOnce);
+```
+
+Cancel is `[data-control-name="dialog-secondary-action-button"]`.
