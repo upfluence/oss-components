@@ -70,7 +70,7 @@ interface OSSInfiniteSelectOptionComponentSignature {
     suffix: [];
   };
 
-  Element: HTMLDivElement;
+  Element: HTMLElement;
 }
 
 export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfiniteSelectOptionComponentSignature> {
