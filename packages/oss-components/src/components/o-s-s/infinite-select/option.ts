@@ -18,7 +18,7 @@ type IconSpec = OSSIconArgs & {
 
 interface OSSInfiniteSelectOptionComponentSignature {
   Args: {
-    /** Optional avatar displayed before the title. Object with properties: image, initials, size, loading, skin */
+    /** Optional avatar displayed before the title. Object with properties: image, initials, size, loading */
     prefixAvatar?: OSSAvatarArgs;
     /** Optional badge displayed before the title. Object with properties: icon, image, text, skin, plain, size */
     prefixBadge?: OSSBadgeArgs;
