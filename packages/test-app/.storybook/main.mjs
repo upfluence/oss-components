@@ -53,8 +53,8 @@ export default {
 
   stories: [
     '../stories/**/*.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
-    '../../oss-components/src/**/*.stories.@(js|jsx|ts|tsx|gjs|gts)'
+    '../stories/**/*.stories.@(js|ts)',
+    '../../oss-components/src/**/*.stories.@(js|ts|gjs|gts)'
   ],
 
   addons: [
