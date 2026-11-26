@@ -1,15 +1,16 @@
 import { find, render, setupOnerror, waitFor, waitUntil } from '@ember/test-helpers';
 
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
 import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
 
-import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
-
 module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, 'en-us');
 
   module('Default behavior', function () {
     test('it displays the image when it is provided', async function (assert) {
@@ -55,6 +56,48 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       this.set('updatedImage', '/assets/images/brand-icon.svg');
       assert.dom('.upf-avatar span').doesNotExist();
       assert.dom('.upf-avatar img').hasAttribute('src', '/assets/images/brand-icon.svg');
+    });
+  });
+
+  module('Badge', function () {
+    test('it does not display the badge when @badge is not provided', async function (assert) {
+      await render(hbs`<OSS::Avatar />`);
+
+      assert.dom('.upf-avatar .upf-avatar__badge').doesNotExist();
+    });
+
+    test('it displays an OSS::Badge with the provided arguments', async function (assert) {
+      this.badge = { icon: 'fab fa-instagram', skin: 'primary', plain: true };
+      await render(hbs`<OSS::Avatar @badge={{this.badge}} />`);
+
+      assert
+        .dom('.upf-avatar .upf-avatar__badge')
+        .hasClass('upf-badge')
+        .hasClass('upf-badge--primary')
+        .hasClass('upf-badge--size-sm')
+        .hasClass('upf-badge--plain');
+      assert.dom('.upf-avatar__badge i').hasClass('fab').hasClass('fa-instagram');
+    });
+
+    test('it always displays the badge with the sm size', async function (assert) {
+      this.badge = { text: '2', size: 'lg' };
+      await render(hbs`<OSS::Avatar @badge={{this.badge}} />`);
+
+      assert.dom('.upf-avatar__badge').hasClass('upf-badge--size-sm').hasNoClass('upf-badge--size-lg');
+    });
+
+    test('it displays an OSS::Badge with an image', async function (assert) {
+      this.badge = { image: '/assets/images/brand-icon.svg' };
+      await render(hbs`<OSS::Avatar @badge={{this.badge}} />`);
+
+      assert.dom('.upf-avatar__badge img').hasAttribute('src', '/assets/images/brand-icon.svg');
+    });
+
+    test('it does not display the badge while loading', async function (assert) {
+      this.badge = { text: '2' };
+      await render(hbs`<OSS::Avatar @badge={{this.badge}} @loading={{true}} />`);
+
+      assert.dom('.upf-avatar .upf-avatar__badge').doesNotExist();
     });
   });
 

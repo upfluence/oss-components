@@ -62,6 +62,19 @@ export default {
       options: [undefined, ...SkinType],
       control: { type: 'select' }
     },
+    badge: {
+      description:
+        'Arguments of an OSS::Badge (icon, image, text, skin, plain) displayed on the bottom-right corner of the avatar',
+      table: {
+        type: {
+          summary: "Partial<Omit<OSSBadgeArgs, 'size'>>"
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'object'
+      }
+    },
     loading: {
       description: 'Display loading state',
       table: {
@@ -92,12 +105,13 @@ const defaultArgs = {
   image: undefined,
   initials: undefined,
   loading: false,
-  skin: undefined
+  skin: undefined,
+  badge: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} @skin={{this.skin}}/>
+    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} @skin={{this.skin}} @badge={{this.badge}} />
   `,
   context: args
 });
@@ -116,3 +130,12 @@ WithInitials.args = {
 
 export const WithoutParam = Template.bind({});
 WithoutParam.args = defaultArgs;
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  ...defaultArgs,
+  ...{
+    image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg',
+    badge: { icon: 'fab fa-instagram', skin: 'xtd-violet', plain: true }
+  }
+};
