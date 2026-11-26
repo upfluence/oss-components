@@ -323,6 +323,7 @@
       "./components/o-s-s/tag.js": "./dist/_app_/components/o-s-s/tag.js",
       "./components/o-s-s/text-area.js": "./dist/_app_/components/o-s-s/text-area.js",
       "./components/o-s-s/tip.js": "./dist/_app_/components/o-s-s/tip.js",
+      "./components/o-s-s/toast.js": "./dist/_app_/components/o-s-s/toast.js",
       "./components/o-s-s/togglable-section.js": "./dist/_app_/components/o-s-s/togglable-section.js",
       "./components/o-s-s/toggle-buttons.js": "./dist/_app_/components/o-s-s/toggle-buttons.js",
       "./components/o-s-s/toggle-switch.js": "./dist/_app_/components/o-s-s/toggle-switch.js",

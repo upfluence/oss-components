@@ -1,0 +1,45 @@
+{{! template-lint-disable no-invalid-interactive }}
+<div
+  class="toast toast--visible toast--{{@type}}"
+  {{did-insert this.registerElement}}
+  {{on "click" this.onToastClick}}
+  {{on "mouseenter" this.pauseCounter}}
+  {{on "mouseleave" this.resumeCounter}}
+  ...attributes
+>
+  <div class="counter" {{did-insert this.startCounter}}></div>
+  <div class="main-container">
+    {{#if this.badge}}
+      <OSS::Badge @icon={{this.badge.icon}} @image={{this.badge.image}} @text={{this.badge.text}} />
+    {{else}}
+      <span class="icon">
+        <OSS::Icon @icon={{this.iconClass}} />
+      </span>
+    {{/if}}
+    <div class="text-container">
+      {{#if @title}}
+        <span class="title">{{@title}}</span>
+      {{/if}}
+      {{#if @subtitle}}
+        <span class="subtitle">{{@subtitle}}</span>
+      {{/if}}
+      {{#if @link}}
+        <OSS::Link
+          @label={{@link.label}}
+          @icon={{@link.icon}}
+          @link={{@link.link}}
+          @transitionTo={{@link.transitionTo}}
+          {{on "click" this.onLinkClick}}
+        />
+      {{/if}}
+    </div>
+    <OSS::Button
+      class="toast-close-button"
+      @size="sm"
+      @icon="fa-times"
+      @square={{true}}
+      {{on "click" this.close}}
+      data-control-name="toast-close-button"
+    />
+  </div>
+</div>
