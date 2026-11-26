@@ -19,7 +19,7 @@ module('Integration | Component | o-s-s/smart/blob', function (hooks) {
 
     const images = this.element.querySelectorAll('img');
     const inactiveImg = Array.from(images).find((img: Element) =>
-      img.getAttribute('src')?.includes('smart-blob-inactive.gif')
+      img.getAttribute('src')?.includes('smart-blob-inactive')
     ) as HTMLImageElement;
 
     assert.ok(inactiveImg, 'Found the inactive GIF');
@@ -32,7 +32,7 @@ module('Integration | Component | o-s-s/smart/blob', function (hooks) {
 
     const images = this.element.querySelectorAll('img');
     const active = Array.from(images).find((img: Element) =>
-      img.getAttribute('src')?.includes('smart-blob-loading.gif')
+      img.getAttribute('src')?.includes('smart-blob-loading')
     ) as HTMLImageElement;
 
     assert.ok(active, 'Found the active GIF');

@@ -5,6 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
 import { SizeDefinition, AvatarSkins, DEFAULT_IMAGE_URL } from '@upfluence/oss-components/components/o-s-s/avatar';
+import type AssetMapService from '@upfluence/oss-components/services/asset-map';
 
 import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
 
@@ -31,9 +32,10 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     test('it displays the default image when initials and image are not provided', async function (assert) {
       await render(hbs`<OSS::Avatar />`);
 
+      const assetMap = this.owner.lookup('service:asset-map') as AssetMapService;
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
-      assert.dom('.upf-avatar img').hasAttribute('src', DEFAULT_IMAGE_URL);
+      assert.dom('.upf-avatar img').hasAttribute('src', assetMap.resolve(DEFAULT_IMAGE_URL));
     });
 
     test('it displays the image when image and initials are provided', async function (assert) {
@@ -137,14 +139,15 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the placeholder image when the image provided in parameters fails to load', async function (assert) {
+      const defaultImage = (this.owner.lookup('service:asset-map') as AssetMapService).resolve(DEFAULT_IMAGE_URL);
       await render(hbs`<OSS::Avatar @image="/@upfluence/oss-components/assets/images/fail.svg" />`);
       await waitUntil(function () {
-        return find('.upf-avatar img')?.getAttribute('src') === DEFAULT_IMAGE_URL;
+        return find('.upf-avatar img')?.getAttribute('src') === defaultImage;
       });
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
-      assert.dom('.upf-avatar img').hasAttribute('src', DEFAULT_IMAGE_URL);
+      assert.dom('.upf-avatar img').hasAttribute('src', defaultImage);
     });
   });
 });

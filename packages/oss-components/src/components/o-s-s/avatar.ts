@@ -1,7 +1,10 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+
+import type AssetMapService from '../../services/asset-map';
 
 type SizeDefType = { [key in SizeType]: string };
 export type SizeType = 'xs' | 'sm' | 'md' | 'lg';
@@ -36,18 +39,23 @@ export interface OSSAvatarArgs {
 export const DEFAULT_IMAGE_URL: string = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';
 
 export default class OSSAvatar extends Component<OSSAvatarArgs> {
+  @service('asset-map') declare assetMap: AssetMapService;
   @tracked hasError: boolean = false;
 
   get displayInitials(): boolean {
     return (!this.args.image || this.hasError) && !!this.args.initials;
   }
 
+  get defaultImage(): string {
+    return this.assetMap.resolve(DEFAULT_IMAGE_URL);
+  }
+
   get image(): string | undefined {
-    return this.args.image ?? DEFAULT_IMAGE_URL;
+    return this.args.image ?? this.defaultImage;
   }
 
   get imageClass(): string {
-    return this.image === DEFAULT_IMAGE_URL || this.hasError ? 'default-img-placeholder' : '';
+    return this.image === this.defaultImage || this.hasError ? 'default-img-placeholder' : '';
   }
 
   get computedClass(): string {
@@ -77,7 +85,8 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
 
   @action
   imageLoadError(event: Event): void {
-    (<HTMLImageElement>event.target).src = DEFAULT_IMAGE_URL;
+    if (this.isDestroying || this.isDestroyed) return;
+    (<HTMLImageElement>event.target).src = this.defaultImage;
     this.hasError = true;
   }
 }

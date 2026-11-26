@@ -5,6 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 
+import type AssetMapService from '@upfluence/oss-components/services/asset-map';
 import { LOGO_COLORS, LOGO_ICONS } from '@upfluence/oss-components/utils/logo-config';
 
 import { renderExpectingError } from 'test-app/tests/helpers/render-expecting-error';
@@ -190,8 +191,11 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @onEdit={{this.onEdit}}
     />`);
 
+    const assetMap = this.owner.lookup('service:asset-map') as AssetMapService;
     assert.dom('.smart-logo-image').exists('Fallback image container is rendered');
-    assert.dom('.smart-logo-image').hasAttribute('src', '/@upfluence/oss-components/assets/images/picture-frame.svg');
+    assert
+      .dom('.smart-logo-image')
+      .hasAttribute('src', assetMap.resolve('/@upfluence/oss-components/assets/images/picture-frame.svg'));
   });
 
   module('@size', () => {
