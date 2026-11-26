@@ -22,9 +22,62 @@ const SkinTypes = [
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
 
+const Template = (args) => ({
+  template: hbs`<OSS::ContextMenu @items={{this.items}}
+                                  @label={{this.label}} 
+                                  @skin={{this.skin}} 
+                                  @loading={{this.loading}}
+                                  @icon={{this.icon}}
+                                  @theme={{this.theme}}
+                                  @square={{this.square}}
+                                  @countDown={{this.countDown}}
+                                  @loadingOptions={{this.loadingOptions}}
+                                  @iconUrl={{this.iconUrl}}
+                                  @size={{this.size}}
+                                  disabled={{this.disabled}}
+                                  @closeOnMouseLeave={{this.closeOnMouseLeave}}
+                                  @onMenuOpened={{this.onMenuOpened}}
+                                  @onMenuClosed={{this.onMenuClosed}}
+                                  />`,
+  context: args
+});
+
+const items = [
+  { title: 'Item 1', action: () => console.log('Item 1 selected') },
+  {
+    title: 'Item 2',
+    action: () => console.log('Item 2 selected'),
+    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
+  },
+  {
+    title: 'Item 3',
+    action: () => console.log('Item 3 selected')
+  }
+];
+
+const defaultArgs = {
+  items: items,
+  label: 'Open menu',
+  skin: 'default',
+  loading: false,
+  icon: 'far fa-envelope-open',
+  theme: 'light',
+  size: 'md',
+  square: false,
+  countDown: undefined,
+  loadingOptions: undefined,
+  iconUrl: undefined,
+  disabled: false,
+  closeOnMouseLeave: false,
+  onMenuOpened: fn(),
+  onMenuClosed: fn()
+};
+
 export default {
   title: 'Components/OSS::ContextMenu',
   component: 'o-s-s/context-menu',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       type: { required: true },
@@ -192,56 +245,4 @@ export default {
   }
 };
 
-const items = [
-  { title: 'Item 1', action: () => console.log('Item 1 selected') },
-  {
-    title: 'Item 2',
-    action: () => console.log('Item 2 selected'),
-    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
-  },
-  {
-    title: 'Item 3',
-    action: () => console.log('Item 3 selected')
-  }
-];
-
-const defaultArgs = {
-  items: items,
-  label: 'Open menu',
-  skin: 'default',
-  loading: false,
-  icon: 'far fa-envelope-open',
-  theme: 'light',
-  size: 'md',
-  square: false,
-  countDown: undefined,
-  loadingOptions: undefined,
-  iconUrl: undefined,
-  disabled: false,
-  closeOnMouseLeave: false,
-  onMenuOpened: fn(),
-  onMenuClosed: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`<OSS::ContextMenu @items={{this.items}}
-                                  @label={{this.label}} 
-                                  @skin={{this.skin}} 
-                                  @loading={{this.loading}}
-                                  @icon={{this.icon}}
-                                  @theme={{this.theme}}
-                                  @square={{this.square}}
-                                  @countDown={{this.countDown}}
-                                  @loadingOptions={{this.loadingOptions}}
-                                  @iconUrl={{this.iconUrl}}
-                                  @size={{this.size}}
-                                  disabled={{this.disabled}}
-                                  @closeOnMouseLeave={{this.closeOnMouseLeave}}
-                                  @onMenuOpened={{this.onMenuOpened}}
-                                  @onMenuClosed={{this.onMenuClosed}}
-                                  />`,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

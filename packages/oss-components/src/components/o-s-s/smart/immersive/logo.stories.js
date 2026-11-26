@@ -3,9 +3,44 @@ import { fn } from 'storybook/test';
 
 import { LOGO_COLORS, LOGO_ICONS } from '@upfluence/oss-components/utils/logo-config';
 
+const Template = ({ iconName, iconColor, ...rest }) => {
+  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+
+  return {
+    template: hbs`
+        <OSS::Smart::Immersive::Logo
+          @icon={{this.icon}}
+          @url={{this.url}}
+          @editable={{this.editable}}
+          @loading={{this.loading}}
+          @size={{this.size}}
+          @hasError={{this.hasError}}
+          @onEdit={{this.onEdit}}
+        />
+    `,
+    context: {
+      ...rest,
+      icon
+    }
+  };
+};
+
+const defaultArgs = {
+  iconName: 'rabbit',
+  iconColor: 'orange',
+  url: undefined,
+  editable: false,
+  loading: false,
+  size: 'md',
+  hasError: false,
+  onEdit: fn()
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Logo',
   component: 'oss-smart-immersive-logo',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       name: 'Icon',
@@ -94,60 +129,28 @@ export default {
   }
 };
 
-const Template = ({ iconName, iconColor, ...rest }) => {
-  const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+export const Default = {};
 
-  return {
-    template: hbs`
-        <OSS::Smart::Immersive::Logo
-          @icon={{this.icon}}
-          @url={{this.url}}
-          @editable={{this.editable}}
-          @loading={{this.loading}}
-          @size={{this.size}}
-          @hasError={{this.hasError}}
-          @onEdit={{this.onEdit}}
-        />
-    `,
-    context: {
-      ...rest,
-      icon
-    }
-  };
+export const Editable = {
+  args: {
+    editable: true
+  }
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  iconName: 'rabbit',
-  iconColor: 'orange',
-  url: undefined,
-  editable: false,
-  loading: false,
-  size: 'md',
-  hasError: false,
-  onEdit: fn()
+export const ImageMode = {
+  args: {
+    url: 'https://example.com/logo.png'
+  }
 };
 
-export const Editable = Template.bind({});
-Editable.args = {
-  ...Default.args,
-  editable: true
+export const LoadingState = {
+  args: {
+    loading: true
+  }
 };
 
-export const ImageMode = Template.bind({});
-ImageMode.args = {
-  ...Default.args,
-  url: 'https://example.com/logo.png'
-};
-
-export const LoadingState = Template.bind({});
-LoadingState.args = {
-  ...Default.args,
-  loading: true
-};
-
-export const OversizeState = Template.bind({});
-OversizeState.args = {
-  ...Default.args,
-  oversize: true
+export const OversizeState = {
+  args: {
+    oversize: true
+  }
 };

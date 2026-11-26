@@ -1,9 +1,26 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div class="fx-row fx-xalign-center background-color-white" style={{"width: 480px; padding: 18px 24px;"}}>
+      <OSS::SidePanel::Header @title={{this.title}} @onClose={{this.onClose}} @onReturn={{this.onReturn}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Side panel header title',
+  onClose: fn(),
+  onReturn: fn()
+};
+
 export default {
   title: 'Components/OSS::SidePanel::Header',
   component: 'header',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The side panel header title',
@@ -43,21 +60,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Side panel header title',
-  onClose: fn(),
-  onReturn: fn()
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div class="fx-row fx-xalign-center background-color-white" style={{"width: 480px; padding: 18px 24px;"}}>
-      <OSS::SidePanel::Header @title={{this.title}} @onClose={{this.onClose}} @onReturn={{this.onReturn}} />
-    </div>
-  `,
-  context: args
-});
-
-export const Usage = BasicUsageTemplate.bind({});
-
-Usage.args = defaultArgs;
+export const Usage = {};

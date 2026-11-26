@@ -3,9 +3,35 @@ import { hbs } from 'ember-cli-htmlbars';
 const ColorVariants = ['blue', 'violet', 'yellow'];
 const ShadowVariants = ['sm', 'lg'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::FeatureCard
+      @title={{this.title}}
+      @description={{this.description}}
+      @image={{this.image}}
+      @colorVariant={{this.colorVariant}}
+      @shadowVariant={{this.shadowVariant}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Audience & content insights',
+  description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
+  image: {
+    src: '/@upfluence/oss-components/assets/images/no-image.svg',
+    alt: 'No image illustration'
+  },
+  colorVariant: 'violet',
+  shadowVariant: 'lg'
+};
+
 export default {
   title: 'Components/OSS::FeatureCard',
   component: 'feature-card',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'Card title',
@@ -66,29 +92,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Audience & content insights',
-  description: 'Pull demographics and media performance into your BI to target smarter and report faster.',
-  image: {
-    src: '/@upfluence/oss-components/assets/images/no-image.svg',
-    alt: 'No image illustration'
-  },
-  colorVariant: 'violet',
-  shadowVariant: 'lg'
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::FeatureCard
-      @title={{this.title}}
-      @description={{this.description}}
-      @image={{this.image}}
-      @colorVariant={{this.colorVariant}}
-      @shadowVariant={{this.shadowVariant}}
-    />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

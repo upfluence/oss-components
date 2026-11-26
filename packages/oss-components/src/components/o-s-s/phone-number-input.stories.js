@@ -1,9 +1,27 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}}
+                             @validates={{this.validates}} @placeholder={{this.placeholder}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  prefix: '+33',
+  number: '742424242',
+  placeholder: '(415) 000 0000',
+  onChange: fn(),
+  validates: fn()
+};
+
 export default {
   title: 'Components/OSS::PhoneNumberInput',
   component: 'phone-number-input',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     prefix: {
       description: 'Country code phone number prefix',
@@ -77,21 +95,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  prefix: '+33',
-  number: '742424242',
-  placeholder: '(415) 000 0000',
-  onChange: fn(),
-  validates: fn()
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}}
-                             @validates={{this.validates}} @placeholder={{this.placeholder}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

@@ -1,9 +1,24 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::ToggleSwitch @value={{this.value}} @disabled={{this.disabled}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: false,
+  disabled: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::ToggleSwitch',
   component: 'toggle-switch',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -50,17 +65,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: false,
-  disabled: false,
-  onChange: fn()
-};
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::ToggleSwitch @value={{this.value}} @disabled={{this.disabled}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

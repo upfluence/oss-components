@@ -1,8 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="display: flex; justify-content: center; overflow-x: auto; min-inline-size: 950px;">
+      <OSS::FeatureCardsContainer @cards={{this.cards}} />
+    </div>
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::FeatureCardsContainer',
   component: 'feature-cards-container',
+  render: Template,
   argTypes: {
     cards: {
       description:
@@ -80,23 +90,18 @@ const oneCardArgs = {
   cards: threeCardsArgs.cards.slice(0, 1)
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="display: flex; justify-content: center; overflow-x: auto; min-inline-size: 950px;">
-      <OSS::FeatureCardsContainer @cards={{this.cards}} />
-    </div>
-  `,
-  context: args
-});
+export const ThreeCards = {
+  args: threeCardsArgs
+};
 
-export const ThreeCards = Template.bind({});
-ThreeCards.args = threeCardsArgs;
+export const ThreeCardsWithContainerDefaults = {
+  args: threeCardsWithDefaultsArgs
+};
 
-export const ThreeCardsWithContainerDefaults = Template.bind({});
-ThreeCardsWithContainerDefaults.args = threeCardsWithDefaultsArgs;
+export const TwoCards = {
+  args: twoCardsArgs
+};
 
-export const TwoCards = Template.bind({});
-TwoCards.args = twoCardsArgs;
-
-export const OneCard = Template.bind({});
-OneCard.args = oneCardArgs;
+export const OneCard = {
+  args: oneCardArgs
+};

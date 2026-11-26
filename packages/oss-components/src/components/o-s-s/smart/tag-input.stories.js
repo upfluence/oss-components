@@ -1,8 +1,29 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Smart::TagInput
+      @value={{this.value}}
+      @loading={{this.loading}}
+      @hasError={{this.hasError}}
+      @onKeydown={{this.onKeydown}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'Keyword',
+  loading: false,
+  hasError: false,
+  placeholder: 'Type a keyword, mention, or hashtag'
+};
+
 export default {
   title: 'Components/OSS::Smart::TagInput',
   component: 'smart-tag-input',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'The current value of the input field.',
@@ -70,24 +91,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'Keyword',
-  loading: false,
-  hasError: false,
-  placeholder: 'Type a keyword, mention, or hashtag'
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Smart::TagInput
-      @value={{this.value}}
-      @loading={{this.loading}}
-      @hasError={{this.hasError}}
-      @onKeydown={{this.onKeydown}}
-    />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

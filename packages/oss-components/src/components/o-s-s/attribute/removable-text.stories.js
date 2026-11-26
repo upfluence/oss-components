@@ -1,9 +1,28 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="padding: 12px; background: white">
+      <OSS::Attribute::RemovableText @label={{this.label}} @value={{this.value}}
+                                    @removeTooltip={{this.lockTooltip}} @onRemove={{this.onRemove}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  label: 'City',
+  value: 'Paris',
+  removeTooltip: undefined,
+  onRemove: fn()
+};
+
 export default {
   title: 'Components/OSS::Attribute::RemovableText',
   component: 'removable-text',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'The label of the component.',
@@ -49,22 +68,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'City',
-  value: 'Paris',
-  removeTooltip: undefined,
-  onRemove: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="padding: 12px; background: white">
-      <OSS::Attribute::RemovableText @label={{this.label}} @value={{this.value}}
-                                    @removeTooltip={{this.lockTooltip}} @onRemove={{this.onRemove}} />
-    </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

@@ -3,9 +3,32 @@ import { fn } from 'storybook/test';
 
 const ResizeTypes = ['horizontal', 'vertical', 'none', null];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+                     @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
+                     @resize={{this.resize}} @maxLength={{this.maxLength}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'John',
+  rows: 2,
+  maxLength: undefined,
+  resize: null,
+  disabled: false,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  hasError: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::TextArea',
   component: 'text-area',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the textarea',
@@ -121,38 +144,16 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  rows: 2,
-  maxLength: undefined,
-  resize: null,
-  disabled: false,
-  placeholder: 'this is the placeholder',
-  errorMessage: undefined,
-  hasError: false,
-  onChange: fn()
+export const BasicUsage = {};
+
+export const WithError = {
+  args: {
+    hasError: true
+  }
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                     @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
-                     @resize={{this.resize}} @maxLength={{this.maxLength}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
-
-export const WithError = DefaultUsageTemplate.bind({});
-WithError.args = {
-  ...defaultArgs,
-  hasError: true
-};
-
-export const WithErrorMessage = DefaultUsageTemplate.bind({});
-WithErrorMessage.args = {
-  ...defaultArgs,
-  errorMessage: 'This field is required'
+export const WithErrorMessage = {
+  args: {
+    errorMessage: 'This field is required'
+  }
 };

@@ -6,9 +6,40 @@ import MockUploader from '../../test-support/services/uploader';
 const PrivacyTypes = ['public', 'private'];
 const SizeTypes = ['md', 'lg'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="padding: 24px; background-color: white">
+        <OSS::UploadArea @uploader={{this.uploader}} @subtitle={{this.subtitle}} @disabled={{this.disabled}}
+                         @privacy={{this.privacy}} @scope={{this.scope}} @rules={{this.rules}} @artifact={{this.artifact}}
+                         @size={{this.size}} @multiple={{this.multiple}} @feedbackMessage={{this.feedbackMessage}}
+                         @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  uploader: MockUploader,
+  subtitle: 'JPG, PNG, PDF (Max 800x400px - 2MB)',
+  disabled: false,
+  privacy: 'private',
+  scope: undefined,
+  rules: [
+    { type: 'filesize', value: '10MB' },
+    { type: 'filetype', value: ['image', 'pdf'] }
+  ],
+  artifact: undefined,
+  size: 'md',
+  multiple: false,
+  onUploadSuccess: fn(),
+  onFileDeletion: fn()
+};
+
 export default {
   title: 'Components/OSS::UploadArea',
   component: 'upload-area',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     uploader: {
       type: { required: true },
@@ -205,22 +236,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  uploader: MockUploader,
-  subtitle: 'JPG, PNG, PDF (Max 800x400px - 2MB)',
-  disabled: false,
-  privacy: 'private',
-  scope: undefined,
-  rules: [
-    { type: 'filesize', value: '10MB' },
-    { type: 'filetype', value: ['image', 'pdf'] }
-  ],
-  artifact: undefined,
-  size: 'md',
-  multiple: false,
-  onUploadSuccess: fn(),
-  onFileDeletion: fn()
-};
 const defaultArtifact = {
   key: 'key',
   filename: 'upfluence-blue-logo.svg',
@@ -228,41 +243,23 @@ const defaultArtifact = {
   content_type: 'svg',
   size: '517'
 };
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="padding: 24px; background-color: white">
-        <OSS::UploadArea @uploader={{this.uploader}} @subtitle={{this.subtitle}} @disabled={{this.disabled}}
-                         @privacy={{this.privacy}} @scope={{this.scope}} @rules={{this.rules}} @artifact={{this.artifact}}
-                         @size={{this.size}} @multiple={{this.multiple}} @feedbackMessage={{this.feedbackMessage}}
-                         @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
-    </div>
-  `,
-  context: args
-});
 
-export const Default = DefaultUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {};
 
-export const WithFeedbackMessage = DefaultUsageTemplate.bind({});
-WithFeedbackMessage.args = {
-  ...defaultArgs,
-  ...{
+export const WithFeedbackMessage = {
+  args: {
     feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
   }
 };
 
-export const SingleWithArtifact = DefaultUsageTemplate.bind({});
-SingleWithArtifact.args = {
-  ...defaultArgs,
-  ...{
+export const SingleWithArtifact = {
+  args: {
     artifact: defaultArtifact
   }
 };
 
-export const MultipleWithArtifact = DefaultUsageTemplate.bind({});
-MultipleWithArtifact.args = {
-  ...defaultArgs,
-  ...{
+export const MultipleWithArtifact = {
+  args: {
     multiple: true,
     size: 'lg',
     artifact: defaultArtifact

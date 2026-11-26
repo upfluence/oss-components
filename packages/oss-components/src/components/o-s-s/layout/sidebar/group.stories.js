@@ -1,9 +1,49 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="background: var(--sidebar-bg-color)">
+      <OSS::Layout::Sidebar::Group
+        @icon={{this.icon}} @label={{this.label}} @expanded={{this.expanded}} @items={{this.items}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  icon: 'far fa-search',
+  label: 'Search',
+  expanded: false,
+  collapsible: true,
+  items: [
+    {
+      icon: 'far fa-search',
+      label: 'Search',
+      expanded: false,
+      hasNotifications: false,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: fn()
+    },
+    {
+      icon: 'far fa-bullseye-pointer',
+      label: 'Live Capture',
+      expanded: false,
+      hasNotifications: true,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: fn(),
+      tag: { label: '3', skin: 'danger', plain: true }
+    }
+  ]
+};
+
 export default {
   title: 'Components/OSS::Layout::Sidebar::Group',
   component: 'group',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -79,44 +119,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'far fa-search',
-  label: 'Search',
-  expanded: false,
-  collapsible: true,
-  items: [
-    {
-      icon: 'far fa-search',
-      label: 'Search',
-      expanded: false,
-      hasNotifications: false,
-      locked: false,
-      link: 'http://upfluence.com',
-      lockedAction: fn()
-    },
-    {
-      icon: 'far fa-bullseye-pointer',
-      label: 'Live Capture',
-      expanded: false,
-      hasNotifications: true,
-      locked: false,
-      link: 'http://upfluence.com',
-      lockedAction: fn(),
-      tag: { label: '3', skin: 'danger', plain: true }
-    }
-  ]
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="background: var(--sidebar-bg-color)">
-      <OSS::Layout::Sidebar::Group
-        @icon={{this.icon}} @label={{this.label}} @expanded={{this.expanded}} @items={{this.items}} />
-    </div>
-  `,
-  context: args
-});
-
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Group
@@ -144,21 +146,25 @@ const WithHeaderTagTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};
 
-export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
-WithNamedBlockIcon.args = defaultArgs;
-
-export const WithHeaderTag = WithHeaderTagTemplate.bind({});
-WithHeaderTag.args = {
-  ...defaultArgs,
-  tag: { label: '9+', skin: 'danger', plain: true }
+export const WithNamedBlockIcon = {
+  render: IconNamedBlockTemplate
 };
 
-export const WithHeaderTagExpanded = WithHeaderTagTemplate.bind({});
-WithHeaderTagExpanded.args = {
-  ...defaultArgs,
-  expanded: true,
-  tag: { label: '9+', skin: 'danger', plain: true }
+export const WithHeaderTag = {
+  render: WithHeaderTagTemplate,
+
+  args: {
+    tag: { label: '9+', skin: 'danger', plain: true }
+  }
+};
+
+export const WithHeaderTagExpanded = {
+  render: WithHeaderTagTemplate,
+
+  args: {
+    expanded: true,
+    tag: { label: '9+', skin: 'danger', plain: true }
+  }
 };

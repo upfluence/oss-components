@@ -1,9 +1,52 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+  <div class="background-color-white padding-px-6">
+    <OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />
+  </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  tabArray: [
+    { key: 'tab', label: 'Tab', icon: 'far fa-thumbs-up' },
+    { key: 'tab2', label: 'Tab2', icon: 'far fa-thumbs-up' },
+    { key: 'tab3', label: 'Tab3' },
+    { key: 'tab4', icon: 'far fa-thumbs-up' },
+    { key: 'tab5', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true },
+    { key: 'tab6', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
+    { key: 'tab7', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
+    { key: 'tab8', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
+    {
+      key: 'tab9',
+      label: 'Tab',
+      icon: 'far fa-thumbs-up',
+      infoCircle: true,
+      notificationDot: true,
+      selected: true,
+      disabled: true
+    },
+    {
+      key: 'tab10',
+      label: 'Tab',
+      icon: 'far fa-thumbs-up',
+      infoCircle: true,
+      notificationDot: true,
+      selected: true,
+      tag: { label: 'X', skin: 'danger' }
+    }
+  ],
+  onSelection: fn()
+};
+
 export default {
   title: 'Components/OSS::NavTab',
   component: 'NavTab',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     onSelection: {
       type: { required: true },
@@ -41,46 +84,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  tabArray: [
-    { key: 'tab', label: 'Tab', icon: 'far fa-thumbs-up' },
-    { key: 'tab2', label: 'Tab2', icon: 'far fa-thumbs-up' },
-    { key: 'tab3', label: 'Tab3' },
-    { key: 'tab4', icon: 'far fa-thumbs-up' },
-    { key: 'tab5', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true },
-    { key: 'tab6', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
-    { key: 'tab7', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
-    { key: 'tab8', label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
-    {
-      key: 'tab9',
-      label: 'Tab',
-      icon: 'far fa-thumbs-up',
-      infoCircle: true,
-      notificationDot: true,
-      selected: true,
-      disabled: true
-    },
-    {
-      key: 'tab10',
-      label: 'Tab',
-      icon: 'far fa-thumbs-up',
-      infoCircle: true,
-      notificationDot: true,
-      selected: true,
-      tag: { label: 'X', skin: 'danger' }
-    }
-  ],
-  onSelection: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-  <div class="background-color-white padding-px-6">
-    <OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />
-  </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

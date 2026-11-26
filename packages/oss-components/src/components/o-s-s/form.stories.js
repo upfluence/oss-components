@@ -1,8 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
+      <:content>
+      Form content
+      </:content>
+    </OSS::Form>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  onSetup(instance) {
+    console.log('Form instance setup:', instance);
+  },
+  onSubmit(isValid) {
+    console.log('Form submitted, is valid:', isValid);
+  }
+};
+
 export default {
   title: 'Components/OSS::Form',
   component: 'form',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     onSetup: {
       description: 'Callback function called during component initialization with the form instance',
@@ -35,25 +57,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  onSetup(instance) {
-    console.log('Form instance setup:', instance);
-  },
-  onSubmit(isValid) {
-    console.log('Form submitted, is valid:', isValid);
-  }
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
-      <:content>
-      Form content
-      </:content>
-    </OSS::Form>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

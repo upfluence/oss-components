@@ -1,8 +1,43 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
+                   @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
+                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
+                   @loop={{this.loop}} @onSwipe={{this.onSwipe}}
+                   @onPageChange={{this.onPageChange}}>
+      <:pages>
+        <div class="page">
+          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
+        </div>
+        <div class="page">
+          <OSS::Banner @icon="fas fa-image" @title="PAGE 2"/>
+        </div>
+        <div class="page">
+          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
+        </div>
+      </:pages>
+    </OSS::Carousel>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  buttonIcon: undefined,
+  animationStyle: undefined,
+  showIndicators: undefined,
+  showControls: undefined,
+  autoPlay: undefined,
+  loop: true,
+  indicatorsPosition: 'top'
+};
+
 export default {
   title: 'Components/OSS::Carousel',
   component: 'carousel',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     buttonIcon: {
       description:
@@ -110,38 +145,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  buttonIcon: undefined,
-  animationStyle: undefined,
-  showIndicators: undefined,
-  showControls: undefined,
-  autoPlay: undefined,
-  loop: true,
-  indicatorsPosition: 'top'
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
-                   @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
-                   @loop={{this.loop}} @onSwipe={{this.onSwipe}}
-                   @onPageChange={{this.onPageChange}}>
-      <:pages>
-        <div class="page">
-          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
-        </div>
-        <div class="page">
-          <OSS::Banner @icon="fas fa-image" @title="PAGE 2"/>
-        </div>
-        <div class="page">
-          <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
-        </div>
-      </:pages>
-    </OSS::Carousel>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

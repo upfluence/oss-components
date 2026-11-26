@@ -1,8 +1,38 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="height:100vh; padding:5px;">
+      <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} @alwaysExpanded={{this.alwaysExpanded}} style="height:95vh; overflow: visible">
+        <:content as |sidebar|>
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" @active={{true}} @homeAction={{this.homeAction}} />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-envelope" @label="Inbox" @hasNotifications={{true}} />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-credit-card" @label="Payment" @locked={{true}} />
+        </:content>
+        <:footer>
+          <OSS::Avatar @initials="Ts" />
+        </:footer>
+      </OSS::Layout::Sidebar>
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  expandable: false,
+  homeParameters: {
+    logo: '/assets/images/brand-icon.svg',
+    url: 'https://www.upfluence.com'
+  },
+  alwaysExpanded: false
+};
+
 export default {
   title: 'Components/OSS::Layout::Sidebar',
   component: 'sidebar',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     homeParameters: {
       description: 'Options to configure the header of the sidebar',
@@ -49,33 +79,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  expandable: false,
-  homeParameters: {
-    logo: '/assets/images/brand-icon.svg',
-    url: 'https://www.upfluence.com'
-  },
-  alwaysExpanded: false
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="height:100vh; padding:5px;">
-      <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} @alwaysExpanded={{this.alwaysExpanded}} style="height:95vh; overflow: visible">
-        <:content as |sidebar|>
-          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" @active={{true}} @homeAction={{this.homeAction}} />
-          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />
-          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-envelope" @label="Inbox" @hasNotifications={{true}} />
-          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-credit-card" @label="Payment" @locked={{true}} />
-        </:content>
-        <:footer>
-          <OSS::Avatar @initials="Ts" />
-        </:footer>
-      </OSS::Layout::Sidebar>
-    </div>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

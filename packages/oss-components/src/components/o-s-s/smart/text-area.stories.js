@@ -3,9 +3,31 @@ import { fn } from 'storybook/test';
 
 const ResizeTypes = ['horizontal', 'vertical', 'none', null];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::Smart::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+                     @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
+                     @resize={{this.resize}} @loading={{this.loading}}/>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'John',
+  rows: 2,
+  resize: null,
+  disabled: false,
+  placeholder: 'this is the placeholder',
+  hasError: false,
+  loading: false,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Smart::TextArea',
   component: 'smart text-area',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the textarea',
@@ -101,25 +123,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  rows: 2,
-  resize: null,
-  disabled: false,
-  placeholder: 'this is the placeholder',
-  hasError: false,
-  loading: false,
-  onChange: fn()
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::Smart::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                     @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
-                     @resize={{this.resize}} @loading={{this.loading}}/>
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

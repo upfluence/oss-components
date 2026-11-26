@@ -4,8 +4,34 @@ const PlacementDefinitions = ['bottom', 'top', 'left', 'right'];
 const TriggerDefinitions = ['hover focus', 'hover', 'focus'];
 const OverflowDirectionDefinitions = ['horizontal', 'vertical'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
+      <div class="fx-row" style="justify-content: center;">
+        <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
+                                                                    placement=this.placement trigger=this.triggerValue
+                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
+          I have a tooltip
+        </span>
+      </div>
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Title',
+  subtitle: 'A very nice subtitle',
+  icon: 'far fa-fire',
+  placement: 'bottom',
+  triggerValue: 'hover focus',
+  displayOnlyOnOverflow: false
+};
+
 export default {
   title: 'Helpers & Modifiers/Modifiers/Tooltip/Definition',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The title value',
@@ -94,29 +120,6 @@ export default {
     }
   }
 };
-const defaultArgs = {
-  title: 'Title',
-  subtitle: 'A very nice subtitle',
-  icon: 'far fa-fire',
-  placement: 'bottom',
-  triggerValue: 'hover focus',
-  displayOnlyOnOverflow: false
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
-      <div class="fx-row" style="justify-content: center;">
-        <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
-                                                                    placement=this.placement trigger=this.triggerValue
-                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
-          I have a tooltip
-        </span>
-      </div>
-    </div>
-  `,
-  context: args
-});
 
 const OverflowUsageTemplate = (args) => ({
   template: hbs`
@@ -151,11 +154,13 @@ const LineClampUsageTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};
 
-export const OverflowUsage = OverflowUsageTemplate.bind({});
-OverflowUsage.args = defaultArgs;
+export const OverflowUsage = {
+  render: OverflowUsageTemplate
+};
 
-export const LineClampUsage = LineClampUsageTemplate.bind({});
-LineClampUsage.args = { ...defaultArgs, displayOnlyOnOverflow: true, overflowDirection: 'vertical' };
+export const LineClampUsage = {
+  render: LineClampUsageTemplate,
+  args: { displayOnlyOnOverflow: true, overflowDirection: 'vertical' }
+};

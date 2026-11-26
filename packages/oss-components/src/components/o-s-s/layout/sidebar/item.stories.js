@@ -1,9 +1,36 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="background: var(--sidebar-bg-color)">
+      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
+                                  @hasNotifications={{this.hasNotifications}}
+                                  @link={{this.link}} @label={{this.label}}
+                                  @expanded={{this.expanded}} @tag={{this.tag}}
+                                  @lockedAction={{this.lockedAction}}
+                                  @action={{this.action}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  icon: 'far fa-search',
+  label: 'Search',
+  expanded: false,
+  hasNotifications: false,
+  locked: false,
+  link: 'http://upfluence.com',
+  lockedAction: fn(),
+  action: fn()
+};
+
 export default {
   title: 'Components/OSS::Layout::Sidebar::Item',
   component: 'item',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -118,31 +145,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'far fa-search',
-  label: 'Search',
-  expanded: false,
-  hasNotifications: false,
-  locked: false,
-  link: 'http://upfluence.com',
-  lockedAction: fn(),
-  action: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="background: var(--sidebar-bg-color)">
-      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
-                                  @hasNotifications={{this.hasNotifications}}
-                                  @link={{this.link}} @label={{this.label}}
-                                  @expanded={{this.expanded}} @tag={{this.tag}}
-                                  @lockedAction={{this.lockedAction}}
-                                  @action={{this.action}} />
-    </div>
-  `,
-  context: args
-});
-
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Item
@@ -157,15 +159,15 @@ const IconNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};
 
-export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
-WithNamedBlockIcon.args = defaultArgs;
+export const WithNamedBlockIcon = {
+  render: IconNamedBlockTemplate
+};
 
-export const WithTag = Template.bind({});
-WithTag.args = {
-  ...defaultArgs,
-  expanded: true,
-  tag: { label: 'New', skin: 'chat-gpt', plain: true }
+export const WithTag = {
+  args: {
+    expanded: true,
+    tag: { label: 'New', skin: 'chat-gpt', plain: true }
+  }
 };

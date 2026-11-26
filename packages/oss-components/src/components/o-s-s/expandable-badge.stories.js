@@ -15,9 +15,30 @@ const SkinTypes = [
   'xtd-smart'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
+                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  size: 'md',
+  expandedLabel: 'Content',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  flag: undefined,
+  plain: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::ExpandableBadge',
   component: 'expandable-badge',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -119,45 +140,26 @@ export default {
   }
 };
 
-const defaultArgs = {
-  size: 'md',
-  expandedLabel: 'Content',
-  icon: undefined,
-  image: undefined,
-  text: undefined,
-  flag: undefined,
-  plain: false,
-  skin: undefined
+export const WithIcon = {
+  args: {
+    icon: 'fas fa-volume-up'
+  }
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
-                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
-  `,
-  context: args
-});
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-volume-up' }
+export const WithImage = {
+  args: {
+    image: '/@upfluence/oss-components/assets/images/no-image.svg'
+  }
 };
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: '/@upfluence/oss-components/assets/images/no-image.svg' }
+export const WithFlag = {
+  args: {
+    flag: 'us'
+  }
 };
 
-export const WithFlag = Template.bind({});
-WithFlag.args = {
-  ...defaultArgs,
-  ...{ flag: 'us' }
-};
-
-export const WithText = Template.bind({});
-WithText.args = {
-  ...defaultArgs,
-  ...{ text: '2x' }
+export const WithText = {
+  args: {
+    text: '2x'
+  }
 };

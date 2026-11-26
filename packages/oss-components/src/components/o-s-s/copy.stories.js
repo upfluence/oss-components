@@ -1,8 +1,26 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div class="fx-col">
+      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} @animated={{this.animated}} />
+    </div>`,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'Your copied value',
+  inline: false,
+  icon: undefined,
+  tooltip: undefined,
+  animated: false
+};
+
 export default {
   title: 'Components/OSS::Copy',
   component: 'copy',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -71,21 +89,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'Your copied value',
-  inline: false,
-  icon: undefined,
-  tooltip: undefined,
-  animated: false
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div class="fx-col">
-      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} @animated={{this.animated}} />
-    </div>`,
-  context: args
-});
-
-export const Default = BasicUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {};

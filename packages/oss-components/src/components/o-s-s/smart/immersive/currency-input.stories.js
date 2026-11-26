@@ -1,9 +1,31 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <div style="width:270px">
+        <OSS::Smart::Immersive::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                                              @hasError={{this.hasError}} @allowedCurrencies={{this.allowedCurrencies}}
+                                              @placeholder={{this.placeholder}} />
+      </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 42,
+  currency: 'USD',
+  onChange: fn(),
+  hasError: false,
+  allowedCurrencies: undefined,
+  placeholder: undefined
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::CurrencyInput',
   component: 'currency-input',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     currency: {
       description: 'The currency applied to the component (EUR, USD, etc.)',
@@ -78,25 +100,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 42,
-  currency: 'USD',
-  onChange: fn(),
-  hasError: false,
-  allowedCurrencies: undefined,
-  placeholder: undefined
-};
-
-const Template = (args) => ({
-  template: hbs`
-      <div style="width:270px">
-        <OSS::Smart::Immersive::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                                              @hasError={{this.hasError}} @allowedCurrencies={{this.allowedCurrencies}}
-                                              @placeholder={{this.placeholder}} />
-      </div>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

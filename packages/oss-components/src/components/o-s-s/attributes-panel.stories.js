@@ -3,9 +3,40 @@ import { fn } from 'storybook/test';
 
 const MODES = ['view', 'edition'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+      <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
+                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
+                            @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
+          <:view-mode>
+            View mode
+          </:view-mode>
+          <:edition-mode>
+            Edition mode
+          </:edition-mode>
+        </OSS::AttributesPanel>
+      </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Title',
+  icon: 'fa-laptop-code',
+  isSaveDisabled: false,
+  customEditIcon: 'fa-pen',
+  initialMode: 'view',
+  onSave: fn(),
+  onCancel: fn(),
+  onEdit: fn()
+};
+
 export default {
   title: 'Components/OSS::AttributesPanel',
   component: 'attributes-panel',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The title of the panel',
@@ -98,35 +129,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Title',
-  icon: 'fa-laptop-code',
-  isSaveDisabled: false,
-  customEditIcon: 'fa-pen',
-  initialMode: 'view',
-  onSave: fn(),
-  onCancel: fn(),
-  onEdit: fn()
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
-      <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
-                            @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
-          <:view-mode>
-            View mode
-          </:view-mode>
-          <:edition-mode>
-            Edition mode
-          </:edition-mode>
-        </OSS::AttributesPanel>
-      </div>
-  `,
-  context: args
-});
-
 const WithContextualActionTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
@@ -148,8 +150,8 @@ const WithContextualActionTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};
 
-export const WithContextualAction = WithContextualActionTemplate.bind({});
-WithContextualAction.args = defaultArgs;
+export const WithContextualAction = {
+  render: WithContextualActionTemplate
+};

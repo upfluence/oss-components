@@ -13,9 +13,53 @@ const FAKE_DATA = [
   { name: 'Spider Man', characters: 'Peter Parker' }
 ];
 
+const Template = (args) => ({
+  template: hbs`
+  <div style="width: 250px">
+    <OSS::Select
+      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
+      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
+      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  items: FAKE_DATA,
+  value: FAKE_DATA[0],
+  targetLabel: 'name',
+  placeholder: undefined,
+  disabled: false,
+  hasError: false,
+  errorMessage: undefined,
+  successMessage: undefined,
+  addressableAs: undefined,
+  placeholderEllipsis: false,
+  dropdownWidth: undefined,
+  dropdownPlacementOptions: undefined,
+  skin: 'default',
+  action: {
+    skin: 'tertiary',
+    label: 'Add Hero',
+    icon: 'fa-plus',
+    onClick: fn(),
+    closeOnClick: true
+  },
+  onSearch: fn(),
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Select',
   component: 'select',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -194,48 +238,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  items: FAKE_DATA,
-  value: FAKE_DATA[0],
-  targetLabel: 'name',
-  placeholder: undefined,
-  disabled: false,
-  hasError: false,
-  errorMessage: undefined,
-  successMessage: undefined,
-  addressableAs: undefined,
-  placeholderEllipsis: false,
-  dropdownWidth: undefined,
-  dropdownPlacementOptions: undefined,
-  skin: 'default',
-  action: {
-    skin: 'tertiary',
-    label: 'Add Hero',
-    icon: 'fa-plus',
-    onClick: fn(),
-    closeOnClick: true
-  },
-  onSearch: fn(),
-  onChange: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-  <div style="width: 250px">
-    <OSS::Select
-      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
-      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}
-      @skin={{this.skin}} @placeholderEllipsis={{this.placeholderEllipsis}} @dropdownWidth={{this.dropdownWidth}} @dropdownPlacementOptions={{this.dropdownPlacementOptions}}>
-      <:option as |item|>
-        {{item.name}}
-      </:option>
-    </OSS::Select>
-  </div>
-  `,
-  context: args
-});
-
 const SmartSkinTemplate = (args) => ({
   template: hbs`
   <div style="width: 250px">
@@ -292,14 +294,16 @@ const WithEmptyStateNamedBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};
 
-export const SmartSkin = SmartSkinTemplate.bind({});
-SmartSkin.args = defaultArgs;
+export const SmartSkin = {
+  render: SmartSkinTemplate
+};
 
-export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
-WithSelectedNamedBlock.args = defaultArgs;
+export const WithSelectedNamedBlock = {
+  render: WithSelectedNamedBlockTemplate
+};
 
-export const WithEmptyStateNamedBlock = WithEmptyStateNamedBlockTemplate.bind({});
-WithEmptyStateNamedBlock.args = defaultArgs;
+export const WithEmptyStateNamedBlock = {
+  render: WithEmptyStateNamedBlockTemplate
+};

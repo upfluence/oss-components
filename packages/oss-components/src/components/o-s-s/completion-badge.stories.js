@@ -15,9 +15,29 @@ const SkinTypes = [
   'xtd-smart'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::CompletionBadge @progress={{this.progress}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
+                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  progress: 42,
+  size: 'md',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  plain: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::CompletionBadge',
   component: 'completion-badge',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -94,38 +114,20 @@ export default {
   }
 };
 
-const defaultArgs = {
-  progress: 42,
-  size: 'md',
-  icon: undefined,
-  image: undefined,
-  text: undefined,
-  plain: false,
-  skin: undefined
+export const WithIcon = {
+  args: {
+    icon: 'fas fa-volume-up'
+  }
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::CompletionBadge @progress={{this.progress}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
-                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
-  `,
-  context: args
-});
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-volume-up' }
+export const WithImage = {
+  args: {
+    image: '/@upfluence/oss-components/assets/images/no-image.svg'
+  }
 };
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: '/@upfluence/oss-components/assets/images/no-image.svg' }
-};
-
-export const WithText = Template.bind({});
-WithText.args = {
-  ...defaultArgs,
-  ...{ text: '2x' }
+export const WithText = {
+  args: {
+    text: '2x'
+  }
 };

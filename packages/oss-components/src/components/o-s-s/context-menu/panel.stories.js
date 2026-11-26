@@ -1,9 +1,59 @@
 import hbs from 'htmlbars-inline-precompile';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="background-color: #ffff;" {{did-insert (fn this.postRender this)}}>
+      {{#if this.isInitialized}}
+        <OSS::ContextMenu::Panel 
+          @items={{this.items}}
+          @referenceTarget={{this.referenceTarget}}
+          @offset={{this.offset}}
+          @placement="bottom-start"
+          @onMouseLeave={{this.onMouseLeave}}
+          @onClose={{this.onClose}}
+          @registerPanel={{this.registerPanel}}
+          @unregisterPanel={{this.unregisterPanel}}
+        />
+      {{/if}}
+    </div>
+  `,
+  context: args
+});
+
+const items = [
+  { title: 'Item 1', action: () => console.log('Item 1 selected') },
+  {
+    title: 'Item 2',
+    action: () => console.log('Item 2 selected'),
+    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
+  },
+  {
+    title: 'Item 3',
+    action: () => console.log('Item 3 selected')
+  }
+];
+
+const defaultArgs = {
+  items: items,
+  offset: { mainAxis: -100, crossAxis: -100 },
+  placement: 'bottom-start',
+  onMouseLeave: fn(),
+  onClose: fn(),
+  registerPanel: fn(),
+  unregisterPanel: fn(),
+  isInitialized: false,
+  postRender(self, element) {
+    self.set('referenceTarget', element);
+    self.set('isInitialized', true);
+  }
+};
+
 export default {
   title: 'Components/OSS::ContextMenu::Panel',
   component: 'o-s-s/context-menu/panel',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       type: { required: true },
@@ -101,53 +151,4 @@ export default {
   }
 };
 
-const items = [
-  { title: 'Item 1', action: () => console.log('Item 1 selected') },
-  {
-    title: 'Item 2',
-    action: () => console.log('Item 2 selected'),
-    items: [{ title: 'Sub Item 1', action: () => console.log('Sub Item 1 selected') }]
-  },
-  {
-    title: 'Item 3',
-    action: () => console.log('Item 3 selected')
-  }
-];
-
-const defaultArgs = {
-  items: items,
-  offset: { mainAxis: -100, crossAxis: -100 },
-  placement: 'bottom-start',
-  onMouseLeave: fn(),
-  onClose: fn(),
-  registerPanel: fn(),
-  unregisterPanel: fn(),
-  isInitialized: false,
-  postRender(self, element) {
-    self.set('referenceTarget', element);
-    self.set('isInitialized', true);
-  }
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="background-color: #ffff;" {{did-insert (fn this.postRender this)}}>
-      {{#if this.isInitialized}}
-        <OSS::ContextMenu::Panel 
-          @items={{this.items}}
-          @referenceTarget={{this.referenceTarget}}
-          @offset={{this.offset}}
-          @placement="bottom-start"
-          @onMouseLeave={{this.onMouseLeave}}
-          @onClose={{this.onClose}}
-          @registerPanel={{this.registerPanel}}
-          @unregisterPanel={{this.unregisterPanel}}
-        />
-      {{/if}}
-    </div>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

@@ -3,9 +3,38 @@ import { hbs } from 'ember-cli-htmlbars';
 const ProgressBarSkins = ['pending', 'attention', 'warning', 'success', 'danger'];
 const ProgressBarSizes = ['xs', 'sm'];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="background-color: #1c1c1c;width:200px">
+      <OSS::ProgressBar
+        @value={{this.value}}
+        @label={{this.label}}
+        @displayValue={{this.displayValue}}
+        @skin={{this.skin}}
+        @size={{this.size}}
+        @coloredBackground={{this.coloredBackground}}
+        @secondarySkin={{this.secondarySkin}}
+        @skins={{this.skins}}
+      />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 30,
+  label: 'Hello',
+  displayValue: true,
+  coloredBackground: false,
+  secondarySkin: undefined,
+  skins: undefined
+};
+
 export default {
   title: 'Components/OSS::ProgressBar',
   component: 'progress-bar',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -105,32 +134,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 30,
-  label: 'Hello',
-  displayValue: true,
-  coloredBackground: false,
-  secondarySkin: undefined,
-  skins: undefined
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="background-color: #1c1c1c;width:200px">
-      <OSS::ProgressBar
-        @value={{this.value}}
-        @label={{this.label}}
-        @displayValue={{this.displayValue}}
-        @skin={{this.skin}}
-        @size={{this.size}}
-        @coloredBackground={{this.coloredBackground}}
-        @secondarySkin={{this.secondarySkin}}
-        @skins={{this.skins}}
-      />
-    </div>
-  `,
-  context: args
-});
-
-export const Usage = BasicUsageTemplate.bind({});
-Usage.args = defaultArgs;
+export const Usage = {};

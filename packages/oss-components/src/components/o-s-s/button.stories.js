@@ -23,9 +23,37 @@ const SkinTypes = [
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Button
+      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
+      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
+      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  skin: 'default',
+  size: 'md',
+  loading: false,
+  label: 'Label',
+  icon: 'far fa-envelope-open',
+  theme: 'light',
+  square: false,
+  countDown: undefined,
+  loadingOptions: undefined,
+  iconUrl: undefined,
+  suffixIcon: undefined,
+  disabled: undefined
+};
+
 export default {
   title: 'Components/OSS::Button',
   component: 'button',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -169,39 +197,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  skin: 'default',
-  size: 'md',
-  loading: false,
-  label: 'Label',
-  icon: 'far fa-envelope-open',
-  theme: 'light',
-  square: false,
-  countDown: undefined,
-  loadingOptions: undefined,
-  iconUrl: undefined,
-  suffixIcon: undefined,
-  disabled: undefined
-};
+export const Default = {};
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Button
-      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @suffixIcon={{this.suffixIcon}}
-      @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
-
-export const WithCountDown = Template.bind({});
-WithCountDown.args = {
-  ...defaultArgs,
-  ...{
+export const WithCountDown = {
+  args: {
     countDown: {
       callback: function () {
         alert('Count down finish');
@@ -211,19 +210,15 @@ WithCountDown.args = {
   }
 };
 
-export const WithIconUrl = Template.bind({});
-WithIconUrl.args = {
-  ...defaultArgs,
-  ...{
+export const WithIconUrl = {
+  args: {
     icon: undefined,
     iconUrl: '/@upfluence/oss-components/assets/images/no-image.svg'
   }
 };
 
-export const WithSuffixIcon = Template.bind({});
-WithSuffixIcon.args = {
-  ...defaultArgs,
-  ...{
+export const WithSuffixIcon = {
+  args: {
     suffixIcon: 'fas fa-chevron-down'
   }
 };

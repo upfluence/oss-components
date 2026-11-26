@@ -1,8 +1,35 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::StackContainer
+      @direction={{this.direction}}
+      @style={{this.style}}
+      @pxMargin={{this.pxMargin}}
+      @bringToFrontOnHover={{this.bringToFrontOnHover}}
+      @subElementClass={{this.subElementClass}}
+    >
+      <div class="stack-item" style="border-radius: 8px; color: black; background-color: white; border: 1px solid blue">Item 1</div>
+      <div class="stack-item" style="border-radius: 8px; color: black; background-color: pink; border: 1px solid blue">Item 2</div>
+      <div class="stack-item" style="border-radius: 8px; color: black; background-color: yellow; border: 1px solid blue">Item 3</div>
+    </OSS::StackContainer>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  direction: 'row',
+  style: 'under',
+  pxMargin: '-6px',
+  bringToFrontOnHover: false,
+  subElementClass: undefined
+};
+
 export default {
   title: 'Components/OSS::StackContainer',
   component: 'stack-container',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     direction: {
       description: 'Whether the stack is displayed in a column or row. Default is row.',
@@ -68,30 +95,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  direction: 'row',
-  style: 'under',
-  pxMargin: '-6px',
-  bringToFrontOnHover: false,
-  subElementClass: undefined
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::StackContainer
-      @direction={{this.direction}}
-      @style={{this.style}}
-      @pxMargin={{this.pxMargin}}
-      @bringToFrontOnHover={{this.bringToFrontOnHover}}
-      @subElementClass={{this.subElementClass}}
-    >
-      <div class="stack-item" style="border-radius: 8px; color: black; background-color: white; border: 1px solid blue">Item 1</div>
-      <div class="stack-item" style="border-radius: 8px; color: black; background-color: pink; border: 1px solid blue">Item 2</div>
-      <div class="stack-item" style="border-radius: 8px; color: black; background-color: yellow; border: 1px solid blue">Item 3</div>
-    </OSS::StackContainer>
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

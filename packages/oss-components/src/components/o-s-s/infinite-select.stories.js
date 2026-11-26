@@ -13,9 +13,46 @@ const FAKE_DATA = [
 
 const SkinTypes = ['default', 'smart'];
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::InfiniteSelect
+        @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
+        @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
+        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
+        class="upf-align--absolute-center"/>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  items: FAKE_DATA,
+  itemLabel: 'superhero',
+  searchEnabled: true,
+  searchPlaceholder: 'My Placeholder...',
+  loading: false,
+  loadingMore: false,
+  inline: false,
+  enableKeyboard: true,
+  skin: 'default',
+  action: {
+    skin: 'tertiary',
+    label: 'Add Hero',
+    icon: 'fa-plus',
+    onClick: fn(),
+    closeOnClick: true
+  },
+  onSelect: fn(),
+  onSearch: fn(),
+  onBottomReached: fn(),
+  didRender: fn()
+};
+
 export default {
   title: 'Components/OSS::InfiniteSelect',
   component: 'infinite-select',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       description: 'Items to display',
@@ -178,41 +215,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  items: FAKE_DATA,
-  itemLabel: 'superhero',
-  searchEnabled: true,
-  searchPlaceholder: 'My Placeholder...',
-  loading: false,
-  loadingMore: false,
-  inline: false,
-  enableKeyboard: true,
-  skin: 'default',
-  action: {
-    skin: 'tertiary',
-    label: 'Add Hero',
-    icon: 'fa-plus',
-    onClick: fn(),
-    closeOnClick: true
-  },
-  onSelect: fn(),
-  onSearch: fn(),
-  onBottomReached: fn(),
-  didRender: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-      <OSS::InfiniteSelect
-        @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
-        @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}}
-        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
-        class="upf-align--absolute-center"/>
-  `,
-  context: args
-});
-
 const OptionBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InfiniteSelect
@@ -228,24 +230,20 @@ const OptionBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};
 
-export const WithOptionBlock = OptionBlockTemplate.bind({});
-WithOptionBlock.args = defaultArgs;
+export const WithOptionBlock = {
+  render: OptionBlockTemplate
+};
 
-export const EmptyState = Template.bind({});
-EmptyState.args = {
-  ...defaultArgs,
-  ...{
+export const EmptyState = {
+  args: {
     items: []
   }
 };
 
-export const WithGroupsBlock = Template.bind({});
-WithGroupsBlock.args = {
-  ...defaultArgs,
-  ...{
+export const WithGroupsBlock = {
+  args: {
     items: FAKE_DATA.map((item, index) => ({
       ...item,
       groupKey: index % 2 === 0 ? 'Group A' : 'Group B'

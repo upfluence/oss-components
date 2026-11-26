@@ -1,8 +1,21 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`{{upf-stat name=this.name data=this.data label=this.label}}`,
+  context: args
+});
+
+const defaultArgs = {
+  name: 'Stat',
+  data: '80',
+  label: 'Label'
+};
+
 export default {
   title: 'Components/Stats',
   component: 'upf-stat',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     name: {
       description: "Insight's name",
@@ -45,15 +58,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  name: 'Stat',
-  data: '80',
-  label: 'Label'
-};
-const Template = (args) => ({
-  template: hbs`{{upf-stat name=this.name data=this.data label=this.label}}`,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

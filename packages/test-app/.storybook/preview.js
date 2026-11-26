@@ -30,3 +30,17 @@ export const parameters = {
 export const decorators = [
   (Story, { globals }) => ({ component: StorybookComponent, args: { story: Story(), globals } })
 ];
+
+// ember-storybook 0.5.1 generates enum controls as `control: { type: 'select', options }`, but Storybook reads the
+// options from `argType.options`: lift them so union-typed args get their select. Remove once fixed upstream.
+export const argTypesEnhancers = [
+  ({ argTypes }) =>
+    Object.fromEntries(
+      Object.entries(argTypes).map(([name, argType]) => [
+        name,
+        argType.options || !Array.isArray(argType.control?.options)
+          ? argType
+          : { ...argType, options: argType.control.options }
+      ])
+    )
+];

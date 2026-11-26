@@ -1,9 +1,28 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  type: undefined,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Smart::Immersive::Input',
   component: 'input',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -89,25 +108,7 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'John',
-  disabled: false,
-  type: undefined,
-  placeholder: 'this is the placeholder',
-  errorMessage: undefined,
-  onChange: fn()
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};
 
 const PrefixUsageTemplate = (args) => ({
   template: hbs`
@@ -121,8 +122,9 @@ const PrefixUsageTemplate = (args) => ({
   context: args
 });
 
-export const PrefixUsage = PrefixUsageTemplate.bind({});
-PrefixUsage.args = defaultArgs;
+export const PrefixUsage = {
+  render: PrefixUsageTemplate
+};
 
 const SuffixUsageTemplate = (args) => ({
   template: hbs`
@@ -136,5 +138,6 @@ const SuffixUsageTemplate = (args) => ({
   context: args
 });
 
-export const SuffixUsage = SuffixUsageTemplate.bind({});
-SuffixUsage.args = defaultArgs;
+export const SuffixUsage = {
+  render: SuffixUsageTemplate
+};

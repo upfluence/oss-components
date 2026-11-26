@@ -1,9 +1,29 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
+                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} @autocomplete={{this.autocomplete}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'john.doe@example.com',
+  placeholder: 'foo@bar.org',
+  errorMessage: undefined,
+  feedbackMessage: undefined,
+  validateFormat: false,
+  autocomplete: 'on',
+  validates: fn()
+};
+
 export default {
   title: 'Components/OSS::EmailInput',
   component: 'email-input',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the email input',
@@ -93,22 +113,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'john.doe@example.com',
-  placeholder: 'foo@bar.org',
-  errorMessage: undefined,
-  feedbackMessage: undefined,
-  validateFormat: false,
-  autocomplete: 'on',
-  validates: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-      <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
-                       @validates={{this.validates}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}} @autocomplete={{this.autocomplete}} />
-  `,
-  context: args
-});
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

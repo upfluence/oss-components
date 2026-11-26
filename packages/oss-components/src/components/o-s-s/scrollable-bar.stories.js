@@ -1,8 +1,34 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="width: 300px; background-color: white;" >
+      <OSS::ScrollableBar @buttonStyle={{this.buttonStyle}}>
+            <:content as |callbacks|>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>All</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Replies</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications2</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails2</div>
+              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments2</div>
+            </:content>
+          </OSS::ScrollableBar>
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  buttonStyle: undefined
+};
+
 export default {
   title: 'Components/OSS::ScrollableBar',
   component: 'scrollable-bar',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     buttonStyle: {
       description: 'Updates the style of scroll buttons. Defaults to "button"',
@@ -24,29 +50,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  buttonStyle: undefined
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="width: 300px; background-color: white;" >
-      <OSS::ScrollableBar @buttonStyle={{this.buttonStyle}}>
-            <:content as |callbacks|>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>All</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Replies</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Applications2</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Emails2</div>
-              <div {{did-insert callbacks.setupFn}} {{will-destroy callbacks.teardownFn}}>Payments2</div>
-            </:content>
-          </OSS::ScrollableBar>
-    </div>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

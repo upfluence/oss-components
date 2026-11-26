@@ -1,9 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="width: 250px">
+      <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  toggles: [
+    { value: 'categories', label: 'Categories' },
+    { value: 'products', label: 'Products' }
+  ],
+  selectedToggle: 'categories',
+  onSelection: fn(),
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::ToggleButtons',
   component: 'toggle-buttons',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     toggles: {
       type: { required: true },
@@ -61,23 +82,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  toggles: [
-    { value: 'categories', label: 'Categories' },
-    { value: 'products', label: 'Products' }
-  ],
-  selectedToggle: 'categories',
-  onSelection: fn(),
-  disabled: false
-};
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="width: 250px">
-      <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
-    </div>
-  `,
-  context: args
-});
-
-export const Default = DefaultUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {};

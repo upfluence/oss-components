@@ -2,9 +2,25 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand', 'duotone-regular', 'flag'];
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="font-size: 60px;">
+      <OSS::Icon @icon={{this.icon}} @style={{this.style}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  icon: 'fa-laptop-code',
+  style: 'regular'
+};
+
 export default {
   title: 'Components/OSS::Icon',
   component: 'icon',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'The fontawesome icon value',
@@ -39,19 +55,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  icon: 'fa-laptop-code',
-  style: 'regular'
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <div style="font-size: 60px;">
-      <OSS::Icon @icon={{this.icon}} @style={{this.style}} />
-    </div>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

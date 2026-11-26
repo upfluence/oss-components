@@ -3,9 +3,36 @@ import { fn } from 'storybook/test';
 
 const SizeTypes = ['sm', 'md'];
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::ModalDialog @title={{this.title}} @icon={{this.icon}} @close={{this.close}} @subtitle={{this.subtitle}}
+                        @size={{this.size}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
+        <:content>
+          Content goes here
+        </:content>
+        <:footer>
+          Footer goes here
+        </:footer>
+      </OSS::ModalDialog>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Modal Dialog',
+  subtitle: 'This is a subtitle',
+  size: 'sm',
+  icon: null,
+  close: fn(),
+  enqueue: undefined,
+  disableClickOutside: undefined
+};
+
 export default {
   title: 'Components/OSS::ModalDialog',
   component: 'modal-dialog',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The modal dialog title',
@@ -94,31 +121,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Modal Dialog',
-  subtitle: 'This is a subtitle',
-  size: 'sm',
-  icon: null,
-  close: fn(),
-  enqueue: undefined,
-  disableClickOutside: undefined
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::ModalDialog @title={{this.title}} @icon={{this.icon}} @close={{this.close}} @subtitle={{this.subtitle}}
-                        @size={{this.size}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
-        <:content>
-          Content goes here
-        </:content>
-        <:footer>
-          Footer goes here
-        </:footer>
-      </OSS::ModalDialog>
-  `,
-  context: args
-});
-
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}
@@ -137,8 +139,8 @@ const WithIllustrationTemplate = (args) => ({
   context: args
 });
 
-export const Usage = BasicUsageTemplate.bind({});
-export const WithIlllustration = WithIllustrationTemplate.bind({});
+export const Usage = {};
 
-Usage.args = defaultArgs;
-WithIlllustration.args = defaultArgs;
+export const WithIlllustration = {
+  render: WithIllustrationTemplate
+};

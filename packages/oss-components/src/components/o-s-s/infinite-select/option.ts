@@ -18,29 +18,59 @@ type IconSpec = OSSIconArgs & {
 
 interface OSSInfiniteSelectOptionComponentSignature {
   Args: {
+    /** Optional avatar displayed before the title. Object with properties: image, initials, size, loading */
     prefixAvatar?: OSSAvatarArgs;
+    /** Optional badge displayed before the title. Object with properties: icon, image, text, skin, plain, size */
     prefixBadge?: OSSBadgeArgs;
+    /** Optional icon displayed before the title. Object with properties: icon, style, tooltip */
     prefixIcon?: IconSpec;
+    /** Optional country flag displayed before the title. Use alpha2 country code (e.g., "US", "FR") */
     prefixCountry?: CountryData['alpha2'];
 
+    /** The main title text of the option */
     title: ReturnType<IntlService['t']>;
+    /** Optional subtitle text displayed below the title */
     subtitle?: ReturnType<IntlService['t']>;
+    /** Optional icon displayed after the title. Object with properties: icon, style, tooltip */
     icon?: IconSpec;
 
+    /** Optional hint text displayed at the end of the option */
     suffixHint?: ReturnType<IntlService['t']>;
+    /**
+     * Optional tag displayed at the end of the option. Object with properties: label, skin, icon, suffixIcon,
+     * hasEllipsis, plain, htmlSafe, size
+     */
     suffixTag?: OSSTagArgs;
+    /** Optional icon displayed at the very end of the option. Object with properties: icon, style, tooltip */
     suffixIcon?: IconSpec;
 
+    /**
+     * The selection type - single selection with radio behavior or multiple selection with checkboxes
+     * @default 'single'
+     */
     selectionType?: 'multiple' | 'single';
+    /**
+     * Whether the option is currently selected
+     * @default false
+     */
     selected?: boolean;
+    /**
+     * Whether the option is disabled and cannot be selected
+     * @default false
+     */
     disabled?: boolean;
+    /** Callback function called when the option is selected/deselected */
     onSelect(value: boolean, event?: PointerEvent): void;
   };
 
   Blocks: {
+    /** Custom content rendered before the title, after the prefix avatar, badge, icon and country flag */
     prefix: [];
+    /** Custom content rendered at the end of the option, before the check mark of a selected single option */
     suffix: [];
   };
+
+  Element: HTMLElement;
 }
 
 export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfiniteSelectOptionComponentSignature> {

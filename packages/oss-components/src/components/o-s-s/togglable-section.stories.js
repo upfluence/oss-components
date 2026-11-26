@@ -3,8 +3,37 @@ import { fn } from 'storybook/test';
 
 const COMPONENT_SIZES = ['sm', 'md'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::TogglableSection
+      @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
+      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
+      @disabled={{this.disabled}} @size={{this.size}} @switchable={{this.switchable}}>
+      <:contents>
+        Setting content
+      </:contents>
+    </OSS::TogglableSection>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Settings',
+  subtitle: 'Subtitle string',
+  toggled: false,
+  iconUrl: '',
+  badgeIcon: 'fa-search',
+  icon: '',
+  size: undefined,
+  disabled: undefined,
+  switchable: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::TogglableSection',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'Title',
@@ -120,33 +149,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Settings',
-  subtitle: 'Subtitle string',
-  toggled: false,
-  iconUrl: '',
-  badgeIcon: 'fa-search',
-  icon: '',
-  size: undefined,
-  disabled: undefined,
-  switchable: undefined,
-  onChange: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::TogglableSection
-      @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
-      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
-      @disabled={{this.disabled}} @size={{this.size}} @switchable={{this.switchable}}>
-      <:contents>
-        Setting content
-      </:contents>
-    </OSS::TogglableSection>
-  `,
-  context: args
-});
-
 const WithActionsNamedBlockTemplate = (args) => ({
   template: hbs`
     <OSS::TogglableSection
@@ -178,11 +180,12 @@ const WithoutToggleTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};
 
-export const WithActionsNamedBlock = WithActionsNamedBlockTemplate.bind({});
-WithActionsNamedBlock.args = defaultArgs;
+export const WithActionsNamedBlock = {
+  render: WithActionsNamedBlockTemplate
+};
 
-export const WithoutToggle = WithoutToggleTemplate.bind({});
-WithoutToggle.args = defaultArgs;
+export const WithoutToggle = {
+  render: WithoutToggleTemplate
+};

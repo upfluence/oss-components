@@ -3,9 +3,45 @@ import { fn } from 'storybook/test';
 
 const AutocompleteValues = ['on', 'off'];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Slider @value={{this.value}}
+                 @min={{this.min}}
+                 @max={{this.max}}
+                 @step={{this.step}}
+                 @tooltipLabel={{this.tooltipLabel}}
+                 @defaultValue={{this.defaultValue}}
+                 @displayInputValue={{this.displayInputValue}}
+                 @unit={{this.unit}}
+                 @disabled={{this.disabled}}
+                 @inputOptions={{this.inputOptions}}
+                 @autocomplete={{this.autocomplete}}
+                 @onChange={{this.onChange}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 30,
+  min: 0,
+  max: 100,
+  step: 1,
+  defaultValue: undefined,
+  displayInputValue: false,
+  tooltipLabel: undefined,
+  unit: 'percentage',
+  disabled: false,
+  inputOptions: { min: 0, max: 100 },
+  autocomplete: undefined,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Slider',
   component: 'slider',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     value: {
       type: { required: true },
@@ -131,39 +167,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 30,
-  min: 0,
-  max: 100,
-  step: 1,
-  defaultValue: undefined,
-  displayInputValue: false,
-  tooltipLabel: undefined,
-  unit: 'percentage',
-  disabled: false,
-  inputOptions: { min: 0, max: 100 },
-  autocomplete: undefined,
-  onChange: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Slider @value={{this.value}}
-                 @min={{this.min}}
-                 @max={{this.max}}
-                 @step={{this.step}}
-                 @tooltipLabel={{this.tooltipLabel}}
-                 @defaultValue={{this.defaultValue}}
-                 @displayInputValue={{this.displayInputValue}}
-                 @unit={{this.unit}}
-                 @disabled={{this.disabled}}
-                 @inputOptions={{this.inputOptions}}
-                 @autocomplete={{this.autocomplete}}
-                 @onChange={{this.onChange}}
-    />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

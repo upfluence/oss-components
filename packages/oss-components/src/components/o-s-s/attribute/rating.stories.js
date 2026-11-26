@@ -1,8 +1,25 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+    <div style="padding: 12px; background: white">
+       <OSS::Attribute::Rating  @label={{this.label}}
+                                @rating={{this.rating}} />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  label: 'Label',
+  rating: 3
+};
+
 export default {
   title: 'Components/OSS::Attribute::Rating',
   component: 'rating',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       type: { required: true },
@@ -41,20 +58,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  rating: 3
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-    <div style="padding: 12px; background: white">
-       <OSS::Attribute::Rating  @label={{this.label}}
-                                @rating={{this.rating}} />
-    </div>
-  `,
-  context: args
-});
-
-export const Default = BasicUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {};

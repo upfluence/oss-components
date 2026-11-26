@@ -1,8 +1,31 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <div class="bg-color-white padding-px-6">
+      <OSS::Smart::Feedback
+        @loading={{this.loading}}
+        @collapsible={{this.collapsible}}
+        @content={{this.content}}
+        @error={{this.error}}
+      />
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  loading: false,
+  collapsible: true,
+  content: [{ text: 'This is feedback content.' }],
+  error: null
+};
+
 export default {
   title: 'Components/OSS::Smart::Feedback',
   component: 'oss-smart-feedback',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     loading: {
       description: 'Whether the feedback component is in a loading state',
@@ -53,56 +76,30 @@ export default {
   }
 };
 
-const defaultArgs = {
-  loading: false,
-  collapsible: true,
-  content: [{ text: 'This is feedback content.' }],
-  error: null
+export const Default = {};
+
+export const WithSections = {
+  args: {
+    content: [
+      { title: 'Risk Summary', text: 'This influencer has a low risk profile.' },
+      { title: '💡 Why these filters?', bullets: ['Follower count', 'Engagement rate', 'Content category'] }
+    ]
+  }
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <div class="bg-color-white padding-px-6">
-      <OSS::Smart::Feedback
-        @loading={{this.loading}}
-        @collapsible={{this.collapsible}}
-        @content={{this.content}}
-        @error={{this.error}}
-      />
-    </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
-
-export const WithSections = Template.bind({});
-WithSections.args = {
-  loading: false,
-  collapsible: true,
-  content: [
-    { title: 'Risk Summary', text: 'This influencer has a low risk profile.' },
-    { title: '💡 Why these filters?', bullets: ['Follower count', 'Engagement rate', 'Content category'] }
-  ],
-  error: null
+export const Loading = {
+  args: {
+    loading: true,
+    content: []
+  }
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
-  collapsible: true,
-  content: [],
-  error: null
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-  loading: false,
-  collapsible: true,
-  content: [],
-  error: {
-    title: 'Summary could not be generated, please, retry.',
-    onRetry: () => {}
+export const WithError = {
+  args: {
+    content: [],
+    error: {
+      title: 'Summary could not be generated, please, retry.',
+      onRetry: () => {}
+    }
   }
 };

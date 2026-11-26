@@ -1,8 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Smart::Tag
+      @label={{this.label}}
+      @type={{this.type}}
+      @size={{this.size}}
+      @successAnimationOnInsertion={{this.successAnimationOnInsertion}}
+      @onRemove={{this.onRemove}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  label: 'Tag',
+  type: 'keyword',
+  size: 'md',
+  successAnimationOnInsertion: false
+};
+
 export default {
   title: 'Components/OSS::Smart::Tag',
   component: 'smart-tag',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'The text content of the tag.',
@@ -63,25 +85,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Tag',
-  type: 'keyword',
-  size: 'md',
-  successAnimationOnInsertion: false
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Smart::Tag
-      @label={{this.label}}
-      @type={{this.type}}
-      @size={{this.size}}
-      @successAnimationOnInsertion={{this.successAnimationOnInsertion}}
-      @onRemove={{this.onRemove}}
-    />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

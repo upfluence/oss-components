@@ -1,9 +1,32 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::UrlInput @prefix={{this.prefix}} @suffix={{this.suffix}} @value={{this.value}}
+                     @placeholder={{this.placeholder}}
+                     @disabled={{this.disabled}} @validationRegex={{this.validationRegex}}
+                     @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: '',
+  prefix: 'https://',
+  suffix: '@shopify.com',
+  placeholder: 'subdomain',
+  disabled: false,
+  errorMessage: '',
+  validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::UrlInput',
   component: 'url-input',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -101,25 +124,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: '',
-  prefix: 'https://',
-  suffix: '@shopify.com',
-  placeholder: 'subdomain',
-  disabled: false,
-  errorMessage: '',
-  validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
-  onChange: fn()
-};
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::UrlInput @prefix={{this.prefix}} @suffix={{this.suffix}} @value={{this.value}}
-                     @placeholder={{this.placeholder}}
-                     @disabled={{this.disabled}} @validationRegex={{this.validationRegex}}
-                     @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

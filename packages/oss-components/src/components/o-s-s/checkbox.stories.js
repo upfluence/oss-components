@@ -1,9 +1,34 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Checkbox
+      @checked={{this.checked}}
+      @partial={{this.partial}}
+      @disabled={{this.disabled}}
+      @size={{this.size}}
+      @hasError={{this.hasError}}
+      @onChange={{this.onChange}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  checked: false,
+  partial: false,
+  disabled: false,
+  hasError: false,
+  size: null,
+  onChange: fn()
+};
+
 export default {
   title: 'Components/OSS::Checkbox',
   component: 'checkbox',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the checkbox',
@@ -90,28 +115,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  checked: false,
-  partial: false,
-  disabled: false,
-  hasError: false,
-  size: null,
-  onChange: fn()
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Checkbox
-      @checked={{this.checked}}
-      @partial={{this.partial}}
-      @disabled={{this.disabled}}
-      @size={{this.size}}
-      @hasError={{this.hasError}}
-      @onChange={{this.onChange}}
-    />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

@@ -1,8 +1,27 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Panel>
+      <:content>
+        <OSS::Panel::Row @label={{this.label}} @icon={{this.icon}} @disabled={{this.disabled}}/>
+      </:content>
+    </OSS::Panel>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  label: 'Label',
+  icon: 'fa-search',
+  disabled: false
+};
+
 export default {
   title: 'Components/OSS::Panel::Row',
   component: 'Row',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     icon: {
       description: 'The icon displayed left to the button label. Font Awesome class, for example: far fa-user',
@@ -45,22 +64,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  icon: 'fa-search',
-  disabled: false
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Panel>
-      <:content>
-        <OSS::Panel::Row @label={{this.label}} @icon={{this.icon}} @disabled={{this.disabled}}/>
-      </:content>
-    </OSS::Panel>
-  `,
-  context: args
-});
-
-export const BasicUsage = Template.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

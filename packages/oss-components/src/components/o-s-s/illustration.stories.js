@@ -1,7 +1,20 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Illustration @src={{this.src}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  src: '/@upfluence/oss-components/assets/images/no-records.svg'
+};
+
 export default {
   title: 'Components/OSS::Illustration',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     src: {
       description: 'Path to an SVG Illustration',
@@ -23,16 +36,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  src: '/@upfluence/oss-components/assets/images/no-records.svg'
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Illustration @src={{this.src}} />
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

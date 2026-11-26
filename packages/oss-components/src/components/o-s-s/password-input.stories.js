@@ -1,9 +1,29 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
+                          @autocomplete={{this.autocomplete}} @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  value: 'myPassword',
+  disabled: false,
+  placeholder: '*****',
+  errorMessage: undefined,
+  autocomplete: undefined,
+  validates: fn(),
+  validatorSet: undefined
+};
+
 export default {
   title: 'Components/OSS::PasswordInput',
   component: 'password-input',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     value: {
       description: 'Value of the password input',
@@ -109,23 +129,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  value: 'myPassword',
-  disabled: false,
-  placeholder: '*****',
-  errorMessage: undefined,
-  autocomplete: undefined,
-  validates: fn(),
-  validatorSet: undefined
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
-                          @autocomplete={{this.autocomplete}} @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
-  `,
-  context: args
-});
-
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {};

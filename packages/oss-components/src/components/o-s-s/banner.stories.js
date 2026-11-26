@@ -3,9 +3,32 @@ import { hbs } from 'ember-cli-htmlbars';
 const COMPONENT_SIZES = ['sm', 'md', 'lg'];
 const FEEDBACK_TYPES = ['error', 'warning', 'success'];
 
+const Template = (args) => ({
+  template: hbs`
+      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
+                   @feedbackMessage={{this.feedbackMessage}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Content of the Title',
+  subtitle: 'Content of the Subtitle',
+  icon: undefined,
+  image: undefined,
+  plain: false,
+  selected: false,
+  disabled: false,
+  feedbackMessage: undefined,
+  size: undefined
+};
+
 export default {
   title: 'Components/OSS::Banner',
   component: 'banner',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: "Sets the component's title",
@@ -115,27 +138,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Content of the Title',
-  subtitle: 'Content of the Subtitle',
-  icon: undefined,
-  image: undefined,
-  plain: false,
-  selected: false,
-  disabled: false,
-  feedbackMessage: undefined,
-  size: undefined
-};
-
-const Template = (args) => ({
-  template: hbs`
-      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}
-                   @feedbackMessage={{this.feedbackMessage}} />
-  `,
-  context: args
-});
-
 const CustomTitleTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
@@ -177,26 +179,27 @@ const ActionTemplate = (args) => ({
   context: args
 });
 
-export const UsageWithIcon = Template.bind({});
-UsageWithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-info-circle' }
+export const UsageWithIcon = {
+  args: {
+    icon: 'fas fa-info-circle'
+  }
 };
 
-export const UsageWithImage = Template.bind({});
-UsageWithImage.args = {
-  ...defaultArgs,
-  ...{
+export const UsageWithImage = {
+  args: {
     image:
       'https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg'
   }
 };
 
-export const UsageWithCustomIcon = CustomIconTemplate.bind({});
-UsageWithCustomIcon.args = defaultArgs;
+export const UsageWithCustomIcon = {
+  render: CustomIconTemplate
+};
 
-export const UsageWithActionsBlock = ActionTemplate.bind({});
-UsageWithActionsBlock.args = defaultArgs;
+export const UsageWithActionsBlock = {
+  render: ActionTemplate
+};
 
-export const UsageWithCustomTitle = CustomTitleTemplate.bind({});
-UsageWithCustomTitle.args = defaultArgs;
+export const UsageWithCustomTitle = {
+  render: CustomTitleTemplate
+};

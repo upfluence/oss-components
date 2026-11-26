@@ -1,9 +1,15 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const Template = (args) => ({
+  template: hbs`<OSS::ModeSwitch @options={{this.options}} @selected={{this.selected}} @plain={{this.plain}} @size={{this.size}} @disabled={{this.disabled}} @onSelect={{this.onSelect}} />`,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::ModeSwitch',
   component: 'ModeSwitch',
+  render: Template,
   argTypes: {
     options: {
       description: 'The options of the switch',
@@ -80,20 +86,16 @@ export default {
   }
 };
 
-const Template = (args) => ({
-  template: hbs`<OSS::ModeSwitch @options={{this.options}} @selected={{this.selected}} @plain={{this.plain}} @size={{this.size}} @disabled={{this.disabled}} @onSelect={{this.onSelect}} />`,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  options: [
-    { key: 'option1', label: 'Option 1', icon: 'check', skin: 'primary' },
-    { key: 'option2', label: 'Option 2', tag: { label: 'New', skin: 'primary' }, skin: 'xtd-blue' }
-  ],
-  selected: 'option1',
-  plain: false,
-  disabled: false,
-  size: undefined,
-  onSelect: fn()
+export const Default = {
+  args: {
+    options: [
+      { key: 'option1', label: 'Option 1', icon: 'check', skin: 'primary' },
+      { key: 'option2', label: 'Option 2', tag: { label: 'New', skin: 'primary' }, skin: 'xtd-blue' }
+    ],
+    selected: 'option1',
+    plain: false,
+    disabled: false,
+    size: undefined,
+    onSelect: fn()
+  }
 };

@@ -3,9 +3,18 @@ import { fn } from 'storybook/test';
 
 const AutocompleteValues = ['on', 'off'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                           @feedbackMessage={{this.feedbackMessage}} @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
+  `,
+  context: args
+});
+
 export default {
   title: 'Components/OSS::InputContainer',
   component: 'input-container',
+  render: DefaultUsageTemplate,
   argTypes: {
     value: {
       description: 'Value of the input',
@@ -133,14 +142,6 @@ const defaultArgs = {
   onChange: fn()
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                           @feedbackMessage={{this.feedbackMessage}} @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
-  `,
-  context: args
-});
-
 const AdvancedWithNamedBlocksTemplate = (args) => ({
   template: hbs`
       <OSS::InputContainer>
@@ -166,8 +167,11 @@ const AdvancedWithNamedBlocksTemplate = (args) => ({
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = defaultArgs;
+export const BasicUsage = {
+  args: defaultArgs
+};
 
-export const AdvancedWithNamedBlocks = AdvancedWithNamedBlocksTemplate.bind({});
-AdvancedWithNamedBlocks.args = {};
+export const AdvancedWithNamedBlocks = {
+  render: AdvancedWithNamedBlocksTemplate,
+  args: {}
+};

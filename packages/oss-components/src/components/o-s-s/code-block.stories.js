@@ -1,8 +1,38 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}} @scrollable={{this.scrollable}}
+                      @collapseHeight={{this.collapseHeight}} @onCopyMessage={{this.onCopyMessage}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  content: `import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import ToastService from '@upfluence/oss-components/services/toast';
+
+interface OSSCodeBlockArgs {
+  content: string;
+  copyable?: boolean;
+  scrollable?: boolean;
+  collapseHeight?: number;
+  onCopyMessage?: string;
+}`,
+  copyable: true,
+  scrollable: true,
+  collapseHeight: 130,
+  onCopyMessage: 'Copied to clipboard!'
+};
+
 export default {
   title: 'Components/OSS::CodeBlock',
   component: 'code-block',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     content: {
       type: { required: true },
@@ -72,33 +102,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  content: `import Component from '@glimmer/component';
-import { action } from '@ember/object';
-import { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
-import ToastService from '@upfluence/oss-components/services/toast';
-
-interface OSSCodeBlockArgs {
-  content: string;
-  copyable?: boolean;
-  scrollable?: boolean;
-  collapseHeight?: number;
-  onCopyMessage?: string;
-}`,
-  copyable: true,
-  scrollable: true,
-  collapseHeight: 130,
-  onCopyMessage: 'Copied to clipboard!'
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}} @scrollable={{this.scrollable}}
-                      @collapseHeight={{this.collapseHeight}} @onCopyMessage={{this.onCopyMessage}} />
-  `,
-  context: args
-});
-
-export const UsageWithIcon = BasicUsageTemplate.bind({});
-UsageWithIcon.args = defaultArgs;
+export const UsageWithIcon = {};

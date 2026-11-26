@@ -15,9 +15,28 @@ const SkinTypes = [
   'xtd-smart'
 ];
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Badge @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
+                @plain={{this.plain}} />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  size: 'md',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  plain: false,
+  skin: undefined
+};
+
 export default {
   title: 'Components/OSS::Badge',
   component: 'badge',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     size: {
       description: 'Adjust the size of the badge',
@@ -89,37 +108,20 @@ export default {
   }
 };
 
-const defaultArgs = {
-  size: 'md',
-  icon: undefined,
-  image: undefined,
-  text: undefined,
-  plain: false,
-  skin: undefined
+export const WithIcon = {
+  args: {
+    icon: 'fas fa-volume-up'
+  }
 };
 
-const Template = (args) => ({
-  template: hbs`
-    <OSS::Badge @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
-                @plain={{this.plain}} />
-  `,
-  context: args
-});
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...defaultArgs,
-  ...{ icon: 'fas fa-volume-up' }
+export const WithImage = {
+  args: {
+    image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
+  }
 };
 
-export const WithImage = Template.bind({});
-WithImage.args = {
-  ...defaultArgs,
-  ...{ image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg' }
-};
-
-export const WithText = Template.bind({});
-WithText.args = {
-  ...defaultArgs,
-  ...{ text: '2x' }
+export const WithText = {
+  args: {
+    text: '2x'
+  }
 };

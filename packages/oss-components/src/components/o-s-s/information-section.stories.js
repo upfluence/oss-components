@@ -1,7 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <OSS::InformationSection
+      @title={{this.title}}
+      @badgeIcon={{this.badgeIcon}}
+      @imageUrl={{this.imageUrl}}
+      @subtitle={{this.subtitle}}
+      @plain={{this.plain}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  title: 'Title',
+  subtitle: 'Subtitle',
+  imageUrl: '/assets/images/upfluence-white-logo.svg',
+  badgeIcon: 'fa-pen',
+  plain: true
+};
+
 export default {
   title: 'Components/OSS::InformationSection',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     title: {
       description: 'The title of the section',
@@ -70,27 +93,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  title: 'Title',
-  subtitle: 'Subtitle',
-  imageUrl: '/assets/images/upfluence-white-logo.svg',
-  badgeIcon: 'fa-pen',
-  plain: true
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <OSS::InformationSection
-      @title={{this.title}}
-      @badgeIcon={{this.badgeIcon}}
-      @imageUrl={{this.imageUrl}}
-      @subtitle={{this.subtitle}}
-      @plain={{this.plain}}
-    />
-  `,
-  context: args
-});
-
 const BadgeBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InformationSection
@@ -144,14 +146,16 @@ const ContentBlockTemplate = (args) => ({
   context: args
 });
 
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};
 
-export const WithCustomBadge = BadgeBlockTemplate.bind({});
-WithCustomBadge.args = defaultArgs;
+export const WithCustomBadge = {
+  render: BadgeBlockTemplate
+};
 
-export const WithCustomAction = ActionBlockTemplate.bind({});
-WithCustomAction.args = defaultArgs;
+export const WithCustomAction = {
+  render: ActionBlockTemplate
+};
 
-export const WithCustomContent = ContentBlockTemplate.bind({});
-WithCustomContent.args = defaultArgs;
+export const WithCustomContent = {
+  render: ContentBlockTemplate
+};

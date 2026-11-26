@@ -4,9 +4,47 @@ import { fn } from 'storybook/test';
 const FAKE_ITEMS = ['Book of Boba Fett', 'The Bad Batch', 'The Clone Wars'];
 const FAKE_SELECTED_ITEMS = ['The Mandalorian'];
 
+const Template = (args) => ({
+  template: hbs`
+    <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
+      <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
+                        @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}} 
+                        @borderless={{this.borderless}} @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}
+                        @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
+                        @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
+        <:selected-item as |selectedItem|>
+          {{selectedItem}}
+        </:selected-item>
+        <:option-item as |item|>
+          {{item}}
+        </:option-item>
+      </OSS::PowerSelect>
+    </div>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  items: FAKE_ITEMS,
+  selectedItems: FAKE_SELECTED_ITEMS,
+  loading: false,
+  loadingMore: false,
+  borderless: false,
+  placeholder: 'My placeholder',
+  searchPlaceholder: 'My search placeholder',
+  addressableAs: undefined,
+  feedbackMessage: undefined,
+  hasError: false,
+  onSearch: fn(),
+  onChange: fn(),
+  onBottomReached: fn()
+};
+
 export default {
   title: 'Components/OSS::PowerSelect',
   component: 'power-select',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     items: {
       description: 'List of items to select',
@@ -153,49 +191,10 @@ export default {
   }
 };
 
-const defaultArgs = {
-  items: FAKE_ITEMS,
-  selectedItems: FAKE_SELECTED_ITEMS,
-  loading: false,
-  loadingMore: false,
-  borderless: false,
-  placeholder: 'My placeholder',
-  searchPlaceholder: 'My search placeholder',
-  addressableAs: undefined,
-  feedbackMessage: undefined,
-  hasError: false,
-  onSearch: fn(),
-  onChange: fn(),
-  onBottomReached: fn()
-};
+export const Default = {};
 
-const Template = (args) => ({
-  template: hbs`
-    <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
-      <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
-                        @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}} 
-                        @borderless={{this.borderless}} @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}
-                        @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
-                        @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
-        <:selected-item as |selectedItem|>
-          {{selectedItem}}
-        </:selected-item>
-        <:option-item as |item|>
-          {{item}}
-        </:option-item>
-      </OSS::PowerSelect>
-    </div>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
-
-export const WithoutSelectedItem = Template.bind({});
-WithoutSelectedItem.args = {
-  ...defaultArgs,
-  ...{ selectedItems: [] }
+export const WithoutSelectedItem = {
+  args: {
+    selectedItems: []
+  }
 };

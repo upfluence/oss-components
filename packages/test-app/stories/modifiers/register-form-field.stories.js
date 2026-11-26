@@ -1,7 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 
+const Template = (args) => ({
+  template: hbs`
+    <form id={{this.form}}>
+      <OSS::InputContainer {{register-form-field
+        form=this.form
+        fieldId=this.fieldId
+        validator=this.validator
+        validateOnBlur=this.validateOnBlur
+        }} />
+    </form>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  form: 'form-instance',
+  fieldId: 'field-id',
+  validator: (value) => (!value ? 'This field is required' : undefined),
+  validateOnBlur: true
+};
+
 export default {
   title: 'Helpers & Modifiers/Modifiers/Register-Form-Field/Definition',
+  render: Template,
+  args: defaultArgs,
   argTypes: {
     form: {
       description: 'The name of the form this field belongs to. Used to retrieve the correct FormManager instance.',
@@ -51,26 +74,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  form: 'form-instance',
-  fieldId: 'field-id',
-  validator: (value) => (!value ? 'This field is required' : undefined),
-  validateOnBlur: true
-};
-
-const Template = (args) => ({
-  template: hbs`
-    <form id={{this.form}}>
-      <OSS::InputContainer {{register-form-field
-        form=this.form
-        fieldId=this.fieldId
-        validator=this.validator
-        validateOnBlur=this.validateOnBlur
-        }} />
-    </form>
-  `,
-  context: args
-});
-
-export const Default = Template.bind({});
-Default.args = defaultArgs;
+export const Default = {};

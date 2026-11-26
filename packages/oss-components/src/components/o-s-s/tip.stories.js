@@ -2,9 +2,32 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const Sizes = ['sm', 'md'];
 
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+    <OSS::Tip
+      @label={{this.label}}
+      @active={{this.active}}
+      @icon={{this.icon}}
+      @important={{this.important}}
+      @size={{this.size}}
+    />
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  label: 'Label',
+  active: false,
+  icon: 'fa-handshake',
+  important: false,
+  size: 'sm'
+};
+
 export default {
   title: 'Components/OSS::Tip',
   component: 'tip',
+  render: DefaultUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     label: {
       description: 'Text content of the tip',
@@ -54,27 +77,6 @@ export default {
   }
 };
 
-const defaultArgs = {
-  label: 'Label',
-  active: false,
-  icon: 'fa-handshake',
-  important: false,
-  size: 'sm'
-};
-
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-    <OSS::Tip
-      @label={{this.label}}
-      @active={{this.active}}
-      @icon={{this.icon}}
-      @important={{this.important}}
-      @size={{this.size}}
-    />
-  `,
-  context: args
-});
-
 const CustomContentTemplate = (args) => ({
   template: hbs`
     <OSS::Tip
@@ -89,10 +91,8 @@ const CustomContentTemplate = (args) => ({
   context: args
 });
 
-export const Default = DefaultUsageTemplate.bind({});
-Default.args = defaultArgs;
+export const Default = {};
 
-export const CustomContent = CustomContentTemplate.bind({});
-CustomContent.args = {
-  ...defaultArgs
+export const CustomContent = {
+  render: CustomContentTemplate
 };

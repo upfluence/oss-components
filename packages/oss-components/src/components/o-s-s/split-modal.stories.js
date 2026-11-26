@@ -1,9 +1,33 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { fn } from 'storybook/test';
 
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::SplitModal @close={{this.close}} @disableClickOutside={{this.disableClickOutside}}>
+        <:content>
+          Content goes here
+        </:content>
+        <:footer>
+          Footer goes here
+        </:footer>
+        <:preview>
+          Preview goes here
+        </:preview>
+      </OSS::SplitModal>
+  `,
+  context: args
+});
+
+const defaultArgs = {
+  close: fn(),
+  disableClickOutside: false
+};
+
 export default {
   title: 'Components/OSS::SplitModal',
   component: 'split-modal',
+  render: BasicUsageTemplate,
+  args: defaultArgs,
   argTypes: {
     close: {
       description: 'The callback that closes the split-modal',
@@ -46,27 +70,4 @@ export default {
   }
 };
 
-const defaultArgs = {
-  close: fn(),
-  disableClickOutside: false
-};
-
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::SplitModal @close={{this.close}} @disableClickOutside={{this.disableClickOutside}}>
-        <:content>
-          Content goes here
-        </:content>
-        <:footer>
-          Footer goes here
-        </:footer>
-        <:preview>
-          Preview goes here
-        </:preview>
-      </OSS::SplitModal>
-  `,
-  context: args
-});
-
-export const Usage = BasicUsageTemplate.bind({});
-Usage.args = defaultArgs;
+export const Usage = {};
