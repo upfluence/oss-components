@@ -5,5 +5,17 @@
     {{else}}
       <img src={{this.image}} alt="avatar" class={{this.imageClass}} onerror={{this.imageLoadError}} loading="lazy" />
     {{/if}}
+    {{#if @badge}}
+      <OSS::Badge
+        @icon={{@badge.icon}}
+        @image={{@badge.image}}
+        @text={{@badge.text}}
+        @skin={{@badge.skin}}
+        @size="sm"
+        @plain={{@badge.plain}}
+        class="upf-avatar__badge"
+        {{enable-tooltip title=@badge.tooltip}}
+      />
+    {{/if}}
   {{/unless}}
 </div>
