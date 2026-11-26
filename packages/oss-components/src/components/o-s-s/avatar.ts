@@ -26,6 +26,7 @@ export const AvatarSkins = [
 ] as const;
 
 export type SkinType = (typeof AvatarSkins)[number];
+export type AvatarBadgeType = Partial<Omit<OSSBadgeArgs, 'size'>> & { tooltip?: string };
 
 export interface OSSAvatarArgs {
   image?: string;
@@ -33,7 +34,7 @@ export interface OSSAvatarArgs {
   size?: SizeType;
   loading?: boolean;
   skin?: SkinType;
-  badge?: Partial<Omit<OSSBadgeArgs, 'size'>> & { tooltip?: string };
+  badge?: AvatarBadgeType;
 }
 
 export const DEFAULT_IMAGE_URL: string = '/@upfluence/oss-components/assets/images/avatar-placeholder.svg';
