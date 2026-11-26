@@ -1,6 +1,6 @@
 {
   "name": "@upfluence/oss-components",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "repository": "https://github.com/upfluence/oss-components",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
